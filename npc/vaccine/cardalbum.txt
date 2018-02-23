@@ -1,0 +1,198 @@
+// ===========================
+// 동일카드 5장을 카첩 1개로 교환
+// by. 아야쿠라
+// ===========================
+
+prt_gld,179,136,4	script	카드교환	4_F_KHELLY,{
+	disable_items;
+	set .@npcname$,"[포인트교환]";
+
+	mes .@npcname$;
+	mes "가지고있는 카드를 전부 포인트로 교환해드립니다.";
+	mes "교환하시겠습니까?";
+	mes "^ff0000※주의 인벤토리의 모든 카드들이 삭제됩니다!^000000";
+	mes "^ff0000※교환을 원하지 않는 카드는 @창고에 넣어두세요.^000000";
+	mes " ";
+	mes "현재 카드포인트는 ^ff0000"+#CardBuf+"^000000점입니다";
+	next;
+	menu "취소",nope,"카드를 포인트로 교환한다.",trade,"포인트를 사용한다.",UsePoint;
+UsePoint:
+	if(#CardBuf < 50) {
+		mes .@npcname$;
+		mes "포인트를 사용하기 위해선 50점 이상의 포인트가 필요합니다.";
+		close;
+	} 
+	mes .@npcname$;
+	mes "벌써 포인트를 ^ff0000"+#CardBuf+"^000000점이나 모으셨군요!";
+	mes "포인트는 사용하는 양에 따라 보상이 달라져요.";
+	mes "여기 메뉴판을 봐주세요.";
+	next;
+	mes "- 교환 메뉴 -";
+	mes "50 points - 마력이 깃든 카드첩";
+	mes "500 points - 중보스 또는 봉인된 보스 카드";
+	mes "1000 points - 메모리얼 보스 카드";
+	mes "^ff0000※ 상위 항목에는 하위 항목의 보상이 포함되어, 낮은 확률로 하위 항목의 보상이 나올 수 있습니다.^000000";
+	mes "^ff0000※ 당연한 이야기지만, 함정카드도 포함되어 있어요!^000000";
+	next;
+	mes .@npcname$;
+	mes "메뉴가 마음에 드세요?";
+	mes "원하시는 메뉴가 있으신가요?";
+	next;
+	switch(select("교환하지 않는다.:50 points:500 points:1000 points")) {
+		case 1:
+			mes .@npcname$;
+			mes "메뉴가 마음에 안드시는구나...";
+			mes "마음이 바뀌면 다시 오세요~";
+			close;
+		case 2:
+			if(#CardBuf < 50) goto NoPoint;
+			mes .@npcname$;
+			mes "포인트를 교환해드리겠습니다!";
+			mes "여기, 보상으로 나온 마력이 깃든 카드첩입니다.";
+			set .@delpoint,50;
+			getitem 12246,1;
+			close;
+		case 3:
+			if(#CardBuf < 500) goto NoPoint;
+			mes .@npcname$;
+			mes "포인트를 교환해드리겠습니다!";
+			mes "보상이 마음에 드셔야할탠데...";
+			next;
+			set #CardBuf,#CardBuf - 500;
+			goto P500;
+			break;
+		case 4:
+			if(#CardBuf < 1000) goto NoPoint;
+			mes .@npcname$;
+			mes "포인트를 교환해드리겠습니다!";
+			mes "보상이 마음에 드셔야할탠데...";
+			next;
+			set #CardBuf,#CardBuf - 1000;
+			goto P1000;
+			break;
+	}
+	close;
+P500:
+	set .@level, rand(1,10);
+	if (.@level < 6)  setarray .@rewardArr[0],4140,4169,4183,4197,4198,4203,4207,4211,4266,4290,4300,4303,4306,4320,4384,4426,4642,4644,4645;
+	else if (.@level < 9) setarray .@rewardArr[0],4047,4054,4174,4241,4250,4254,4336,4395,4396,4397,4398,4643,4646,27165; 
+	else if (.@level <= 10) setarray .@rewardArr[0],4480,4482,4483,4485,4486,4487,4488,4489,4490,4491,4494,4497,4503,4538,4539;
+	
+	set .@rewardCard, .@rewardArr[rand(0,getarraysize(.@rewardArr)-1)];
+	getitem .@rewardCard,1;
+	mes .@npcname$;
+	mes "여기, 보상으로 나온 "+ getitemname(.@rewardCard) +"입니다.";
+	mes "어때요, 마음에 드시나요?";
+	mes "남은 포인트는" + #CardBuf + "점입니다.";
+	close;
+
+P1000:
+	set .@level, rand(1,12);
+	if (.@level < 2)  setarray .@rewardArr[0],4140,4169,4183,4197,4198,4203,4207,4211,4266,4290,4300,4303,4306,4320,4384,4426,4642,4644,4645;
+	else if (.@level < 4) setarray .@rewardArr[0],4047,4054,4174,4241,4250,4254,4336,4395,4396,4397,4398,4643,4646,27165; 
+	else if (.@level < 6) setarray .@rewardArr[0],4480,4482,4483,4485,4486,4487,4488,4489,4490,4491,4494,4497,4503,4538,4539;
+	else if (.@level < 11) setarray .@rewardArr[0],4135,4143,4147,4526,4527,4528,4529,4533,4534,4557,4559,4605,4606,4608,4609,4635,4637,4642,4643,4644,4645,4646,4699,27012,27013,27018,27019,27106,27107,27108,27163,27164,27165,27166,27167,31016,31017,31018,31019,31020,31021,31022;
+	else if (.@level <= 12) setarray .@rewardArr[0],4451,4456,4457,4556,4560,4561,4562,4563,4564,4565,4566,4590,4591,4592,4601,4602,4603,4604,4610,4636,4647,4648,4649,4650,4651,4697,4698,27020,27109,31023;
+	for(set .@i,0; .@i < getarraysize(.@rewardArr)-1; set .@i,.@i + 1 )
+		mes "" + .@rewardArr[.@i] + " : " + getitemname(.@rewardCard[.@i]);
+	
+	next;
+	set .@rewardCard, .@rewardArr[rand(0,getarraysize(.@rewardArr)-1)];
+	getitem .@rewardCard,1;
+	if(.@rewardArr[0] == 4451)
+           announce ""+strcharinfo(0)+" 님이 카드포인트 대박 보상으로 " + getitemname(.@rewardCard) + "를 획득하셨습니다! ",bc_blue|bc_all;
+
+	mes .@npcname$;
+	mes "여기, 보상으로 나온 "+ getitemname(.@rewardCard) +"입니다.";
+	mes "어때요, 마음에 드시나요?";
+	mes "남은 포인트는" + #CardBuf + "점입니다.";
+	close;
+
+trade:
+	mes .@npcname$;
+	mes "전 분명 경고했어요!";
+	mes "인벤토리에 있는 카드 전부 사라질거니까 딴말하기 없기에요!";
+	next;
+	menu "취소",nope,"계속 한다.",-;
+	next;
+	set .@a,4001;
+	set .@a2,4002;
+	set .@a3,4001;
+	set .@a4,4002;
+	set .@a5,27012;
+	set .@a6,4551;
+	set .@a7,4552;
+Check:
+	if (.@a > 4548) goto End_Card;
+	if (countitem(.@a) > 0) { set #CardBuf,#CardBuf+countitem(.@a); delitem .@a,countitem(.@a); }
+	if (countitem(.@a2) > 0) { set #CardBuf,#CardBuf+countitem(.@a2); delitem .@a2,countitem(.@a2); }
+	if (countitem(.@a3) > 0) { set #CardBuf,#CardBuf+countitem(.@a3); delitem .@a3,countitem(.@a3); }
+	if (countitem(.@a4) > 0) { set #CardBuf,#CardBuf+countitem(.@a4); delitem .@a4,countitem(.@a4); }
+	set .@a,.@a + 4;
+	set .@a2,.@a2 + 4;
+	set .@a3,.@a3 + 4;
+	set .@a4,.@a4 + 4;
+	if(.@a5 != 0) {
+		if (.@a5 == 27021) set .@a5,.@a5 + 4; 
+		if (.@a5 == 27030) set .@a5,27106; 
+		if (.@a5 == 27110) set .@a5,27120; 
+		if (.@a5 == 27127) set .@a5,.@a5 + 20; 
+		if (.@a5 == 27153) set .@a5,.@a5 + 4;
+		if (countitem(.@a5) > 0) { set #CardBuf,#CardBuf+countitem(.@a5); delitem .@a5,countitem(.@a5); }
+		set .@a5,.@a5 + 1;
+		if (.@a5 > 27169) set .@a5,0;
+	}
+	if(.@a7 != 0) {
+		if (.@a6 == 4611) { set .@a6, .@a6 + 14; }
+		if (.@a7 == 4612) { set .@a7, .@a7 + 14; }
+		if (.@a6 == 4551) { set .@a6,.@a6 + 2; }
+		if (.@a7 == 4558) { set .@a7,.@a7 + 2; }
+		if (countitem(.@a6) > 0) { set #CardBuf,#CardBuf+countitem(.@a6); delitem .@a6,countitem(.@a6); }
+		if (countitem(.@a7) > 0) { set #CardBuf,#CardBuf+countitem(.@a7); delitem .@a7,countitem(.@a7); }
+		set .@a6,.@a6 + 2;
+		set .@a7,.@a7 + 2;
+		if (.@a6 > 4699) set .@a6,0;
+		if (.@a7 > 4700) set .@a7,0;
+	}
+
+	//mes "1 : " + .@a + " 2 : " + .@a2 + " 3 : " + .@a3 + " 4 : " + .@a4 + " 5 : " + .@a5;
+	goto Check;
+	end;
+Check2:
+	if (.@a6 > 4699) goto End_Card;
+	if (.@a6 == 4611) { set .@a6, .@a6 + 14; }
+	if (.@a7 == 4612) { set .@a7, .@a7 + 14; }
+	if (.@a6 == 4551) { set .@a6,.@a6 + 2; }
+	if (.@a7 == 4558) { set .@a7,.@a7 + 2; }
+	if (countitem(.@a6) > 0) { set #CardBuf,#CardBuf+countitem(.@a6); delitem .@a6,countitem(.@a6); }
+	if (countitem(.@a7) > 0) { set #CardBuf,#CardBuf+countitem(.@a7); delitem .@a7,countitem(.@a7); }
+	set .@a6,.@a6 + 2;
+	set .@a7,.@a7 + 2;
+	goto Check2;
+	end;
+
+Check3:
+	if (.@a > 4699) goto End_Card;
+	if (.@a5 == 27127) { set .@a5,.@a5 + 20; }
+	if (countitem(.@a5) > 0) { set #CardBuf,#CardBuf+countitem(.@a5); delitem .@a5,countitem(.@a5); }
+	set .@a5,.@a5 + 1;
+	goto Check6;
+	end;
+
+
+End_Card:
+	mes .@npcname$;
+	mes "현재 카드포인트는 ^ff0000"+#CardBuf+"^000000입니다";
+	mes "전부교환되었습니다";
+	specialeffect2 EF_FLOWERLEAF;
+	close;
+NoPoint:
+	mes .@npcname$;
+	mes "이 메뉴를 선택하시기엔 포인트가 부족합니다. 확인 후 다시 선택해주세요.";
+	close;
+nope:
+	mes .@npcname$;
+	mes "안녕히가세요.";
+	close;
+
+}

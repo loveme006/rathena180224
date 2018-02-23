@@ -1,0 +1,485 @@
+// Dead Branch Summonable Monsters Database
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Branch_Of_Dead_Tree,0,Scorpion,1001
+MOBG_Branch_Of_Dead_Tree,1001,스콜피온,Scorpion
+MOBG_Branch_Of_Dead_Tree,1002,포링,Poring
+MOBG_Branch_Of_Dead_Tree,1004,호넷,Hornet
+MOBG_Branch_Of_Dead_Tree,1005,퍼밀리어,Familiar
+MOBG_Branch_Of_Dead_Tree,1007,파브르,Fabre
+MOBG_Branch_Of_Dead_Tree,1008,푸파,Pupa
+MOBG_Branch_Of_Dead_Tree,1009,콘도르,Condor
+MOBG_Branch_Of_Dead_Tree,1010,윌로우,Willow
+MOBG_Branch_Of_Dead_Tree,1011,촌촌,Chonchon
+MOBG_Branch_Of_Dead_Tree,1012,로다프로그,Roda Frog
+MOBG_Branch_Of_Dead_Tree,1013,울프,Wolf
+MOBG_Branch_Of_Dead_Tree,1014,스포아,Spore
+MOBG_Branch_Of_Dead_Tree,1015,좀비,Zombie
+MOBG_Branch_Of_Dead_Tree,1016,아쳐 스켈레톤,Archer Skeleton
+MOBG_Branch_Of_Dead_Tree,1018,크리미,Creamy
+MOBG_Branch_Of_Dead_Tree,1019,페코페코,Peco Peco
+MOBG_Branch_Of_Dead_Tree,1020,만드라고라,Mandragora
+MOBG_Branch_Of_Dead_Tree,1023,오크 워리어,Orc Warrior
+MOBG_Branch_Of_Dead_Tree,1024,웜테일,Wormtail
+MOBG_Branch_Of_Dead_Tree,1025,보아,Boa
+MOBG_Branch_Of_Dead_Tree,1026,무낙,Munak
+MOBG_Branch_Of_Dead_Tree,1028,솔져 스켈레톤,Soldier Skeleton
+MOBG_Branch_Of_Dead_Tree,1029,이시스,Isis
+MOBG_Branch_Of_Dead_Tree,1030,아나콘다크,Anacondaq
+MOBG_Branch_Of_Dead_Tree,1031,포포링,Poporing
+MOBG_Branch_Of_Dead_Tree,1032,베릿트,Verit
+MOBG_Branch_Of_Dead_Tree,1033,엘더 윌로우,Elder Willow
+MOBG_Branch_Of_Dead_Tree,1034,타라프로그,Thara Frog
+MOBG_Branch_Of_Dead_Tree,1035,헌터플라이,Hunter Fly
+MOBG_Branch_Of_Dead_Tree,1036,구울,Ghoul
+MOBG_Branch_Of_Dead_Tree,1037,사이드 와인더,Side Winder
+MOBG_Branch_Of_Dead_Tree,1040,고렘,Golem
+MOBG_Branch_Of_Dead_Tree,1041,미이라,Mummy
+MOBG_Branch_Of_Dead_Tree,1042,스틸 촌촌,Steel Chonchon
+MOBG_Branch_Of_Dead_Tree,1044,오본느,Obeaune
+MOBG_Branch_Of_Dead_Tree,1045,마르크,Marc
+MOBG_Branch_Of_Dead_Tree,1047,페코페코 알,Peco Peco Egg
+MOBG_Branch_Of_Dead_Tree,1048,도둑벌레 알,Thief Bug Egg
+MOBG_Branch_Of_Dead_Tree,1049,픽키,Picky
+MOBG_Branch_Of_Dead_Tree,1050,픽키,Picky
+MOBG_Branch_Of_Dead_Tree,1051,도둑벌레,Thief Bug
+MOBG_Branch_Of_Dead_Tree,1052,로커,Rocker
+MOBG_Branch_Of_Dead_Tree,1053,도둑벌레,Thief Bug Female
+MOBG_Branch_Of_Dead_Tree,1054,도둑벌레,Thief Bug Male
+MOBG_Branch_Of_Dead_Tree,1055,무카,Muka
+MOBG_Branch_Of_Dead_Tree,1056,스모키,Smokie
+MOBG_Branch_Of_Dead_Tree,1057,요요,Yoyo
+MOBG_Branch_Of_Dead_Tree,1058,메틀러,Metaller
+MOBG_Branch_Of_Dead_Tree,1060,빅풋,Bigfoot
+MOBG_Branch_Of_Dead_Tree,1061,나이트메어,Nightmare
+MOBG_Branch_Of_Dead_Tree,1062,산타포링,Santa Poring
+MOBG_Branch_Of_Dead_Tree,1063,루나틱,Lunatic
+MOBG_Branch_Of_Dead_Tree,1064,메갈로돈,Megalodon
+MOBG_Branch_Of_Dead_Tree,1065,스트라우프,Strouf
+MOBG_Branch_Of_Dead_Tree,1066,바돈,Vadon
+MOBG_Branch_Of_Dead_Tree,1067,커너투스,Cornutus
+MOBG_Branch_Of_Dead_Tree,1068,히드라,Hydra
+MOBG_Branch_Of_Dead_Tree,1069,소드피쉬,Swordfish
+MOBG_Branch_Of_Dead_Tree,1070,쿠크레,Kukre
+MOBG_Branch_Of_Dead_Tree,1071,파이어럿 스켈,Pirate Skeleton
+MOBG_Branch_Of_Dead_Tree,1072,카호,Kaho
+MOBG_Branch_Of_Dead_Tree,1073,게,Crab
+MOBG_Branch_Of_Dead_Tree,1074,조개,Shellfish
+MOBG_Branch_Of_Dead_Tree,1076,스켈레톤,Skeleton
+MOBG_Branch_Of_Dead_Tree,1077,포이즌 스포아,Poison Spore
+MOBG_Branch_Of_Dead_Tree,1078,빨간 풀,Red Plant
+MOBG_Branch_Of_Dead_Tree,1079,파란 풀,Blue Plant
+MOBG_Branch_Of_Dead_Tree,1080,초록 풀,Green Plant
+MOBG_Branch_Of_Dead_Tree,1081,노란 풀,Yellow Plant
+MOBG_Branch_Of_Dead_Tree,1082,하얀 풀,White Plant
+MOBG_Branch_Of_Dead_Tree,1083,빛나는 풀,Shining Plant
+MOBG_Branch_Of_Dead_Tree,1084,검은 버섯,Black Mushroom
+MOBG_Branch_Of_Dead_Tree,1085,붉은 버섯,Red Mushroom
+MOBG_Branch_Of_Dead_Tree,1088,보컬,Vocal
+MOBG_Branch_Of_Dead_Tree,1089,토드,Toad
+MOBG_Branch_Of_Dead_Tree,1090,마스터링,Mastering
+MOBG_Branch_Of_Dead_Tree,1091,드래곤 플라이,Dragon Fly
+MOBG_Branch_Of_Dead_Tree,1092,떠돌이 늑대,Vagabond Wolf
+MOBG_Branch_Of_Dead_Tree,1093,이클립스,Eclipse
+MOBG_Branch_Of_Dead_Tree,1094,앰버나이트,Ambernite
+MOBG_Branch_Of_Dead_Tree,1095,앙드레,Andre
+MOBG_Branch_Of_Dead_Tree,1096,엔젤링,Angeling
+MOBG_Branch_Of_Dead_Tree,1097,개미 알,Ant Egg
+MOBG_Branch_Of_Dead_Tree,1098,아누비스,Anubis
+MOBG_Branch_Of_Dead_Tree,1099,아르지오프,Argiope
+MOBG_Branch_Of_Dead_Tree,1100,아르고스,Argos
+MOBG_Branch_Of_Dead_Tree,1101,바포메트 주니어,Baphomet Jr.
+MOBG_Branch_Of_Dead_Tree,1102,바소리,Bathory
+MOBG_Branch_Of_Dead_Tree,1103,카라멜,Caramel
+MOBG_Branch_Of_Dead_Tree,1104,코코,Coco
+MOBG_Branch_Of_Dead_Tree,1105,데니로,Deniro
+MOBG_Branch_Of_Dead_Tree,1106,데저트 울프,Desert Wolf
+MOBG_Branch_Of_Dead_Tree,1107,데저트 울프,Baby Desert Wolf
+MOBG_Branch_Of_Dead_Tree,1108,데비어스,Deviace
+MOBG_Branch_Of_Dead_Tree,1109,데비루치,Deviruchi
+MOBG_Branch_Of_Dead_Tree,1110,도깨비,Dokebi
+MOBG_Branch_Of_Dead_Tree,1111,드레인리어,Drainliar
+MOBG_Branch_Of_Dead_Tree,1113,드롭프스,Drops
+MOBG_Branch_Of_Dead_Tree,1114,더스티네스,Dustiness
+MOBG_Branch_Of_Dead_Tree,1116,에기라,Eggyra
+MOBG_Branch_Of_Dead_Tree,1117,이블 드루이드,Evil Druid
+MOBG_Branch_Of_Dead_Tree,1118,플로라,Flora
+MOBG_Branch_Of_Dead_Tree,1119,프릴도라,Frilldora
+MOBG_Branch_Of_Dead_Tree,1120,고스트링,Ghostring
+MOBG_Branch_Of_Dead_Tree,1121,가이아스,Giearth
+MOBG_Branch_Of_Dead_Tree,1122,고블린,Goblin
+MOBG_Branch_Of_Dead_Tree,1123,고블린,Goblin
+MOBG_Branch_Of_Dead_Tree,1124,고블린,Goblin
+MOBG_Branch_Of_Dead_Tree,1125,고블린,Goblin
+MOBG_Branch_Of_Dead_Tree,1126,고블린,Goblin
+MOBG_Branch_Of_Dead_Tree,1127,호드,Hode
+MOBG_Branch_Of_Dead_Tree,1128,호른,Horn
+MOBG_Branch_Of_Dead_Tree,1129,호롱,Horong
+MOBG_Branch_Of_Dead_Tree,1130,잭,Jakk
+MOBG_Branch_Of_Dead_Tree,1131,조커,Joker
+MOBG_Branch_Of_Dead_Tree,1132,칼리츠버그,Khalitzburg
+MOBG_Branch_Of_Dead_Tree,1133,코볼트,Kobold
+MOBG_Branch_Of_Dead_Tree,1134,코볼트,Kobold
+MOBG_Branch_Of_Dead_Tree,1135,코볼트,Kobold
+MOBG_Branch_Of_Dead_Tree,1138,백련옥,Magnolia
+MOBG_Branch_Of_Dead_Tree,1139,맨티스,Mantis
+MOBG_Branch_Of_Dead_Tree,1140,마르두크,Marduk
+MOBG_Branch_Of_Dead_Tree,1141,마리나,Marina
+MOBG_Branch_Of_Dead_Tree,1142,마린 스피어,Marine Sphere
+MOBG_Branch_Of_Dead_Tree,1143,마리오네트,Marionette
+MOBG_Branch_Of_Dead_Tree,1144,마르스,Marse
+MOBG_Branch_Of_Dead_Tree,1145,마르틴,Martin
+MOBG_Branch_Of_Dead_Tree,1146,마타,Matyr
+MOBG_Branch_Of_Dead_Tree,1148,메두사,Medusa
+MOBG_Branch_Of_Dead_Tree,1149,마이너우로스,Minorous
+MOBG_Branch_Of_Dead_Tree,1151,미스트,Myst
+MOBG_Branch_Of_Dead_Tree,1152,오크 스켈레톤,Orc Skeleton
+MOBG_Branch_Of_Dead_Tree,1153,오크 좀비,Orc Zombie
+MOBG_Branch_Of_Dead_Tree,1154,파사나,Pasana
+MOBG_Branch_Of_Dead_Tree,1155,쁘띠,Petite
+MOBG_Branch_Of_Dead_Tree,1156,쁘띠,Petite
+MOBG_Branch_Of_Dead_Tree,1158,휀,Phen
+MOBG_Branch_Of_Dead_Tree,1160,피에르,Piere
+MOBG_Branch_Of_Dead_Tree,1161,플랑크톤,Plankton
+MOBG_Branch_Of_Dead_Tree,1163,레이드릭,Raydric
+MOBG_Branch_Of_Dead_Tree,1164,레퀴엠,Requiem
+MOBG_Branch_Of_Dead_Tree,1165,샌드맨,Sandman
+MOBG_Branch_Of_Dead_Tree,1166,세비지,Savage
+MOBG_Branch_Of_Dead_Tree,1167,세비지베베,Savage Babe
+MOBG_Branch_Of_Dead_Tree,1169,스켈워커,Skeleton Worker
+MOBG_Branch_Of_Dead_Tree,1170,소희,Sohee
+MOBG_Branch_Of_Dead_Tree,1174,스타이너,Stainer
+MOBG_Branch_Of_Dead_Tree,1175,타로우,Tarou
+MOBG_Branch_Of_Dead_Tree,1176,비타타,Vitata
+MOBG_Branch_Of_Dead_Tree,1177,제노크,Zenorc
+MOBG_Branch_Of_Dead_Tree,1178,제롬,Zerom
+MOBG_Branch_Of_Dead_Tree,1179,위스퍼,Whisper
+MOBG_Branch_Of_Dead_Tree,1180,구미호,Nine Tail
+MOBG_Branch_Of_Dead_Tree,1182,버섯,Thief Mushroom
+MOBG_Branch_Of_Dead_Tree,1185,위스퍼,Whisper
+MOBG_Branch_Of_Dead_Tree,1186,거대 위스퍼,Giant Whisper
+MOBG_Branch_Of_Dead_Tree,1188,본건,Bongun
+MOBG_Branch_Of_Dead_Tree,1189,오크 아쳐,Orc Archer
+MOBG_Branch_Of_Dead_Tree,1191,미믹,Mimic
+MOBG_Branch_Of_Dead_Tree,1192,레이쓰,Wraith
+MOBG_Branch_Of_Dead_Tree,1193,알람,Alarm
+MOBG_Branch_Of_Dead_Tree,1194,아크라우스,Arclouze
+MOBG_Branch_Of_Dead_Tree,1195,라이드워드,Rideword
+MOBG_Branch_Of_Dead_Tree,1196,스켈 프리즈너,Skeleton Prisoner
+MOBG_Branch_Of_Dead_Tree,1197,좀비 프리즈너,Zombie Prisoner
+MOBG_Branch_Of_Dead_Tree,1199,펑크,Punk
+MOBG_Branch_Of_Dead_Tree,1200,지르타스,Zealotus
+MOBG_Branch_Of_Dead_Tree,1201,리비오,Rybio
+MOBG_Branch_Of_Dead_Tree,1202,펜다르크,Phendark
+MOBG_Branch_Of_Dead_Tree,1203,미스틸테인,Mysteltainn
+MOBG_Branch_Of_Dead_Tree,1204,오우거투스,Ogretooth
+MOBG_Branch_Of_Dead_Tree,1205,엑서큐서너,Executioner
+MOBG_Branch_Of_Dead_Tree,1206,아놀리안,Anolian
+MOBG_Branch_Of_Dead_Tree,1207,스팅,Sting
+MOBG_Branch_Of_Dead_Tree,1208,배회하는 자,Wanderer
+MOBG_Branch_Of_Dead_Tree,1209,크램프,Cramp
+MOBG_Branch_Of_Dead_Tree,1211,브릴라이트,Brilight
+MOBG_Branch_Of_Dead_Tree,1212,아이언 피스트,Iron Fist
+MOBG_Branch_Of_Dead_Tree,1213,하이 오크,High Orc
+MOBG_Branch_Of_Dead_Tree,1214,초코,Choco
+MOBG_Branch_Of_Dead_Tree,1215,스템웜,Stem Worm
+MOBG_Branch_Of_Dead_Tree,1216,페노메나,Penomena
+MOBG_Branch_Of_Dead_Tree,1219,심연의 기사,Abysmal Knight
+MOBG_Branch_Of_Dead_Tree,1242,마린,Marin
+MOBG_Branch_Of_Dead_Tree,1243,사스콰치,Sasquatch
+MOBG_Branch_Of_Dead_Tree,1245,고블린,Christmas Goblin
+MOBG_Branch_Of_Dead_Tree,1246,쿠키,Christmas Cookie
+MOBG_Branch_Of_Dead_Tree,1248,크루이저,Cruiser
+MOBG_Branch_Of_Dead_Tree,1249,미스트 케이스,Myst Case
+MOBG_Branch_Of_Dead_Tree,1250,체펫트,Chepet
+MOBG_Branch_Of_Dead_Tree,1253,가고일,Gargoyle
+MOBG_Branch_Of_Dead_Tree,1254,레글러,Raggler
+MOBG_Branch_Of_Dead_Tree,1255,네레이드,Nereid
+MOBG_Branch_Of_Dead_Tree,1256,페스트,Pest
+MOBG_Branch_Of_Dead_Tree,1257,인저스티스,Injustice
+MOBG_Branch_Of_Dead_Tree,1258,고블린 아쳐,Goblin Archer
+MOBG_Branch_Of_Dead_Tree,1259,그리폰,Gryphon
+MOBG_Branch_Of_Dead_Tree,1260,다크 프레임,Dark Frame
+MOBG_Branch_Of_Dead_Tree,1261,와일드로즈,Wild Rose
+MOBG_Branch_Of_Dead_Tree,1262,뮤턴트 드래고노이드,Mutant Dragonoid
+MOBG_Branch_Of_Dead_Tree,1263,윈드고스트,Wind Ghost
+MOBG_Branch_Of_Dead_Tree,1264,머맨,Merman
+MOBG_Branch_Of_Dead_Tree,1265,쿠키,Cookie
+MOBG_Branch_Of_Dead_Tree,1266,에스터,Aster
+MOBG_Branch_Of_Dead_Tree,1267,캐럿,Carat
+MOBG_Branch_Of_Dead_Tree,1268,피빛의 기사,Bloody Knight
+MOBG_Branch_Of_Dead_Tree,1269,클락,Clock
+MOBG_Branch_Of_Dead_Tree,1270,시계탑 관리자,Clock Tower Manager
+MOBG_Branch_Of_Dead_Tree,1271,엘리게이터,Alligator
+MOBG_Branch_Of_Dead_Tree,1273,오크 레이디,Orc Lady
+MOBG_Branch_Of_Dead_Tree,1274,메갈리스,Megalith
+MOBG_Branch_Of_Dead_Tree,1275,엘리스,Alice
+MOBG_Branch_Of_Dead_Tree,1276,레이드릭 아쳐,Raydric Archer
+MOBG_Branch_Of_Dead_Tree,1277,천하대장군,Greatest General
+MOBG_Branch_Of_Dead_Tree,1278,스터랙틱 골렘,Stalactic Golem
+MOBG_Branch_Of_Dead_Tree,1279,트라이조인트,Tri Joint
+MOBG_Branch_Of_Dead_Tree,1280,고블린 스팀라이더,Goblin Steamrider
+MOBG_Branch_Of_Dead_Tree,1281,세이지 웜,Sage Worm
+MOBG_Branch_Of_Dead_Tree,1282,코볼트 아쳐,Kobold Archer
+MOBG_Branch_Of_Dead_Tree,1283,키메라,Chimera
+MOBG_Branch_Of_Dead_Tree,1289,마야 퍼플,Maya Purple
+MOBG_Branch_Of_Dead_Tree,1290,스켈레톤 제네럴,Skeleton General
+MOBG_Branch_Of_Dead_Tree,1291,레이스 데드,Wraith Dead
+MOBG_Branch_Of_Dead_Tree,1292,미니 데몬,Mini Demon
+MOBG_Branch_Of_Dead_Tree,1293,크리미 피어,Creamy Fear
+MOBG_Branch_Of_Dead_Tree,1294,킬러 맨티스,Killer Mantis
+MOBG_Branch_Of_Dead_Tree,1295,아울 바론,Owl Baron
+MOBG_Branch_Of_Dead_Tree,1296,코볼트 리더,Kobold Leader
+MOBG_Branch_Of_Dead_Tree,1297,에인션트 미이라,Ancient Mummy
+MOBG_Branch_Of_Dead_Tree,1298,좀비 마스터,Zombie Master
+MOBG_Branch_Of_Dead_Tree,1299,고블린 리더,Goblin Leader
+MOBG_Branch_Of_Dead_Tree,1300,캐터필러,Caterpillar
+MOBG_Branch_Of_Dead_Tree,1301,암 무트,Am Mut
+MOBG_Branch_Of_Dead_Tree,1302,다크 일루젼,Dark Illusion
+MOBG_Branch_Of_Dead_Tree,1303,자이언트 호넷,Giant Hornet
+MOBG_Branch_Of_Dead_Tree,1304,자이언트 스파이더,Giant Spider
+MOBG_Branch_Of_Dead_Tree,1305,에인션트 웜,Ancient Worm
+MOBG_Branch_Of_Dead_Tree,1306,레이브 올마이,Leib Olmai
+MOBG_Branch_Of_Dead_Tree,1307,캣 오 나인 테일,Cat o' Nine Tails
+MOBG_Branch_Of_Dead_Tree,1308,팬저 고블린,Panzer Goblin
+MOBG_Branch_Of_Dead_Tree,1309,가조마르트,Gajomart
+MOBG_Branch_Of_Dead_Tree,1310,메이저우로스,Majoruros
+MOBG_Branch_Of_Dead_Tree,1311,글린 부르스티,Gullinbursti
+MOBG_Branch_Of_Dead_Tree,1313,폭력배,Mobster
+MOBG_Branch_Of_Dead_Tree,1314,퍼머터,Permeter
+MOBG_Branch_Of_Dead_Tree,1315,어절터,Assaulter
+MOBG_Branch_Of_Dead_Tree,1316,솔리더,Solider
+MOBG_Branch_Of_Dead_Tree,1317,퍼씰,Seal
+MOBG_Branch_Of_Dead_Tree,1318,힛터,Heater
+MOBG_Branch_Of_Dead_Tree,1319,프리저,Freezer
+MOBG_Branch_Of_Dead_Tree,1320,아울 듀크,Owl Duke
+MOBG_Branch_Of_Dead_Tree,1321,드래곤 테일,Dragon Tail
+MOBG_Branch_Of_Dead_Tree,1322,스프링래빗,Spring Rabbit
+MOBG_Branch_Of_Dead_Tree,1323,해달,Sea Otter
+MOBG_Branch_Of_Dead_Tree,1365,아포칼립스,Apocalypse
+MOBG_Branch_Of_Dead_Tree,1366,라바 골렘,Lava Golem
+MOBG_Branch_Of_Dead_Tree,1367,블레이저,Blazer
+MOBG_Branch_Of_Dead_Tree,1368,지오그래퍼,Geographer
+MOBG_Branch_Of_Dead_Tree,1369,그랜드 페코,Grand Peco
+MOBG_Branch_Of_Dead_Tree,1370,서큐버스,Succubus
+MOBG_Branch_Of_Dead_Tree,1371,페이크 엔젤,False Angel
+MOBG_Branch_Of_Dead_Tree,1372,고우트,Goat
+MOBG_Branch_Of_Dead_Tree,1374,인큐버스,Incubus
+MOBG_Branch_Of_Dead_Tree,1375,더 페이퍼,The Paper
+MOBG_Branch_Of_Dead_Tree,1376,하피,Harpy
+MOBG_Branch_Of_Dead_Tree,1377,엘더,Elder
+MOBG_Branch_Of_Dead_Tree,1378,데몬 펑거스,Demon Pungus
+MOBG_Branch_Of_Dead_Tree,1379,나이트메어 테러,Nightmare Terror
+MOBG_Branch_Of_Dead_Tree,1380,드릴러,Driller
+MOBG_Branch_Of_Dead_Tree,1381,그리즐리,Grizzly
+MOBG_Branch_Of_Dead_Tree,1382,디아볼릭,Diabolic
+MOBG_Branch_Of_Dead_Tree,1383,익스플로젼,Explosion
+MOBG_Branch_Of_Dead_Tree,1384,딜리터,Deleter
+MOBG_Branch_Of_Dead_Tree,1385,딜리터,Deleter
+MOBG_Branch_Of_Dead_Tree,1386,슬리퍼,Sleeper
+MOBG_Branch_Of_Dead_Tree,1387,기그,Gig
+MOBG_Branch_Of_Dead_Tree,1390,바이올리,Violy
+MOBG_Branch_Of_Dead_Tree,1391,갈라파고,Galapago
+MOBG_Branch_Of_Dead_Tree,1392,로터자이로,Rotar Zairo
+MOBG_Branch_Of_Dead_Tree,1400,카라카사,Karakasa
+MOBG_Branch_Of_Dead_Tree,1401,시노비,Shinobi
+MOBG_Branch_Of_Dead_Tree,1402,독두꺼비,Poison Toad
+MOBG_Branch_Of_Dead_Tree,1403,구식 조총병,Firelock Soldier
+MOBG_Branch_Of_Dead_Tree,1404,미야비인형,Miyabi Doll
+MOBG_Branch_Of_Dead_Tree,1405,천구,Tengu
+MOBG_Branch_Of_Dead_Tree,1406,캇파,Kapha
+MOBG_Branch_Of_Dead_Tree,1408,혈호접,Bloody Butterfly
+MOBG_Branch_Of_Dead_Tree,1409,경단동자,Dumpling Child
+MOBG_Branch_Of_Dead_Tree,1410,생도목,Enchanted Peach Tree
+MOBG_Branch_Of_Dead_Tree,1412,운악선,Taoist Hermit
+MOBG_Branch_Of_Dead_Tree,1413,신선초,Hermit Plant
+MOBG_Branch_Of_Dead_Tree,1415,아기표범,Baby Leopard
+MOBG_Branch_Of_Dead_Tree,1416,요선녀,Evil Nymph
+MOBG_Branch_Of_Dead_Tree,1417,지퍼베어,Zipper Bear
+MOBG_Branch_Of_Dead_Tree,1493,드라이어드,Dryad
+MOBG_Branch_Of_Dead_Tree,1494,투구벌레,Beetle King
+MOBG_Branch_Of_Dead_Tree,1495,스톤슈터,Stone Shooter
+MOBG_Branch_Of_Dead_Tree,1497,우든골렘,Wooden Golem
+MOBG_Branch_Of_Dead_Tree,1498,우탄슈터,Wootan Shooter
+MOBG_Branch_Of_Dead_Tree,1499,우탄파이터,Wootan Fighter
+MOBG_Branch_Of_Dead_Tree,1500,패러사이트,Parasite
+MOBG_Branch_Of_Dead_Tree,1503,지벳트,Gibbet
+MOBG_Branch_Of_Dead_Tree,1504,듀라한,Dullahan
+MOBG_Branch_Of_Dead_Tree,1505,로리루리,Loli Ruri
+MOBG_Branch_Of_Dead_Tree,1506,디스가이즈,Disguise
+MOBG_Branch_Of_Dead_Tree,1507,블러디 머더러,Bloody Murderer
+MOBG_Branch_Of_Dead_Tree,1508,큐브,Quve
+MOBG_Branch_Of_Dead_Tree,1509,루드,Lude
+MOBG_Branch_Of_Dead_Tree,1510,하이로 조이스트,Heirozoist
+MOBG_Branch_Of_Dead_Tree,1512,혜군,Yao Jun
+MOBG_Branch_Of_Dead_Tree,1513,묘괴,Mao Guai
+MOBG_Branch_Of_Dead_Tree,1514,저파룡,Zhu Po Long
+MOBG_Branch_Of_Dead_Tree,1515,하티베베,Baby Hatii
+MOBG_Branch_Of_Dead_Tree,1516,식양,Mi Gao
+MOBG_Branch_Of_Dead_Tree,1517,이매망량,Jing Guai
+MOBG_Branch_Of_Dead_Tree,1519,청이,Green Maiden
+MOBG_Branch_Of_Dead_Tree,1520,주먹밥,Boiled Rice
+MOBG_Branch_Of_Dead_Tree,1582,데빌링,Deviling
+MOBG_Branch_Of_Dead_Tree,1584,탐루안,Tamruan
+MOBG_Branch_Of_Dead_Tree,1586,리프캣,Leaf Cat
+MOBG_Branch_Of_Dead_Tree,1587,크라벤,Kraben
+MOBG_Branch_Of_Dead_Tree,1613,메탈링,Metaling
+MOBG_Branch_Of_Dead_Tree,1614,미네랄,Mineral
+MOBG_Branch_Of_Dead_Tree,1615,옵시디언,Obsidian
+MOBG_Branch_Of_Dead_Tree,1616,핏맨,Pitman
+MOBG_Branch_Of_Dead_Tree,1617,고철난로,Old Stove
+MOBG_Branch_Of_Dead_Tree,1618,운골리안트,Ungoliant
+MOBG_Branch_Of_Dead_Tree,1619,폴셀리오,Porcellio
+MOBG_Branch_Of_Dead_Tree,1620,녹시어스,Noxious
+MOBG_Branch_Of_Dead_Tree,1621,베노머스,Venomous
+MOBG_Branch_Of_Dead_Tree,1622,곰인형,Teddy Bear
+MOBG_Branch_Of_Dead_Tree,1627,위레스,Anopheles
+MOBG_Branch_Of_Dead_Tree,1628,홀덴,Holden
+MOBG_Branch_Of_Dead_Tree,1629,힐 윈드,Hill Wind
+MOBG_Branch_Of_Dead_Tree,1631,청이,Green Maiden
+MOBG_Branch_Of_Dead_Tree,1632,그렘린,Gremlin
+MOBG_Branch_Of_Dead_Tree,1633,비홀더,Beholder
+MOBG_Branch_Of_Dead_Tree,1634,세이렌 윈저,Seyren Windsor
+MOBG_Branch_Of_Dead_Tree,1635,에레메스 가일,Eremes Guile
+MOBG_Branch_Of_Dead_Tree,1636,하워드 알트아이젠,Howard Alt-Eisen
+MOBG_Branch_Of_Dead_Tree,1637,마가레타 소린,Margaretha Sorin
+MOBG_Branch_Of_Dead_Tree,1638,셰실 디먼,Cecil Damon
+MOBG_Branch_Of_Dead_Tree,1639,카트린느 케이론,Kathryne Keyron
+MOBG_Branch_Of_Dead_Tree,1652,이그니젬 세니아,Egnigem Cenia
+MOBG_Branch_Of_Dead_Tree,1653,휘케바인 트리스,Wickebine Tres
+MOBG_Branch_Of_Dead_Tree,1654,아르마이어 딘제,Armeyer Dinze
+MOBG_Branch_Of_Dead_Tree,1655,이렌드 에베시,Errende Ebecee
+MOBG_Branch_Of_Dead_Tree,1656,카바크 이카루스,Kavach Icarus
+MOBG_Branch_Of_Dead_Tree,1657,라우렐 뷘더,Laurell Weinder
+MOBG_Branch_Of_Dead_Tree,1664,포토 캐논,Photon Cannon
+MOBG_Branch_Of_Dead_Tree,1665,포토 캐논,Photon Cannon
+MOBG_Branch_Of_Dead_Tree,1666,포토 캐논,Photon Cannon
+MOBG_Branch_Of_Dead_Tree,1667,포토 캐논,Photon Cannon
+MOBG_Branch_Of_Dead_Tree,1668,아크담,Archdam
+MOBG_Branch_Of_Dead_Tree,1669,디미크,Dimik
+MOBG_Branch_Of_Dead_Tree,1670,디미크,Dimik
+MOBG_Branch_Of_Dead_Tree,1671,디미크,Dimik
+MOBG_Branch_Of_Dead_Tree,1672,디미크,Dimik
+MOBG_Branch_Of_Dead_Tree,1673,디미크,Dimik
+MOBG_Branch_Of_Dead_Tree,1675,베나투,Venatu
+MOBG_Branch_Of_Dead_Tree,1676,베나투,Venatu
+MOBG_Branch_Of_Dead_Tree,1677,베나투,Venatu
+MOBG_Branch_Of_Dead_Tree,1678,베나투,Venatu
+MOBG_Branch_Of_Dead_Tree,1679,베나투,Venatu
+MOBG_Branch_Of_Dead_Tree,1680,힐 윈드,Hill Wind
+MOBG_Branch_Of_Dead_Tree,1681,제미니-S58,Gemini-S58
+MOBG_Branch_Of_Dead_Tree,1682,리무버,Remover
+MOBG_Branch_Of_Dead_Tree,1686,오크 베이비,Orc Baby
+MOBG_Branch_Of_Dead_Tree,1687,그로브,Grove
+MOBG_Branch_Of_Dead_Tree,1692,산들바람,Breeze
+MOBG_Branch_Of_Dead_Tree,1693,플라즈마,Plasma
+MOBG_Branch_Of_Dead_Tree,1694,플라즈마,Plasma
+MOBG_Branch_Of_Dead_Tree,1695,플라즈마,Plasma
+MOBG_Branch_Of_Dead_Tree,1696,플라즈마,Plasma
+MOBG_Branch_Of_Dead_Tree,1699,에인션트 미믹,Ancient Mimic
+MOBG_Branch_Of_Dead_Tree,1703,위로하는 자,Lady Solace
+MOBG_Branch_Of_Dead_Tree,1704,타나토스의 증오,Odium of Thanatos
+MOBG_Branch_Of_Dead_Tree,1705,타나토스의 절망,Despero of Thanatos
+MOBG_Branch_Of_Dead_Tree,1706,타나토스의 슬픔,Maero of Thanatos
+MOBG_Branch_Of_Dead_Tree,1707,타나토스의 고뇌,Dolor of Thanatos
+MOBG_Branch_Of_Dead_Tree,1713,붉은 어시더스,Acidus
+MOBG_Branch_Of_Dead_Tree,1714,페러스,Ferus
+MOBG_Branch_Of_Dead_Tree,1715,노버스,Novus
+MOBG_Branch_Of_Dead_Tree,1717,페러스,Ferus
+MOBG_Branch_Of_Dead_Tree,1718,노버스,Novus
+MOBG_Branch_Of_Dead_Tree,1720,하이드로랜서,Hydrolancer
+MOBG_Branch_Of_Dead_Tree,1721,드래곤의 알,Dragon Egg
+MOBG_Branch_Of_Dead_Tree,1736,엘리엇,Aliot
+MOBG_Branch_Of_Dead_Tree,1737,엘리자,Aliza
+MOBG_Branch_Of_Dead_Tree,1738,콘스탄트,Constant
+MOBG_Branch_Of_Dead_Tree,1752,스코글,Skogul
+MOBG_Branch_Of_Dead_Tree,1753,프루스,Frus
+MOBG_Branch_Of_Dead_Tree,1754,스케골트,Skeggiold
+MOBG_Branch_Of_Dead_Tree,1755,스케골트,Skeggiold
+MOBG_Branch_Of_Dead_Tree,1769,아가브,Agav
+MOBG_Branch_Of_Dead_Tree,1770,에키오,Echio
+MOBG_Branch_Of_Dead_Tree,1771,판베르크,Vanberk
+MOBG_Branch_Of_Dead_Tree,1772,이실라,Isilla
+MOBG_Branch_Of_Dead_Tree,1773,호드렘린,Hodremlin
+MOBG_Branch_Of_Dead_Tree,1774,시커,Seeker
+MOBG_Branch_Of_Dead_Tree,1775,스노이어,Snowier
+MOBG_Branch_Of_Dead_Tree,1776,시로마,Siroma
+MOBG_Branch_Of_Dead_Tree,1777,아이스 티탄,Ice Titan
+MOBG_Branch_Of_Dead_Tree,1778,게에즈티,Gazeti
+MOBG_Branch_Of_Dead_Tree,1780,머스키퓰라,Muscipular
+MOBG_Branch_Of_Dead_Tree,1781,드로세라,Drosera
+MOBG_Branch_Of_Dead_Tree,1782,로우윈,Roween
+MOBG_Branch_Of_Dead_Tree,1783,갈리온,Galion
+MOBG_Branch_Of_Dead_Tree,1784,스태포,Stapo
+MOBG_Branch_Of_Dead_Tree,1789,고드름,Iceicle
+MOBG_Branch_Of_Dead_Tree,1796,아우노에,Aunoe
+MOBG_Branch_Of_Dead_Tree,1797,파나트,Fanat
+MOBG_Branch_Of_Dead_Tree,1829,소드 가디안,Sword Guardian
+MOBG_Branch_Of_Dead_Tree,1830,보우 가디안,Bow Guardian
+MOBG_Branch_Of_Dead_Tree,1831,살라만다,Salamander
+MOBG_Branch_Of_Dead_Tree,1833,카사,Kasa
+MOBG_Branch_Of_Dead_Tree,1836,마그마링,Magmaring
+MOBG_Branch_Of_Dead_Tree,1837,임프,Imp
+MOBG_Branch_Of_Dead_Tree,1838,노커,Knocker
+MOBG_Branch_Of_Dead_Tree,1839,뵤르그,Byrogue
+MOBG_Branch_Of_Dead_Tree,1864,좀비 슬러터,Zombie Slaughter
+MOBG_Branch_Of_Dead_Tree,1865,누더기 좀비,Ragged Zombie
+MOBG_Branch_Of_Dead_Tree,1866,헬 푸들,Hellhound
+MOBG_Branch_Of_Dead_Tree,1867,밴시,Banshee
+MOBG_Branch_Of_Dead_Tree,1869,플레임 스컬,Flame Skull
+MOBG_Branch_Of_Dead_Tree,1870,네크로맨서,Necromancer
+MOBG_Branch_Of_Dead_Tree,1872,헬 플라이,Hell Fly
+MOBG_Branch_Of_Dead_Tree,1880,우드 고블린,Wood Goblin
+MOBG_Branch_Of_Dead_Tree,1881,레스,Les
+MOBG_Branch_Of_Dead_Tree,1882,바바야가,Baba-Yaga
+MOBG_Branch_Of_Dead_Tree,1883,우자스,Uzhas
+MOBG_Branch_Of_Dead_Tree,1884,마브카,Mavka
+MOBG_Branch_Of_Dead_Tree,1918,모로크의 현신,Incarnation of Morroc
+MOBG_Branch_Of_Dead_Tree,1919,모로크의 현신,Incarnation of Morroc
+MOBG_Branch_Of_Dead_Tree,1920,모로크의 현신,Incarnation of Morroc
+MOBG_Branch_Of_Dead_Tree,1921,모로크의 현신,Incarnation of Morroc
+MOBG_Branch_Of_Dead_Tree,1974,밴시 마스터,Banshee Master
+MOBG_Branch_Of_Dead_Tree,1975,비홀더 마스터,Beholder Master
+MOBG_Branch_Of_Dead_Tree,1976,코발트 미네랄,Cobalt Mineral
+MOBG_Branch_Of_Dead_Tree,1977,헤비 메탈링,Heavy Metaling
+MOBG_Branch_Of_Dead_Tree,1978,헬 아포칼립스,Hell Vesper
+MOBG_Branch_Of_Dead_Tree,1979,주크담,Zakudam
+MOBG_Branch_Of_Dead_Tree,1986,따따초,Tatacho
+MOBG_Branch_Of_Dead_Tree,1987,센티페데,Centipede
+MOBG_Branch_Of_Dead_Tree,1988,네펜데스,Nepenthes
+MOBG_Branch_Of_Dead_Tree,1989,힐스리온,Hillthrion
+MOBG_Branch_Of_Dead_Tree,1990,히드락 맘모스,Hardrock Mammoth
+MOBG_Branch_Of_Dead_Tree,1991,텐드릴리온,Tendrillion
+MOBG_Branch_Of_Dead_Tree,1992,코르누스,Cornus
+MOBG_Branch_Of_Dead_Tree,1993,나가,Naga
+MOBG_Branch_Of_Dead_Tree,1994,루시올라 베스파,Luciola Vespa
+MOBG_Branch_Of_Dead_Tree,1995,핀귀큘라,Pinguicula
+MOBG_Branch_Of_Dead_Tree,1999,센티페데 유충,Centipede Larva
+MOBG_Branch_Of_Dead_Tree,2013,드라코,Draco
+MOBG_Branch_Of_Dead_Tree,2015,핀귀귤라 다크,Dark Pinguicula
+MOBG_Branch_Of_Dead_Tree,2016,아쿠아 엘레멘탈,Aqua Elemental
+MOBG_Branch_Of_Dead_Tree,2017,라타,Rata
+MOBG_Branch_Of_Dead_Tree,2018,두네이르,Duneyrr
+MOBG_Branch_Of_Dead_Tree,2019,에인션트 트리,Ancient Tree
+MOBG_Branch_Of_Dead_Tree,2020,링코,Rhyncho
+MOBG_Branch_Of_Dead_Tree,2021,필라,Phylla
+MOBG_Branch_Of_Dead_Tree,2023,다크 쉐도우,Dark Shadow
+MOBG_Branch_Of_Dead_Tree,2024,브라디움 골렘,Bradium Golem
+MOBG_Branch_Of_Dead_Tree,2069,이아라,Iara
+MOBG_Branch_Of_Dead_Tree,2070,피라냐,Piranha
+MOBG_Branch_Of_Dead_Tree,2071,머리없는 말,Headless Mule
+MOBG_Branch_Of_Dead_Tree,2072,제규어,Jaguar
+MOBG_Branch_Of_Dead_Tree,2073,투칸,Toucan
+MOBG_Branch_Of_Dead_Tree,2074,쿠루피라,Curupira
+MOBG_Branch_Of_Dead_Tree,2083,스카라바,One-Horned Scaraba
+MOBG_Branch_Of_Dead_Tree,2084,스카라바,Two-Horned Scaraba
+MOBG_Branch_Of_Dead_Tree,2085,사슴뿔 스카라바,Antler Scaraba
+MOBG_Branch_Of_Dead_Tree,2086,갈퀴뿔 스카라바,Rake Scaraba
+MOBG_Branch_Of_Dead_Tree,2088,스카라바 알,Scaraba Egg
+MOBG_Branch_Of_Dead_Tree,2089,스카라바 알,Scaraba Egg
+MOBG_Branch_Of_Dead_Tree,2090,사슴뿔 스카라바 알,Antler Scaraba Egg
+MOBG_Branch_Of_Dead_Tree,2091,갈퀴뿔 스카라바 알,Rake Scaraba Egg
+MOBG_Branch_Of_Dead_Tree,2092,돌로메데스,Dolomedes
+MOBG_Branch_Of_Dead_Tree,2093,보타링,Botaring

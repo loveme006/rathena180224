@@ -1,0 +1,449 @@
+//===== rAthena Script ======================================= 
+//= Buwaya Cave
+//===== By: ================================================== 
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Defeat Buwaya in his cave.
+//= Part of the "Secret in the Woods" quest.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [Euphy]
+//============================================================ 
+
+// Instance Creation :: buwaya_dun
+//============================================================
+ma_fild02,312,317,5	script	경호원#buwaya_cave	570,{
+	if (BaseLevel < 130) {
+		mes "[경호원]";
+		mes "^ff0000레벨 130^000000 이하는 이 곳에 입장 할 수 없습니다.";
+		mes "이 장소는 위험합니다. 돌아 가주세요.";
+		close;
+	}
+
+	set .@party_id,getcharid(1);
+	set .@md_name$,"Buwaya Cave";
+
+	if (!.@party_id) {
+		mes "[경호원]";
+		mes "부워여는 위험하다.";
+		mes "다른 사람들과 팀을 구성한 후에 다시 오십시오.";
+		close;
+	}
+	if (getcharid(0) == getpartyleader(.@party_id,2)) {
+		mes "[경호원]";
+		mes "이 장소는 위험합니다. 돌아가주세요.";
+		mes "여기서 아무 일도 할 수 없다면 돌아가주세요.";
+		next;
+		while(1) {
+			switch(select("왜 그렇게 위험한가요?:나는 부워여를 사냥하러 왔다.:대화 끝내기.")) {
+			case 1:
+				mes "[경호원]";
+				mes "최근에 마을 사람들이 실종 된 사례가 있습니다.";
+				mes "선로를 조사하고 난 후에, 우리는 거대한 괴물 부워여를 발견했다.";
+				next;
+				mes "[경호원]";
+				mes "군인과 용병들이 파견되어 부워여를 사냥했지만 결코 성공하지 못했습니다.";
+				next;
+				mes "[경호원]";
+				mes "부워여는 아직도 마을 주민들을 납치하고 있습니다.";
+				mes "부워여를 없애기 위해 사람들을 모으십시오.";
+				next;
+				break;
+			case 2:
+				set .@playtime, checkquest(4229,PLAYTIME);
+				if (.@playtime == -1) {
+					// fall through
+				} else if (.@playtime == 0 || .@playtime == 1) {
+					mes "[경호원]";
+					mes "부워여는 아직 숨어 있습니다. ";
+					mes " 당신이 지금 들어가더라도, 부워여는 나오지 않을 것입니다.";
+					mes "나중에 다시 오시기 바랍니다.";
+					close;
+				} else {
+					erasequest 4229;
+					// fall through
+				}
+				if (instance_create(.@md_name$) < 0) {
+					mes "[경호원]";
+					mes "파티 이름은... "+getpartyname(.@party_id)+".";
+					mes "파티장은... "+strcharinfo(0);
+					mes "^0000ff"+.@md_name$+"^000000 은 지금 열 수 없습니다.";
+					mes "잠시 후 다시 시도하십시오.";
+					close;
+				}
+				mes "[경호원]";
+				mes "나는 ^0000ff"+.@md_name$+"^000000.에 터널을 열 것이다.";
+				mes "행운이 있길 바랄 게요.";
+				close;
+			case 3:
+				mes "[경호원]";
+				mes "이 장소는 위험합니다. 들어갈 수 없습니다.";
+				close;
+			}
+		}
+	} else {
+		mes "[경호원]";
+		mes "파티 리더와 얘기해 볼게요.";
+		mes "리더를 불러와주세요";
+		close;
+	}
+}
+
+ma_fild02,315,323,0	script	Cave Entrance#buwaya	45,2,2,{
+	end;
+OnTouch:
+	if (BaseLevel < 130) {
+		mes "[경호원]";
+		mes "^ff0000레벨 130^000000 이하는 이 곳에 입장 할 수 없습니다.";
+		mes "이 장소는 위험합니다. 돌아 가주세요.";
+		close;
+	}
+	set .@playtime, checkquest(4229,PLAYTIME);
+	if (.@playtime == -1) {
+		// fall through
+	} else if (.@playtime == 0 || .@playtime == 1) {
+		mes "[경호원]";
+		mes "부워여는 아직 숨어 있습니다. ";
+		mes " 당신이 지금 들어가더라도, 부워여는 나오지 않을 것입니다.";
+		mes "나중에 다시 오시기 바랍니다.";
+		close;
+	} else {
+		erasequest 4229;
+		// fall through
+	}
+	switch(select("들어간다.:돌아가자.")) {
+	case 1:
+		switch(instance_enter("Buwaya Cave")) {
+		case IE_OTHER:
+			mes "[경호원]";
+			mes "아, 지금은 좋은 시간이 아니야.";
+			mes "잠시 후 다시 시도하십시오.";
+			close;
+		case IE_NOINSTANCE:
+		case IE_NOMEMBER:
+			mes "[경호원]";
+			mes "이 장소는 위험합니다. 들어가지 마십시오.";
+			close;
+		case IE_OK:
+			mapannounce "ma_fild02",getpartyname(getcharid(1))+" party's "+strcharinfo(0)+" member began hunting Buwaya in Buwaya Cave.",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+			setquest 4229;
+			//warp "1@ma_c",35,57;
+			end;
+		default:
+			mes "- 신원 미확인으로 인해 입장 할 수 없습니다. -";
+			close;
+		}
+	case 2:
+		mes "[경호원]";
+		mes "당신은 인생을 소중히해야합니다.";
+		mes "행동하기 전에 신중하게 생각하는 편이 낫습니다.";
+		close;
+	}
+}
+
+// Instance Scripts :: buwaya_in
+//============================================================
+1@ma_c,33,112,0	script	#damage	139,7,7,{
+	end;
+OnInstanceInit:
+	initnpctimer;
+	disablenpc instance_npcname("#damage");
+	end;
+OnTimer1000:
+	enablenpc instance_npcname("#damage");
+	specialeffect EF_POISONHIT;
+	end;
+OnTimer2000:
+	stopnpctimer;
+	initnpctimer;
+	disablenpc instance_npcname("#damage");
+	end;
+OnTouch:
+	percentheal -10,-10;
+	sc_start SC_BLEEDING,60000,0;
+	sc_start SC_POISON,60000,0;
+	end;
+}
+
+1@ma_c,29,110,5	script	Kidnapped People#1	575,{
+	mes "[Kidnapped Residents]";
+	mes "부워여가 뛰어 다니고 새로운 사람들이 붙 잡혔습니다.";
+	next;
+	switch(select("날 여기서 보내줘!!:나...나갈수가 없어?")) {
+	case 1:
+		mes "[Kidnapped Residents]";
+		mes "우리는 그것을 파괴할 수 있는 힘이 충분하지 않지만, 부워여는 약점이 있습니다.";
+		mes "저쪽 벽을 봐. 당신이 노크하면, 부워여는 통증을 느끼고 당신을 뱉어 것입니다.";
+		donpcevent instance_npcname("#box_mob_call")+"::OnEnable";
+		close2;
+		disablenpc instance_npcname("Kidnapped People#1");
+		end;
+	case 2:
+		mes "[Kidnapped People]";
+		mes "뭔가 잘못 됐어... 전에도 경험이 있는거야?";
+		close;
+	}
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname("Kidnapped People#1");
+	end;
+OnEnable:
+	enablenpc instance_npcname("Kidnapped People#1");
+	donpcevent instance_npcname("#box_mob_call")+"::OnDisable";
+	end;
+}
+
+1@ma_c,36,110,5	script	Kidnapped People#2	574,{
+	mes "[Kidnapped Residents]";
+	mes "아하! 나는 조금 더 힘이 있었으면 좋겠다 ...";
+	mes "나는 약점을 알다.";
+	next;
+	switch(select("말해줘.:정말 알아?")) {
+	case 1:
+		mes "[Kidnapped Residents]";
+		mes "정말로 할 수 있니?";
+		mes "좋아, 잘 들어, 그 약점은 ...";
+		next;
+		mes "[Kidnapped Residents]";
+		mes "...너희 뒤에 벽이야.";
+		sc_start SC_ATKPOTION,60000,45;
+		sc_start SC_MATKPOTION,60000,45;
+		disablenpc instance_npcname("Kidnapped People#2");
+		close;
+	case 2:
+		mes "[Kidnapped Residents]";
+		mes "뭐?!";
+		mes "내가 여기에 붙잡혀있다고 무시하는거야?";
+		close;
+	}
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname("Kidnapped People#2");
+	end;
+OnEnable:
+	enablenpc instance_npcname("Kidnapped People#2");
+	end;
+}
+
+1@ma_c,3,3,0	script	#box_mob_call	139,1,1,{
+	end;
+OnInstanceInit:
+	setcell instance_mapname("1@ma_c"),30,118,35,118,cell_shootable,1; //custom
+	disablenpc instance_npcname("#box_mob_call");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#box_mob_call");
+	set .@label$, instance_npcname("#box_mob_call")+"::OnMyMobDead";
+	set .@map$, instance_mapname("1@ma_c");
+	monster .@map$,30,118,"부워여의 약점",2333,1,.@label$;
+	monster .@map$,35,118,"부워여의 약점",2333,1,.@label$;
+	end;
+OnDisable:
+	killmonster instance_mapname("1@ma_c"),instance_npcname("#box_mob_call")+"::OnMyMobDead";
+	disablenpc instance_npcname("#box_mob_call");
+	end;
+OnMyMobDead:
+	if (mobcount(instance_mapname("1@ma_c"),instance_npcname("#box_mob_call")+"::OnMyMobDead") < 1)
+		donpcevent instance_npcname("#box_out")+"::OnEnable";
+	end;
+}
+
+1@ma_c,33,118,0	script	#box_out	45,2,2,{
+OnInstanceInit:
+OnDisable:
+	disablenpc instance_npcname("#box_out");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#box_out");
+	end;
+OnTouch:
+	set .@x, rand(1,20) + 97;
+	set .@y, rand(1,20) + 74;
+	warp instance_mapname("1@ma_c"),.@x,.@y;
+	end;
+}
+
+1@ma_c,97,74,0	script	#box_call	139,50,50,{
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname("#box_call");
+	initnpctimer;
+	end;
+OnTimer30000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 너희를 내 보물상자에 넣어주마!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	// Should execute OnTimer33000, but client doesn't render the effect fast enough.
+	for(set .@i,1; .@i<=9; set .@i,.@i+1)
+		donpcevent instance_npcname("#yunobi"+.@i)+"::OnEnable";
+	end;
+OnTimer33000:
+	donpcevent instance_npcname("#box_out")+"::OnDisable";
+	donpcevent instance_npcname("#box_mob_call")+"::OnDisable";
+	donpcevent instance_npcname("Kidnapped People#1")+"::OnEnable";
+	donpcevent instance_npcname("Kidnapped People#2")+"::OnEnable";
+	end;
+OnTimer34000:
+	enablenpc instance_npcname("#box_call");
+	end;
+OnTimer35000:
+	stopnpctimer;
+	initnpctimer;
+	disablenpc instance_npcname("#box_call");
+	end;
+OnTouch_:
+	specialeffect2 EF_GUIDEDATTACK;
+	warp instance_mapname("1@ma_c"),33,112;
+	end;
+OnDisable:
+	stopnpctimer;
+	disablenpc instance_npcname("#box_call");
+	end;
+}
+
+1@ma_c,97,74,0	script	#yunobi1	139,{
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+OnEnable:
+	specialeffect EF_MAPPILLAR2;
+	end;
+}
+1@ma_c,97,94,0	duplicate(#yunobi1)	#yunobi2	139
+1@ma_c,117,94,0	duplicate(#yunobi1)	#yunobi3	139
+1@ma_c,117,74,0	duplicate(#yunobi1)	#yunobi4	139
+1@ma_c,117,54,0	duplicate(#yunobi1)	#yunobi5	139
+1@ma_c,97,54,0	duplicate(#yunobi1)	#yunobi6	139
+1@ma_c,77,54,0	duplicate(#yunobi1)	#yunobi7	139
+1@ma_c,77,74,0	duplicate(#yunobi1)	#yunobi8	139
+1@ma_c,77,94,0	duplicate(#yunobi1)	#yunobi9	139
+
+1@ma_c,1,1,0	script	#bunshin	139,{
+	end;
+OnInstanceInit:
+	initnpctimer;
+	end;
+OnTimer58000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 이제 충분해. 끝낼 때가 왔다!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer61000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 이것이!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer62000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 이것이...나의!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer63000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 이것이...나의...치명적인!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer64000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 이것이...나의...치명적인... 공격이다!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer65000:
+	set .@label$, instance_npcname("#bunshin")+"::OnMyMobDead";
+	set .@map$, instance_mapname("1@ma_c");
+	areamonster .@map$,112,89,122,99,"부워여",2332,1,.@label$;
+	areamonster .@map$,112,49,122,59,"부워여",2332,1,.@label$;
+	areamonster .@map$,72,49,82,59,"부워여",2332,1,.@label$;
+	areamonster .@map$,72,89,82,99,"부워여",2332,1,.@label$;
+	end;
+OnTimer66000:
+	mapannounce instance_mapname("1@ma_c"),"부워여 : 무섭지?",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	end;
+OnTimer105000:
+	killmonster instance_mapname("1@ma_c"),instance_npcname("#bunshin")+"::OnMyMobDead";
+	stopnpctimer;
+	initnpctimer;
+	end;
+OnMyMobDead:
+	if (mobcount(instance_mapname("1@ma_c"),instance_npcname("#bunshin")+"::OnMyMobDead") < 1) {
+		stopnpctimer;
+		initnpctimer;
+	}
+	end;
+OnDisable:
+	stopnpctimer;
+	killmonster instance_mapname("1@ma_c"),instance_npcname("#bunshin")+"::OnMyMobDead";
+	disablenpc instance_npcname("#bunshin");
+	end;
+}
+
+1@ma_c,2,2,0	script	#buwaya_con	139,{
+	end;
+OnInstanceInit:
+	areamonster instance_mapname("1@ma_c"),90,67,104,81,"부워여",2319,1,instance_npcname("#buwaya_con")+"::OnMyMobDead";
+	end;
+OnMyMobDead:
+	set .@map$, instance_mapname("1@ma_c");
+	if (mobcount(.@map$,instance_npcname("#buwaya_con")+"::OnMyMobDead") < 1) {
+		donpcevent instance_npcname("#box_call")+"::OnDisable";
+		donpcevent instance_npcname("#bunshin")+"::OnDisable";
+		donpcevent instance_npcname("#exit_mob")+"::OnDisable";
+		donpcevent instance_npcname("#cave_out")+"::OnEnable";
+		mapannounce .@map$,"경호원 : 너는 대단한 일을 했어. 들어왔던 길로 서둘러 도망쳐!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	}
+	end;
+}
+
+1@ma_c,3,3,0	script	#exit_mob	139,{
+	end;
+OnInstanceInit:
+	initnpctimer;
+	end;
+OnTimer60000:
+	set .@label$, instance_npcname("#exit_mob")+"::OnMyMobDead";
+	set .@map$, instance_mapname("1@ma_c");
+	if (mobcount(.@map$,.@label$) < 30)
+		set .@amount,10;
+	else
+		set .@amount,1;
+	areamonster .@map$,43,58,47,60,"수초",2331,.@amount,.@label$;
+	areamonster .@map$,43,58,47,60,"알",2329,.@amount,.@label$;
+	stopnpctimer;
+	initnpctimer;
+	end;
+OnDisable:
+	stopnpctimer;
+	killmonster instance_mapname("1@ma_c"),instance_npcname("#exit_mob")+"::OnMyMobDead";
+	disablenpc instance_npcname("#exit_mob");
+	end;
+OnMyMobDead:
+	end;
+}
+
+1@ma_c,28,57,0	script	#cave_out	45,2,2,{
+OnInstanceInit:
+	disablenpc instance_npcname("#cave_out");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#cave_out");
+	end;
+OnTouch:
+	mes "Would like to go out?";
+	next;
+	if(select("Yes!:No, I will stay.") == 1)
+		warp "ma_fild02",315,315;
+	close;
+}
+
+1@ma_c,1,1,0	script	#buwaya_spawn_mobs	-1,{
+OnInstanceInit:
+	set .@map$, instance_mapname("1@ma_c");
+	areamonster .@map$,73,81,93,101,"해초",2331,18;
+	areamonster .@map$,110,97,116,103,"해초",2331,8;
+	areamonster .@map$,59,63,63,67,"해초",2331,8;
+	areamonster .@map$,73,55,77,59,"해초",2331,4;
+	areamonster .@map$,103,69,107,73,"해초",2331,4;
+	areamonster .@map$,108,45,122,63,"해초",2331,15;
+	areamonster .@map$,73,81,93,101,"부워여의 알",2329,10;
+	areamonster .@map$,110,97,116,103,"부워여의 알",2329,8;
+	areamonster .@map$,59,63,63,67,"부워여의 알",2329,4;
+	areamonster .@map$,73,55,77,59,"부워여의 알",2329,3;
+	areamonster .@map$,103,69,107,73,"부워여의 알",2329,3;
+	areamonster .@map$,108,45,122,63,"부워여의 알",2329,15;
+	monster .@map$,0,0,"해초",2331,5;
+	monster .@map$,0,0,"부워여의 분신",2330,5;
+	end;
+}

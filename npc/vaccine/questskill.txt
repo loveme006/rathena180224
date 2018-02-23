@@ -1,0 +1,299 @@
+prt_gld.gat,147,112,5	script	 스킬마스터::customSkillMaster	915,{
+  set @Earn, 0;
+  mes "[스킬마스터]";
+  mes "";
+  mes "퀘스트 스킬 서비스를 선택하셨습니다.";
+  mes "스킬을 가르쳐드리겠습니다.";
+  next;
+  if ((Class == 0) || (Class == 4001) || (Class == 4023)) goto Novice_Skill;
+  if ((Class == 23) || (Class == 4045)) goto No_Quest_Skill;
+  if ((Class == 1) || (Class == 7) || (Class == 14) || (Class == 4002) || (Class == 4008) || (Class == 4015) || (Class == 4024) || (Class == 4030) || (Class == 4037) || (Class == 4054) || (Class == 4066) || (Class == 4060) || (Class == 4073)) goto Swordman_Skill;
+  if ((Class == 2) || (Class == 9) || (Class == 16) || (Class == 4003) || (Class == 4010) || (Class == 4017) || (Class == 4025) || (Class == 4032) || (Class == 4039) || (Class == 4055) || (Class == 4067) || (Class == 4061) || (Class == 4074)) goto Magician_Skill;
+  if ((Class == 3) || (Class == 11) || (Class == 19) || (Class == 20) || (Class == 4004) || (Class == 4012) || (Class == 4020) || (Class == 4021) || (Class == 4026) || (Class == 4034) || (Class == 4042) || (Class == 4043) || (Class == 4056) || (Class == 4068) || (Class == 4069) || (Class == 4062) || (Class == 4075) || (Class == 4076)) goto Archer_Skill;
+  if ((Class == 4) || (Class == 8) || (Class == 15) || (Class == 4005) || (Class == 4009) || (Class == 4016) || (Class == 4027) || (Class == 4031) || (Class == 4038) || (Class == 4057) || (Class == 4070) || (Class == 4063) || (Class == 4077)) goto Acolyte_Skill;
+  if ((Class == 5) || (Class == 10) || (Class == 18) || (Class == 4006) || (Class == 4011) || (Class == 4019) || (Class == 4028) || (Class == 4033) || (Class == 4041) || (Class == 4058) || (Class == 4071) || (Class == 4064) || (Class == 4078)) goto Merchant_Skill;
+  if ((Class == 6) || (Class == 12) || (Class == 17) || (Class == 4007) || (Class == 4013) || (Class == 4018) || (Class == 4029) || (Class == 4035) || (Class == 4040) || (Class == 4059) || (Class == 4072) || (Class == 4065) || (Class == 4079)) goto Thief_Skill;
+  goto No_Class;
+
+ Novice_Skill:
+  if ((getskilllv(142) == 1) && (getskilllv(143) == 1)) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(143) == 0) mes "^ff0000죽은척 하기^000000를 배웠습니다.";
+  if (getskilllv(143) == 0) skill 143,1,0;
+  goto Earn_Skill;
+
+ Swordman_Skill:
+  if ((getskilllv(144) == 1) || (getskilllv(145) == 1) || (getskilllv(146) == 1)) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 1) || (Class == 4002) || (Class == 4024))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(144) == 0) mes "^ff0000이동시 HP 회복^000000을 배웠습니다.";
+  if (getskilllv(144) == 0) skill 144,1,0;
+  if (getskilllv(145) == 0) mes "^ff0000급소 노리기^000000를 배웠습니다.";
+  if (getskilllv(145) == 0) skill 145,1,0;
+  if (getskilllv(146) == 0) mes "^ff0000오토 버서크^000000를 배웠습니다.";
+  if (getskilllv(146) == 0) skill 146,1,0;
+  if ((Class == 7) || (Class == 4008) || (Class == 4030) || (Class == 4054)  || (Class == 4060 )) goto Knight_Skill;
+  if ((Class == 14) || (Class == 4015) || (Class == 4037) || (Class == 4066) || (Class == 4073 )) goto Crusader_Skill;
+  goto Earn_Skill;
+
+ Knight_Skill:
+  if (getskilllv(1001) == 1) goto Alread_Earn;
+  if (getskilllv(1001) == 0) mes "^ff0000차지 어택^000000을 배웠습니다.";
+  if (getskilllv(1001) == 0) skill 1001,1,0;
+  goto Earn_Skill;
+
+ Crusader_Skill:
+  if (getskilllv(1002) == 1) goto Alread_Earn;
+  if (getskilllv(1002) == 0) mes "^ff0000슈링크^000000를 배웠습니다.";
+  if (getskilllv(1002) == 0) skill 1002,1,0;
+  goto Earn_Skill;
+
+ Magician_Skill:
+  if (getskilllv(157) == 1) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 2) || (Class == 4003) || (Class == 4025))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(157) == 0) mes "^ff0000에너지 코트^000000를 배웠습니다.";
+  if (getskilllv(157) == 0) skill 157,1,0;
+  if ((Class == 9) || (Class == 4010) || (Class == 4032) || (Class == 4055) || (Class == 4061 )) goto Wizard_Skill;
+  if ((Class == 16) || (Class == 4017) || (Class == 4039) || (Class == 4067) || (Class == 4074 )) goto Sage_Skill;
+  goto Earn_Skill;
+
+ Wizard_Skill:
+  if (getskilllv(1006) == 1) goto Alread_Earn;
+  if (getskilllv(1006) == 0) mes "^ff0000사이트 블레스터^000000를 배웠습니다.";
+  if (getskilllv(1006) == 0) skill 1006,1,0;
+  goto Earn_Skill;
+ 
+ Sage_Skill:
+  if ((getskilllv(1007) == 1) || (getskilllv(1008) == 1) || (getskilllv(1017) == 1) || (getskilllv(1018) == 1) || (getskilllv(1019) == 1)) goto Alread_Earn;
+  set @Ele_Count, 0;
+  mes "[스킬마스터]";
+  mes "다음 중 두개의 엘레멘탈을";
+  mes "선택할 수 있습니다.";
+  mes "그럼 첫번째 엘레멘탈을 선택해";
+  mes "주시기 바랍니다.";
+  next;
+
+  menu "화속성 엘레멘탈 체인지",Fire,"수속성 엘레멘탈 체인지",Water,"풍속성 엘레멘탈 체인지",Wind,"지속성 엘레멘탈 체인지",Ground;
+
+  Fire:
+   set @Ele_Count, @Ele_Count + 1;
+   set @Element_Fire, 1;
+   if (@Ele_Count == 2) goto Earn_Element;
+   mes "[스킬마스터]";
+   mes "";
+   mes "두번째 엘레멘탈을 선택해";
+   mes "주시기 바랍니다.";
+   next;
+   menu "수속성 엘레멘탈 체인지",Water,"풍속성 엘레멘탈 체인지",Wind,"지속성 엘레멘탈 체인지",Ground;
+
+  Water:
+   set @Ele_Count, @Ele_Count + 1;
+   set @Element_Water, 1;
+   if (@Ele_Count == 2) goto Earn_Element;
+   mes "[스킬마스터]";
+   mes "";
+   mes "두번째 엘레멘탈을 선택해";
+   mes "주시기 바랍니다.";
+   next;
+   menu "화속성 엘레멘탈 체인지",Fire,"풍속성 엘레멘탈 체인지",Wind,"지속성 엘레멘탈 체인지",Ground;
+
+  Wind:
+   set @Ele_Count, @Ele_Count + 1;
+   set @Element_Wind, 1;
+   if (@Ele_Count == 2) goto Earn_Element;
+   mes "[스킬마스터]";
+   mes "";
+   mes "두번째 엘레멘탈을 선택해";
+   mes "주시기 바랍니다.";
+   next;
+   menu "화속성 엘레멘탈 체인지",Fire,"수속성 엘레멘탈 체인지",Water,"지속성 엘레멘탈 체인지",Ground;
+
+  Ground:
+   set @Ele_Count, @Ele_Count + 1;
+   set @Element_Ground, 1;
+   if (@Ele_Count == 2) goto Earn_Element;
+   mes "[스킬마스터]";
+   mes "";
+   mes "두번째 엘레멘탈을 선택해";
+   mes "주시기 바랍니다.";
+   next;
+   menu "화속성 엘레멘탈 체인지",Fire,"수속성 엘레멘탈 체인지",Water,"풍속성 엘레멘탈 체인지",Wind;
+
+  Earn_Element:
+   if (getskilllv(1007) == 0) mes "^ff0000엘리멘탈 컨버터 제조^000000를 배웠습니다.";
+   if (getskilllv(1007) == 0) skill 1007,1,0;
+   if (@Element_Fire == 1) mes "^ff0000화속성 엘레멘탈 체인지^000000를 배웠습니다.";
+   if (@Element_Fire == 1) skill 1018,1,0;
+   if (@Element_Water == 1) mes "^ff0000수속성 엘레멘탈 체인지^000000를 배웠습니다.";
+   if (@Element_Water == 1) skill 1008,1,0;
+   if (@Element_Wind == 1) mes "^ff0000풍속성 엘레멘탈 체인지^000000를 배웠습니다.";
+   if (@Element_Wind == 1) skill 1019,1,0;
+   if (@Element_Ground == 1) mes "^ff0000지속성 엘레멘탈 체인지^000000를 배웠습니다.";
+   if (@Element_Ground == 1) skill 1017,1,0;
+   goto Earn_Skill;
+
+
+ Archer_Skill:
+  if ((getskilllv(147) == 1) || (getskilllv(148) == 1)) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 3) || (Class == 4004) || (Class == 4026))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(147) == 0) mes "^ff0000화살 만들기^000000를 배웠습니다.";
+  if (getskilllv(147) == 0) skill 147,1,0;
+  if (getskilllv(148) == 0) mes "^ff0000챠지 애로우^000000를 배웠습니다.";
+  if (getskilllv(148) == 0) skill 148,1,0;
+  if ((Class == 11) || (Class == 4012) || (Class == 4034) || (Class == 4056) || (Class == 4062 )) goto Hunter_Skill;
+  if ((Class == 19) || (Class == 4020) || (Class == 4042) || (Class == 4068) || (Class == 4075 )) goto Bard_Skill;
+  if ((Class == 20) || (Class == 4021) || (Class == 4043) || (Class == 4069) || (Class == 4076 )) goto Dancer_Skill;
+  goto Earn_Skill;
+
+ Hunter_Skill:
+  if (getskilllv(1009) == 1) goto Alread_Earn;
+  if (getskilllv(1009) == 0) mes "^ff0000판타즈믹 애로우^000000를 배웠습니다.";
+  if (getskilllv(1009) == 0) skill 1009,1,0;
+  goto Earn_Skill;
+
+ Bard_Skill:
+  if (getskilllv(1010) == 1) goto Alread_Earn;
+  if (getskilllv(1010) == 0) mes "^ff0000팽 보이스^000000를 배웠습니다.";
+  if (getskilllv(1010) == 0) skill 1010,1,0;
+  goto Earn_Skill;
+
+ Dancer_Skill:
+  if (getskilllv(1011) == 1) goto Alread_Earn;
+  if (getskilllv(1011) == 0) mes "^ff0000매혹의 윙크^000000를 배웠습니다.";
+  if (getskilllv(1011) == 0) skill 1011,1,0;
+  goto Earn_Skill;
+
+ Acolyte_Skill:
+  if (getskilllv(156) == 1) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 4) || (Class == 4005) || (Class == 4027))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(156) == 0) mes "^ff0000홀리 라이트^000000를 배웠습니다.";
+  if (getskilllv(156) == 0) skill 156,1,0;
+  if ((Class == 8) || (Class == 4009) || (Class == 4031) || (Class == 4057) || (Class == 4063 )) goto Priest_Skill;
+  if ((Class == 15) || (Class == 4016) || (Class == 4038) || (Class == 4070) || (Class == 4077 )) goto Monk_Skill;
+  goto Earn_Skill;
+
+ Priest_Skill:
+  if (getskilllv(1014) == 1) goto Alread_Earn;
+  if (getskilllv(1014) == 0) mes "^ff0000희생^000000을 배웠습니다.";
+  if (getskilllv(1014) == 0) skill 1014,1,0;
+  goto Earn_Skill;
+
+ Monk_Skill:
+  if ((getskilllv(1015) == 1) || (getskilllv(1016) == 1)) goto Alread_Earn;
+  if (getskilllv(1015) == 0) mes "^ff0000진기 주입^000000을 배웠습니다.";
+  if (getskilllv(1015) == 0) skill 1015,1,0;
+  if (getskilllv(1016) == 0) mes "^ff0000발경^000000을 배웠습니다.";
+  if (getskilllv(1016) == 0) skill 1016,1,0;
+  goto Earn_Skill;
+
+ Merchant_Skill:
+  if ((getskilllv(153) == 1) || (getskilllv(154) == 1) || (getskilllv(155) == 1)) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 5) || (Class == 4006) || (Class == 4028))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(153) == 0) mes "^ff0000카트 레볼루션^000000을 배웠습니다.";
+  if (getskilllv(153) == 0) skill 153,1,0;
+  if (getskilllv(154) == 0) mes "^ff0000체인지 카트^000000를 배웠습니다.";
+  if (getskilllv(154) == 0) skill 154,1,0;
+  if (getskilllv(155) == 0) mes "^ff0000고성방가^000000를 배웠습니다.";
+  if (getskilllv(155) == 0) skill 155,1,0;
+  if ((Class == 10) || (Class == 4011) || (Class == 4033) || (Class == 4058) || (Class == 4064 )) goto Blacksmith_Skill;
+  if ((Class == 18) || (Class == 4019) || (Class == 4041) || (Class == 4071) || (Class == 4078 )) goto Alchemist_Skill;
+  goto Earn_Skill;
+
+ Alchemist_Skill:
+  if ((getskilllv(238) == 1) || (getskilllv(243) == 1) || (getskilllv(244) == 1) || (getskilllv(247) == 1)) goto Alread_Earn;
+  if (getskilllv(238) == 0) mes "^ff0000생명 윤리^000000를 배웠습니다.";
+  if (getskilllv(238) == 0) skill 238,1,0;
+  if (getskilllv(243) == 0) mes "^ff0000안식^000000을 배웠습니다.";
+  if (getskilllv(243) == 0) skill 243,1,0;
+  if (getskilllv(244) == 0) mes "^ff0000콜 호문클루스^000000를 배웠습니다.";
+  if (getskilllv(244) == 0) skill 244,1,0;
+  if (getskilllv(247) == 0) mes "^ff0000리저렉션 호문클루스^000000를 배웠습니다.";
+  if (getskilllv(247) == 0) skill 247,1,0;
+  goto Earn_Skill;
+
+ Blacksmith_Skill:
+  if ((getskilllv(1012) == 1) || (getskilllv(1013) == 1)) goto Alread_Earn;
+  if (getskilllv(1012) == 0) mes "^ff0000수상적인 상술^000000을 배웠습니다.";
+  if (getskilllv(1012) == 0) skill 1012,1,0;
+  if (getskilllv(1013) == 0) mes "^ff0000탐욕^000000을 배웠습니다.";
+  if (getskilllv(1013) == 0) skill 1013,1,0;
+  goto Earn_Skill;
+
+ Thief_Skill:
+  if ((getskilllv(149) == 1) || (getskilllv(150) == 1) || (getskilllv(151) == 1) || (getskilllv(152) == 1)) set @Earn, 1;
+  if ((@Earn == 1) & ((Class == 6) || (Class == 4007) || (Class == 4029))) goto Alread_Earn;
+  if (getskilllv(142) == 0) mes "^ff0000응급치료^000000를 배웠습니다.";
+  if (getskilllv(142) == 0) skill 142,1,0;
+  if (getskilllv(149) == 0) mes "^ff0000모래 뿌리기^000000를 배웠습니다.";
+  if (getskilllv(149) == 0) skill 149,1,0;
+  if (getskilllv(150) == 0) mes "^ff0000백 슬라이딩^000000을 배웠습니다.";
+  if (getskilllv(150) == 0) skill 150,1,0;
+  if (getskilllv(151) == 0) mes "^ff0000돌 줍기^000000를 배웠습니다.";
+  if (getskilllv(151) == 0) skill 151,1,0;
+  if (getskilllv(152) == 0) mes "^ff0000돌 던지기^000000를 배웠습니다.";
+  if (getskilllv(152) == 0) skill 152,1,0;
+  if ((Class == 12) || (Class == 4013) || (Class == 4035) || (Class == 4059) || (Class == 4065 )) goto Assassin_Skill;
+  if ((Class == 17) || (Class == 4018) || (Class == 4040) || (Class == 4072) || (Class == 4079 )) goto Rogue_Skill;
+  goto Earn_Skill;
+
+ Assassin_Skill:
+  if ((getskilllv(1003) == 1) || (getskilllv(1004) == 1)) goto Alread_Earn;
+  if (getskilllv(1003) == 0) mes "^ff0000소닉 엑셀레이션^000000을 배웠습니다.";
+  if (getskilllv(1003) == 0) skill 1003,1,0;
+  if (getskilllv(1004) == 0) mes "^ff0000베넘 나이프^000000를 배웠습니다.";
+  if (getskilllv(1004) == 0) skill 1004,1,0;
+  goto Earn_Skill;
+
+ Rogue_Skill:
+  if (getskilllv(1005) == 1) goto Alread_Earn;
+  if (getskilllv(1005) == 0) mes "^ff0000클로즈 컴파인^000000을 배웠습니다.";
+  if (getskilllv(1005) == 0) skill 1005,1,0;
+  goto Earn_Skill;
+
+ Alread_Earn:
+  mes "[스킬마스터]";
+  mes "";
+  mes "이미 스킬을 배우셨습니다.";
+  goto no;
+
+ Earn_Skill:
+  next;
+  mes "[스킬마스터]";
+  mes "";
+  mes "스킬을 가르쳐 드렸습니다.";
+  mes "스킬창을 확인해 보시기 바랍니다.";
+  goto no;
+
+ No_Quest_Skill:
+  if (Class == 23) set @jobname$, "슈퍼 노비스";
+  if (Class == 4045) set @jobname$, "슈퍼 베이비";
+  if (Class == 4019) set @jobname$, "크리에이터";
+  if (Class == 4041) set @jobname$, "베이비 알케미스트";
+  mes "[스킬마스터]";
+  mes "";
+  mes "죄송합니다. ^0000ff" + @jobname$ + "^000000는";
+  mes "퀘스트 스킬이 없습니다.";
+  goto no;
+
+ No_Class:
+  mes "[스킬마스터]";
+  mes "";
+  mes "해당되는 직업이 없습니다..";
+  goto no;
+
+ no:
+  mes "";
+  mes "그럼 다음에 봐요..^^";
+  close;
+  end;
+}

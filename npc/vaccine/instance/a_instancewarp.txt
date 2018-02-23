@@ -1,0 +1,129 @@
+prt_gld.gat,195,114,4	script	니드호그의 둥지	449,{
+
+	mes "[니드호그의 둥지]";
+	mes "니드호그의 둥지 입구로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "nyd_dun02",95,196;
+	close;
+
+No:
+	close;
+}
+
+prt_gld.gat,195,118,4	script	옛 글레스트헤임	450,{
+
+	mes "[옛 글레스트헤임]";
+	mes "옛 글레스트헤임으로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "glast_01",204,267;
+	close;
+
+No:
+	close;
+}
+
+prt_gld.gat,195,122,4	script	엔들리스타워	451,{
+
+	mes "[엔들리스타워]";
+	mes "엔들리스타워로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "alberta",217,74;
+	close;
+
+No:
+	close;
+}
+
+prt_gld.gat,201,122,4	script	부워여의 동굴	2319,{
+
+	mes "[부워여의 동굴]";
+	mes "부워여의 동굴로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "ma_fild02",315,314;
+	close;
+
+No:
+	close;
+}
+prt_gld.gat,205,122,4	script	벙웅곳의 병원	2327,{
+
+	mes "[벙웅곳의 병원]";
+	mes "벙웅곳의 병원으로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "ma_dun01",153,16;
+	close;
+
+No:
+	close;
+}
+prt_gld.gat,210,122,4	script	버코너워의 호수	541,{
+
+	mes "[Taho]";
+	mes "버코너워의 호수로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "ma_scene01",174,177;
+	close;
+
+No:
+	close;
+}
+prt_gld.gat,195,111,4	script	게펜 마법 토너먼트	4_M_KHKYEL,{
+
+	mes "[게펜 마법 토너먼트]";
+	mes "게펜 마법 토너먼트로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "dali",92,141;
+	close;
+
+No:
+	close;
+}
+prt_gld.gat,201,118,4	script	흙빛의 기사	4_M_SAKRAYROYAL,{
+
+	mes "[흙빛의 기사]";
+	mes "유령의 궁전으로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "dali02",48,127;
+	close;
+
+No:
+	close;
+}
+prt_gld.gat,201,126,4	script	찰스턴의 위기	10054,{
+
+	mes "[찰스턴의 위기]";
+	mes "찰스턴의 위기로";
+	mes "이동하시겠습니까?";
+	next;
+	menu "보내주세요",-,"아니요",No;
+
+	warp "verus04",78,120;
+	close;
+
+No:
+	close;
+}

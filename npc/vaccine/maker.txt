@@ -1,0 +1,4567 @@
+prt_gld,167,136,4	script	조합사	868,{
+       mes "[통합조합]";
+       mes "안녕하세요..";
+       mes "조합사 통합조합사라고 합니다";
+       mes "무엇을 만들어 드릴까요?";
+       next;
+       menu "모자조합",Lmat,"염료제작",L_dyes,"건슬&닌자무기조합",L_g_n,"[마검]",L_menuh14,"[모바일]",MOBILE;
+Lmat:
+       mes "[통합조합]"; 
+       mes "[가]~[하] 까지 있습니다";
+       mes "원하시는 모자를";
+       mes "만들어 드립니다";
+       next;       
+       menu "[가]",L_menu_h1,"[나]",L_menu_h2,"[다]",L_menu_h3,"[라]",L_menu_h14,"[마]",L_menu_h4,"[바]",L_menu_h5,"[사]",L_menu_h6,"[아]",L_menu_h7,"[자]",L_menu_h8,"[차]",L_menu_h9,"[카]",L_menu_h10,"[타]",L_menu_h11,"[파]",L_menu_h12,"[하]",L_menu_h13;
+
+//-------------------------------------모자조합------------------------------------
+L_menu_h1:
+       next;
+       menu "가부키가면",gabu,"각시탈",L_mat_1,"강아지모자",doghat,"검은고양이귀",L_mat_2,"검은 토끼 머리띠",M_M008,"고대여왕의왕관",L_mat_3,"곰돌이모자",L_mat_4,"광산헬멧",L_mat_5,"국경일 모자",kook,"귀마개",L_mat_6,"귀찮은너구리모자",L_mat_7,"깃털모자",L_mat_8,"깃털베레모",L_mat_9,"꼬깔모자",L_mat_10,"꽃머리핀",L_mat_11;
+L_menu_h2:
+       next;
+       menu "나들이모자",L_mat_12,"너구리모자",L_mat_13,"네코미미",L_mat_14,"노란 야구모자",M_M004,"늘어진구미호",M_M026,"노란색 늘어진 고양이",M_M017,"노란색 마법사의 모자",M_M025,"늘어진고양이",L_mat_15;
+L_menu_h14:
+       next;
+       menu "라이드모자",M_M031,"늘어진 리프인형",M_M027;
+L_menu_h3:
+       next;
+       menu "돈잃은자의마음",L_mat_16,"드레스 햇",M_M006,"데빌링 모자",M_M028;
+L_menu_h4:
+       next;
+       menu "마법사의모자",L_mat_17,"마술사의모자",L_mat_18,"망원경",L_mat_19,"매직아이즈",eyes,"머리포자기",L_mat_20,"명탐정의모자",L_mat_21,"미스트레스왕관",L_mat_22,"미스틱로즈",L_mat_23,"밀짚모자",L_mat_24;
+L_menu_h5:
+       next;
+       menu "반창고",L_mat_25,"발그레",L_mat_26,"발키리깃털모자",valkiery,"발키리투구",L_mat_27,"버섯머리띠",L_mat_28,"변신나뭇잎",L_mat_29,"보따리모",L_mat_30,"부용",byon,"분홍색 늘어진 고양이",M_M015,"분홍색 털모자",M_M020,"붉은색의보닛",L_mat_31,"빨간색 마법사의 모자",M_M021,"빨간테일의리본",L_mat_32,"빨간색 새끼악마의 모자",M_M010;
+L_menu_h6:
+       next;
+       menu "사또모자",L_mat_33,"사슴뿔",L_mat_34,"사자탈",L_mat_35,"산소마스크",L_mat_36,"삿갓",L_mat_37,"삼단 포링 모자",M_M029,"새끼악마의모자",L_mat_38,"새틀라이트 헤어밴드",M_M007,"소울리스링",soulw,"소울리스윙",risling,"솜브레로",L_mat_39,"스마일가면",L_mat_40,"스포아모자",L_mat_41,"신비한열매껍질",L_mat_42,"십자머리띠",L_mat_43;
+L_menu_h7:
+       next;
+       menu "아기젖꼭지",L_mat_44,"아버지의흰수염",ffh,"아버지의마스크",fmask,"아얌",L_mat_45,"악마의날개귀",L_mat_46,"알람가면",L_mat_47,"알록달록한알껍질",L_mat_48,"암흑의투구",darkh,"야구모자",ygmo,"엔젤링모자",ange,"엘리스인형",ell,"여우가면",L_mat_49,"연극소도구",L_mat_50,"열혈머리띠",L_mat_51,"예쁜리본",ypp,"오크히어로의투구",L_mat_52,"---다음---",-;
+       next;
+       menu "오페라가면",L_mat_53,"오페라유령가면",L_mat_54,"월야화털모자",M_M009,"요리사의모자",L_mat_55,"용접마스크",L_mat_56,"월계수관",worge,"의사머리띠",L_mat_57,"익명요청",L_mat_58,"인디안의머리띠",L_mat_59,"X자머리핀",L_mat_60;
+L_menu_h8:
+       next;
+       menu "자세교정모자",L_mat_61,"잘구운토스트",L_mat_62,"전구머리띠",L_mat_63,"정지표지판",L_mat_64,"줄무늬머리띠",L_mat_65,"지르타스의가면",L_mat_66;
+L_menu_h9:
+       next;
+       menu "천사의투구",L_mat_67,"천사의날개귀",L_mat_68,"청색머리띠",L_mat_69,"초승달머리핀",L_mat_70,"초승달투구",moonh,"촛불",L_mat_71;
+L_menu_h10:
+       next;
+       menu "카우보이모자",L_mat_72,"커다란금방울",L_mat_73,"케이크모자",L_mat_74,"코끼리모자",koki;
+L_menu_h11:
+       next;
+       menu "털모자",L_mat_75,"토끼머리띠",L_mat_76,"튤립머리핀",L_mat_77,"태양신모자",sun_hat;
+L_menu_h12:
+       next;
+       menu "파란색 늘어진 고양이",M_M016,"파란색 마법사의 모자",M_M024,"파란색 털모자",M_M019,"패션방한모자",L_mat_78,"패션선글래스",L_mat_79,"페코페코머리띠",M_M00701,"푸른생선",L_mat_80;
+L_menu_h13:
+       next;
+       menu "하얀 꽃잎",M_M003,"하트머리핀",L_mat_81,"하회탈",L_mat_82,"학사모",L_mat_83,"학생모",L_mat_84,"헤드폰",L_mat_85,"해달모자",L_mat_86,"회색 늘어진 고양이",M_M014,"회색 마법사의 모자",M_M023,"회색 새끼악마의 모자",M_M012,"회색 털모자",M_M018,"흰색 마법사의 모자",M_M022,"흰색 늘어진 고양이",M_M013,"흰색 새끼악마의 모자",M_M011;
+
+//----------------------------건슬링거&닌자 무기조합-------------------------------
+L_g_n:
+      mes "[통합조합]"; 
+      mes "건슬링거 & 닌자 무기를";
+      mes "조합하실수 있습니다";
+      next;
+      menu "풍마수리검대차륜[4]",L_gn_1,"풍마리검열화",L_gn_2,"풍마수리검편익",L_gn_3,"더 개리슨[1]",L_gn_4,"더 개리슨[2]",L_gn_5,"디스트로이어[0]",L_gn_6,"디스트로이어[1]",L_gn_7,"인페르노[1]",L_gn_8,"플레어스피어",L_gn_9,"라이트닝스피어",L_gn_10,"포이즌스피어",L_gn_11,"블라인드스피어",L_gn_12,"프리징스피어",L_gn_13;
+//----------------------------------------염료--------------------------------------
+L_dyes: 
+        mes "[통합조합]";
+ 	mes "어떤 품목을염료를 원하세요?";
+	next;
+	menu "중화제",dye_1,"혼합제",dye_2,"빨간색염료",dye_3,"노란색염료",dye_4,"파란색염료",dye_5,"초록색염료",dye_6,"주황색염료",dye_7,"보라색염료",dye_8,"하얀색염료",dye_9,"검은색염료",dye_10;
+
+//------------------------------------------모자시작--------------------------------
+
+
+L_mat_1:
+        mes "[통합조합]";
+	mes "^3355FF'각시탈'^000000을 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'네잎클로버 1개'^000000";
+	mes "^3355FF'통나무 500개'^000000";
+	mes "^3355FF'탄력있는줄 10개'^000000";
+	mes "^3355FF'처녀의옷자락 20개'^000000";
+	mes "^3355FF'투명한천조각 500개'^000000";
+	mes "^3355FF'고대어의입술 2개'^000000";
+	mes "^3355FF'먹물 100개'^000000";
+	next;
+	if(countitem(706)<1) goto nomake;
+	if(countitem(7201)<500) goto nomake;
+	if(countitem(7200)<10) goto nomake;
+	if(countitem(1049)<20) goto nomake;
+	if(countitem(1059)<500) goto nomake;
+	if(countitem(1054)<2) goto nomake;
+	if(countitem(1024)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make1,"아니요, 다음에 만들게요",no;
+
+make1:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 706,1;
+	delitem 7201,500;
+	delitem 7200,10;
+	delitem 1049,20;
+	delitem 1059,500;
+	delitem 1054,2;
+	delitem 1024,100;
+	getitem 5169,1;
+	close;
+L_mat_2:
+        mes "[통합조합]";
+        mes "^3355FF'검은고양이귀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'고양이머리띠 1개'^000000";
+	mes "^3355FF'솜털 100개'^000000";
+	mes "^3355FF'검은색 염료 1개'^000000";
+	next;
+	if(countitem(2213)<1) goto nomake;
+        if(countitem(983)<1) goto nomake;
+        if(countitem(914)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make2,"아니요, 다음에 만들게요",no;
+make2:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2213,1;
+        delitem 983,1;
+        delitem 914,100;
+        getitem 5057,1;
+        close;
+
+L_mat_3:
+        mes "[통합조합]";
+        mes "^3355FF'고대여왕의왕관'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'여왕의머리장식 1개'^000000";
+	mes "^3355FF'엠펠리움 1개'^000000";
+	mes "^3355FF'황금 3개'^000000";
+	next;
+	if(countitem(10006)<1) goto nomake;
+        if(countitem(969)<3) goto nomake;
+        if(countitem(714)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make3,"아니요, 다음에 만들게요",no;
+make3:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 10006,1;
+        delitem 969,3;
+        delitem 714,1;
+        getitem 5080,1;
+        close;
+L_mat_4:
+        mes "[통합조합]";
+        mes "^3355FF'곰돌이모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'팬더곰모자 1개'^000000";
+	mes "^3355FF'바늘쌈지 100개'^000000";
+	mes "^3355FF'실패 100개'^000000";
+        mes "^3355FF'검은곰의털가죽 300개'^000000";
+	next;
+	if(countitem(5030)<1) goto nomake;
+        if(countitem(7213)<100) goto nomake;
+        if(countitem(7217)<100) goto nomake;
+        if(countitem(7161)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make4,"아니요, 다음에 만들게요",no;
+make4:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5030,1;
+        delitem 7213,100;
+        delitem 7217,100;
+        delitem 7161,300;
+        getitem 5059,1;
+        close;
+L_mat_5:
+        mes "[통합조합]";
+        mes "^3355FF'광산헬멧'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'촛불 1개'^000000";
+	mes "^3355FF'안전모 1개'^000000";
+	mes "^3355FF'수정으로만든거울 1개'^000000";
+        mes "^3355FF'강철 25개'^000000";
+	next;
+        if(countitem(5028)<1) goto nomake;
+	if(countitem(5009)<1) goto nomake;
+        if(countitem(999)<25) goto nomake;
+        if(countitem(747)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make5,"아니요, 다음에 만들게요",no;
+make5:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5028,1;
+        delitem 5009,1;
+        delitem 999,25;
+        delitem 747,1;
+        getitem 5031,1;
+        close;
+L_mat_6:
+        mes "[통합조합]";
+        mes "^3355FF'귀마개'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'저주받은루비 1개'^000000";
+	mes "^3355FF'부드러운털 200개'^000000";
+	mes "^3355FF'헤드폰 1개'^000000";
+        next;
+        if(countitem(724)<1) goto nomake;
+        if(countitem(949)<200) goto nomake;
+        if(countitem(5001)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make6,"아니요, 다음에 만들게요",no;
+make6:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 724,1;
+        delitem 949,200;
+        delitem 5001,1;
+        getitem 2283,1;
+        close;
+L_mat_7:
+        mes "[통합조합]";
+        mes "^3355FF'귀찮은너구리모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'도토리 1000개'^000000";
+	mes "^3355FF'해달의가죽 100개'^000000";
+	mes "^3355FF'너구리나뭇잎 10개'^000000";
+        next;
+        if(countitem(1026)<1000) goto nomake;
+        if(countitem(7065)<100) goto nomake;
+        if(countitem(945)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make7,"아니요, 다음에 만들게요",no;
+make7:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1026,1000;
+        delitem 7065,100;
+        delitem 945,10;
+        getitem 5084,1;
+        close;
+L_mat_8:
+        mes "[통합조합]";
+        mes "^3355FF'깃털모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'올드스터로맨스 1개'^000000";
+	mes "^3355FF'새의깃털 300개'^000000";
+	next;
+        if(countitem(2247)<1) goto nomake;
+        if(countitem(916)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make8,"아니요, 다음에 만들게요",no;
+make8:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2247,1;
+        delitem 916,300;
+        getitem 5018,1;
+        close;
+L_mat_9:
+	mes "[통합조합]";
+	mes "^3355FF'깃털베레모'^000000를 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'베레모 1개'^000000";
+	mes "^3355FF'부드러운깃털 100개'^000000";
+	mes "^3355FF'하얀색염료 1개'^000000";
+	next;
+	if(countitem(5172)<1) goto nomake;
+	if(countitem(7063)<100) goto nomake;
+	if(countitem(982)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make9,"아니요, 다음에 만들게요",no;
+make9:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5172,1;
+	delitem 7063,100;
+	delitem 982,1;
+	getitem 5170,1;
+	close;
+
+L_mat_10:
+        mes "[통합조합]";
+        mes "^3355FF'꼬깔모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'산타모자 1개'^000000";
+	mes "^3355FF'매끈한종이 100개'^000000";
+        mes "^3355FF'기름종이 100개'^000000";
+	next;
+        if(countitem(2236)<1) goto nomake;
+        if(countitem(7111)<100) goto nomake;
+        if(countitem(7151)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make10,"아니요, 다음에 만들게요",no;
+make10:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2236,1;
+        delitem 7111,100;
+        delitem 7151,100;
+        getitem 5060,1;
+        close;
+L_mat_11:
+        mes "[통합조합]";
+        mes "^3355FF'꽃머리핀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'꽃잎 1개'^000000";
+	mes "^3355FF'강철 10개'^000000";
+        next;
+        if(countitem(2269)<1) goto nomake;
+        if(countitem(999)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make11,"아니요, 다음에 만들게요",no;
+make11:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2269,1;
+        delitem 999,10;
+        getitem 5061,1;
+        close;
+//[나]
+L_mat_12:
+        mes "[통합조합]";
+        mes "^3355FF'나들이모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'투명한천조각 250개'^000000";
+	mes "^3355FF'햇[1] 1개'^000000";
+        mes "^3355FF'캡[1] 1개'^000000";
+        mes "^3355FF'부드러운깃털 600개'^000000";       
+        next;
+        if(countitem(1059)<250) goto nomake;
+        if(countitem(2221)<1) goto nomake;
+        if(countitem(2227)<1) goto nomake;
+        if(countitem(7063)<600) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make12,"아니요, 다음에 만들게요",no;
+make12:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1059,250;
+        delitem 2221,1;
+        delitem 2227,1;
+        delitem 7063,600;
+        getitem 5032,1;
+        close;
+L_mat_13:
+        mes "[통합조합]";
+        mes "^3355FF'너구리모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'고양이머리띠 1개'^000000";
+	mes "^3355FF'드래곤의비늘 20개'^000000";
+        mes "^3355FF'질긴비늘줄기 200개'^000000";
+        mes "^3355FF'해달의가죽 300개'^000000";       
+        next;
+        if(countitem(2213)<1) goto nomake;
+        if(countitem(1036)<20) goto nomake;
+        if(countitem(7012)<200) goto nomake;
+        if(countitem(7065)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make13,"아니요, 다음에 만들게요",no;
+make13:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2213,1;
+        delitem 1036,20;
+        delitem 7012,200;
+        delitem 7065,300;
+        getitem 5033,1;
+        close;
+L_mat_14:
+        mes "[통합조합]";
+        mes "^3355FF'네코미미'^000000을 선택하셧습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'늘어진고양이 1개'^000000";
+        mes "^3355FF'고양이머리띠 1개'^000000";
+        mes "^3355FF'부드러운 털 1000개'^000000";
+        mes "^3355FF'노란색 염료 5개'^000000";
+        next;
+	if(countitem(5058)<1) goto nomake;
+	if(countitem(2213)<1) goto nomake;
+	if(countitem(949)<1000) goto nomake;
+	if(countitem(976)<5) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make14,"아니요, 다음에 만들게요",no;
+make14:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5058,1;
+	delitem 2213,1;
+	delitem 949,1000;
+	delitem 976,5;
+        getitem 5099,1;
+        close;
+L_mat_15:
+        mes "[통합조합]";
+        mes "^3355FF'늘어진고양이'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'서클릿[1] 1개'^000000";
+	mes "^3355FF'검은색염료 1개'^000000";
+        mes "^3355FF'검은고양이인형 300개'^000000";
+        next;
+        if(countitem(2233)<1) goto nomake;
+        if(countitem(983)<1) goto nomake;
+        if(countitem(7206)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make15,"아니요, 다음에 만들게요",no;
+make15:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2233,1;
+        delitem 983,1;
+        delitem 7206,300;
+        getitem 5058,1;
+        close;
+//[다]
+L_mat_16:
+        mes "[통합조합]";
+        mes "^3355FF'돈잃은자의마음'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'서클릿[1] 1개'^000000";
+	mes "^3355FF'황금 1개'^000000";
+        mes "^3355FF'강철 20개'^000000";
+        mes "^3355FF'부드러운털 80개'^000000";
+        mes "^3355FF'끈적끈적한액체 800개'^000000";
+        next;
+        if(countitem(2233)<1) goto nomake;
+        if(countitem(969)<1) goto nomake;
+        if(countitem(999)<20) goto nomake;
+        if(countitem(949)<80) goto nomake;
+        if(countitem(938)<800) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make16,"아니요, 다음에 만들게요",no;
+make16:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2233,1;
+        delitem 969,1;
+        delitem 999,20;
+        delitem 949,80;
+        delitem 938,800;
+        getitem 5021,1;
+        close;
+//[마]
+L_mat_17:
+        mes "[통합조합]";
+        mes "^3355FF'마법사의모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'위저드햇 1개'^000000";
+	mes "^3355FF'드래곤의비늘 400개'^000000";
+        mes "^3355FF'곰팡이가루50개'^000000";
+        mes "^3355FF'엘더윌로우 카드 1개'^000000";
+        next;
+        if(countitem(2252)<1) goto nomake;
+        if(countitem(1036)<400) goto nomake;
+        if(countitem(7001)<50) goto nomake;
+        if(countitem(4052)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make17,"아니요, 다음에 만들게요",no;
+make17:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	 delitem 2252,1;
+         delitem 1036,400;
+         delitem 7001,50;
+         delitem 4052,1;
+         getitem 5027,1;
+        close;
+L_mat_18:
+        mes "[통합조합]";
+        mes "^3355FF'마술사의모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'위저드햇 1개'^000000";
+	mes "^3355FF'고대어의입술 450개'^000000";
+        mes "^3355FF'매우단단한껍질 1200개'^000000";
+        next;
+        if(countitem(2252)<1) goto nomake;
+        if(countitem(1054)<450) goto nomake;
+        if(countitem(943)<1200) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make18,"아니요, 다음에 만들게요",no;
+make18:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2252,1;
+        delitem 1054,450;
+        delitem 943,1200;
+        getitem 5045,1;
+        close;
+L_mat_19:
+        mes "[통합조합]";
+        mes "^3355FF'망원경'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'강철 100개'^000000";
+	mes "^3355FF'스핀글래스 1개'^000000";
+        next;
+        if(countitem(999)<100) goto nomake;
+        if(countitem(2243)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make19,"아니요, 다음에 만들게요",no;
+make19:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 999,100;
+        delitem 2243,1;
+        getitem 2296,1;
+        close;
+L_mat_20:
+        mes "[통합조합]";
+        mes "^3355FF'머리포자기'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'실크리본 1개'^000000";
+	mes "^3355FF'오크용자의증표 50개'^000000";
+        next;
+        if(countitem(968)<50) goto nomake;
+        if(countitem(10007)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make20,"아니요, 다음에 만들게요",no;
+make20:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 968,50;
+        delitem 10007,1;
+        getitem 5042,1;
+        close;
+L_mat_21:
+        mes "[통합조합]";
+        mes "^3355FF'명탐정의모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'돋보기 10개'^000000";
+	mes "^3355FF'칼장식용술 1887개'^000000";
+        mes "^3355FF'벙거지모자[1] 1개'^000000";
+        next;
+        if(countitem(611)<10) goto nomake;
+        if(countitem(7301)<1887) goto nomake;
+        if(countitem(5120)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make21,"아니요, 다음에 만들게요",no;
+make21:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 611,10;
+        delitem 7301,1887;
+        delitem 5120,1;
+        getitem 5108,1;
+        close;
+L_mat_22:
+        mes "[통합조합]";
+        mes "^3355FF'미스트레스왕관'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'코로넷 1개'^000000";
+	mes "^3355FF'엠펠리움 1개'^000000";
+        mes "^3355FF'황금 3개'^000000";
+        next;
+        if(countitem(2249)<1) goto nomake;
+        if(countitem(714)<1) goto nomake;
+        if(countitem(969)<3) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make22,"아니요, 다음에 만들게요",no;
+make22:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2249,1;
+        delitem 714,1;
+        delitem 969,3;
+        getitem 5081,1;
+        close;
+L_mat_23:
+        mes "[통합조합]";
+        mes "^3355FF'미스틱로즈'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'다이아몬드2캐럿 10개'^000000";
+	mes "^3355FF'시들지않는장미 3개'^000000";
+        mes "^3355FF'하얀색염료 1개'^000000";
+        next;
+        if(countitem(731)<10) goto nomake;
+        if(countitem(748)<3) goto nomake;
+        if(countitem(982)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make23,"아니요, 다음에 만들게요",no;
+make23:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 731,10;
+        delitem 748,3;
+        delitem 982,1;
+        getitem 5117,1;
+        close;
+L_mat_24:
+        mes "[통합조합]";
+        mes "^3355FF'밀짚모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'삿갓 1개'^000000";
+	mes "^3355FF'질긴나무덩쿨 300개'^000000";
+        mes "^3355FF'대나무조각 300개'^000000";
+        next;
+        if(countitem(2280)<1) goto nomake;
+        if(countitem(7197)<300) goto nomake;
+        if(countitem(7150)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make24,"아니요, 다음에 만들게요",no;
+make24:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2280,1;
+        delitem 7197,300;
+        delitem 7150,300;
+        getitem 5062,1;
+        close;
+//[바]
+L_mat_25:
+        mes "[통합조합]";
+        mes "^3355FF'반창고'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'알코올 1개'^000000";
+	mes "^3355FF'썩은붕대 500개'^000000";
+        next;
+        if(countitem(970)<1) goto nomake;
+        if(countitem(930)<500) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make25,"아니요, 다음에 만들게요",no;
+make25:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 970,1;
+        delitem 930,500;
+        getitem 5063,1;
+        close;
+L_mat_26:
+        mes "[통합조합]";
+        mes "^3355FF'발그레'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'엘리스의앞치마 100개'^000000";
+	next;
+        if(countitem(7047)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make26,"아니요, 다음에 만들게요",no;
+make26:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7047,100;
+        getitem 5040,1;
+        close;
+L_mat_27:
+	mes "[통합조합]";
+	mes "^3355FF'발키리투구'^000000를 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'세이지웜 카드 1개'^000000";
+	mes "^3355FF'아르지오프 카드 1개'^000000";
+	mes "^3355FF'드라이어드 카드 1개'^000000";
+	mes "^3355FF'우든골렘 카드 1개'^000000";
+	mes "^3355FF'본건 카드 1개'^000000";
+	mes "^3355FF'파이어럿스켈 카드 1개'^000000";
+	mes "^3355FF'마르두크 카드 1개'^000000";
+	mes "^3355FF'호드 카드 1개'^000000";
+	mes "^3355FF'엘더 카드 1개'^000000";
+	mes "^3355FF'나이트메어테러 카드 1개'^000000";
+	mes "^3355FF'어둠의룬 1000개'^000000";
+	mes "^3355FF'핏빛의룬 1000개'^000000";
+	mes "^3355FF'20,000,000제니'^000000";
+	next;
+	if(countitem(4219)<1) goto nomake;
+	if(countitem(4114)<1) goto nomake;
+	if(countitem(4177)<1) goto nomake;
+	if(countitem(4259)<1) goto nomake;
+	if(countitem(4212)<1) goto nomake;
+	if(countitem(4073)<1) goto nomake;
+	if(countitem(4112)<1) goto nomake;
+	if(countitem(4081)<1) goto nomake;
+	if(countitem(4251)<1) goto nomake;
+	if(countitem(4166)<1) goto nomake;
+	if(countitem(7511)<1000) goto nomake;
+	if(countitem(7563)<1000) goto nomake;
+	if(Zeny < 20000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make27,"아니요, 다음에 만들게요",no;
+make27:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 4219,1;
+	delitem 4114,1;
+	delitem 4177,1;
+	delitem 4259,1;
+	delitem 4212,1;
+	delitem 4073,1;
+	delitem 4112,1;
+	delitem 4081,1;
+	delitem 4251,1;
+	delitem 4166,1;
+	delitem 7511,1000;
+	delitem 7563,1000;
+	set zeny,zeny-20000000;
+	getitem 5171,1;
+	close;
+L_mat_28:
+        mes "[통합조합]";
+        mes "^3355FF'버섯머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'버섯포자 300개'^000000";
+	next;
+        if(countitem(921)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make28,"아니요, 다음에 만들게요",no;
+make28:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 921,300;
+        getitem 5082,1;
+        close;
+L_mat_29:
+        mes "[통합조합]";
+        mes "^3355FF'변신나뭇잎'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'너구리의나뭇잎 600개'^000000";
+	next;
+        if(countitem(945)<600) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make29,"아니요, 다음에 만들게요",no;
+make29:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 945,600;
+        getitem 5064,1;
+        close;
+L_mat_30:
+        mes "[통합조합]";
+        mes "^3355FF'보따리모'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'투명한천조각 150개'^000000";
+	mes "^3355FF'고목나무의진 100개'^000000";
+        mes "^3355FF'파란색염료 1개'^000000";
+        next;
+        if(countitem(1059)<150) goto nomake;
+        if(countitem(907)<100) goto nomake;
+        if(countitem(978)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make30,"아니요, 다음에 만들게요",no;
+make30:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1059,150;
+        delitem 907,100;
+        delitem 978,1;
+        getitem 5023,1;
+        close;
+L_mat_31:
+        mes "[통합조합]";
+        mes "^3355FF'붉은색의보닛'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'나들이모자 1개'^000000";
+	mes "^3355FF'초록색레이스 1개'^000000";
+        mes "^3355FF'실크리본 1개'^000000";
+        mes "^3355FF'빨간색염료 1개'^000000";
+        next;
+        if(countitem(5032)<1) goto nomake;
+        if(countitem(10015)<1) goto nomake;
+        if(countitem(10007)<1) goto nomake;
+        if(countitem(975)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make31,"아니요, 다음에 만들게요",no;
+make31:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5032,1;
+        delitem 10015,1;
+        delitem 10007,1;
+        delitem 975,1;
+        getitem 5109,1;
+        close;
+L_mat_32:
+        mes "[통합조합]";
+        mes "^3355FF'빨간테일의리본'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'왕리본 1개'^000000";
+	mes "^3355FF'리본[1] 1개'^000000";
+        mes "^3355FF'실크리본 1개'^000000";
+        next;
+        if(countitem(2244)<1) goto nomake;
+        if(countitem(2209)<1) goto nomake;
+        if(countitem(10007)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make32,"아니요, 다음에 만들게요",no;
+make32:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2244,1;
+        delitem 2209,1;
+        delitem 10007,1;
+        getitem 5083,1;
+        close;
+//[사]
+
+L_mat_33:
+	mes "[통합조합]";
+	mes "^3355FF'사또모자'^000000를 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'녹색의보주 7개'^000000";
+	mes "^3355FF'청색의보주 7개'^000000";
+	mes "^3355FF'홍색의보주 7개'^000000";
+	mes "^3355FF'황색의보주 7개'^000000";
+	mes "^3355FF'빛나는비늘 300개'^000000";
+	mes "^3355FF'손상된다이아몬드 5개'^000000";
+	mes "^3355FF'검은색염료 1개'^000000";
+	mes "^3355FF'햇[1] 1개'^000000";
+	next;
+	if(countitem(7445)<7) goto nomake;
+	if(countitem(7446)<7) goto nomake;
+	if(countitem(7447)<7) goto nomake;
+	if(countitem(7448)<7) goto nomake;
+	if(countitem(954)<300) goto nomake;
+	if(countitem(733)<5) goto nomake;
+	if(countitem(983)<1) goto nomake;
+	if(countitem(2221)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make33,"아니요, 다음에 만들게요",no;
+make33:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7445,7;
+	delitem 7446,7;
+	delitem 7447,7;
+	delitem 7448,7;
+	delitem 954,300;
+	delitem 733,5;
+	delitem 983,1;
+	delitem 2221,1;
+	getitem 5173,1;
+	close;
+L_mat_34:
+        mes "[통합조합]";
+        mes "^3355FF'사슴뿔'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'악마의뿔 20개'^000000";
+	next;
+        if(countitem(923)<20) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make34,"아니요, 다음에 만들게요",no;
+make34:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 923,20;
+        getitem 2284,1;
+        close;
+L_mat_35:
+	mes "[통합조합]";
+	mes "^3355FF'사자탈'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'네잎클로버 1개'^000000";
+	mes "^3355FF'통나무 500개'^000000";
+	mes "^3355FF'탄력있는줄 10개'^000000";
+	mes "^3355FF'뱀모양머리카락 500개'^000000";
+	mes "^3355FF'고대어의이빨 2개'^000000";
+	mes "^3355FF'주홍색염료 1개'^000000";
+	next;
+	if(countitem(706)<1) goto nomake;
+	if(countitem(7201)<500) goto nomake;
+	if(countitem(7200)<10) goto nomake;
+	if(countitem(1048)<500) goto nomake;
+	if(countitem(1053)<2) goto nomake;
+	if(countitem(980)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make35,"아니요, 다음에 만들게요",no;
+make35:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 706,1;
+	delitem 7201,500;
+	delitem 7200,10;
+	delitem 1048,500;
+	delitem 1053,2;
+	delitem 980,1;
+	getitem 5177,1;
+        close;
+L_mat_36:
+        mes "[통합조합]";
+        mes "^3355FF'산소마스크'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'오라오라 5개'^000000";
+	next;
+        if(countitem(701)<5) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make36,"아니요, 다음에 만들게요",no;
+make36:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 701,5;
+        getitem 5004,1;
+        close;
+L_mat_37:
+        mes "[통합조합]";
+        mes "^3355FF'삿갓'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'나무조각 120개'^000000";
+	next;
+        if(countitem(1019)<120) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make37,"아니요, 다음에 만들게요",no;
+make37:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1019,120;
+        getitem 2280,1;
+        close;
+L_mat_38:
+        mes "[통합조합]";
+        mes "^3355FF'새끼악마모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'새끼악마의뿔 600개'^000000";
+        mes "^3355FF'그리폰의발톱 40개'^000000";
+	next;
+        if(countitem(1038)<600) goto nomake;
+        if(countitem(7048)<40) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make38,"아니요, 다음에 만들게요",no;
+make38:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1038,600;
+        delitem 7048,40;
+        getitem 5038,1;
+        close;
+L_mat_39:
+        mes "[통합조합]";
+        mes "^3355FF'솜브레로'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'밀짚모자 1개'^000000";
+        mes "^3355FF'선인장의뾰족한침 50개'^000000";
+	next;
+        if(countitem(5062)<1) goto nomake;
+        if(countitem(952)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make39,"아니요, 다음에 만들게요",no;
+make39:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5062,1;
+        delitem 952,50;
+        getitem 5067,1;
+        close;
+L_mat_40:
+        mes "[통합조합]";
+        mes "^3355FF'스마일가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'젤로피 10개'^000000";
+        mes "^3355FF'솜털 10개'^000000";
+        mes "^3355FF'클로버 10개'^000000";
+	next;
+        if(countitem(909)<10) goto nomake;
+        if(countitem(914)<10) goto nomake;
+        if(countitem(705)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make40,"아니요, 다음에 만들게요",no;
+make40:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 909,10;
+        delitem 914,10;
+        delitem 705,10;
+        getitem 2278,1;
+        close;
+L_mat_41:
+        mes "[통합조합]";
+        mes "^3355FF'스포아모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'독버섯포자 850개'^000000";
+        mes "^3355FF'타다만나무 300개'^000000";
+        mes "^3355FF'길고가느다란혀 1개'^000000";
+	next;
+        if(countitem(7033)<850) goto nomake;
+        if(countitem(7068)<300) goto nomake;
+        if(countitem(1015)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make41,"아니요, 다음에 만들게요",no;
+make41:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7033,850;
+        delitem 7068,300;
+        delitem 1015,1;
+        getitem 5029,1;
+        close;
+L_mat_42:
+        mes "[통합조합]";
+        mes "^3355FF'신비한열매껍질'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'열매껍질 1개'^000000";
+        mes "^3355FF'잠자리의날개 500개'^000000";
+        next;
+        if(countitem(5037)<1) goto nomake;
+        if(countitem(7064)<500) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make42,"아니요, 다음에 만들게요",no;
+make42:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5037,1;
+        delitem 7064,500;
+        getitem 5050,1;
+        close;
+L_mat_43:
+        mes "[통합조합]";
+        mes "^3355FF'십자머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'로자리 1개'^000000";
+        mes "^3355FF'깨진갑옷조각 500개'^000000";
+        next;
+        if(countitem(2608)<1) goto nomake;
+        if(countitem(7069)<500) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make43,"아니요, 다음에 만들게요",no;
+make43:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2608,1;
+        delitem 7069,500;
+        getitem 5036,1;
+        close;
+//[아]
+L_mat_44:
+        mes "[통합조합]";
+        mes "^3355FF'아기젖꼭지'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'아기의우유병 1개'^000000";
+        mes "^3355FF'꼭지 1개'^000000";
+        mes "^3355FF'쇠코뚜레 1개'^000000";
+        mes "^3355FF'로얄제리 1개'^000000";
+        next;
+        if(countitem(7270)<1) goto nomake;
+        if(countitem(10004)<1) goto nomake;
+        if(countitem(941)<1) goto nomake;
+        if(countitem(526)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make44,"아니요, 다음에 만들게요",no;
+make44:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7270,1;
+        delitem 10004,1;
+        delitem 941,1;
+        delitem 526,1;
+        getitem 5110,1;
+        close;
+
+L_mat_45:
+	mes "[통합조합]";
+	mes "^3355FF'아얌'^000000을 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'녹색의보주 7개'^000000";
+	mes "^3355FF'청색의보주 7개'^000000";
+	mes "^3355FF'홍색의보주 7개'^000000";
+	mes "^3355FF'황색의보주 7개'^000000";
+	mes "^3355FF'빛나는비늘 300개'^000000";
+	mes "^3355FF'손상된다이아몬드 5개'^000000";
+	mes "^3355FF'빨간색염료 1개'^000000";
+	mes "^3355FF'부드러운비단천 50개'^000000";
+	next;
+	if(countitem(7445)<7) goto nomake;
+	if(countitem(7446)<7) goto nomake;
+	if(countitem(7447)<7) goto nomake;
+	if(countitem(7448)<7) goto nomake;
+	if(countitem(954)<300) goto nomake;
+	if(countitem(733)<5) goto nomake;
+	if(countitem(975)<1) goto nomake;
+	if(countitem(7166)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make45,"아니요, 다음에 만들게요",no;
+make45:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7445,7;
+	delitem 7446,7;
+	delitem 7447,7;
+	delitem 7448,7;
+	delitem 954,300;
+	delitem 733,5;
+	delitem 975,1;
+	delitem 7166,50;
+	getitem 5174,1;
+	close;
+L_mat_46:
+        mes "[통합조합]";
+        mes "^3355FF'악마의날개귀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'악마의머리띠 1개'^000000";
+        mes "^3355FF'요정의귀 1개'^000000";
+        next;
+        if(countitem(2286)<1) goto nomake;
+        if(countitem(2255)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make46,"아니요, 다음에 만들게요",no;
+make46:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2286,1;
+        delitem 2255,1;
+        getitem 5068,1;
+        close;
+L_mat_47:
+        mes "[통합조합]";
+        mes "^3355FF'알람가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'시계바늘 3000개'^000000";
+        mes "^3355FF'스크래치마스크 1개'^000000";
+        next;
+        if(countitem(2288)<1) goto nomake;
+        if(countitem(1095)<3000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make47,"아니요, 다음에 만들게요",no;
+make47:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2288,1;
+        delitem 1095,3000;
+        getitem 5086,1;
+        close;
+L_mat_48:
+        mes "[통합조합]";
+        mes "^3355FF'알록달록한알껍질'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'장식용알껍질 1개'^000000";
+        mes "^3355FF'파란색염료 1개'^000000";
+        mes "^3355FF'사막늑대의발톱 50개'^000000";
+        next;
+        if(countitem(5015)<1) goto nomake;
+        if(countitem(978)<1) goto nomake;
+        if(countitem(7030)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make48,"아니요, 다음에 만들게요",no;
+make48:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5015,1;
+        delitem 978,1;
+        delitem 7030,50;
+        getitem 5039,1;
+        close;
+L_mat_49:
+        mes "[통합조합]";
+        mes "^3355FF'여우가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'여우의꼬리999개'^000000";
+        next;
+        if(countitem(1022)<999) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make49,"아니요, 다음에 만들게요",no;
+make49:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1022,999;
+        getitem 5069,1;
+        close;
+L_mat_50:
+        mes "[통합조합]";
+        mes "^3355FF'연극소도구'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'처녀의옷자락 4개'^000000";
+        next;
+        if(countitem(1049)<4) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make50,"아니요, 다음에 만들게요",no;
+make50:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1049,4;
+        getitem 2293,1;
+        close;
+L_mat_51:
+        mes "[통합조합]";
+        mes "^3355FF'열혈머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'빨간머플러 300개'^000000";
+        mes "^3355FF'불타는심장 300개'^000000";
+        mes "^3355FF'하얀색염료 1개'^000000";
+        mes "^3355FF'두건 1개'^000000";
+        next;
+        if(countitem(7216)<300) goto nomake;
+        if(countitem(7097)<300) goto nomake;
+        if(countitem(982)<1) goto nomake;
+        if(countitem(2211)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make51,"아니요, 다음에 만들게요",no;
+make51:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7216,300;
+        delitem 7097,300;
+        delitem 982,1;
+        delitem 2211,1;
+        getitem 5070,1;
+        close;
+L_mat_52:
+        mes "[통합조합]";
+        mes "^3355FF'오크히어로의투구'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'오크용자의증표 100개'^000000";
+        mes "^3355FF'오크전사의증표 10000개'^000000";
+        mes "^3355FF'젤로피 10000개'^000000";
+        next;
+        if(countitem(968)<100) goto nomake;
+        if(countitem(931)<10000) goto nomake;
+        if(countitem(909)<10000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make52,"아니요, 다음에 만들게요",no;
+make52:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 968,100;
+        delitem 931,10000;
+        delitem 909,10000;
+        getitem 5094,1;
+        close;
+L_mat_53:
+        mes "[통합조합]";
+        mes "^3355FF'오페라가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'강철 20개'^000000";
+        mes "^3355FF'노래하는풀 1개'^000000";
+        next;
+        if(countitem(999)<20) goto nomake;
+        if(countitem(707)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make53,"아니요, 다음에 만들게요",no;
+make53:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 999,20;
+        delitem 707,1;
+        getitem 2281,1;
+        close;
+L_mat_54:
+        mes "[통합조합]";
+        mes "^3355FF'오페라유령가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'오페라가면 1개'^000000";
+        mes "^3355FF'뱀모양의머리카락 50개'^000000";
+        next;
+        if(countitem(2281)<1) goto nomake;
+        if(countitem(1048)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make54,"아니요, 다음에 만들게요",no;
+make54:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 984,1;
+        delitem 1048,50;
+        getitem 5043,1;
+        close;
+L_mat_55:
+        mes "[통합조합]";
+        mes "^3355FF'요리사의모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'조각케이크 120개'^000000";
+        mes "^3355FF'하얀색염료 1개'^000000";
+        mes "^3355FF'부드러운털 330개'^000000";
+        mes "^3355FF'드래곤의비늘 450개'^000000";
+        next;
+        if(countitem(539)<120) goto nomake;
+        if(countitem(982)<1) goto nomake;
+        if(countitem(949)<330) goto nomake;
+        if(countitem(1036)<450) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make55,"아니요, 다음에 만들게요",no;
+make55:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 539,120;
+        delitem 982,1;
+        delitem 949,330;
+        delitem 1036,450;
+        getitem 5026,1;
+        close;
+L_mat_56:
+        mes "[통합조합]";
+        mes "^3355FF'용접마스크'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'강철 50개'^000000";
+        next;
+        if(countitem(999)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make56,"아니요, 다음에 만들게요",no;
+make56:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 999,50;
+        getitem 2292,1;
+        close;
+L_mat_57:
+        mes "[통합조합]";
+        mes "^3355FF'의사머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'반다나 1개'^000000";
+        mes "^3355FF'철 50개'^000000";
+        mes "^3355FF'손상된다이아몬드 1개'^000000";
+        next;
+        if(countitem(2275)<1) goto nomake;
+        if(countitem(998)<50) goto nomake;
+        if(countitem(733)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make57,"아니요, 다음에 만들게요",no;
+make57:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2275,1;
+        delitem 998,50;
+        delitem 733,1;
+        getitem 2273,1;
+        close;
+L_mat_58:
+        mes "[통합조합]";
+        mes "^3355FF'익명요청'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'검은색염료 1개'^000000";
+	mes "^3355FF'매끈한종이 100개'^000000";
+	mes "^3355FF'끈적끈적한액체 100개'^000000";
+	mes "^3355FF'100,000제니'^000000";
+        next;
+	if(countitem(983)<1) goto nomake;
+	if(countitem(7111)<100) goto nomake;
+	if(countitem(938)<100) goto nomake;
+	if(Zeny < 100000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make58,"아니요, 다음에 만들게요",no;
+make58:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 983,1;
+	delitem 7111,100;
+	delitem 938,100;
+	set zeny,zeny-100000;
+        getitem 5175,1;
+        close;
+L_mat_59:
+        mes "[통합조합]";
+        mes "^3355FF'인디안의머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'원주민머리띠 1개'^000000";
+        mes "^3355FF'줄무늬머리띠 1개'^000000";
+        mes "^3355FF'페코날개깃털 10개'^000000";
+        next;
+        if(countitem(5010)<1) goto nomake;
+        if(countitem(5049)<1) goto nomake;
+        if(countitem(7101)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make59,"아니요, 다음에 만들게요",no;
+make59:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5010,1;
+        delitem 5049,1;
+        delitem 7101,10;
+        getitem 5071,1;
+        close;
+L_mat_60:
+        mes "[통합조합]";
+        mes "^3355FF'X자머리핀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'스타더스트 1개'^000000";
+        mes "^3355FF'액토플라즘 400개'^000000";
+        next;
+        if(countitem(2294)<1) goto nomake;
+        if(countitem(7220)<400) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make60,"아니요, 다음에 만들게요",no;
+make60:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2294,1;
+        delitem 7220,400;
+        getitem 5079,1;
+        close;
+
+//[자]
+L_mat_61:
+        mes "[통합조합]";
+        mes "^3355FF'자세교정모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'명사수의사과 1개'^000000";
+        mes "^3355FF'북 1개'^000000";
+        next;
+        if(countitem(2285)<1) goto nomake;
+        if(countitem(1550)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make61,"아니요, 다음에 만들게요",no;
+make61:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2285,1;
+        delitem 1550,1;
+        getitem 5073,1;
+        close;
+L_mat_62:
+        mes "[통합조합]";
+        mes "^3355FF'잘구운토스트'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'우유 50개'^000000";
+        mes "^3355FF'치즈 50개'^000000";
+        mes "^3355FF'조각케이크 50개'^000000";
+        mes "^3355FF'헌후라이팬 50개'^000000";
+        next;
+        if(countitem(519)<50) goto nomake;
+        if(countitem(548)<50) goto nomake;
+        if(countitem(539)<50) goto nomake;
+        if(countitem(7031)<50) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make62,"아니요, 다음에 만들게요",no;
+make62:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 519,50;
+        delitem 548,50;
+        delitem 539,50;
+        delitem 7031,50;
+        getitem 5107,1;
+        close;
+L_mat_63:
+        mes "[통합조합]";
+        mes "^3355FF'전구머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'서클릿[1] 1개'^000000";
+        mes "^3355FF'유리구슬 20개'^000000";
+        next;
+        if(countitem(2233)<1) goto nomake;
+        if(countitem(746)<20) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make63,"아니요, 다음에 만들게요",no;
+make63:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2233,1;
+        delitem 746,20;
+        getitem 5034,1;
+        close;
+L_mat_64:
+        mes "[통합조합]";
+        mes "^3355FF'정지표지판'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'나무조각 50개'^000000";
+        mes "^3355FF'검은색염료 1개'^000000";
+        next;
+        if(countitem(1019)<50) goto nomake;
+        if(countitem(983)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make64,"아니요, 다음에 만들게요",no;
+make64:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1019,50;
+        delitem 983,1;
+        getitem 2272,1;
+        close;
+L_mat_65:
+        mes "[통합조합]";
+        mes "^3355FF'줄무늬머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'낡은죄수복 1000개'^000000";
+        next;
+        if(countitem(1099)<1500) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make65,"아니요, 다음에 만들게요",no;
+make65:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1099,1500;
+        getitem 5049,1;
+        close;
+L_mat_66:
+        mes "[통합조합]";
+        mes "^3355FF'지르타스의가면'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'검은수정의조각 369개'^000000";
+        mes "^3355FF'낡은마법진 30개'^000000";
+        mes "^3355FF'금단의붉은양초 1개'^000000";
+        mes "^3355FF'묘안석 1개'^000000";
+        next;
+        if(countitem(7315)<369) goto nomake;
+        if(countitem(7099)<30) goto nomake;
+        if(countitem(660)<1) goto nomake;
+        if(countitem(7263)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make66,"아니요, 다음에 만들게요",no;
+make66:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7315,369;
+        delitem 7099,30;
+        delitem 660,1;
+        delitem 7263,1;
+        getitem 5121,1;
+        close;
+//[차]
+L_mat_67:
+        mes "[통합조합]";
+        mes "^3355FF'천사의투구'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'천사의머리띠 1개'^000000";
+        mes "^3355FF'헬름[1] 1개'^000000";
+        mes "^3355FF'하티의이빨 5개'^000000";
+        next;
+        if(countitem(2254)<1) goto nomake;
+        if(countitem(2229)<1) goto nomake;
+        if(countitem(7036)<5) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make67,"아니요, 다음에 만들게요",no;
+make67:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2254,1;
+        delitem 2229,1;
+        delitem 7036,5;
+        getitem 5025,1;
+        close;
+L_mat_68:
+        mes "[통합조합]";
+        mes "^3355FF'천사의날개귀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'천사의머리띠 1개'^000000";
+        mes "^3355FF'요정의귀 1개'^000000";
+        next;
+        if(countitem(2286)<1) goto nomake;
+        if(countitem(2254)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make68,"아니요, 다음에 만들게요",no;
+make68:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2286,1;
+        delitem 2254,1;
+        getitem 5074,1;
+        close;
+L_mat_69:
+        mes "[통합조합]";
+        mes "^3355FF'청색머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'두건 1개'^000000";
+        mes "^3355FF'파란색염료 1개'^000000";
+        mes "^3355FF'아놀리안의피부 300개'^000000";
+        next;
+        if(countitem(2211)<1) goto nomake;
+        if(countitem(978)<1) goto nomake;
+        if(countitem(7003)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make69,"아니요, 다음에 만들게요",no;
+make69:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2211,1;
+        delitem 978,1;
+        delitem 7003,300;
+        getitem 5052,1;
+        close;
+L_mat_70:
+        mes "[통합조합]";
+        mes "^3355FF'초승달머리핀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'하트머리핀 1개'^000000";
+        mes "^3355FF'강철 10개'^000000";
+        next;
+        if(countitem(5041)<1) goto nomake;
+        if(countitem(999)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make70,"아니요, 다음에 만들게요",no;
+make70:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5041,1;
+        delitem 999,10;
+        getitem 5048,1;
+        close;
+L_mat_71:
+        mes "[통합조합]";
+        mes "^3355FF'촛불'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'심지 1개'^000000";
+        mes "^3355FF'성냥 30개'^000000";
+        mes "^3355FF'로얄제리 100개'^000000";
+        next;
+        if(countitem(2279)<1) goto nomake;
+        if(countitem(7035)<30) goto nomake;
+        if(countitem(526)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make71,"아니요, 다음에 만들게요",no;
+make71:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2279,1;
+        delitem 7035,30;
+        delitem 526,100;
+        getitem 5028,1;
+        close;
+//[카]
+L_mat_72:
+        mes "[통합조합]";
+        mes "^3355FF'카우보이모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'웨스턴그레이스 1개'^000000";
+        mes "^3355FF'사막늑대의발톱 108개'^000000";
+        mes "^3355FF'부드러운풀잎 108개'^000000";
+        mes "^3355FF'불타는말발굽 4개'^000000";
+        next;
+        if(countitem(2248)<1) goto nomake;
+        if(countitem(7030)<108) goto nomake;
+        if(countitem(7194)<108) goto nomake;
+        if(countitem(7120)<4) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make72,"아니요, 다음에 만들게요",no;
+make72:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2248,1;
+        delitem 7030,108;
+        delitem 7194,108;
+        delitem 7120,4;
+        getitem 5075,1;
+        close;
+L_mat_73:
+        mes "[통합조합]";
+        mes "^3355FF'커다란금방울'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'금방울 1개'^000000";
+        mes "^3355FF'엠펠리움 1개'^000000";
+        mes "^3355FF'황금 3개'^000000";
+        next;
+        if(countitem(10016)<1) goto nomake;
+        if(countitem(714)<1) goto nomake;
+        if(countitem(969)<3) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make73,"아니요, 다음에 만들게요",no;
+make73:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 10016,1;
+        delitem 714,1;
+        delitem 969,3;
+        getitem 5091,1;
+        close;
+L_mat_74:
+        mes "[통합조합]";
+        mes "^3355FF'케이크모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'사탕 10개'^000000";
+        mes "^3355FF'막대사탕 5개'^000000";
+        mes "^3355FF'잘구운쿠키 15개'^000000";
+        mes "^3355FF'조각케이크 20개'^000000";
+        mes "^3355FF'강철 10개'^000000";
+        next;
+        if(countitem(529)<10) goto nomake;
+        if(countitem(530)<5) goto nomake;
+        if(countitem(538)<15) goto nomake;
+        if(countitem(539)<20) goto nomake;
+        if(countitem(999)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make74,"아니요, 다음에 만들게요",no;
+make74:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 529,10;
+        delitem 530,5;
+        delitem 538,15;
+        delitem 539,20;
+        delitem 999,10;
+        getitem 5024,1;
+        close;
+//[타]
+L_mat_75:
+        mes "[통합조합]";
+        mes "^3355FF'털모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'캡 1개'^000000";
+        mes "^3355FF'털실 500개'^000000";
+        next;
+        if(countitem(2226)<1) goto nomake;
+        if(countitem(7038)<500) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make75,"아니요, 다음에 만들게요",no;
+make75:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2226,1;
+        delitem 7038,500;
+        getitem 5076,1;
+        close;
+L_mat_76:
+        mes "[통합조합]";
+        mes "^3355FF'토끼머리띠'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'네잎클로버 1개'^000000";
+        mes "^3355FF'고양이머리띠 1개'^000000";
+        mes "^3355FF'진주 1개'^000000";
+        mes "^3355FF'부드러운털 100개'^000000";
+        next;
+        if(countitem(706)<1) goto nomake;
+        if(countitem(2213)<1) goto nomake;
+        if(countitem(722)<1) goto nomake;
+        if(countitem(949)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make76,"아니요, 다음에 만들게요",no;
+make76:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 706,1;
+        delitem 2213,1;
+        delitem 722,1;
+        delitem 949,100;
+        getitem 2214,1;
+        close;
+L_mat_77:
+        mes "[통합조합]";
+        mes "^3355FF'튤립머리핀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'스마일가면 1개'^000000";
+        mes "^3355FF'빨간색염료 1개'^000000";
+        next;
+        if(countitem(2278)<1) goto nomake;
+        if(countitem(975)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make77,"아니요, 다음에 만들게요",no;
+make77:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2278,1;
+        delitem 975,1;
+        getitem 5077,1;
+        close;
+//[파]
+L_mat_78:
+        mes "[통합조합]";
+        mes "^3355FF'패션방한모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'검은색염료 1개'^000000";
+        mes "^3355FF'얼음장미 1개'^000000";
+        mes "^3355FF'호랑이팬티 999개'^000000";
+        next;
+        if(countitem(983)<1) goto nomake;
+        if(countitem(749)<1) goto nomake;
+        if(countitem(7267)<999) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make78,"아니요, 다음에 만들게요",no;
+make78:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 983,1;
+        delitem 749,1;
+        delitem 7267,999;
+        getitem 5115,1;
+        close;
+L_mat_79:
+        mes "[통합조합]";
+        mes "^3355FF'패션선글래스'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'머리안경 1개'^000000";
+        mes "^3355FF'빨간색염료 1개'^000000";
+        next;
+        if(countitem(2271)<1) goto nomake;
+        if(countitem(975)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make79,"아니요, 다음에 만들게요",no;
+make79:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 2271,1;
+        delitem 975,1;
+        getitem 5047,1;
+        close;
+L_mat_80:
+        mes "[통합조합]";
+        mes "^3355FF'푸른생선'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'썩은생선 1개'^000000";
+        mes "^3355FF'썩어버린비늘 300개'^000000";
+        mes "^3355FF'회 50개'^000000";
+        mes "^3355FF'생선의꼬리 1개'^000000";
+        mes "^3355FF'끈적끈적한액체 100개'^000000";
+        next;
+        if(countitem(624)<1) goto nomake;
+        if(countitem(544)<50) goto nomake;
+        if(countitem(1023)<1) goto nomake;
+        if(countitem(938)<100) goto nomake;
+        if(countitem(959)<300) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make80,"아니요, 다음에 만들게요",no;
+make80:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7085,1;
+        delitem 969,50;
+        delitem 726,1;
+        delitem 984,100;
+        delitem 959,300;
+        getitem 5065,1;
+        close;
+//[하]
+L_mat_81:
+        mes "[통합조합]";
+        mes "^3355FF'하트머리핀'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'산호초 1200개'^000000";
+        next;
+        if(countitem(7013)<1200) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make81,"아니요, 다음에 만들게요",no;
+make81:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7013,1200;
+        getitem 5041,1;
+        close;
+L_mat_82:
+	mes "[통합조합]";
+	mes "^3355FF'하회탈'^000000을 선택하셨습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'네잎클로버 1개'^000000";
+	mes "^3355FF'통나무 500개'^000000";
+	mes "^3355FF'탄력있는줄 10개 '^000000";
+	mes "^3355FF'추억의책갈피 20개'^000000";
+	mes "^3355FF'담배 1개'^000000";
+	mes "^3355FF'선인장의뾰족한침 100개'^000000";
+	mes "^3355FF'멧돼지의갈기털 100개'^000000";
+	next;
+	if(countitem(706)<1) goto nomake;
+	if(countitem(7201)<500) goto nomake;
+	if(countitem(7200)<10) goto nomake;
+	if(countitem(7015)<20) goto nomake;
+	if(countitem(2267)<1) goto nomake;
+	if(countitem(952)<100) goto nomake;
+	if(countitem(1028)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make82,"아니요, 다음에 만들게요",no;
+make82:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 706,1;
+	delitem 7201,500;
+	delitem 7200,10;
+	delitem 7015,20;
+	delitem 2267,1;
+	delitem 952,100;
+	delitem 1028,100;
+	getitem 5176,1;
+	close;
+L_mat_83:
+        mes "[통합조합]";
+        mes "^3355FF'학사모'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'환상의꽃 1개'^000000";
+        mes "^3355FF'히나레 1개'^000000";
+        mes "^3355FF'멘트 1개'^000000";
+        mes "^3355FF'알로에 1개'^000000";
+        next;
+        if(countitem(710)<1) goto nomake;
+        if(countitem(703)<1) goto nomake;
+        if(countitem(708)<1) goto nomake;
+        if(countitem(704)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make83,"아니요, 다음에 만들게요",no;
+make83:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 710,1;
+        delitem 703,1;
+        delitem 708,1;
+        delitem 704,1;
+        getitem 5012,1;
+        close;
+L_mat_84:
+        mes "[통합조합]";
+        mes "^3355FF'학생모'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'호랑이의발바닥10개'^000000";
+        next;
+        if(countitem(1030)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make84,"아니요, 다음에 만들게요",no;
+make84:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1030,10;
+        getitem 5016,1;
+        close;
+L_mat_85:
+        mes "[통합조합]";
+        mes "^3355FF'헤드폰'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'오리데오콘 1개'^000000";
+        mes "^3355FF'강철 40개'^000000";
+        mes "^3355FF'알코올 1개'^000000";
+        mes "^3355FF'석탄 1개'^000000";
+        next;
+        if(countitem(984)<1) goto nomake;
+        if(countitem(999)<40) goto nomake;
+        if(countitem(970)<1) goto nomake;
+        if(countitem(1003)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make85,"아니요, 다음에 만들게요",no;
+make85:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 984,1;
+        delitem 999,40;
+        delitem 970,1;
+        delitem 1003,1;
+        getitem 5001,1;
+        close;
+L_mat_86:
+        mes "[통합조합]";
+        mes "^3355FF'해달모자'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'너구리모자 1개'^000000";
+        mes "^3355FF'변신나뭇잎 1개'^000000";
+        next;
+        if(countitem(5033)<1) goto nomake;
+        if(countitem(5064)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make86,"아니요, 다음에 만들게요",no;
+make86:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 5033,1;
+        delitem 5064,1;
+        getitem 5078,1;
+        close;
+
+tiger:
+	mes "[통합조합]";
+	mes "^3355FF' 타이거마스크 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 호랑이가죽 10개 '^000000.";
+	mes "^3355FF' 호랑이발바닥 3개 '^000000.";
+	mes "^3355FF' 20만 제니 '^000000.";
+	next;
+	if(countitem(1029)<10 || countitem(1030)<3) goto nomake;
+	if(Zeny < 200000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make014,"아니요, 다음에 만들게요",no;
+	
+make014:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 1029,10;
+	delitem 1030,3;
+	set zeny,zeny-200000;
+	getitem 5098,1;
+	close;
+
+kook:
+	mes "[통합조합]";
+	mes "^3355FF' 국경일 모자 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 브리간 333개 '^000000.";
+	mes "^3355FF' 사이파 333개 '^000000.";
+	mes "^3355FF' 5만 제니 '^000000.";
+	next;
+	if(countitem(7053)<333 || countitem(7054)<333) goto nomake;
+	if(Zeny < 50000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make015,"아니요, 다음에 만들게요",no;
+	
+make015:
+	mes "[통합조합]";
+		mes "이용해주셔서 감사합니다!";
+	delitem 7053,333;
+	delitem 7054,333;
+	set zeny,zeny-50000;
+	getitem 5148,1;
+	close;
+ell:
+	mes "[통합조합]";
+	mes "^3355FF' 엘리스 인형 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 엘리스의 앞치마 100개 '^000000.";
+	mes "^3355FF' 엘리스 카드 1장 '^000000.";
+	mes "^3355FF' 나비가면 1개 '^000000.";
+	mes "^3355FF' 20만 제니 '^000000.";
+	next;
+	if(countitem(7047)<100 || countitem(4253)<1 || countitem(2291)<1) goto nomake;
+	if(Zeny < 200000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make017,"아니요, 다음에 만들게요",no;
+
+make017:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7047,100;
+	delitem 4253,1;
+	delitem 2291,1;
+	set zeny,zeny-200000;
+	getitem 5137,1;
+	close;
+ffh:
+	mes "[통합조합]";
+	mes "^3355FF' 아버지흰수염 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 티아라 3개 '^000000.";
+	mes "^3355FF' 해적 두건 3개 '^000000.";
+	mes "^3355FF' 70만 제니 '^000000.";
+	next;
+	if(countitem(2234)<3 || countitem(2287)<3) goto nomake;
+	if(Zeny < 700000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make018,"아니요, 다음에 만들게요",no;
+
+make018:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2234,3;
+	delitem 2287,3;
+	set zeny,zeny-700000;
+	getitem 5155,1;
+	close;
+
+fmask:
+	mes "[통합조합]";
+	mes "^3355FF' 아버지마스크 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 꽃잎 3개 '^000000.";
+	mes "^3355FF' 풀잎 3개 '^000000.";
+	mes "^3355FF' 시위용마스크 3개 '^000000.";
+	mes "^3355FF' 엠펠리움 1개 '^000000.";
+	mes "^3355FF' 70만 제니 '^000000.";
+	next;
+	if(countitem(2269)<3 || countitem(2270)<3 || countitem(2265)<3 || countitem(714)<1) goto nomake;
+	if(Zeny < 700000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make032,"아니요, 다음에 만들게요",no;
+	
+make032:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2269,3;
+	delitem 2270,3;
+	delitem 2265,3;
+	delitem 714,1;
+	set zeny,zeny-700000;
+	getitem 5156,1;
+	close;
+skfl:
+	mes "[통합조합]";
+	mes "^3355FF' 라이온마스크 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 붉은가시열매 300개 '^000000.";
+	mes "^3355FF' 얼음심장 300개 '^000000.";
+	mes "^3355FF' 30만 제니 '^000000.";
+	next;
+	if(countitem(587)<300 || countitem(7561)<300) goto nomake;
+	if(Zeny < 300000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make024,"아니요, 다음에 만들게요",no;
+	
+make024:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 587,300;
+	delitem 7561,300;
+	set zeny,zeny-300000;
+	getitem 5130,1;
+	close;	
+
+mari:
+	mes "[통합조합]";
+	mes "^3355FF' 마리오네트인형 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 금빛머리카락 50개 '^000000.";
+	mes "^3355FF' 새끼악마날개 20개 '^000000.";
+	mes "^3355FF' 30만 제니 '^000000.";
+	next;
+	if(countitem(1060)<50 || countitem(1039)<20) goto nomake;
+	if(Zeny < 300000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make023,"아니요, 다음에 만들게요",no;
+
+make023:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 1060,50;
+	delitem 1039,20;
+	set zeny,zeny-300000;
+	getitem 5141,1;
+	close;
+
+moonh:
+	mes "[통합조합]";
+	mes "^3355FF' 초승달투구 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 깨진갑옷조각 77개 '^000000.";
+	mes "^3355FF' 진흙덩어리 77개 '^000000.";
+	mes "^3355FF' 20만 제니 '^000000.";
+	next;
+	if(countitem(7069)<77 || countitem(7004)<77) goto nomake;
+	if(Zeny < 200000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make022,"아니요, 다음에 만들게요",no;
+
+make022:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7069,77;
+	delitem 7004,77;
+	set zeny,zeny-200000;
+	getitem 5142,1;
+	close;
+gabu:
+	mes "[통합조합]";
+	mes "^3355FF' 가부키가면 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 파충류혓바닥 20개 '^000000.";
+	mes "^3355FF' 가시달린아가미 100개 '^000000.";
+	mes "^3355FF' 10만 제니 '^000000.";
+	next;
+	if(countitem(903)<20 || countitem(956)<100) goto nomake;
+	if(Zeny < 100000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make021,"아니요, 다음에 만들게요",no;
+
+make021:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 903,20;
+	delitem 956,100;
+	set zeny,zeny-100000;
+	getitem 5143,1;
+	close;
+koki:
+	mes "[통합조합]";
+	mes "^3355FF' 코끼리모자 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 단단한껍질 30개 '^000000.";
+	mes "^3355FF' 돌심장 30개 '^000000.";
+	mes "^3355FF' 7만 제니 '^000000.";
+	next;
+	if(countitem(935)<30 || countitem(953)<30) goto nomake;
+	if(Zeny < 70000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make020,"아니요, 다음에 만들게요",no;
+
+make020:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 935,30;
+	delitem 953,30;
+	set zeny,zeny-70000;
+	getitem 5146,1;
+	close;
+
+ygmo:
+	mes "[통합조합]";
+	mes "^3355FF' 야구모자 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 댕기머리 40개 '^000000.";
+	mes "^3355FF' 새의깃털 20개 '^000000.";
+	mes "^3355FF' 10만 제니 '^000000.";
+	next;
+	if(countitem(901)<40 || countitem(916)<20) goto nomake;
+	if(Zeny < 100000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make019,"아니요, 다음에 만들게요",no;
+
+make019:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 901,40;
+	delitem 916,20;
+	set zeny,zeny-100000;
+	getitem 5147,1;
+	close;
+
+ypp:
+	mes "[통합조합]";	
+	mes "^3355FF' 예쁜리본 '^000000를 선택하셨습니다!";	
+	mes "재료는....";	
+	mes "^3355FF' 리본[1] 1개 '^000000.";	
+	mes "^3355FF' 머리끈 10개 '^000000.";
+	mes "^3355FF' 10만 제니 '^000000.";
+	next;	
+	if(countitem(2209)<1 || countitem(2250)<10) goto nomake;	
+	if(Zeny < 100000) goto nomake;	
+	mes "[통합조합]";	
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";	
+	menu  "네!",make012,"아니요, 다음에 만들게요",no;	
+	
+make012:	
+	mes "[통합조합]";	
+	mes "이용해주셔서 감사합니다!";	
+	delitem 2209,100;	
+	delitem 2250,10;	
+	set zeny,zeny-100000;	
+	getitem 5140,1;	
+	close;	
+
+byon:	
+	mes "[통합조합]";	
+	mes "^3355FF' 부용 '^000000를 선택하셨습니다!";	
+	mes "재료는....";	
+	mes "^3355FF' 투명한천조각 300개 '^000000.";	
+	mes "^3355FF' 드래곤의껍질 100개 '^000000.";	
+	mes "^3355FF' 10만 제니 '^000000.";	
+	next;	
+	if(countitem(1059)<300 || countitem(7123)<100) goto nomake;	
+	if(Zeny < 100000) goto nomake;	
+	mes "[통합조합]";	
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";	
+	menu  "네!",make011,"아니요, 다음에 만들게요",no;	
+	
+make011:	
+	mes "[통합조합]";	
+	mes "이용해주셔서 감사합니다!";	
+	delitem 1059,300;	
+	delitem 7123,100;	
+	set zeny,zeny-100000;	
+	getitem 5139,1;	
+	close;	
+
+ange:
+	mes "[통합조합]";	
+	mes "^3355FF' 엔젤링모자 '^000000를 선택하셨습니다!";	
+	mes "재료는....";	
+	mes "^3355FF' 천사의투구 1개 '^000000.";	
+	mes "^3355FF' 나들이모자 20개 '^000000.";	
+	mes "^3355FF' 50만 제니 '^000000.";	
+	next;	
+	if(countitem(5025)<1 || countitem(5032)<20) goto nomake;	
+	if(Zeny < 500000) goto nomake;	
+	mes "[통합조합]";	
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";	
+	menu  "네!",make010,"아니요, 다음에 만들게요",no;	
+	
+make010:	
+	mes "[통합조합]";	
+	mes "이용해주셔서 감사합니다!";	
+	delitem 5025,1;	
+	delitem 5032,20;	
+	set zeny,zeny-500000;	
+	getitem 5132,1;	
+	close;
+
+clos:
+	mes "[통합조합]";	
+	mes "^3355FF' 클로스헬멧 '^000000를 선택하셨습니다!";	
+	mes "재료는....";	
+	mes "^3355FF' 쥬얼헬름[1] 10개 '^000000.";	
+	mes "^3355FF' 터키석 40개 '^000000.";	
+	mes "^3355FF' 30만 제니 '^000000.";	
+	next;
+	if(countitem(2231)<10 || countitem(7294)<40) goto nomake;	
+	if(Zeny < 500000) goto nomake;	
+	mes "[통합조합]";	
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";	
+	menu  "네!",make09,"아니요, 다음에 만들게요",no;	
+
+make09:	
+	mes "[통합조합]";	
+	mes "이용해주셔서 감사합니다!";	
+	delitem 2231,10;	
+	delitem 7294,40;	
+	set zeny,zeny-300000;	
+	getitem 5131,1;	
+	close;		
+
+worge:
+	mes "[통합조합]";
+	mes "^3355FF' 월계수관 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 다크로드카드1장 '^000000.";
+	mes "^3355FF' 나무조각1000개 '^000000.";
+	mes "^3355FF' 나무옹이500개 '^000000.";
+	mes "^3355FF' 1000000제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(4168)<1) goto nomake;
+	if(countitem(1019)<1000) goto nomake;
+	if(countitem(7222)<500) goto nomake;
+	if(Zeny < 1000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make025,"아니요, 다음에 만들게요",no;
+	
+make025:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 4168,2;
+	delitem 1019,500;
+	delitem 7222,500;
+	set zeny,zeny-1000000;
+	getitem 5185,1;
+	close;
+
+darkh:
+	mes "[통합조합]";
+	mes "^3355FF' 암흑의투구 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 사이파1000개 '^000000.";
+	mes "^3355FF' 브리간1000개 '^000000.";
+	mes "^3355FF' 매우단단한복숭아100개 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(7053)<1000) goto nomake;
+	if(countitem(7054)<1000) goto nomake;
+	if(countitem(7164)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make027,"아니요, 다음에 만들게요",no;
+
+make027:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7053,1000;
+	delitem 7054,1000;
+	delitem 7165,100;
+	getitem 5181,1;
+	close;
+
+doghat:
+	mes "[통합조합]";
+	mes "^3355FF' 강아지모자 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 바늘쌈지 2000개 '^000000.";
+	mes "^3355FF' 부러진바늘 1000개 '^000000.";
+	mes "^3355FF' 실패 1000개 '^000000.";
+	mes "^3355FF' 1000000제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(7213)<2000) goto nomake;
+	if(countitem(7215)<1000) goto nomake;
+	if(countitem(7217)<1000) goto nomake;
+	if(Zeny < 1000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make028,"아니요, 다음에 만들게요",no;
+
+make028:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7213,2000;
+	delitem 7215,1000;
+	delitem 7217,1000;
+	set zeny,zeny-1000000;
+	getitem 5182,1;
+	close;
+
+rabbit:
+	mes "[통합조합]";
+	mes "^3355FF' 늘어진 토끼 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 토끼머리띠 1개 '^000000.";
+	mes "^3355FF' 늘어진 고양이 1개 '^000000.";
+	mes "^3355FF' 귀마개 1개 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(2214)<1) goto nomake;
+	if(countitem(5058)<1) goto nomake;
+	if(countitem(2283)<1) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",maka032,"아니요, 다음에 만들게요",no;
+
+maka032:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2214,1000;
+	delitem 5058,1000;
+	delitem 2283,100;
+	getitem 5198,1;
+	close;
+
+soulw:
+	mes "[통합조합]";
+	mes "^3355FF' 소울리스링 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 천사의머리띠 1개 '^000000.";
+	mes "^3355FF' 부드러운털 500개 '^000000.";
+	mes "^3355FF' 부드러운깃털 200개 '^000000.";
+	mes "^3355FF' 100만제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(2254)<1) goto nomake;
+	if(countitem(949)<500) goto nomake;
+	if(countitem(7063)<200) goto nomake;
+	if(Zeny < 1000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make030,"아니요, 다음에 만들게요",no;
+
+make030:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2254,1;
+	delitem 949,500;
+	delitem 7063,200;
+	set zeny,zeny-1000000;
+	getitem 5257,1;
+	close;
+
+risling:
+	mes "[통합조합]";
+	mes "^3355FF' 소울리스윙 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 천사의머리띠 1개 '^000000.";
+	mes "^3355FF' 부드러운털 200개 '^000000.";
+	mes "^3355FF' 부드러운깃털 500개 '^000000.";
+	mes "^3355FF' 100만제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(2254)<1) goto nomake;
+	if(countitem(949)<200) goto nomake;
+	if(countitem(7063)<500) goto nomake;
+	if(Zeny < 1000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make031,"아니요, 다음에 만들게요",no;
+
+make031:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2254,1;
+	delitem 949,200;
+	delitem 7063,500;
+	set zeny,zeny-1000000;
+	getitem 5297,1;
+	close;
+
+
+valkiery:
+	mes "[통합조합]";
+	mes "^3355FF' 발키리깃털모자 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 천사의머리띠 1개 '^000000.";
+	mes "^3355FF' 발할라의꽃 3개 '^000000.";
+	mes "^3355FF' 부드러운깃털 500개 '^000000.";
+	mes "^3355FF' 150만제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(2254)<1) goto nomake;
+	if(countitem(7510)<3) goto nomake;
+	if(countitem(7063)<500) goto nomake;
+	if(Zeny < 1500000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make034,"아니요, 다음에 만들게요",no;
+
+make034:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2254,1;
+	delitem 7510,3;
+	delitem 7063,500;
+	set zeny,zeny-1500000;
+	getitem 5256,1;
+	close;
+
+sun_hat:
+	mes "[통합조합]";
+	mes "^3355FF' 태양신모자 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 깨진파라오의상징10개 '^000000.";
+	mes "^3355FF' 휘석 5개 '^000000.";
+	mes "^3355FF' 감람석 5개 '^000000.";
+	mes "^3355FF' 금운모 5개 '^000000.";
+	mes "^3355FF' 마노 3개 '^000000.";
+	mes "^3355FF' 흑운모 5개 '^000000.";
+	mes "^3355FF' 1000만제니 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(7113)<10) goto nomake;
+	if(countitem(7296)<5) goto nomake;
+	if(countitem(7289)<5) goto nomake;
+	if(countitem(7290)<5) goto nomake;
+	if(countitem(7291)<3) goto nomake;
+	if(countitem(7297)<5) goto nomake;
+	if(Zeny < 10000000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make033,"아니요, 다음에 만들게요",no;
+
+make033:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7113,10;
+	delitem 7296,5;
+	delitem 7289,5;
+	delitem 7290,5;
+	delitem 7291,3;
+	delitem 7297,5;
+	set zeny,zeny-10000000;
+	getitem 5022,1;
+	close;
+
+M_M002:
+	mes "[통합조합]";
+	mes "^3355FF'메롱가면'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'스마일가면 1개'^000000.";
+	mes "^3355FF'길고 가느다란 혀 20개'^000000.";
+	mes "^3355FF'50만 제니'^000000.";
+	next;
+	if((countitem(2278)<1) || (countitem(1015)<20)) goto nomake;
+	if(Zeny < 500000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0002,"아니요",no;
+	
+make0002:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2278,1;
+	delitem 1015,20;
+	set zeny,zeny-500000;
+	getitem 5203,1;
+	close;
+
+M_M003:
+	mes "[통합조합]";
+	mes "^3355FF'하얀 꽃잎'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'하얀색 염료 1개'^000000.";
+	mes "^3355FF'꽃잎 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(2269)<1) || (countitem(982)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0003,"아니요",no;
+make0003:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2269,1;
+	delitem 982,1;
+	set zeny,zeny-200000;
+	getitem 5206,1;
+	close;
+
+M_M004:
+	mes "[통합조합]";
+	mes "^3355FF'노란 야구모자'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'노란색 염료 1개'^000000.";
+	mes "^3355FF'야구모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(976)<1) || (countitem(5147)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0004,"아니요",no;
+	
+make0004:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 976,1;
+	delitem 5147,1;
+	set zeny,zeny-200000;
+	getitem 5209,1;
+	close;
+
+M_M005:
+	mes "[통합조합]";
+	mes "^3355FF'비상하는 천사'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'천사의 머리띠 1개'^000000.";
+	mes "^3355FF'가짜 천사의 날개 100개'^000000.";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(2254)<1) || (countitem(7104)<100)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0005,"아니요",no;
+	
+make0005:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2254,1;
+	delitem 7104,100;
+	set zeny,zeny-300000;
+	getitem 5269,1;
+	close;
+
+M_M006:
+	mes "[통합조합]";
+	mes "^3355FF'드레스 햇'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'꽃반지 1개'^000000,^3355FF'꽃잎 1개'^000000.";
+	mes "^3355FF'마술사의 모자 1개'^000000.";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(2612)<1) || (countitem(2269)<1) || (countitem(5045)<1)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0006,"아니요",no;
+	
+make0006:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2612,1;
+	delitem 5045,1;
+	delitem 2269,1;
+	set zeny,zeny-300000;
+	getitem 5211,1;
+	close;
+
+M_M00701:
+	mes "[통합조합]";
+	mes "^3355FF'페코페코 머리띠'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'머리띠 1개'^000000.";
+	mes "^3355FF'머리끈 1개'^000000.";
+	mes "^3355FF'페코날개 깃털 500개'^000000.";
+	mes "^3355FF'페코페코카드 1개'^000000.";
+	mes "^3355FF'그랜드페코카드 1개'^000000.";
+	mes "^3355FF'200만 제니'^000000.";
+	next;
+	if((countitem(2210)<1) || (countitem(2250)<1) || (countitem(7101)<500) || (countitem(4031)<1) || (countitem(4161)<1)) goto nomake;
+	if(Zeny < 2000000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make000701,"아니요",no;
+	
+make000701:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2210,1;
+	delitem 2250,1;
+	delitem 7101,500;
+	delitem 4031,1;
+	delitem 4161,1;
+	set zeny,zeny-2000000;
+	getitem 5286,1;
+	close;
+
+M_M007:
+	mes "[통합조합]";
+	mes "^3355FF'새틀라이트 헤어밴드'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'프로펠라 1개'^000000.";
+	mes "^3355FF'안테나 1개'^000000.";
+	mes "^3355FF'50만 제니'^000000.";
+	next;
+	if((countitem(2259)<1) || (countitem(5011)<1)) goto nomake;
+	if(Zeny < 500000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0007,"아니요",no;
+	
+make0007:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 2259,1;
+	delitem 5011,1;
+	set zeny,zeny-500000;
+	getitem 5212,1;
+	close;
+
+M_M008:
+	mes "[통합조합]";
+	mes "^3355FF'검은 토끼 머리띠'^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'검은 고양이 귀 1개'^000000.";
+	mes "^3355FF'토끼 머리띠 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(5266)<1) || (countitem(5057)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0008,"아니요",no;
+	
+make0008:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 5266,1;
+	delitem 5057,1;
+	set zeny,zeny-200000;
+	getitem 5213,1;
+	close;
+
+M_M009:
+	mes "[통합조합]";
+	mes "^3355FF'월야화 털모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'여우가면 1개'^000000,^3355FF'털모자 1개'^000000";
+	mes "^3355FF'여우의 꼬리 50개'^000000.";
+	mes "^3355FF'50만 제니'^000000.";
+	next;
+	if((countitem(1022)<50) || (countitem(5069)<1) || (countitem(5076)<1)) goto nomake;
+	if(Zeny < 500000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0009,"아니요",no;
+	
+make0009:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 1022,50;
+	delitem 5069,1;
+	delitem 5076,1;
+	set zeny,zeny-500000;
+	getitem 5214,1;
+	close;
+
+M_M010:
+	mes "[통합조합]";
+	mes "^3355FF'빨간색 새끼악마의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'빨간색 염료 1개'^000000";
+	mes "^3355FF'새끼 악마의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(975)<1) || (countitem(5038)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0010,"아니요",no;
+	
+make0010:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 975,1;
+	delitem 5038,1;
+	set zeny,zeny-200000;
+	getitem 5227,1;
+	close;
+
+M_M011:
+	mes "[통합조합]";
+	mes "^3355FF'흰색 새끼악마의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'하얀색 염료 1개'^000000";
+	mes "^3355FF'새끼 악마의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(982)<1) || (countitem(5038)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0011,"아니요",no;
+	
+make0011:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 982,1;
+	delitem 5038,1;
+	set zeny,zeny-200000;
+	getitem 5228,1;
+	close;
+
+M_M012:
+	mes "[통합조합]";
+	mes "^3355FF'회색 새끼악마의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'검은색 염료 1개'^000000";
+	mes "^3355FF'새끼 악마의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(983)<1) || (countitem(5038)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0012,"아니요",no;
+	
+make0012:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 983,1;
+	delitem 5038,1;
+	set zeny,zeny-200000;
+	getitem 5229,1;
+	close;
+
+M_M013:
+	mes "[통합조합]";
+	mes "^3355FF'흰색 늘어진 고양이'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'하얀색 염료 1개'^000000";
+	mes "^3355FF'늘어진 고양이 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(982)<1) || (countitem(5058)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0013,"아니요",no;
+	
+make0013:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 982,1;
+	delitem 5058,1;
+	set zeny,zeny-200000;
+	getitem 5230,1;
+	close;
+
+M_M014:
+	mes "[통합조합]";
+	mes "^3355FF'회색 늘어진 고양이'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'검은색 염료 1개'^000000";
+	mes "^3355FF'늘어진 고양이 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(983)<1) || (countitem(5058)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0014,"아니요",no;
+	
+make0014:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 983,1;
+	delitem 5058,1;
+	set zeny,zeny-200000;
+	getitem 5231,1;
+	close;
+
+M_M015:
+	mes "[통합조합]";
+	mes "^3355FF'분홍색 늘어진 고양이'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'주홍색 염료 1개'^000000";
+	mes "^3355FF'늘어진 고양이 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(980)<1) || (countitem(5058)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0015,"아니요",no;
+	
+make0015:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 980,1;
+	delitem 5058,1;
+	set zeny,zeny-200000;
+	getitem 5232,1;
+	close;
+
+M_M016:
+	mes "[통합조합]";
+	mes "^3355FF'파란색 늘어진 고양이'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'파란색 염료 1개'^000000";
+	mes "^3355FF'늘어진 고양이 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(978)<1) || (countitem(5058)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0016,"아니요",no;
+	
+make0016:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 978,1;
+	delitem 5058,1;
+	set zeny,zeny-200000;
+	getitem 5233,1;
+	close;
+
+M_M017:
+	mes "[통합조합]";
+	mes "^3355FF'노란색 늘어진 고양이'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'노란색 염료 1개'^000000";
+	mes "^3355FF'늘어진 고양이 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(976)<1) || (countitem(5058)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0017,"아니요",no;
+	
+make0017:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 976,1;
+	delitem 5058,1;
+	set zeny,zeny-200000;
+	getitem 5234,1;
+	close;
+
+M_M018:
+	mes "[통합조합]";
+	mes "^3355FF'회색 털모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'검은색 염료 1개'^000000";
+	mes "^3355FF'털모자 1개'^000000.";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(983)<1) || (countitem(5076)<1)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0018,"아니요",no;
+	
+make0018:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 983,1;
+	delitem 5076,1;
+	set zeny,zeny-300000;
+	getitem 5235,1;
+	close;
+
+M_M019:
+	mes "[통합조합]";
+	mes "^3355FF'파란색 털모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'파란색 염료 1개'^000000";
+	mes "^3355FF'털모자 1개'^000000.";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(978)<1) || (countitem(5076)<1)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0019,"아니요",no;
+	
+make0019:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 978,1;
+	delitem 5076,1;
+	set zeny,zeny-300000;
+	getitem 5236,1;
+	close;
+
+M_M020:
+	mes "[통합조합]";
+	mes "^3355FF'분홍색 털모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'주홍색 염료 1개'^000000";
+	mes "^3355FF'털모자 1개'^000000.";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(980)<1) || (countitem(5076)<1)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0020,"아니요",no;
+	
+make0020:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 980,1;
+	delitem 5076,1;
+	set zeny,zeny-300000;
+	getitem 5237,1;
+	close;
+
+M_M021:
+	mes "[통합조합]";
+	mes "^3355FF'빨간색 마법사의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'빨간색 염료 1개'^000000";
+	mes "^3355FF'마법사의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(975)<1) || (countitem(5027)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0021,"아니요",no;
+	
+make0021:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 975,1;
+	delitem 5027,1;
+	set zeny,zeny-200000;
+	getitem 5238,1;
+	close;
+
+M_M022:
+	mes "[통합조합]";
+	mes "^3355FF'흰색 마법사의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'하얀색 염료 1개'^000000";
+	mes "^3355FF'마법사의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(982)<1) || (countitem(5027)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0022,"아니요",no;
+	
+make0022:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 982,1;
+	delitem 5027,1;
+	set zeny,zeny-200000;
+	getitem 5239,1;
+	close;
+
+M_M023:
+	mes "[통합조합]";
+	mes "^3355FF'회색 마법사의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'검은색 염료 1개'^000000";
+	mes "^3355FF'마법사의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(978)<1) || (countitem(5027)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0023,"아니요",no;
+	
+make0023:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 978,1;
+	delitem 5027,1;
+	set zeny,zeny-200000;
+	getitem 5240,1;
+	close;
+
+M_M024:
+	mes "[통합조합]";
+	mes "^3355FF'파란색 마법사의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'파란색 염료 1개'^000000";
+	mes "^3355FF'마법사의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(978)<1) || (countitem(5027)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0024,"아니요",no;
+	
+make0024:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 978,1;
+	delitem 5027,1;
+	set zeny,zeny-200000;
+	getitem 5241,1;
+	close;
+
+M_M025:
+	mes "[통합조합]";
+	mes "^3355FF'노란색 마법사의 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'노란색 염료 1개'^000000";
+	mes "^3355FF'마법사의 모자 1개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(976)<1) || (countitem(5027)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0025,"아니요",no;
+	
+make0025:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 976,1;
+	delitem 5027,1;
+	set zeny,zeny-200000;
+	getitem 5242,1;
+	close;
+
+M_M026:
+	mes "[통합조합]";
+	mes "^3355FF'늘어진 구미호'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'마리오네트 인형 1개'^000000.";
+	mes "^3355FF'여우의 꼬리 1000개'^000000.";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(1022)<1000) || (countitem(5141)<1)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0026,"아니요",no;
+	
+make0026:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 1022,1000;
+	delitem 5141,1;
+	set zeny,zeny-200000;
+	getitem 5252,1;
+	close;
+
+M_M027:
+	mes "[통합조합]";
+	mes "^3355FF'늘어진 리프 인형'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'마리오네트 인형 1개'^000000,^3355FF'부드러운 풀잎 100개'^000000";
+	mes "^3355FF'질긴 비늘줄기 200개'^000000,^3355FF'질긴 나무 덩쿨 200개'^000000";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(5141)<1) || (countitem(7194)<100) || (countitem(7197)<200) || (countitem(7012)<200)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0027,"아니요",no;
+	
+make0027:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 5141,1;
+	delitem 7197,200;
+	delitem 7194,100;
+	delitem 7012,200;
+	set zeny,zeny-200000;
+	getitem 5253,1;
+	close;
+
+M_M028:
+	mes "[통합조합]";
+	mes "^3355FF'데빌링 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'포링모자 1개'^000000,^3355FF'악마의 머리띠 1개'^000000";
+	mes "^3355FF'새끼 악마의 날개 100개'^000000";
+	mes "^3355FF'20만 제니'^000000.";
+	next;
+	if((countitem(5035)<1) || (countitem(2255)<1) || (countitem(1039)<100)) goto nomake;
+	if(Zeny < 200000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0028,"아니요",no;
+	
+make0028:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 5035,1;
+	delitem 2255,1;
+	delitem 1039,100;
+	set zeny,zeny-200000;
+	getitem 5254,1;
+	close;
+
+M_M029:
+	mes "[통합조합]";
+	mes "^3355FF'삼단 포링 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'포링모자 3개'^000000";
+	mes "^3355FF'젤로피 500개'^000000";
+	mes "^3355FF'30만 제니'^000000.";
+	next;
+	if((countitem(5035)<3) || (countitem(909)<500)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0029,"아니요",no;
+	
+make0029:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 5035,3;
+	delitem 909,500;
+	set zeny,zeny-300000;
+	getitem 5255,1;
+	close;
+
+M_M030:
+	mes "[통합조합]";
+	mes "^3355FF'병아리 모자'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'새의길털 200'^000000";
+	mes "^3355FF'부드러운 털 200'^000000";
+	mes "^3355FF'vit 픽키카드 1'^000000.";
+	mes "^3355FF'장식용 알껍질 1'^000000.";
+	mes "^3355FF'작은 알껍질 1'^000000.";
+	mes "^3355FF'가축의피 1'^000000.";
+	mes "^3355FF'30만제니 입니다'^000000.";
+	next;
+	if((countitem(916)<200) || (countitem(949)<200) || (countitem(4011)<1) || (countitem(5015)<1) || (countitem(10012)<1) || (countitem(702)<1)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0030,"아니요",no;
+	
+make0030:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 949,200;
+	delitem 4011,200;
+	delitem 5015,1;
+	delitem 5015,1;
+	delitem 10012,1;
+	delitem 702,1;
+	set zeny,zeny-300000;
+	getitem 5283,1;
+	close;
+
+M_M031:
+	mes "[통합조합]";
+	mes "^3355FF'라이드워드'^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF'추억의책갈피 50'^000000";
+	mes "^3355FF'바이블 1'^000000";
+	mes "^3355FF'빨간포션 500'^000000.";
+	mes "^3355FF'낡은책장 200'^000000.";
+	mes "^3355FF'30만제니 입니다'^000000.";
+	next;
+	if((countitem(7015)<50) || (countitem(1551)<1) || (countitem(501)<500) || (countitem(1097)<200)) goto nomake;
+	if(Zeny < 300000) goto nomake2;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make0031,"아니요",no;
+	
+make0031:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 7015,50;
+	delitem 1551,1;
+	delitem 501,500;
+	delitem 1097,200;
+	set zeny,zeny-300000;
+	getitem 5208,1;
+	close;
+
+//----------------------------------건슬링거 & 닌자 무기---------------------------
+L_gn_1:
+        mes "[통합조합]";
+        mes "^3355FF'풍마수리검대차륜[4]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'빙섬석 50개'^000000";
+        mes "^3355FF'강철 50개'^000000";
+        mes "^3355FF'천구의코 100개'^000000";
+        mes "^3355FF'깨진술동이 100개'^000000";
+        next;
+        if(countitem(7522)<50) goto nomake;
+        if(countitem(999)<50) goto nomake;
+        if(countitem(7159)<100) goto nomake;
+        if(countitem(7158)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn1,"아니요, 다음에 만들게요",no;
+make_gn1:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7522,50;
+        delitem 999,50;
+        delitem 7159,100;
+        delitem 7158,100;
+        getitem 13302,1;
+        close;
+L_gn_2:
+        mes "[통합조합]";
+        mes "^3355FF'풍마수리검열화'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'열화석 50개'^000000";
+        mes "^3355FF'강철 50개'^000000";
+        mes "^3355FF'불씨 100개'^000000";
+        mes "^3355FF'불타는심장 100개'^000000";
+        next;
+        if(countitem(7521)<50) goto nomake;
+        if(countitem(999)<50) goto nomake;
+        if(countitem(7098)<100) goto nomake;
+        if(countitem(7097)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn2,"아니요, 다음에 만들게요",no;
+make_gn2:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7521,50;
+        delitem 999,50;
+        delitem 7098,100;
+        delitem 7097,100;
+        getitem 13303,1;
+        close;
+L_gn_3:
+        mes "[통합조합]";
+        mes "^3355FF'풍마수리검편익'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'풍령석 50개'^000000";
+        mes "^3355FF'강철 50개'^000000";
+        mes "^3355FF'나방의날개 100개'^000000";
+        mes "^3355FF'낡은수리검 100개'^000000";
+        next;
+        if(countitem(7523)<50) goto nomake;
+        if(countitem(999)<50) goto nomake;
+        if(countitem(1058)<100) goto nomake;
+        if(countitem(7072)<100) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn3,"아니요, 다음에 만들게요",no;
+make_gn3:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7523,50;
+        delitem 999,50;
+        delitem 1058,100;
+        delitem 7072,100;
+        getitem 13300,1;
+        close;
+L_gn_4:
+        mes "[통합조합]";
+        mes "^3355FF'더 개리슨[1]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'강철 50개'^000000";
+        mes "^3355FF'에르늄 3개'^000000";
+        mes "^3355FF'오리데오콘 1개'^000000";
+        mes "^3355FF'석탄 50개'^000000";
+        mes "^3355FF'녹슬어버린나사 20개'^000000";
+        mes "^3355FF'30,000제니'^000000";
+        next;
+        if(countitem(999)<50) goto nomake;
+        if(countitem(985)<3) goto nomake;
+        if(countitem(984)<1) goto nomake;
+        if(countitem(1003)<50) goto nomake;
+        if(countitem(7317)<20) goto nomake;
+        if (Zeny < 30000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn4,"아니요, 다음에 만들게요",no;
+make_gn4:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 999,50;
+        delitem 985,3;
+        delitem 984,1;
+        delitem 1003,50;
+        delitem 7317,20;
+        set zeny,zeny-30000;
+        getitem 13104,1;
+        close;
+L_gn_5:
+        mes "[통합조합]";
+        mes "^3355FF'더 개리슨[2]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'더 개리슨[1] 1개'^000000";
+        mes "^3355FF'강철 10개'^000000";
+        mes "^3355FF'에르늄 1개'^000000";
+        mes "^3355FF'녹슬어버린나사 10개'^000000";
+        mes "^3355FF'석탄 30개'^000000";
+        mes "^3355FF'엠베르타콘 10개'^000000";
+        next;
+        if(countitem(13104)<1) goto nomake;
+        if(countitem(999)<10) goto nomake;
+        if(countitem(985)<1) goto nomake;
+        if(countitem(1003)<30) goto nomake;
+        if(countitem(7317)<10) goto nomake;
+        if(countitem(1011)<10) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn5,"아니요, 다음에 만들게요",no;
+make_gn5:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 13104,1;
+        delitem 999,10;
+        delitem 985,1;
+        delitem 1003,30;
+        delitem 7317,10;
+        delitem 1011,10;
+        getitem 13105,1;
+        close;
+L_gn_6:
+        mes "[통합조합]";
+        mes "^3355FF'디스트로이어[0]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'낡은철판 50개'^000000";
+        mes "^3355FF'오리데오콘 5개'^000000";
+        mes "^3355FF'녹슬어버린나사 70개'^000000";
+        mes "^3355FF'100,000제니'^000000";
+        next;
+        if(countitem(7319)<50) goto nomake;
+        if(countitem(984)<5) goto nomake;
+        if(countitem(7317)<70) goto nomake;
+        if (Zeny < 100000) goto nomake;
+	mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn6,"아니요, 다음에 만들게요",no;
+make_gn6:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7319,50;
+        delitem 984,5;
+        delitem 7317,70;
+        set zeny,zeny-100000;
+        getitem 13160,1;
+        close;
+L_gn_7:
+        mes "[통합조합]";
+        mes "^3355FF'디스트로이어[1]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'디스트로이어[0] 1개'^000000";
+        mes "^3355FF'핑거[2] 1개'^000000";
+        mes "^3355FF'오리데오콘 5개'^000000";
+        next;
+        if(countitem(13160)<1) goto nomake;
+        if(countitem(1812)<1) goto nomake;
+        if(countitem(984)<5) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn7,"아니요, 다음에 만들게요",no;
+make_gn7:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 13160,1;
+        delitem 1812,1;
+        delitem 984,5;
+        getitem 13161,1;
+        close;
+L_gn_8:
+        mes "[통합조합]";
+        mes "^3355FF'인페르노[1]'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'낡은철판 100개'^000000";
+        mes "^3355FF'오리데오콘 10개'^000000";
+        mes "^3355FF'녹슬어버린나사 10개'^000000";
+        mes "^3355FF'불타는심장 100개'^000000";
+        mes "^3355FF'200,000제니'^000000";
+        next;
+        if(countitem(7319)<100) goto nomake;
+        if(countitem(984)<10) goto nomake;
+        if(countitem(7317)<10) goto nomake;
+        if(countitem(7097)<100) goto nomake;
+        if (Zeny < 200000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn8,"아니요, 다음에 만들게요",no;
+make_gn8:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 7319,100;
+        delitem 984,10;
+        delitem 7317,10;
+        delitem 7097,100;
+        set zeny,zeny-200000;
+        getitem 13162,1;
+        close;
+
+L_gn_9:
+        mes "[통합조합]";
+        mes "^3355FF'플레어스피어'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'프라콘 1개'^000000";
+        mes "^3355FF'엠베르타콘 1개'^000000";
+        mes "^3355FF'불타는심장 2개'^000000";
+        mes "^3355FF'1,000제니'^000000";
+        next;
+        if(countitem(1010)<1) goto nomake;
+        if(countitem(1011)<1) goto nomake;
+        if(countitem(7097)<2) goto nomake;
+        if (Zeny < 1000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn9,"아니요, 다음에 만들게요",no;
+make_gn9:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1010,1;
+        delitem 1011,1;
+        delitem 7097,2;
+        set zeny,zeny-1000;
+        getitem 13203,30;
+        close;
+
+L_gn_10:
+        mes "[통합조합]";
+        mes "^3355FF'라이트닝스피어'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'프라콘 1개'^000000";
+        mes "^3355FF'엠베르타콘 1개'^000000";
+        mes "^3355FF'사이파 3개'^000000";
+        mes "^3355FF'1,000제니'^000000";
+        next;
+        if(countitem(1010)<1) goto nomake;
+        if(countitem(1011)<1) goto nomake;
+        if(countitem(7053)<3) goto nomake;
+        if (Zeny < 1000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn10,"아니요, 다음에 만들게요",no;
+make_gn10:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1010,1;
+        delitem 1011,1;
+        delitem 7053,3;
+        set zeny,zeny-1000;
+        getitem 13204,30;
+        close;
+
+L_gn_11:
+        mes "[통합조합]";
+        mes "^3355FF'포이즌스피어'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'프라콘 1개'^000000";
+        mes "^3355FF'엠베르타콘 1개'^000000";
+        mes "^3355FF'독송곳니 10개'^000000";
+        mes "^3355FF'1,000제니'^000000";
+        next;
+        if(countitem(1010)<1) goto nomake;
+        if(countitem(1011)<1) goto nomake;
+        if(countitem(937)<10) goto nomake;
+        if (Zeny < 1000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn11,"아니요, 다음에 만들게요",no;
+make_gn11:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1010,1;
+        delitem 1011,1;
+        delitem 937,10;
+        set zeny,zeny-1000;
+        getitem 13205,30;
+        close;
+
+L_gn_12:
+        mes "[통합조합]";
+        mes "^3355FF'블라인드스피어'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'프라콘 1개'^000000";
+        mes "^3355FF'엠베르타콘 1개'^000000";
+        mes "^3355FF'먹물 5개'^000000";
+        mes "^3355FF'1,000제니'^000000";
+        next;
+        if(countitem(1010)<1) goto nomake;
+        if(countitem(1011)<1) goto nomake;
+        if(countitem(1024)<5) goto nomake;
+        if (Zeny < 1000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn12,"아니요, 다음에 만들게요",no;
+make_gn12:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1010,1;
+        delitem 1011,1;
+        delitem 1024,5;
+        set zeny,zeny-1000;
+        getitem 13206,30;
+        close;
+
+L_gn_13:
+        mes "[통합조합]";
+        mes "^3355FF'프리징스피어'^000000을 선택하셧습니다";
+	mes "재료는 다음과 같습니다";
+	mes "^3355FF'프라콘 1개'^000000";
+        mes "^3355FF'엠베르타콘 1개'^000000";
+        mes "^3355FF'브리간 2개'^000000";
+        mes "^3355FF'1,000제니'^000000";
+        next;
+        if(countitem(1010)<1) goto nomake;
+        if(countitem(1011)<1) goto nomake;
+        if(countitem(7054)<2) goto nomake;
+        if (Zeny < 1000) goto nomake;
+        mes "[통합조합]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네",make_gn13,"아니요, 다음에 만들게요",no;
+make_gn13:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다";
+	delitem 1010,1;
+        delitem 1011,1;
+        delitem 7054,2;
+        set zeny,zeny-1000;
+        getitem 13207,30;
+        close;
+
+
+//--------------------------------------염료------------------------------------
+dye_1:
+        mes "[통합조합]";
+        mes "^3355FF'중화제'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'알코올 1개'^000000";
+        mes "^3355FF'디트리민 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'3000제니'^000000";
+        next;
+	if(countitem(970)<1) goto nomake;
+	if(countitem(971)<1) goto nomake;
+	if(countitem(713)<1) goto nomake;
+	if(Zeny<3000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make1,"아니요, 다음에 만들게요",no;
+
+dye_make1:
+	mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+	delitem	970,1;
+	delitem	971,1;
+	delitem	713,1;
+	set zeny,zeny-3000;
+	getitem	973,1;
+        close;
+
+
+  
+dye_2:
+        mes "[통합조합]";
+        mes "^3355FF'혼합제'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'알코올 1개 '^000000";
+        mes "^3355FF'카르보딜 1개 '^000000";
+        mes "^3355FF'빈병 1개 '^000000";
+        mes "^3355FF'4000제니'^000000";
+        next;
+	if(countitem(970)<1) goto nomake;
+	if(countitem(972)<1) goto nomake;
+	if(countitem(713)<1) goto nomake;
+	if(Zeny<4000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make2,"아니요, 다음에 만들게요",no;
+
+dye_make2:
+	mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+	delitem	970,1;
+	delitem	972,1;
+	delitem	713,1;
+	set zeny,zeny-4000;
+	getitem	974,1;
+        close;
+  
+  
+dye_3:
+        mes "[통합조합]";
+        mes "^3355FF'빨간색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'빨간허브 30개'^000000"; 
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'3000제니'^000000";
+        next;
+        if(countitem(507)<30) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(Zeny<3000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make3,"아니요, 다음에 만들게요",no;
+
+dye_make3:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,30;
+        delitem 713,1;
+        delitem 973,1;
+        set zeny,zeny-3000;
+        getitem 975,1;
+        close;
+ 
+ 
+dye_4:
+        mes "[통합조합]";
+        mes "^3355FF'노랑색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'노란허브 30개'^000000";
+        mes "^3355FF'3000제니'^000000";
+        next;
+        if(countitem(508)<30) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(Zeny<3000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make4,"아니요, 다음에 만들게요",no;
+dye_make4:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,30;
+        delitem 713,1;
+        delitem 973,1;
+        set zeny,zeny-3000;
+        getitem 976,1;
+        close;
+  
+  
+dye_5:
+        mes "[통합조합]";
+        mes "^3355FF'파란색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'파란허브 20개'^000000";
+        mes "^3355FF'3500제니'^000000";
+        next;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(countitem(510)<20) goto nomake;
+        if(Zeny<3500) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make5,"아니요, 다음에 만들게요",no;
+
+dye_make5:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,30;
+        delitem 713,1;
+        delitem 973,1;
+        set zeny,zeny-3500;
+        getitem 978,1;
+        close;
+
+
+
+dye_6:
+        mes "[통합조합]";
+        mes "^3355FF'초록색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'파란허브 5개'^000000";
+        mes "^3355FF'초록색허브 20개'^000000";
+        mes "^3355FF'노란허브 20개'^000000";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'혼합제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'5000제니'^000000";
+        next;
+        if(countitem(510)<5) goto nomake;
+        if(countitem(508)<20) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(countitem(511)<20) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(974)<1) goto nomake;
+        if(Zeny<5000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make6,"아니요, 다음에 만들게요",no;
+
+dye_make6:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 510,5;
+        delitem 508,20;
+        delitem 973,1;
+        delitem 511,20;
+        delitem 713,1;
+        delitem 974,1;
+        set zeny,zeny-5000;
+        getitem 979,1;
+        close;
+  
+  
+dye_7:
+        mes "[통합조합]";
+        mes "^3355FF'주황색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다.";
+        mes "^3355FF'빨간허브 20개'^000000";
+        mes "^3355FF'노란허브 20개'^000000";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'혼합제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'5000제니'^000000";
+        next;
+        if(countitem(507)<20) goto nomake;
+        if(countitem(508)<20) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(974)<1) goto nomake;
+        if(Zeny<5000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make7,"아니요, 다음에 만들게요",no;
+
+dye_make7:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,20;
+        delitem 508,20;
+        delitem 973,1;
+        delitem 713,1;
+        delitem 974,1;
+        set zeny,zeny-5000;
+        getitem 980,1;
+        close;
+      
+dye_8:
+        mes "[통합조합]";
+        mes "^3355FF'보라색염료'^000000을 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'빨간허브 30개'^000000";
+        mes "^3355FF'파란허브 10개'^000000";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'혼합제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'5000제니'^000000";
+        next;
+        if(countitem(507)<30) goto nomake;
+        if(countitem(510)<10) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(974)<1) goto nomake;
+        if(Zeny<5000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make8,"아니요, 다음에 만들게요",no;
+
+dye_make8:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,30;
+        delitem 510,10;
+        delitem 973,1;
+        delitem 713,1;
+        delitem 974,1;
+        set zeny,zeny-5000;
+        getitem 981,1;
+        close;
+  
+  
+dye_9:
+        mes "[통합조합]";
+        mes "^3355FF'하얀색염료'^000000을 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'하얀색허브 30개'^000000";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'3000제니'^000000";
+        next;
+        if(countitem(509)<30) goto nomake; 
+        if(countitem(973)<1) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(Zeny<3000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make9,"아니요, 다음에 만들게요",no;
+
+dye_make9:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 509,30;
+        delitem 973,1;
+        delitem 713,1;
+        set zeny,zeny-3000;
+        getitem 982,1;
+        close;
+
+
+dye_10:
+        mes "[통합조합]";
+        mes "^3355FF'검은색염료'^000000를 선택하셨습니다";
+        mes "재료는 다음과 같습니다";
+        mes "^3355FF'파란허브 5개'^000000";
+        mes "^3355FF'초록색허브 30개'^000000";
+        mes "^3355FF'노란허브 30개'^000000";
+        mes "^3355FF'빨간허브 30개'^000000";
+        mes "^3355FF'중화제 1개'^000000";
+        mes "^3355FF'혼합제 1개'^000000";
+        mes "^3355FF'빈병 1개'^000000";
+        mes "^3355FF'7000제니'^000000";
+        next;
+        if(countitem(510)<5) goto nomake;
+        if(countitem(507)<30) goto nomake;
+        if(countitem(508)<30) goto nomake;
+        if(countitem(973)<1) goto nomake;
+        if(countitem(511)<30) goto nomake;
+        if(countitem(713)<1) goto nomake;
+        if(countitem(974)<1) goto nomake;
+        if(Zeny<7000) goto nomake;
+        mes "[통합조합]";
+        mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+        menu "네",dye_make10,"아니요, 다음에 만들게요",no;
+
+dye_make10:
+        mes "[통합조합]";
+        mes "이용해 주셔서 감사합니다";
+        delitem 507,30;
+        delitem 510,5;
+        delitem 508,30;
+        delitem 511,30;
+        delitem 973,1;
+        delitem 713,1;
+        delitem 974,1;
+        set zeny,zeny-7000;
+        getitem 983,1;
+        close;
+nomake:
+	mes "[통합조합]";
+	mes "재료을 모아오세요";
+	close;
+no:
+	mes "[통합조합]";
+	mes "다음에 또 찾아주세요";
+	close;
+
+L_menuh14:
+	mes "[통합조합]";
+	mes "^0049C4그림투스^000000 재료";
+	mes "[낡은손잡이1개,어둠에잠긴칼날10개,저주받은루비5개,오우거의이빨100개,엠펠리움1개]";
+	mes "";		
+	mes "^0049C4액서큐셔너^000000 재료";
+	mes "[집행인의장갑2개,피로물든칼날10개,비정한마음3개,반혼부50장,엠펠리움1개]";
+	mes "";	
+	mes "^0049C4미스틸테인^000000 재료";
+	mes "[어린나뭇가지1개,로키의속삭임1개,어머니의악몽1개,장님의어리석음1개,엠펠리움1개]";
+	next;
+	menu "그림투스",L_MENU_1,"액서큐셔너",L_MENU_2,"미스틸테인",L_MENU_3;
+
+L_MENU_1:
+	if(countitem(7022)<1) goto L_SUB_1;
+	if(countitem(7023)<10) goto L_SUB_1;
+	if(countitem(724)<5) goto L_SUB_1;
+	if(countitem(7002)<100) goto L_SUB_1;
+	if(countitem(714)<1) goto L_SUB_1;
+	delitem 7022,1;
+	delitem 7023,10;
+	delitem 724,5;
+	delitem 7002,100;
+	delitem 714,1;
+	getitem 1237,1;
+	mes "[통합조합]";
+	mes "정말 전부 모아오셨군요?";
+	mes "지금 바로 만들어 드리겠습니다!";
+	close;
+	L_SUB_1:
+	mes "[통합조합]";
+	mes "재료가 모자라는 것 아니에요?";
+	mes "확인하시고 다시 와주세요.";
+	close;
+L_MENU_2:
+	if(countitem(7017)<2) goto L_SUB_2;
+	if(countitem(7024)<10) goto L_SUB_2;
+	if(countitem(1008)<3) goto L_SUB_2;
+	if(countitem(609)<50) goto L_SUB_2;
+	if(countitem(714)<1) goto L_SUB_2;
+	delitem 7017,2;
+	delitem 7024,10;
+	delitem 1008,3;
+	delitem 609,50;
+	delitem 714,1;
+	getitem 1169,1;
+	mes "[통합조합]";
+	mes "정말 전부 모아오셨군요?";
+	mes "지금 바로 만들어 드리겠습니다!";
+	close;
+L_SUB_2:
+	mes "[통합조합]";
+	mes "재료가 모자라는 것 아니에요?";
+	mes "확인하시고 다시 와주세요.";
+	close;
+L_MENU_3:
+	if(countitem(7018)<1) goto L_SUB_3;
+	if(countitem(7019)<1) goto L_SUB_3;
+	if(countitem(7020)<1) goto L_SUB_3;
+	if(countitem(7021)<1) goto L_SUB_3;
+	if(countitem(714)<1) goto L_SUB_3;
+	delitem 7018,1;
+	delitem 7019,1;
+	delitem 7020,1;
+	delitem 7021,1;
+	delitem 714,1;
+	getitem 1138,1;
+	mes "[통합조합]";
+	mes "정말 전부 모아오셨군요?";
+	mes "지금 바로 만들어 드리겠습니다!";
+	close;
+L_SUB_3:
+	mes "[통합조합]";
+	mes "재료가 모자라는 것 아니에요?";
+	mes "확인하시고 다시 와주세요.";
+	close;
+
+
+MOBILE:
+	mes "[통합조합]";
+	mes "안녕하세요?";
+	mes "모바일템을 조합해드리는 홀입니다.";
+	mes "필요한것을 선택하세요.";
+        next;
+	menu "세일 표지판",sale,"양머리 모자",yangmo,"해바라기핀",haepin,"사이클롭스아이",psyi,"타이거마스크",taima,"클로스헬멧",clros,"스켈레톤망토",skel,"명사수의장갑",jang,"명중의건틀릿",gun,"벨카프",bell,"퇴마의반지",bangi,"달빛의반지",dal,"토끼슬리퍼",sl,"더 사인",thesign,"취소한다",no;
+
+//세일표지판
+	sale:
+		mes "[통합조합]";
+		mes "^3355FF'세일 표지판'^000000을 선택하셨습니다.";
+		mes "데비루치 카드 1장,나이트메어 카드 1장,";
+		mes "정지표지판 1개,50만젠이 필요합니다.";
+		next;
+		if ((countitem(4122) < 1) || (countitem(4127) < 1) || (countitem(2272) < 1)) goto nomake;
+		if(Zeny < 500000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",sale01,"아니요",no;
+			sale01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4122,1;
+			delitem 4127,1;
+			delitem 2272,1;
+			set Zeny,Zeny-500000;
+			getitem 5100,1;
+			announce "『" + strcharinfo(0) + "』님이 세일 표지판을 만드셨습니다.",0;
+			goto exit;
+//양모자
+	yangmo:
+		mes "[통합조합]";
+		mes "^3355FF'양머리 모자'^000000를 선택하셨습니다.";
+		mes "하이오크 카드 1장,고우트 카드 1장,헬름[1] 1개";
+		mes "산양의모피 100개,산양의뿔 100개,50만젠이 필요합니다.";
+		next;
+		if ((countitem(4322) < 1) || (countitem(4150) < 1) || (countitem(2229) < 1) || (countitem(7106) < 100) || (countitem(7107) < 100)) goto nomake;
+		if(Zeny < 500000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",yangmo01,"아니요",no;
+			yangmo01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4322,1;
+			delitem 4150,1;
+			delitem 2229,1;
+			delitem 7107,100;
+			delitem 7106,100;
+			set Zeny,Zeny-500000;
+			getitem 5133,1;
+			announce "『" + strcharinfo(0) + "』님이 양머리 모자를 만드셨습니다.",0;
+			goto exit;
+//해바라기핀				
+	haepin:
+		mes "[통합조합]";
+		mes "^3355FF'해바라기핀'^000000을 선택하셨습니다.";
+		mes "나이트메어 카드 2장,저파룡 카드 1장,털실 100개";
+		mes "지오그래퍼 카드 1장,장식용해바라기 1개,";
+		mes "100만젠이 필요합니다.";
+		next;
+		if ((countitem(4127) < 2) || (countitem(4272) < 1) || (countitem(4280) < 1) || (countitem(7038) < 100) || (countitem(2253) < 1)) goto nomake;
+		if(Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",haepin01,"아니요",no;
+			haepin01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4127,2;
+			delitem 4272,1;
+			delitem 4280,1;
+			delitem 7038,100;
+			delitem 2253,1;
+			set Zeny,Zeny-1000000;
+			getitem 5103,1;
+			announce "『" + strcharinfo(0) + "』님이 해바라기핀을 만드셨습니다.",0;
+			goto exit;
+//사이클롭스아이			
+	psyi:
+		mes "[통합조합]";
+		mes "^3355FF'사이클롭스아이'^000000을 선택하셨습니다.";
+		mes "윌로우 카드 1장,엘더윌로우 카드 1장,";
+		mes "파란허브 200개,검은 눈가리개 1개,";
+		mes "로다프로그 카드 1장,마녀의별모래 500개,";
+		mes "100만제니를 필요로합니다.";
+		next;
+		if ((countitem(4052) < 1) || (countitem(4010) < 1) || (countitem(4014) < 1) || (countitem(510) < 200) || (countitem(1061) < 500) || (countitem(5104) < 1)) goto nomake;
+		if(Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",psyi01,"아니요",no;
+			psyi01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4052,1;
+			delitem 4010,1;
+			delitem 4014,1;
+			delitem 510,200;
+			delitem 1061,500;
+			delitem 5104,1;
+			set Zeny,Zeny-1000000;
+			getitem 5135,1;
+			announce "『" + strcharinfo(0) + "』님이 사이클롭스아이를 만드셨습니다.",0;
+			goto exit;
+//타이거마스크
+	taima:
+		mes "[통합조합]";
+		mes "^3355FF'타이거마스크'^000000를 선택하셨습니다.";
+		mes "픽키(힘)카드 1장,데비루치 카드 1장,";
+		mes "표범의가죽 100개,표범발톱 100개,";
+		mes "호랑이팬티 100개,70만제니를 필요로합니다.";
+		next;
+		if ((countitem(4008) < 1) || (countitem(4122) < 1) || (countitem(7171) < 100) || (countitem(7172) < 100) || (countitem(7267) < 100)) goto nomake;
+		if(Zeny < 700000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",taima01,"아니요",no;
+			taima01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4008,1;
+			delitem 4122,1;
+			delitem 7171,100;
+			delitem 7172,100;
+			delitem 7267,100;
+			set Zeny,Zeny-700000;
+			getitem 5098,1;
+			announce "『" + strcharinfo(0) + "』님이 타이거마스크를 만드셨습니다.",0;
+			goto exit;
+//클로스헬멧
+	clros:
+		mes "[통합조합]";
+		mes "^3355FF'클로스헬멧'^000000를 선택하셨습니다.";
+		mes "터키석 40개, 쥬얼헬름[1] 1개,";
+		mes "50만제니를 필요로합니다.";
+		next;
+		if ((countitem(7294) < 40) || (countitem(2231) < 1)) goto nomake;
+		if(Zeny < 500000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",clros01,"아니요",no;
+			clros01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 7294,40;
+			delitem 2231,1;
+			set Zeny,Zeny-500000;
+			getitem 5131,1;
+			announce "『" + strcharinfo(0) + "』님이 클로스헬멧을 만드셨습니다.",0;
+			goto exit;
+//스켈레톤망토
+	skel:
+		mes "[통합조합]";
+		mes "^3355FF'스켈레톤망토'^000000를 선택하셨습니다.";
+		mes "맨티스카드 1장,루나틱카드 1장,제롬카드 1장,";
+		mes "뼈조각 500개,망토[1] 1개,50만젠이 필요합니다.";
+		next;
+		if ((countitem(4079) < 1) || (countitem(4006) < 1) || (countitem(4064) < 1) || (countitem(932) < 500) || (countitem(2506) < 1)) goto nomake;
+		if(Zeny < 500000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",skel01,"아니요",no;
+			skel01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4079,1;
+			delitem 4006,1;
+			delitem 4064,1;
+			delitem 932,500;
+			delitem 2506,1;
+			set Zeny,Zeny-500000;
+			getitem 2511,1;
+			announce "『" + strcharinfo(0) + "』님이 스켈레톤망토를 만드셨습니다.",0;
+			goto exit;
+//명사수의 장갑				
+	jang:
+		mes "[통합조합]";
+		mes "^3355FF'명사수의 장갑'^000000을 선택하셨습니다.";
+		mes "웜테일 카드 1장,미이라 카드 1장,글러브 1개";
+		mes "에인션트미이라 카드 1장,크리티컬링 1개,";
+		mes "원숭이의꼬리 100개, 100만젠이 필요합니다.";
+		next;
+		if ((countitem(4034) < 1) || (countitem(4106) < 1) || (countitem(4248) < 1) || (countitem(2604) < 1) || (countitem(2616) < 1) || (countitem(942) < 100)) goto nomake;
+		if(Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",jang01,"아니요",no;
+			jang01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4034,1;
+			delitem 4106,1;
+			delitem 4248,1;
+			delitem 2604,1;
+			delitem 2616,1;
+			delitem 942,100;
+			set Zeny,Zeny-1000000;
+			getitem 5103,1;
+			announce "『" + strcharinfo(0) + "』님이 명사수의 장갑을 만드셨습니다.",0;
+			goto exit;
+
+//명중의 건틀릿				
+	gun:
+		mes "[통합조합]";
+		mes "^3355FF'명중의 건틀릿'^000000을 선택하셨습니다.";
+		mes "코볼트 카드 1장,미이라 카드 1장,글러브 1개";
+		mes "맨티스 카드 1장,크리티컬링 1개,";
+		mes "고운모래가루 100개, 100만젠이 필요합니다.";
+		next;
+		if (countitem(7043) < 100) goto nomake;
+		if (countitem(2616) < 1) goto nomake;
+		if (countitem(4079) < 1) goto nomake;
+		if (countitem(2604) < 1) goto nomake;
+		if (countitem(4091) < 1) goto nomake;
+		if (countitem(4106) < 1) goto nomake;
+		if (Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",gun01,"아니요",no;
+			gun01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 7043,100;
+			delitem 2616,1;
+			delitem 4079,1;
+			delitem 2604,1;
+			delitem 4091,1;
+			delitem 4106,1;
+			set Zeny,Zeny-1000000;
+			getitem 2663,1;
+			announce "『" + strcharinfo(0) + "』님이 명중의 건틀릿을 만드셨습니다.",0;
+			goto exit;
+
+//벨카프				
+	bell:
+		mes "[통합조합]";
+		mes "^3355FF'벨카프'^000000를 선택하셨습니다.";
+		mes "웜테일 카드 1장,엘더 윌로우 카드 1장,";
+		mes "이어링 1개, 30만젠이 필요합니다.";
+		next;
+		if ((countitem(4034) < 1) || (countitem(4052) < 1) || (countitem(2602) < 1)) goto nomake;
+		if(Zeny < 300000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",bell01,"아니요",no;
+			bell01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4034,1;
+			delitem 4052,1;
+			delitem 2602,1;
+			set Zeny,Zeny-300000;
+			getitem 2664,1;
+			announce "『" + strcharinfo(0) + "』님이 벨카프를 만드셨습니다.",0;
+			goto exit;
+
+//퇴마의 반지				
+	bangi:
+		mes "[통합조합]";
+		mes "^3355FF'퇴마의반지'^000000를 선택하셨습니다.";
+		mes "좀비프리즈너 카드 1장,사이파 100개,";
+		mes "글러브[1] 1개, 30만젠이 필요합니다.";
+		next;
+		if ((countitem(4275) < 1) || (countitem(2624) < 1) || (countitem(7053) < 100)) goto nomake;
+		if(Zeny < 300000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",bangi01,"아니요",no;
+			bangi01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4275,1;
+			delitem 2624,1;
+			delitem 7053,100;
+			set Zeny,Zeny-300000;
+			getitem 2665,1;
+			announce "『" + strcharinfo(0) + "』님이  퇴마의 반지를 만드셨습니다.",0;
+			goto exit;
+
+//달빛의 반지			
+	dal:
+		mes "[통합조합]";
+		mes "^3355FF'달빛의반지'^000000를 선택하셨습니다.";
+		mes "요요카드 1장,쿠키카드 1장, 쿠크레카드 1장,";
+		mes "크리티컬링 1개,은반지 10개,금반지 5개,";
+		mes "조각케이크 100개, 100만젠이 필요합니다.";
+		next;
+		if ((countitem(4027) < 1) || (countitem(4293) < 1) || (countitem(4051) < 1)   || (countitem(2610) < 5) || (countitem(2611) < 10) || (countitem(2616) < 1)   || (countitem(539) < 100)) goto nomake;
+		if(Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",dal01,"아니요",no;
+			dal01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4027,1;
+			delitem 4293,1;
+			delitem 4051,1;
+			delitem 2610,5;
+			delitem 2611,10;
+			delitem 2616,1;
+			delitem 539,100;
+			set Zeny,Zeny-1000000;
+			getitem 2645,1;
+			announce "『" + strcharinfo(0) + "』님이  달빛의 반지를 만드셨습니다.",0;
+			goto exit;
+
+//토끼 슬리퍼			
+	sl:
+		mes "[통합조합]";
+		mes "^3355FF'토끼 슬리퍼'^000000를 선택하셨습니다.";
+		mes "루나틱카드 1장,메갈리스카드 1장,광대코 1개,";
+		mes "유리구두 1개,부츠[1] 1개,부드러운털 500개,";
+		mes "부드러운깃털 50개, 100만젠이 필요합니다.";
+		next;
+		if ((countitem(4006) < 1) || (countitem(4200) < 1) || (countitem(2262) < 1)   || (countitem(2407) < 1) || (countitem(2406) < 1) || (countitem(949) < 500)   || (countitem(7063) < 50)) goto nomake;
+		if(Zeny < 1000000) goto nomake;
+		mes "[통합조합]";
+		mes "지금 만드실수 있습니다. 만드시겠습니까?";
+		menu "네!",sl01,"아니요",no;
+			sl01:
+			mes "[통합조합]";
+			mes "잠시만 기다려주십시요.";
+			next;
+			mes "......";
+			mes ".........";
+			mes "...........";
+			next;
+			mes "[통합조합]";
+			mes "축하합니다.";
+			mes "물건을 받아가세요~";
+			next;
+			delitem 4006,1;
+			delitem 4200,1;
+			delitem 2262,1;
+			delitem 2407,1;
+			delitem 2406,1;
+			delitem 949,500;
+			delitem 7063,50;
+			set Zeny,Zeny-1000000;
+			getitem 2415,1;
+			announce "『" + strcharinfo(0) + "』님이  토끼 슬리퍼를 만드셨습니다.",0;
+			goto exit;
+
+thesign:
+	mes "[통합조합]";
+	mes "^3355FF' 더 사인 '^000000을 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 암수 200개 '^000000.";
+	mes "^3355FF' 아메디스트 100개 '^000000.";
+	mes "입니다.";
+	next;
+	if(countitem(12020)<200) goto nomake;
+	if(countitem(719)<100) goto nomake;
+	mes "[루이비퉁]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make2229,"아니요, 다음에 만들게요",no;
+make2229:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 12020,200;
+	delitem 719,100;
+	getitem 2644,1;
+	close;
+
+eyes:
+	mes "[통합조합]";
+	mes "^3355FF' 매직 아이즈 '^000000를 선택하셨습니다!";
+	mes "재료는....";
+	mes "^3355FF' 붉은색 액자 3개 '^000000.";
+	mes "^3355FF' 추억의 책갈피 100개 '^000000.";
+	mes "^3355FF' 하티의 이빨 1개 '^000000.";
+	mes "^3355FF' 위저드햇 1개 '^000000.";
+	mes "^3355FF' 10만 제니 '^000000.";
+	next;
+	if(countitem(734)<3 || countitem(7015)<100 || countitem(2252)<1 || countitem(7036)<1) goto nomake;
+	if(Zeny < 100000) goto nomake2;
+	mes "[루이비퉁]";
+	mes "지금 만드실 수 있습니다. 만드시겠습니까?";
+	menu  "네!",make1600,"아니요, 다음에 만들게요",nooo;
+
+make1600:
+	mes "[통합조합]";
+	mes "이용해주셔서 감사합니다!";
+	delitem 734,3;
+	delitem 7015,100;
+	delitem 2252,1;
+	delitem 7036,1;
+	set zeny,zeny-1000000;
+	getitem 5138,1;
+	close;
+//OnInit:
+//	waitingroom "통합 조합사",0;
+}

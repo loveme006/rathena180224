@@ -1,0 +1,180 @@
+//===== Hercules Script ======================================
+//= Card Removal NPC
+//===== By: ==================================================
+//= TyrNemesis^
+//===== Current Version: =====================================
+//= 1.2a
+//===== Description: =========================================
+//= Removes cards from equipped items.
+//===== Additional Comments: =================================
+//= 1.0 First version. [TyrNemesis^]
+//= 1.2 Optimized and fixed getequipname menu. [Kisuka]
+//= 1.2a Added 'disable_items' command. [Euphy]
+//============================================================
+
+-	script	카드제거사	-1,{
+
+	set .zenycost,200000; // Set base cost in zeny of the card remover services
+	set .percardcost,25000; // set cost per card of the card remover services
+	set .faildestroy,1; // 카드제거에 실패할 경우 아이템을 파괴할지 설정 1 = 파괴, 0 = 파괴 안 함.
+
+	disable_items;
+	mes "[현인]";
+	mes "장비에서 카드를 꺼내고 싶으신가요?";
+	next;
+	switch(select("네.:어떤게 필요한가요?:괜찮아요.")) {
+	case 1:
+		mes "[현인]";
+		mes "장비의 부위를 선택하세요.";
+		next;
+
+		setarray .@position$[1], "모자","갑옷","왼손","오른손","걸칠것","신발","악세사리1","악세사리2","모자2","모자3";
+		set .@menu$,"";
+		for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+		{
+			if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+			set .@menu$, .@menu$ + ":";
+		}
+		set .@part,select(.@menu$);
+		if(!getequipisequiped(.@part)) {
+			mes "[현인]";
+			mes "젊은이... 제거하고 카드가 박힌 아이템을 장비하고 있어야 합니다.";
+			close;
+		}
+		if(getequipcardcnt(.@part) == 0) {
+			mes "[현인]";
+			mes "젊으니... 그 장비엔 카드가 없어보이는데...";
+			close;
+		}
+		set .@cardcount,getequipcardcnt(.@part);
+		
+		if (!checkweight(1202,(.@cardcount+1))) { 
+			mes "^3355FF잠깐!";
+			mes "소지 무게가 너무 많아서";
+			mes "더 이상 무언가를 들 수가";
+			mes "없을 것 같다.";
+			mes "소지품을 좀 줄여야 할 것";
+			mes "같다.";
+			close;
+		}
+		mes "[현인]";
+		mes "이 아이템은 " + .@cardcount + "개의 카드가 박혀있네. 카드를 제거하려면 " + (.zenycost+(.@cardcount * .percardcost)) + "제니와 ^0000FF별의 조각^000000 1개, ^0000FF옐로우 젬스톤^000000 1개가 필요하다우.";
+		next;
+		if(select("여기...:그렇군요.") == 2) {
+			mes "[현인]";
+			mes "카드를 제거하고 싶다면 언제든 찾아오세요.";
+			close;
+		}
+		if((Zeny < (.zenycost+(.@cardcount * .percardcost))) || (countitem(1000) < 1) || (countitem(715) < 1)) {
+			mes "[현인]";
+			mes "필요한 재료가 충분하지 않은 듯 허이...";
+			close;
+		}
+		mes "[현인]";
+		mes "시작하기전에, 이 작업이 실패할 수도 있다는 걸 알려줄께요. 아이템이나 카드... 혹은 둘 다 파괴될 수도 있어요. 최우선으로 보호하고 싶은게 뭔가요?";
+		next;
+		switch(select("마음이 바귀었어요.:아이템이요.:카드요.")) {
+		case 1:
+			mes "[현인]";
+			mes "카드를 제거하고 싶다면 언제든 찾아오게나.";
+			close;
+		case 2:
+			set .@failtype,1;
+			break;
+		case 3:
+			set .@failtype,2;
+		}
+		mes "[현인]";
+		mes "그럼 시작할께요.";
+		set zeny, zeny - (.zenycost+(.@cardcount * .percardcost));
+		delitem 1000,1;
+		delitem 715,1;
+		
+		// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
+		// First value = Total failure chance (item and cards destroyed)
+		// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
+		// Third value = Harmless failure chance (all that's lost is your investment)
+
+		set .@failchance,rand(100);
+		if (.faildestroy==1) {
+			if(.@failchance < 1) {
+				next;
+				failedremovecards .@part,0;
+				mes "[현인]";
+				mes "어이쿠, 손이 미끄러졌네.";
+				next;
+				mes "[현인]";
+				mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비";
+				next;
+				mes "[현인]";
+				mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비와 카드 모두 파괴되버렸네요..";
+				close;
+			}
+
+			if(.@failchance < 3) {
+				if (.@failtype == 1) {
+					next;
+					failedremovecards .@part,1;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네.";
+					next;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비";
+					next;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비는 괜찮네요. 비록 카드는 사라졌지만...";
+					close;
+				}
+
+				if (.@failtype == 1) {
+					next;
+					failedremovecards .@part,2;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네.";
+					next;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비";
+					next;
+					mes "[현인]";
+					mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비가 파괴되버렸구려... 비록 카드는 무사하지만...";
+					close;
+				}
+			}
+		}
+
+		if(.@failchance < 5) {
+			next;
+			failedremovecards .@part,3;
+			mes "[현인]";
+			mes "어이쿠, 손이 미끄러졌네.";
+			next;
+			mes "[현인]";
+			mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비";
+			next;
+			mes "[현인]";
+			mes "어이쿠, 손이 미끄러졌네. 미안해요... 장비와 카드 모두 무사하네요..";
+			mes "다행이구려..";
+			close;
+		}
+		next;
+		successremovecards .@part;
+		mes "[현인]";
+		mes "성공이네. 여기 카드와 아이템일세. 잘가게나.";
+		close;
+	case 2:
+		mes "[현인]";
+		mes "필요한 제니는 "+.zenycost+"이고, 한 아이템에서 제거되는 카드가 더 있다면 추가로 "+.percardcost+"제니가 드오. 또... 별의 조각과 옐로우 젬스톤이 듭니다.";
+		close;
+	case 3:
+		mes "[현인]";
+		mes "카드를 제거하고 싶다면 언제든 찾아오게나.";
+		close;
+	}
+}
+
+
+// 배치
+//============================================================
+prt_gld,175,136,4	duplicate(카드제거사)	카드제거사#eA_prtin	1_F_ORIENT_04

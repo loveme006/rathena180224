@@ -1,0 +1,3 @@
+// Internal default is limited to 128 lines.  If you need more, you will need to modify the MOTD_LINE_SIZE definition in pc.c
+사용 가능한 명령어 : @로드, @아이템정보, @몹정보, @분포, @누구드롭, @오토루팅, @오토루팅아이디, @오토루팅타입, @자동거래, @파장변경, @길마변경
+건의사항은 우편을 통해 "백신"에게 보내주세요.

@@ -1,0 +1,524 @@
+//===== rAthena Script ======================================= 
+//= Eclage Instance Script
+//===== By: ================================================== 
+//= Dastgir
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Eclage Interior Instance
+//===== Additional Comments: ================================= 
+//= 1.0 Converted from the official Aegis script. [Dastgir]
+//= 1.1 Converted from Hercules script to rAthena script & Small bug fix. [Skorm]
+//= 1.2 無名[한글화] 및 선행 퀘스트 관련 변수 주석
+//============================================================ 
+
+ecl_hub01,132,12,3	script	고위 라피네족#tl02	435,{
+	.@party_id = getcharid(1);
+	.@md_name$ = "Eclage Interior";
+
+	if (.@party_id == 0 || getpartyleader(.@party_id,2) != getcharid(0))
+	{
+		mes "-! 경고 !-";
+		mes "오직 파티 리더만 생성이 가능합니다.";
+		close;
+	}
+
+//	if(ep14_2_mylord == 29) 
+	{
+		mes "[쉬나임]";
+		mes "이곳은 오브의 빛으로 유지 됩니다.";
+		mes "만약 시장을 지지 한다면 신중해야 합니다.";
+		next;
+		switch(select("입장한다.:취소."))
+		{
+			case 1:
+				if(instance_create(.@md_name$) < 0)
+				{
+					mes "[쉬나임]";
+					mes "얼마전 시장이 파견한 군인이 있습니다.";
+					mes "그들을 방해 하지 않는걸 희망합니다.";
+					close;
+				}
+
+				mes "[쉬나임]";
+				mes "내부 보안으로 인해";
+				mes "잠시 준비를 해야 합니다.";
+				mes "기다려주세요.";
+				close;
+			case 2:
+				mes "[쉬나임]";
+				mes "쉽지 않네요.";
+				close;
+		}
+	}
+	mes "[고위 라피네족]";
+	mes "음? 이 방?";
+	mes "걱정하지말아요.";
+	close;
+
+}
+
+ecl_hub01,130,15,0	script	닫혀 있는 문.	844,{
+	
+	//if(ep14_2_mylord == 29)
+	{
+		mes "이 문은 오브의 천장으로";
+		mes "연결 됩니다.";
+		mes "오브가 더 아름답게 보이도록 조명이 설치되는 장소이기도합니다.";
+		next;
+		if(select("입장한다.:취소.") == 1)
+		{
+			.@party_id = getcharid(1);
+			.@md_name$ = "Eclage Interior";
+			if(.@party_id == 0 || getpartyleader(.@party_id,2) != getcharid(0))
+			{
+				mes "-! 경고 !-";
+				mes "오직 파티 리더만 입장이 가능합니다.";
+				close;
+			}
+
+			switch(instance_enter(.@md_name$))
+			{
+				case IE_OTHER:
+					mes "알수 없는 오류.";
+					close;
+				case IE_NOINSTANCE:
+					mes "닫혀 있습니다.";
+					close;
+				case IE_OK:
+					announce getpartyname(getcharid(1)) +" 의 파티원 "+strcharinfo(0)+" 님이 "+.@md_name$+" 던전에 입장합니다.",bc_blue|bc_all;
+					end;
+				default:
+			}
+		}
+		else	close;
+	}
+}
+
+1@ecl,58,69,3	script	쉬나임#ecl01	435,{
+	mes "[쉬나임]";
+	mes ".. 무슨 일이죠?";
+	mes "왜 시장이 보낸 추가 병력을";
+	mes "공격 했습니까????";
+	next;
+	select("뭐...?:나는 괴물과 싸웠다.!");
+	mes "[쉬나임]";
+	mes "그건 중요하지 않아요.";
+	mes "여기서 의뢰를 취소합니다..";
+	mes "당신은 배신자에요.";
+	specialeffect EF_BEGINSPELL3;
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "아..아니야!!!";
+	specialeffect2 EF_LORD;
+	percentheal -99,0;
+	soundeffect "wander_man_move.wav",1;
+	sc_start SC_BLIND,60000,0;
+	close2;
+	warp instance_mapname("1@ecl"),146,95;
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@ecl,51,64,1	script	알수없는 생명체#1	2375,{
+	end;
+}
+1@ecl,43,67,3	duplicate(알수없는 생명체#1)	알수없는 생명체#2	2375,0,0
+1@ecl,55,80,3	duplicate(알수없는 생명체#1)	알수없는 생명체#3	2375,0,0
+1@ecl,60,75,3	duplicate(알수없는 생명체#1)	알수없는 생명체#4	2375,0,0
+
+1@ecl,42,80,5	script	알수없는 생명체#5	2376,{
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+1@ecl,48,86,3	duplicate(알수없는 생명체#5)	알수없는 생명체#6	2376,0,0
+1@ecl,58,82,3	duplicate(알수없는 생명체#5)	알수없는 생명체#7	2376,0,0
+1@ecl,56,88,3	duplicate(알수없는 생명체#5)	알수없는 생명체#8	2376,0,0
+
+1@ecl,53,83,0	script	#sndmaster	HIDDEN_WARP_NPC,10,10,{
+	end;
+
+OnInstanceInit:
+	'mob_summoned = 0;
+	disablenpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnEnable:
+	sleep 1000;
+    mapannounce instance_mapname("1@ecl"),"경고: 조명 실에서 이상이 발생 했습니다.",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+	sleep 2000;
+    mapannounce instance_mapname("1@ecl"),"의심스러운 생물: 크.크......캬아아아!!",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+	hideoffnpc instance_npcname("알수없는 생명체#5");
+	hideoffnpc instance_npcname("알수없는 생명체#6");
+	hideoffnpc instance_npcname("알수없는 생명체#7");
+	hideoffnpc instance_npcname("알수없는 생명체#8");
+	sleep 3000;
+	hideonnpc instance_npcname("#sndmaster");
+	end;
+
+OnMyMobDead:
+	if (mobcount(instance_mapname("1@ecl"),instance_npcname("#sndmaster")+"::OnMyMobDead") == 0) 
+	{
+		donpcevent instance_npcname("쉬나임#ecl01")+"::OnEnable";
+		mapannounce instance_mapname("1@ecl"),"쉬나임: 저도 들어왔어요.",bc_map,"0xffff00"; //FW_NORMAL 12 0 0
+	}
+	end;
+
+OnTouch:
+	if ('mob_summoned > 1) end;
+    mes "오브 근처의 침입자를 제거하라!, 이상한 외모를 가진 다른 생물이 접근한다!.";
+    next;
+    mes "우리는 그들과 대화 할 수 없었습니다. 주변을 둘러보고 동료들이 쓰러졌다는 사실을 알게 된 후 화가 나 보였습니다.";
+    next;
+    mes "[" + strcharinfo(0) + "]";
+    mes "마치 모로크의 화신처럼 보이는군..";
+    mes "우연일 뿐인가..";
+    next;
+    mes "[마왕의 수하]";
+    mes "크르르...크크크!!!";
+    mes "캬아악!";
+    next;
+    mes "전투를 피할수 없다!";
+    mes "나를 죽이려 하고 있어!";
+	close2;
+	hideonnpc instance_npcname("알수없는 생명체#5");
+	hideonnpc instance_npcname("알수없는 생명체#6");
+	hideonnpc instance_npcname("알수없는 생명체#7");
+	hideonnpc instance_npcname("알수없는 생명체#8");
+	disablenpc instance_npcname("알수없는 생명체#5");
+	disablenpc instance_npcname("알수없는 생명체#6");
+	disablenpc instance_npcname("알수없는 생명체#7");
+	disablenpc instance_npcname("알수없는 생명체#8");
+	.@eclmap$ = instance_mapname("1@ecl");
+	.@sndmaster$ = instance_npcname("#sndmaster");
+	monster .@eclmap$,42,80,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,48,86,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,59,82,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,56,88,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,39,72,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,42,69,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,47,64,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	monster .@eclmap$,50,60,"마왕의 수하",2376,1,.@sndmaster$+"::OnMyMobDead";
+	'mob_summoned = 2;
+    end;
+}
+
+1@ecl,57,65,0	script	#event	139,5,5,{
+	end;
+OnTouch:
+	if ('mob_summoned > 0) end;
+	.@eclmap$ = instance_mapname("1@ecl");
+	.@eventname$ = instance_npcname("#event");
+	mes "안쪽 에는 아무것없다.";
+	mes "방 중앙에있는 원형 장비에서 빛이 나오고 있습니다..";
+	next;
+	mes "[의심스러운 생명체]";
+	mes "케케케케케......";
+	next;
+	mes "알수 없는 생물체들이 접근하고 있습니다.";
+	mes "그들은 놀란듯 하지만 여전히 대화하기 어렵습니다..";
+	next;
+	mes "[의심스러운 생명체]";
+	mes "캬아아...케...케아악!!";
+	next;
+	mes "몇몇은 공격을 시작 하려는것 같습니다.";
+	mes "우리는 싸우는 것을 피할수 없습니다.!";
+	close2;
+	hideonnpc instance_npcname("알수없는 생명체#1");
+	hideonnpc instance_npcname("알수없는 생명체#2");
+	hideonnpc instance_npcname("알수없는 생명체#3");
+	hideonnpc instance_npcname("알수없는 생명체#4");
+	disablenpc instance_npcname("알수없는 생명체#1");
+	disablenpc instance_npcname("알수없는 생명체#2");
+	disablenpc instance_npcname("알수없는 생명체#3");
+	disablenpc instance_npcname("알수없는 생명체#4");
+	monster .@eclmap$,51,64,"수상한 존재",2375,1,.@eventname$+"::OnMyMobDead";
+	monster .@eclmap$,43,67,"수상한 존재",2375,1,.@eventname$+"::OnMyMobDead";
+	monster .@eclmap$,55,80,"수상한 존재",2375,1,.@eventname$+"::OnMyMobDead";
+	monster .@eclmap$,60,75,"수상한 존재",2375,1,.@eventname$+"::OnMyMobDead";
+	'mob_summoned = 1;
+	end;
+
+OnMyMobDead:
+	if (mobcount(instance_mapname("1@ecl"),instance_npcname("#event")+"::OnMyMobDead") == 0) {
+		enablenpc instance_npcname("#sndmaster");
+		donpcevent instance_npcname("#sndmaster")+"::OnEnable";
+	}
+	end;
+}
+
+1@ecl,148,97,3	script	에이반트#	618,{
+	mes "[에이반트]";
+	mes "이봐, 나좀 봐!";
+	mes "너 내 아들의 친구 맞지?";
+	mes "그들이 우리를 가뒀어!";
+	cutin "avant01",1;
+	next;
+	mes "[에이반트]";
+	mes "어떻게 된거야?";
+	mes "어떤 소리가 들려왔어.";
+	mes "그리고 네가 여기로 왔지.";
+	next;
+	if (select("당신 때문이야!:슬프네요...") == 1) {
+		mes "[에이반트]";
+		mes "무슨 소릴 하는지 모르겠군.";
+		mes "정리좀 해봐!!";
+		next;
+	}
+	mes "[에이반트]";
+	mes "... 무슨 일이지?";
+	mes "그러니까 쉬나임이 그랬 다는건가?";
+	next;
+	mes "[에이반트]";
+	mes "하하...하하하 아하하하";
+	mes "그가 나를 가뒀어?";
+	mes "나 에이반트를? 인간을? 하하하하";
+	cutin "avant02",1;
+	next;
+	select("무슨뜻이지?");
+	mes "[에이반트]";
+	mes "난 오브의 능력에 대해 연구를 하고 있었지.";
+	mes "하지만 쉔은 날 독촉 하기만 했어.";
+	cutin "avant01",1;
+	next;
+	mes "[에이반트]";
+	mes "나는 오브의 아름다움에 대해";
+	mes "생각하기 시작했고";
+	next;
+	mes "[에이반트]";
+	mes "오브의 내부에 어떤 종류의 힘이";
+	mes "축적되어 있는지 궁금해했지....";
+	mes "그리고 나는 오브의 힘의 원리에";
+	mes "의문을 품기 시작했지..";
+	next;
+	mes "[에이반트]";
+	mes "모든 라피네족은 오브를";
+	mes "공기와 물처럼 자연스러운 것으로";
+	mes "생각하지만";
+	next;
+	mes "[에이반트]";
+	mes "나는 다르게 인식하고";
+	mes "그 기원을 조사하는 최초의 사람이었지..";
+	mes "맞아....";
+	mes ".....쉔. 그는 내 호기심을 자극했지.";
+	next;
+	mes "[에이반트]";
+	mes "공기와 물을 알수 없는 기원을";
+	mes "사람들과 조사했었지....";
+	mes "좋아.. 흥미 롭군!";
+	cutin "avant02",1;
+	next;
+	mes "[에이반트]";
+	mes "하...하하하...";
+	mes "...나는 나를 이용했다는 사실에";
+	mes "너무 화가나...";
+	next;
+	mes "[에이반트]";
+	mes "하지만 문제는";
+	mes "내가 우리 국민들에게";
+	mes "무언가를 저질렀다는 거야..";
+	mes "나는 지금 꽤 화가 나는 것 같아..";
+	next;
+	select("양심이 가책이 없습니까?");
+	mes "[에이반트]";
+	mes "너는 뭐가 진실이라고 생각하지?";
+	mes "내 아들 때문인가?";
+	mes "그럼 난 할말이 없어..";
+	cutin "avant01",1;
+	next;
+	mes "[에이반트]";
+	mes "...하....";
+	mes "재미 없군...";
+	mes "재미 없어. 더 할말이 없군...";
+	next;
+	mes "[에이반트]";
+	mes "......";
+	mes "누가 온것 같군...";
+	next;
+	cutin "minuel01",4;
+	mes "[미누엘]";
+	mes "" + strcharinfo(0) + "님,";
+	mes "조명 실에서 일어난";
+	mes "최근 사건에 대한 혐의로 구속되었지만,";
+	mes "무죄를 증명할 증인이 나타났어요.";
+	next;
+	mes "[미누엘]";
+	mes "자세히 알지는 못하지만,";
+	mes "당신이 잘못했다고 생각하진 않는거 같아요.";
+	next;
+	mes "[미누엘]";
+	mes "심한 상처를 입은것 같으니 치료실로 가야겠어요.";
+	next;
+	mes "[미누엘]";
+	mes "난 큰 문제는 아니라고 생각해요.";
+	mes "...희망을 가져요..";
+	mes "가죠 제가 안내 할게요.";
+	close2;
+	cutin "",255;
+	warp "1@ecl",146,29;
+	end;
+}
+	
+1@ecl,148,29,3	script	로키#ecl01	512,{
+	mes "[로키]";
+	mes "내 앞에있는 이 남자는";
+	mes "나보다 훨씬 더 궁금한것 같습니다.";
+	mes "왜 나에게 먼저 설명합니까?";
+	close;
+}	
+	
+1@ecl,147,30,3	script	니드호그#ecl01	510,{
+	mes "[수호자 니드호그]";
+	mes "네가 먼저 히시 한테 말해야한다고 생각해요..";
+	close;
+}
+	
+1@ecl,144,27,5	script	히시#ecl01	623,{
+	cutin "hisie01",0;
+	mes "[히시]";
+	mes "무슨 일이 있었는지 정확히 말해 줄 수 있어요?";
+	next;
+	select("나는 몬스터와 싸웠다..");
+	cutin "hisie03",0;
+	mes "[히시]";
+	mes "몬스터? 모로크의 부하?";
+	mes "당신이 죽이려고 한 것은 병사들,";
+	mes "라피네인들 이었어.!!";
+	mes "거기서 무슨 일이 생긴거지?";
+	npcskill "AL_HEAL",9,99,80;
+	next;
+	cutin "",255;
+	mes "[로키]";
+	mes "이것 때문입니다.";
+	mes "" + strcharinfo(0) + "님의 몸 안쪽에 있었습니다. -";
+	mes "이것은 쉬나임의 흔적입니다.";
+	next;
+	mes "로키의 손바닥에는 작고 얇고 건조한 작은 가시가 놓여 있었다.";
+	next;
+	cutin "hisie03",0;
+	mes "[히시]";
+	mes "쉬나임, 군수참모?";
+	mes "왜 그가 관련이 있다는거죠?";
+	npcskill "AL_HEAL",9,99,80;
+	next;
+	cutin "",255;
+	mes "[로키]";
+	mes "쉬나임은 모로크 의 부하 중";
+	mes "하나입니다..";
+	next;
+	mes "[로키]";
+	mes "그의 힘은 다른 사람을 직접";
+	mes "통제하거나 신체의 일부를 통해";
+	mes "간접적으로 영향을 끼치도록 합니다.";
+	next;
+	select("잠시 생각좀.....");
+	mes "[" + strcharinfo(0) + "]";
+	mes "맞아.여기에 오기 바로 전에,";
+	mes "쉬나임은 나에게 손을 내밀었어요.";
+	mes "그리고 내가 그의 손을 잡았을 때 나는 불꽃을 느꼈습니다..";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "나는 그것이 단지 착각이라고 생각하고 그것을 무시했었는데. 아마 그 때 그가 ...";
+	next;
+	mes "[니드호그]";
+	mes "아마 맞을거에요.";
+	mes "그들은 속임수를 사용합니다..";
+	mes "이 가시는 아마 당신의 판단을 흐리게 만들었을꺼에요.";
+	next;
+	cutin "hisie03",0;
+	mes "[히시]";
+	mes "그래서 그가 우리 모두를";
+	mes "속였다는건가요?";
+	mes "군수참모는 오랫동안 우리와 함께 머물렀던 라피네 입니다! 그럴리 없어요.";
+	npcskill "AL_HEAL",9,99,80;
+	next;
+	cutin "",255;
+	mes "[로키]";
+	mes "쉬나임이 좋은 일을 많이";
+	mes "했을수도있습니다.";
+	mes "어쨌든,이 사람은 죄가 없습니다.";
+	mes "나는 그것을 증명할 수 있습니다.";
+	next;
+	mes "[니드호그]";
+	mes "나 또한..이그드라실의 후예의";
+	mes "이름으로 보증합니다.";
+	mes "" + strcharinfo(0) + "- 님은 결코 그런분이 아닙니다.";
+	next;
+	cutin "hisie02",0;
+	mes "[히시]";
+	mes "하...";
+	mes "하지만";
+	mes "상황이 통제 할 수 없게 .....";
+	mes "여튼 상황이 좋지 못하네요.";
+	next;
+	select("오브에 무슨 일이 일어 났습니까?");
+	mes "[히시]";
+	mes "내부 코어가 도난 당했습니다..";
+	mes "오브의 내부 코어가";
+	mes "사라 졌다는 것을 아무도 모릅니다.,";
+	next;
+	mes "[히시]";
+	mes "그게 바로 카르듀이가 여기 오지못한 이유입니다.";
+	npcskill "AL_HEAL",9,99,80;
+	next;
+	mes "[히시]";
+	mes "그리고 무엇보다 당신에게";
+	mes "병사들이 부상 당했습니다..";
+	next;
+	mes "[히시]";
+	mes "모두 다행히 죽지 않았지만,";
+	mes "대부분이 중상을 입었습니다.";
+	mes "지금의 상황은 그다지 좋지 않습니다.";
+	next;
+	cutin "",255;
+	mes "[로키]";
+	mes "누군가 책임을 져야하네요.";
+	mes "아마도..," + strcharinfo(0) + " 당신이겠지요.";
+	next;
+	cutin "hisie02",0;
+	mes "[히시]";
+	mes "......이 두분은 오브와";
+	mes "관련된 모든 혐의를 해결했습니다.";
+	next;
+	mes "[히시]";
+	mes "당신과 카르듀이는 책임을 피할 수 없습니다.";
+	mes "당신은 쉬나임을 붙잡아야 할 것입니다.";
+	npcskill "AL_HEAL",9,99,80;
+	next;
+	cutin "hisie01",0;
+	mes "[히시]";
+	mes "충분히 휴식을 취한것 같으니 이제 가죠.";
+	mes "카르듀이는 당신을 기다리고 있습니다";
+	mes "두분은 뭘 할건가요?";
+	next;
+	cutin "",255;
+	mes "[로키]";
+	mes "우리는 걱정하지 마세요.";
+	mes "우리의 목적은 마신 모로크 입니다..";
+	mes "여기서 증거를 찾은 것만으로도 충분합니다..";
+	next;
+	cutin "hisie01",0;
+	mes "[히시]";
+	mes "도와 줘서 감사합니다.";
+	mes "우리는 지금 출발할겁니다.";
+	mes "가죠." + strcharinfo(0) + ".";
+//	ep14_2_mylord = 30;
+//	changequest 7450,7451;
+	close2;
+	cutin "",255;
+	warp "ecl_in03",57,76;
+	instance_destroy();
+	end;
+}

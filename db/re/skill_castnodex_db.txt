@@ -1,0 +1,81 @@
+// <Skill id>,<Cast>,<Delay (optional)>
+//
+// Cast:  0 - everything affects the skill's cast time
+//        1 - skill's cast time is not affected by dex
+//        2 - skill's cast time is not affected by statuses (Suffragium, etc)
+//        4 - skill's cast time is not affected by item bonuses (equip, cards)
+//
+// Delay: 0 - everything affects the skill's delay
+//        1 - skill's delay is not affected by dex
+//        2 - skill's delay is not affected by Magic Strings / Bragi
+//        4 - skill's delay is not affected by item bonuses (equip, cards)
+//
+// Note: Values are bit fields, add them up to combine their effects.
+// Note: Delay setting '1' only makes sense when delay_dependon_dex is enabled.
+// Example: 46,1,1 = Double Strafe's cast time and delay is not affected by dex.
+
+136,0,2	//AS_SONICBLOW#소닉 블로우#
+263,0,2	//MO_TRIPLEATTACK#육합권(六合拳)#
+272,0,2	//MO_CHAINCOMBO#연환전신장(連環全身掌)#
+273,0,2	//MO_COMBOFINISH#맹룡과강(猛龍誇强)#
+336,1	//WE_CALLPARTNER#당신이 보고싶어요#
+366,3	//HW_MAGICPOWER#마법력 증폭#
+370,1	//CH_PALMSTRIKE#맹호경파산 (猛虎硬派山)#
+371,0,2	//CH_TIGERFIST#복호권 (伏虎拳)#
+372,0,2	//CH_CHAINCRUSH#연주붕격 (聯柱崩擊)#
+394,0,2	//CG_ARROWVULCAN#애로우 발칸#
+403,3	//PF_MEMORIZE#메모라이즈#
+408,1	//WE_BABY#엄마 아빠 사랑해요#
+409,1	//WE_CALLPARENT#엄마 아빠 보고싶어요#
+410,1	//WE_CALLBABY#아가야 이리오렴#
+482,1	//PF_DOUBLECASTING#더블 캐스팅#
+462,1	//SL_KAIZEL#카이젤#
+496,1	//AM_TWILIGHT1#트와이라이트 파머시#
+497,1	//AM_TWILIGHT2#트와이라이트 파머시#
+498,1	//AM_TWILIGHT3#트와이라이트 파머시#
+512,3	//GS_TRACKING#트래킹#
+1014,1	//PR_REDEMPTIO#희생#
+
+5063,1	//WE_CALLALLFAMILY#우리가 함께라면#
+5064,1	//WE_ONEFOREVER#죽음도 우릴 갈라놓을 순 없어요#
+5065,1	//WE_CHEERUP#엄마 아빠 힘내세요#
+
+2012,7	//RK_CRUSHSTRIKE#크러쉬 스트라이크#
+2013,7	//RK_REFRESH#리프레쉬#
+2014,7	//RK_GIANTGROWTH#자이언트 그로쓰#
+2015,7	//RK_STONEHARDSKIN#스톤하드 스킨#
+2022,0,2	//GC_CROSSIMPACT#크로스 임팩트#
+2032,7	//GC_POISONSMOKE#포이즌 스모크#
+2234,7	//RA_FEARBREEZE#피어브리즈#
+//2267,7	//NC_SELFDESTRUCTION
+2268,7	//NC_SHAPESHIFT#셰이프 쉬프트#
+//2270,7	//NC_INFRAREDSCAN
+2271,7	//NC_ANALYZE#애널라이즈#
+2281,7	//NC_SILVERSNIPER#FAW 실버 스나이퍼#
+2282,7	//NC_MAGICDECOY#FAW 매직 디코이#
+2313,7	//LG_FORCEOFVANGUARD#포스 오브 뱅가드#
+2462,7	//SO_EL_ANALYSIS#4원소 분석#
+
+2534,7,7	//RETURN_TO_ELDICASTES#엘 디카스테스로의 귀환#
+2536,7,7	//ALL_GUARDIAN_RECALL#수호자의 부름#
+2537,0,7	//ALL_ODINS_POWER#오딘의 힘#
+3035,7,7	//ECLAGE_RECALL#에클라쥬 귀환#
+
+// Mercenary Skills
+8214,7	//MA_CHARGEARROW#차지 애로우#
+8215,7	//MA_SHARPSHOOTING#샤프 슈팅#
+8217,7	//ML_BRANDISH#브랜디쉬 스피어#
+8218,7	//ML_SPIRALPIERCE#스파이럴 피어스#
+8221,7	//ML_DEVOTION#헌신#
+8222,7	//MER_MAGNIFICAT#마나의 축복#
+8225,7	//MER_CRASH#크래쉬#
+8234,7	//MER_DECAGI#민첩성 감소#
+8235,7	//MER_SCAPEGOAT#희생양#
+8238,7	//MER_KYRIE#기리에 엘레이손#
+8240,7	//MER_INCAGI#민첩성 증가#
+
+// Guild Skills
+10010,3	//GD_BATTLEORDER#전투명령 하달#
+10011,3	//GD_REGENERATION#리제네레이션#
+10012,6	//GD_RESTORE#리스토어#
+10013,7	//GD_EMERGENCYCALL#긴급호출#

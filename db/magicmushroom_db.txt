@@ -1,0 +1,31 @@
+// Magic Mushroom Database
+// List of skills that are randomly used through Magic Mushroom status change.
+//
+// Structure of Database:
+// SkillID{,RemoveFlag}
+//
+// - To remove entry by importing, put 1 value on 'RemoveFlag'
+
+7	// 매그넘 브레이크
+8	// 인듀어
+10	// 사이트
+24	// 루아흐
+32	// 시그넘 크루시스
+33	// 안젤루스
+45	// 집중력 향상
+61	// 오토 카운터
+74	// 마니피캇
+110	// 해머폴
+114	// 맥시마이즈 파워
+142	// 응급 치료
+150	// 백 슬라이딩
+151	// 돌 줍기
+157	// 에너지 코트
+249	// 오토 가드
+256	// 신의 뜻
+261	// 축기(畜氣)
+270	// 폭기(爆氣)
+326	// 비명지르기
+500	// 플립 더 코인
+527	// 다다미 뒤집기
+531	// 매미허물 벗기

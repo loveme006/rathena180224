@@ -1,0 +1,488 @@
+ve_in02,41,15,3	script	디트리히	84,{
+ if(countitem(757)>=5) goto aaa;
+ if(countitem(756)>=5) goto bbb;
+ npctalk strcharinfo(0) + "님, 정제할 원석이 부족합니다.";
+ end;
+
+aaa: delitem 757,5;
+ getitem 985,1;
+ goto aaa2;
+
+aaa2:
+ if(countitem(757)>=5) goto aaa;
+ npctalk strcharinfo(0) + "님, 가지고 있는 원석을 모두 정제 완료했습니다.";
+ end;
+
+bbb:
+ delitem 756,5;
+ getitem 984,1;
+ goto bbb2;
+
+bbb2:
+ if(countitem(756)>=5) goto bbb;
+ npctalk strcharinfo(0) + "님, 가지고 있는 원석을 모두 정제 완료했습니다.";
+ end;
+
+OnInit:
+ waitingroom "에르늄&오리정제",0;
+ end;
+}
+
+ve_in02,49,15,3	script	투구 제련	84,{
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_HEAD_TOP)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 투구를 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_HEAD_TOP)==50) goto aaaaa;
+ if ((countitem(985) < 1) || (Zeny < 20000)) goto noreq;
+ goto L_REFINE_5;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+L_REFINE_5:
+ if (getequippercentrefinery(EQI_HEAD_TOP)<=rand(100)) goto L_REFINE_6;
+ successrefitem EQI_HEAD_TOP;
+ emotion 21;
+ goto gg;
+   
+L_REFINE_6:
+ failedrefitem EQI_HEAD_TOP;
+ emotion 23;
+ goto gg;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 투구는 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+gg:
+ delitem 985,1;
+ set Zeny, Zeny-10000;
+ end;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+OnInit:
+ waitingroom "투구 제련",0;
+ end;
+}
+
+ve_in02,53,15,3	script	갑옷 제련	84,{
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_ARMOR)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 갑옷을 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_ARMOR)==50) goto aaaaa;
+ if ((countitem(985) < 1) || (Zeny < 20000)) goto noreq;
+ goto L_REFINE_5;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+L_REFINE_5:
+ if (getequippercentrefinery(EQI_ARMOR)<=rand(100)) goto L_REFINE_6;
+ successrefitem EQI_ARMOR;
+ emotion 21;
+ goto gg;
+
+L_REFINE_6:
+ failedrefitem EQI_ARMOR;
+ emotion 23;
+ goto gg;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 갑옷은 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+gg:
+ delitem 985,1;
+ set Zeny, Zeny-10000;
+ end;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+OnInit:
+ waitingroom "갑옷 제련",0;
+ end;
+}
+
+ve_in02,57,15,3	script	왼손(방패)무기 제련	84,{
+
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_HAND_L)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 왼손(방패)무기를 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_HAND_L)==50) goto aaaaa;
+ if (getequipweaponlv(EQI_HAND_L)==0) goto shield;
+ if (getequipweaponlv(EQI_HAND_L)==1) goto lv1;
+ if (getequipweaponlv(EQI_HAND_L)==2) goto lv2;
+ if (getequipweaponlv(EQI_HAND_L)==3) goto lv34;
+ if (getequipweaponlv(EQI_HAND_L)==4) goto lv34;
+
+shield:
+ if ((countitem(985) < 1) || (Zeny < 20000)) goto noreq;
+ delitem 985,1;
+ set Zeny, Zeny-20000;
+ goto refine;
+
+lv1:
+ if ((countitem(1010) < 1) || (Zeny < 100)) goto noreq;
+ delitem 1010,1;
+ set Zeny, Zeny-100;
+ goto refine;
+
+lv2:
+ if ((countitem(1011) < 1) || (Zeny < 300)) goto noreq;
+ delitem 1011,1;
+ set Zeny, Zeny-300;
+ goto refine;
+
+lv34:
+ if ((countitem(984) < 1) || (Zeny < 1000)) goto noreq;
+ delitem 984,1;
+ set Zeny, Zeny-1000;
+ goto refine;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 왼손(방패)무기는 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+refine:
+ if (getequippercentrefinery(EQI_HAND_L)<=rand(100)) goto Fail;
+ successrefitem EQI_HAND_L;
+ emotion 21;
+ end;
+Fail:
+ failedrefitem EQI_HAND_L;
+ emotion 23;
+ end;
+
+OnInit:
+ waitingroom "왼손(방패)무기제련",0;
+ end;
+}
+
+ve_in02,50,26,3	script	오른손무기 제련	84,{
+
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_HAND_R)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 오른손무기를 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_HAND_R)==50) goto aaaaa;
+ if (getequipweaponlv(EQI_HAND_R)==1) goto lv1;
+ if (getequipweaponlv(EQI_HAND_R)==2) goto lv2;
+ if (getequipweaponlv(EQI_HAND_R)==3) goto lv34;
+ if (getequipweaponlv(EQI_HAND_R)==4) goto lv34;
+
+lv1:
+ if ((countitem(1010) < 1) || (Zeny < 100)) goto noreq;
+ delitem 1010,1;
+ set Zeny, Zeny-100;
+ goto refine;
+
+lv2:
+ if ((countitem(1011) < 1) || (Zeny < 300)) goto noreq;
+ delitem 1011,1;
+ set Zeny, Zeny-300;
+ goto refine;
+
+lv34:
+ if ((countitem(984) < 1) || (Zeny < 1000)) goto noreq;
+ delitem 984,1;
+ set Zeny, Zeny-1000;
+ goto refine;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 오른손무기는 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+refine:
+ if (getequippercentrefinery(EQI_HAND_R)<=rand(100)) goto Fail;
+ successrefitem EQI_HAND_R;
+ emotion 21;
+ end;
+Fail:
+ failedrefitem EQI_HAND_R;
+ emotion 23;
+ end;
+
+OnInit:
+ waitingroom "오른손무기 제련",0;
+ end;
+}
+
+ve_in02,54,26,3	script	걸칠것 제련	84,{
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_GARMENT)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 걸칠것을 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_GARMENT)==50) goto aaaaa;
+ if ((countitem(985) < 1) || (Zeny < 20000)) goto noreq;
+ goto L_REFINE_5;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+L_REFINE_5:
+ if (getequippercentrefinery(EQI_GARMENT)<=rand(100)) goto L_REFINE_6;
+ successrefitem EQI_GARMENT;
+ emotion 21;
+ goto gg;
+
+L_REFINE_6:
+ failedrefitem EQI_GARMENT;
+ emotion 23;
+ goto gg;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 걸칠것은 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+gg:
+ delitem 985,1;
+ set Zeny, Zeny-10000;
+ end;
+
+OnInit:
+ waitingroom "걸칠것 제련",0;
+ end;
+}
+
+ve_in02,57,26,3	script	신발 제련	84,{
+ if (new!=1) goto aaa;
+ if (getequipisequiped(EQI_SHOES)) goto start;
+ npctalk strcharinfo(0) + "님, 제련하려면 먼저 제련하고자 하는 신발을 착용해주세요.";
+ end;
+
+start:
+ if (getequiprefinerycnt(EQI_SHOES)==50) goto aaaaa;
+ if ((countitem(985) < 1) || (Zeny < 20000)) goto noreq;
+ goto L_REFINE_5;
+
+aaa:
+ npctalk"클릭한번만으로 제련이 됩니다. 안전제련 이상 아이템도 한번에 제련되니 조심해 주세요";
+ set new,1;
+ end;
+
+L_REFINE_5:
+ if (getequippercentrefinery(EQI_SHOES)<=rand(100)) goto L_REFINE_6;
+ successrefitem EQI_SHOES;
+ emotion 21;
+ goto gg;
+
+L_REFINE_6:
+ failedrefitem EQI_SHOES;
+ emotion 23;
+ goto gg;
+
+noreq:
+ npctalk "재료 혹은 제니가 부족합니다.";
+ end;
+
+aaaaa:
+ npctalk strcharinfo(0) + "님이 착용중인 신발은 최대 제련에 도달해 더 이상 제련할 수 없습니다.";
+ end;
+
+gg:
+ delitem 985,1;
+ set Zeny, Zeny-10000;
+ end;
+
+OnInit:
+ waitingroom "신발 제련",0;
+ end;
+}
+ve_in02,45,26,3	script	수리	85,{
+    set @repairprice,5000;
+    mes "[똬뚤]";
+    mes "나는 부서진 장비를 고치는 대장장이 똬뚤.";
+    mes "고치고 싶은 장비를 말해봐.";
+    set @broken1,getbrokenid(1);
+    set @broken2,getbrokenid(2);
+    set @broken3,getbrokenid(3);
+    set @broken4,getbrokenid(4);
+    set @broken5,getbrokenid(5);
+    set @broken6,getbrokenid(6);
+    set @broken7,getbrokenid(7);
+    set @broken8,getbrokenid(8);
+    set @broken9,getbrokenid(9);
+    set @broken10,getbrokenid(10);
+    next;
+    if(@broken1==NULL) goto L_CANCEL_3;
+    menu    getitemname(@broken1),REPAIR1,getitemname(@broken2),REPAIR2,getitemname(@broken3),REPAIR3,
+        getitemname(@broken4),REPAIR4,getitemname(@broken5),REPAIR5,getitemname(@broken6),REPAIR6,
+        getitemname(@broken7),REPAIR7,getitemname(@broken8),REPAIR8,getitemname(@broken9),REPAIR9,
+        getitemname(@broken10),REPAIR10;
+    REPAIR1:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(1);
+            goto L_CLOSE;
+    REPAIR2:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(2);
+            goto L_CLOSE;
+    REPAIR3:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(3);
+            goto L_CLOSE;
+    REPAIR4:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(4);
+            goto L_CLOSE;
+    REPAIR5:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(5);
+            goto L_CLOSE;
+    REPAIR6:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(6);
+            goto L_CLOSE;
+    REPAIR7:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(7);
+            goto L_CLOSE;
+    REPAIR8:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(8);
+            goto L_CLOSE;
+    REPAIR9:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(9);
+            goto L_CLOSE;
+    REPAIR10:
+        mes "[똬뚤]";
+        mes "이걸 고칠래?" + getitemname(@broken1) + ".";
+        mes "이것을 고치려면, 5000제니가 필요해.";
+        mes "계속할래?";
+        next;
+        menu "Yes",-,"No",L_CANCEL_2;
+            set Zeny,Zeny-@repairprice;
+            repair(10);
+            goto L_CLOSE;
+
+L_CANCEL_1:
+    mes "[똬뚤]";
+    mes "똬뚤 좋아!!!";
+    mes "나는 운이 없다 똬뚤~";
+    goto L_CLOSE;
+L_CANCEL_2:
+    mes "[똬뚤]";
+    mes "똬뚤!!!! 맨!!!!";
+    goto L_CLOSE;
+L_CANCEL_3:
+    mes "[똬뚤]";
+    mes "똬뚤~~~~~~~~";
+    goto L_CLOSE;
+L_CLOSE:
+    close;
+}
+prt_gld,171,136,4	script	제련소	84,{
+	mes "[제련소 이동]";
+	mes "제련소에서는 장비를 제련하거나 수리할 수 있습니다.";
+	mes "";
+	mes "가시겠습니까?";
+	next;
+	menu "간다.",-,"가지 않는다.",Cancel;
+	warp "ve_in02.gat",39,21;
+	close;
+
+Cancel:
+	
+	close;
+}

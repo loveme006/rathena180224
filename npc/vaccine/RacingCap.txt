@@ -1,0 +1,308 @@
+prt_gld,131,155,4	script	몬스터레이싱 협회 직원	10056,{
+	mes "[협회 직원]";
+	mes "에... 파견 나왔습니다...";
+	mes "...몬스터 레이싱 협회에서...";
+	next;
+	mes "[협회 직원]";
+	mes "여기는 왜?";
+	mes "몬스터 레이싱도 없는 거에요?";
+	next;
+	.@menu = select("몬스터 레이싱이요?:메달로 교환한다.:상품으로 교환한다.:취소"));
+
+	switch(.@menu) {
+		case 1:
+			mes "[협회 직원]";
+			mes "이 동네는 몬스터 레이싱도 없는거야?";
+			mes "뒤떨어지긴...";
+			next;
+			mes "[협회 직원]";
+			mes "그 때문에 협회에서 새로 사업을 확장하기 위해 사전조사 차 나를 보낸거야.";
+			mes "대체 나 혼자 보내놓고 뭘 하라는건지...";
+			next;
+			mes "[협회 직원]";
+			mes "하지만 나는 엄청 유능한 슈퍼 엘리트지.";
+			mes "내 뛰어난 눈썰미로 근처를 보아하니, 여기는 활발한 차원 이동으로 과거의 자원이 풍부하겠군!";
+			next;
+			mes "[협회 직원]";
+			mes "덕분에 협회에서 몬스터 레이싱 사업을 확장할 때 현지화 하기가 수월하겠어.";
+			next;
+			mes "[협회 직원]";
+			mes "여기에서 구할 수 있는 과거 자원을 협회에 보내야 하는데 혹시 가지고 있는 자원 좀 없나?";
+			next;
+			mes "[협회 직원]";
+			mes "다행히도 몬스터 레이싱에서 지급되는 상품 샘플을 조금 가져왔는데 말이야, 과거 자원을 가져온다면 이것들이랑 교환해주지.";
+			next;
+			mes "[협회 직원]";
+			mes "과거 자원에 따라 가치가 다르니까 우선 메달로 바꿔줄게.";
+			mes "그리고 그 메달을 상품이랑 바꾸자. 어때?";
+			close;
+
+		case 2:
+			mes "[협회 직원]";
+			mes "협회에서는 과거 자원의 가치를 이렇게 정했어.";
+			mes "^FF0000";
+			mes "-자원 환율-";
+			mes "  자원명       메달 갯수";
+			mes "시간의 결정       >> 8";
+			mes "응고된 마력       >> 2";
+			mes "오염된 마력       >> 10";
+			mes "어둠의 재          >> 5";
+			mes "마법대회 주화    >> 1";
+			mes "부서진 마법석    >> 3";
+			mes "명예의 증표       >> 4";
+			mes "고대원한           >> 2";
+			mes "지터벅의 이빨    >> 4";
+			mes "흙빛의 조각       >> 2";
+			mes "찰스턴 부품       >> 5";
+			mes "피묻은 코인       >> 1";
+			mes "기간테스의 파편 >> 6";
+			mes "용사의 증표       >> 20";
+			mes "마신의 영혼조각 >> 20";
+			mes "^000000";
+			next;
+			mes "[협회 직원]";
+			mes "어때? 바꿀만한 자원이 있어?";
+			next;
+			set .@j, 0;
+			setarray .@Resource[0],6607,6608,6755,6000,6671,6905,6919,6499,6719,6672,6752,7642,6803,6684,6715;
+			setarray .@ResourceValue[0],8,2,10,5,1,3,4,2,4,2,5,1,6,20,20;
+			for(.@i = 0; .@i < 15; .@i++) {
+				if(countitem(.@Resource[.@i]) > 0) {
+					.@menu_$ = .@menu_$ + getitemname(.@Resource[.@i]) + ":";
+					.@M[.@j] = .@Resource[.@i];
+					.@MV[.@j++] = .@ResourceValue[.@i];
+				}
+			}
+			.@menu_$ = .@menu_$ + "교환하지 않는다.";
+
+			.@Choice = select(.@menu_$) - 1;
+			if(.@Choice == 15) goto Cancel;
+			mes "[협회 직원]";
+			mes "^007700"+getitemname(.@M[.@Choice])+"^000000? 몇 개 바꿀래?";
+			next;
+			input .@amount;
+			if(countitem(.@M[.@Choice]) < .@amount) goto NoCoin;
+			delitem .@M[.@Choice],.@amount;
+			getitem 25273, .@amount * .@MV[.@Choice];
+			mes "[협회 직원]";
+			mes "그래, 원하는 만큼 바꿔줄게.";
+			mes "더 바꾸고 싶으면 다시 찾아오라구.";
+			close;
+		case 3:
+			mes "[협회 직원]";
+			mes "협회에서 가져온 상품은 이렇게 있어.";
+			mes "^FF0000";
+			mes "-상품 목록-";
+			mes "  상품명        메달 갯수";
+			mes "낡은 카드첩            >> 30";
+			mes "고급 무기상자         >> 30";
+			mes "바다신의 분노         >> 50";
+			mes "테이밍 선물세트      >> 50";
+			mes "독약병 상자            >> 100";
+			mes "레이싱 캡               >> 2000";
+			mes "무기8제련보장권       >> 2000";
+			mes "무기9제련보장권       >> 3000";
+			mes "무기10제련보장권     >> 5000";
+			mes "무기11제련보장권     >> 8000";
+			mes "방어구8제련보장권   >> 3000";
+			mes "방어구9제련보장권   >> 6000";
+			mes "방어구10제련보장권  >> 10000";
+			mes "방어구11제련보장권  >> 20000";
+			mes "-레이싱캡 인챈트-";
+			mes "4번 슬롯                 >> 50";
+			mes "3번 슬롯                 >> 75";
+			mes "2번 슬롯                 >> 120";
+			mes "2번 슬롯 강화          >> 350";
+			mes "초기화                    >> 80";
+			mes "^000000";
+			next;
+			mes "[협회 직원]";
+			mes "어때? 바꾸고싶은 상품이 있어?";
+			next;
+			.@menu1 = select("교환하지 않는다.:낡은 카드첩:고급 무기상자:바다신의 분노:테이밍 선물세트:독약병 상자:레이싱 캡:무기8제련보장권:무기9제련보장권:무기10제련보장권:무기11제련보장권:방어구8제련보장권:방어구9제련보장권:방어구10제련보장권:방어구11제련보장권:4번 슬롯 인챈트:3번 슬롯 인챈트:2번 슬롯 인챈트:2번 슬롯 인챈트 강화:인챈트 초기화");
+			setarray .@Sample[0],616,12623,6423,12105,12550,1,6229,6228,6993,6238,6233,6232,6994,6239,2,3,4,5,6;
+			setarray .@SampleValue[0],30,30,50,50,100,2000,2000,3000,5000,8000,3000,6000,10000,20000,50,75,120,350,80;
+			switch(.@menu1) {
+				case 1:
+					goto Cancel;
+					end;
+				case 7:
+					if(countitem(25273) < .@SampleValue[.@menu1-2]) goto NoCoin;
+					mes "[협회 직원]";
+					mes "레이싱 캡은 직업마다 다른걸 사용해서 말이야, 누가 사용할거지?";
+					next;
+					.@menu2 = select("취소:미케닉:제네릭:길로틴 크로스:쉐도우 체이서:워록:소서리:룬나이트:로얄가드:아크비숍:수라:레인저:민스트럴:원더러:건슬링거:닌자:슈퍼노비스:소환사");
+					if(.@menu2 == 1) goto Cancel;
+					set .@item,19187 + .@menu2;
+					break;
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 8:
+				case 9:
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 15:
+					if(countitem(25273) < .@SampleValue[.@menu1-2]) goto NoCoin;
+					set .@item,.@Sample[.@menu1-2];
+					break;
+				case 16:
+					set .@st1,rand(0,2);
+					set .@st10,rand(0,5);
+					set .@slot4,4700+(.@st10*10)+.@st1;
+					goto Enchant;
+					end;
+				case 17:
+					set .@st1,rand(0,3);
+					set .@st10,rand(0,5);
+					set .@slot3,4700+(.@st10*10)+.@st1;
+					goto Enchant;
+					end;
+				case 18:
+					setarray .@st[0],4811,4810,4815,4814,4818,4817,4832,4833,4863,4864,4869,4872;
+					.@rnd = rand(0, 15);
+					if(.@rnd > 11) 
+						set .@slot2,1;
+					else
+						set .@slot2,.@st[.@rnd];
+					goto Enchant;
+					end;
+				case 19:
+					if(getequipid(EQI_HEAD_TOP) < 19189 || getequipid(EQI_HEAD_TOP) > 19205) goto NoHead;
+					if(countitem(25273) < .@SampleValue[.@menu1-2]) goto NoCoin;
+					if(getequipcardid(EQI_HEAD_TOP,1) == 0) {
+						mes "[협회 직원]";
+						mes "...내가 강화할게 이건 아닌것 같고, 대신 강화해줄 것은... 네놈 뚝배기다!!";
+						close;
+					}
+					if(getequipcardid(EQI_HEAD_TOP,1) < 29310 || getequipcardid(EQI_HEAD_TOP,1) > 29357) {
+						mes "[협회 직원]";
+						mes "이건 강화 대상이 아니야. 레이싱(직업) 인챈트만 강화할 수 있어.";
+						close;						
+					}
+					if((getequipcardid(EQI_HEAD_TOP,1) - 29310) % 3 == 2) {
+						mes "[협회 직원]";
+						mes "이건 이미 강화 최대치야. 우리 협회에서 이 이상의 것은 취급하지 않아.";
+						close;						
+					}
+					mes "[협회 직원]";
+					mes "강화는 최대 3단계까지 할 수 있고, 실패할 수도 있어.";
+					mes "1단계에서는 실패해도 인챈트는 그대로 있는데, 2단계에서 실패하면 단계가 하락할거야.";
+					mes "계속 하고싶어?";
+					next;
+					if(select("멈춘다.:계속한다.") == 1) goto Cancel;
+					set .@equip_id, getequipid(EQI_HEAD_TOP);
+					setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),getequipcardid(EQI_HEAD_TOP,1),getequipcardid(EQI_HEAD_TOP,2),getequipcardid(EQI_HEAD_TOP,3);
+					delequip EQI_HEAD_TOP;
+					specialeffect2 EF_REPAIRWEAPON;
+					if(rand(1,100) < 20) {
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1] - (getequipcardid(EQI_HEAD_TOP,1) - 29310) % 3,.@equip_card[2],.@equip_card[3];
+						mes "[협회 직원]";
+						mes "엇?!";
+						mes "음...";
+						mes "내 잘못이 아니야!";
+						close;
+					}
+					else {
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1] + 1,.@equip_card[2],.@equip_card[3];
+						mes "[협회 직원]";
+						mes "으쌰!!";
+						mes "으라챠!!";
+						mes "성공이닷!!";
+						mes "역시 난 슈퍼 엘리트야!";
+						close;
+					}
+		
+				case 20:
+					if(getequipid(EQI_HEAD_TOP) < 19189 || getequipid(EQI_HEAD_TOP) > 19205) goto NoHead;
+					if(countitem(25273) < .@SampleValue[.@menu1-2]) goto NoCoin;
+					if(getequipcardid(EQI_HEAD_TOP,3) == 0) { mes "[협회 직원]","인챈트도 안하고 초기화?","모자 자체를 없애줄까?"; close; }
+					set .@equip_id, getequipid(EQI_HEAD_TOP);
+					setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),getequipcardid(EQI_HEAD_TOP,1),getequipcardid(EQI_HEAD_TOP,2),getequipcardid(EQI_HEAD_TOP,3);
+					delequip EQI_HEAD_TOP;
+					specialeffect2 EF_REPAIRWEAPON;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],0,0,0;
+					mes "[협회 직원]";
+					mes "기껏 힘들게 인챈트 해놨더니 아깝게시리...";
+					mes "자, 여기 비워줬어.";
+					close;
+			}
+			delitem 25273,.@SampleValue[.@menu1-2];
+			getitem .@item,1;
+			mes "[협회 직원]";
+			mes "자, 여기. 원하는 상품이 이거 맞지? 코인은 내가 가져가마.";
+			close;
+		case 4:
+			mes "[협회 직원]";
+			mes "그래그래, 귀찮게 하지말고 가던 길 가라구.";
+			close;
+	}
+Enchant:
+	if(getequipid(EQI_HEAD_TOP) < 19189 || getequipid(EQI_HEAD_TOP) > 19205) goto NoHead;
+	if(countitem(25273) < .@SampleValue[.@menu1-2]) goto NoCoin;
+	set .@equip_id, getequipid(EQI_HEAD_TOP);
+	setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),getequipcardid(EQI_HEAD_TOP,1),getequipcardid(EQI_HEAD_TOP,2),getequipcardid(EQI_HEAD_TOP,3);
+	if(.@menu1 == 16) {
+		if(getequipcardid(EQI_HEAD_TOP,3) != 0) goto Already;
+		setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),0,0,.@slot4;
+	}
+	if(.@menu1 == 17) {
+		if(getequipcardid(EQI_HEAD_TOP,3) == 0) { mes "[협회 직원]","안돼안돼, 먼저 4번 슬롯부터 인챈트해야돼."; close; }
+		if(getequipcardid(EQI_HEAD_TOP,2) != 0) goto Already;
+		setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),0,.@slot3,getequipcardid(EQI_HEAD_TOP,3);
+	}
+	if(.@menu1 == 18) {
+		if(getequipcardid(EQI_HEAD_TOP,3) == 0 || getequipcardid(EQI_HEAD_TOP,2) == 0) { mes "[협회 직원]","안돼안돼, 먼저 3번이랑 4번 슬롯부터 인챈트해야돼."; close; }
+		if(getequipcardid(EQI_HEAD_TOP,1) != 0) goto Already;
+		if(.@slot2 == 1) {
+			if(getequipid(EQI_HEAD_TOP) == 19189) set .@slot2,29316;
+			else if(getequipid(EQI_HEAD_TOP) == 19190) set .@slot2,29319;
+			else if(getequipid(EQI_HEAD_TOP) == 19191) set .@slot2,29322;
+			else if(getequipid(EQI_HEAD_TOP) == 19192) set .@slot2,29325;
+			else if(getequipid(EQI_HEAD_TOP) == 19193) set .@slot2,29328;
+			else if(getequipid(EQI_HEAD_TOP) == 19194) set .@slot2,29331;
+			else if(getequipid(EQI_HEAD_TOP) == 19195) set .@slot2,29310;
+			else if(getequipid(EQI_HEAD_TOP) == 19196) set .@slot2,29313;
+			else if(getequipid(EQI_HEAD_TOP) == 19197) set .@slot2,29334;
+			else if(getequipid(EQI_HEAD_TOP) == 19198) set .@slot2,29337;
+			else if(getequipid(EQI_HEAD_TOP) == 19199) set .@slot2,29340;
+			else if(getequipid(EQI_HEAD_TOP) == 19200) set .@slot2,29343;
+			else if(getequipid(EQI_HEAD_TOP) == 19201) set .@slot2,29343;
+			else if(getequipid(EQI_HEAD_TOP) == 19202) set .@slot2,29346;
+			else if(getequipid(EQI_HEAD_TOP) == 19203) set .@slot2,29349;
+			else if(getequipid(EQI_HEAD_TOP) == 19204) set .@slot2,29352;
+			else if(getequipid(EQI_HEAD_TOP) == 19205) set .@slot2,29355;
+		}
+		setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),.@slot2,getequipcardid(EQI_HEAD_TOP,2),getequipcardid(EQI_HEAD_TOP,3);
+	}
+	delequip EQI_HEAD_TOP;
+	specialeffect2 EF_REPAIRWEAPON;
+	getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+	delitem 25273,.@SampleValue[.@menu1-2];
+	mes "[협회 직원]";
+	mes "자, 여기있다. 마음에 안들면 초기화해도 된다구.";
+	close;
+Already:
+	mes "[협회 직원]";
+	mes "음...? 이거 저번에 내가 해주지 않았나?";
+	close;
+
+Cancel:
+	mes "[협회 직원]";
+	mes "마음이 바뀌면 다시 오라구.";
+	close;
+
+NoCoin:
+	mes "[협회 직원]";
+	mes "응? 자원이 부족한데? 다시 확인해보라구.";
+	close;
+Nohead:
+	mes "[협회 직원]";
+	mes "인챈트하기 전에 레이싱캡을 착용하고 있어야해.";
+	close;
+}

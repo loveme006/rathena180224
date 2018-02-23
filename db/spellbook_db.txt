@@ -1,0 +1,31 @@
+// Reading Spellbook Preserve Points Database
+//
+// Structure of Database:
+// SkillID,PreservePoints,Required Book
+//
+// NOTE:
+// - To add more entries, increase MAX_SKILL_SPELLBOOK_DB in skill.h.
+// - To remove entry by importing, put 0 for 'PreservePoints'
+
+//Mage
+14,7,6190	//MG_COLDBOLT#콜드볼트#
+19,7,6189	//MG_FIREBOLT#화이어 볼트#
+20,7,6191	//MG_LIGHTNINGBOLT#라이트닝 볼트#
+21,9,6197	//MG_THUNDERSTORM#선더스톰#
+
+//Wizard
+83,10,6194	//WZ_METEOR#메테오 스톰#
+84,9,6198	//WZ_JUPITEL#유피텔 선더#
+85,10,6193	//WZ_VERMILION#로드 오브 버밀리온#
+86,9,6199	//WZ_WATERBALL#워터볼#
+89,10,6192	//WZ_STORMGUST#스톰 가스트#
+90,8,6201	//WZ_EARTHSPIKE#어스 스파이크#
+91,9,6200	//WZ_HEAVENDRIVE#헤븐즈 드라이브#
+
+//Warlock
+2210,8,6205	//WL_DRAINLIFE#드레인 라이프#
+2211,12,6204	//WL_CRIMSONROCK#크림즌 록#
+2213,22,6195	//WL_COMET#커미트#
+2214,12,6203	//WL_CHAINLIGHTNING#체인 라이트닝#
+2216,12,6202	//WL_EARTHSTRAIN#어스 스트레인#
+2217,22,6196	//WL_TETRAVORTEX#테트라 볼텍스#

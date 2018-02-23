@@ -1,0 +1,31 @@
+-	script	cash	-1,{
+OnNPCKillEvent:
+	set .@moblv , getmonsterinfo(killedrid,MOB_LV);
+	set .@mobexp , getmonsterinfo(killedrid,MOB_BASEEXP);
+	//몹의 레벨별로 확률을 다르게 지정합니다.
+	if(.@mobexp == 0) end;
+	if(.@moblv > 150){
+		if (rand(100) < 5) getitem 6418,1;
+	} else if(.@moblv > 130){
+		if (rand(100) < 5) getitem 6419,1;
+	} else if(.@moblv > 100){
+		if (rand(100) < 5) getitem 6420,1;
+	} else if(.@moblv > 80){
+		if (rand(100) < 5) getitem 6421,1;
+	} else if(.@moblv > 50){
+		if (rand(100) < 5) getitem 6422,1;
+	}
+	end;
+}
+
+/*
+671 금화 Gold
+675 은화 Silver
+673 동화 Copper
+674 미스릴화 Mithril
+677 백금화 WhiteGold
+
+670 금화 주머니
+672 동화 주머니
+676 은화 주머니
+*/

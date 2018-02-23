@@ -1,0 +1,23 @@
+//===== rAthena Script =======================================
+//= Moscovia Fields Monster Spawn Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Additional Comments: =================================
+//= 1.0 Added spawns [Playtester]
+//= 1.1 Updated to Renewal Spawns [Kisuka]
+//= 1.2 Renewal spawn update.
+//============================================================
+
+//==================================================
+// mosk_fild02 - Okrestnosti of Moscovia
+//==================================================
+mosk_fild02,0,0	monster	사이드 와인더	1037,40,5000
+mosk_fild02,0,0	monster	아르지오프	1099,30,5000
+mosk_fild02,0,0	monster	맨티스	1139,10,5000
+mosk_fild02,0,0	monster	지오그래퍼	1368,5,5000
+mosk_fild02,0,0	monster	노란 풀	1081,5,10000
+mosk_fild02,0,0	monster	하얀 풀	1082,5,10000

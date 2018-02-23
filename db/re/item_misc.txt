@@ -1,0 +1,1402 @@
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+//
+// Cookie Bag
+IG_CookieBag,529,5// 사탕
+IG_CookieBag,530,5// 막대사탕
+IG_CookieBag,538,5// 잘 구운 쿠키
+IG_CookieBag,539,5// 조각 케이크
+IG_CookieBag,558,1// 초콜렛
+IG_CookieBag,559,1// 핸드메이드 초콜렛
+IG_CookieBag,560,1// 핸드메이드 초콜렛
+IG_CookieBag,561,1// 화이트 초콜렛
+IG_CookieBag,564,5// 주먹밥
+IG_CookieBag,570,5// 행운의 사탕
+IG_CookieBag,571,5// 행운의 막대사탕
+IG_CookieBag,572,5// 행운의 쿠키
+IG_CookieBag,573,1// 초콜렛 드링크
+IG_CookieBag,12122,1// 다식
+IG_CookieBag,12123,1// 유과
+IG_CookieBag,12124,1// 무지개떡
+// First Aid Kit
+IG_FirstAid,501,5// 빨간포션
+IG_FirstAid,502,5// 주홍포션
+IG_FirstAid,503,5// 노란포션
+IG_FirstAid,504,5// 하얀포션
+IG_FirstAid,505,5// 파란포션
+IG_FirstAid,506,5// 초록포션
+IG_FirstAid,545,5// 레드 슬림 포션
+IG_FirstAid,546,5// 옐로우 슬림 포션
+IG_FirstAid,547,5// 화이트 슬림 포션
+IG_FirstAid,569,5// 초보자용 포션
+IG_FirstAid,605,5// 안티 페인멘트
+IG_FirstAid,645,5// 집중의 포션
+IG_FirstAid,656,5// 각성의 포션
+IG_FirstAid,657,5// 버서크 포션
+IG_FirstAid,678,1// 독약병
+IG_FirstAid,12016,5// 이속변화포션
+IG_FirstAid,12017,5// 이속변화포션
+IG_FirstAid,12020,5// 암수
+// Herbs
+IG_Herb,507,1// 빨간허브
+IG_Herb,508,1// 노란허브
+IG_Herb,509,1// 하얀허브
+// Fruits
+IG_Fruit,512,1// 사과
+IG_Fruit,513,1// 바나나
+IG_Fruit,514,1// 포도
+IG_Fruit,515,1// 당근
+IG_Fruit,516,1// 고구마
+// Meat
+IG_Meat,517,1// 고기
+IG_Meat,528,1// 괴물의 먹이
+// Candy
+IG_Candy,529,1// 사탕
+IG_Candy,530,1// 막대사탕
+// Juice
+IG_Juice,531,1// 사과 쥬스
+IG_Juice,532,1// 바나나 쥬스
+IG_Juice,534,1// 당근 쥬스
+// Fish
+IG_Fish,544,1// 회
+IG_Fish,551,1// 초밥
+// Boxes
+IG_Box,603,1// 오래된 파란상자
+IG_Box,617,1// 오래된 보라색 상자
+IG_Box,644,1// 선물상자
+// Gemstones
+IG_Gemstone,715,1// 옐로우 젬스톤
+IG_Gemstone,716,1// 레드 젬스톤
+IG_Gemstone,717,1// 블루 젬스톤
+// Elemental Resist Potions
+IG_Resist,12118,1// 레지스트 파이어포션
+IG_Resist,12119,1// 레지스트 콜드포션
+IG_Resist,12120,1// 레지스트 어스포션
+IG_Resist,12121,1// 레지스트 썬더포션
+// Ores
+IG_Ore,1002,30// 철광석
+IG_Ore,998,28// 철
+IG_Ore,993,26// 그린 라이브
+IG_Ore,1003,24// 석탄
+IG_Ore,992,22// 윈드 오브 버듀어
+IG_Ore,1010,20// 프라콘
+IG_Ore,991,18// 크리스탈 블루
+IG_Ore,990,16// 레드 블러드
+IG_Ore,999,14// 강철
+IG_Ore,1011,12// 엠베르타콘
+IG_Ore,757,10// 에르늄 원석
+IG_Ore,756,9// 오리데오콘 원석
+IG_Ore,997,8// 그레이트 네이쳐
+IG_Ore,996,7// 러프 윈드
+IG_Ore,995,6// 미스틱 프로즌
+IG_Ore,994,5// 프레임 하트
+IG_Ore,985,4// 에르늄
+IG_Ore,984,3// 오리데오콘
+IG_Ore,969,2// 황금
+IG_Ore,714,1// 엠펠리움
+// Food Types
+IG_Food,526,5// 로얄제리
+IG_Food,12042,10// 물갈퀴 무침
+IG_Food,12057,10// 미끌미끌 국수
+IG_Food,12053,10// 조개탕
+IG_Food,12062,10// 초콜렛무스 케이크
+IG_Food,12068,10// 맛탕
+IG_Food,12047,10// 만엽의 홍차
+IG_Food,531,30// 사과 쥬스
+IG_Food,532,30// 바나나 쥬스
+IG_Food,533,30// 포도 쥬스
+IG_Food,534,30// 당근 쥬스
+IG_Food,538,30// 잘 구운 쿠키
+IG_Food,536,50// 아이스 크림
+IG_Food,544,50// 회
+IG_Food,548,50// 치즈
+IG_Food,551,50// 초밥
+IG_Food,553,50// 만두
+IG_Food,554,50// 찹쌀떡
+IG_Food,535,50// 호박
+IG_Food,516,100// 고구마
+IG_Food,513,100// 바나나
+IG_Food,512,600// 사과
+// Recovery Types
+IG_Recovery,522,5// 마스테라의 열매
+IG_Recovery,521,5// 알로에의 잎사귀
+IG_Recovery,520,10// 히나레의 잎사귀
+IG_Recovery,545,10// 레드 슬림 포션
+IG_Recovery,12118,10// 레지스트 파이어포션
+IG_Recovery,508,20// 노란허브
+IG_Recovery,501,20// 빨간포션
+IG_Recovery,511,30// 초록허브
+IG_Recovery,507,30// 빨간허브
+IG_Recovery,569,50// 초보자용 포션
+IG_Recovery,549,50// 밤고구마
+IG_Recovery,529,100// 사탕
+IG_Recovery,528,200// 괴물의 먹이
+IG_Recovery,550,600// 뻥튀기
+// Minerals - Unused
+IG_Mineral,714,1// 엠펠리움
+IG_Mineral,756,1// 오리데오콘 원석
+IG_Mineral,757,1// 에르늄 원석
+IG_Mineral,969,1// 황금
+IG_Mineral,984,1// 오리데오콘
+IG_Mineral,985,1// 에르늄
+IG_Mineral,990,1// 레드 블러드
+IG_Mineral,991,1// 크리스탈 블루
+IG_Mineral,992,1// 윈드 오브 버듀어
+IG_Mineral,993,1// 그린 라이브
+IG_Mineral,994,1// 프레임 하트
+IG_Mineral,995,1// 미스틱 프로즌
+IG_Mineral,996,1// 러프 윈드
+IG_Mineral,997,1// 그레이트 네이쳐
+IG_Mineral,998,1// 철
+IG_Mineral,999,1// 강철
+IG_Mineral,1002,1// 철광석
+IG_Mineral,1003,1// 석탄
+IG_Mineral,1010,1// 프라콘
+IG_Mineral,1011,1// 엠베르타콘
+// Set Of Taiming Item
+IG_Taming,619,1// 덜익은 사과
+IG_Taming,620,1// 오렌지 쥬스
+IG_Taming,621,1// 쓰디쓴 풀
+IG_Taming,622,1// 무지개색 당근
+IG_Taming,623,1// 멋쟁이 청년 지렁이
+IG_Taming,624,1// 썩은 생선
+IG_Taming,625,1// 녹슬어버린 철
+IG_Taming,626,1// 몬스터 쥬스
+IG_Taming,627,1// 달콤한 우유
+IG_Taming,628,1// 잘 말린 뼈다귀
+IG_Taming,629,1// 노래하는 꽃
+IG_Taming,630,1// 아침이슬을 머금은 이끼
+IG_Taming,631,1// 맹독초
+IG_Taming,632,1// 토실토실 살찐 지렁이
+IG_Taming,633,1// 구운 고구마
+IG_Taming,634,1// 열대의 바나나
+IG_Taming,635,1// 조직의 쓴맛
+IG_Taming,636,1// 수취인 불명
+IG_Taming,637,1// 헌 빗자루
+IG_Taming,638,1// 순결의 은장도
+IG_Taming,639,1// 복종의 팔찌
+IG_Taming,640,1// 반짝이는 돌
+IG_Taming,641,1// 어둠의 계약서
+IG_Taming,642,1// 악마소환서
+IG_Taming,659,1// 그녀의 마음
+IG_Taming,660,1// 금단의 붉은 양초
+IG_Taming,661,1// 하늘하늘한 앞치마
+IG_Taming,10001,1// 동물의 머리뼈 투구
+IG_Taming,10002,1// 몬스터 산소 마스크
+IG_Taming,10003,1// 투명한 머리 보호대
+IG_Taming,10004,1// 꼭지
+IG_Taming,10005,1// 패션 가발
+IG_Taming,10006,1// 여왕의 머리장식
+IG_Taming,10007,1// 실크 리본
+IG_Taming,10008,1// 정신봉
+IG_Taming,10009,1// 야생화
+IG_Taming,10010,1// 찌그러진 냄비
+IG_Taming,10011,1// 별모양 머리핀
+IG_Taming,10012,1// 작은 알껍질
+IG_Taming,10013,1// 책가방
+IG_Taming,10014,1// 메뚜기 안경
+IG_Taming,10015,1// 초록색 레이스
+IG_Taming,10016,1// 금방울
+IG_Taming,10017,1// 나무팬츠
+IG_Taming,10018,1// 원숭이 머리띠
+IG_Taming,10019,1// 붉은색 머플러
+IG_Taming,10020,1// 영환도사의 검
+IG_Taming,12373,1// 소년의 순정
+IG_Taming,12374,1// 불꽃 얼음
+IG_Taming,12395,1// 탄탄면
+// Bundle Of Magic Scroll
+IG_Scroll,686,1// 어스 스파이크 3레벨
+IG_Scroll,687,1// 어스 스파이크 5레벨
+IG_Scroll,688,1// 콜드 볼트 3레벨
+IG_Scroll,689,1// 콜드 볼트 5레벨
+IG_Scroll,690,1// 파이어 볼트 3레벨
+IG_Scroll,691,1// 파이어 볼트 5레벨
+IG_Scroll,692,1// 라이트닝 볼트 3레벨
+IG_Scroll,693,1// 라이트닝 볼트 5레벨
+IG_Scroll,694,1// 소울 스트라이크 3레벨
+IG_Scroll,695,1// 소울 스트라이크 5레벨
+IG_Scroll,696,1// 파이어 볼 1레벨
+IG_Scroll,697,1// 파이어 볼 5레벨
+IG_Scroll,698,1// 파이어 월 1레벨
+IG_Scroll,699,1// 파이어 월 5레벨
+IG_Scroll,700,1// 프로스트 다이버 1레벨
+IG_Scroll,12000,1// 프로스트 다이버 5레벨
+IG_Scroll,12001,1// 힐 3레벨
+IG_Scroll,12002,1// 힐 5레벨
+// Random Quiver
+IG_Quiver,12004,1// 화살통
+IG_Quiver,12005,1// 철 화살통
+IG_Quiver,12006,1// 강철의 화살통
+IG_Quiver,12007,1// 오리데오콘 화살통
+IG_Quiver,12008,1// 불화살통
+IG_Quiver,12009,1// 은화살통
+IG_Quiver,12010,1// 바람 화살통
+IG_Quiver,12011,1// 암석 화살통
+IG_Quiver,12012,1// 수정 화살통
+IG_Quiver,12013,1// 그림자화살통
+IG_Quiver,12014,1// 무형의 화살통
+IG_Quiver,12015,1// 녹슨 화살통
+IG_Quiver,12183,2// 성스러운 화살통
+// Wrapped Mask
+IG_Mask,2278,10// 스마일
+IG_Mask,2281,10// 오페라 가면
+IG_Mask,2288,10// 스크래치 마스크
+IG_Mask,2292,10// 용접 마스크
+IG_Mask,2297,10// 고블린족 가면
+IG_Mask,5005,10// 가스 마스크
+IG_Mask,5086,10// 알람가면
+IG_Mask,5087,10// 무표정 가면
+IG_Mask,5088,10// 놀란눈 가면
+IG_Mask,5089,10// 귀찮은 가면
+IG_Mask,5090,10// 고블린리더의 가면
+IG_Mask,5121,1// 지르타스의 가면
+IG_Mask,5176,2// 하회탈
+// Accessory Box
+IG_Accesory,2601,10// 링
+IG_Accesory,2602,11// 이어링
+IG_Accesory,2603,12// 네클리스
+IG_Accesory,2604,12// 글러브
+IG_Accesory,2605,12// 브로치
+IG_Accesory,2607,12// 클립
+IG_Accesory,2608,14// 로자리
+IG_Accesory,2609,14// 해골반지
+IG_Accesory,2610,14// 금반지
+IG_Accesory,2611,14// 은반지
+IG_Accesory,2612,14// 꽃반지
+IG_Accesory,2613,11// 다이아반지
+IG_Accesory,2615,1// 세이프티 링
+IG_Accesory,2616,1// 크리티컬 링
+IG_Accesory,2617,10// 신관의 장갑
+IG_Accesory,2618,11// 마타의 목걸이
+IG_Accesory,2619,10// 활골무
+IG_Accesory,2621,1// 링
+IG_Accesory,2622,1// 이어링
+IG_Accesory,2623,10// 네클리스
+IG_Accesory,2624,1// 글러브
+IG_Accesory,2625,1// 브로치
+IG_Accesory,2626,1// 로자리
+IG_Accesory,2627,10// 벨트
+IG_Accesory,2628,14// 노비스 암릿
+IG_Accesory,2654,1// 시노비의 허리띠
+IG_Accesory,2656,1// 하이퍼 모드 체인저
+IG_Accesory,2658,10// 나일로즈
+IG_Accesory,2659,2// 베스퍼 코어 01
+IG_Accesory,2660,2// 베스퍼 코어 02
+IG_Accesory,2661,2// 베스퍼 코어 03
+IG_Accesory,2662,2// 베스퍼 코어 04
+IG_Accesory,2671,1// 활골무
+IG_Accesory,2677,1// 스피리츄얼 링
+IG_Accesory,2680,9// 하급정령의 반지
+IG_Accesory,2700,2// 봉인의 붉은비단
+IG_Accesory,2701,1// 오를레앙의 장갑
+IG_Accesory,2703,1// 익스퍼트 링
+IG_Accesory,2716,1// 사서의 장갑
+IG_Accesory,2717,1// 회중시계
+IG_Accesory,2718,1// 루나틱 브로치
+IG_Accesory,2719,1// 아이언 리스트
+// jewels
+IG_Jewel,715,100// 옐로우 젬스톤
+IG_Jewel,716,100// 레드 젬스톤
+IG_Jewel,717,100// 블루 젬스톤
+IG_Jewel,718,10// 가넷
+IG_Jewel,719,10// 아메디스트
+IG_Jewel,720,10// 아쿠아마린
+IG_Jewel,721,10// 에메랄드
+IG_Jewel,722,10// 진주
+IG_Jewel,723,10// 루비
+IG_Jewel,724,10// 저주받은 루비
+IG_Jewel,725,10// 사드오닉스
+IG_Jewel,726,10// 사파이어
+IG_Jewel,727,10// 오팔
+IG_Jewel,728,10// 토파즈
+IG_Jewel,729,10// 질콘
+IG_Jewel,730,5// 다이아몬드 1캐럿
+IG_Jewel,731,4// 다이아몬드 2캐럿
+IG_Jewel,732,3// 다이아몬드 3캐럿
+IG_Jewel,733,27// 손상된 다이아몬드
+IG_Jewel,746,50// 유리구슬
+// Egg Boy
+IG_EggBoy,514,300// 포도
+IG_EggBoy,564,522// 주먹밥
+IG_EggBoy,660,20// 금단의 붉은 양초
+IG_EggBoy,682,100// 웅황주
+IG_EggBoy,683,50// 애초
+IG_EggBoy,2274,5// 망자의 머리띠
+IG_EggBoy,5072,2// 인큐버스의 뿔
+// Egg Girl
+IG_EggGirl,514,300// 포도
+IG_EggGirl,564,522// 주먹밥
+IG_EggGirl,661,20// 하늘하늘한 앞치마
+IG_EggGirl,682,100// 웅황주
+IG_EggGirl,683,50// 애초
+IG_EggGirl,5042,5// 머리 포자기
+IG_EggGirl,5066,2// 서큐버스의 뿔
+// Lotto Box
+IG_LottoBox,7391,1// 31번 공
+IG_LottoBox,7392,1// 32번 공
+IG_LottoBox,7393,1// 33번 공
+IG_LottoBox,7394,1// 34번 공
+IG_LottoBox,7395,1// 35번 공
+IG_LottoBox,7396,1// 36번 공
+IG_LottoBox,7397,1// 37번 공
+IG_LottoBox,7398,1// 38번 공
+IG_LottoBox,7540,1// 39번 공
+IG_LottoBox,7541,1// 40번 공
+// Food Package
+IG_FoodBag,512,1// 사과
+IG_FoodBag,513,1// 바나나
+IG_FoodBag,514,1// 포도
+IG_FoodBag,515,1// 당근
+IG_FoodBag,516,1// 고구마
+IG_FoodBag,517,1// 고기
+IG_FoodBag,518,1// 꿀
+IG_FoodBag,519,1// 우유
+IG_FoodBag,520,1// 히나레의 잎사귀
+IG_FoodBag,521,1// 알로에의 잎사귀
+IG_FoodBag,522,1// 마스테라의 열매
+IG_FoodBag,526,1// 로얄제리
+IG_FoodBag,529,1// 사탕
+IG_FoodBag,530,1// 막대사탕
+IG_FoodBag,531,1// 사과 쥬스
+IG_FoodBag,532,1// 바나나 쥬스
+IG_FoodBag,533,1// 포도 쥬스
+IG_FoodBag,534,1// 당근 쥬스
+IG_FoodBag,536,1// 아이스 크림
+IG_FoodBag,538,1// 잘 구운 쿠키
+IG_FoodBag,539,1// 조각 케이크
+IG_FoodBag,544,1// 회
+IG_FoodBag,548,1// 치즈
+IG_FoodBag,549,1// 밤고구마
+IG_FoodBag,550,1// 뻥튀기
+IG_FoodBag,551,1// 초밥
+IG_FoodBag,553,1// 만두
+IG_FoodBag,554,1// 찹쌀떡
+IG_FoodBag,555,1// 떡
+IG_FoodBag,556,1// 가래떡
+IG_FoodBag,557,1// 예쁘게 썰린 가래떡
+IG_FoodBag,558,1// 초콜렛
+IG_FoodBag,559,1// 핸드메이드 초콜렛
+IG_FoodBag,560,1// 핸드메이드 초콜렛
+IG_FoodBag,561,1// 화이트 초콜렛
+IG_FoodBag,564,1// 주먹밥
+IG_FoodBag,566,1// 똠양꿍
+IG_FoodBag,567,1// 새우
+IG_FoodBag,568,1// 레몬
+IG_FoodBag,576,1// 가시열매
+IG_FoodBag,607,1// 이그드라실의 열매
+IG_FoodBag,608,1// 이그드라실의 씨앗
+IG_FoodBag,663,1// 송편
+IG_FoodBag,669,1// 떡국
+// Potions
+IG_Potion,501,1// 빨간포션
+IG_Potion,502,1// 주홍포션
+IG_Potion,503,1// 노란포션
+IG_Potion,504,1// 하얀포션
+// Red Box_
+IG_RedBox_2,5137,1// 엘리스인형
+IG_RedBox_2,5138,9// 매직아이즈
+IG_RedBox_2,5139,10// 부용
+IG_RedBox_2,5140,10// 예쁜 리본
+// Old Bleu Box
+IG_BleuBox,519,1// 우유
+IG_BleuBox,538,1// 잘 구운 쿠키
+IG_BleuBox,644,1// 선물상자
+IG_BleuBox,687,1// 어스 스파이크 5레벨
+IG_BleuBox,689,1// 콜드 볼트 5레벨
+IG_BleuBox,691,1// 파이어 볼트 5레벨
+IG_BleuBox,693,1// 라이트닝 볼트 5레벨
+IG_BleuBox,697,1// 파이어 볼 5레벨
+IG_BleuBox,699,1// 파이어 월 5레벨
+IG_BleuBox,12000,1// 프로스트 다이버 5레벨
+IG_BleuBox,12002,1// 힐 5레벨
+// Red Box
+IG_RedBox,5099,1// 네코미미
+IG_RedBox,5137,11// 엘리스인형
+IG_RedBox,5138,11// 매직아이즈
+IG_RedBox,5139,11// 부용
+IG_RedBox,5140,11// 예쁜 리본
+IG_RedBox,5142,11// 초승달의 투구
+IG_RedBox,5143,12// 가부키가면
+IG_RedBox,5152,1// 봉관
+IG_RedBox,5181,11// 암흑의 투구
+IG_RedBox,5182,1// 강아지모자
+IG_RedBox,5183,11// 새둥지모자
+IG_RedBox,5185,11// 월계수관
+IG_RedBox,5186,11// 장식용 지오그래퍼
+IG_RedBox,5187,10// 트윈리본
+// Green Box
+IG_GreenBox,573,100// 초콜렛 드링크
+IG_GreenBox,607,99// 이그드라실의 열매
+IG_GreenBox,608,100// 이그드라실의 씨앗
+IG_GreenBox,5182,1// 강아지모자
+IG_GreenBox,12018,100// 폭죽
+IG_GreenBox,12075,100// 혓바닥요리
+IG_GreenBox,12080,100// 칵테일 용의 숨결
+IG_GreenBox,12085,100// 불사의 찌개
+IG_GreenBox,12090,100// 사막전갈 모래찜
+IG_GreenBox,12095,100// 흐베르겔미르의 술
+IG_GreenBox,12100,100// 구미호 꼬리요리
+// Old Yellow Box
+IG_YellowBox,5259,1// 코끼리 모자
+IG_YellowBox,5260,1// 쿠키 모자
+IG_YellowBox,5261,1// 실버 티아라
+IG_YellowBox,5262,1// 골드 티아라
+// Hometown Gift
+IG_HometownGift,663,1// 송편
+IG_HometownGift,12122,1// 다식
+IG_HometownGift,12123,1// 유과
+IG_HometownGift,12124,1// 무지개떡
+IG_HometownGift,12195,1// 담백한 떡
+IG_HometownGift,12196,1// 든든한 떡
+IG_HometownGift,12197,1// 짭짤한 떡
+IG_HometownGift,12198,1// 행운의 떡
+// Masquerade Ball Box
+IG_Masquerade,5296,10// 늘어진 구미호
+IG_Masquerade,5297,1// 소울리스 윙
+IG_Masquerade,5298,10// 아프로 가발
+IG_Masquerade,5299,10// 파그다야
+// Tresure Box WoE
+IG_Tresure_Box_WoE,603,6// 오래된 파란상자
+IG_Tresure_Box_WoE,658,6// 조직의단결력
+IG_Tresure_Box_WoE,678,3// 독약병
+IG_Tresure_Box_WoE,732,9// 다이아몬드 3캐럿
+IG_Tresure_Box_WoE,12010,24// 바람 화살통
+IG_Tresure_Box_WoE,12011,25// 암석 화살통
+IG_Tresure_Box_WoE,12012,26// 수정 화살통
+IG_Tresure_Box_WoE,12105,12// 테이밍 선물셋트
+IG_Tresure_Box_WoE,12107,2// 포장된 가면
+IG_Tresure_Box_WoE,12108,9// 주문서 다발
+IG_Tresure_Box_WoE,12110,9// 응급처치상자
+IG_Tresure_Box_WoE,12111,36// 음식보자기
+IG_Tresure_Box_WoE,12130,48// 과자주머니
+IG_Tresure_Box_WoE,12149,27// 탄약통
+IG_Tresure_Box_WoE,12150,27// 탄약통 블러드
+IG_Tresure_Box_WoE,12151,27// 탄약통 실버
+IG_Tresure_Box_WoE,12183,7// 성스러운 화살통
+IG_Tresure_Box_WoE,12194,6// 고향선물
+IG_Tresure_Box_WoE,12260,22// 시원한 여름의상
+IG_Tresure_Box_WoE,12702,8// 오래된 파랑상자
+// Masquerade Ball Box2
+IG_Masquerade_2,5211,1// 드레스 햇
+IG_Masquerade_2,5213,13// 검은 토끼 머리띠
+IG_Masquerade_2,5289,10// 바닐미르스 모자
+IG_Masquerade_2,5304,10// 맹목의 후드
+// Easter Scroll
+IG_Easter_Scroll,636,110// 수취인 불명
+IG_Easter_Scroll,637,110// 헌 빗자루
+IG_Easter_Scroll,638,110// 순결의 은장도
+IG_Easter_Scroll,639,110// 복종의 팔찌
+IG_Easter_Scroll,640,110// 반짝이는 돌
+IG_Easter_Scroll,641,110// 어둠의 계약서
+IG_Easter_Scroll,642,110// 악마소환서
+IG_Easter_Scroll,643,205// 휴대용 알 부화기
+IG_Easter_Scroll,659,110// 그녀의 마음
+IG_Easter_Scroll,2264,1// 무낙모자
+IG_Easter_Scroll,2274,1// 망자의 머리띠
+IG_Easter_Scroll,5046,1// 본건 모자
+IG_Easter_Scroll,5167,1// 무낙모자
+IG_Easter_Scroll,5168,1// 본건 모자
+// Pierre Treasurebox
+IG_Pierre_Treasurebox,603,11// 오래된 파란상자
+IG_Pierre_Treasurebox,604,3// 고목나무 가지
+IG_Pierre_Treasurebox,617,5// 오래된 보라색 상자
+IG_Pierre_Treasurebox,644,3// 선물상자
+IG_Pierre_Treasurebox,975,3// 빨간색 염료
+IG_Pierre_Treasurebox,976,3// 노란색 염료
+IG_Pierre_Treasurebox,978,3// 파란색 염료
+IG_Pierre_Treasurebox,979,3// 초록색 염료
+IG_Pierre_Treasurebox,980,3// 주홍색 염료
+IG_Pierre_Treasurebox,981,3// 보라색 염료
+IG_Pierre_Treasurebox,982,3// 하얀색 염료
+IG_Pierre_Treasurebox,983,3// 검은색 염료
+IG_Pierre_Treasurebox,7289,3// 감람석
+IG_Pierre_Treasurebox,7290,3// 금운모
+IG_Pierre_Treasurebox,7291,3// 마노
+IG_Pierre_Treasurebox,7292,3// 백운모
+IG_Pierre_Treasurebox,7293,3// 장미석영
+IG_Pierre_Treasurebox,7294,3// 터키석
+IG_Pierre_Treasurebox,7295,3// 황수정
+IG_Pierre_Treasurebox,7296,3// 휘석
+IG_Pierre_Treasurebox,7297,3// 흑운모
+IG_Pierre_Treasurebox,12018,3// 폭죽
+IG_Pierre_Treasurebox,12075,3// 혓바닥요리
+IG_Pierre_Treasurebox,12085,3// 불사의 찌개
+IG_Pierre_Treasurebox,12090,3// 사막전갈 모래찜
+IG_Pierre_Treasurebox,12095,3// 흐베르겔미르의 술
+IG_Pierre_Treasurebox,12100,3// 구미호 꼬리요리
+IG_Pierre_Treasurebox,12103,1// 피묻은 나무가지
+// Cherish Box
+IG_Cherish_Box,5454,1// 강아지 모자
+IG_Cherish_Box,5455,4// 장식용 지오그래퍼
+IG_Cherish_Box,5456,5// 바캉스 모자
+// Cherish Box Ori
+IG_Cherish_Box_Ori,2712,3// 애장판북
+IG_Cherish_Box_Ori,5212,2// 새틀라이트 헤어밴드
+IG_Cherish_Box_Ori,5256,1// 발키리 깃털 모자
+IG_Cherish_Box_Ori,5305,2// 해적의 대거
+IG_Cherish_Box_Ori,5332,2// 로키 마스크
+// Louise_Costume_Box
+IG_Louise_Costume_Box,12132,18// 빨간꾸러미
+IG_Louise_Costume_Box,12260,2// 시원한 여름의상
+// Xmas_Gift
+IG_Xmas_Gift,559,18// 핸드메이드 초콜렛
+IG_Xmas_Gift,560,18// 핸드메이드 초콜렛
+IG_Xmas_Gift,573,18// 초콜렛 드링크
+IG_Xmas_Gift,603,24// 오래된 파란상자
+IG_Xmas_Gift,644,66// 선물상자
+IG_Xmas_Gift,732,12// 다이아몬드 3캐럿
+IG_Xmas_Gift,5136,12// 안토니오의 산타모자
+IG_Xmas_Gift,12016,12// 이속변화포션
+IG_Xmas_Gift,12017,12// 이속변화포션
+IG_Xmas_Gift,12105,6// 테이밍 선물셋트
+IG_Xmas_Gift,12107,6// 포장된 가면
+IG_Xmas_Gift,12108,12// 주문서 다발
+IG_Xmas_Gift,12110,12// 응급처치상자
+IG_Xmas_Gift,12130,12// 과자주머니
+IG_Xmas_Gift,12132,6// 빨간꾸러미
+IG_Xmas_Gift,12354,24// 부쉬 드 노엘
+IG_Xmas_Gift,12702,36// 오래된 파랑상자
+IG_Xmas_Gift,14546,6// 사랑해 폭죽
+IG_Xmas_Gift,14550,6// 크리스마스 폭죽
+// Fruit Basket
+IG_Fruit_Basket,512,6// 사과
+IG_Fruit_Basket,513,5// 바나나
+IG_Fruit_Basket,514,4// 포도
+IG_Fruit_Basket,522,3// 마스테라의 열매
+IG_Fruit_Basket,535,2// 호박
+IG_Fruit_Basket,568,6// 레몬
+IG_Fruit_Basket,576,2// 가시열매
+IG_Fruit_Basket,578,4// 딸기
+IG_Fruit_Basket,582,3// 오렌지
+IG_Fruit_Basket,587,2// 붉은 가시열매
+IG_Fruit_Basket,607,1// 이그드라실의 열매
+IG_Fruit_Basket,608,1// 이그드라실의 씨앗
+IG_Fruit_Basket,7164,5// 매우 단단한 복숭아
+IG_Fruit_Basket,7182,4// 카카오
+IG_Fruit_Basket,11520,5// 모라 만다린
+IG_Fruit_Basket,12574,4// 모라 베리
+// Improved Coin Bag
+IG_Improved_Coin_Bag,6080,5// 마누크 주화
+IG_Improved_Coin_Bag,6081,5// 스플랑디드 주화
+IG_Improved_Coin_Bag,6304,5// 사파 공훈증
+IG_Improved_Coin_Bag,6380,5// 모라마을 주화
+IG_Improved_Coin_Bag,6418,1// A급 코인
+IG_Improved_Coin_Bag,6419,2// B급 코인
+IG_Improved_Coin_Bag,6420,1// C급 코인
+IG_Improved_Coin_Bag,12636,8// 말랑도 특산 통조림
+// Intermediate Coin Bag
+IG_Intermediate_Coin_Bag,6080,4// 마누크 주화
+IG_Intermediate_Coin_Bag,6081,4// 스플랑디드 주화
+IG_Intermediate_Coin_Bag,6304,4// 사파 공훈증
+IG_Intermediate_Coin_Bag,6380,4// 모라마을 주화
+IG_Intermediate_Coin_Bag,6419,1// B급 코인
+IG_Intermediate_Coin_Bag,6420,2// C급 코인
+IG_Intermediate_Coin_Bag,6421,1// D급 코인
+IG_Intermediate_Coin_Bag,12636,9// 말랑도 특산 통조림
+// Minor Coin Bag
+IG_Minor_Coin_Bag,6080,3// 마누크 주화
+IG_Minor_Coin_Bag,6081,3// 스플랑디드 주화
+IG_Minor_Coin_Bag,6304,3// 사파 공훈증
+IG_Minor_Coin_Bag,6380,3// 모라마을 주화
+IG_Minor_Coin_Bag,6420,1// C급 코인
+IG_Minor_Coin_Bag,6421,2// D급 코인
+IG_Minor_Coin_Bag,6422,1// E급 코인
+IG_Minor_Coin_Bag,12636,10// 말랑도 특산 통조림
+// S Grade Coin Bag
+IG_S_Grade_Coin_Bag,6423,3// 바다신의 분노
+IG_S_Grade_Coin_Bag,6418,2// A급 코인
+IG_S_Grade_Coin_Bag,6419,1// B급 코인
+// A Grade Coin Bag
+IG_A_Grade_Coin_Bag,6418,3// A급 코인
+IG_A_Grade_Coin_Bag,6419,2// B급 코인
+IG_A_Grade_Coin_Bag,6420,1// C급 코인
+// Advanced Weapons Box
+IG_Advanced_Weapons_Box,1130,2// 네이건
+IG_Advanced_Weapons_Box,1131,7// 아이스 팔시온
+IG_Advanced_Weapons_Box,1132,1// 엣지
+IG_Advanced_Weapons_Box,1133,7// 화이어 브랜드
+IG_Advanced_Weapons_Box,1134,7// 시저즈소드
+IG_Advanced_Weapons_Box,1135,7// 커틀러스
+IG_Advanced_Weapons_Box,1136,7// 태양검
+IG_Advanced_Weapons_Box,1137,2// 엑스칼리버
+IG_Advanced_Weapons_Box,1138,7// 미스틸테인
+IG_Advanced_Weapons_Box,1139,7// 테일핑
+IG_Advanced_Weapons_Box,1140,7// 별운검
+IG_Advanced_Weapons_Box,1141,7// 무형검
+IG_Advanced_Weapons_Box,1148,7// 스타더스트 블레이드
+IG_Advanced_Weapons_Box,1164,7// 무라마사
+IG_Advanced_Weapons_Box,1165,2// 마사무네
+IG_Advanced_Weapons_Box,1166,7// 드래곤슬레이어
+IG_Advanced_Weapons_Box,1167,7// 슈바이체르샤벨
+IG_Advanced_Weapons_Box,1168,7// 즈바이핸더
+IG_Advanced_Weapons_Box,1169,2// 액서큐셔너
+IG_Advanced_Weapons_Box,1170,7// 카츠발게르
+IG_Advanced_Weapons_Box,1171,7// 즈바이핸더
+IG_Advanced_Weapons_Box,1175,2// 아트로스의 흉기
+IG_Advanced_Weapons_Box,1176,7// 근육 절단기
+IG_Advanced_Weapons_Box,1178,7// 슈바이체르샤벨
+IG_Advanced_Weapons_Box,1179,2// 액서큐셔너
+IG_Advanced_Weapons_Box,1180,7// 드래곤슬레이어
+IG_Advanced_Weapons_Box,1181,7// 태구련
+IG_Advanced_Weapons_Box,1182,7// 블러디이터
+IG_Advanced_Weapons_Box,1185,1// 바이올렛 피어
+IG_Advanced_Weapons_Box,1186,1// 죽음의 인도자
+IG_Advanced_Weapons_Box,1188,7// 베테랑 소드
+IG_Advanced_Weapons_Box,1189,5// 크라스나야
+IG_Advanced_Weapons_Box,1196,2// 크롬 메탈 투핸드 소드
+IG_Advanced_Weapons_Box,1223,2// 포츈소드
+IG_Advanced_Weapons_Box,1224,4// 소드 브레이커
+IG_Advanced_Weapons_Box,1227,5// 위더나이프
+IG_Advanced_Weapons_Box,1228,2// 컴뱃나이프
+IG_Advanced_Weapons_Box,1229,5// 식칼
+IG_Advanced_Weapons_Box,1230,1// 송곳
+IG_Advanced_Weapons_Box,1231,1// 바제랄드
+IG_Advanced_Weapons_Box,1232,5// 어새신대거
+IG_Advanced_Weapons_Box,1233,5// 액서사이즈
+IG_Advanced_Weapons_Box,1234,2// 월광검
+IG_Advanced_Weapons_Box,1235,5// 아조스
+IG_Advanced_Weapons_Box,1236,5// 수크사마드
+IG_Advanced_Weapons_Box,1237,5// 그림투스
+IG_Advanced_Weapons_Box,1240,5// 프린세스 나이프
+IG_Advanced_Weapons_Box,1241,5// 저주받은 단검
+IG_Advanced_Weapons_Box,1242,5// 카운터 단검
+IG_Advanced_Weapons_Box,1244,5// 홀리대거
+IG_Advanced_Weapons_Box,1261,1// 등 뒤를 베는자
+IG_Advanced_Weapons_Box,1263,5// 언홀리터치
+IG_Advanced_Weapons_Box,1265,2// 블러디로어
+IG_Advanced_Weapons_Box,1266,1// 등 뒤를 베는자
+IG_Advanced_Weapons_Box,1268,2// 야수의 발톱
+IG_Advanced_Weapons_Box,1269,2// 인버스 스케어
+IG_Advanced_Weapons_Box,1270,5// 드릴 카타르
+IG_Advanced_Weapons_Box,1271,5// 혈루
+IG_Advanced_Weapons_Box,1284,5// 크리슈나
+IG_Advanced_Weapons_Box,1285,5// 차크람
+IG_Advanced_Weapons_Box,1305,5// 클리버
+IG_Advanced_Weapons_Box,1311,5// 베체르 액스
+IG_Advanced_Weapons_Box,1363,2// 블러드액스
+IG_Advanced_Weapons_Box,1364,5// 그레이트액스
+IG_Advanced_Weapons_Box,1365,5// 새버스
+IG_Advanced_Weapons_Box,1366,1// 라이트 엡실론
+IG_Advanced_Weapons_Box,1367,5// 슬러터
+IG_Advanced_Weapons_Box,1368,5// 토마호크
+IG_Advanced_Weapons_Box,1369,2// 길로틴
+IG_Advanced_Weapons_Box,1370,1// 둠 슬레이어
+IG_Advanced_Weapons_Box,1371,1// 둠 슬레이어
+IG_Advanced_Weapons_Box,1376,1// 하트 브레이커
+IG_Advanced_Weapons_Box,1377,1// 허리케인 퓨리
+IG_Advanced_Weapons_Box,1385,5// 브라디움 돌망치
+IG_Advanced_Weapons_Box,1387,2// 기간트 액스
+IG_Advanced_Weapons_Box,1413,5// 궁그닐
+IG_Advanced_Weapons_Box,1414,5// 겔러드리아
+IG_Advanced_Weapons_Box,1415,2// 꼬챙이
+IG_Advanced_Weapons_Box,1416,5// 튱클레티
+IG_Advanced_Weapons_Box,1418,5// 궁그닐
+IG_Advanced_Weapons_Box,1420,5// 롱혼
+IG_Advanced_Weapons_Box,1421,2// 배틀훅
+IG_Advanced_Weapons_Box,1422,1// 헌팅스피어
+IG_Advanced_Weapons_Box,1433,2// 임페리얼 스피어
+IG_Advanced_Weapons_Box,1466,5// 크레센트 사이더
+IG_Advanced_Weapons_Box,1467,5// 빌귀삼
+IG_Advanced_Weapons_Box,1468,5// 제퓨로스
+IG_Advanced_Weapons_Box,1469,5// 롱기누스의 창
+IG_Advanced_Weapons_Box,1470,5// 브류나크
+IG_Advanced_Weapons_Box,1471,5// 헬파이어
+IG_Advanced_Weapons_Box,1473,5// 위자드리 스태프
+IG_Advanced_Weapons_Box,1474,5// 가에볼그
+IG_Advanced_Weapons_Box,1477,5// 요괴의 창
+IG_Advanced_Weapons_Box,1478,5// 알슈피스
+IG_Advanced_Weapons_Box,1479,5// 요괴의 창
+IG_Advanced_Weapons_Box,1480,5// 가에볼그
+IG_Advanced_Weapons_Box,1481,5// 제퓨로스
+IG_Advanced_Weapons_Box,1484,2// 카르도
+IG_Advanced_Weapons_Box,1523,2// 스파이크
+IG_Advanced_Weapons_Box,1524,5// 골든 메이스
+IG_Advanced_Weapons_Box,1525,5// 롱 메이스
+IG_Advanced_Weapons_Box,1527,5// 쿼드릴
+IG_Advanced_Weapons_Box,1528,1// 그랜드 크로스
+IG_Advanced_Weapons_Box,1538,2// 스파이크
+IG_Advanced_Weapons_Box,1539,5// 골든 메이스
+IG_Advanced_Weapons_Box,1540,1// 그랜드 크로스
+IG_Advanced_Weapons_Box,1541,5// 네메시스
+IG_Advanced_Weapons_Box,1557,5// 묵시록
+IG_Advanced_Weapons_Box,1558,5// 소녀의 일기장
+IG_Advanced_Weapons_Box,1559,5// 드래곤의 유산
+IG_Advanced_Weapons_Box,1561,5// 양장본
+IG_Advanced_Weapons_Box,1562,5// 전장의 서
+IG_Advanced_Weapons_Box,1565,1// 사신의 명부
+IG_Advanced_Weapons_Box,1616,5// 스태프 오브 윙
+IG_Advanced_Weapons_Box,1629,5// 신사의 지팡이
+IG_Advanced_Weapons_Box,1631,5// 홀리스틱
+IG_Advanced_Weapons_Box,1636,1// 어둠의 가시나무 지팡이
+IG_Advanced_Weapons_Box,1637,1// 이레이저
+IG_Advanced_Weapons_Box,1643,5// 고목나무 지팡이
+IG_Advanced_Weapons_Box,1654,2// 멘탈 스틱
+IG_Advanced_Weapons_Box,1719,2// 도둑의 활
+IG_Advanced_Weapons_Box,1720,2// 루드라의 활
+IG_Advanced_Weapons_Box,1722,2// 발리스타
+IG_Advanced_Weapons_Box,1724,5// 드래곤 윙
+IG_Advanced_Weapons_Box,1725,5// 음유시인의활
+IG_Advanced_Weapons_Box,1727,2// 발리스타
+IG_Advanced_Weapons_Box,1737,5// 익시온의 날개
+IG_Advanced_Weapons_Box,1740,5// 네펜데스 보우
+IG_Advanced_Weapons_Box,1741,5// 커즈드 라이어
+IG_Advanced_Weapons_Box,1745,5// 팔켄 블리츠
+IG_Advanced_Weapons_Box,1813,5// 카이저너클
+IG_Advanced_Weapons_Box,1814,1// 베르세르크
+IG_Advanced_Weapons_Box,1815,5// 가름의 발톱
+IG_Advanced_Weapons_Box,1816,1// 베르세르크
+IG_Advanced_Weapons_Box,1830,2// 패황난무
+IG_Advanced_Weapons_Box,1913,5// 일렉트릭 기타
+IG_Advanced_Weapons_Box,1918,5// 비파
+IG_Advanced_Weapons_Box,1920,1// 신들린 기타
+IG_Advanced_Weapons_Box,1922,5// 비파
+IG_Advanced_Weapons_Box,1926,5// 하프 오브 네펜데스
+IG_Advanced_Weapons_Box,1930,2// 그린 휘슬
+IG_Advanced_Weapons_Box,1962,5// 라리어트
+IG_Advanced_Weapons_Box,1963,5// 랩쳐로즈
+IG_Advanced_Weapons_Box,1964,5// 슈메티
+IG_Advanced_Weapons_Box,1969,5// 블레이드휩
+IG_Advanced_Weapons_Box,1970,5// 여왕님의 채찍
+IG_Advanced_Weapons_Box,1972,5// 전기 뱀장어
+IG_Advanced_Weapons_Box,1973,5// 바다마녀의 발
+IG_Advanced_Weapons_Box,1974,5// 당근채찍
+IG_Advanced_Weapons_Box,1976,5// 여왕님의 채찍
+IG_Advanced_Weapons_Box,1979,5// 스템 오브 네펜데스
+IG_Advanced_Weapons_Box,1984,2// 스템 휩
+IG_Advanced_Weapons_Box,1985,1// 로제바인
+IG_Advanced_Weapons_Box,2000,1// 스태프 오브 디스트럭션
+IG_Advanced_Weapons_Box,2001,5// 디바인 크로스
+IG_Advanced_Weapons_Box,2004,5// 크로노스
+IG_Advanced_Weapons_Box,2005,5// 스태프 오브 데아
+IG_Advanced_Weapons_Box,13046,5// 크리그
+IG_Advanced_Weapons_Box,13047,5// 바이나
+IG_Advanced_Weapons_Box,13061,5// 블랙 윙
+IG_Advanced_Weapons_Box,13062,1// 에인션트 대거
+IG_Advanced_Weapons_Box,13421,5// 루베르
+IG_Advanced_Weapons_Box,13431,2// 크롬 메탈 소드
+IG_Advanced_Weapons_Box,16000,5// 에르데
+IG_Advanced_Weapons_Box,16001,5// 빨간 스퀘어백
+IG_Advanced_Weapons_Box,16010,5// 빨간 에테르 가방
+IG_Advanced_Weapons_Box,18103,5// 미스틱 보우
+IG_Advanced_Weapons_Box,1476,1// 크레센트 사이더
+IG_Advanced_Weapons_Box,1526,5// 슬래쉬
+IG_Advanced_Weapons_Box,1290,1// 에이전트 카타르
+IG_Advanced_Weapons_Box,1291,1// 길로틴 카타르
+IG_Advanced_Weapons_Box,1392,1// 이그누스 스테일
+IG_Advanced_Weapons_Box,1393,1// 엔드 세크투라
+IG_Advanced_Weapons_Box,1435,1// 캐논 스피어
+IG_Advanced_Weapons_Box,1584,1// 냉기의 마법서
+IG_Advanced_Weapons_Box,1659,1// 회복의 빛
+IG_Advanced_Weapons_Box,13069,1// 아즈토네일
+IG_Advanced_Weapons_Box,13070,1// 스칼렛토네일
+IG_Advanced_Weapons_Box,16017,1// 블러디 크로스
+IG_Advanced_Weapons_Box,18109,1// 연노
+IG_Advanced_Weapons_Box,18110,1// 대형 크로스 보우
+IG_Advanced_Weapons_Box,18111,1// 크리퍼 보우
+// Splendid Box
+IG_Splendid_Box,1189,1// 크라스나야
+IG_Splendid_Box,1191,1// 알카 브링거
+IG_Splendid_Box,1196,1// 크롬 메탈 투핸드 소드
+IG_Splendid_Box,1284,1// 크리슈나
+IG_Splendid_Box,1285,1// 차크람
+IG_Splendid_Box,1287,1// 두르가
+IG_Splendid_Box,1311,1// 베체르 액스
+IG_Splendid_Box,1387,1// 기간트 액스
+IG_Splendid_Box,1433,1// 임페리얼 스피어
+IG_Splendid_Box,1649,1// 라피니 스태프
+IG_Splendid_Box,1745,1// 팔켄 블리츠
+IG_Splendid_Box,1746,1// 엘븐보우
+IG_Splendid_Box,1930,1// 그린 휘슬
+IG_Splendid_Box,1984,1// 스템 휩
+IG_Splendid_Box,2148,1// 로사쉴드
+IG_Splendid_Box,2153,1// 임페리얼 가드
+IG_Splendid_Box,13046,1// 크리그
+IG_Splendid_Box,13047,1// 바이나
+IG_Splendid_Box,13061,1// 블랙 윙
+IG_Splendid_Box,13421,1// 루베르
+IG_Splendid_Box,15000,1// 본 플레이트
+IG_Splendid_Box,15014,1// 칠흑의 갑옷
+IG_Splendid_Box,16000,1// 에르데
+IG_Splendid_Box,16001,1// 빨간 스퀘어백
+IG_Splendid_Box,16003,1// 카르가 메이스
+IG_Splendid_Box,16010,1// 빨간 에테르 가방
+IG_Splendid_Box,18103,2// 미스틱 보우
+// Armor Card Album
+IG_CardAlbum_Armor,4001,1// 포링 카드
+IG_CardAlbum_Armor,4003,1// 푸파 카드
+IG_CardAlbum_Armor,4008,1// 픽키 카드
+IG_CardAlbum_Armor,4011,1// 픽키 카드
+IG_CardAlbum_Armor,4014,1// 로다프로그 카드
+IG_CardAlbum_Armor,4016,1// 도둑벌레 카드
+IG_CardAlbum_Armor,4021,1// 로커 카드
+IG_CardAlbum_Armor,4023,1// 데저트울프 새끼 카드
+IG_CardAlbum_Armor,4031,1// 페코페코 카드
+IG_CardAlbum_Armor,4042,1// 스틸촌촌 카드
+IG_CardAlbum_Armor,4061,1// 커너투스 카드
+IG_CardAlbum_Armor,4078,1// 세비지 카드
+IG_CardAlbum_Armor,4089,1// 소드피쉬 카드
+IG_CardAlbum_Armor,4098,1// 도깨비 카드
+IG_CardAlbum_Armor,4099,1// 파사나 카드
+IG_CardAlbum_Armor,4101,1// 샌드맨 카드
+IG_CardAlbum_Armor,4105,1// 마르크 카드
+IG_CardAlbum_Armor,4114,1// 아르지오프 카드
+IG_CardAlbum_Armor,4119,1// 바소리 카드
+IG_CardAlbum_Armor,4141,1// 드루이드 카드
+IG_CardAlbum_Armor,4150,1// 고우트 카드
+IG_CardAlbum_Armor,4158,1// 공중딜리터 카드
+IG_CardAlbum_Armor,4162,1// 그리즐리 카드
+IG_CardAlbum_Armor,4166,1// 나이트메어테러 카드
+IG_CardAlbum_Armor,4170,1// 다크프레임 카드
+IG_CardAlbum_Armor,4173,1// 데몬펑거스 카드
+IG_CardAlbum_Armor,4181,1// 디스가이즈 카드
+IG_CardAlbum_Armor,4189,1// 레이스데드 카드
+IG_CardAlbum_Armor,4191,1// 로리루리 카드
+IG_CardAlbum_Armor,4194,1// 리비오 카드
+IG_CardAlbum_Armor,4201,1// 메이저우로스 카드
+IG_CardAlbum_Armor,4213,1// 브릴라이트 카드
+IG_CardAlbum_Armor,4216,1// 사스콰치 카드
+IG_CardAlbum_Armor,4218,1// 서큐버스 카드
+IG_CardAlbum_Armor,4220,1// 솔리더 카드
+IG_CardAlbum_Armor,4222,1// 스켈프리즈너 카드
+IG_CardAlbum_Armor,4233,1// 아기표범 카드
+IG_CardAlbum_Armor,4234,1// 아놀리안 카드
+IG_CardAlbum_Armor,4242,1// 아포칼립스 카드
+IG_CardAlbum_Armor,4259,1// 우든골렘 카드
+IG_CardAlbum_Armor,4270,1// 자이언트스파이더 카드
+IG_CardAlbum_Armor,4279,1// 지상딜리터 카드
+IG_CardAlbum_Armor,4280,1// 지오그래퍼 카드
+IG_CardAlbum_Armor,4286,1// 카라카사 카드
+IG_CardAlbum_Armor,4295,1// 크라벤 카드
+IG_CardAlbum_Armor,4298,1// 크리미피어 카드
+IG_CardAlbum_Armor,4299,1// 클락 카드
+IG_CardAlbum_Armor,4300,1// 키메라 카드
+IG_CardAlbum_Armor,4301,1// 킬러맨티스 카드
+IG_CardAlbum_Armor,4315,1// 페스트 카드
+IG_CardAlbum_Armor,4332,1// 고철난로카드
+IG_CardAlbum_Armor,4333,1// 베노머스카드
+IG_CardAlbum_Armor,4337,1// 폴셀리오카드
+IG_CardAlbum_Armor,4338,1// 옵시디언카드
+IG_CardAlbum_Armor,4339,1// 미네랄카드
+IG_CardAlbum_Armor,4346,1// 이그니젬세니아카드
+IG_CardAlbum_Armor,4353,1// 리무버카드
+IG_CardAlbum_Armor,4369,1// 베나투카드
+IG_CardAlbum_Armor,4370,1// 디미크카드
+IG_CardAlbum_Armor,4371,1// 아크담카드
+IG_CardAlbum_Armor,4382,1// 옐로우노버스카드
+IG_CardAlbum_Armor,4383,1// 레드노버스카드
+IG_CardAlbum_Armor,4387,1// 에인션트미믹카드
+IG_CardAlbum_Armor,4392,1// 감시하는자카드
+IG_CardAlbum_Armor,4393,1// 안식을주는자카드
+IG_CardAlbum_Armor,4400,1// 엘리자카드
+IG_CardAlbum_Armor,4401,1// 엘리셀카드
+IG_CardAlbum_Armor,4404,1// 스코글카드
+IG_CardAlbum_Armor,4405,1// 프루스카드
+IG_CardAlbum_Armor,4409,1// 아가브카드
+IG_CardAlbum_Armor,4410,1// 에키오카드
+IG_CardAlbum_Armor,4426,1// 뵤르그카드
+IG_CardAlbum_Armor,4450,1// 밴시 마스터 카드
+// Headgear Card Album
+IG_CardAlbum_Helm,4010,1// 윌로우 카드
+IG_CardAlbum_Helm,4039,1// 스타이너 카드
+IG_CardAlbum_Helm,4041,1// 코코 카드
+IG_CardAlbum_Helm,4046,1// 마르틴 카드
+IG_CardAlbum_Helm,4052,1// 엘더윌로우 카드
+IG_CardAlbum_Helm,4087,1// 가이아스 카드
+IG_CardAlbum_Helm,4110,1// 구울 카드
+IG_CardAlbum_Helm,4112,1// 마르두크 카드
+IG_CardAlbum_Helm,4122,1// 데비루치 카드
+IG_CardAlbum_Helm,4127,1// 나이트메어 카드
+IG_CardAlbum_Helm,4161,1// 그랜드페코 카드
+IG_CardAlbum_Helm,4169,1// 다크일루젼 카드
+IG_CardAlbum_Helm,4177,1// 드라이어드 카드
+IG_CardAlbum_Helm,4185,1// 라이드워드 카드
+IG_CardAlbum_Helm,4188,1// 레이브올마이 카드
+IG_CardAlbum_Helm,4195,1// 리프캣 카드
+IG_CardAlbum_Helm,4206,1// 미스트케이스 카드
+IG_CardAlbum_Helm,4223,1// 스터랙틱고렘 카드
+IG_CardAlbum_Helm,4229,1// 시계탑관리자 카드
+IG_CardAlbum_Helm,4241,1// 아크엔젤링 카드
+IG_CardAlbum_Helm,4258,1// 요선녀 카드
+IG_CardAlbum_Helm,4260,1// 우탄슈터 카드
+IG_CardAlbum_Helm,4261,1// 우탄파이터 카드
+IG_CardAlbum_Helm,4269,1// 인큐버스 카드
+IG_CardAlbum_Helm,4271,1// 자이언트호넷 카드
+IG_CardAlbum_Helm,4278,1// 지벳트 카드
+IG_CardAlbum_Helm,4288,1// 캐럿 카드
+IG_CardAlbum_Helm,4296,1// 크램프 카드
+IG_CardAlbum_Helm,4311,1// 퍼머터 카드
+IG_CardAlbum_Helm,4336,1// 운골리안트카드
+IG_CardAlbum_Helm,4343,1// 홀덴카드
+IG_CardAlbum_Helm,4354,1// 제미니-S58카드
+IG_CardAlbum_Helm,4358,1// 세이렌윈저카드
+IG_CardAlbum_Helm,4364,1// 마가레타소린카드
+IG_CardAlbum_Helm,4366,1// 카트린느케이론카드
+IG_CardAlbum_Helm,4379,1// 블루어시더스카드
+IG_CardAlbum_Helm,4411,1// 판베르크카드
+IG_CardAlbum_Helm,4412,1// 이실라카드
+IG_CardAlbum_Helm,4434,1// 노커카드
+IG_CardAlbum_Helm,4438,1// 밴시카드
+// Accessory Card Album
+IG_CardAlbum_Acc,4022,1// 스포아 카드
+IG_CardAlbum_Acc,4027,1// 쿠크레 카드
+IG_CardAlbum_Acc,4028,1// 타로우 카드
+IG_CardAlbum_Acc,4033,1// 포포링 카드
+IG_CardAlbum_Acc,4034,1// 웜테일 카드
+IG_CardAlbum_Acc,4036,1// 무카 카드
+IG_CardAlbum_Acc,4044,1// 스모키 카드
+IG_CardAlbum_Acc,4048,1// 포이즌 스포아 카드
+IG_CardAlbum_Acc,4051,1// 요요 카드
+IG_CardAlbum_Acc,4053,1// 비타타 카드
+IG_CardAlbum_Acc,4064,1// 제롬 카드
+IG_CardAlbum_Acc,4073,1// 파이어럿 스켈 카드
+IG_CardAlbum_Acc,4077,1// 휀 카드
+IG_CardAlbum_Acc,4079,1// 맨티스 카드
+IG_CardAlbum_Acc,4084,1// 마린스피어 카드
+IG_CardAlbum_Acc,4091,1// 코볼트 카드
+IG_CardAlbum_Acc,4093,1// 오본느 카드
+IG_CardAlbum_Acc,4103,1// 호롱 카드
+IG_CardAlbum_Acc,4139,1// 조커 카드
+IG_CardAlbum_Acc,4149,1// 가고일 카드
+IG_CardAlbum_Acc,4152,1// 갈라파고 카드
+IG_CardAlbum_Acc,4154,1// 경단동자 카드
+IG_CardAlbum_Acc,4175,1// 독두꺼비 카드
+IG_CardAlbum_Acc,4187,1// 레이드릭아쳐 카드
+IG_CardAlbum_Acc,4190,1// 레이쓰 카드
+IG_CardAlbum_Acc,4193,1// 루드 카드
+IG_CardAlbum_Acc,4196,1// 마린 카드
+IG_CardAlbum_Acc,4205,1// 미믹 카드
+IG_CardAlbum_Acc,4209,1// 바이올리 카드
+IG_CardAlbum_Acc,4212,1// 본건 카드
+IG_CardAlbum_Acc,4215,1// 블레이저 카드
+IG_CardAlbum_Acc,4219,1// 세이지웜 카드
+IG_CardAlbum_Acc,4224,1// 스템웜 카드
+IG_CardAlbum_Acc,4227,1// 스프링래빗 카드
+IG_CardAlbum_Acc,4228,1// 슬리퍼 카드
+IG_CardAlbum_Acc,4230,1// 시노비 카드
+IG_CardAlbum_Acc,4232,1// 신선초 카드
+IG_CardAlbum_Acc,4237,1// 아울듀크 카드
+IG_CardAlbum_Acc,4238,1// 아울바론 카드
+IG_CardAlbum_Acc,4252,1// 엘리게이터 카드
+IG_CardAlbum_Acc,4256,1// 오크아쳐 카드
+IG_CardAlbum_Acc,4262,1// 운악선 카드
+IG_CardAlbum_Acc,4264,1// 윈드고스트 카드
+IG_CardAlbum_Acc,4265,1// 이매망량 카드
+IG_CardAlbum_Acc,4272,1// 저파룡 카드
+IG_CardAlbum_Acc,4282,1// 천구 카드
+IG_CardAlbum_Acc,4283,1// 천하대장군 카드
+IG_CardAlbum_Acc,4293,1// 쿠키 카드
+IG_CardAlbum_Acc,4294,1// 큐브 카드
+IG_CardAlbum_Acc,4321,1// 하이로조이스트 카드
+IG_CardAlbum_Acc,4326,1// 해달 카드
+IG_CardAlbum_Acc,4327,1// 혈호접 카드
+IG_CardAlbum_Acc,4331,1// 히터 카드
+IG_CardAlbum_Acc,4344,1// 위레스카드
+IG_CardAlbum_Acc,4347,1// 아르마이어딘제카드
+IG_CardAlbum_Acc,4348,1// 휘케바인트리스카드
+IG_CardAlbum_Acc,4349,1// 이렌드에베시카드
+IG_CardAlbum_Acc,4355,1// 그렘린카드
+IG_CardAlbum_Acc,4356,1// 비홀더카드
+IG_CardAlbum_Acc,4377,1// 그로브카드
+IG_CardAlbum_Acc,4384,1// 하이드로랜서카드
+IG_CardAlbum_Acc,4385,1// 드래곤의알카드
+IG_CardAlbum_Acc,4389,1// 플라즈마카드
+IG_CardAlbum_Acc,4391,1// 신벌의대행자카드
+IG_CardAlbum_Acc,4415,1// 스노이어카드
+IG_CardAlbum_Acc,4416,1// 시로마카드
+IG_CardAlbum_Acc,4418,1// 게에즈티카드
+IG_CardAlbum_Acc,4423,1// 갈리온카드
+IG_CardAlbum_Acc,4424,1// 스태포카드
+IG_CardAlbum_Acc,4433,1// 임프카드
+IG_CardAlbum_Acc,4436,1// 누더기좀비카드
+IG_CardAlbum_Acc,4437,1// 헬푸들카드
+// Shoes Card Album
+IG_CardAlbum_Shoes,4009,1// 촌촌 카드
+IG_CardAlbum_Shoes,4038,1// 좀비 카드
+IG_CardAlbum_Shoes,4050,1// 수컷 도둑벌레 카드
+IG_CardAlbum_Shoes,4070,1// 에기라 카드
+IG_CardAlbum_Shoes,4097,1// 마타 카드
+IG_CardAlbum_Shoes,4100,1// 소희 카드
+IG_CardAlbum_Shoes,4107,1// 베릿트 카드
+IG_CardAlbum_Shoes,4151,1// 가조마르트 카드
+IG_CardAlbum_Shoes,4160,1// 구식조총병 카드
+IG_CardAlbum_Shoes,4164,1// 글린부르스티 카드
+IG_CardAlbum_Shoes,4186,1// 레글러 카드
+IG_CardAlbum_Shoes,4199,1// 머맨 카드
+IG_CardAlbum_Shoes,4200,1// 메갈리스 카드
+IG_CardAlbum_Shoes,4204,1// 미니데몬 카드
+IG_CardAlbum_Shoes,4208,1// 미야비인형 카드
+IG_CardAlbum_Shoes,4221,1// 스켈레톤제네럴 카드
+IG_CardAlbum_Shoes,4235,1// XMAS쿠키 카드
+IG_CardAlbum_Shoes,4239,1// 아이언피스트 카드
+IG_CardAlbum_Shoes,4244,1// 알람 카드
+IG_CardAlbum_Shoes,4245,1// 암무트 카드
+IG_CardAlbum_Shoes,4249,1// 에인션트웜 카드
+IG_CardAlbum_Shoes,4257,1// 와일드로즈 카드
+IG_CardAlbum_Shoes,4267,1// 익스플로젼 카드
+IG_CardAlbum_Shoes,4275,1// 좀비프리즈너 카드
+IG_CardAlbum_Shoes,4290,1// 캣오나인테일 카드
+IG_CardAlbum_Shoes,4319,1// 프리저 카드
+IG_CardAlbum_Shoes,4378,1// 골드어시더스카드
+IG_CardAlbum_Shoes,4381,1// 그린페러스카드
+IG_CardAlbum_Shoes,4396,1// 타나토스의증오카드
+IG_CardAlbum_Shoes,4417,1// 아이스티탄카드
+IG_CardAlbum_Shoes,4435,1// 좀비슬러터카드
+// Shield Card Album
+IG_CardAlbum_Shield,4012,1// 도둑벌레 알 카드
+IG_CardAlbum_Shield,4013,1// 앙드레 알 카드
+IG_CardAlbum_Shield,4032,1// 앰버나이트 카드
+IG_CardAlbum_Shield,4045,1// 호른 카드
+IG_CardAlbum_Shield,4058,1// 타라프로그 카드
+IG_CardAlbum_Shield,4066,1// 오크워리어 카드
+IG_CardAlbum_Shield,4067,1// 메갈로돈 카드
+IG_CardAlbum_Shield,4074,1// 빅풋 카드
+IG_CardAlbum_Shield,4075,1// 아르고스 카드
+IG_CardAlbum_Shield,4083,1// 라플레시아 카드
+IG_CardAlbum_Shield,4090,1// 무낙 카드
+IG_CardAlbum_Shield,4120,1// 쁘띠 카드
+IG_CardAlbum_Shield,4124,1// 메두사 카드
+IG_CardAlbum_Shield,4136,1// 칼리츠버그 카드
+IG_CardAlbum_Shield,4138,1// 아누비스 카드
+IG_CardAlbum_Shield,4207,1// 미스틸테인 카드
+IG_CardAlbum_Shield,4217,1// 생도목 카드
+IG_CardAlbum_Shield,4226,1// 스팅 카드
+IG_CardAlbum_Shield,4231,1// 식양 카드
+IG_CardAlbum_Shield,4240,1// 아크라우스 카드
+IG_CardAlbum_Shield,4248,1// 에인션트미이라 카드
+IG_CardAlbum_Shield,4250,1// 엑서큐서너 카드
+IG_CardAlbum_Shield,4253,1// 엘리스 카드
+IG_CardAlbum_Shield,4254,1// 오우거투스 카드
+IG_CardAlbum_Shield,4277,1// 지르타스 카드
+IG_CardAlbum_Shield,4304,1// 탐루안 카드
+IG_CardAlbum_Shield,4309,1// 패러사이트 카드
+IG_CardAlbum_Shield,4314,1// 페노메나 카드
+IG_CardAlbum_Shield,4322,1// 하이오크 카드
+IG_CardAlbum_Shield,4340,1// 곰인형카드
+IG_CardAlbum_Shield,4397,1// 타나토스의절망카드
+IG_CardAlbum_Shield,4413,1// 호드렘린카드
+IG_CardAlbum_Shield,4414,1// 시커카드
+IG_CardAlbum_Shield,4420,1// 머스키퓰라카드
+IG_CardAlbum_Shield,4439,1// 플레임스컬카드
+IG_CardAlbum_Shield,4442,1// 따따초 카드
+IG_CardAlbum_Shield,4443,1// 아쿠아 엘레멘탈 카드
+IG_CardAlbum_Shield,4444,1// 드라코 카드
+IG_CardAlbum_Shield,4445,1// 루시올라 베스파 카드
+IG_CardAlbum_Shield,4447,1// 센티페데 카드
+IG_CardAlbum_Shield,4448,1// 코르누스 카드
+IG_CardAlbum_Shield,4449,1// 다크 쉐도우 카드
+// Weapon Card Album
+IG_CardAlbum_Weapon,4002,1// 파브르 카드
+IG_CardAlbum_Weapon,4004,1// 드롭프스 카드
+IG_CardAlbum_Weapon,4005,1// 산타포링 카드
+IG_CardAlbum_Weapon,4006,1// 루나틱 카드
+IG_CardAlbum_Weapon,4007,1// 페코페코 알 카드
+IG_CardAlbum_Weapon,4017,1// 세비지 베베 카드
+IG_CardAlbum_Weapon,4018,1// 앙드레 유충 카드
+IG_CardAlbum_Weapon,4019,1// 호넷 카드
+IG_CardAlbum_Weapon,4020,1// 퍼밀리어 카드
+IG_CardAlbum_Weapon,4024,1// 플랑크톤 카드
+IG_CardAlbum_Weapon,4025,1// 스켈레톤 카드
+IG_CardAlbum_Weapon,4026,1// 암컷 도둑벌레 카드
+IG_CardAlbum_Weapon,4029,1// 울프 카드
+IG_CardAlbum_Weapon,4030,1// 만드라고라 카드
+IG_CardAlbum_Weapon,4035,1// 히드라 카드
+IG_CardAlbum_Weapon,4037,1// 스네이크 카드
+IG_CardAlbum_Weapon,4043,1// 앙드레 카드
+IG_CardAlbum_Weapon,4049,1// 바돈 카드
+IG_CardAlbum_Weapon,4055,1// 마리나 카드
+IG_CardAlbum_Weapon,4057,1// 메틀러 카드
+IG_CardAlbum_Weapon,4060,1// 고블린 카드
+IG_CardAlbum_Weapon,4062,1// 아나콘다크 카드
+IG_CardAlbum_Weapon,4063,1// 카라멜 카드
+IG_CardAlbum_Weapon,4065,1// 카호 카드
+IG_CardAlbum_Weapon,4068,1// 스콜피온 카드
+IG_CardAlbum_Weapon,4069,1// 드레인리어 카드
+IG_CardAlbum_Weapon,4072,1// 고렘 카드
+IG_CardAlbum_Weapon,4076,1// 백련옥 카드
+IG_CardAlbum_Weapon,4080,1// 플로라 카드
+IG_CardAlbum_Weapon,4082,1// 데저트울프 카드
+IG_CardAlbum_Weapon,4085,1// 오크 스켈레톤 카드
+IG_CardAlbum_Weapon,4086,1// 솔져 스켈레톤 카드
+IG_CardAlbum_Weapon,4092,1// 스켈워커 카드
+IG_CardAlbum_Weapon,4094,1// 아쳐스켈레톤 카드
+IG_CardAlbum_Weapon,4096,1// 제노크 카드
+IG_CardAlbum_Weapon,4104,1// 레퀴엠 카드
+IG_CardAlbum_Weapon,4106,1// 미이라 카드
+IG_CardAlbum_Weapon,4111,1// 스트라우프 카드
+IG_CardAlbum_Weapon,4115,1// 헌터플라이 카드
+IG_CardAlbum_Weapon,4117,1// 사이드 와인더 카드
+IG_CardAlbum_Weapon,4118,1// 쁘띠 카드
+IG_CardAlbum_Weapon,4125,1// 데비어스 카드
+IG_CardAlbum_Weapon,4126,1// 마이너우로스 카드
+IG_CardAlbum_Weapon,4130,1// 스콜피언 킹 카드
+IG_CardAlbum_Weapon,4140,1// 심연의기사 카드
+IG_CardAlbum_Weapon,4153,1// 게 카드
+IG_CardAlbum_Weapon,4155,1// 고블린리더 카드
+IG_CardAlbum_Weapon,4156,1// 고블린스팀라이더 카드
+IG_CardAlbum_Weapon,4157,1// 고블린아쳐 카드
+IG_CardAlbum_Weapon,4163,1// 그리폰 카드
+IG_CardAlbum_Weapon,4165,1// 기그 카드
+IG_CardAlbum_Weapon,4167,1// 네레이드 카드
+IG_CardAlbum_Weapon,4171,1// 다크프리스트 카드
+IG_CardAlbum_Weapon,4172,1// 더페이퍼 카드
+IG_CardAlbum_Weapon,4176,1// 듀라한 카드
+IG_CardAlbum_Weapon,4180,1// 드릴러 카드
+IG_CardAlbum_Weapon,4182,1// 디아볼릭 카드
+IG_CardAlbum_Weapon,4184,1// 라바골렘 카드
+IG_CardAlbum_Weapon,4192,1// 로터자이로 카드
+IG_CardAlbum_Weapon,4202,1// 묘괴 카드
+IG_CardAlbum_Weapon,4203,1// 뮤턴트드래고노이드 카드
+IG_CardAlbum_Weapon,4214,1// 블러디머더러 카드
+IG_CardAlbum_Weapon,4225,1// 스톤슈터 카드
+IG_CardAlbum_Weapon,4246,1// 어절터 카드
+IG_CardAlbum_Weapon,4247,1// 에스터 카드
+IG_CardAlbum_Weapon,4251,1// 엘더 카드
+IG_CardAlbum_Weapon,4255,1// 오크레이디 카드
+IG_CardAlbum_Weapon,4268,1// 인저스티스 카드
+IG_CardAlbum_Weapon,4273,1// 조개 카드
+IG_CardAlbum_Weapon,4274,1// 좀비마스터 카드
+IG_CardAlbum_Weapon,4281,1// 지퍼베어 카드
+IG_CardAlbum_Weapon,4284,1// 체펫트 카드
+IG_CardAlbum_Weapon,4289,1// 캐터필러 카드
+IG_CardAlbum_Weapon,4291,1// 코볼트리더 카드
+IG_CardAlbum_Weapon,4292,1// 코볼트아쳐 카드
+IG_CardAlbum_Weapon,4297,1// 크루이져 카드
+IG_CardAlbum_Weapon,4307,1// 투구벌레 카드
+IG_CardAlbum_Weapon,4308,1// 트라이조인트 카드
+IG_CardAlbum_Weapon,4310,1// 팬저고블린 카드
+IG_CardAlbum_Weapon,4312,1// 퍼씰 카드
+IG_CardAlbum_Weapon,4316,1// 페이크엔젤 카드
+IG_CardAlbum_Weapon,4317,1// 폭력배 카드
+IG_CardAlbum_Weapon,4320,1// 피빛의기사 카드
+IG_CardAlbum_Weapon,4323,1// 하티베베 카드
+IG_CardAlbum_Weapon,4329,1// 휀다르크 카드
+IG_CardAlbum_Weapon,4335,1// 핏맨카드
+IG_CardAlbum_Weapon,4341,1// 메탈링카드
+IG_CardAlbum_Weapon,4345,1// 힐윈드카드
+IG_CardAlbum_Weapon,4350,1// 라우렐뷘더카드
+IG_CardAlbum_Weapon,4360,1// 에레메스가일카드
+IG_CardAlbum_Weapon,4362,1// 하워드알트아이젠카드
+IG_CardAlbum_Weapon,4368,1// 셰실디먼카드
+IG_CardAlbum_Weapon,4380,1// 레드페러스카드
+IG_CardAlbum_Weapon,4388,1// 데스워드카드
+IG_CardAlbum_Weapon,4390,1// 산들바람카드
+IG_CardAlbum_Weapon,4394,1// 위로하는자카드
+IG_CardAlbum_Weapon,4395,1// 타나토스의슬픔카드
+IG_CardAlbum_Weapon,4398,1// 타나토스의고뇌카드
+IG_CardAlbum_Weapon,4406,1// 스케골트카드
+IG_CardAlbum_Weapon,4421,1// 드로세라카드
+IG_CardAlbum_Weapon,4427,1// 소드가디언카드
+IG_CardAlbum_Weapon,4428,1// 보우가디언카드
+IG_CardAlbum_Weapon,4440,1// 네크로맨서카드
+IG_CardAlbum_Weapon,4452,1// 센티페데 유충 카드
+IG_CardAlbum_Weapon,4453,1// 힐스리온 카드
+// Garment Card Album
+IG_CardAlbum_Garment,4015,32// 콘도르 카드
+IG_CardAlbum_Garment,4056,32// 더스티네스 카드
+IG_CardAlbum_Garment,4071,32// 오크좀비 카드
+IG_CardAlbum_Garment,4081,32// 호드 카드
+IG_CardAlbum_Garment,4088,32// 프릴도라 카드
+IG_CardAlbum_Garment,4095,32// 마르스 카드
+IG_CardAlbum_Garment,4102,32// 위스퍼 카드
+IG_CardAlbum_Garment,4108,32// 미스트 카드
+IG_CardAlbum_Garment,4109,32// 잭 카드
+IG_CardAlbum_Garment,4113,32// 마리오네트 카드
+IG_CardAlbum_Garment,4116,32// 이시스 카드
+IG_CardAlbum_Garment,4129,32// 바포메트 주니어 카드
+IG_CardAlbum_Garment,4133,32// 레이드릭 카드
+IG_CardAlbum_Garment,4159,32// 구미호 카드
+IG_CardAlbum_Garment,4174,1// 데빌링 카드
+IG_CardAlbum_Garment,4178,32// 드래곤테일 카드
+IG_CardAlbum_Garment,4179,32// 드래곤플라이 카드
+IG_CardAlbum_Garment,4183,1// 떠돌이늑대 카드
+IG_CardAlbum_Garment,4197,1// 마스터링 카드
+IG_CardAlbum_Garment,4210,1// 배회하는자 카드
+IG_CardAlbum_Garment,4211,1// 보컬 카드
+IG_CardAlbum_Garment,4266,32// 이클립스 카드
+IG_CardAlbum_Garment,4285,32// 쵸코 카드
+IG_CardAlbum_Garment,4287,32// 캇파 카드
+IG_CardAlbum_Garment,4303,32// 거대위스퍼 카드
+IG_CardAlbum_Garment,4306,1// 토드 카드
+IG_CardAlbum_Garment,4313,32// 펑크 카드
+IG_CardAlbum_Garment,4325,32// 하피 카드
+IG_CardAlbum_Garment,4328,32// 혜군 카드
+IG_CardAlbum_Garment,4334,32// 녹시어스카드
+IG_CardAlbum_Garment,4351,1// 카바크이카루스카드
+IG_CardAlbum_Garment,4373,32// 청이카드
+IG_CardAlbum_Garment,4375,32// 오크베이비카드
+IG_CardAlbum_Garment,4402,32// 엘리엇카드
+IG_CardAlbum_Garment,4422,32// 로우윈카드
+IG_CardAlbum_Garment,4429,32// 살라만다카드
+IG_CardAlbum_Garment,4431,32// 카사카드
+IG_CardAlbum_Garment,4432,33// 마그마링카드
+// Flamel Card
+IG_Flamel_Card,545,1// 레드 슬림 포션
+IG_Flamel_Card,546,1// 옐로우 슬림 포션
+IG_Flamel_Card,547,1// 화이트 슬림 포션
+//Candy Holder
+IG_Candy_Holder,518,10// 꿀
+IG_Candy_Holder,529,20// 사탕
+IG_Candy_Holder,538,15// 잘 구운 쿠키
+IG_Candy_Holder,539,10// 조각 케이크
+IG_Candy_Holder,580,20// 빵
+IG_Candy_Holder,603,1// 오래된 파란상자
+IG_Candy_Holder,607,1// 이그드라실의 열매
+IG_Candy_Holder,616,1// 낡은 카드첩
+IG_Candy_Holder,617,1// 오래된 보라색 상자
+IG_Candy_Holder,641,1// 어둠의 계약서
+IG_Candy_Holder,7460,10// 니플헤임용 특급티켓
+IG_Candy_Holder,11550,5// 호박 케이크
+IG_Candy_Holder,12192,5// 호박파이
+//Lucky Bag
+IG_Lucky_Bag,12018,8// 폭죽
+IG_Lucky_Bag,663,6// 송편
+IG_Lucky_Bag,668,2// 세뱃돈
+IG_Lucky_Bag,7647,3// Taiwan Luk Coin
+IG_Lucky_Bag,7649,1// Big Luk Bookmark
+//Holy Egg 2
+IG_Holy_Egg_2,984,4// 오리데오콘
+IG_Holy_Egg_2,985,10// 에르늄
+IG_Holy_Egg_2,547,30// 화이트 슬림 포션
+IG_Holy_Egg_2,505,30// 파란포션
+IG_Holy_Egg_2,607,3// 이그드라실의 열매
+IG_Holy_Egg_2,608,2// 이그드라실의 씨앗
+IG_Holy_Egg_2,610,15// 이그드라실의 나뭇잎
+IG_Holy_Egg_2,616,5// 낡은 카드첩
+IG_Holy_Egg_2,5198,1// 늘어진 토끼
+//God Material Box
+IG_God_Material_Box,7073,5// 프레이야의 보석
+IG_God_Material_Box,7074,5// 토르의 쇠장갑
+IG_God_Material_Box,7075,5// 아이언 메이든
+IG_God_Material_Box,7076,5// 미지의 톱니바퀴
+IG_God_Material_Box,7077,5// 은장식
+IG_God_Material_Box,7078,5// 발키리의 분노
+IG_God_Material_Box,7079,5// 천사의 날개깃털
+IG_God_Material_Box,7080,5// 고양이의 발소리
+IG_God_Material_Box,7081,5// 여인의 수염
+IG_God_Material_Box,7082,5// 돌의 뿌리
+IG_God_Material_Box,7083,5// 물고기의 영혼
+IG_God_Material_Box,7084,5// 새의 침
+IG_God_Material_Box,7085,5// 곰의 힘줄
+IG_God_Material_Box,7086,5// 태양신의 상징
+IG_God_Material_Box,7087,5// 영혼의 숨소리
+IG_God_Material_Box,7088,5// 눈의 결정
+IG_God_Material_Box,7089,5// 폭풍우의 징조
+IG_God_Material_Box,7090,5// 조용한 물결
+IG_God_Material_Box,7091,5// 몰아치는 파도
+IG_God_Material_Box,7092,5// 흐르는 공기
+// Elemental Points
+IG_Element,6360,1// 스칼렛 포인트
+IG_Element,6361,1// 인디고 포인트
+IG_Element,6362,1// 옐로우위시 포인트
+IG_Element,6363,1// 라임그린 포인트
+// Poisons
+IG_Poison,12717,1// 패럴라이즈
+IG_Poison,12718,1// 리치 엔드
+IG_Poison,12719,1// 오블리비언 커즈
+IG_Poison,12720,1// 데스 허트
+IG_Poison,12721,1// 톡신
+IG_Poison,12722,1// 파이렉시아
+IG_Poison,12723,1// 매직 머쉬룸
+IG_Poison,12724,1// 베놈 블리드
+// Cash Foods
+IG_Cash_Food,12202,1// 혓바닥요리
+IG_Cash_Food,12203,1// 사막전갈 모래찜
+IG_Cash_Food,12204,1// 칵테일 용의 숨결
+IG_Cash_Food,12205,1// 흐베르겔미르의 술
+IG_Cash_Food,12206,1// 구미호 꼬리요리
+IG_Cash_Food,12207,1// 불사의 찌개
+// Bombs
+IG_Bomb,13260,1// 사과 폭탄
+IG_Bomb,13261,1// 야자열매 폭탄
+IG_Bomb,13262,1// 멜론 폭탄
+IG_Bomb,13263,1// 파인애플 폭탄
+IG_Bomb,13264,1// 바나나 폭탄
+IG_Bomb,13265,1// 검은 덩어리
+IG_Bomb,13266,1// 검고 딱딱한 덩어리
+IG_Bomb,13267,1// 무지 딱딱한 덩어리
+// Throwable Items
+IG_Throwable,13268,1// 알 수 없는 가루
+IG_Throwable,13269,1// 투척용 부스트500
+IG_Throwable,13270,1// 투척용 풀 스윙K
+IG_Throwable,13271,1// 투척용 마나 플러스
+IG_Throwable,13272,1// 투척용 큐어 프리
+IG_Throwable,13273,1// 투척용 불끈불끈M
+IG_Throwable,13274,1// 투척용 활면수F
+IG_Throwable,13275,1// 투척용 HP 증가 포션(소)
+IG_Throwable,13276,1// 투척용 HP 증가 포션(중)
+IG_Throwable,13277,1// 투척용 HP 증가 포션(대)
+IG_Throwable,13278,1// 투척용 SP 증가 포션(소)
+IG_Throwable,13279,1// 투척용 SP 증가 포션(중)
+IG_Throwable,13280,1// 투척용 SP 증가 포션(대)
+IG_Throwable,13281,1// 투척용 농축 화이트 포션Z
+IG_Throwable,13282,1// 투척용 비타타500
+IG_Throwable,13283,1// 투척용 농축 샐러마인즙
+IG_Throwable,13284,1// 투척용 세비지 통구이
+IG_Throwable,13285,1// 투척용 칵테일 워그 블러드
+IG_Throwable,13286,1// 투척용 마이너 양지머리
+IG_Throwable,13287,1// 투척용 시로마 아이스티
+IG_Throwable,13288,1// 투척용 드로세라 허브 찜
+IG_Throwable,13289,1// 투척용 쁘띠 꼬리 국수
+IG_Throwable,13290,1// 투척용 검은 물체
+// Mercenary Scrolls
+IG_Mercenary,12153,1// 활용병소환서1급
+IG_Mercenary,12154,1// 활용병소환서2급
+IG_Mercenary,12155,1// 활용병소환서3급
+IG_Mercenary,12156,1// 활용병소환서4급
+IG_Mercenary,12157,1// 활용병소환서5급
+IG_Mercenary,12158,1// 활용병소환서6급
+IG_Mercenary,12159,1// 활용병소환서7급
+IG_Mercenary,12160,1// 활용병소환서8급
+IG_Mercenary,12161,1// 활용병소환서9급
+IG_Mercenary,12162,1// 활용병소환서10급
+IG_Mercenary,12163,1// 검용병소환서1급
+IG_Mercenary,12164,1// 검용병소환서2급
+IG_Mercenary,12165,1// 검용병소환서3급
+IG_Mercenary,12166,1// 검용병소환서4급
+IG_Mercenary,12167,1// 검용병소환서5급
+IG_Mercenary,12168,1// 검용병소환서6급
+IG_Mercenary,12169,1// 검용병소환서7급
+IG_Mercenary,12170,1// 검용병소환서8급
+IG_Mercenary,12171,1// 검용병소환서9급
+IG_Mercenary,12172,1// 검용병소환서10급
+IG_Mercenary,12173,1// 창용병소환서1급
+IG_Mercenary,12174,1// 창용병소환서2급
+IG_Mercenary,12175,1// 창용병소환서3급
+IG_Mercenary,12176,1// 창용병소환서4급
+IG_Mercenary,12177,1// 창용병소환서5급
+IG_Mercenary,12178,1// 창용병소환서6급
+IG_Mercenary,12179,1// 창용병소환서7급
+IG_Mercenary,12180,1// 창용병소환서8급
+IG_Mercenary,12181,1// 창용병소환서9급
+IG_Mercenary,12182,1// 창용병소환서10급
+
+// Prize of Hero
+IG_PrizeOfHero,522,7	// Fruit_Of_Mastela
+IG_PrizeOfHero,547,7	// White_Slim_Potion
+IG_PrizeOfHero,607,17	// Yggdrasilberry
+IG_PrizeOfHero,608,10	// Seed_Of_Yggdrasil
+IG_PrizeOfHero,678,7	// Poison_Bottle
+IG_PrizeOfHero,12075,7	// Str_Dish10
+IG_PrizeOfHero,12080,7	// Int_Dish10
+IG_PrizeOfHero,12085,7	// Vit_Dish10
+IG_PrizeOfHero,12090,7	// Agi_Dish10
+IG_PrizeOfHero,12095,7	// Dex_Dish10
+IG_PrizeOfHero,12100,7	// Luk_Dish10
+IG_PrizeOfHero,12530,2	// Mastela_Fruit_Box
+IG_PrizeOfHero,12534,2	// Yggdrasil_Seed_Box
+IG_PrizeOfHero,12549,2	// White_Slim_Pot_Box2
+IG_PrizeOfHero,12550,2	// Poison_Bottle_Box2
+IG_PrizeOfHero,12623,1	// High_Weapon_Box
+IG_PrizeOfHero,12676,7	// Sg_Violet_Potion_Box
+IG_PrizeOfHero,12679,7	// Sg_White_Potion_Box
+IG_PrizeOfHero,12680,7	// Sg_Blue_Potion_Box
+IG_PrizeOfHero,15093,1	// Hero_Plate
+IG_PrizeOfHero,15094,1	// Hero_Magic_Coat
+IG_PrizeOfHero,15095,1	// Hero_Judgement_Shawl
+IG_PrizeOfHero,15096,1	// Hero_Trade_Mail
+IG_PrizeOfHero,15097,1	// Hero_Hidden_Cloth
+IG_PrizeOfHero,15098,1	// Hero_Taget_Suits
+IG_PrizeOfHero,22035,1	// Vet_Nepen_Heel
+IG_PrizeOfHero,22036,1	// Vet_SliverFox_Boots
+IG_PrizeOfHero,22037,1	// Vet_Ungo_Boots

@@ -1,0 +1,1359 @@
+//===== rAthena Script =======================================
+//= Central Laboratory
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Central Laboratory Instance
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+verus01,153,155,5	script	임시 차원 이동 장치	PORTAL,{
+	.@party_id = getcharid(1);
+	if (.@party_id == 0) {
+		mes "[임시 차원 이동 장치]";
+		mes "동료가 없습니까? 혼자라도 파티를 구성해야합니다.";
+		close;
+	}
+	switch( checkquest(12347,PLAYTIME) ) {
+	case -1:
+		switch( instance_enter("Central Laboratory") ) {
+		case IE_NOMEMBER:
+		case IE_NOINSTANCE:
+		case IE_OTHER:
+			mes "[임시 차원 이동 장치]";
+			mes "차원 이동 통로가 활성화되지 않았습니다.";
+			close;
+		case IE_OK:
+			mapannounce "verus01", "" + strcharinfo(0) + " of the party, " + getpartyname(.@party_id) + ", is entering Central Laboratory.",bc_map,"0x00FF99";
+			setquest 12347;// Trace of Laboratory Access
+			end;
+		}
+	case 0:
+	case 1:
+		mes "[임시 차원 이동 장치]";
+		mes "차원 이동의 흔적이 남아있습니다. 접근 불가";
+		close;
+	case 2:
+		mes "^0000ff차원 이동 장치의 사용이 가능해졌습니다.^000000";
+		erasequest 12347;// Trace of Laboratory Access
+		close;
+	}
+}
+
+verus01,149,155,5	script	문명 탐사원#p	4_LGTSCIENCE,{
+	mes "^ff0000테이밍 몬스터는 이 던전의 진행을 방해합니다. 메모해두세요.^000000";
+	next;
+	mes "[문명 탐사원]";
+	if (isbegin_quest(12346) == 2) {
+		mes "이번엔 무슨 일이시죠?";
+		next;
+	}
+	else {
+		mes "이 지역의 고대 문명에는 흥미로운 점이 많습니다.";
+		next;
+		mes "[문명 탐사원]";
+		mes "토양 지층을 관찰해보면 500년에서 600년 전의 것으로 추정됩니다!";
+		mes "하지만 여기서 발굴된 많은 물건은 이미 현재의 기술을 능가합니다.";
+		next;
+		mes "[문명 탐사원]";
+		mes "알려지지 않은 많은 용어들이 복구된 기록에서 발견됩니다.";
+		next;
+		select("어떤 용어?");
+		mes "[문명 탐사원]";
+		mes "^0000ff마더컴퓨터^000000나, ^0000ff LSI 칩^000000 이라거나, 그리고 또 뭐. ^0000ff치킨^000000?";
+		next;
+		mes "[문명 탐사원]";
+		mes "그래 맞아. 치킨이라는 단어가 분명히 있었습니다. 어떤 기술을 조합한 것일지도 몰라요...";
+		next;
+		mes "[문명 탐사원]";
+		mes "그건 기술의 흔적들 사이에 '뿌리'로 보이는 사람들의 기록에서 참조했습니다.";
+		next;
+		if (select( "내가 관심 가질만한 주제가 아닙니다.", "재미있네요. 그래서 어떻게 됐죠?" ) == 1) {
+			mes "[문명 탐사원]";
+			mes "불행한 사람.";
+			close;
+		}
+		mes "[문명 탐사원]";
+		mes "제 목적은 비록 지금까지 알아낸 것이 중요하지 않더라도 그 시대와 관련된 기술의 사용을 연구하는 것입니다.";
+		next;
+		mes "[문명 탐사원]";
+		mes "제 방식대로 한다면 차원 이동 장치를 사용하여 직접 볼 수도 있지만 일이 너무 많아요. 게다가 전 모험가도 아니고...";
+		next;
+		mes "[문명 탐사원]";
+		mes "혹시 과거 여행에 관심 있으신가요?";
+		next;
+		mes "[문명 탐사원]";
+		mes "재미있는 것을 찾는다면 저에게 보여주시면 더욱 좋구요.";
+		next;
+		if (select( "흥미 없다.", "그러죠." ) == 1) {
+			mes "[문명 탐사원]";
+			mes "불행한 사람.";
+			close;
+		}
+		mes "[문명 탐사원]";
+		mes "모험가시군요. 어떻게 하실지 알려주세요.";
+		if (isbegin_quest(12346) == 0)
+			setquest 12346;// Strange Ancient Science
+		next;
+		completequest 12346;
+	}
+	.@party_id = getcharid(1);
+	if (.@party_id == 0) {
+		mes "[문명 탐사원]";
+		mes "파티에 참여한 후 저와 이야기하세요.";
+		close;
+	}
+	if (getpartyleader(.@party_id,2) != getcharid(0)) {
+		mes "[문명 탐사원]";
+		mes "당신은 파티장이 아니네요. 리더를 데려오세요.";
+		close;
+	}
+	switch( checkquest(12347,PLAYTIME) ) {
+	case -1:
+		if (select( "시간의 균열을 만든다.", "취소" ) == 1) {
+			mes "[문명 탐사원]";
+			mes "시간의 균열이 열리면 숨을 한번 고르고 다시 말 걸어주세요.";
+			instance_create("Central Laboratory");
+		}
+		close;
+	case 0:
+	case 1:
+		mes "[문명 탐사원]";
+		mes "아...안돼...";
+		mes "차원 이동의 후유증이 있어요. 이 상태로는 다시 이동할 수 없어요.";
+		close;
+	case 2:
+		mes "^0000ff중앙 연구소로 들어가는 모든 흔적이 지워졌습니다. 문명 탐사원에게 이야기하세요.^000000";
+		erasequest 12347;// Trace of Laboratory Access
+		close;
+	}
+}
+
+// Entrance
+1@lab,104,34,4	script	수습연구원	4_LGTSCIENCE,{
+
+	if ('switch_enabled == 1) {
+		mes "[수습연구원]";
+		mes "입구가 이미 열려 있습니다.";
+		close;
+	}
+	if (getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes "[수습연구원]";
+		mes "잠깐만요. 당신이 허가 받은 사람인지 가이드와 이야기하고 있습니다.";
+		close;
+	}
+	mes "[수습연구원]";
+	mes "프로젝트 32001 실험 조교가 맞으세요?";
+	next;
+	if (select( "네.", "아니요." ) == 2) {
+		mes "[수습연구원]";
+		mes "실험실을 잘못 찾아오신 것 같네요. 나가서 도움을 요청하세요.";
+		close;
+	}
+	mes "[수습연구원]";
+	mes "5초만 주세요. 액세스 코드 확인 중입니다.";
+	close2;
+	sleep 3000;
+	npctalk "수습연구원 : 액세스 코드가 일치합니다. 문을 열어드리겠습니다.";
+	sleep 6000;
+	npctalk "수습연구원 : 이제 들어갈 수 있습니다. 반대쪽에서는 문을 열 수 없습니다.";
+	if ('switch_enabled == 0) {
+		'switch_enabled = 1;
+		enablenpc instance_npcname("#central_warp_1");
+		enablenpc instance_npcname("#central_warp_2");
+		enablenpc instance_npcname("#central_warp_3");
+		enablenpc instance_npcname("메인 스위치#");
+		enablenpc instance_npcname("선임연구원#pa082");
+		enablenpc instance_npcname("effect_switch");
+		for ( .@i = 1; .@i <= 8; ++.@i )
+			enablenpc instance_npcname( "스위치" + .@i + "#" );
+		'code = 5 * gettime(DT_DAYOFMONTH);
+	}
+	end;
+
+OnInstanceInit:
+	'map_name$ = instance_mapname("1@lab");
+	'code_found = 'code = 0;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		'switch_position[.@i] = 0;
+
+	// Entrance
+	disablenpc instance_npcname("#central_warp_1");
+	disablenpc instance_npcname("#central_warp_2");
+	disablenpc instance_npcname("#central_warp_3");
+
+	// Switchs
+	disablenpc instance_npcname("메인 스위치#");
+	disablenpc instance_npcname("선임연구원#pa082");
+	disablenpc instance_npcname("effect_switch");
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		disablenpc instance_npcname( "스위치" + .@i + "#" );
+
+	// Experiments
+	disablenpc instance_npcname("#central_warp_4");
+	disablenpc instance_npcname("#central_warp_5");
+	disablenpc instance_npcname("실비아#pa0829");
+	disablenpc instance_npcname("페데리코#pa0829");
+	disablenpc instance_npcname("알테미어#pa0829");
+	disablenpc instance_npcname("빈센트#pa0829");
+	disablenpc instance_npcname("#wp01");
+	disablenpc instance_npcname("#wp02");
+	for ( .@i = 1; .@i <= 14; ++.@i )
+		hideonnpc instance_npcname("#gen_" + (.@i < 10 ? "0" : "") + .@i);
+	disablenpc instance_npcname("#central_warp_6");
+	end;
+}
+
+// Switchs
+1@lab,37,37,3	script	스위치1#	CLEAR_NPC,{
+	.@num = charat( strnpcinfo(1),6 );
+	setarray .@position$[0], "OFF", "ON";
+	mes "[스위치 " + .@num + "]";
+	mes "현재 이 스위치는 " + .@position$[ 'switch_position[.@num] ] + " 상태입니다. 어떻게 하겠습니까?";
+	next;
+	'switch_position[.@num] = !( select( "ON","OFF" ) - 1 );
+	close;
+}
+1@lab,39,37,3	duplicate(스위치1#)	스위치2#	CLEAR_NPC
+1@lab,41,37,3	duplicate(스위치1#)	스위치3#	CLEAR_NPC
+1@lab,43,37,3	duplicate(스위치1#)	스위치4#	CLEAR_NPC
+1@lab,46,37,3	duplicate(스위치1#)	스위치5#	CLEAR_NPC
+1@lab,48,37,3	duplicate(스위치1#)	스위치6#	CLEAR_NPC
+1@lab,50,37,3	duplicate(스위치1#)	스위치7#	CLEAR_NPC
+1@lab,52,37,3	duplicate(스위치1#)	스위치8#	CLEAR_NPC
+
+1@lab,34,37,3	script	메인 스위치#	CLEAR_NPC,{
+	.@string$ = 'switch_position[1] + "" + 'switch_position[2] + "" + 'switch_position[3] + "" + 'switch_position[4] + "" +
+		'switch_position[5] + "" + 'switch_position[6] + "" + 'switch_position[7] + "" + 'switch_position[8];
+	.@current_code = strtol( .@string$,2 );
+	npctalk "오늘의 출입코드 " + 'code + ", 현재 입력된 코드는 " + .@current_code + "입니다.";
+	sleep 6000;
+
+	if ('code_found > 0)
+		npctalk "이미 문이 열려있습니다.";
+	else if (.@current_code != 'code)
+		npctalk "출입을 위한 코드가 일치하지 않습니다. 다시 시도해주세요.";
+	else {
+		'code_found = 1;
+		npctalk "출입을 위한 코드가 일치합니다. 문을 개방합니다.";
+		enablenpc instance_npcname("#central_warp_4");
+		enablenpc instance_npcname("#central_warp_5");
+		enablenpc instance_npcname("실비아#pa0829");
+		enablenpc instance_npcname("페데리코#pa0829");
+		enablenpc instance_npcname("알테미어#pa0829");
+		enablenpc instance_npcname("빈센트#pa0829");
+		enablenpc instance_npcname("#wp01");
+		enablenpc instance_npcname("#wp02");
+		donpcevent instance_npcname("effect_switch") + "::OnStop";
+	}
+	end;
+}
+
+1@lab,45,32,3	script	선임연구원#pa082	4_LGTSCIENCE,{
+	if ('code_found > 0) {
+		mes "[선임연구원]";
+		mes "문이 열려있어서 이제 들어갈 수 있습니다. 안쪽에서는 다시 문을 열 수 없습니다.";
+		close;
+	}
+	mes "[선임연구원]";
+	mes "여기까지 오신걸 보니 입자가속 실험 참여자들이신듯 하군요.";
+	next;
+	mes "[선임연구원]";
+	mes "오늘의 출입 코드는 ^0000ff" + 'code + "^000000입니다.";
+	mes "2진수로 변환한 코드를 제 뒤에 보이는 스위치를 이용하여 맞춰주십시오.";
+	next;
+	mes "[선임연구원]";
+	mes "스위치를 맞추신 후에는 출입구 옆의 메인 버튼을 눌러주시면 됩니다.";
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		specialeffect EF_STEAL, AREA, instance_npcname("스위치" + .@i + "#");
+	close2;
+	donpcevent instance_npcname("effect_switch") + "::OnStart";
+	end;
+}
+
+1@lab,1,1,0	script	effect_switch	-1,{
+OnStart:
+OnTimer2000:
+	specialeffect 203,AREA, instance_npcname("메인 스위치#");
+	for ( .@i = 1; .@i <= 8; ++.@i )
+		specialeffect (203+.@i),AREA, instance_npcname("스위치" + .@i + "#");
+	initnpctimer;
+	end;
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+1@lab,81,84,7	script	실비아#pa0829	4_F_SCIENCE,{
+	mes "[실비아]";
+	mes "실험 끝나면 집에서 차가운 맥주에 후라이드 치킨을 먹어야지~";
+	next;
+	mes "[실비아]";
+	mes "나는 거의 2년동안 집에 못갔어.";
+	next;
+	mes "^0000ff실비아는 매우 지친 표정으로 입자 가속기 장치를 보고있다.^000000";
+	close;
+}
+
+1@lab,80,87,7	script	페데리코#pa0829	4_LGTSCIENCE,{
+	mes "[페데리코]";
+	mes "이 장치는 내가 본 어떠한 것보다 대단해. 이 크기로 만들어진 입자 가속기는 한번도 못봤어.";
+	next;
+	mes "[페데리코]";
+	mes "이정도 크기면 소규모 블랙홀을 만들 수 있을지 궁금한데...";
+	next;
+	mes "[페데리코]";
+	mes "아, 그냥 혼잣말이야. 그런 일은 실험보다는 재난에 더 가깝지 하하";
+	close;
+}
+
+1@lab,80,90,6	script	알테미어#pa0829	4_F_SCIENCE,{
+	mes "[알테미어]";
+	mes "이렇게 강한 입자 가속기는 차원 왜곡이 발생할 수도 있어.";
+	close;
+}
+
+1@lab,81,93,6	script	빈센트#pa0829	4_LGTSCIENCE,{
+	mes "[빈센트]";
+	mes "기계는 완벽하군. 아무 문제 없을거야!";
+	next;
+	mes "[빈센트]";
+	mes "알테미어는 걱정이 너무 많아. 나는 실험 후에 여행이나 가야지.";
+	close;
+}
+
+1@lab,80,89,0	script	#wp01	HIDDEN_WARP_NPC,9,9,{
+	end;
+OnTouch:
+	donpcevent instance_npcname("#wp02") + "::OnStart";
+	disablenpc instance_npcname("#wp01");
+	end;
+}
+
+1@lab,80,89,0	script	#wp02	HIDDEN_WARP_NPC,{
+	end;
+
+function effect_gen {
+	.@effect = getarg(0);
+	.@count = getargcount();
+	for ( .@i = 1; .@i < .@count; .@i++ )
+		specialeffect .@effect, AREA, getd( "'gen_" + ( getarg(.@i) < 10 ? "0" : "" ) + getarg(.@i) + "$" );
+	return;
+}
+
+function effect_1_10_gen { effect_gen( getarg(0), 1,2,3,4,5,6,7,8,10 ); }
+
+OnStart:
+	'vincent$ = instance_npcname("빈센트#pa0829");
+	'federico$ = instance_npcname("페데리코#pa0829");
+	'silvia$ = instance_npcname("실비아#pa0829");
+	'artemia$ = instance_npcname("알테미어#pa0829");
+	'gen_01$ = instance_npcname("#gen_01");
+	'gen_02$ = instance_npcname("#gen_02");
+	'gen_03$ = instance_npcname("#gen_03");
+	'gen_04$ = instance_npcname("#gen_04");
+	'gen_05$ = instance_npcname("#gen_05");
+	'gen_06$ = instance_npcname("#gen_06");
+	'gen_07$ = instance_npcname("#gen_07");
+	'gen_08$ = instance_npcname("#gen_08");
+	'gen_09$ = instance_npcname("#gen_09");
+	'gen_10$ = instance_npcname("#gen_10");
+	'gen_11$ = instance_npcname("#gen_11");
+	'gen_12$ = instance_npcname("#gen_12");
+	'gen_13$ = instance_npcname("#gen_13");
+	'gen_14$ = instance_npcname("#gen_14");
+
+	npctalk "페데리코 : 이제 슬슬 시작해봅시다. 음... 닥터 프레사는 아직인가.", 'federico$;
+	sleep 3000;
+	npctalk "알테미어 : 최종적인 확인사항들을 체크 중일겁니다. 이 정도 규모의 실험에는 그만큼의 주의가 필요하니까.", 'artemia$;
+	sleep 3000;
+	npctalk "실비아 : 아무래도 완성품을 가동하는 첫 실험이니 신중해야겠지요.", 'silvia$;
+	sleep 2000;
+	npctalk "빈센트 : 아~ 빨리 끝내고 치킨 먹고싶다.", 'vincent$;
+	sleep 2000;
+	npctalk "실비아 : 앗! 그거 나도 좋아하는데! 먹으러 갈 때 불러줘요.", 'silvia$;
+	sleep 3000;
+	mapannounce 'map_name$, "?????: 아, 아, 하나 둘 하나 둘 마이크테스트.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 1000;
+	npctalk "페데리코 : 오셨군.", 'federico$;
+	sleep 2000;
+	mapannounce 'map_name$, "?????: 프로젝트명 입자가속기의 총 책임자 로나 프레사.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 3000;
+	mapannounce 'map_name$, "로나 프레사 : 현재시각 " + gettime(DT_MONTH) + "월 " + gettime(DT_DAYOFMONTH) + "일 " + gettime(DT_HOUR) + "시 " + gettime(DT_MINUTE) + "분.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 3000;
+	mapannounce 'map_name$, "로나 프레사 : 개방된 공간에서의 입자가속 실험이 주변에 끼치는 영향을 테스트하도록 한다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 3000;
+	npctalk "알테미어 : 아아~ 역시 이 실험은 난 별로 내키질 않아..", 'artemia$;
+	sleep 2000;
+	mapannounce 'map_name$, "로나 프레사 : 선임연구원 닥터 페데리코, 알테미어, 실비아, 빈센트 외 보조연구원들은 실험을 시작하도록.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 3000;
+	npctalk "알테미어 : 시작해봅시다~", 'artemia$;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	sleep 1800;
+	effect_gen( EF_MAGICALATTHIT, 1,3 );
+	sleep 700;
+	npctalk "빈센트 : 제네레이터 회전 시작합니다.", 'vincent$;
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8 );
+	sleep 1500;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4 );
+	npctalk "페데리코 : 제네레이터 회전율 10000 RPM으로 고정.", 'federico$;
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6 );
+	sleep 1000;
+	npctalk "실비아 : 전압은 허용범위 이내에서 움직임 없습니다.", 'silvia$;
+	sleep 400;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2 );
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7 );
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9 );
+	mapannounce 'map_name$, "로나 프레사 : 해당 실험은 이제껏 존재하지 않은 신물질의 생성을 위한 것이다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,2,3,4,5,6,7,8,9 );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 기록원들은 가속기에 장착될 촉매장치의 반응을 상세히 기록해주도록.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 500;
+	npctalk "알테미어 : 제 1 촉매장치 접촉 시작합니다.", 'artemia$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1100;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 850;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 850;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 700;
+	npctalk "실비아 : 제네레이터의 전압 불안정. 아직 허용범위 이내입니다.", 'silvia$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	specialeffect EF_BLASTMINEBOMB, AREA, 'gen_01$;
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 430;
+	npctalk "실비아 : 촉매장치와 가속기 사이에서 허용범위에 근접한 열이 감지됩니다!", 'silvia$;
+	effect_gen( EF_BLASTMINEBOMB, 1,3 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8 );
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4 );
+	sleep 600;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	npctalk "빈센트 : 가속기 가열중.", 'vincent$;
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6 );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7 );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9 );
+	npctalk "빈센트 : 320c.", 'vincent$;
+	sleep 300;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 600;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9,5 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 930;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 780;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	npctalk "빈센트 : 670c, 과열속도가 너무 빠릅니다!", 'vincent$;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 450;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 330;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	npctalk "빈센트 : 1000c 돌파!!!! 닥터 프레사! 장치를 잠시 중단시켜야 합니다!", 'vincent$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 530;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 650;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 문제없다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 733;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	npctalk "실비아 : 그렇게 간단한 문제가 아니예요. 예상 수치보다 한참이나 초과한 온도라구요!", 'silvia$;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 330;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 예상했던 문제다. 현 상태를 계속 유지하도록.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 500;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 600;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 600;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	npctalk "알테미어 : 미쳤군...", 'artemia$;
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 850;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 메인 서버로 변동상황 접수. 입자가속기와 촉매 사이의 차원 왜곡이 감지되었습니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 710;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 330;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	npctalk "알테미어 : 닥터 프레사! 마더컴퓨터의 위험상황입니다. 주 전원을 내려주세요!", 'artemia$;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 360;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 530;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 930;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 경보. 새로운 미확인 생물체가 demi-plane으로부터 접근중.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 810;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	npctalk "빈센트 : 대체 무슨 일이 벌어지는거야. 누가 저 망할 마더컴퓨터 전원 좀 내려버려!", 'vincent$;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 380;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 530;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: demi-plane으로부터 곧 새로운 생명체가 전송되어 올 것입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 430;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 710;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 730;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 880;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 5", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 4", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 3", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 2", bc_map,0xFFFF00,FW_NORMAL,13;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 1", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 600;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 인식 불가능한 생물체 발견. 주 전원을 임시 정지합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	callsub S_Spawn,1;
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 750;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	npctalk "알테미어 : 저...저건 뭐지?!", 'artemia$;	// text can stack if OnMyMobDead already called
+	sleep 3000;
+	npctalk "실비아 : 우리에겐 반응을 하지 않아요. 우리가 보이지 않는 걸까요?", 'silvia$;
+	sleep 5000;
+	npctalk "빈센트 : 하지만 보조연구원들에게는 반응이 있어! 저 생명체는 뭐야!?", 'vincent$;
+	sleep 5000;
+	npctalk "빈센트 : 움직일 수가 없어! 공간이 언 것 같아!", 'vincent$;
+	end;
+
+OnMyMobDead1:
+	mapannounce 'map_name$, "MA-4885: 인식 불가능한 생물체의 제거 완료. 장비를 다시 가동합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 2000;
+	npctalk "알테미어 : MA-4885!! 누구 마음대로 다시 시작하는거야?! 멈춰!!", 'artemia$;
+	sleep 3000;
+	mapannounce 'map_name$, "MA-4885: 인식 불가능한 명령입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 6000;
+	npctalk "알테미어 : 닥터 프레사!! 멈춰야 합니다! 이대론 위험해요!", 'artemia$;
+	sleep 3000;
+	mapannounce 'map_name$, "로나 프레사 : ......", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 3000;
+	npctalk "빈센트 : 프레사! 시간이 없어요! 마더컴퓨터의 전원을!!", 'vincent$;
+	sleep 3000;
+	mapannounce 'map_name$, "MA-4885: 입자 가속 절차를 다시 시작합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 3000;
+	npctalk "실비아 : 프레사! 결정을 내려줘!", 'silvia$;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	sleep 1800;
+	effect_gen( EF_MAGICALATTHIT, 1,3 );
+	mapannounce 'map_name$, "로나 프레사 : ......", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 1700;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8 );
+	sleep 1500;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4 );
+	sleep 1400;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6 );
+	sleep 1300;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2 );
+	mapannounce 'map_name$, "로나 프레사 : 현재 시각 " + gettime(DT_HOUR) + "시 " + gettime(DT_MINUTE) + "분. 실험 진행을 잠시 보류한다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7 );
+	sleep 1100;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9 );
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9,5 );
+	sleep 930;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 접근 거부. 이해할 수 없는 명령입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 810;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_BLASTMINEBOMB, AREA, 'gen_01$;
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 마더컴 MA-4885. 나는 너의 관리책임자 닥터 프레사다. 지금 진행중인 작업을 중지하라.", bc_map,0xFF77,FW_NORMAL,12;
+	effect_gen( EF_BLASTMINEBOMB, 1,3 );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8 );
+	sleep 750;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 700;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 접근 거부. 이해할 수 없는 명령입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 380;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6 );
+	sleep 410;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2 );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 450;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9 );
+	npctalk "페데리코 : 제기랄! 뭔가 또 온다!!", 'federico$;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9,5 );
+	sleep 600;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 경보. 새로운 미확인 생물체가 demi-plane으로부터 접근중.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 500;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 730;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 430;
+	npctalk "빈센트 : 오... 제기랄. 이래서 최신형 CPU는 장착하면 안된다고 했는데.", 'vincent$;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 930;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 400;
+	npctalk "페데리코 : 아... 몸을... 움직일 수가 없어. 젠장", 'federico$;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 600;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: demi-plane으로부터 곧 새로운 생명체가 전송되어 올 것입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 530;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 700;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 5 ", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 4", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 3", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 2", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 1", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 600;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	mapannounce 'map_name$, "MA-4885: 인식 불가능한 생물체 발견. 주 전원을 임시 정지합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	callsub S_Spawn,2;
+	sleep 500;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 600;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 350;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 600;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 350;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	npctalk "실비아 : 아까와 같아요. 우리에겐 관심이 없는 것 같아요.", 'silvia$;
+	sleep 6000;
+	npctalk "빈센트 : 이럴게 아니라 주 전원이 잠시 멈춘 사이에 마더컴퓨터를 완전히 정지시키자고!", 'vincent$;
+	sleep 4000;
+	mapannounce 'map_name$, "MA-4885: 질문에 답변드립니다. 현재 이 공간은 뒤틀린 위상에 갇혀 있습니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	mapannounce 'map_name$, "MA-4885: 위상의 균형이 잡힌 이후에는 demi-plane의 생명체와 이 곳의 생명체가 직접적인 교류를 할 수 있을 것입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	mapannounce 'map_name$, "MA-4885: 현재 뒤틀린 위상을 바로잡기 위해 연산중입니다. 잠시만 기다려 주십시오.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	npctalk "알테미어 : 저 미친 기계뭉치가 뭐라고 하는거야. 지금은 우리와 저 괴물같은 것들이 같은 위상 안에 있지 않다는 뜻인가?", 'artemia$;
+	sleep 5000;
+	npctalk "페데리코 : 아아, 마더 컴퓨터가 연산을 제대로 못하길 빌어야겠군.", 'federico$;
+	end;
+
+OnMyMobDead2:
+	mapannounce 'map_name$, "MA-4885: 인식 불가능한 생물체의 제거 완료. 위상 조정 실패. 해당 절차를 다시 시작합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 4000;
+	mapannounce 'map_name$, "로나 프레사 : 마더컴퓨터 MA-4885. 너는 지금 다른 차원과 이쪽 세계를 동기화 하려 하고 있군.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 7000;
+	mapannounce 'map_name$, "MA-4885: 정확합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	npctalk "알테미어 : 닥터 프레사! 우리의 원래 실험과 전혀 상관없는 터무니없는 실험이 벌어지고 있습니다!", 'artemia$;
+	sleep 7000;
+	mapannounce 'map_name$, "로나 프레사 : 충분히 인지한 상태다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 6000;
+	npctalk "실비아 : 주 전력을 완전히 끊을 수는 없는거예요?", 'silvia$;
+	sleep 6000;
+	mapannounce 'map_name$, "MA-4885: 입자 가속 절차를 다시 시작합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	mapannounce 'map_name$, "로나 프레사 : " + gettime(DT_MONTH) + "월 " + gettime(DT_DAYOFMONTH) + "일. 현시각을 기해 입자가속기 프로젝트를 잠정 패기한다.", bc_map,0xFF77,FW_NORMAL,12;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	sleep 1834;
+	effect_gen( EF_MAGICALATTHIT, 1,3 );
+	sleep 1734;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8 );
+	sleep 1550;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4 );
+	mapannounce 'map_name$, "로나 프레사 : 또한 그 사유는 마더컴퓨터의 이상 작동 및 가속장치의 과열로 인한 것으로 기록을 종료한다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 1400;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6 );
+	sleep 1300;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2 );
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7 );
+	sleep 700;
+	npctalk "실비아 : 좋아! 이제 닥터 프레사가 전원만 내리면...", 'silvia$;
+	sleep 400;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9 );
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9,5 );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 마더컴퓨터 MA-4885의 전원을 차단한다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	sleep 300;
+	effect_gen( EF_MAGICALATTHIT, 2,3,4,5,6,7,8,9,10 );
+	sleep 700;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 관리자의 요청에 따라 모든 장비의 운용을 정지합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: .....명령... ----!!!  지직... ---!! -- 명령에 따라 ----- !! 지직...", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 750;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 750;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 750;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	npctalk "알테미어 : 후... 다 끝난건가?", 'artemia$;
+	sleep 6000;
+	mapannounce 'map_name$, "로나 프레사 : 마더컴 MA-4885의 전원 차단 완료. 장비 정지 확인", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 5000;
+	npctalk "실비아 : 끝난 것 같군요.", 'silvia$;
+	sleep 4000;
+	npctalk "페데리코 : 역시 공장 초기화가 최고지.", 'federico$;
+	sleep 4000;
+	mapannounce 'map_name$, "로나 프레사 : 현재까지의 실험은 모두 기록으로 남기고 이것으로 종료합니다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 5000;
+	mapannounce 'map_name$, "로나 프레사 : 최종 실험의 실패는 안타깝지만 보다 완벽한 상태의 다음 실험을 기약하도록 하겠습니다..", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 5000;
+	mapannounce 'map_name$, "로나 프레사 : 모두 수고하셨습니다.", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 5000;
+	npctalk "알테미어 : 종료된 것 같습니다..", 'artemia$;
+	sleep 5000;
+	npctalk "페데리코 : 프레사의 독단적인 실험으로만 생각했는데.. 아무래도 마더컴 자체의 문제였던 것 같군.", 'federico$;
+	sleep 5000;
+	npctalk "실비아 : 일단 수습을 하고, 빨리 이 망할 실험실을 나가자구요.", 'silvia$;
+	sleep 5000;
+	npctalk "빈센트 : 헌데... 여전히 몸이 움직이지 않는데 어떻게 된거지?", 'vincent$;
+	sleep 5000;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	mapannounce 'map_name$, "MA-4885: CODE NAME - DESCENT", bc_map,0xFF0000,FW_NORMAL,16;
+	sleep 2000;
+	effect_gen( EF_MAGICALATTHIT, 1,3 );
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	sleep 1700;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8 );
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 1500;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4 );
+	sleep 400;
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	sleep 1000;
+	npctalk "페데리코 : 뭐야? 초기화된게 아니였어?!", 'federico$;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6 );
+	sleep 630;
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	sleep 800;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2 );
+	mapannounce 'map_name$, "MA-4885 : 최종 위상 변화를 시작합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1200;
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7 );
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9 );
+	sleep 430;
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 480;
+	npctalk "실비아 : 다 틀렸어. 맥주도 치킨도...", 'silvia$;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9,5 );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	sleep 700;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 930;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	sleep 780;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: demi-plane으로부터 곧 새로운 생명체가 전송되어 올 것입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 400;
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	sleep 600;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1130;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	sleep 700;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 5", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 4", bc_map,0xFFFF00,FW_NORMAL,13;
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 3", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 2", bc_map,0xFFFF00,FW_NORMAL,13;
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 남은 시각 1", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 변화된 위상과의 동조화 작업까지 주 전원을 잠시 차단합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	callsub S_Spawn,3;
+	mapannounce 'map_name$, "MA-4885: 마지막 위상 변화 과정입니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	mapannounce 'map_name$, "MA-4885: 생물체 사이의 위상간섭 현상이 사라지고 나면 이쪽 세계를 demi-plane으로 역소환하는 단계로 들어갑니다.", bc_map,"0xFFFF00";
+	end;
+
+OnMyMobDead3:
+	mapannounce 'map_name$, "MA-4885: 생물체가 제거되기 전에 동기화가 완료되었습니다. 차원 이동을 시작합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 2500;
+	specialeffect EF_MAGICALATTHIT, AREA, 'gen_01$;
+	sleep 2000;
+	effect_gen( EF_MAGICALATTHIT, 1,3 );
+	sleep 1800;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8 );
+	sleep 1500;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4 );
+	sleep 1400;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6 );
+	sleep 1300;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2 );
+	sleep 1200;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7 );
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9 );
+	mapannounce 'map_name$, "MA-4885: 왜곡된 위상의 균형을 복원하기 위해 계산을 수행합니다. 잠시만 기다려주세요.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 1000;
+	effect_gen( EF_MAGICALATTHIT, 1,3,8,4,6,2,7,9,5 );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 810;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	npctalk "페데리코 : 마더컴이 상상이상으로 위험한 실험을 하고 있는데?", 'federico$;
+	sleep 710;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 550;
+	npctalk "빈센트 : 우리보다 더 열심히 하자나. 프레사!!! 알람 소리 들려?!", 'vincent$;
+	sleep 310;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 500;
+	npctalk "빈센트 : 최소한 다른 연구실 사람들은 대피시켜야해.", 'vincent$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 960;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 910;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 730;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "로나 프레사 : 하지만 ... 너는..", bc_map,0xFF77,FW_NORMAL,12;
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1110;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 880;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 430;
+	npctalk "실비아 : 무슨 일인지는 몰라도 차원 이동이 뭔지는 궁금한데? 걱정하지마!", 'silvia$;
+	sleep 360;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 880;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 510;
+	npctalk "알테미어 : 차원 이동을 하면 새로운 소재를 실험해봐야겠어. 지금까지와는 다른 레벨의 실험일거야.", 'artemia$;
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 883;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1100;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "알람 시스템 : 경고! 경고! 입자 연구실에서 발생한 1급 경고. 모든 연구원은 대피소로 이동하세요.", bc_map,0xFF0000,FW_NORMAL,13;
+	sleep 850;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 950;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "알람 시스템 : 반복합니다. 입자 연구실에서 발생한 1급 경고. 모든 연구원은 대피소로 이동하세요.", bc_map,0xFF0000,FW_NORMAL,13;
+	sleep 600;
+	npctalk "페데리코 : 이 이상한 느낌이 차원을 이동하는거야...?", 'federico$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1030;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 1000;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 380;
+	specialeffect EF_SUI_EXPLOSION,AREA,'federico$;
+	disablenpc 'federico$;
+	mapannounce 'map_name$, "MA-4885: 차원 이동이 20% 진행되었습니다. 특정 생물과의 차원 간섭이 있을 수 있습니다. 양해 바랍니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	npctalk "빈센트 : 다른 사람들은 잘 대피했겠지?", 'vincent$;
+	specialeffect EF_BLASTMINEBOMB, AREA, 'gen_01$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 500;
+	effect_gen( EF_BLASTMINEBOMB, 1,3 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 900;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 380;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8 );
+	sleep 550;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 350;
+	specialeffect EF_SUI_EXPLOSION,AREA,'vincent$;
+	disablenpc 'vincent$;
+	npctalk "실비아 : 아...... 치킨이랑 맥주 먹고싶다...", 'silvia$;
+	sleep 380;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4 );
+	sleep 700;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 730;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 860;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 350;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2 );
+	sleep 360;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	specialeffect EF_SUI_EXPLOSION,AREA,'silvia$;
+	disablenpc 'silvia$;
+	mapannounce 'map_name$, "MA-4885: 차원 이동이 78% 진행되었습니다. 차원의 대부분은 demi-plane에 의해 잠식되었습니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	npctalk "알테미어 : 하... 누가 지금 치킨 먹는거야?", 'artemia$;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7 );
+	sleep 830;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9 );
+	sleep 350;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 630;
+	effect_gen( EF_BLASTMINEBOMB, 1,3,8,4,6,2,7,9,5 );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 930;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 400;
+	specialeffect EF_SUI_EXPLOSION,AREA,'artemia$;
+	disablenpc 'artemia$;
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	sleep 400;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 934;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	sleep 500;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 630;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 430;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	sleep 360;
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 460;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 430;
+	specialeffect EF_LORD, AREA, 'gen_11$;
+	sleep 400;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	sleep 800;
+	effect_1_10_gen( EF_BLASTMINEBOMB );
+	effect_1_10_gen( EF_MAGICALATTHIT );
+	mapannounce 'map_name$, "MA-4885: 차원 이동이 100 % 완료되었습니다. demi-plane 차원에 오신 것을 환영합니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 600;
+	specialeffect EF_LORD, AREA, 'gen_12$;
+	sleep 1800;
+	specialeffect EF_LORD, AREA, 'gen_13$;
+	sleep 2000;
+	specialeffect EF_LORD, AREA, 'gen_14$;
+	mapannounce 'map_name$, "MA-4885: 데미 플레인으로 갈 수 있는 출입구는 실험실 3시 방향에 있습니다.", bc_map,0xFFFF00,FW_NORMAL,13;
+	enablenpc instance_npcname("#central_warp_6");
+	sleep 5000;
+	mapannounce 'map_name$, "MA-4885: 게이트웨이가 불안정하여 갈 수 있는 차원의 종류는 보장할 수 없습니다...", bc_map,0xFFFF00,FW_NORMAL,13;
+	sleep 5000;
+	mapannounce 'map_name$, "MA-4885: 살아있는 유기체가 있다면 당신에게 행운을 빕니다. 다시 만날 수 있기를...", bc_map,0xFFFF00,FW_NORMAL,13;
+	end;
+
+S_Spawn:
+	.@round = getarg(0);
+	switch( .@round ) {
+	case 1:
+		setarray .@mob_id[0],
+			1087,	// Orc Hero
+			1147,	// Maya
+			1190,	// Orc Lord
+			1115,	// Eddga
+			1086,	// GTB
+			1038,	// Osiris
+			1159,	// Phreeoni
+			1389,	// Dracula
+			1046,	// Doppelganger
+			1046,	// Doppelganger
+			1059,	// Mistress
+			1150,	// Moonlight
+			1688,	// Lady Tanee
+			1039;	// Baphomet
+		break;
+	case 2:
+		setarray .@mob_id[0],
+			1980,	// Kublin
+			1157,	// Pharaoh
+			1112,	// Drake
+			1251,	// Stormy Knight
+			2068,	// Boitata
+			1373,	// Lord of Death
+			2156,	// Leak
+			1272,	// Dark Lord
+			1518,	// Bacsojin
+			1252,	// Garm
+			1779,	// Ktullanux
+			1708;	// Thanatos
+		break;
+	case 3:
+		setarray .@mob_id[0],
+			1623,	// RSX
+			1418,	// Evil Snake Lord
+			1312,	// Turtle Generals
+			1785,	// Atroce
+			1734,	// Kiel
+			1719,	// Detale
+			1768,	// Gloom Under Night
+			2087,	// Queen Scaraba
+			1751,	// Valkyrie Randgris
+			2253,	// Daehyon
+			2255,	// Kades
+			1832,	// Ifrit
+			1873;	// Beezlebub
+		break;
+	}
+	.@r = rand( getarraysize(.@mob_id) );
+	monster 'map_name$,90,88, "미확인 생물체",.@mob_id[.@r],1, instance_npcname("#wp02") + "::OnMyMobDead" + .@round;
+	return;
+}
+
+1@lab,91,80,5	script	#gen_01	CLEAR_NPC,{ end; }
+1@lab,96,81,5	duplicate(#gen_01)	#gen_02	CLEAR_NPC
+1@lab,99,85,5	duplicate(#gen_01)	#gen_03	CLEAR_NPC
+1@lab,99,91,5	duplicate(#gen_01)	#gen_04	CLEAR_NPC
+1@lab,96,95,5	duplicate(#gen_01)	#gen_05	CLEAR_NPC
+1@lab,91,97,5	duplicate(#gen_01)	#gen_06	CLEAR_NPC
+1@lab,85,96,5	duplicate(#gen_01)	#gen_07	CLEAR_NPC
+1@lab,82,91,5	duplicate(#gen_01)	#gen_08	CLEAR_NPC
+1@lab,82,86,5	duplicate(#gen_01)	#gen_09	CLEAR_NPC
+1@lab,85,81,5	duplicate(#gen_01)	#gen_10	CLEAR_NPC
+1@lab,90,97,5	duplicate(#gen_01)	#gen_11	CLEAR_NPC
+1@lab,82,89,5	duplicate(#gen_01)	#gen_12	CLEAR_NPC
+1@lab,91,80,5	duplicate(#gen_01)	#gen_13	CLEAR_NPC
+1@lab,99,88,5	duplicate(#gen_01)	#gen_14	CLEAR_NPC
+
+1@lab,102,28,0	warp2	#central_warp_1	2,2,1@lab,97,28
+1@lab,80,28,0	warp2	#central_warp_2	2,2,1@lab,75,28
+1@lab,58,28,0	warp2	#central_warp_3	2,2,1@lab,53,28
+1@lab,29,38,0	warp2	#central_warp_4	2,2,1@lab,29,43
+1@lab,48,82,0	warp2	#central_warp_5	2,2,1@lab,58,82
+1@lab,123,88,0	warp2	#central_warp_6	2,2,verus01,152,150

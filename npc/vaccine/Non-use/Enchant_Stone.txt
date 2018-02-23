@@ -1,0 +1,4489 @@
+/////////////////////////////////////////////////////////////////////////////////////
+//// 인첸트 스톤 타입을 소비로 바꿔 엔피씨를 거치지않고                   ////
+//// 그 자리에서 바로 의상에 인첸트 할수있게 짜본 스크립트입니다.     ////
+//// 원래는 의상인첸트 엔피씨를 만들기 귀찮아서 짜봣는데                 ////
+//// 제 능력이 부족해서  여러가지 버그가 생겨버리더라구요....            ////
+//// 덕분에 돌아 돌아 돌아가느냐고 엔피씨 하나 만드는것보다..           ////
+/////고생햇네요                                                                            ////
+////  무단 배포는 하지말아주세요                                                     ////                                 ////                                        em-24.com 의 꽁꽁(지우지마세요!      ////
+////////////////////////////////////////////////////////////////////////////////////
+function	script	25170	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50009,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+//set .@enchan1_rand, rand(1,2);
+switch(select("인첸트한다:취소")){ 
+case 1:
+//if(.@enchan1_rand == 1) set .@equip_card[3],29144;
+//if(.@enchan1_rand == 2) set .@equip_card[3],29144;
+//set .@equip_card[3],29144;
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+//delequip EQI_COSTUME_GARMENT;
+specialeffect2 EF_REPAIRWEAPON;			
+								//getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25170 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50009,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50009,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+function	script	25067	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50020,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25067 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50020,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50020,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+
+//====================================================================================================
+function	script	6964	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50100,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6964 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50100,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50100,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6963	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50099,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6963 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50099,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50099,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25303	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50095,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25303 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50095,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50095,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25302	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50094,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25302 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50094,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50094,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25209	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50089,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25209 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50089,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50089,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25208	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50088,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25208 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50088,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50088,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6908	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50038,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6908 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50038,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50038,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//======================================================================
+function	script	25306	{ 
+
+if (!getequipisequiped(EQI_COSTUME_GARMENT)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50102,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_GARMENT );
+.@ref = getequiprefinerycnt( EQI_COSTUME_GARMENT );
+.@card1 = getequipcardid( EQI_COSTUME_GARMENT, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_GARMENT, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_GARMENT, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_GARMENT, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_GARMENT,0),getequipcardid(EQI_COSTUME_GARMENT,1),getequipcardid(EQI_COSTUME_GARMENT,2),getequipcardid(EQI_COSTUME_GARMENT,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_GARMENT);
+//set .@enchan1_rand, rand(1,2);
+switch(select("인첸트한다:취소")){ 
+case 1:
+//if(.@enchan1_rand == 1) set .@equip_card[3],29144;
+//if(.@enchan1_rand == 2) set .@equip_card[3],29144;
+//set .@equip_card[3],29144;
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+//delequip EQI_COSTUME_GARMENT;
+specialeffect2 EF_REPAIRWEAPON;			
+								//getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25306 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50102,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50102,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+
+//====================================================================================================상단=====================================================================================
+function	script	6636	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50025,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6636 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50025,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50025,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6637	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50026,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6637 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50026,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50026,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6638	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50027,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6638 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50027,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50027,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6639	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50028,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6639 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50028,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50028,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6640	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50029,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6640 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50029,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50029,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6641	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50030,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6641 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50030,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50030,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6716	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50035,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6716 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50035,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50035,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6740	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50039,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6740 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50039,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50039,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6741	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50040,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6741 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50040,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50040,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6790	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50045,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6790 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50045,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50045,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6791	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50046,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6791 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50046,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50046,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6792	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50047,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6792 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50047,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50047,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6943	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50048,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6943 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50048,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50048,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6944	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50049,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6944 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50049,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50049,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6999	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50101,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6999 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50101,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50101,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25000	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50057,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25000 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50057,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50057,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25068	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50021,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25068 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50021,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50021,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25069	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50022,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25069 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50022,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50022,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25171	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50085,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25171 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50085,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50085,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25172	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50013,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25172 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50013,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50013,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25207	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50087,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25207 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50087,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50087,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25210	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50090,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25210 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50090,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50090,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25304	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_TOP)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50096,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_TOP );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_TOP );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_TOP, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_TOP, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_TOP, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_TOP, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_TOP,0),getequipcardid(EQI_COSTUME_HEAD_TOP,1),getequipcardid(EQI_COSTUME_HEAD_TOP,2),getequipcardid(EQI_COSTUME_HEAD_TOP,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_TOP);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25304 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50096,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50096,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================중단//====================================================================================================
+function	script	6642	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50031,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6642 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50031,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50031,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6643	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50032,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6643 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50032,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50032,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6717	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50036,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6717 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50036,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50036,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6742	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50041,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6742 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50041,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50041,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6743	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50042,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6743 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50042,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50042,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6744	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50043,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6744 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50043,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50043,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6945	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50050,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6945 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50050,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50050,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6946	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50051,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6946 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50051,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50051,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6947	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50052,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6947 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50052,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50052,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6948	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50053,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6948 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50053,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50053,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6949	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50054,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6949 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50054,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50054,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6950	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50055,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6950 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50055,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50055,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25001	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50058,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25001 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50058,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50058,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25002	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50059,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25002 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50059,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50059,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25003	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50060,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25003 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50060,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50060,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25004	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50061,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25004 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50061,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50061,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25005	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50062,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25005 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50062,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50062,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25006	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50063,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25006 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50063,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50063,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25007	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50064,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25007 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50064,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50064,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25060	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50075,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25060 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50075,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50075,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25061	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50076,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25061 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50076,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50076,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25070	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50023,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25070 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50023,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50023,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25141	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50084,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25141 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50084,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50084,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25173	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50014,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25173 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50014,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50014,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25175	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_MID)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50086,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_MID );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_MID );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_MID, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_MID, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_MID, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_MID, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_MID,0),getequipcardid(EQI_COSTUME_HEAD_MID,1),getequipcardid(EQI_COSTUME_HEAD_MID,2),getequipcardid(EQI_COSTUME_HEAD_MID,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_MID);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25175 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50086,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50086,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6644	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50033,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6644 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50033,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50033,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6645	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50034,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6645 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50034,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50034,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6718	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50037,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6718 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50037,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50037,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6745	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50044,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6745 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50044,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50044,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	6951	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50056,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 6951 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50056,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50056,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25008	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50065,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25008 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50065,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50065,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25009	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50066,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25009 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50066,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50066,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25010	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50067,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25010 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50067,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50067,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25011	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50068,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25011 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50068,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50068,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25012	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50069,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25012 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50069,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50069,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25013	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50070,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25013 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50070,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50070,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25014	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50071,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25014 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50071,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50071,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25015	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50072,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25015 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50072,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50072,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25016	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50073,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25016 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50073,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50073,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25017	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50074,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25017 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50074,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50074,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25062	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50077,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25062 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50077,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50077,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25063	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50078,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25063 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50078,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50078,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25064	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50079,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25064 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50079,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50079,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25065	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50080,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25065 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50080,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50080,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25071	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50024,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25071 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50024,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50024,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25072	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50081,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25072 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50081,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50081,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25139	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50082,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25139 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50082,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50082,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25140	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50083,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25140 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50083,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50083,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25174	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50015,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25174 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50015,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50015,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25227	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50091,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25227 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50091,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50091,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25228	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50092,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25228 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50092,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50092,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25229	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50093,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25229 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50093,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50093,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}
+//====================================================================================================
+function	script	25305	{ 
+
+if (!getequipisequiped(EQI_COSTUME_HEAD_LOW)) {
+message ""+strcharinfo(0)+"","장비를 착용하세요";
+getitem 50097,1;
+		end;
+		}
+.@id = getequipid( EQI_COSTUME_HEAD_LOW );
+.@ref = getequiprefinerycnt( EQI_COSTUME_HEAD_LOW );
+.@card1 = getequipcardid( EQI_COSTUME_HEAD_LOW, 0 );
+.@card2 = getequipcardid( EQI_COSTUME_HEAD_LOW, 1 );
+.@card3 = getequipcardid( EQI_COSTUME_HEAD_LOW, 2 );
+.@card4 = getequipcardid( EQI_COSTUME_HEAD_LOW, 3 );
+
+if(.@card4 != 0) {goto eend;end;}
+
+
+
+setarray .@equip_card[0], getequipcardid(EQI_COSTUME_HEAD_LOW,0),getequipcardid(EQI_COSTUME_HEAD_LOW,1),getequipcardid(EQI_COSTUME_HEAD_LOW,2),getequipcardid(EQI_COSTUME_HEAD_LOW,3);
+if(.@equip_card[3] == 0) {
+set .@equip_refine, getequiprefinerycnt(EQI_COSTUME_HEAD_LOW);
+switch(select("인첸트한다:취소")){ 
+case 1:
+delitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, .@card4;
+
+specialeffect2 EF_REPAIRWEAPON;			
+								
+								if ( !.@card4 )
+getitem2 .@id, 1,1, .@ref, 0, .@card1, .@card2, .@card3, 25305 + .@o * 10 + .@r;
+								goto enend;
+								close;
+								case 2:
+								message ""+strcharinfo(0)+"","인첸트가 취소되엇습니다.";
+								getitem 50097,1;
+								close;
+								}
+								}
+
+
+
+eend:
+message ""+strcharinfo(0)+"","인첸트가 한계치에 도달한 장비입니다.";
+getitem 50097,1;
+	end;
+
+enend:
+message ""+strcharinfo(0)+"","인첸트가 완료되었습니다.";
+	end;
+
+end;
+}

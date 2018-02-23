@@ -1,0 +1,442 @@
+//===== eAthena Script =======================================
+//= Socket Enchant
+//===== By: ==================================================
+//= eAthena dev team
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= eAthena SVN
+//===== Description: =========================================
+//= item loses all element refinement and upgrades but
+//= cards too?
+//===== Additional Comments: =================================
+//= 0.1a added missing L_No: to 2 funcs [Lupus]
+//= 0.1b Removed duplicates [Toms]
+//= 0.2	Added missing next;'s [Evera]
+//= 0.3 Fixed Zweihander[+] id [Lupus]
+//= 1.0 Fixed ingredients check [Lupus]
+//= 1.1	Updated to official. [SinSloth]
+//= 1.1b Optimized/cleaned [ultramage]
+//= 1.2 Fixed some typos and a nasty bug. [SinSloth]
+//= 1.3 Fixed a wrong item ID with Sphinx Hat. [SinSloth]
+//= 1.4 Corrected NPC names to fall within proper restrictions. [L0ne_W0lf]
+//============================================================
+
+prt_gld,127,157,4	script	세야블렘	84,{
+
+	mes "[세야블렘]";
+	mes "나는 일반적인 무기나 방어구에 소켓을 뚫어주는 기술자야.";
+	mes "내 기술에는 요금과 재료가 필요하고, 그것이 깨질 확률도 존재해.";
+	next;
+	mes "[세야블렘]";
+	mes "뭐 구멍만 뚫으면 되는 간단한 일 아니냐고 말하는 사람도 있긴 하지만 그건 어디까지나 모르는 사람이 하는 말일뿐.";
+	mes "만약 네가 나의 기술에 흥미가 있다면, 나에게 알려줘.";
+	next;
+	switch( select( "무기","방어구","설명을 더 듣는다","관둔다" ) )
+	{
+		case 1:
+			mes "[세야블렘]";
+			//mes "You want to add a Slot to a weapon?";
+			mes "무기에 소켓을 뚫고싶다고?";
+			//mes "I categorize weapons by their difficulty in adding a Slot, C Class being easiest and S Class the most difficult.";
+			mes "난 소켓을 뚫기에 어려운 정도에 따라 무기를 분류해놨어. 예를들면, C급은 가장 성공하기 쉽고, S급은 가장 성공하기 어렵지.";
+			//mes "Which class would you like to try?";
+			mes "넌 어떤 클래스를 선택할거니?";
+			set @sockettype,1;
+			next;
+			switch( select( "C급","B급","A급","S급" ) )
+			{
+				case 1:
+					mes "[세야블렘]";
+					mes "C급을 하고싶다고?";
+					//mes "Now, I can only upgrade certain equipment in that class, so please choose one of the following items, so we can try to add a Slot to it.";
+					mes "좋아, 그럼 지금부터 내가 소켓을 뚫을 수 있는 C급 아이템의 목록을 보여줄거야. 그럼 네가 원하는 아이템을 거기서 고르길 바래.";
+					next;
+					switch( select( "트라이던트","로프","바이올린","거친 파도의 서","갈라진 대지의 서","타오르는 태양의 서","메마른 바람의 서" ) )
+					{
+						case 1: callfunc "Func_Socket2",1,1460,1461,40,71,200,1010,10; break;
+						case 2: callfunc "Func_Socket2",1,1950,1951,40,71,200,1010,10; break;
+						case 3: callfunc "Func_Socket2",1,1901,1902,40,71,200,1010,10; break;
+						case 4: callfunc "Func_Socket2",1,1553,1568,40,71,200,1010,10; break;
+						case 5: callfunc "Func_Socket2",1,1554,1569,40,71,200,1010,10; break;
+						case 6: callfunc "Func_Socket2",1,1555,1570,40,71,200,1010,10; break;
+						case 7: callfunc "Func_Socket2",1,1556,1571,40,71,200,1010,10; break;
+					}
+				break;
+				
+				case 2:
+					mes "[세야블렘]";
+					mes "B급을 하고싶다고?";
+					//mes "Alright, this is the average equipment category.";
+					//mes "Please choose the weapon to which you'd like me to try to add a Slot.";
+					mes "좋아, 그럼 지금부터 내가 소켓을 뚫을 수 있는 B급 아이템의 목록을 보여줄거야. 그럼 네가 원하는 아이템을 거기서 고르길 바래.";
+					next;
+					switch( select( "체인","글라디우스","각궁","파이크","해동검","류트","와이어","바그낙","알바레스트","오키쉬액스","시미터","스파이크" ) )
+					{
+						case 1: callfunc "Func_Socket2",1,1519,1520,40,66,300,1010,10; break;
+						case 2: callfunc "Func_Socket2",2,1219,1220,40,66,300,984,1,999,5; break;
+						case 3: callfunc "Func_Socket2",2,1714,1716,40,66,300,984,2,999,5; break;
+						case 4: callfunc "Func_Socket2",1,1407,1408,40,66,300,1010,10; break;
+						case 5: callfunc "Func_Socket2",2,1123,1128,40,66,300,984,2,999,5; break;
+						case 6: callfunc "Func_Socket2",1,1905,1906,40,66,300,1011,10; break;
+						case 7: callfunc "Func_Socket2",1,1954,1955,40,66,300,1011,10; break;
+						case 8: callfunc "Func_Socket2",1,1801,1802,40,66,300,1010,10; break;
+						case 9: callfunc "Func_Socket2",2,1713,1715,40,66,300,984,2,999,5; break;
+						case 10: callfunc "Func_Socket2",1,1304,1309,40,66,200,984,1; break;
+						case 11: callfunc "Func_Socket2",1,1113,1114,40,66,200,984,1; break;
+						case 12: callfunc "Func_Socket2",1,1523,1538,40,66,300,984,1; break;
+					}
+				break;
+				
+				case 3:
+					mes "[세야블렘]";
+					mes "오호, A급을 하고싶다고?";
+					//mes "This is some high risk territory!";
+					mes "이쪽은 상당히 위험이 큰 영역이라고!";
+					//mes "Alright, which weapon would you like me to try adding a Slot?";
+					mes "좋아, 네가 소켓을 추가하고싶은 아이템을 골라봐.";
+					next;
+					switch( select( "헌터 보우","생존의 지팡이(INT)","즈바이핸더","프람베르그","등 뒤를 베는 자","빌리스타","스터너","베르세르크","클레이모어","드래곤 킬러","시린 고드름의 카타르","먼지낀 가시덤불 카타르","분출하는 불꽃의 카타르","살을 에는 바람의 카타르","골든 메이스","비파","여왕님의 채찍","요괴의 창","슈바이체르샤벨" ) )
+					{
+						case 1: callfunc "Func_Socket2",2,1718,1726,40,66,500,984,2,999,10; break;
+						case 2: callfunc "Func_Socket2",2,1619,1620,40,66,500,984,2,999,10; break;
+						case 3: callfunc "Func_Socket2",2,1168,1171,40,66,800,984,5,999,10; break;
+						case 4: callfunc "Func_Socket2",2,1129,1149,40,66,500,984,2,999,10; break;
+						case 5: callfunc "Func_Socket2",2,1261,1266,40,66,700,984,5,999,10; break;
+						case 6: callfunc "Func_Socket2",2,1722,1727,40,66,500,984,5,999,10; break;
+						case 7: callfunc "Func_Socket2",2,1522,1532,40,66,700,984,2,999,10; break;
+						case 8: callfunc "Func_Socket2",2,1814,1816,40,66,700,984,5,999,10; break;
+						case 9: callfunc "Func_Socket2",2,1163,1172,40,66,700,984,5,999,10; break;
+						case 10: callfunc "Func_Socket2",1,13001,13030,40,66,500,984,2; break;
+						case 11: callfunc "Func_Socket2",1,1256,1275,40,66,500,984,2; break;
+						case 12: callfunc "Func_Socket2",1,1257,1276,40,66,500,984,2; break;
+						case 13: callfunc "Func_Socket2",1,1258,1277,40,66,500,984,2; break;
+						case 14: callfunc "Func_Socket2",1,1259,1278,40,66,500,984,2; break;
+						case 15: callfunc "Func_Socket2",1,1524,1539,40,66,500,984,2; break;
+						case 16: callfunc "Func_Socket2",1,1918,1922,40,66,500,984,2; break;
+						case 17: callfunc "Func_Socket2",1,1970,1976,40,66,500,984,2; break;
+						case 18: callfunc "Func_Socket2",1,1477,1479,40,66,500,984,2; break;
+						case 19: callfunc "Func_Socket2",1,1167,1178,40,66,500,984,2; break;
+					}
+				break;
+				
+				case 4:
+					mes "[세야블렘]";
+					mes "워, 워, 워..";
+					mes "S급이라고? 하하..";
+					//mes "It'd be a near miracle if I can actually pull this off.";
+					mes "S급에 소켓을 뚫는일은 거의 기적에 가깝다고.";
+					//mes "Okay... Which weapon shall we try adding a Slot to?";
+					mes "자... 어떤 아이템에 소켓을 뚫을거니?";
+					next;
+					switch( select( "궁그닐","포이즌 나이프","송곳","수크사마드","간눙가가프","커틀라스","크레센트 사이더","생존의 지팡이(DEX)","제퓨로스","메일브레이커","소드브레이커","어쌔신 대거","그랜드 크로스","액서큐셔너" ) )
+					{
+						case 1: callfunc "Func_Socket2",2,1413,1418,40,56,1000,984,5,999,10; break;
+						case 2: callfunc "Func_Socket2",2,1239,13016,40,56,1000,984,5,999,10; break;
+						case 3: callfunc "Func_Socket2",2,1230,13017,40,56,2000,984,5,999,10; break;
+						case 4: callfunc "Func_Socket2",2,1236,13018,40,56,1000,984,5,999,10; break;
+						case 5: callfunc "Func_Socket2",2,13002,13019,40,56,1000,984,5,999,10; break;
+						case 6: callfunc "Func_Socket2",2,1135,13400,40,56,1000,984,5,999,10; break;
+						case 7: callfunc "Func_Socket2",2,1466,1476,40,56,1000,984,5,999,10; break;
+						case 8: callfunc "Func_Socket2",2,1617,1618,40,56,2000,984,5,999,10; break;
+						case 9: callfunc "Func_Socket2",2,1468,1481,40,56,1000,984,5,999,10; break;
+						case 10: callfunc "Func_Socket2",2,1225,13032,40,56,1000,984,5,999,10; break;
+						case 11: callfunc "Func_Socket2",2,1224,13031,40,56,1000,984,5,999,10; break;
+						case 12: callfunc "Func_Socket2",2,1232,13033,40,56,1000,984,5,999,10; break;
+						case 13: callfunc "Func_Socket2",2,1528,1540,40,56,1000,984,5,999,10; break;
+						case 14: callfunc "Func_Socket2",2,1169,1179,40,56,1000,984,5,999,10; break;
+					}
+				break;
+			}
+		break;
+		
+		case 2:
+			mes "[세야블렘]";
+			mes "갑옷에 소켓을 뚫고싶다고?";
+			mes "좋아, 문제없지.";
+			//mes "Armor is divided into 4 different classes, depending on the work difficulty.";
+			mes "갑옷은 4가지 계열로 나뉘어져있어. 성공 확률에 따라 말이지.";
+			//mes "C Class is the easiest one, and S Class he hardest one.";
+			mes "예를들어, C급은 가장 성공하기 쉽고, S급은 가장 성공하기 어렵지.";
+			//mes "Which class would you like to try?";
+			mes "넌 어떤 급의 아이템에 소켓을 뚫고싶니?";
+			set @sockettype,2;
+			next;
+			switch( select( "C급","B급","A급","S급" ) )
+			{
+				case 1:
+					mes "[세야블렘]";
+					mes "C급을 하고싶은거지?";
+					mes "적당한 선택이야.";
+					mes "어떤 아이템에 소켓을 뚫고싶니?";
+					next;
+					switch( select( "맨틀","코트","서클릿","비레타","장식용 해바라기","학사모","왕리본","학생모" ) )
+					{
+						case 1: callfunc "Func_Socket2",1,2307,2308,40,71,200,999,3; break;
+						case 2: callfunc "Func_Socket2",1,2309,2310,40,71,200,999,3; break;
+						case 3: callfunc "Func_Socket2",1,2232,2233,40,71,200,999,3; break;
+						case 4: callfunc "Func_Socket2",1,2216,2217,40,71,200,999,3; break;
+						case 5: callfunc "Func_Socket2",1,2253,5351,40,71,200,999,3; break;
+						case 6: callfunc "Func_Socket2",1,5012,5347,40,71,200,999,3; break;
+						case 7: callfunc "Func_Socket2",1,2244,5348,40,71,200,999,5; break;
+						case 8: callfunc "Func_Socket2",1,5016,5349,40,71,200,999,5; break;
+					}
+				break;
+				
+				case 2:
+					mes "[세야블렘]";
+					//mes "You have chosen average B Class.";
+					mes "넌 B급을 선택했어.";
+					//mes "So, what kind of armor do you have?";
+					mes "그래서, 어떤아이템에 소켓을 뚫고싶니?";
+					next;
+					switch( select( "미러 쉴드","메일","세인트 로브","실크 로브","부츠","슈즈","머플러","가드","버클러","쉴드","본건 모자","해골 반지","뾰족 구두" ) )
+					{
+						case 1:  callfunc "Func_Socket2",1,2107,2108,40,66,250,999,5; break;
+						case 2:  callfunc "Func_Socket2",1,2314,2315,40,66,250,999,5; break;
+						case 3:  callfunc "Func_Socket2",1,2325,2326,40,66,300,999,5; break;
+						case 4:  callfunc "Func_Socket2",1,2321,2322,40,66,300,999,5; break;
+						case 5:  callfunc "Func_Socket2",1,2405,2406,40,66,300,999,5; break;
+						case 6:  callfunc "Func_Socket2",1,2403,2404,40,66,300,999,5; break;
+						case 7:  callfunc "Func_Socket2",1,2503,2504,40,66,300,999,5; break;
+						case 8:  callfunc "Func_Socket2",1,2101,2102,40,66,300,999,5; break;
+						case 9:  callfunc "Func_Socket2",1,2103,2104,40,66,300,999,5; break;
+						case 10: callfunc "Func_Socket2",1,2105,2106,40,66,250,999,5; break;
+						case 11: callfunc "Func_Socket2",1,5046,5168,40,66,250,999,5; break;
+						case 12: callfunc "Func_Socket2",1,2609,2715,40,66,300,999,5; break;
+						case 13: callfunc "Func_Socket2",1,2409,2432,40,66,300,999,5; break;
+					}
+				break;
+				
+				case 3:
+					mes "[세야블렘]";
+					mes "오호, A급이란말이지.";
+					mes "이쪽은 꽤나 위험부담이 큰 영역이라고!";
+					mes "좋아, 어떤아이템에 소켓을 뚫고싶니?";
+					next;
+					switch( select( "쥬얼헬름","벙거지 모자","메모라이즈 북","타이즈","풀 플레이트 아머","플레이트","씨프 클로스","그리브","코이프","망토","헬름","닌자 슈츠","오크 헬름","옛 영주의 망토","성직자의 모자","골든 헤드기어","브로치","무낙 모자","해적 두건","검은 가죽부츠" ) )
+					{
+						case 1:  callfunc "Func_Socket2",1,2230,2231,40,66,400,985,1; break;
+						case 2:  callfunc "Func_Socket2",1,5114,5120,40,66,400,985,1; break;
+						case 3:  callfunc "Func_Socket2",1,2109,2121,40,66,400,985,1; break;
+						case 4:  callfunc "Func_Socket2",1,2330,2331,40,66,400,985,1; break;
+						case 5:  callfunc "Func_Socket2",1,2341,2342,40,66,400,985,1; break;
+						case 6:  callfunc "Func_Socket2",1,2316,2317,40,66,400,985,1; break;
+						case 7:  callfunc "Func_Socket2",1,2335,2336,40,66,400,985,1; break;
+						case 8:  callfunc "Func_Socket2",1,2411,2412,40,66,400,985,1; break;
+						case 9:  callfunc "Func_Socket2",1,5092,5093,40,66,400,985,1; break;
+						case 10: callfunc "Func_Socket2",1,2505,2506,40,66,400,985,1; break;
+						case 11: callfunc "Func_Socket2",1,2228,2229,40,66,400,985,1; break;
+						case 12: callfunc "Func_Socket2",1,2337,2359,40,66,400,985,1; break;
+						case 13: callfunc "Func_Socket2",1,2299,5157,40,66,400,985,1; break;
+						case 14: callfunc "Func_Socket2",1,2507,2525,40,66,400,985,1; break;
+						case 15: callfunc "Func_Socket2",1,2251,5158,40,66,400,985,1; break;
+						case 16: callfunc "Func_Socket2",1,2246,5159,40,66,400,985,1; break;
+						case 17: callfunc "Func_Socket2",1,2605,2625,40,66,400,985,1; break;
+						case 18: callfunc "Func_Socket2",1,2264,5167,40,66,300,985,1; break;
+						case 19: callfunc "Func_Socket2",1,2287,5350,40,66,500,985,1; break;
+						case 20: callfunc "Func_Socket2",1,2425,2434,40,66,500,985,1; break;
+					}
+				break;
+				
+				case 4:
+					mes "[세야블렘]";
+					mes "워.. S급이라고?";
+					mes "정말로 S급 아이템에 도전을 할거니?";
+					mes "좋아... 그렇다면 네가 원하는 아이템을 내가 알려주는 목록에서 골라봐.";
+					next;
+					switch( select( "마제스틱 고우트","샤프 헤드기어","본헬름","커세어","크라운","티아라","스핑크스 모자","캐스팅의 로브","이어링","링","활 골무","매직 코트","홀리 로브","신의 사자","러닝 셔츠","삼각팬티","쉐도우 부스터","로보아이" ) )
+					{
+						case 1:  callfunc "Func_Socket2",1,2256,5160,40,56,2000,985,2; break;
+						case 2:  callfunc "Func_Socket2",1,2258,5161,40,56,2000,985,2; break;
+						case 3:  callfunc "Func_Socket2",1,5017,5162,40,56,2000,985,2; break;
+						case 4:  callfunc "Func_Socket2",1,5019,5163,40,56,2000,985,2; break;
+						case 5:  callfunc "Func_Socket2",1,2235,5165,40,56,2000,985,2; break;
+						case 6:  callfunc "Func_Socket2",1,2234,5164,40,56,2000,985,2; break;
+						case 7:  callfunc "Func_Socket2",1,5053,5166,40,56,1000,985,2; break;
+						case 8:  callfunc "Func_Socket2",1,2343,2360,40,56,1000,985,2; break;
+						case 9:  callfunc "Func_Socket2",1,2602,2622,40,56,1000,985,2; break;
+						case 10: callfunc "Func_Socket2",1,2601,2621,40,56,1000,985,2; break;
+						case 11: callfunc "Func_Socket2",1,2619,2671,40,56,1000,985,2; break;
+						case 12: callfunc "Func_Socket2",1,2334,2372,40,56,1000,985,1; break;
+						case 13: callfunc "Func_Socket2",1,2327,2373,40,56,1000,985,1; break;
+						case 14: callfunc "Func_Socket2",1,2111,2128,40,56,1000,985,1; break;
+						case 15: callfunc "Func_Socket2",1,2522,2523,40,56,1000,985,1; break;
+						case 16: callfunc "Func_Socket2",1,2339,2371,40,56,1000,985,1; break;
+						case 17: callfunc "Func_Socket2",1,5864,19126,40,56,1000,985,1; break;
+						case 18: callfunc "Func_Socket2",1,5325,19086,40,56,1000,985,1; break;
+					}
+				break;
+			}
+		break;
+		
+		case 3:
+			//아.. 번역 진짜 귀찮네 -_-a 여긴그냥 패스
+			mes "[세야블렘]";
+			mes "Well, I haven't really refined the art of Slot Addition.";
+			mes "It's so complicated that I'd be lying if I told you that I knew every factor that affected the process.";
+			mes "Still, I do notice a few trends...";
+			next;
+			mes "[세야블렘]";
+			mes "In some towns, Slot addition attempts are more successful for equipment with fewer upgrades.";
+			mes "In other towns, the opposite is true.";
+			mes "isn't that really peculiar?";
+			next;
+			mes "[세야블렘]";
+			mes "Oh, theres also something really important that you should know.";
+			mes "If you ask me to add a Slot to something, make sure that you don't have multiples of it in your inventory.";
+			next;
+			mes "[세야블렘]";
+			mes "Heres an example: if you have a +7 Manteau and a normal Manteau in your inventory, then I will randomly pick on of them for my Slot Addition attempt.";
+			mes "Just remember to be careful.";
+			next;
+			mes "[세야블렘]";
+			mes "Again, ^FF0000only carry one of the equipment to wich you want me to add a Slot^000000.";
+			mes "All other equipment with the same name should be placed in your Kafra Storage, got it?";
+			close;
+			
+		case 4:
+			mes "[세야블렘]";
+			mes "마음을 편하게 가져. 모험가양반.";
+			//mes "If you ever want to try adding a Slot to some of your equipment, come back and let me know.";
+			mes "만약 네가 장비에 다시 소켓을 뚫고싶어지면. 언제든 나에게 오라고.";
+			//mes "Seeya~";
+			mes "나중에 봐~";
+			close;
+	}
+}
+				
+function	script	Func_Socket2	{
+
+	mes "[세야블렘]";
+	mes "넌 " +getitemname(getarg(1))+ " 에 소켓을 뚫을거라고 말했어.";
+	if (getarg(0) == 1)
+	{
+		if(getarg(5) > 999) mes "그럼, 나에게  ^FF0000" +getarg(7)+ "^000000개의 ^FF0000" +getitemname(getarg(6))+ "^000000, 그리고 수고비로^FF0000 " +getarg(5) / 1000+",000,000^000000제니를 가져와야해.";
+		else mes "그럼, 나에게 ^FF0000" +getarg(7)+ "^000000개의 ^FF0000" +getitemname(getarg(6))+ "^000000, 그리고 수고비로^FF0000 " +getarg(5)+",000^000000제니를 가져와야해.";
+	}
+	else if (getarg(0) == 2)
+	{
+		if(getarg(5) > 999) mes "그럼, 나에게 ^FF0000" +getarg(7)+ "^000000개의 ^FF0000" +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ "^000000개의 ^FF0000" +getitemname(getarg(8))+ "^000000, 그리고 수고비로^FF0000 " +getarg(5) / 1000+",000,000^000000제니를 가져와야해.";
+		else mes "그럼, 나에게 ^FF0000" +getarg(7)+ "^000000개의 ^FF0000" +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ "^000000개의 ^FF0000" +getitemname(getarg(8))+ "^000000, 그리고 수고비로^FF0000 " +getarg(5)+",000^000000제니를 가져와야해.";
+	}
+	mes "아, 그리고 " +getitemname(getarg(1))+ " 가져오는거 잊지 말고!";
+	next;
+
+	if(@sockettype == 1)
+	{
+		mes "[세야블렘]";
+		//mes "I can try to add a slot now if you have the required items and zeny.";
+		mes "난 네가 요구된 재료를 가져오면 지금 소켓 추가를 시도할 수 있어.";
+		//mes "However, you should know that there's a chance that I might fail.";
+		mes "그러나, 넌 이 시도가 실패할수도 있다는걸 알아야해.";
+		//mes "Therefore, I need to give you a fair warning...";
+		mes "그래서, 난 너에게 경고를 하고있는거야.";
+		next;
+		mes "[세야블렘]";
+		//mes "If this attempt to add a Slot to your Weapon fails, then the ^FF0000Weapon^000000, ^FF0000and any Cards compounded to it will be destroyed^000000.";
+		mes "만약 소켓 추가 시도가 실패한다면, 무기에 어떤 카드가 장착되어있더라도 전부 파괴될거야.";
+		//mes "Do you still want to try to add a Slot?";
+		mes "그래도 아직 소켓 추가를 하고싶니?";
+		next;
+	}
+	else if(@sockettype == 2)
+	{
+		mes "[세야블렘]";
+		//mes "If you have all the required materials, my zeny service fee and the Armor, then we can go ahead with the Slot Addition attempt.";
+		mes "만약 네가 요구된 모든 재료를 가지고있다면, 소켓 추가를 시도할 수 있어.";
+		//mes "But before that, I must warn you of the risk.";
+		mes "하지만, 그 일에는 위험이 있다는걸 난 반드시 경고했어.";
+		next;
+		mes "[세야블렘]";
+		//mes "If this attempt to add a Slot to your Armor fails, then the ^FF0000Armor^000000, ^FF0000it's upgrades^000000 ^FF0000and any Cards compounded to it will be destroyed^000000.";
+		mes "만약 소켓 추가 시도를 실패했을경우에, 방어구에 어떠한 카드가 장착되어있더라도 같이 파괴될거야.";
+		//mes "Do you still want to try to add a Slot?";
+		mes "그래도 아직 소켓 추가를 하고싶니?";
+		next;
+	}
+
+	if ( select("소켓추가를 시도한다","관둔다") == 2 )
+	{
+		mes "[세야블렘]";
+		//mes "Need some time to think about it, huh?";
+		mes "조금 생각할 시간이 필요할거야. 그렇지?";
+		//mes "Alright, I can understand.";
+		mes "그래, 그래. 이해할수있어.";
+		//mes "Just remember that life's no fun if you're always playing it safe~";
+		mes "하지만 말이야, 네가 항상 안전하게 살아간다면 삶은 즐겁지 않을거라는걸 기억해.";
+		close;
+	}
+
+	switch(getarg(0))
+	{
+		case 1:		
+			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (!countitem(getarg(1))))
+			{
+				mes "[세야블렘]";
+				//mes "I'd like to go ahead with this Slot Addition attempt, but you're missing a few things.";
+				//mes "You sure that you have the equipment, required materials and the zeny?";
+				mes "멍청이! 재료가 부족하잖아! 다시 제대로 가져오지 못해?!";
+				close;
+			}
+			break;
+	
+		case 2:
+			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (countitem(getarg(8)) < getarg(9)) || (!countitem(getarg(1))))
+			{
+				mes "[세야블렘]";
+				//mes "I'd like to go ahead with this Slot Addition attempt, but you're missing a few things.";
+				//mes "You sure that you have the equipment, required materials and the zeny?";
+				mes "멍청이! 재료가 부족하잖아! 다시 제대로 가져오지 못해?!";
+				close;
+			}
+			break;
+	}
+	
+	mes "[세야블렘]";
+	//mes "Alright then, let the work begin!";
+	mes "좋아. 이제 시작하지!";
+	//mes "You'd better pray for a successful result.";
+	mes "넌 성공하기를 기도하는게 좋을거야.";
+	next;
+	set .@socketrand,rand(1,100);
+	if((.@socketrand > getarg(3)) && (.@socketrand < getarg(4)))
+	{
+		if(getarg(4) == 51) specialeffect 90;
+		else specialeffect 83;
+		mes "[세야블렘]";
+		mes "좋아! 성공이라고!";
+		//mes "It looks pretty well done. Congratulations!";
+		mes "예쁘게 잘 만들어진거같아. 축하해!";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		getitem getarg(2),1;
+		next;
+		mes "[세야블렘]";
+		mes "다시만나자고, 친구!";
+		close;
+	}
+	else
+	{
+		specialeffect 108;
+		mes "[세야블렘]";
+		mes "헉! 정말 미안해.. 실패해버렸네.";
+		//mes "However, I am completely innocent.";
+		//아 이인간 말하는거 정말 짜증나네 -_- 깨뜨려놓고 지는 결백하데
+		//mes "This is your luck, and it is destined by god, okay?";
+		mes "하지만 이건 너의 운이야. 신께서 너에게 정해주신 운명이라고. 알았어?";
+		//운명 -_- 말하는거보게
+		//mes "Don't be so disappointed, and try next time.";
+		mes "너무 실망하지마. 다음 기회가 있잖아.";
+		delitem getarg(1),1;
+		delitem getarg(6),getarg(7);
+		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		set Zeny,Zeny - getarg(5)*1000;
+		next;
+		mes "[세야블렘]";
+		mes "다음번에는 꼭 성공하길 바래!";
+		close;
+	}
+}

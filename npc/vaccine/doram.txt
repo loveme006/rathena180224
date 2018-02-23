@@ -1,0 +1,447 @@
+
+prt_gld,179,88,5	script	성실한 둘째	4_CAT_3COLOR,{
+	if (checkweight(1001,1) == 0) {
+		mes "- Hold on a second here!! -";
+		mes "- You have too many items. -";
+		mes "- That means you can no longer receive any items. -";
+		mes "- Free up some space -";
+		mes "- and try again. -";
+		close;
+	}
+	mes "[요타 챠라]";
+	mes "아버지, 어머니 무사히 건강하게만 돌아와 주세요.";
+	mes "(중얼거리며 무언가를 만들고 있다.)";
+	next;
+	if (select( "부적 제작", "가족에 대하여" ) == 2) {
+		mes "[요타 챠라]";
+		mes "...아버지 어머니는 우릴 위해 험한 지역으로 자꾸 나가셔. 나는 아직 어려서 큰 도움도 못되고 이렇게 부적을 만드는 게 전부야.";
+		next;
+		emotion 19;
+		mes "[요타 챠라]";
+		mes "내가 이렇게 아무리 간절히 두분의 안녕을 바래도 집에 나쁜 소식이 전해지면 어쩌지?";
+		next;
+		mes "[요타 챠라]";
+		mes "우편이 날라올 때 마다 나는 흠칫흠칫 놀라...";
+		next;
+		emotion 28,"유약한 넷째#wea";
+		mes "[단디 챠라]";
+		mes "엄마, 아빠 큰일 나는거야? 후에에에에에엥~~~~~~~~";
+		next;
+		emotion 21,"용감한 셋째#weapon";
+		mes "[조기 챠라]";
+		mes "그럼 내가 아빠할게!!!!!!";
+		next;
+		emotion 28,"유약한 넷째#wea";
+		emotion 19;
+		mes "[단디 챠라]";
+		mes "우애애애애애애앵 싫어어어어 엄마~~~ 아빠~~~~~~";
+		next;
+		mes "[고마 챠라]";
+		emotion 6,"섬세한 첫째";
+		emotion 19;
+		mes "두분은 우리보다 오래 사실 분이니까 제발 걱정 좀 그만하라고! 왜 애는 울리고 그러니??";
+		next;
+		emotion 9;
+		mes "- 요타는 풀이 죽어 다시 조용히 부적을 만들기 시작했다. -";
+		close;
+	}
+	mes "[요타 챠라]";
+	mes "...너도 건강을 기원하는 가까운 사람이 있니?";
+	mes "원하는 부적이 있다면 도람 토큰이랑 교환하자. 만들어 놓은 부적은 잔뜩 있어.";
+	next;
+	.@s = select( "하급전갱이부적", "하급잎부적", "하급토끼부적", "빛나는가지부적", "신선한다랑어부적", "통통한지렁이부적" );
+	mes "[요타 챠라]";
+	switch(.@s) {
+	case 1:
+		mes "<ITEM>하급전갱이부적<INFO>28413</INFO></ITEM>은 먼 바다로 나가신 아버지를 생각하며 만들었어.";
+		break;
+	case 2:
+		mes "<ITEM>하급잎부적<INFO>28416</INFO></ITEM>은 깊은 숲속을 헤매이실 어머니를 생각하며 만들었어.";
+		break;
+	case 3:
+		mes "<ITEM>하급토끼부적<INFO>28419</INFO></ITEM>은 동생들이 부디 건강하길 바라며 만들었어.";
+		break;
+	case 4:
+		mes "<ITEM>빛나는가지부적<INFO>28422</INFO></ITEM>은 어머니가 그 어디에서도 길을 잃지 않고 집으로 돌아오실 수 있도록 만들었어.";
+		break;
+	case 5:
+		mes "<ITEM>신선한다랑어부적<INFO>28423</INFO></ITEM>은 아버지 배에 다랑어가 가득차 금새 돌아오시길 바라며 만들었어.";
+		break;
+	case 6:
+		mes "<ITEM>통통한지렁이부적<INFO>28424</INFO></ITEM>은 마을 주변에 낚시를 떠나던 날, 가족들이 굶주리지 않게 생선이 잘 잡히길 바라며 만들었어.";
+		break;
+	}
+	if (.@s < 4) {
+		.@cost = 10;
+		.@item_id = 28410 + .@s * 3;
+	}
+	else {
+		.@cost = 30;
+		.@item_id = 28418 + .@s;
+	}
+	mes "<ITEM>도람 토큰<INFO>25142</INFO></ITEM> " + .@cost + "개랑 교환할래?";
+	next;
+	mes "^ff0000- 주 의 -";
+	mes "교환하는 장비에 카드, 인첸트, 제련이 되어 있어도 별다른 메시지 없이 교환될 수 있으니 주의하시기 바랍니다.";
+	next;
+	if (select( "교환한다", "취소한다." ) == 2) {
+		mes "[Yota Chara]";
+		mes "Did...did I misspeak, or what?";
+		mes "I'm not an expert but I did my best.";
+		close;
+	}
+	if (countitem(25142) < .@cost) 
+	{
+		mes "[요타 챠라]";
+		mes "미안해..., 정당한 값을 주고 팔지 않으면 누나에게 엄청 혼나거든.. 도람 토큰 30개를 다시 준비해 줄래..?";
+		close;
+	}
+	mes "[요타 챠라]";
+	mes "고마워... 내 부적이 네게 짐이 되지 않았으면 좋겠다...";
+	delitem 25142, .@cost;
+	getitem .@item_id, 1;
+	close;
+}
+
+prt_gld,176,84,5	script	용감한 셋째#weapon	4_DR_M_02,{
+
+	if (checkweight(1001,1) == 0) {
+		mes "- Hold on a second here!! -";
+		mes "- You have too many items. -";
+		mes "- That means you can no longer receive any items. -";
+		mes "- Free up some space -";
+		mes "- and try again. -";
+		close;
+	}
+	mes "[조기 챠라]";
+	mes "휘이이이잉~ 위이이이잉~";
+	mes "라자냐의 폭격기 조기가 나가신다아아~!!";
+	mes "무기를 버리고 투항하라!";
+	next;
+	if (select( "투항하는 흉내를 낸다.", "모른척 한다." ) == 2) {
+		mes "[도기 챠라]";
+		mes "뚜쉬! 뚜쉬!";
+		mes "두다다다다다다!";
+		mes "어어? 어디가아?";
+		close;
+	}
+	mes "[조기 챠라]";
+	mes "하하하 오늘도 나의 승리구나! 뿌듯한 하루였어!";
+	mes "이제 뭐하고 놀까?";
+	next;
+	if (select( "무기를 토큰으로 교환.", "가족에 대하여" ) == 2) {
+		emotion 21;
+		mes "[조기 챠라]";
+		mes "엄마 아빠는 용사라고 누나가 그랬어! 엄청난 모험을 떠났대!";
+		next;
+		emotion 21;
+		mes "[조기 챠라]";
+		mes "나도 자경단에 들어가서 엄마 아빠 같은 대단한 사람이 될거야!";
+		mes "아직은 어려서 자경단에 못들어가지만, 훈련을 게을리하지 않으니 훗날엔 자경단에서도 에이스가 될 수 있겠지!!";
+		next;
+		emotion 32;
+		mes "[조기 챠라]";
+		mes "내 가족들은 너무 게을러. 속이 깊은 내가 훈련시켜주지 않으면 용사는 결코 될 수 없을거야.";
+		mes "특히 형이랑 동생은 내 인생의 걱정이란 말이지!";
+		next;
+		emotion 18;
+		mes "[조기 챠라]";
+		mes "단디! 오늘의 훈련은 <머리 위에 지렁이 10마리 올려놓기>다! 어서 이리와!!";
+		next;
+		emotion 28,"유약한 넷째#wea";
+		mes "[단디 챠라]";
+		mes "으아아아아앙";
+		mes "언니이이이이이이이!!!!!!!";
+		close;
+	}
+
+	emotion 52;
+	mes "[조기 챠라]";
+	mes "오오오오 새 무기! 새로운 힘!";
+	mes "무엇을 줄거야? 무기 많아? 내가 찾아봐도 돼? <ITEM>도람 토큰<INFO>25142</INFO></ITEM>이랑 바꾸지 않을래?";
+	mes " ";
+	mes "^C26900- 교환 가능 아이템 목록 -";
+	mes "" + getitemname(1690);
+	mes "" + getitemname(1691);
+	mes "" + getitemname(1692);
+	mes "" + getitemname(1693);
+	mes "" + getitemname(1694);
+	mes "" + getitemname(1695);
+	mes "" + getitemname(1696);
+	mes "" + getitemname(1697)+"^000000";
+	next;
+	if (select( "검색한다", "취소한다" ) == 1) {
+		setarray .@item_data[0],
+			1690, 1,	// Marvelous Foxtail Staff [3]
+			1691, 2,	// Wondrous Foxtail Staff [2]
+			1692, 3,	// Magic Foxtail Staff [2]
+			1693, 4,	// Magic Yellow Foxtail Staff [1]
+			1694, 1,	// Foxtail Replica [3]
+			1695, 2,	// Fine Foxtail Replica [2]
+			1696, 3,	// Elaborate Foxtail Replica [2]
+			1697, 4;	// Elaborate Yellow Foxtail Replica [1]
+		.@total_item = getarraysize(.@item_data);
+
+		while(true) 
+		{
+			for ( .@i = 0; .@i < .@total_item; .@i += 2 ) 
+			{
+				if ((countitem(.@item_data[.@i]) - isequippedcnt(.@item_data[.@i])) > 0)
+					break;
+			}
+			if (.@i == .@total_item) 
+			{
+				mes "[조기 챠라]";
+				mes "더는 없는 거야?";
+				next;
+				if (select( "다시 검색한다.", "중단한다" ) == 2)
+				{
+					mes "[조기 챠라]";
+					mes "쳇 그래 알았어.";
+					close;
+				}
+			}
+			else 
+			{
+				mes "[조기 챠라]";
+				mes "앗 이건 ^3131FF" + getitemname(.@item_data[.@i]) + "^000000!!";
+				mes "요걸 <ITEM>도람 토큰<INFO>25142</INFO></ITEM> " + .@item_data[.@i+1] + "개와 바꾸지 않을래..?";
+				next;
+				if (select( "교환", "교환을 중단한다" ) == 2) {
+					mes "[조기 챠라]";
+					mes "하하 그럼 생각 마뀌면 오라고!";
+					close;
+				}
+				mes "[조기 챠라]";
+				mes "얍~! 흐 고마워";
+				mes "다른 것도 더 찾아봐도 될까?";
+				delitem .@item_data[.@i],1;
+				getitem 25142,.@item_data[.@i+1];// Doram token
+				next;
+			}
+		}
+	}
+
+	mes "[조기 챠라]";
+	mes "쳇 거짓말쟁이.";
+	close;
+}
+
+prt_gld,176,80,3	script	유약한 넷째#wea	4_DR_F_01,{
+	if (checkweight(1001,1) == 0) {
+		mes "- Hold on a second here!! -";
+		mes "- You have too many items. -";
+		mes "- That means you can no longer receive any items. -";
+		mes "- Free up some space -";
+		mes "- and try again. -";
+		close;
+	}
+	emotion 23;
+	mes "[단디 챠라]";
+	mes "히에에에엑! 아, 안녕하세요오...";
+	mes "조기 오빠인줄 알고 깜짝 놀랐어요....";
+	next;
+	if (select( "방어구를 토큰으로 교환.", "가족에 대하여" ) == 2) {
+		mes "[단디 챠라]";
+		mes "언니는 화를 잘 내지만 늘 예쁘게 다니라며 틈나는대로 새 옷을 지어줘요....";
+		mes "언니 좋아요...";
+		next;
+		emotion 28;
+		mes "[단디 챠라]";
+		mes "오빠들은 무서워요... 단디 말 잘들으려고 노력 많이 해요오..";
+		mes "그래도 요타오빠는 웃어지지 않고, 조기오빠는 내가 부족하다며 지렁이 같은 걸 자꾸 가져와요. 히이잉..";
+		next;
+		emotion 28;
+		mes "[단디 챠라]";
+		mes "그리고요, 조기오빠가 자경단에 가겠다며 자꾸 숲 주변을 어슬렁거려요. 엄마가 위험하다고 그랬는데...";
+		next;
+		emotion 28;
+		mes "[단디 챠라]";
+		mes "오빠가 몬스터에게 물려가면 어떡하죠? 몬스터는 많이 아프겠죠..?";
+		next;
+		emotion 0;
+		mes "[단디 챠라]";
+		mes "혹시 모험가님께서 오빠가 입을 만한 여분의 방어구가 있나요? 저에게 나눠줄 수 있어요...? 사례는 드릴게요..";
+		close;
+	}
+	mes "[단디 챠라]";
+	mes "무얼 가지고 계신지 제가 찾아봐도 될까요?";
+	mes "조기 오빠가 쓸수 있는거라면 제가 <ITEM>도람 토큰<INFO>25142</INFO></ITEM>으로 사례할게요..";
+	mes " ";
+	mes "^C26900- 교환 가능 아이템 목록 -";
+	mes "" + getitemname(15156);
+	mes "" + getitemname(20790);
+	mes "" + getitemname(22085);
+	mes "" + getitemname(28415);
+	mes "" + getitemname(28418);
+	mes "" + getitemname(28421);
+	mes "" + getitemname(28414);
+	mes "" + getitemname(28417);
+	mes "" + getitemname(28420);
+	mes "" + getitemname(15129);
+	mes "" + getitemname(20789);
+	mes "" + getitemname(22084);
+	mes "" + getitemname(15126);
+	mes "" + getitemname(20788);
+	mes "" + getitemname(22083);
+	mes "" + getitemname(28380);
+	mes "" + getitemname(28381);
+	mes "" + getitemname(28382);
+	mes "" + getitemname(28422);
+	mes "" + getitemname(28423);
+	mes "" + getitemname(28424);
+	mes "" + getitemname(28413);
+	mes "" + getitemname(28416);
+	mes "" + getitemname(28419)+"^000000";
+	next;
+	if (select( "검색한다", "취소한다" ) == 1) {
+		setarray .@item_data[0],	// keep the order
+			15156, 4,	// Elegant Doram Suit [1]
+			20790, 4,	// Elegant Doram Manteau [1]
+			22085, 4,	// Elegant Doram Shoes [1]
+			28415, 4,	// Advanced Saurel Charm [1]
+			28418, 4,	// Advanced Leaf Charm [1]
+			28421, 4,	// Advanced Bunny Charm [1]
+			28414, 3,	// Fair Saurel Charm [1]
+			28417, 3,	// Fair Leaf Charm [1]
+			28420, 3,	// Fair Bunny Charm [1]
+			15129, 3,	// Luxurious Doram Suit [1]
+			20789, 3,	// Luxurious Doram Manteau [1]
+			22084, 3,	// Luxurious Doram Shoes [1]
+			15126, 3,	// Doram Suit [1]
+			20788, 3,	// Doram Manteau [1]
+			22083, 3,	// Doram Shoes [1]
+			28380, 2,	// Fresh Grass Necklace [1]
+			28381, 2,	// Cute Grass Necklace [1]
+			28382, 2,	// Charming Grass Necklace [1]
+			28422, 2,	// Shining Branch Charm [1]
+			28423, 2,	// Fresh Tuna Charm [1]
+			28424, 2,	// Plump Earthworm Charm [1]
+			28413, 2,	// Basic Saurel Charm [1]
+			28416, 2,	// Basic Leaf Charm [1]
+			28419, 2;	// Basic Bunny Charm [1]
+		.@total_item = getarraysize(.@item_data);
+
+		while(true) 
+		{
+			for ( .@i = 0; .@i < .@total_item; .@i += 2 ) 
+			{
+				if ((countitem(.@item_data[.@i]) - isequippedcnt(.@item_data[.@i])) > 0)
+					break;
+			}
+			if (.@i == .@total_item) 
+			{
+				mes "[단디 챠라]";
+				mes "...더 이상은 없는 것 같은데 다시 찾아봐도 되요? 아니면 그만 할까요?";
+				next;
+				if (select( "다시 검색한다.", "중단한다." ) == 2)
+					break;
+			}
+			else 
+			{
+				mes "[단디 챠라]";
+				mes "앗 이건 ^3131FF" + getitemname(.@item_data[.@i]) + "^000000!!";
+				mes "요걸 <ITEM>도람 토큰<INFO>25142</INFO></ITEM> " + .@item_data[.@i+1] + "개와 바꾸지 않으실래요..?";
+				next;
+				if (select( "교환", "교환을 중단한다" ) == 2) {
+					mes "[단디 챠라]";
+					mes "네에 제가 인벤토리를 너무 헤집어놨죠...? 죄송합니다아.....";
+					close;
+				}
+				mes "[단디 챠라]";
+				mes "감사합니다아.";
+				mes "다른 것도 더 찾아봐도 되죠오?";
+				delitem .@item_data[.@i],1;
+				getitem 25142,.@item_data[.@i+1];// Doram token
+				next;
+			}
+		}
+	}
+	mes "[단디 챠라]";
+	mes "네에... 도와주셔서 감사합니다아...";
+	close;
+}
+
+prt_gld,182,88,3	script	섬세한 첫째	4_CAT_SAILOR3,{
+	if (checkweight(1001,1) == 0) {
+		mes "- Hold on a second here!! -";
+		mes "- You have too many items. -";
+		mes "- That means you can no longer receive any items. -";
+		mes "- Free up some space -";
+		mes "- and try again. -";
+		close;
+	}
+	mes "[고마 챠라]";
+	mes "꼬맹이들 때문에 오늘도 시름시름 늙어가는 나는 챠라 집안의 장녀 고마 챠라야.";
+	mes "혹시 우리 둘째가 만든 부적이 있다면 내가 손봐줄 수도 있어.";
+	next;
+	if (select( "부적 업그레이드", "가족에 대하여" ) == 2) {
+		mes "[고마 챠라]";
+		mes "아버지는 뼛속까지 선원인 분이셔서 세계에서 가장 큰 다랑어를 잡겠다며 집을 나선지 오래되셨고.";
+		next;
+		mes "[고마 챠라]";
+		mes "어머니는 수집가 기질이 있으셔서 기묘한 과일을 찾아 깊은 숲으로 들어가셨어. 종종 돌아오시지만 금색 손살같이 사라지시곤 해.";
+		next;
+		mes "[고마 챠라]";
+		mes "덕분에 사고뭉치 동생들만 내 차지야. 대체 왜 내가 첫째로 태어난 것이람! 정말 귀찮아 죽겠어!";
+		next;
+		emotion 6;
+		mes "[고마 챠라]";
+		mes "얘, 요타! 부적 만들고 남은 재료는 잘 치워야지! 그리고 거기 전갱이부적에 비늘 떨어졌다. 잘 좀 챙겨, 정말.";
+		next;
+		emotion 6;
+		mes "[고마 챠라]";
+		mes "조기야 단디 울려고 하잖아, 제발 가만히 좀 있음 안되겠니??";
+		next;
+		emotion 7;
+		mes "[고마 챠라]";
+		mes "아휴휴휴휴휴휴휴 정신 머리가 하나도 없어!";
+		mes "미안한데 잡담은 여기까지만 하자. 동생 뒷바라지 하느라 하루가 1초 같아.";
+		close;
+	}
+	mes "[고마 챠라]";
+	mes "둘째가 만든 부적은 제법 쓸만한 것 같다만 디테일이 부족한 게 문제야.";
+	mes "조금만 손보면 더 훌륭한 부적이 될텐데 늘 저렇단 말이지.";
+	next;
+	.@s = (select( "전갱이부적을 손본다.", "잎부적을 손본다.", "토끼부적을 손본다." ) - 1) * 4;
+
+	setarray .@item_data[0],
+		28413, 30,	// Basic Saurel Charm [1]
+		28414, 90,	// Fair Saurel Charm [1]
+		28416, 30,	// Basic Leaf Charm [1]
+		28417, 90,	// Fair Leaf Charm [1]
+		28419, 30,	// Basic Bunny Charm [1]
+		28420, 90;	// Fair Bunny Charm [1]
+
+	if ((countitem(.@item_data[.@s]) - isequippedcnt(.@item_data[.@s]))  > 0)
+		.@index = .@s;
+	else if ((countitem(.@item_data[.@s+2]) - isequippedcnt(.@item_data[.@s+2])) > 0)
+		.@index = .@s + 2;
+	else 
+	{
+		mes "[고마 챠라]";
+		mes "가지고 있는 부적을 보여주지 않을래? 인벤토리에 없는 듯 해.";
+		close;
+	}
+	mes "[고마 챠라]";
+	mes "보여줘봐.. " + getitemname(.@item_data[.@index]) + " 음.. 이건.";
+	mes "음.. 역시!";
+	next;
+	mes "[고마 챠라]";
+	mes "만약 당신이 <ITEM>도람 토큰<INFO>25142</INFO></ITEM> " + .@item_data[.@index+1] + "개를 준다면";
+	mes "<ITEM>"+getitemname(.@item_data[.@index]+1)+"<INFO>" + (.@item_data[.@index]+1) + "</INFO></ITEM> 으로 업그레이드 해줄 수 있을것같아.";
+	mes "업그레이드 해줄까?";
+	next;
+	if (select( "업그레이드 한다", "취소한다" ) == 2) {
+		mes "[고마 챠라]";
+		mes "그래 알았어.";
+		close;
+	}
+	mes "[고마 챠라]";
+	mes "부적이 문제가 있어보이네.";
+	mes "하지만 내가 손봐줘서 괜찮을거야 잘 사용해.";
+	delitem 25142, .@item_data[.@index+1];// Doram token
+	delitem .@item_data[.@index],1;
+	getitem (.@item_data[.@index] + 1),1;
+	close;
+}

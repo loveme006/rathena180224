@@ -1,0 +1,5917 @@
+//===== rAthena Script ======================================= 
+//= Nightmarish Jitterbug
+//===== By: ================================================== 
+//= Tokeiburu, Nova
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Nightmarish Jitterbug Instance
+//===== Additional Comments: ================================= 
+//= 1.0 First version, edited. [exneval]
+//============================================================ 
+
+// Instance start
+//============================================================
+moc_para01,26,95,5	script	로엘#sara	10040,{
+	cutin "roel01",0;
+	if (BaseLevel < 120) {
+		mes "[로엘]";
+		mes "우리는 함께 새로운 모험을 할 수 있는 모험가를 찾고있어. 아이구의 퀘스트를 받을 수 있을 정도의 레벨이 자격이야.";
+		mes "","^55FF00- 레벨 제한 120 -^000000";
+		close2;
+		cutin "roel01",255;
+		end;
+	}
+	if (!isbegin_quest(13181) && !isbegin_quest(13183)) {
+		mes "[로엘]";
+		mes "나는 로엘이라고 해. 흰날개 길드의 새 맴버지. 로테르트가 뉴오즈를 찾게 시켜서 여기저기 찾아봤는데, 여기에서 그에 대한 단서를 찾았어.";
+		next;
+		mes "[로엘]";
+		mes "길드원 모집 중! 우리의 옛 마스터 뉴오즈를 찾기 위해 우리와 함께 하라! 흥미가 생기지 않아?";
+		next;
+		if (select("네.:아니요.:") == 1) {
+			cutin "roel02",0;
+			mes "[로엘]";
+			mes "조금 어려울거야. 내가 세상 끝까지 찾아봤는데도 머리 한 톨도 찾지 못했거든.";
+			next;
+			cutin "roel01",0;
+			mes "[로엘]";
+			mes "그의 흔적을 아무리 찾아봐도 아무것도 없었어.";
+			next;
+			mes "[로엘]";
+			mes "뉴오즈는 절대 한 곳에 오래 머무르지 않는 탐욕스러운 모험가라서 많은 사람들이 그를 보았다고는 하는데 아무도 어디로 갔는지를 기억하지 못하더라구.";
+			next;
+			mes "[로엘]";
+			mes "얼마 후, 그를 쫓는 것을 포기했어. 완전 시간 낭비더라.";
+			next;
+			mes "[로엘]";
+			mes "나는 다른 곳으로 눈을 돌렸는데, 거기에서 목격자를 만났어. 그들이 뉴오즈를 마지막으로 본 곳으로 안내해줬지.";
+			next;
+			mes "[로엘]";
+			mes "여기 오기까지 너무 힘들었어. 루나인이 아니었으면 그의 마지막 위치를 알지 못했을거야.";
+			next;
+			mes "[로엘]";
+			mes "우리와 함께 가고 싶다면 루나인에게 이야기해봐. ";
+			setquest 13181;
+		}
+		close2;
+		cutin "roel01",255;
+		end;
+	}
+	if (isbegin_quest(13181) == 1) {
+		mes "[로엘]";
+		mes "아직 준비가 덜 됐어? 자신없으면 포기해도 돼.";
+		next;
+		if (select("준비됐어요.:포기한다.:") == 1) {
+			mes "[로엘]";
+			mes "바로 그거야!";
+			close2;
+			cutin "roel01",255;
+			end;
+		}
+		if (isbegin_quest(13183) == 2)
+			completequest 13181;
+		else
+			erasequest 13181;
+		close2;
+		cutin "roel01",255;
+		end;
+	}
+	if (isbegin_quest(13181) == 2 || isbegin_quest(13183) == 2) {
+		if (!isbegin_quest(13183)) {
+			mes "[로엘]";
+			mes "흰날개 길드원으로서 내 첫 모험이야. 더 이상 기다릴 수 없어!";
+			erasequest 13181;
+			setquest 13183;
+			completequest 13183;
+			next;
+		}
+		mes "[로엘]";
+		mes "샬로쉬는 지금 어디쯤 있을까? 우리가 샬로쉬를 만났던 공간은 타임루프가 걸려있어서 같은 일이 계속 계속 반복해.";
+		next;
+		mes "[로엘]";
+		mes "밍민 말로는 이 현상이 차원의 균열이나 샬로쉬의 능력과 관련이 있을 것이라고 했어.";
+		next;
+		mes "[로엘]";
+		mes "무슨 말인지는 잘 모르겠지만, 그 장소로 가는 포탈은 공간 대신 시간을 기반으로 한다고 루나인이 그랬어.";
+		next;
+		mes "[로엘]";
+		mes "너만 원한다면 그 때로 돌아가 같은 사건을 볼 수 있어. 한번 다녀와볼래?";
+		next;
+		if (select("네.:아니요.:") == 1) {
+			mes "[로엘]";
+			mes "이번에는 다른 차원의 경험을 할 수도 있어. 루나인에게 말해서 포탈을 열어달라고 해.";
+			next;
+			mes "[로엘]";
+			mes "이번에는 샬로쉬가 떠나게 하면 안돼.";
+			if (isbegin_quest(13181) == 2)
+				erasequest 13181;
+			setquest 13181;
+		}
+		close2;
+		cutin "roel01",255;
+		end;
+	}
+}
+
+moc_para01,29,95,5	script	루나인#sara	10039,{
+	cutin "lunain01",0;
+	if (BaseLevel < 120) {
+		mes "[루나인]";
+		mes "^ff0000레벨 120이 돼야해요.^000000";
+		close2;
+		cutin "lunain01",255;
+		end;
+	}
+	if (isbegin_quest(13181) == 1) {
+		.@jittDailyCooldown = isbegin_quest(13182,PLAYTIME);
+		 if (.@jittDailyCooldown == 2) {
+			mes "[루나인]";
+			mes "이제 차원 포탈을 열 수 있겠어요.";
+			erasequest 13182;
+			close2;
+			cutin "lunain01",255;
+			end;
+		} else if (.@jittDailyCooldown == 1) {
+			mes "[루나인]";
+			mes "^ff0000이 차원 포탈은 들어갔다 오면 23시간동안 다시 들어갈 수 없어요.^000000";
+			close2;
+			cutin "lunain01",255;
+			end;
+		} else {
+			.@party_id = getcharid(1);
+			.@ins_mas = getpartyleader(.@party_id,2);
+			.@p_name$ = getpartyname(.@party_id);
+			.@p_reader$ = strcharinfo(0);
+			.@md_name$ = "Nightmarish Jitterbug";
+			if (!.@party_id) {
+				mes "[루나인]";
+				mes "^ff0000던전에 들어가려면 먼저 1인 이상의 파티를 구성하거나 가입해야해요.^000000";
+				close2;
+				cutin "lunain01",255;
+				end;
+			}
+			if (getcharid(0) == .@ins_mas)
+				.@menu$ = "차원 포탈 열기.:악몽의 지터벅 입장.:취소.";
+			else
+				.@menu$ = ":악몽의 지터벅 입장.:취소.";
+			switch (select(.@menu$)) {
+				case 1:
+					switch (instance_create(.@md_name$)) {
+						case -3:
+							dispbottom "'"+.@md_name$+"'이 이미 열려있어요.",0xFFFFFF;
+							break;
+						case -4:
+						case -2:
+						case -1:
+							mes "[루나인]";
+							mes "파티 이름: "+.@p_name$;
+							mes "파티장 이름: "+.@p_reader$;
+							mes "^0000ff"+.@md_name$+"^000000 - 예약 실패!.";
+							close2;
+							cutin "lunain01",255;
+							end;
+					}
+					mes "[루나인]";
+					mes "^ff0000차원 포탈 준비중...^000000";
+					mes "^ff0000잠시만 기다려주세요.^000000";
+					break;
+				case 2:
+					switch (instance_enter(.@md_name$)) {
+						case 3:
+							mes "[루나인]";
+							mes "^ff0000알 수 없는 오류 발생.^000000";
+							break;
+						case 2:
+						case 1:
+							mes "[루나인]";
+							mes "^ff0000파티장이 아직 차원의 균열을 만들지 않았어요.^000000";
+							break;
+						case 0:
+							mapannounce "moc_para01",.@p_name$+"'s "+.@p_reader$+", is entering "+.@md_name$+".",bc_map,"0x00ff99";
+							setquest 13182;
+							//warp "1@jtb",16,18;
+							end;
+					}
+					break;
+				case 3:
+					cutin "lunain01",255;
+					end;
+			}
+			close2;
+			cutin "lunain01",255;
+			end;
+		}
+	} else {
+		mes "[루나인]";
+		mes "^ff0000차원 포탈을 사용하고 싶으면 먼저 로엘과 이야기 하고 오세요.^000000";
+		close2;
+		cutin "lunain01",255;
+		end;
+	}
+}
+
+// Room 1
+//============================================================
+1@jtb,25,28,5	script	로테르트#01	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "...겨우 찾았어요, 뉴오즈!";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#01");
+	end;
+}
+
+1@jtb,31,28,4	script	아이구#01		646,{
+	cutin "igu01",2;
+	mes "[아이구]";
+	mes "너는 여기 처음 온 것 같네. 만나서 반가워!";
+	close2;
+	cutin "igu01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#01");
+	end;
+}
+
+1@jtb,23,26,5	script	겔카#01	629,{
+	cutin "gelca01",0;
+	mes "[겔카]";
+	mes "여기는 왠지 소름끼쳐 히-.";
+	close2;
+	cutin "gelca01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#01");
+	end;
+}
+
+1@jtb,33,26,4	script	라기#01		647,{
+	cutin "ragi01",2;
+	mes "[라기]";
+	mes "나는 계속 아이구만 따라왔어.";
+	close2;
+	cutin "ragi01",255;
+	end;
+	
+OnInstanceInit:
+	donpcevent instance_npcname("라기#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("라기#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("라기#01");
+	end;
+}
+
+1@jtb,25,24,5	script	밍민#01	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "그는 가는 곳마다 문제가 생긴답니다.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#01");
+	end;
+}
+
+1@jtb,31,24,4	script	아랑#01	644,{
+	cutin "arang01",2;
+	mes "[아랑]";
+	mes "히야!";
+	close2;
+	cutin "arang01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#01");
+	end;
+}
+
+1@jtb,23,22,5	script	루나인#01	10039,{
+	cutin "lunain01",0;
+	mes "[루나인]";
+	mes "저 사람이 그 유명한 뉴오즈야?";
+	close2;
+	cutin "lunain01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#01");
+	end;
+}
+
+1@jtb,34,22,4	script	로엘#01		10040,{
+	cutin "roel01",0;
+	mes "[로엘]";
+	mes "나는 로엘! 새로운 길드원이지.";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#01");
+	end;
+}
+
+1@jtb,28,21,5	script	멜로디-잭#01	844,{
+	mes "[멜로디-잭]";
+	mes "귀찮게 하지마. 숨어있는거 안보여?!";
+	close;
+
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#01");
+	end;
+}
+
+1@jtb,28,30,5	script	뉴오즈#01	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "아직 여행이 시작되지도 않았는데 나는 벌써 배가 고파.";
+		close2;
+		cutin "nines02",255;
+		end;
+	}
+	.@menu = select("이야기한다.:서두른다.");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "서두르면서 기억을 되살려봐.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "다들 온 것 같네.";
+		unittalk getnpcid(0),"뉴오즈 : 다들 온 것 같네.";
+		emotion ET_DELIGHT;
+		next;
+		cutin "rote03",0;
+		mes "[로테르트]";
+		mes "전에 말했지, 뉴오즈. 그냥 내버려둘 수 없다고.";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 전에 말했지, 뉴오즈. 그냥 내버려둘 수 없다고.";
+		emotion ET_FRET,instance_npcname("로테르트#01");
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "우리가 당신한테 낭비하는 시간과 돈을 생각하면, 당신은 독버섯 한 바구니 정도는 먹어야돼요.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 우리가 당신한테 낭비하는 시간과 돈을 생각하면, 당신은 독버섯 한 바구니 정도는 먹어야돼요.";
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "내가 전부 설명할게. 그리고 독버섯은 하나면 충분할 것 같아. 나는 버섯을 못 먹거든.";
+		unittalk getnpcid(0),"뉴오즈 : 내가 전부 설명할게. 그리고 독버섯은 하나면 충분할 것 같아. 나는 버섯을 못 먹거든.";
+		emotion ET_DELIGHT;
+		next;
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "뉴오즈는 고기 말고는 아무것도 못 먹잖아. 휴, 그래도 안전하니 다행이야.";
+		unittalk getnpcid(0,instance_npcname("아이구#01")),"아이구 : 뉴오즈는 고기 말고는 아무것도 못 먹잖아. 휴, 그래도 안전하니 다행이야.";
+		next;
+		cutin "gelca03",0;
+		mes "[겔카]";
+		mes "너가 뉴오즈구나! 만나서 반가워. 마스터가 이야기 많이 해줬어...";
+		unittalk getnpcid(0,instance_npcname("겔카#01")),"겔카 : 너가 뉴오즈구나! 만나서 반가워. 마스터가 이야기 많이 해줬어...";
+		next;
+		cutin "rote03",0;
+		mes "[로테르트]";
+		mes "그만. 그는 그저 방향 감각이 없는 바보일 뿐이야.";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 그만. 그는 그저 방향 감각이 없는 바보일 뿐이야.";
+		next;
+		cutin "arang02",2;
+		mes "[아랑]";
+		mes "오오, 뉴오즈! 눈이 어느때보다 초롱초롱 빛나는걸.";
+		unittalk getnpcid(0,instance_npcname("아랑#01")),"아랑 : 오오, 뉴오즈! 눈이 어느때보다 초롱초롱 빛나는걸.";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "어서와, 아랑. 여기는 어쩐일이야?";
+		unittalk getnpcid(0),"뉴오즈 : 어서와, 아랑. 여기는 어쩐일이야?";
+		next;
+		cutin "rote03",0;
+		mes "[로테르트]";
+		mes "뉴오즈, 얼마나 오랫동안 실종됐는지 알아? 너 찾겠다고 새로운 길드원까지 모집했어...";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 뉴오즈, 얼마나 오랫동안 실종됐는지 알아? 너 찾겠다고 새로운 길드원까지 모집했어...";
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "안녕하세요, 반가워요. 그 유명한 뉴오즈를 직접 만나게 되다니 영광이에요.";
+		unittalk getnpcid(0,instance_npcname("루나인#01")),"루나인 : 안녕하세요, 반가워요. 그 유명한 뉴오즈를 직접 만나게 되다니 영광이에요.";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "아-안녕하세요, 저는 로엘이에요. 루나인과 저는 새로 길드에 가입했어요. 만나서 반갑습니다.";
+		unittalk getnpcid(0,instance_npcname("로엘#01")),"로엘 : 아-안녕하세요, 저는 로엘이에요. 루나인과 저는 새로 길드에 가입했어요. 만나서 반갑습니다.";
+		next;
+		cutin "rote02",0;
+		mes "[로테르트]";
+		mes "길드 정책 제 8조에 따르면, 내가 이제 길드의 마스터이고 너는 그냥 길드원일 뿐이야.";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 길드 정책 제 8조에 따르면, 내가 이제 길드의 마스터이고 너는 그냥 길드원일 뿐이야.";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "오, 축하해 마스터.";
+		unittalk getnpcid(0),"뉴오즈 : 오, 축하해 마스터.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "...기대했던 건 그게 아니야. 전혀 화나지 않아?";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : ...기대했던 건 그게 아니야. 전혀 화나지 않아?";
+		emotion ET_THINK,instance_npcname("로테르트#01");
+		next;
+		mes "[멜로디-잭]";
+		mes "무슨 기대를 하고 그래? 뉴오즈의 머리 속은 오직 모험, 괴물, 보물뿐이야.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : 무슨 기대를 하고 그래? 뉴오즈의 머리 속은 오직 모험, 괴물, 보물뿐이야.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		cutin "rote01",255;
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "어라, 유령이 있나요? 아니면 제가 뭔가 듣고 있는 건가요?";
+		unittalk getnpcid(0),"뉴오즈 : 어라, 유령이 있나요? 아니면 제가 뭔가 듣고 있는 건가요?";
+		next;
+		mes "[멜로디-잭]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : ...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		cutin "nines01",255;
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "휴~ 잭이였구나. 오랜만이야 모두들.";
+		unittalk getnpcid(0),"뉴오즈 : 휴~ 잭이였구나. 오랜만이야 모두들.";
+		next;
+		mes "[멜로디-잭]";
+		mes "지금은 잡담할 때가 아니야. 네가 서 있는 바로 아래와 내가 숨어있는 곳에서 뭔가 감지되고 있어.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : 지금은 잡담할 때가 아니야. 네가 서 있는 바로 아래와 내가 숨어있는 곳에서 뭔가 감지되고 있어.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		cutin "nines01",255;
+		next;
+		cutin "arang03",2;
+		mes "[아랑]";
+		mes "잭은 그래서 겁쟁이처럼 숨어있는거야?";
+		unittalk getnpcid(0,instance_npcname("아랑#01")),"아랑 : 잭은 그래서 겁쟁이처럼 숨어있는거야?";
+		next;
+		mes "[멜로디-잭]";
+		mes "나같은 베테랑 도둑이 적군 영토에서 몸을 숨기는 것은 당연하다.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : 나같은 베테랑 도둑이 적군 영토에서 몸을 숨기는 것은 당연하다.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		cutin "arang03",255;
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "잭의 말이 맞아요. 공기도 그렇고 땅도 그렇고.. 이 곳의 모든 것이 자연스럽지 못해요.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 잭의 말이 맞아요. 공기도 그렇고 땅도 그렇고.. 이 곳의 모든 것이 자연스럽지 못해요.";
+		next;
+		cutin "ragi01",2;
+		mes "[라기]";
+		mes "초자연적인 현상이라는거야?";
+		unittalk getnpcid(0,instance_npcname("라기#01")),"라기 : 초자연적인 현상이라는거야?";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "아니면 다른 것인가.";
+		unittalk getnpcid(0),"뉴오즈 : 아니면 다른 것인가.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : ...";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "라기라고 했지? 난 네가 생각하는 방식이 좋아. 가끔 같이 일하자구.";
+		unittalk getnpcid(0),"뉴오즈 : 라기라고 했지? 난 네가 생각하는 방식이 좋아. 가끔 같이 일하자구.";
+		next;
+		cutin "lunain02",0;
+		mes "[루나인]";
+		mes "저는 당신을 만나기 위해 이 길드에 가입했어요, 뉴오즈. 혹시 여자친구 있으신가요?";
+		unittalk getnpcid(0,instance_npcname("루나인#01")),"루나인 : 저는 당신을 만나기 위해 이 길드에 가입했어요, 뉴오즈. 혹시 여자친구 있으신가요?";
+		next;
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "앗, 새치기 하지마-- 내가 먼저 찜했어!";
+		unittalk getnpcid(0,instance_npcname("아이구#01")),"아이구 : 앗, 새치기 하지마-- 내가 먼저 그를 찜했어!";
+		next;
+		cutin "lunain03",0;
+		mes "[루나인]";
+		mes "그는 모르고 있을걸요? 안 그래요, 뉴오즈?";
+		unittalk getnpcid(0,instance_npcname("루나인#01")),"루나인 : 그는 모르고 있을걸요? 안 그래요, 뉴오즈?";
+		next;
+		cutin "igu04",2;
+		mes "[아이구]";
+		mes "아니, 나는...";
+		unittalk getnpcid(0,instance_npcname("아이구#01")),"아이구 : 아니, 나는...";
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "흥-! 그럼 공정한 게임이네요!";
+		unittalk getnpcid(0,instance_npcname("루나인#01")),"루나인 : 흥-! 그럼 공정한 게임이네요!";
+		next;
+		cutin "gelca02",0;
+		mes "[겔카]";
+		mes "이제 대화 다 끝난거야?";
+		unittalk getnpcid(0,instance_npcname("겔카#01")),"겔카 : 이제 대화 다 끝난거야?";
+		next;
+		cutin "ragi03",2;
+		mes "[라기]";
+		mes "얘는 민첩성 증가를 사용해서 대상을 보다 빠르게 할 수 있어.";
+		unittalk getnpcid(0,instance_npcname("라기#01")),"라기 : 얘는 민첩성 증가를 사용해서 대상을 보다 빠르게 할 수 있어.";
+		next;
+		cutin "arang02",0;
+		mes "[아랑]";
+		mes "뉴오즈를 걸고 대결하는거야? 나도 끼워줘!";
+		unittalk getnpcid(0,instance_npcname("아랑#01")),"아랑 : 뉴오즈를 걸고 대결하는거야? 나도 끼워줘!";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "...중간에 끊어서 죄송하지만 저기에 뭔가 있는 것 같아요.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : ...중간에 끊어서 죄송하지만 저기에 뭔가 있는 것 같아요.";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "몬스터일지도 몰라. 내가 확인해볼까?";
+		unittalk getnpcid(0,instance_npcname("로엘#01")),"로엘 : 몬스터일지도 몰라. 내가 확인해볼까?";
+		next;
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "너는 여기 있어, 꼬맹아. 내가 가볼게.";
+		unittalk getnpcid(0,instance_npcname("루나인#01")),"루나인 : 너는 여기 있어, 꼬맹아. 내가 가볼게.";
+		next;
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "잠깐, 내 말 아직 안끝났어!";
+		unittalk getnpcid(0,instance_npcname("아이구#01")),"아이구 : 잠깐, 내 말 아직 안끝났어!";
+		next;
+		cutin "ragi01",0;
+		mes "[라기]";
+		mes "으아- 둘 다 가버렸어.";
+		unittalk getnpcid(0,instance_npcname("라기#01")),"라기 : 으아- 둘 다 가버렸어.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "뉴오즈, 너만 있으면 사건이 발생하는군.";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 뉴오즈, 너만 있으면 사건이 발생하는군.";
+		donpcevent instance_npcname("아이구#01")+"::OnDisable";
+		donpcevent instance_npcname("루나인#01")+"::OnDisable";
+		next;
+		cutin "gelca02",0;
+		mes "[겔카]";
+		mes "뭐 때문에 그렇게 짜증내는지 알겠어요, 마스터.";
+		unittalk getnpcid(0,instance_npcname("겔카#01")),"겔카 : 뭐 때문에 그렇게 짜증내는지 알겠어요, 마스터.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "그는 태생적으로 짜증을 잘내.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 그는 태생적으로 짜증을 잘내.";
+		next;
+		cutin "arang01",0;
+		mes "[아랑]";
+		mes "맞아맞아. 마스터는 폭력적이고 더럽고...";
+		unittalk getnpcid(0,instance_npcname("아랑#01")),"Arang : Agreed. He's violent, dirty...";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "닥쳐, 둘 다!";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 닥쳐, 둘 다!";
+		next;
+		cutin "nines03",0;
+		mes "[뉴오즈]";
+		mes "그러고 보니 루트가 어렸을 때...";
+		unittalk getnpcid(0),"뉴오즈 : 그러고 보니 루트가 어렸을 때...";
+		next;
+		cutin "gelca04",0;
+		mes "[겔카]";
+		mes "루트? 마스터 별명이에요? 둘이 친구였어요?";
+		unittalk getnpcid(0,instance_npcname("겔카#01")),"겔카 : 루트? 마스터 별명이에요? 둘이 친구였어요?";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "됐어, 난 갈거야!";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 됐어, 난 갈거야!";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "입구처럼 보이는 균열이 사라졌어요. 정말 가고싶은거라면 아이구를 따라가세요.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 입구처럼 보이는 균열이 사라졌어요. 정말 가고싶은거라면 아이구를 따라가세요.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "걱정하는 척 하지마! 알아서 할 수 있어!";
+		unittalk getnpcid(0,instance_npcname("로테르트#01")),"로테르트 : 걱정하는 척 하지마! 알아서 할 수 있어!";
+		next;
+		cutin "gelca04",0;
+		mes "[겔카]";
+		mes "마스터~ 같이 가요!";
+		unittalk getnpcid(0,instance_npcname("겔카#01")),"겔카 : 마스터~ 같이 가요!";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "우리 새 맴버가 생긴건가요? 마침 잘됐어요. 샘플로 가져가고 싶었던 버섯이 몇 개 있는데...";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 우리 새 맴버가 생긴건가요? 마침 잘됐어요. 샘플로 가져가고 싶었던 버섯이 몇 개 있는데...";
+		next;
+		cutin "ragi02",2;
+		mes "[라기]";
+		mes "로엘, 우리도 같이 가는 게 좋겠어.";
+		unittalk getnpcid(0,instance_npcname("라기#01")),"로엘, 우리도 같이 가는 게 좋겠어.";
+		donpcevent instance_npcname("겔카#01")+"::OnDisable";
+		donpcevent instance_npcname("로테르트#01")+"::OnDisable";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "가자.";
+		unittalk getnpcid(0,instance_npcname("로엘#01")),"로엘 : 가자.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "아랑, 이제 가자. 모험을 떠날 시간이야!";
+		unittalk getnpcid(0),"뉴오즈 : 아랑, 이제 가자. 모험을 떠날 시간이야!";
+		next;
+		cutin "arang02",0;
+		mes "[아랑]";
+		mes "알았어!";
+		unittalk getnpcid(0,instance_npcname("아랑#01")),"아랑 : 알았어!";
+		donpcevent instance_npcname("로엘#01")+"::OnDisable";
+		donpcevent instance_npcname("라기#01")+"::OnDisable";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "공부가 될 만한 게 많았으면 좋겠네요.";
+		unittalk getnpcid(0,instance_npcname("밍민#01")),"밍민 : 공부가 될 만한 게 많았으면 좋겠네요.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "...";
+		donpcevent instance_npcname("뉴오즈#01")+"::OnDisable";
+		donpcevent instance_npcname("아랑#01")+"::OnDisable";
+		donpcevent instance_npcname("밍민#01")+"::OnDisable";
+		cutin "min02",255;
+		next;
+		mes "[멜로디-잭]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : ...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "...";
+		next;
+		mes "[멜로디-잭]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : ...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#01");
+		next;
+		mes "[멜로디-잭]";
+		mes "우리도 잊혀지기 전에 빨리 가자.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#01")),"멜로디-잭 : 우리도 잊혀지기 전에 빨리 가자.";
+		close2;
+		donpcevent instance_npcname("멜로디-잭#01")+"::OnDisable";
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,100,46,133,13,"페르",3069,10,instance_npcname("뉴오즈#01")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp1")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#01")+"::OnEnable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#01");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#01");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#01")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아이구#02")+"::OnEnable";
+	donpcevent instance_npcname("루나인#02")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 2
+//============================================================
+1@jtb,118,45,5	script	아이구#02	646,{
+	cutin "igu03",0;
+	mes "[아이구]";
+	mes "수수께끼로 가득한 곳이야.";
+	close2;
+	cutin "igu03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#02")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#02");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#02");
+	end;
+}
+
+1@jtb,121,47,4	script	???#2	10041,{
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("???#2")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("???#2");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("???#2");
+	end;
+}
+
+1@jtb,123,45,4	script	루나인#02	10039,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "제발, 더 이상 놀랄 일이 없게 해주세요.";
+		close2;
+		cutin "lunain01",255;
+		end;
+	}
+	.@menu = select("이야기한다.:서두른다.");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "서두르면서 기억을 되살려보세요.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "갑자기 뭔가 튀어 나와서 우릴 공격할 지도 몰라요.";
+		unittalk getnpcid(0),"루나인 : 갑자기 뭔가 튀어 나와서 우릴 공격할 지도 몰라요.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "이게 뭐지?";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 이게 뭐지?";
+		donpcevent instance_npcname("???#2")+"::OnEnable";
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "꺄아아아악-!!!";
+		unittalk getnpcid(0),"루나인 : 꺄아아아악-!!!";
+		emotion ET_HUK;
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "몬스터-!...음, 그냥 여자애네.";
+		unittalk getnpcid(0,instance_npcname("아이구#02")),"아이구 : 몬스터-!...음, 그냥 여자애네.";
+		emotion ET_HUK,instance_npcname("아이구#02");
+		next;
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "뭔가가 나왔어요! 뭔가!";
+		unittalk getnpcid(0),"루나인 : 뭔가가 나왔어요! 뭔가!";
+		next;
+		cutin "igu01",0;
+		mes "[아이구]";
+		mes "진정해. 그냥 여자애야.";
+		unittalk getnpcid(0,instance_npcname("아이구#02")),"아이구 : 진정해. 그냥 여자애야.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "여자 목소리...";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 여자 목소리...";
+		emotion ET_QUESTION,instance_npcname("???#2");
+		next;
+		cutin "igu01",0;
+		mes "[아이구]";
+		mes "우리가 어떻게 들어왔더라?";
+		unittalk getnpcid(0,instance_npcname("아이구#02")),"아이구 : 우리가 어떻게 들어왔더라?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "몰라, 어떻게 들어왔어?";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 몰라, 어떻게 들어왔어?";
+		next;
+		cutin "lunain03",2;
+		mes "[루나인]";
+		mes "우리는 길을 잃었고 지금 우주 공간에 있어요. 어쩌다 이렇게 됐을까요?";
+		unittalk getnpcid(0),"루나인 : 우리는 길을 잃었고 지금 우주 공간에 있어요. 어쩌다 이렇게 됐을까요?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "누군가 노래한다.";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 누군가 노래한다.";
+		next;
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "혹시 뉴오즈인가요? 그를 데리고 여기서 나가야해요.";
+		unittalk getnpcid(0),"루나인 : 혹시 뉴오즈인가요? 그를 데리고 여기서 나가야해요.";
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "좋아. 손을 잡자구.";
+		unittalk getnpcid(0,instance_npcname("아이구#02")),"아이구 : 좋아. 손을 잡자구.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "당신 손... 따듯해.";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 당신 손... 따듯해.";
+		next;
+		cutin "igu02",0;
+		mes "[아이구]";
+		mes "내가 춤을 추기 때문에 그래, 헤헤.";
+		unittalk getnpcid(0,instance_npcname("아이구#02")),"아이구 : 내가 춤을 추기 때문에 그래, 헤헤.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[???]";
+		mes "춤...";
+		unittalk getnpcid(0,instance_npcname("???#2")),"??? : 춤...";
+		next;
+		cutin "lunain02",2;
+		mes "[루나인]";
+		mes "다들 어디 있어요? 다른 방향으로 갔나요? 그 방향으로 가죠.";
+		unittalk getnpcid(0),"루나인 : 다들 어디 있어요? 다른 방향으로 갔나요? 그 방향으로 가죠.";
+		close2;
+		donpcevent instance_npcname("루나인#02")+"::OnDisable";
+		donpcevent instance_npcname("???#2")+"::OnDisable";
+		donpcevent instance_npcname("아이구#02")+"::OnDisable";
+		cutin "lunain02",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,180,49,221,12,"페르",3069,10,instance_npcname("루나인#02")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp2")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#02")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#02");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#02");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("루나인#02")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("겔카#03")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#03")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 3
+//============================================================
+1@jtb,205,31,3	script	겔카#03	629,{
+	cutin "gelca04",2;
+	mes "[겔카]";
+	mes "뭔가가 우릴 덮쳐올지 몰라!";
+	close2;
+	cutin "gelca04",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#03")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#03");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#03");
+	end;
+}
+
+1@jtb,198,31,5	script	로테르트#03	630,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "따분하군.";
+		close2;
+		cutin "rote01",255;
+		end;
+	}
+	.@menu = select("대화한다.:서두른다.");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "서두르면서 기억을 되살려봐.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "저 앞에서 전자파가 흘러나오고 있어요. 적어도 E급 몬스터일거에요.";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 저 앞에서 전자파가 흘러나오고 있어요. 적어도 E급 몬스터일거에요.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "요즘 뭐 읽는 거 있어?";
+		unittalk getnpcid(0),"로테르트 : 요즘 뭐 읽는 거 있어?";
+		emotion ET_SWEAT;
+		next;
+		cutin "gelca03",2;
+		mes "[겔카]";
+		mes "헤헤, Sci-Fi. 뭐냐하면 기계 도구로...";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 헤헤, Sci-Fi. 뭐냐하면 기계 도구로...";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "그만 떠들고 스페셜 스킬을 사용할 준비해.";
+		unittalk getnpcid(0),"로테르트 : 그만 떠들고 스페셜 스킬을 사용할 준비해.";
+		emotion ET_OHNO;
+		next;
+		cutin "gelca03",2;
+		mes "[겔카]";
+		mes "우으으, 괴물들이 날뛰는 이 장면 책에서 본 것 같은데.";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 우으으, 괴물들이 날뛰는 이 장면 책에서 본 것 같은데.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "겔카, 울트라 스페셜 스킬 8번 : 와일드 댄스.";
+		unittalk getnpcid(0),"로테르트 : 겔카, 울트라 스페셜 스킬 8번 : 와일드 댄스.";
+		next;
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "!!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : !!";
+		emotion ET_SURPRISE,instance_npcname("겔카#03");
+		next;
+		mes "[겔카]";
+		mes "자, 갑니다!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 자, 갑니다!";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "우아한 섬광, 루미에르 듀플렉스!";
+		unittalk getnpcid(0),"로테르트 : 우아한 섬광, 루미에르 듀플렉스!";
+		specialeffect EF_LEXAETERNA;
+		specialeffect EF_POTION_BERSERK;
+		specialeffect EF_SIGNUM;
+		next;
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "파멸하는 천국의 열 두 그물!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 파멸하는 천국의 열 두 그물!";
+		specialeffect EF_HITLINE,AREA,instance_npcname("겔카#03");
+		specialeffect EF_BASH3D2,AREA,instance_npcname("겔카#03");
+		specialeffect EF_GUMGANG,AREA,instance_npcname("겔카#03");
+		next;
+		mes "[겔카/로테르트]";
+		mes "크로스!!!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 크로스!!!";
+		unittalk getnpcid(0),"로테르트 : 크로스!!!";
+		emotion ET_SPARK,instance_npcname("겔카#03");
+		emotion ET_SPARK;
+		specialeffect EF_GRANDCROSS,AREA,instance_npcname("겔카#03");
+		specialeffect EF_GRANDCROSS;
+		next;
+		cutin "rote01",0;
+		mes "[겔카/로테르트]", "흩뿌려라-- 천라지망!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 흩뿌려라-- 천라지망!";
+		unittalk getnpcid(0),"로테르트 : Scatter--Thousand Flashlights!";
+		specialeffect EF_LEXAETERNA,AREA,instance_npcname("겔카#03");
+		specialeffect EF_LEXAETERNA;
+		sleep2 300;
+		specialeffect EF_LORD,AREA,instance_npcname("겔카#03");
+		specialeffect EF_LORD;
+		specialeffect EF_LORD,AREA,instance_npcname("겔카#03");
+		specialeffect EF_LORD;
+		sleep2 300;
+		specialeffect EF_SUI_EXPLOSION,AREA,instance_npcname("겔카#03");
+		specialeffect EF_SUI_EXPLOSION;
+		specialeffect EF_BEGINASURA,AREA,instance_npcname("겔카#03");
+		specialeffect EF_BEGINASURA;
+		next;
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "...휴.";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : ...휴.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "흠, 충분치 않아, 겔카. 길드 일 한다고 연습을 게을리 하지마.";
+		unittalk getnpcid(0),"로테르트 : 흠, 충분치 않아, 겔카. 길드 일 한다고 연습을 게을리 하지마.";
+		next;
+		cutin "gelca03",2;
+		mes "[겔카]";
+		mes "옙, 마스터!";
+		unittalk getnpcid(0,instance_npcname("겔카#03")),"겔카 : 옙, 마스터!";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "다른 사람들은 어디로 갔지? 이건 확실히 평범한 동굴이 아니군.";
+		unittalk getnpcid(0),"로테르트 : 다른 사람들은 어디로 갔지? 이건 확실히 평범한 동굴이 아니군.";
+		close2;
+		cutin "rote01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,268,46,305,14,"페르",3069,20,instance_npcname("로테르트#03")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp3")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#03")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#03");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#03");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("로테르트#03")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("???#4")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 4
+//============================================================
+1@jtb,292,22,4	script	???#4	10041,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "shaloshi01",2;
+		mes "[???]";
+		mes "...";
+		close2;
+		cutin "shaloshi01",255;
+		end;
+	}
+	.@menu = select("이야기한다.:서두른다.");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "서두르면서 기억을 떠올려봐.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "shaloshi01",2;
+		mes "[???]";
+		mes "...";
+		unittalk getnpcid(0),"??? : ...";
+		next;
+		select("혼자 다시 길을 잃었니?");
+		mes "[???]";
+		mes "혼자가 아니야.";
+		unittalk getnpcid(0),"??? : 혼자가 아니야.";
+		next;
+		mes "[???]";
+		mes "아이구와 루나인은 좋아.";
+		unittalk getnpcid(0),"??? : 아이구와 루나인은 좋아.";
+		next;
+		mes "[???]";
+		mes "많은 질문을 해.";
+		unittalk getnpcid(0),"??? : 많은 질문을 해.";
+		next;
+		mes "[???]";
+		mes "대답은 못해.";
+		unittalk getnpcid(0),"??? : 대답은 못해.";
+		next;
+		mes "[???]";
+		mes "기억이 나지 않아.";
+		unittalk getnpcid(0),"??? : 기억이 나지 않아.";
+		next;
+		mes "[???]";
+		mes "그치만 혼자가 아니야.";
+		unittalk getnpcid(0),"??? : 그치만 혼자가 아니야.";
+		next;
+		.@menu = select("떠난다.:너무 위험하다. 그녀를 데리고 간다.");
+		mes "[???]";
+		if (.@menu == 1) {
+			mes "나는 괜찮아. 처음이 아니야.";
+			unittalk getnpcid(0),"??? : 나는 괜찮아. 처음이 아니야.";
+		} else {
+			mes "친절해.";
+			unittalk getnpcid(0),"??? : 친절해.";
+		}
+		next;
+		mes "[???]";
+		mes "...";
+		unittalk getnpcid(0),"??? : ...";
+		close2;
+		cutin "shaloshi01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,10,130,47,95,"페르",3069,20,instance_npcname("???#4")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp4")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("???#4")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("???#4");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("???#4");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("???#4")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아이구#05")+"::OnEnable";
+	donpcevent instance_npcname("Arang#05")+"::OnEnable";
+	donpcevent instance_npcname("Shalosh#5")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#05")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 5
+//============================================================
+1@jtb,25,110,4	script	아이구#05	646,{
+	cutin "igu01",0;
+	mes "[아이구]";
+	mes "몬스터가 나오기 시작했고, 그 수가 빠르게 증가하고 있어.";
+	close2;
+	cutin "igu01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#05")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#05");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#05");
+	end;
+}
+
+1@jtb,25,105,4	script	아랑#05	644,{
+	cutin "arang03",0;
+	mes "[아랑]";
+	mes "난 무섭지 않아!";
+	close2;
+	cutin "arang03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#05")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#05");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#05");
+	end;
+}
+
+1@jtb,27,108,4	script	샬로쉬#5	10041,{
+	cutin "shaloshi01",2;
+	mes "[샬로쉬]";
+	mes "...";
+	close2;
+	cutin "shaloshi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#5")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#5");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#5");
+	end;
+}
+
+1@jtb,20,108,5	script	뉴오즈#05	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "나중에 다시 노래할게.";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "서두르면서 기억을 떠올려봐.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "뉴오즈! 이번엔 어디로 갔었어?";
+		unittalk getnpcid(0,instance_npcname("아이구#05")),"아이구 : 뉴오즈! Where did you go this time?";
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "미안. 여기는 마치 미로 같아. 너무 많은 갈래와 공간이 있어서 계산할 수가 없어.";
+		unittalk getnpcid(0),"뉴오즈 : 미안. 여기는 마치 미로 같아. 너무 많은 갈래와 공간이 있어서 계산할 수가 없어.";
+		next;
+		cutin "arang01",2;
+		mes "[아랑]";
+		mes "프론테라 지하수로에서도 똑같은 말을 했었잖아.";
+		unittalk getnpcid(0,instance_npcname("아랑#05")),"아랑 : 프론테라 지하수로에서도 똑같은 말을 했었잖아.";
+		next;
+		cutin "igu04",2;
+		mes "[아이구]";
+		mes "무슨 소리야? 왜 우리를 못 따라오는거야? 루나인은? 방금 전까지 옆에 있었는데.";
+		unittalk getnpcid(0,instance_npcname("아이구#05")),"아이구 : 무슨 소리야? 왜 우리를 못 따라오는거야? 루나인은? 방금 전까지 옆에 있었는데.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[???]";
+		mes "노래하는 목소리를 가진 남자.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#5")),"??? : 노래하는 목소리를 가진 남자.";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "오, 안녕. 누군지 물어봐도 될까, 꼬마 아가씨?";
+		unittalk getnpcid(0),"뉴오즈 : 오, 안녕. 누군지 물어봐도 될까, 꼬마 아가씨?";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "샬로쉬. 노래 불러줘.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#5")),"샬로쉬 : 샬로쉬. 노래 불러줘.";
+		next;
+		cutin "nines03",0;
+		mes "[뉴오즈]";
+		mes "하하하, 너 귀엽네. 나중에 노래해줄게.";
+		unittalk getnpcid(0),"뉴오즈 : 하하하, 너 귀엽네. 나중에 노래해줄게.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "약속했어. 너는 친절해.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#5")),"샬로쉬 : 약속했어. 너는 친절해.";
+		next;
+		cutin "igu03",2;
+		mes "[아이구]";
+		mes "몬스터가 나오기 시작했고, 그 수가 빠르게 증가하고 있어.";
+		unittalk getnpcid(0,instance_npcname("아이구#05")),"아이구 : 몬스터가 나오기 시작했고, 그 수가 빠르게 증가하고 있어.";
+		next;
+		cutin "arang02",2;
+		mes "[아랑]";
+		mes "괜찮을거야, 아이구. 우리랑 같이 있는 한... 음, 다들 어디갔지?";
+		unittalk getnpcid(0,instance_npcname("아랑#05")),"아랑 : 괜찮을거야, 아이구. 우리랑 같이 있는 한... 음, 다들 어디갔지?";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "하하하 걱정하지마, 꼬마 아가씨. 내가 지켜줄게.";
+		unittalk getnpcid(0),"뉴오즈 : 하하하 걱정하지마, 꼬마 아가씨. 내가 지켜줄게.";
+		next;
+		cutin "arang03",2;
+		mes "[아랑]";
+		mes "뉴오즈, 사랑해!";
+		unittalk getnpcid(0,instance_npcname("아랑#05")),"아랑 : 뉴오즈, 사랑해!";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "지켜준다. 친절해.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#5")),"샬로쉬 : 지켜준다. 친절해.";
+		next;
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "글쎄, 우린 여기 있을 수 없어. 이동하자.";
+		unittalk getnpcid(0,instance_npcname("아이구#05")),"아이구 : 글쎄, 우린 여기 있을 수 없어. 이동하자.";
+		close2;
+		cutin "igu05",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,94,131,131,96,"페르",3069,10,instance_npcname("뉴오즈#05")+"::OnMyMobDead";
+	areamonster .@map$,94,131,131,96,"페르",3070,5,instance_npcname("뉴오즈#05")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp5")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#05")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#05");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#05");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#05")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아이구#06")+"::OnEnable";
+	donpcevent instance_npcname("루나인#06")+"::OnEnable";
+	donpcevent instance_npcname("로엘#06")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 6
+//============================================================
+1@jtb,115,113,4	script	아이구#06	646,{
+	cutin "igu01",0;
+	mes "[아이구]";
+	mes "I feel great--this is my first adventure in a long time since I was charged with caring for other adventurers. Plus I've met my hero 뉴오즈!";
+	close2;
+	cutin "igu01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#06")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#06");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#06");
+	end;
+}
+
+1@jtb,116,117,4	script	루나인#06	10039,{
+	cutin "lunain01",2;
+	mes "[루나인]";
+	mes "Where do you think 뉴오즈 is this time?";
+	close2;
+	cutin "lunain01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#06")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#06");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#06");
+	end;
+}
+
+1@jtb,111,115,5	script	로엘#06	10040,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "What's wrong with me? My heart won't stop pounding.";
+		close2;
+		cutin "roel01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "The fog cleared up.";
+		unittalk getnpcid(0,instance_npcname("루나인#06")),"루나인 : The fog cleared up.";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "But it stayed long enough for us to lose each other.";
+		unittalk getnpcid(0),"로엘 : But it stayed long enough for us to lose each other.";
+		next;
+		cutin "igu05",2;
+		mes "[아이구]";
+		mes "One moment, I had Shalosh's hand in my hand, and the next, she's gone.";
+		unittalk getnpcid(0,instance_npcname("아이구#06")),"아이구 : One moment, I had Shalosh's hand in my hand, and the next, she's gone.";
+		next;
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "Her name is Shalosh? I asked her several times, and she didn't tell me.";
+		unittalk getnpcid(0,instance_npcname("루나인#06")),"루나인 : Her name is Shalosh? I asked her several times, and she didn't tell me.";
+		next;
+		cutin "igu01",2;
+		mes "[아이구]";
+		mes "That's strange. She told 뉴오즈 straight from the start.";
+		unittalk getnpcid(0,instance_npcname("아이구#06")),"아이구 : That's strange. She told 뉴오즈 straight from the start.";
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "Hmpf, I hate girls. I get the feeling we'll be seeing even more monsters.";
+		unittalk getnpcid(0,instance_npcname("루나인#06")),"루나인 : Hmpf, I hate girls. I get the feeling we'll be seeing even more monsters.";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "Worry not--I'll protect you!";
+		unittalk getnpcid(0),"로엘 : Worry not--I'll protect you!";
+		next;
+		cutin "igu04",2;
+		mes "[아이구]";
+		mes "You'd better be more reliable than someone I know.";
+		unittalk getnpcid(0,instance_npcname("아이구#06")),"아이구 : You'd better be more reliable than someone I know.";
+		next;
+		cutin "lunain03",2;
+		mes "[루나인]";
+		mes "Don't put too much faith in this kid. I'd better go look for 뉴오즈.";
+		unittalk getnpcid(0,instance_npcname("루나인#06")),"루나인 : Don't put too much faith in this kid. I'd better go look for 뉴오즈.";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "...";
+		unittalk getnpcid(0),"로엘 : ...";
+		next;
+		cutin "roel03",0;
+		mes "[로엘]";
+		mes "(She's just my type!)";
+		unittalk getnpcid(0),"로엘 : (She's just my type!)";
+		close2;
+		cutin "roel03",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,182,131,219,95,"Ferre",3069,15,instance_npcname("로엘#06")+"::OnMyMobDead";
+	areamonster .@map$,182,131,219,95,"Ferre",3070,5,instance_npcname("로엘#06")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp6")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#06")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#06");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#06");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("로엘#06")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("샬로쉬#7")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#07")+"::OnEnable";
+	donpcevent instance_npcname("밍민#07")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 7
+//============================================================
+1@jtb,206,114,5	script	샬로쉬#7	10041,{
+	cutin "shaloshi01",0;
+	mes "[Shalosh]";
+	mes "뉴오즈's hand... hot.";
+	close2;
+	cutin "shaloshi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#7")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#7");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#7");
+	end;
+}
+
+1@jtb,203,112,5	script	뉴오즈#07	625,{
+	cutin "nines03",0;
+	mes "[뉴오즈]";
+	mes "I wonder what might wait for us at the end of this passage. The anticipation is killing me!";
+	close2;
+	cutin "nines03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#07")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#07");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#07");
+	end;
+}
+
+1@jtb,206,107,5	script	밍민#07	643,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "...";
+		close2;
+		cutin "min02",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "뉴오즈!";
+		unittalk getnpcid(0),"밍민 : 뉴오즈!";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Yeah, what's up?";
+		unittalk getnpcid(0,instance_npcname("뉴오즈#07")),"뉴오즈 : Yeah, what's up?";
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "Do you really have to ask? Who's that girl? Is she yours?";
+		unittalk getnpcid(0),"밍민 : Do you really have to ask? Who's that girl? Is she yours?";
+		emotion ET_HUK;
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "W-whazza...?! Don't be ridiculous. I just found her now.";
+		unittalk getnpcid(0,instance_npcname("뉴오즈#07")),"뉴오즈 : W-whazza...?! Don't be ridiculous. I just found her now.";
+		emotion ET_HUK,instance_npcname("뉴오즈#07");
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "A little girl in this strange place, by herself? Hm, doesn't it sound strange to you?";
+		unittalk getnpcid(0),"밍민 : A little girl in this strange place, by herself? Hm, doesn't it sound strange to you?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "You're strange.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#7")),"샬로쉬 : You're strange.";
+		next;
+		cutin "min01",2;
+		mes "[밍민]";
+		mes "No, I'm not! You don't want me to get angry at you, girl.";
+		unittalk getnpcid(0),"밍민 : No, I'm not! You don't want me to get angry at you, girl.";
+		emotion ET_STARE;
+		sleep2 300;
+		emotion ET_FRET;
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Here they come...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#7")),"샬로쉬 : Here they come...";
+		emotion ET_THINK,instance_npcname("샬로쉬#7");
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "These monsters don't stop coming. But where are all the big, rare, beautiful ones?";
+		unittalk getnpcid(0,instance_npcname("뉴오즈#07")),"뉴오즈 : These monsters don't stop coming. But where are all the big, rare, beautiful ones?";
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "I'll have to study you later, girl.";
+		unittalk getnpcid(0),"밍민 : I'll have to study you later, girl.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#7")),"샬로쉬 : ...";
+		close2;
+		cutin "shaloshi01",255;
+		donpcevent instance_npcname("샬로쉬#7")+"::OnDisable";
+		donpcevent instance_npcname("뉴오즈#07")+"::OnDisable";
+		donpcevent instance_npcname("밍민#07")+"::OnDisable";
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,268,131,306,95,"Ferre",3069,22,instance_npcname("밍민#07")+"::OnMyMobDead";
+	areamonster .@map$,268,131,306,95,"Ferre",3070,5,instance_npcname("밍민#07")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp7")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#07")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#07");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#07");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("밍민#07")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("샬로쉬#8")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#08")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#08")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 8
+//============================================================
+1@jtb,286,117,5	script	샬로쉬#8	10041,{
+	cutin "shaloshi01",0;
+	mes "[Shalosh]";
+	mes "(Trying to whistle) I can't.";
+	close2;
+	cutin "shaloshi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#8")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#8");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#8");
+	end;
+}
+
+1@jtb,290,114,4	script	Ragi#08	647,{
+	cutin "ragi01",0;
+	mes "[Ragi]";
+	mes "I'm not experienced in adventuring, but it's quite fun.";
+	close2;
+	cutin "ragi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#08")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#08");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#08");
+	end;
+}
+
+1@jtb,285,114,5	script	뉴오즈#08	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "...";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "I keep loing the others. They were right in front of me.";
+		unittalk getnpcid(0),"뉴오즈 : I keep loing the others. They were right in front of me.";
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "We've met again.";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : We've met again.";
+		next;
+		cutin "nines03",0;
+		mes "[뉴오즈]";
+		mes "You have good taste. This just came to my mind. Listen.";
+		unittalk getnpcid(0),"뉴오즈 : You have good taste. This just came to my mind. Listen.";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "The seasons are changing once again~ yet I haven't had a chance to dye my nails with garden balsam~";
+		unittalk getnpcid(0),"뉴오즈 : The seasons are changing once again~ yet I haven't had a chance to dye my nails with garden balsam~";
+		emotion ET_DELIGHT;
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "Waiting for snow~";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : Waiting for snow~";
+		emotion ET_DELIGHT,instance_npcname("Ragi#08");
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "You're good. You'll make great Gypsy and Minstrel.";
+		unittalk getnpcid(0),"뉴오즈 : You're good. You'll make great Gypsy and Minstrel.";
+		emotion ET_BEST;
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "I want to stay as a Bard for a while.";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : I want to stay as a Bard for a while.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "I guess jobs don't matter so long as you can sing and play, huh?";
+		unittalk getnpcid(0),"뉴오즈 : I guess jobs don't matter so long as you can sing and play, huh?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Love your song.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#8")),"샬로쉬 : Love your song.";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "Shalosh, do you have a favorite song?";
+		unittalk getnpcid(0),"뉴오즈 : Shalosh, do you have a favorite song?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "루나인 sings. Whistles good, too.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#8")),"샬로쉬 : 루나인 sings. Whistles good, too.";
+		emotion ET_DELIGHT,instance_npcname("샬로쉬#8");
+		next;
+		mes "- Shalosh puckers her lips to whistle, but fails. -";
+		cutin "shaloshi01",255;
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "Um, are you trying to whistle?";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : Um, are you trying to whistle?";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Hah hah, I'll teach you how to do it later, Shalosh.";
+		unittalk getnpcid(0),"뉴오즈 : Hah hah, I'll teach you how to do it later, Shalosh.";
+		next;
+		mes "[뉴오즈]";
+		mes strcharinfo(0)+", do you have a favorite song?";
+		unittalk getnpcid(0),"뉴오즈 : "+strcharinfo(0)+", do you have a favorite song?";
+		next;
+		'jitOption = select("아이구's debut song- Lost Poring:아이구's single- Only I Didn't Know about the Card Album:뉴오즈's Red Potion (feat. Muka):Ragi's Self-composed song- Accidental Moon");
+		setarray .@choices$,"","아이구's debut song, Lost Poring","아이구's Only I Didn't Know about the Card Album","your Red Potion (feat. Muka)","Ragi's Accidental Moon";
+		unittalk getcharid(3),strcharinfo(0)+" : I like "+.@choices$['jitOption]+".";
+		mes "[뉴오즈]";
+		switch ('jitOption) {
+			case 1:
+				mes "You know her debut song. You're a fan of her, huh?";
+				unittalk getnpcid(0),"뉴오즈 : You know her debut song. You're a fan of her, huh?";
+				break;
+			case 2: //Custom text
+				mes "You know her single. You're a fan of her, huh?";
+				unittalk getnpcid(0),"뉴오즈 : You know her single. You're a fan of her, huh?";
+				break;
+			case 3:
+				mes "Hah hah, this is embarassing, but thank you.";
+				unittalk getnpcid(0),"뉴오즈 : Hah hah, this is embarassing, but thank you.";
+				break;
+			case 4: //Custom text
+				mes "Hah hah, I like it too.";
+				unittalk getnpcid(0),"뉴오즈 : Hah hah, I like it too.";
+				break;
+		}
+		next;
+		mes "[뉴오즈]";
+		mes "Hm, to each his own.";
+		unittalk getnpcid(0),"뉴오즈 : Hm, to each his own.";
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "Something else is showing up.";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : Something else is showing up.";
+		emotion ET_SURPRISE,instance_npcname("Ragi#08");
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "Ah, I'm getting hungry. The monsters can screw themselves. Shalosh, let's go!";
+		unittalk getnpcid(0),"뉴오즈 : Ah, I'm getting hungry. The monsters can screw themselves. Shalosh, let's go!";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Okay.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#8")),"샬로쉬 : Okay.";
+		donpcevent instance_npcname("뉴오즈#08")+"::OnDisable";
+		next;
+		cutin "ragi03",0;
+		mes "[Ragi]";
+		mes "Hey, come with me!";
+		unittalk getnpcid(0,instance_npcname("Ragi#08")),"Ragi : Hey, come with me!";
+		donpcevent instance_npcname("샬로쉬#8")+"::OnDisable";
+		close2;
+		donpcevent instance_npcname("Ragi#08")+"::OnDisable";
+		cutin "ragi03",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,351,131,389,96,"Ferre",3069,22,instance_npcname("뉴오즈#08")+"::OnMyMobDead";
+	areamonster .@map$,351,131,389,96,"Ferre",3070,5,instance_npcname("뉴오즈#08")+"::OnMyMobDead";
+	areamonster .@map$,351,131,389,96,"Jitterbug",3108+rand(1),('jitOption==3?2:1),instance_npcname("뉴오즈#08")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp8")+"::OnEnable";
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#08")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#08");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#08");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#08")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("로엘#09")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#9")+"::OnEnable";
+	donpcevent instance_npcname("루나인#09")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#09")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 9
+//============================================================
+1@jtb,369,117,5	script	로엘#09	10040,{
+	cutin "roel01",0;
+	mes "[로엘]";
+	mes "I've trained enough. I can be useful.";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#09")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#09");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#09");
+	end;
+}
+
+1@jtb,374,110,4	script	샬로쉬#9	10041,{
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "It's not dangerous. Don't worry.";
+	close2;
+	cutin "shaloshi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#9")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#9");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#9");
+	end;
+}
+
+1@jtb,368,111,5	script	루나인#09	10039,{
+	cutin "lunain01",0;
+	mes "[루나인]";
+	mes "Never let your guard down while exploring, or you can get hurt.";
+	close2;
+	cutin "lunain01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#09")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#09");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#09");
+	end;
+}
+
+1@jtb,375,117,4	script	뉴오즈#09	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "These guys are different. They seem to understand music... or maybe not.";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Did you take care of them already? I wanted to take part in it.";
+		unittalk getnpcid(0),"뉴오즈 : Did you take care of them already? I wanted to take part in it.";
+		emotion ET_DELIGHT,0;
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "They look cute, but they're ferocious.";
+		unittalk getnpcid(0,instance_npcname("로엘#09")),"로엘 : They look cute, but they're ferocious.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "Small friends follow us. Not cute.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#9")),"샬로쉬 : Small friends follow us. Not cute.";
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "They're monsters, not your friends. Be careful.";
+		unittalk getnpcid(0,instance_npcname("루나인#09")),"루나인 : They're monsters, not your friends. Be careful.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "Monsters...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#9")),"샬로쉬 : Monsters...";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "Could she have lost her memory? It seems she doesn't understand danger, it seems.";
+		unittalk getnpcid(0,instance_npcname("로엘#09")),"로엘 : Could she have lost her memory? It seems she doesn't understand danger, it seems.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "Danger, no.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#9")),"샬로쉬 : Danger, no.";
+		next;
+		cutin "lunain02",0;
+		mes "[루나인]";
+		mes "I think she has.";
+		unittalk getnpcid(0,instance_npcname("루나인#09")),"루나인 : I think she has.";
+		next;
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#9")),"샬로쉬 : ...";
+		close2;
+		cutin "shaloshi01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,11,218,48,182,"Ferre",3069,10,instance_npcname("뉴오즈#09")+"::OnMyMobDead";
+	areamonster .@map$,11,218,48,182,"Ferre",3070,5,instance_npcname("뉴오즈#09")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp9")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#09")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#09");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#09");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#09")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("로엘#10")+"::OnEnable";
+	donpcevent instance_npcname("밍민#10")+"::OnEnable";
+	donpcevent instance_npcname("아이구#10")+"::OnEnable";
+	donpcevent instance_npcname("아랑#10")+"::OnEnable";
+	donpcevent instance_npcname("루나인#10")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 10
+//============================================================
+1@jtb,32,198,4	script	로엘#10	10040,{
+	cutin "roel01",2;
+	mes "[로엘]";
+	mes "A stream of water has started flowing.";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#10")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#10");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#10");
+	end;
+}
+
+1@jtb,23,200,5	script	밍민#10	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "Hm, getting pretty awkward here.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#10")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#10");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#10");
+	end;
+}
+
+1@jtb,25,196,5	script	아이구#10	646,{
+	cutin "igu01",0;
+	mes "[아이구]";
+	mes "How long do I have to shimmy my shoulders~";
+	close2;
+	cutin "igu01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#10")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#10");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#10");
+	end;
+}
+
+1@jtb,28,197,4	script	아랑#10	644,{
+	cutin "arang01",2;
+	mes "[아랑]";
+	mes "Hate Green Potions~";
+	close2;
+	cutin "arang01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#10")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#10");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#10");
+	end;
+}
+
+1@jtb,26,201,5	script	루나인#10	10039,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "Arang, why aren't you drinking it?";
+		close2;
+		cutin "lunain04",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "Push, push~";
+		unittalk getnpcid(0),"루나인 : Push, push~";
+		emotion ET_DELIGHT;
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "Push, push~";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : Push, push~";
+		emotion ET_DELIGHT,instance_npcname("밍민#10");
+		next;
+		cutin "igu01",0;
+		mes "[아이구]";
+		mes "How long do I have to shimmy my shoulders~";
+		unittalk getnpcid(0,instance_npcname("아이구#10")),"아이구 : How long do I have to shimmy my shoulders~";
+		emotion ET_DELIGHT,instance_npcname("아이구#10");
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "Pam, pam, pam~";
+		unittalk getnpcid(0),"루나인 : Pam, pam, pam~";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "Chica, chica~";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : Chica, chica~";
+		next;
+		cutin "igu02",0;
+		mes "[아이구]";
+		mes "Pam, pam, pam, pam~";
+		unittalk getnpcid(0,instance_npcname("아이구#10")),"아이구 : Pam, pam, pam, pam~";
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "*Blow*";
+		unittalk getnpcid(0),"루나인 : *Blow*";
+		next;
+		cutin "arang01",2;
+		mes "[아랑]";
+		mes "Ugh, I don't want to drink this!";
+		unittalk getnpcid(0,instance_npcname("아랑#10")),"아랑 : Ugh, I don't want to drink this!";
+		next;
+		cutin "min03",0;
+		mes "[밍민]";
+		mes "Just trust me and drink it!";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : Just trust me and drink it!";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "What are you trying to feed this child? What's in this green bottle?  ...No...";
+		unittalk getnpcid(0,instance_npcname("로엘#10")),"로엘 : What are you trying to feed this child? What's in this green bottle?  ...No...";
+		emotion ET_SURPRISE,instance_npcname("로엘#10");
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "Green Potion.";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : Green Potion.";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "Green Potion is such a bitter... Um, Green Potion you said?";
+		unittalk getnpcid(0,instance_npcname("로엘#10")),"로엘 : Green Potion is such a bitter... Um, Green Potion you said?";
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "Green Potion!";
+		unittalk getnpcid(0,instance_npcname("아이구#10")),"아이구 : Green Potion!";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "Green Potion?";
+		unittalk getnpcid(0,instance_npcname("로엘#10")),"로엘 : Green Potion?";
+		next;
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "I said Green Potion!";
+		unittalk getnpcid(0),"루나인 : I said Green Potion!";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "But you're singing a strange song, and... Green Potion?";
+		unittalk getnpcid(0,instance_npcname("로엘#10")),"로엘 : But you're singing a strange song, and... Green Potion?";
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "I had an almost expired Green Potion, so we decided to play Rock-paper-scissors and feed it to the loser.";
+		unittalk getnpcid(0,instance_npcname("아이구#10")),"아이구 : I had an almost expired Green Potion, so we decided to play Rock-paper-scissors and feed it to the loser.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "It doesn't do anything when you're not poisoned. We just didn't want to waste a good potion.";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : It doesn't do anything when you're not poisoned. We just didn't want to waste a good potion.";
+		next;
+		cutin "arang01",0;
+		mes "[아랑]";
+		mes "But it's awfully bitter.";
+		unittalk getnpcid(0,instance_npcname("아랑#10")),"아랑 : But it's awfully bitter.";
+		next;
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "Are you drinking it yet?";
+		unittalk getnpcid(0),"루나인 : Are you drinking it yet?";
+		next;
+		cutin "igu02",0;
+		mes "[아이구]";
+		mes "DRINK! DRINK!";
+		unittalk getnpcid(0,instance_npcname("아이구#10")),"아이구 : DRINK! DRINK!";
+		next;
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "DRINK! DRINK!";
+		unittalk getnpcid(0,instance_npcname("밍민#10")),"밍민 : DRINK! DRINK!";
+		next;
+		cutin "arang02",2;
+		mes "[아랑]";
+		mes "로엘, can't you drink it for your sister?";
+		unittalk getnpcid(0,instance_npcname("아랑#10")),"아랑 : 로엘, can't you drink it for your sister?";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "Let me go look for possible threats.";
+		unittalk getnpcid(0,instance_npcname("로엘#10")),"로엘 : Let me go look for possible threats.";
+		close2;
+		donpcevent instance_npcname("로엘#10")+"::OnDisable";
+		cutin "roel01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,94,218,132,182,"Ferre",3069,10,instance_npcname("루나인#10")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp10")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#10")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#10");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#10");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("루나인#10")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("밍민#11")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 11
+//============================================================
+1@jtb,106,198,5	script	밍민#11	643,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "I'm glad the mushroom is not poisonous.";
+		close2;
+		cutin "min02",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "Its interior looked like that of a forest, then changed to that of a cave. How strange.";
+		unittalk getnpcid(0),"밍민 : Its interior looked like that of a forest, then changed to that of a cave. How strange.";
+		next;
+		mes "[밍민]";
+		mes "Strange plants growing on stranger terrains. Everything looks out of place.";
+		unittalk getnpcid(0),"밍민 : Strange plants growing on stranger terrains. Everything looks out of place.";
+		next;
+		mes "[밍민]";
+		mes "I've harvested a few mushrooms to taste.";
+		unittalk getnpcid(0),"밍민 : I've harvested a few mushrooms to taste.";
+		next;
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "This mushroom is poisonous, but not life threatening. Do you want to have a bite?";
+		unittalk getnpcid(0),"밍민 : This mushroom is poisonous, but not life threatening. Do you want to have a bite?";
+		next;
+		.@menu = select("Decline:Have a bite");
+		if (.@menu == 2) {
+			mes "[밍민]";
+			mes "You're braver than I thought.";
+			unittalk getnpcid(0),"밍민 : You're braver than I thought.";
+			next;
+			mes "- You feel good, possibly a side effect of eating the mushroom. -";
+			cutin "min01",255;
+			next;
+			cutin "min01",0;
+			mes "[밍민]";
+			mes "I should try one.";
+			unittalk getnpcid(0),"밍민 : I should try one.";
+		} else {
+			mes "[밍민]";
+			mes "I won't take no for an answer!";
+			unittalk getnpcid(0),"밍민 : I won't take no for an answer!";
+			next;
+			mes "- 밍민 shoves a mushroom into your mouth. -";
+			cutin "min01",255;
+			next;
+			cutin "min01",0;
+			mes "[밍민]";
+			mes "Hm?";
+			unittalk getnpcid(0),"밍민 : Hm?";
+			next;
+			mes "[밍민]";
+			mes "You're not reacting. Maybe the mushroom is not poisonous after all. Maybe I should try one...";
+			unittalk getnpcid(0),"밍민 : You're not reacting. Maybe the mushroom is not poisonous after all. Maybe I should try one...";
+		}
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "Hm...";
+		unittalk getnpcid(0),"밍민 : Hm...";
+		next;
+		mes "[밍민]";
+		mes "It has almost no taste.";
+		unittalk getnpcid(0),"밍민 : It has almost no taste.";
+		next;
+		mes "[밍민]";
+		mes "Sheesh, this was a waste of time. You should go first. There's one more thing I want to look at.";
+		unittalk getnpcid(0),"밍민 : Sheesh, this was a waste of time. You should go first. There's one more thing I want to look at.";
+		close2;
+		cutin "min02",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,180,217,218,182,"Ferre",3069,15,instance_npcname("밍민#11")+"::OnMyMobDead";
+	areamonster .@map$,180,217,218,182,"Ferre",3070,5,instance_npcname("밍민#11")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp11")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#11")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#11");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#11");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("밍민#11")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("멜로디-잭#12")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#12")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 12
+//============================================================
+1@jtb,191,206,5	script	멜로디-잭#12	844,{
+	mes "[멜로디-잭]";
+	mes "Please don't talk to me--I'm hiding for a reason.";
+	close;
+
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#12")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#12");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#12");
+	end;
+}
+
+1@jtb,195,206,4	script	뉴오즈#12	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "You made it sound so difficult, when you could just say, 'give and take.'";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines04",2;
+		mes "[뉴오즈]";
+		mes "Um, how did I manage to lose the others again?";
+		unittalk getnpcid(0),"뉴오즈 : Um, how did I manage to lose the others again?";
+		next;
+		mes "[멜로디-잭]";
+		mes "뉴오즈.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : 뉴오즈.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines04",255;
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Wah! Jeez!";
+		unittalk getnpcid(0),"뉴오즈 : Wah! Jeez!";
+		next;
+		mes "[멜로디-잭]";
+		mes "And I thought you'd have gotten used to having me around invisible.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : And I thought you'd have gotten used to having me around invisible.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines01",255;
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Are we still in danger?";
+		unittalk getnpcid(0),"뉴오즈 : Are we still in danger?";
+		next;
+		mes "[멜로디-잭]";
+		mes "Guess so. We've been circling around the same place, by the way.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : Guess so. We've been circling around the same place, by the way.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines01",255;
+		next;
+		cutin "nines04",2;
+		mes "[뉴오즈]";
+		mes "So I was right about this place being maze-like. Ugh, I'm getting hungry again.";
+		unittalk getnpcid(0),"뉴오즈 : So I was right about this place being maze-like. Ugh, I'm getting hungry again.";
+		next;
+		mes "[멜로디-잭]";
+		mes "I've waited for you because I wanted to talk.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : I've waited for you because I wanted to talk.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines04",255;
+		next;
+		mes "[멜로디-잭]";
+		mes "뉴오즈, your contact has expired at the time you returned to the guild.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : 뉴오즈, your contact has expired at the time you returned to the guild.";
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Oh, that's right. Since I'm no longer the master, my contract has expired naturally.";
+		unittalk getnpcid(0),"뉴오즈 : Oh, that's right. Since I'm no longer the master, my contract has expired naturally.";
+		next;
+		mes "[멜로디-잭]";
+		mes "But given the situation, my promise to you still stands.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : But given the situation, my promise to you still stands.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines01",255;
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Thanks. I'm glad my contingency plan is still in place.";
+		unittalk getnpcid(0),"뉴오즈 : Thanks. I'm glad my contingency plan is still in place.";
+		next;
+		mes "[멜로디-잭]";
+		mes "Hmpf, just know I'm keeping my promise to you only because you've got what I want.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : Hmpf, just know I'm keeping my promise to you only because you've got what I want.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#12");
+		cutin "nines01",255;
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Oh, do you mean this ukulele?";
+		unittalk getnpcid(0),"뉴오즈 : Oh, do you mean this ukulele?";
+		next;
+		mes "[멜로디-잭]";
+		mes "You moron, that's worth nothing. Your contract has expired, but a promise is a promise and I intend to keep it.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#12")),"멜로디-잭 : You moron, that's worth nothing. Your contract has expired, but a promise is a promise and I intend to keep it.";
+		emotion ET_MERONG,instance_npcname("멜로디-잭#12");
+		cutin "nines01",255;
+		next;
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "Thanks";
+		unittalk getnpcid(0),"뉴오즈 : Thanks";
+		close2;
+		donpcevent instance_npcname("멜로디-잭#12")+"::OnDisable";
+		cutin "nines01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,268,216,305,181,"Ferre",3069,15,instance_npcname("뉴오즈#12")+"::OnMyMobDead";
+	areamonster .@map$,268,216,305,181,"Ferre",3070,5,instance_npcname("뉴오즈#12")+"::OnMyMobDead";
+	areamonster .@map$,268,216,305,181,"Ferre",3071,5,instance_npcname("뉴오즈#12")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp12")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#12")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#12");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#12");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#12")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아이구#13")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#13")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#13")+"::OnEnable";
+	donpcevent instance_npcname("로엘#13")+"::OnEnable";
+	donpcevent instance_npcname("밍민#13")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#13")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 13
+//============================================================
+1@jtb,287,195,4	script	아이구#13	646,{
+	cutin "igu04",0;
+	mes "[아이구]";
+	mes "Don't listen to him. He doesn't need encouragement for his bad jokes.";
+	close2;
+	cutin "igu04",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#13");
+	end;
+}
+
+1@jtb,285,195,4	script	Ragi#13	647,{
+	cutin "ragi02",0;
+	mes "[Ragi]";
+	mes "If you find my joke funny, don't try to hide it. Just laugh.";
+	close2;
+	cutin "ragi02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#13");
+	end;
+}
+
+1@jtb,285,192,1	script	샬로쉬#13	10041,{
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "I think someone made my wish come true.";
+	close2;
+	cutin "shaloshi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#13");
+	end;
+}
+
+1@jtb,289,191,4	script	로엘#13	10040,{
+	cutin "roel01",2;
+	mes "[로엘]";
+	mes "I hope Shalosh will recover her memory soon.";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#13");
+	end;
+}
+
+1@jtb,280,191,7	script	밍민#13	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "Ugh, I'm tired. Looking out for these new members all day is work in itself.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#13");
+	end;
+}
+
+1@jtb,282,194,5	script	뉴오즈#13	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "It's possible someone else might be in here.";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "I remembered a few things.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : I remembered a few things.";
+		next;
+		cutin "igu04",2;
+		mes "[아이구]";
+		mes "Did you?";
+		unittalk getnpcid(0,instance_npcname("아이구#13")),"아이구 : Did you?";
+		next;
+		cutin "ragi01",0;
+		mes "[Ragi]";
+		mes "She said she did.";
+		unittalk getnpcid(0,instance_npcname("Ragi#13")),"Ragi : She said she did.";
+		emotion ET_DELIGHT,instance_npcname("Ragi#13");
+		next;
+		cutin "nines03",0;
+		mes "[뉴오즈]";
+		mes "Right, that's what she said.";
+		unittalk getnpcid(0),"뉴오즈 : Right, that's what she said.";
+		emotion ET_DELIGHT;
+		next;
+		mes "[Ragi & 뉴오즈]";
+		mes "!!!";
+		unittalk getnpcid(0,instance_npcname("Ragi#13")),"Ragi : !!!";
+		unittalk getnpcid(0),"뉴오즈 : !!!";
+		emotion ET_SURPRISE,instance_npcname("Ragi#13");
+		emotion ET_SURPRISE;
+		next;
+		mes "[Ragi & 뉴오즈]";
+		mes "Gimmie five!";
+		unittalk getnpcid(0,instance_npcname("Ragi#13")),"Ragi : Gimmie five!";
+		unittalk getnpcid(0),"뉴오즈 : Gimmie five!";
+		next;
+		mes "- *Slap* -";
+		cutin "nines03",255;
+		next;
+		mes "- Before the two give each other a high five, 아이구 and 밍민 slap them on their backs. -";
+		emotion ET_KEK,instance_npcname("Ragi#13");
+		emotion ET_KEK;
+		emotion ET_HNG,instance_npcname("아이구#13");
+		emotion ET_HNG,instance_npcname("밍민#13");
+		specialeffect EF_HIT5,AREA,instance_npcname("Ragi#13");
+		specialeffect EF_HIT5;
+		next;
+		cutin "igu03",2;
+		mes "[아이구]";
+		mes "Stop goofing around. Shalosh, talk to us.";
+		unittalk getnpcid(0,instance_npcname("아이구#13")),"아이구 : Stop goofing around. Shalosh, talk to us.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "In the pitch darkness, I heard a voice. It was low, but it was ringing for a while.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : In the pitch darkness, I heard a voice. It was low, but it was ringing for a while.";
+		next;
+		mes "[Shalosh]";
+		mes "Later I heard 뉴오즈 singing while waiting for his friends. His voice warmed me.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : Later I heard 뉴오즈 singing while waiting for his friends. His voice warmed me.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "You speak like a grow-up now, all smooth and clear.";
+		unittalk getnpcid(0,instance_npcname("밍민#13")),"밍민 : You speak like a grow-up now, all smooth and clear.";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "She could have been terrified.";
+		unittalk getnpcid(0,instance_npcname("로엘#13")),"로엘 : She could have been terrified.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "I didn't know what friends meant, but it sounded good. I wanted it.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : I didn't know what friends meant, but it sounded good. I wanted it.";
+		next;
+		mes "[Shalosh]";
+		mes "아이구 and 루나인 showed up.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : 아이구 and 루나인 showed up.";
+		next;
+		mes "[Shalosh]";
+		mes "I thought someone made my wish come true.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : I thought someone made my wish come true.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "The pitch darkness... Don't you remember anything else?";
+		unittalk getnpcid(0),"뉴오즈 : The pitch darkness... Don't you remember anything else?";
+		emotion ET_QUESTION;
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "No.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : No.";
+		next;
+		cutin "roel01",2;
+		mes "[로엘]";
+		mes "She could have had her eyes closed. Perhaps she's sleeping.";
+		unittalk getnpcid(0,instance_npcname("로엘#13")),"로엘 : She could have had her eyes closed. Perhaps she's sleeping.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "The pitch darkness... The cave is bright throughout, aside from the fog.";
+		unittalk getnpcid(0),"뉴오즈 : The pitch darkness... The cave is bright throughout, aside from the fog.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "A dream. A low voice in a dream. What kind of dream?";
+		unittalk getnpcid(0,instance_npcname("밍민#13")),"밍민 : A dream. A low voice in a dream. What kind of dream?";
+		next;
+		'jitOption = select("She heard her own thoughts:She was talking with someone");
+		setarray .@choices$,"","Maybe she heard her own thoughts","Maybe she was talking with someone";
+		unittalk getcharid(3),strcharinfo(0)+" : "+.@choices$['jitOption]+".";
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#13")),"샬로쉬 : ...";
+		next;
+		cutin "igu04",0;
+		mes "[아이구]";
+		mes "She may not have remembered everything, but this is an improvement. Let's wait until she's ready to talk more.";
+		unittalk getnpcid(0,instance_npcname("아이구#13")),"아이구 : She may not have remembered everything, but this is an improvement. Let's wait until she's ready to talk more.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "A voice before singing. It's possible someone else might be in here.";
+		unittalk getnpcid(0),"뉴오즈 : A voice before singing. It's possible someone else might be in here.";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "We'll know soon enough.";
+		unittalk getnpcid(0,instance_npcname("밍민#13")),"밍민 : We'll know soon enough.";
+		close2;
+		cutin "min02",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,358,212,388,182,"Ferre",3069,20,instance_npcname("뉴오즈#13")+"::OnMyMobDead";
+	areamonster .@map$,358,212,388,182,"Ferre",3070,10,instance_npcname("뉴오즈#13")+"::OnMyMobDead";
+	areamonster .@map$,358,212,388,182,"Jitterbug",3108+rand(1),('jitOption==2?2:1),instance_npcname("뉴오즈#13")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp13")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#13")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#13");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#13");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#13")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("샬로쉬#14")+"::OnEnable";
+	donpcevent instance_npcname("로엘#14")+"::OnEnable";
+	donpcevent instance_npcname("밍민#14")+"::OnEnable";
+	donpcevent instance_npcname("루나인#14")+"::OnEnable";
+	donpcevent instance_npcname("아랑#14")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#14")+"::OnEnable";
+	donpcevent instance_npcname("겔카#14")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#14")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 14
+//============================================================
+1@jtb,385,214,4	script	샬로쉬#14	10041,{
+	cutin "shaloshi02",2;
+	mes "[Shalosh]";
+	mes "Can't you hear what others think?";
+	close2;
+	cutin "shaloshi02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#14");
+	end;
+}
+
+1@jtb,376,218,5	script	로엘#14	10040,{
+	cutin "roel01",0;
+	mes "[로엘]";
+	mes "Comrades should be best friends!";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#14");
+	end;
+}
+
+1@jtb,382,211,4	script	밍민#14	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "Don't care.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#14");
+	end;
+}
+
+1@jtb,384,218,4	script	루나인#14	10039,{
+	cutin "lunain02",2;
+	mes "[루나인]";
+	mes "I bake and knit in my spare time. I'm very domestic. Ho ho ho!";
+	close2;
+	cutin "lunain02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#14");
+	end;
+}
+
+1@jtb,383,216,5	script	아랑#14	644,{
+	cutin "arang01",0;
+	mes "[아랑]";
+	mes "Yap! Yap!";
+	close2;
+	cutin "arang01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#14");
+	end;
+}
+
+1@jtb,375,214,5	script	로테르트#14	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "It's true that I'm the strongest.";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#14");
+	end;
+}
+
+1@jtb,378,211,5	script	겔카#14	629,{
+	cutin "gelca01",0;
+	mes "[겔카]";
+	mes "I never slack on my training.";
+	close2;
+	cutin "gelca01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#14");
+	end;
+}
+
+1@jtb,380,219,5	script	뉴오즈#14	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "Don't worry. Children grow by fighting.";
+		close2;
+		cutin "nines02",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Arang! Shalosh!";
+		unittalk getnpcid(0),"뉴오즈 : Arang! Shalosh!";
+		next;
+		cutin "arang01",2;
+		mes "[아랑]";
+		mes "What?";
+		unittalk getnpcid(0,instance_npcname("아랑#14")),"아랑 : What?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Where's you in danger?";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#14")),"샬로쉬 : Where's you in danger?";
+		next;
+		cutin "arang02",2;
+		mes "[아랑]";
+		mes "Where have you been? We just had an awesome monster here!";
+		unittalk getnpcid(0,instance_npcname("아랑#14")),"아랑 : Where have you been? We just had an awesome monster here!";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Heh, my instincts told me to slow down because danger was ahead.";
+		unittalk getnpcid(0),"뉴오즈 : Heh, my instincts told me to slow down because danger was ahead.";
+		next;
+		cutin "gelca01",0;
+		mes "[겔카]";
+		mes "Oh, the instincts of a great adventurer!";
+		unittalk getnpcid(0,instance_npcname("겔카#14")),"겔카 : Oh, the instincts of a great adventurer!";
+		next;
+		cutin "arang01",2;
+		mes "[아랑]";
+		mes "No, his instincts have gotten rusty.";
+		unittalk getnpcid(0,instance_npcname("아랑#14")),"아랑 : No, his instincts have gotten rusty.";
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "He's just being lazy. He's not so weak.";
+		unittalk getnpcid(0,instance_npcname("로테르트#14")),"로테르트 : He's just being lazy. He's not so weak.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "My instincts just told me 뉴오즈 is not strong.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#14")),"샬로쉬 : My instincts just told me 뉴오즈 is not strong.";
+		next;
+		mes "[Shalosh]";
+		mes "뉴오즈, did you just think everyone except Rot is mediocre?";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#14")),"샬로쉬 : 뉴오즈, did you just think everyone except Rot is mediocre?";
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "You can talk and you can hear other people's thoughts. Brillant.";
+		unittalk getnpcid(0,instance_npcname("밍민#14")),"밍민 : You can talk and you can hear other people's thoughts. Brillant.";
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "Enough! Stop being disrespectful to 뉴오즈!";
+		unittalk getnpcid(0,instance_npcname("루나인#14")),"루나인 : Enough! Stop being disrespectful to 뉴오즈!";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "Comrades should not fight with each other.";
+		unittalk getnpcid(0,instance_npcname("로엘#14")),"로엘 : Comrades should not fight with each other.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Comrades should not fight with each other. Got it.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#14")),"샬로쉬 : Comrades should not fight with each other. Got it.";
+		next;
+		cutin "lunain03",2;
+		mes "[루나인]";
+		mes "Comrades, who? We're just a bunch of strangers hell-bent on saving a lost girl!";
+		unittalk getnpcid(0,instance_npcname("루나인#14")),"루나인 : Comrades, who? We're just a bunch of strangers hell-bent on saving a lost girl!";
+		next;
+		cutin "roel03",0;
+		mes "[로엘]";
+		mes "(She's hawt when she's angry!)";
+		unittalk getnpcid(0,instance_npcname("로엘#14")),"로엘 : (She's hawt when she's angry!)";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "We'll talk again the moment we're out of here.";
+		unittalk getnpcid(0,instance_npcname("밍민#14")),"밍민 : We'll talk again the moment we're out of here.";
+		emotion ET_FRET,instance_npcname("밍민#14");
+		close2;
+		cutin "min02",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,13,300,47,267,"Ferre",3069,10,instance_npcname("뉴오즈#14")+"::OnMyMobDead";
+	areamonster .@map$,13,300,47,267,"Ferre",3070,10,instance_npcname("뉴오즈#14")+"::OnMyMobDead";
+	areamonster .@map$,13,300,47,267,"Ferre",3071,10,instance_npcname("뉴오즈#14")+"::OnMyMobDead";
+	areamonster .@map$,13,300,47,267,"Ferre",3072,5,instance_npcname("뉴오즈#14")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp14")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#14")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#14");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#14");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#14")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("밍민#15")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#15")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#15")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 15
+//============================================================
+1@jtb,30,279,4	script	밍민#15	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "Tsk, tsk. I practically raised everyone here, and now they're at each other's throughts over the guild master position.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#15")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#15");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#15");
+	end;
+}
+
+1@jtb,30,284,4	script	로테르트#15	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "Don't let yourself be deluded by rumors! I'm the Stag of the Southern Gate, the most powerful Bishop in exorcist history!";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#15")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#15");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#15");
+	end;
+}
+
+1@jtb,26,280,5	script	뉴오즈#15	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Wait, I've collected some Autumn Leaves and Blue Cards to give to other friends as souvenirs. Where are they?";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "Having you two with me brings back a lot of memories.";
+		unittalk getnpcid(0),"뉴오즈 : Having you two with me brings back a lot of memories.";
+		emotion ET_DELIGHT;
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "I was as stubborn as a mule and busy pretending like I knew what I was doing.";
+		unittalk getnpcid(0,instance_npcname("로테르트#15")),"로테르트 : I was as stubborn as a mule and busy pretending like I knew what I was doing.";
+		next;
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "Do you remember when you two fought over that florist girl at the southern gate of Prontera? Or when the doll merchant at the eastern gate whupped you for bickering and driving his customers away?";
+		unittalk getnpcid(0,instance_npcname("밍민#15")),"밍민 : Do you remember when you two fought over that florist girl at the southern gate of Prontera? Or when the doll merchant at the eastern gate whupped you for bickering and driving his customers away?";
+		emotion ET_QUESTION,instance_npcname("밍민#15");
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "Do you not have any good memories of us?";
+		unittalk getnpcid(0,instance_npcname("로테르트#15")),"로테르트 : Do you not have any good memories of us?";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Oh, I remember! Ah, good times!";
+		unittalk getnpcid(0),"뉴오즈 : Oh, I remember! Ah, good times!";
+		emotion ET_DELIGHT;
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "Am I the only one not happy about this conversation?";
+		unittalk getnpcid(0,instance_npcname("로테르트#15")),"로테르트 : Am I the only one not happy about this conversation?";
+		emotion ET_THINK,instance_npcname("로테르트#15");
+		next;
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "How about when you played with Dead Branch to death? Or when you and your Sorcerer buddies killed yourselves playing Hocus Pocus?";
+		unittalk getnpcid(0,instance_npcname("밍민#15")),"밍민 : How about when you played with Dead Branch to death? Or when you and your Sorcerer buddies killed yourselves playing Hocus Pocus?";
+		emotion ET_MERONG,instance_npcname("밍민#15");
+		next;
+		cutin "rote01",0;
+		mes "[로테르트]";
+		mes "Can't you think of a nice memory?";
+		unittalk getnpcid(0,instance_npcname("로테르트#15")),"로테르트 : Can't you think of a nice memory?";
+		emotion ET_OHNO,instance_npcname("로테르트#15");
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "I can! 밍민 drank the Poison Bottle I found on the street and died; I told you it was expensive, and I didn't say anything about it being good for your health.";
+		unittalk getnpcid(0),"뉴오즈 : I can! 밍민 drank the Poison Bottle I found on the street and died; I told you it was expensive, and I didn't say anything about it being good for your health.";
+		emotion ET_OK;
+		next;
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "Oh, I remember! That was funny!";
+		unittalk getnpcid(0,instance_npcname("밍민#15")),"밍민 : Oh, I remember! That was funny!";
+		emotion ET_SMILE,instance_npcname("밍민#15");
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "Arg!";
+		unittalk getnpcid(0,instance_npcname("로테르트#15")),"로테르트 : Arg!";
+		emotion ET_KEK,instance_npcname("로테르트#15");
+		close2;
+		cutin "rote01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,104,297,132,268,"Ferre",3069,8,instance_npcname("뉴오즈#15")+"::OnMyMobDead";
+	areamonster .@map$,104,297,132,268,"Ferre",3070,10,instance_npcname("뉴오즈#15")+"::OnMyMobDead";
+	areamonster .@map$,104,297,132,268,"Ferre",3071,5,instance_npcname("뉴오즈#15")+"::OnMyMobDead";
+	areamonster .@map$,104,297,132,268,"Ferre",3072,7,instance_npcname("뉴오즈#15")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp15")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#15")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#15");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#15");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#15")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아이구#16")+"::OnEnable";
+	donpcevent instance_npcname("루나인#16")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#16")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 16
+//============================================================
+1@jtb,108,285,5	script	아이구#16	646,{
+	cutin "igu03",0;
+	mes "[아이구]";
+	mes "I don't mind healthy rivalry, but I prefer friendship, however long it lasts.";
+	close2;
+	cutin "igu03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#16")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#16");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#16");
+	end;
+}
+
+1@jtb,113,285,4	script	루나인#16	10039,{
+	cutin "lunain01",2;
+	mes "[루나인]";
+	mes "Let's make a truce for now. But make no mistake--뉴오즈 is mine the moment I find him vulnerable.";
+	close2;
+	cutin "lunain01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#16")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#16");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#16");
+	end;
+}
+
+1@jtb,110,281,5	script	샬로쉬#16	10041,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "shaloshi01",2;
+		mes "[Shalosh]";
+		mes "Friends... Rivalry... Comrades...";
+		close2;
+		cutin "shaloshi01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "lunain02",2;
+		mes "[루나인]";
+		mes "Maybe 뉴오즈 is not interested in dating.";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : Maybe 뉴오즈 is not interested in dating.";
+		next;
+		cutin "igu05",0;
+		mes "[아이구]";
+		mes "Tell me something I don't know.";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : Tell me something I don't know.";
+		next;
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "But you haven't tried to talk to him. I mean seriously, have you?";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : But you haven't tried to talk to him. I mean seriously, have you?";
+		next;
+		cutin "igu04",0;
+		mes "[아이구]";
+		mes "You've met him today, but you should know unless you're stupid.";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : You've met him today, but you should know unless you're stupid.";
+		next;
+		cutin "lunain02",2;
+		mes "[루나인]";
+		mes "I know--he'll say no if I ask him out.";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : I know--he'll say no if I ask him out.";
+		next;
+		cutin "igu05",0;
+		mes "[아이구]";
+		mes "That dimwit is only interested in adventuring.";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : That dimwit is only interested in adventuring.";
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "Don't call my hero that! ...But I agree with you.";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : Don't call my hero that! ...But I agree with you.";
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "You seem to be found of Roel.";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : You seem to be found of Roel.";
+		next;
+		cutin "lunain03",2;
+		mes "[루나인]";
+		mes "I'm not interested in that kid.";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : I'm not interested in that kid.";
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "How about you, Adventurer? How are things with your significant other?";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : How about you, Adventurer? How are things with your significant other?";
+		next;
+		'jitOption = select("You don't even know if I have one:My love is unrequited:We're happy");
+		cutin "igu01",0;
+		switch ('jitOption) {
+			case 1:
+				unittalk getcharid(3),strcharinfo(0)+" : You don't even know if I have one.";
+				mes "[아이구]";
+				mes "Oh, I'm sorry, but I'm on the verge of bursting into tears.";
+				unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : Oh, I'm sorry, but I'm on the verge of bursting into tears.";
+				break;
+			case 2:
+				unittalk getcharid(3),strcharinfo(0)+" : My love is unrequited.";
+				mes "[아이구]";
+				mes "Unrequited love is painful. You'd better let it go before it breaks you.";
+				unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : Unrequited love is painful. You'd better let it go before it breaks you.";
+				break;
+			case 3: //Custom text
+				unittalk getcharid(3),strcharinfo(0)+" : We're happy.";
+				mes "[아이구]";
+				mes "I'm glad to hear it.";
+				unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : I'm glad to hear it.";
+				break;
+		}
+		next;
+		cutin "igu03",0;
+		mes "[아이구]";
+		mes "I don't mind healthy rivalry, but I prefer friendship, however long it lasts.";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : I don't mind healthy rivalry, but I prefer friendship, however long it lasts.";
+		next;
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "Let's make a truce for now. But make no mistake--뉴오즈 is mine the moment I find him vulnerable.";
+		unittalk getnpcid(0,instance_npcname("루나인#16")),"루나인 : Let's make a truce for now. But make no mistake--뉴오즈 is mine the moment I find him vulnerable.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "(Friends... Rivalry...)";
+		unittalk getnpcid(0),"샬로쉬 : (Friends... Rivalry...)";
+		next;
+		cutin "igu01",0;
+		mes "[아이구]";
+		mes "Over my dead body!";
+		unittalk getnpcid(0,instance_npcname("아이구#16")),"아이구 : Over my dead body!";
+		close2;
+		cutin "igu01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	monster .@map$,209,273,"Ferre",3072,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,210,272,"Ferre",3069,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,211,273,"Ferre",3071,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,212,272,"Ferre",3072,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,213,273,"Ferre",3070,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,211,274,"Ferre",3070,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,212,275,"Ferre",3070,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,213,275,"Ferre",3070,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	monster .@map$,213,276,"Ferre",3070,1,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	areamonster .@map$,183,301,220,272,"Ferre",3069,5,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	areamonster .@map$,183,301,220,272,"Ferre",3070,8,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	areamonster .@map$,183,301,220,272,"Ferre",3071,5,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	areamonster .@map$,183,301,220,272,"Ferre",3072,5,instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	areamonster .@map$,183,301,220,272,"Jitterbug",3108+rand(1),('jitOption==3?2:1),instance_npcname("샬로쉬#16")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp16")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#16")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#16");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#16");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("샬로쉬#16")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("로엘#17")+"::OnEnable";
+	donpcevent instance_npcname("루나인#17")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#17")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 17
+//============================================================
+1@jtb,199,278,7	script	로엘#17	10040,{
+	cutin "roel03",0;
+	mes "[로엘]";
+	mes "I'm okay. At least I can protect Shalosh. Feeling protective of someone is nice.";
+	close2;
+	cutin "roel03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#17")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#17");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#17");
+	end;
+}
+
+1@jtb,203,281,4	script	루나인#17	10039,{
+	cutin "lunain02",2;
+	mes "[루나인]";
+	mes "True friends don't need to declare their friendship; they just become friends without knowing.";
+	close2;
+	cutin "lunain02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#17")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#17");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#17");
+	end;
+}
+
+1@jtb,198,282,5	script	샬로쉬#17	10041,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Ferres don't bite me.";
+		close2;
+		cutin "shaloshi01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Roel and Runane are hurt.";
+		unittalk getnpcid(0),"샬로쉬 : Roel and Runane are hurt.";
+		emotion ET_THINK;
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "I'm fine. I told you to be careful, kiddo!";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : I'm fine. I told you to be careful, kiddo!";
+		next;
+		cutin "roel04",0;
+		mes "[로엘]";
+		mes "Sorry. I won't disappoint you again.";
+		unittalk getnpcid(0,instance_npcname("로엘#17")),"로엘 : Sorry. I won't disappoint you again.";
+		emotion ET_SORRY,instance_npcname("로엘#17");
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "She's not happy with him, but she still treats him really well.";
+		unittalk getnpcid(0),"샬로쉬 : She's not happy with him, but she still treats him really well.";
+		next;
+		cutin "roel03",0;
+		mes "[로엘]";
+		mes "(She's kind.)";
+		unittalk getnpcid(0,instance_npcname("로엘#17")),"로엘 : (She's kind.)";
+		emotion ET_THROB,instance_npcname("로엘#17");
+		next;
+		cutin "lunain02",2;
+		mes "[루나인]";
+		mes "Don't mistake this for anything more than what it is--babysitting!";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : Don't mistake this for anything more than what it is--babysitting!";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "She's blushing.";
+		unittalk getnpcid(0),"샬로쉬 : She's blushing.";
+		emotion ET_THINK;
+		next;
+		cutin "lunain01",2;
+		mes "[루나인]";
+		mes "There's nothing about you I like.";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : There's nothing about you I like.";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Before 아이구 and Runane,";
+		unittalk getnpcid(0),"샬로쉬 : Before 아이구 and Runane,";
+		next;
+		mes "[Shalosh]";
+		mes "the Ferres showed up first.";
+		unittalk getnpcid(0),"샬로쉬 : the Ferres showed up first.";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "Ferre?";
+		unittalk getnpcid(0,instance_npcname("로엘#17")),"로엘 : Ferre?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "They emit 'ferre, ferre,' so I call them Ferres.";
+		unittalk getnpcid(0),"샬로쉬 : They emit 'ferre, ferre,' so I call them Ferres.";
+		next;
+		mes "[Shalosh]";
+		mes "They did nothing but croacked.";
+		unittalk getnpcid(0),"샬로쉬 : They did nothing but croacked.";
+		next;
+		mes "[Shalosh]";
+		mes "They're my friends. They don't bite or hurt.";
+		unittalk getnpcid(0),"샬로쉬 : They're my friends. They don't bite or hurt.";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "But now...";
+		unittalk getnpcid(0,instance_npcname("로엘#17")),"로엘 : But now...";
+		next;
+		cutin "lunain04",2;
+		mes "[루나인]";
+		mes "Listen, humans and monsters can't be friends. At least that's what I think.";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : Listen, humans and monsters can't be friends. At least that's what I think.";
+		emotion ET_HNG,instance_npcname("루나인#17");
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Can't be friends.";
+		unittalk getnpcid(0),"샬로쉬 : Can't be friends.";
+		next;
+		cutin "lunain03",2;
+		mes "[루나인]";
+		mes "That's right. I like you better when you listen to me.";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : That's right. I like you better when you listen to me.";
+		next;
+		cutin "roel03",0;
+		mes "[로엘]";
+		mes "How about I be your friend?";
+		unittalk getnpcid(0,instance_npcname("로엘#17")),"로엘 : How about I be your friend?";
+		next;
+		cutin "lunain02",2;
+		mes "[루나인]";
+		mes "Stop making things awkward! We're about the same age, so we're friends already.";
+		unittalk getnpcid(0,instance_npcname("루나인#17")),"루나인 : Stop making things awkward! We're about the same age, so we're friends already.";
+		emotion ET_SCRATCH,instance_npcname("루나인#17");
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "(Can't be friends.)";
+		unittalk getnpcid(0),"샬로쉬 : (Can't be friends.)";
+		close2;
+		cutin "shaloshi01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,13,389,45,355,"Ferre",3069,5,instance_npcname("샬로쉬#17")+"::OnMyMobDead";
+	areamonster .@map$,13,389,45,355,"Ferre",3070,9,instance_npcname("샬로쉬#17")+"::OnMyMobDead";
+	areamonster .@map$,13,389,45,355,"Ferre",3071,9,instance_npcname("샬로쉬#17")+"::OnMyMobDead";
+	areamonster .@map$,13,389,45,355,"Ferre",3072,9,instance_npcname("샬로쉬#17")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp17")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#17")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#17");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#17");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("샬로쉬#17")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("아랑#18")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#18")+"::OnEnable";
+	donpcevent instance_npcname("겔카#18")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#18")+"::OnEnable";
+	donpcevent instance_npcname("아이구#18")+"::OnEnable";
+	donpcevent instance_npcname("밍민#18")+"::OnEnable";
+	donpcevent instance_npcname("멜로디-잭#18")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#18")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 18
+//============================================================
+1@jtb,26,380,5	script	아랑#18	644,{
+	cutin "arang02",0;
+	mes "[아랑]";
+	mes "I wish these monsters were as cute and helpless as those Porings for the Taekwon mission.";
+	close2;
+	cutin "arang02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#18");
+	end;
+}
+
+1@jtb,31,380,4	script	Ragi#18	647,{
+	cutin "ragi01",0;
+	mes "[Ragi]";
+	mes "They're bickering all the time, but look like good friends. Don't they?";
+	close2;
+	cutin "ragi01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#18");
+	end;
+}
+
+1@jtb,33,376,4	script	겔카#18	629,{
+	cutin "gelca01",0;
+	mes "[겔카]";
+	mes "I practice hard, so I can shine in times of danger.";
+	close2;
+	cutin "gelca01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#18");
+	end;
+}
+
+1@jtb,30,373,4	script	로테르트#18	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "I have a feeling 뉴오즈 is up to no good.";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#18");
+	end;
+}
+
+1@jtb,24,376,5	script	아이구#18	646,{
+	cutin "igu05",0;
+	mes "[아이구]";
+	mes "뉴오즈's enthusiasm for adventure went overboard. Again. I can't say I hate that about him, though.";
+	close2;
+	cutin "igu05",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#18");
+	end;
+}
+
+1@jtb,25,373,5	script	밍민#18	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "We'd better look for an exit before things get too crazy.";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#18");
+	end;
+}
+
+1@jtb,30,377,5	script	멜로디-잭#18	844,{
+	mes "[멜로디-잭]";
+	mes "뉴오즈 is never tactful.";
+	close;
+
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#18");
+	end;
+}
+
+1@jtb,28,377,5	script	뉴오즈#18	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "We should find her.";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Strange... The atmosphere has changed.";
+		unittalk getnpcid(0),"뉴오즈 : Strange... The atmosphere has changed.";
+		emotion ET_THINK;
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "The air smells different, and things look less... perceptible.";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : The air smells different, and things look less... perceptible.";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "It seems as though we're underwater, yet I don't feel it.";
+		unittalk getnpcid(0,instance_npcname("로테르트#18")),"로테르트 : It seems as though we're underwater, yet I don't feel it.";
+		next;
+		mes "[멜로디-잭]";
+		mes "I'm telling you, we've been circling around the same place.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#18")),"멜로디-잭 : I'm telling you, we've been circling around the same place.";
+		emotion ET_HUM,instance_npcname("멜로디-잭#18");
+		cutin "rote01",255;
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "I agree. And this clearing is neither compact nor spacious.";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : I agree. And this clearing is neither compact nor spacious.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "Do you think it's meaningless for us to go deeper?";
+		unittalk getnpcid(0),"뉴오즈 : Do you think it's meaningless for us to go deeper?";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "No. I'm just saying the environmental changes are too drastic, almost like the mood swings of a bipolar person.";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : No. I'm just saying the environmental changes are too drastic, almost like the mood swings of a bipolar person.";
+		next;
+		mes "[밍민]";
+		mes "I don't know why, but things are losing their shape as if they're fading away.";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : I don't know why, but things are losing their shape as if they're fading away.";
+		next;
+		mes "[멜로디-잭]";
+		mes "All the while, the foreign energy I've been sensing is growing stronger. This is bad.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#18")),"멜로디-잭 : All the while, the foreign energy I've been sensing is growing stronger. This is bad.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#18");
+		cutin "min02",255;
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "I feel like something's going to appear in front of our eyes with a loud pop.";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : I feel like something's going to appear in front of our eyes with a loud pop.";
+		next;
+		cutin "arang02",2;
+		mes "[아랑]";
+		mes "I hope it's a formidable monster!";
+		unittalk getnpcid(0,instance_npcname("아랑#18")),"아랑 : I hope it's a formidable monster!";
+		next;
+		cutin "igu01",0;
+		mes "[아이구]";
+		mes "I hope you're wrong.";
+		unittalk getnpcid(0,instance_npcname("아이구#18")),"아이구 : I hope you're wrong.";
+		emotion ET_X,instance_npcname("아이구#18");
+		next;
+		cutin "ragi02",2;
+		mes "[Ragi]";
+		mes "I'm just going to leave you guys to...";
+		unittalk getnpcid(0,instance_npcname("Ragi#18")),"Ragi : I'm just going to leave you guys to...";
+		next;
+		cutin "nines02",0;
+		mes "[뉴오즈]";
+		mes "The monster?";
+		unittalk getnpcid(0),"뉴오즈 : The monster?";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "I'll kill you both before the monster.";
+		unittalk getnpcid(0,instance_npcname("로테르트#18")),"로테르트 : I'll kill you both before the monster.";
+		next;
+		cutin "gelca04",2;
+		mes "[겔카]";
+		mes "Master, please!";
+		unittalk getnpcid(0,instance_npcname("겔카#18")),"겔카 : Master, please!";
+		next;
+		cutin "arang02",0;
+		mes "[아랑]";
+		mes "Have you seen Shalosh? Where is she?";
+		unittalk getnpcid(0,instance_npcname("아랑#18")),"아랑 : Have you seen Shalosh? Where is she?";
+		next;
+		cutin "igu04",0;
+		mes "[아이구]";
+		mes "Oh, you're right!";
+		unittalk getnpcid(0,instance_npcname("아이구#18")),"아이구 : Oh, you're right!";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("밍민#18")),"밍민 : ...";
+		next;
+		mes "[멜로디-잭]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#18")),"멜로디-잭 : ...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#18");
+		cutin "min02",255;
+		next;
+		cutin "nines03",0;
+		mes "[뉴오즈]";
+		mes "We should find her.";
+		unittalk getnpcid(0),"뉴오즈 : We should find her.";
+		close2;
+		cutin "nines03",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,95,387,133,352,"Ferre",3069,3,instance_npcname("뉴오즈#18")+"::OnMyMobDead";
+	areamonster .@map$,95,387,133,352,"Ferre",3070,10,instance_npcname("뉴오즈#18")+"::OnMyMobDead";
+	areamonster .@map$,95,387,133,352,"Ferre",3072,6,instance_npcname("뉴오즈#18")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp18")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#18")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#18");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#18");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#18")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("겔카#19")+"::OnEnable";
+	donpcevent instance_npcname("로엘#19")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 19
+//============================================================
+1@jtb,110,377,2	script	겔카#19	629,{
+	cutin "gelca01",0;
+	mes "[겔카]";
+	mes "Fighting is essential to adventurer training. Divide and conquer!";
+	close2;
+	cutin "gelca01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#19")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#19");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#19");
+	end;
+}
+
+1@jtb,105,377,5	script	로엘#19	10040,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "One of my friends once set me up on a blind date in Izlude.";
+		next;
+		mes "[로엘]";
+		mes "She and I exchanged a couple of letters, first to introduce each other, and then the second to set up a date.";
+		next;
+		cutin "roel04",0;
+		mes "[로엘]";
+		mes "She didn't reply to my second letter. I can't f아이구re out why.";
+		close2;
+		cutin "roel04",255;
+		end;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "Scene 8: Heroes are surrounded by a horde of enemies. Roel, let's choreograph what we've practiced today, shall we?";
+		unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : Scene 8: Heroes are surrounded by a horde of enemies. Roel, let's choreograph what we've practiced today, shall we?";
+		next;
+		cutin "roel01",0;
+		mes "[로엘]";
+		mes "겔카, get ready!";
+		unittalk getnpcid(0),"로엘 : 겔카, get ready!";
+		emotion ET_SURPRISE;
+		next;
+		cutin "gelca01",2;
+		mes "[겔카]";
+		mes "겔카-style Mental Strength! Iron Physique!";
+		unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : 겔카-style Mental Strength! Iron Physique!";
+		emotion ET_COMEON,instance_npcname("겔카#19");
+		specialeffect EF_GUMGANG,AREA,instance_npcname("겔카#19");
+		next;
+		cutin "roel02",0;
+		mes "[로엘]";
+		mes "Impenetrable defense! Roel-style Guard!";
+		unittalk getnpcid(0),"로엘 : Impenetrable defense! Roel-style Guard!";
+		emotion ET_COMEON;
+		specialeffect EF_KEEPING;
+		next;
+		cutin "gelca01",2;
+		mes "[로엘 & 겔카]";
+		mes "CROSS!!!";
+		unittalk getnpcid(0),"로엘 : CROSS!!!";
+		unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : CROSS!!!";
+		specialeffect EF_POTION_BERSERK;
+		specialeffect EF_POTION_BERSERK,AREA,instance_npcname("겔카#19");
+		next;
+		cutin "roel03",0;
+		mes "[로엘 & 겔카]";
+		mes "Last bastion!";
+		unittalk getnpcid(0),"로엘 : Last bastion!";
+		unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : Last bastion!";
+		specialeffect EF_SHIELDBOOMERANG;
+		specialeffect EF_BOTTOM_BASILICA,AREA,instance_npcname("겔카#19");
+		specialeffect EF_SHIELDCHARGE;
+		sleep2 300;
+		specialeffect EF_GLASSWALL,AREA,instance_npcname("겔카#19");
+		specialeffect EF_GLASSWALL;
+		specialeffect EF_GUARD;
+		sleep2 300;
+		specialeffect EF_ANGELUS,AREA,instance_npcname("겔카#19");
+		specialeffect EF_ANGELUS;
+		next;
+		cutin "roel02",0;
+		mes "[로엘]";
+		mes "By the gods, 겔카, you're awesome!";
+		unittalk getnpcid(0),"로엘 : By the gods, 겔카, you're awesome!";
+		next;
+		'jitOption = select("Awesome, indeed!:You just made up those words to look cool!");
+		if ('jitOption == 2) { //Custom text
+			unittalk getcharid(3),strcharinfo(0)+" : You just made up those words to look cool!";
+			cutin "roel01",0;
+			mes "[로엘]";
+			mes "I'm not! The traning that she'd been through is what makes her more stronger now.";
+			unittalk getnpcid(0),"로엘 : I'm not! The traning that she'd been through is what makes her more stronger now.";
+		} else {
+			unittalk getcharid(3),strcharinfo(0)+" : Awesome, indeed!";
+			cutin "gelca03",2;
+			mes "[겔카]";
+			mes "I've learned from the best.";
+			unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : I've learned from the best.";
+		}
+		next;
+		cutin "roel02",0;
+		mes "[로엘]";
+		mes "I hope you'll teach me too, 로테르트.";
+		unittalk getnpcid(0),"로엘 : I hope you'll teach me too, 로테르트.";
+		next;
+		cutin "gelca03",2;
+		mes "[겔카]";
+		mes "Special skills are all about their names. Shouting impressive names is enough to intimidate your enemies.";
+		unittalk getnpcid(0,instance_npcname("겔카#19")),"겔카 : Special skills are all about their names. Shouting impressive names is enough to intimidate your enemies.";
+		next;
+		mes "- They're absorbed in talking about their new special skills. -";
+		cutin "gelca03",255;
+		close2;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	areamonster .@map$,182,387,219,354,"Ferre",3069,10,instance_npcname("로엘#19")+"::OnMyMobDead";
+	areamonster .@map$,182,387,219,354,"Ferre",3070,10,instance_npcname("로엘#19")+"::OnMyMobDead";
+	areamonster .@map$,182,387,219,354,"Ferre",3071,10,instance_npcname("로엘#19")+"::OnMyMobDead";
+	areamonster .@map$,182,387,219,354,"Ferre",3072,10,instance_npcname("로엘#19")+"::OnMyMobDead";
+	areamonster .@map$,182,387,219,354,"Jitterbug",3108+rand(1),('jitOption==2?2:1),instance_npcname("로엘#19")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp19")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#19")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#19");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#19");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("로엘#19")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("로테르트#20")+"::OnEnable";
+	donpcevent instance_npcname("아랑#20")+"::OnEnable";
+	donpcevent instance_npcname("아이구#20")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#20")+"::OnEnable";
+	donpcevent instance_npcname("루나인#20")+"::OnEnable";
+	donpcevent instance_npcname("로엘#20")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#20")+"::OnEnable";
+	donpcevent instance_npcname("겔카#20")+"::OnEnable";
+	donpcevent instance_npcname("밍민#20")+"::OnEnable";
+	donpcevent instance_npcname("멜로디-잭#20")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#20")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 20
+//============================================================
+1@jtb,201,369,4	script	로테르트#20	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "I'll show you my charismatic leadership as the guild master!";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#20");
+	end;
+}
+
+1@jtb,204,366,4	script	아랑#20	644,{
+	cutin "arang01",0;
+	mes "[아랑]";
+	mes "Haap!";
+	close2;
+	cutin "arang01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#20");
+	end;
+}
+
+1@jtb,195,368,5	script	아이구#20	646,{
+	cutin "igu05",0;
+	mes "[아이구]";
+	mes "I'm following 뉴오즈.";
+	close2;
+	cutin "igu05",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#20");
+	end;
+}
+
+1@jtb,194,367,5	script	Ragi#20	647,{
+	cutin "ragi02",0;
+	mes "[Ragi]";
+	mes "I hope today won't be the last day I play my instrument...";
+	close2;
+	cutin "ragi02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#20");
+	end;
+}
+
+1@jtb,195,365,5	script	루나인#20	10039,{
+	cutin "lunain01",0;
+	mes "[루나인]";
+	mes "We should find 뉴오즈 and Shalosh first.";
+	close2;
+	cutin "lunain01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#20");
+	end;
+}
+
+1@jtb,194,363,5	script	로엘#20	10040,{
+	cutin "roel01",0;
+	mes "[로엘]";
+	mes "I'll follow you guys to the ends of the world.";
+	close2;
+	cutin "roel01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#20");
+	end;
+}
+
+1@jtb,201,365,4	script	겔카#20	629,{
+	cutin "gelca04",2;
+	mes "[겔카]";
+	mes "I believe in you, Master!";
+	close2;
+	cutin "gelca04",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#20");
+	end;
+}
+
+1@jtb,202,363,4	script	밍민#20	643,{
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "*Grunt* Why did I get myself into this mess?";
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#20");
+	end;
+}
+
+1@jtb,202,367,5	script	멜로디-잭#20	844,{
+	mes "[멜로디-잭]";
+	mes "I knew this would happen, and 아이구 didn't listen to me!";
+	close;
+
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#20");
+	end;
+}
+
+1@jtb,198,363,5	script	샬로쉬#20	10041,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#20");
+	end;
+}
+
+1@jtb,197,363,5	script	페르#20	10047,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("페르#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("페르#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("페르#20");
+	end;
+}
+
+1@jtb,199,363,5	script	페르#20s	10047,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("페르#20s")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("페르#20s");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("페르#20s");
+	end;
+}
+
+1@jtb,198,369,5	script	뉴오즈#20	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "[뉴오즈]";
+		mes "...";
+		close;
+	}
+	.@menu = select("Talk:Hurry");
+	if (.@menu == 2 && isbegin_quest(13183)) {
+		mes "Try to jog your memory while hurrying.";
+		close2;
+		donpcevent instance_npcname("샬로쉬#20")+"::OnDisable";
+		donpcevent instance_npcname("뉴오즈#20")+"::OnDisable";
+		donpcevent instance_npcname("아이구#20")+"::OnDisable";
+	}
+	if (.@menu == 1 || !isbegin_quest(13183)) {
+		cutin "shaloshi03",0;
+		mes "[Shalosh]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : ...";
+		next;
+		mes "[멜로디-잭]";
+		mes "I'm afraid this place is falling down around us.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#20")),"멜로디-잭 : I'm afraid this place is falling down around us.";
+		cutin "shaloshi03",255;
+		next;
+		cutin "shaloshi03",0;
+		mes "[Shalosh]";
+		mes "The Ferres are angry.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : The Ferres are angry.";
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "Wow, you can even hear what monsters think?";
+		unittalk getnpcid(0,instance_npcname("밍민#20")),"밍민 : Wow, you can even hear what monsters think?";
+		next;
+		cutin "shaloshi03",0;
+		mes "[Shalosh]";
+		mes "They're my friends.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : They're my friends.";
+		next;
+		cutin "lunain04",0;
+		mes "[루나인]";
+		mes "No, they're not. Friends don't attack each other!";
+		unittalk getnpcid(0,instance_npcname("루나인#20")),"루나인 : No, they're not. Friends don't attack each other!";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "They're just trying to protect me.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : They're just trying to protect me.";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "Protect you from what?";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : Protect you from what?";
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "From what Rot is thinking.";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : From what Rot is thinking.";
+		next;
+		mes "[멜로디-잭]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#20")),"멜로디-잭 : ...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#20");
+		cutin "shaloshi01",255;
+		next;
+		cutin "shaloshi01",0;
+		mes "[Shalosh]";
+		mes "Ferre?";
+		unittalk getnpcid(0,instance_npcname("샬로쉬#20")),"샬로쉬 : Ferre?";
+		donpcevent instance_npcname("페르#20")+"::OnEnable";
+		donpcevent instance_npcname("페르#20s")+"::OnEnable";
+		next;
+		mes "[Ferre]";
+		mes "Ferre, ferre!";
+		unittalk getnpcid(0,instance_npcname("페르#20")),"Ferre : Ferre, ferre!";
+		emotion ET_FRET,instance_npcname("페르#20");
+		cutin "shaloshi01",255;
+		next;
+		mes "[Ferre]";
+		mes "Ferre, ferre, ferre!";
+		unittalk getnpcid(0,instance_npcname("페르#20s")),"Ferre : Ferre, ferre, ferre!";
+		emotion ET_FRET,instance_npcname("페르#20s");
+		specialeffect EF_READYPORTAL2,AREA,instance_npcname("샬로쉬#20");
+		specialeffect EF_PORTAL2,AREA,instance_npcname("샬로쉬#20");
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "!!!";
+		unittalk getnpcid(0),"뉴오즈 : !!!";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "We're going to be burried in there. Let's find an exit.";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : We're going to be burried in there. Let's find an exit.";
+		donpcevent instance_npcname("샬로쉬#20")+"::OnDisable";
+		donpcevent instance_npcname("페르#20")+"::OnDisable";
+		donpcevent instance_npcname("페르#20s")+"::OnDisable";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "We have to find Shalosh!";
+		unittalk getnpcid(0),"뉴오즈 : We have to find Shalosh!";
+		next;
+		mes "[멜로디-잭]";
+		mes "뉴오즈, I've known you're weird in the head, but she's...";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#20")),"멜로디-잭 : 뉴오즈, I've known you're weird in the head, but she's...";
+		emotion ET_THINK,instance_npcname("멜로디-잭#20");
+		cutin "nines01",255;
+		next;
+		cutin "nines04",0;
+		mes "[뉴오즈]";
+		mes "I know. You don't have to remind me.";
+		unittalk getnpcid(0),"뉴오즈 : I know. You don't have to remind me.";
+		next;
+		cutin "min02",2;
+		mes "[밍민]";
+		mes "Then let's get out of here. We're in serious danger right now.";
+		unittalk getnpcid(0,instance_npcname("밍민#20")),"밍민 : Then let's get out of here. We're in serious danger right now.";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "I have to find her. I have to talk to her.";
+		unittalk getnpcid(0),"뉴오즈 : I have to find her. I have to talk to her.";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "뉴오즈!";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : 뉴오즈!";
+		next;
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "I'm not your master anymore. You don't have to follow me.";
+		unittalk getnpcid(0),"뉴오즈 : I'm not your master anymore. You don't have to follow me.";
+		next;
+		cutin "lunain01",0;
+		mes "[루나인]";
+		mes "!!!";
+		unittalk getnpcid(0,instance_npcname("루나인#20")),"루나인 : !!!";
+		next;
+		cutin "igu05",0;
+		mes "[아이구]";
+		mes "뉴오즈, I'm coming with you!";
+		unittalk getnpcid(0,instance_npcname("아이구#20")),"아이구 : 뉴오즈, I'm coming with you!";
+		donpcevent instance_npcname("뉴오즈#20")+"::OnDisable";
+		next;
+		cutin "min02",0;
+		mes "[밍민]";
+		mes "It's your call, new master.";
+		unittalk getnpcid(0,instance_npcname("밍민#20")),"밍민 : It's your call, new master.";
+		next;
+		cutin "gelca04",2;
+		mes "[겔카]";
+		mes "Master!";
+		unittalk getnpcid(0,instance_npcname("겔카#20")),"겔카 : Master!";
+		donpcevent instance_npcname("아이구#20")+"::OnDisable";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "...";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : ...";
+		next;
+		mes "[로테르트]";
+		mes "We'll find 뉴오즈 and Shalosh. An when we do, I'm going to kill both of them.";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : We'll find 뉴오즈 and Shalosh. An when we do, I'm going to kill both of them.";
+		next;
+		cutin "roel04",0;
+		mes "[로엘]";
+		mes "뉴오즈, did you know this would happen? You're lucky to have such good friends.";
+		unittalk getnpcid(0,instance_npcname("로엘#20")),"로엘 : 뉴오즈, did you know this would happen? You're lucky to have such good friends.";
+		next;
+		mes "[멜로디-잭]";
+		mes "He didn't know because he doesn't think; ever.";
+		unittalk getnpcid(0,instance_npcname("멜로디-잭#20")),"멜로디-잭 : He didn't know because he doesn't think; ever.";
+		emotion ET_THINK,instance_npcname("멜로디-잭#20");
+		cutin "roel04",255;
+		next;
+		cutin "arang01",2;
+		mes "[아랑]";
+		mes "Yippee! Let's go!";
+		unittalk getnpcid(0,instance_npcname("아랑#20")),"아랑 : Yippee! Let's go!";
+		next;
+		cutin "rote01",2;
+		mes "[로테르트]";
+		mes "We'll split into two teams. Be careful not to lose your way in the maze-like offshoots.";
+		unittalk getnpcid(0,instance_npcname("로테르트#20")),"로테르트 : We'll split into two teams. Be careful not to lose your way in the maze-like offshoots.";
+		next;
+		'jitOption = select("Follow 로테르트 and 겔카:Search alone");
+		cutin "min01",0;
+		mes "[밍민]";
+		mes "Are we ready? Let's go!";
+		unittalk getnpcid(0,instance_npcname("밍민#20")),"밍민 : Are we ready? Let's go!";
+		close2;
+		cutin "min01",255;
+	}
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	monster .@map$,288,339,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,288,319,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,288,309,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,287,296,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,299,295,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,310,294,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,323,295,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,334,295,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,344,295,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,353,294,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,357,300,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,357,307,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,358,317,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,358,325,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	monster .@map$,358,338,"Ferre",3069,1,instance_npcname("뉴오즈#20")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtwarp20")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#20")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#20");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#20");
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("뉴오즈#20")+"::OnMyMobDead");
+	if (!.@mob_num)
+		initnpctimer;
+	end;
+OnTimer2000:
+	donpcevent instance_npcname("#jtwarp21")+"::OnEnable";
+	donpcevent instance_npcname("샬로쉬#22")+"::OnEnable";
+	donpcevent instance_npcname("페르#22")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#22")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+// Room 22
+//============================================================
+1@jtb,328,326,4	script	로테르트#22	630,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#22");
+	end;
+}
+
+1@jtb,330,328,4	script	겔카#22	629,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#22");
+	end;
+}
+
+1@jtb,317,325,5	script	아이구#22	646,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#22");
+	end;
+}
+
+1@jtb,316,322,5	script	Ragi#22	647,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#22");
+	end;
+}
+
+1@jtb,325,322,4	script	멜로디-잭#22	844,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#22");
+	end;
+}
+
+1@jtb,319,320,5	script	아랑#22	644,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#22");
+	end;
+}
+
+1@jtb,321,318,4	script	루나인#22	10039,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#22");
+	end;
+}
+
+1@jtb,326,319,4	script	로엘#22	10040,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#22");
+	end;
+}
+
+1@jtb,328,324,4	script	밍민#22	643,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#22");
+	end;
+}
+
+1@jtb,326,329,4	script	샬로쉬#22	10041,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("샬로쉬#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("샬로쉬#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("샬로쉬#22");
+	end;
+}
+
+1@jtb,324,327,4	script	페르#22	10047,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("페르#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("페르#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("페르#22");
+	end;
+}
+
+1@jtb,324,327,4	script	페르#22s	10048,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("페르#22s")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("페르#22s");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("페르#22s");
+	end;
+}
+
+1@jtb,320,323,5	script	뉴오즈#22	625,{
+	if ('jitRoom >= atoi(strnpcinfo(2)) || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "...";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	cutin "nines04",0;
+	mes "[뉴오즈]";
+	mes "*Pant Pant* I've found you, Shalosh.";
+	unittalk getnpcid(0),"뉴오즈 : *Pant Pant* I've found you, Shalosh.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "뉴오즈...";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : 뉴오즈...";
+	next;
+	cutin "nines04",0;
+	mes "[뉴오즈]";
+	mes "*Pant Pant* I'm glad you didn't make it too far.";
+	unittalk getnpcid(0),"뉴오즈 : *Pant Pant* I'm glad you didn't make it too far.";
+	next;
+	mes "[Ferre]";
+	mes "Ferre, ferre, fe-!";
+	unittalk getnpcid(0,instance_npcname("페르#22")),"Ferre : Ferre, ferre, fe-!";
+	cutin "nines04",255;
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "Ferre is angry.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Ferre is angry.";
+	next;
+	cutin "nines01",0;
+	mes "[뉴오즈]";
+	mes "You don't have to get upset. I'm not here to take your friend away. I just want...";
+	unittalk getnpcid(0),"뉴오즈 : You don't have to get upset. I'm not here to take your friend away. I just want...";
+	next;
+	mes "[Ferre]";
+	mes "Ferre, ferre, ferre!";
+	unittalk getnpcid(0,instance_npcname("페르#22")),"Ferre : Ferre, ferre, ferre!";
+	cutin "nines01",255;
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "Ferre is really angry.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Ferre is really angry.";
+	next;
+	cutin "nines01",0;
+	mes "[뉴오즈]";
+	mes "Yeah, you don't have to tell me that.";
+	unittalk getnpcid(0),"뉴오즈 : Yeah, you don't have to tell me that.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "That is not good. Ferre...";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : That is not good. Ferre...";
+	next;
+	mes "[Shalosh]";
+	mes "No, no!";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : No, no!";
+	next;
+	mes "[Ferre]";
+	mes "Ferre, ferre, ferre, ferre-!";
+	unittalk getnpcid(0,instance_npcname("페르#22")),"Ferre : Ferre, ferre, ferre, ferre-!";
+	cutin "shaloshi01",255;
+	sleep2 1000;
+	donpcevent instance_npcname("페르#22")+"::OnDisable";
+	sleep2 1000;
+	donpcevent instance_npcname("페르#22s")+"::OnEnable";
+	sleep2 1000;
+	specialeffect EF_LORD,AREA,instance_npcname("페르#22s");
+	specialeffect EF_SUI_EXPLOSION,AREA,instance_npcname("페르#22s");
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "Ferre has transformed into its true form!";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Ferre has transformed into its true form!";
+	next;
+	mes "^FF0000A formidable enemy has appeared!^000000";
+	cutin "shaloshi01",255;
+	next;
+	mes "[Ferre]";
+	mes "FERRE- FERRE- FERRE- FERRE-!!";
+	unittalk getnpcid(0,instance_npcname("페르#22s")),"Ferre : FERRE- FERRE- FERRE- FERRE-!!";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "Ferre, you don't have to do this!";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Ferre, you don't have to do this!";
+	next;
+	cutin "nines03",0;
+	mes "[뉴오즈]";
+	mes "Well, if I can't talk him out of this, then we'll have to duke it out.";
+	unittalk getnpcid(0),"뉴오즈 : Well, if I can't talk him out of this, then we'll have to duke it out.";
+	next;
+	mes "[뉴오즈]";
+	mes "Where are the others? Hey new guys, help me out here. That Ferre looks like he can pack a punch.";
+	unittalk getnpcid(0),"뉴오즈 : Where are the others? Hey new guys, help me out here. That Ferre looks like he can pack a punch.";
+	next;
+	mes "[Ferre]";
+	mes "FERRE, FERRE, FERRE-!";
+	unittalk getnpcid(0,instance_npcname("페르#22s")),"Ferre : FERRE, FERRE, FERRE-!";
+	cutin "nines03",0;
+	next;
+	cutin "nines02",0;
+	mes "[뉴오즈]";
+	mes "Let's begin!";
+	unittalk getnpcid(0),"뉴오즈 : Let's begin!";
+	close2;
+	donpcevent instance_npcname("페르#22s")+"::OnDisable";
+	donpcevent instance_npcname("샬로쉬#22")+"::OnDisable";
+	donpcevent instance_npcname("뉴오즈#22")+"::OnDisable";
+	donpcevent instance_npcname("뉴오즈#22s")+"::OnEnable";
+	unittalk getnpcid(0,instance_npcname("뉴오즈#22s")),"뉴오즈 : Don't worry. I'll help you!";
+	cutin "nines02",255;
+	'jitRoom = atoi(strnpcinfo(2));
+	.@map$ = instance_mapname("1@jtb");
+	monster .@map$,321,313,"Ferre",3069,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,321,313,"Ferre",3070,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,321,313,"Ferre",3071,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,321,313,"Ferre",3072,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,331,324,"Ferre",3069,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,331,324,"Ferre",3070,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,331,324,"Ferre",3071,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,331,324,"Ferre",3072,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,313,326,"Ferre",3069,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,313,326,"Ferre",3070,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,313,326,"Ferre",3071,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	monster .@map$,313,326,"Ferre",3072,1,instance_npcname("뉴오즈#22")+"::OnMyMobDead";
+	donpcevent instance_npcname("#jtboss")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#22")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#22");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#22");
+	end;
+OnMyMobDead:
+	end;
+}
+
+1@jtb,320,323,5	script	뉴오즈#22s	625,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#22s")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#22s");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#22s");
+	end;
+}
+
+1@jtb,45,48,0	script	#jtboss	139,{
+	end;
+OnTimer30000:
+	unittalk getnpcid(0,instance_npcname("뉴오즈#22s")),F_Rand(
+		"뉴오즈 : What do you call a fish musician? A piano tuna.",
+		"뉴오즈 : What did the farmer say to the green pumpkin? Why orange you orange?",
+		"뉴오즈 : What does a nosy pepper do? Gets jalapeno business!",
+		"뉴오즈 : Why do bananas wear suntan lotion? Because they peel!",
+		"뉴오즈 : Um, hold on. One of the ukulele strings snapped. How about I sing instead?");
+	emotion ET_DELIGHT,instance_npcname("뉴오즈#22s");
+	unittalk 'jitBossGID,"FERRE! FERRE!";
+	unitskilluseid 'jitBossGID,"NPC_WIDEFREEZE",5;
+	stopnpctimer;
+	initnpctimer;
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtboss")+"::OnDisable";
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtboss");
+	donpcevent instance_npcname("#jtboss")+"::OnRespawn";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtboss");
+	end;
+OnRespawn:
+	.@map$ = instance_mapname("1@jtb");
+	if ('jitOption == 2) {
+		monster .@map$,322,337,"Jitterbug",3108,1,instance_npcname("#jtboss")+"::OnMyMobDead";
+		monster .@map$,322,337,"Jitterbug",3109,1,instance_npcname("#jtboss")+"::OnMyMobDead";
+	}
+	monster .@map$,324,327,"Awakened Ferre",3073,1,instance_npcname("#jtboss")+"::OnMyMobDead";
+	'jitBossGID = $@mobid[0];
+	initnpctimer;
+	end;
+OnMyMobDead:
+	.@map$ = instance_mapname("1@jtb");
+	.@mob_num = mobcount(.@map$,instance_npcname("#jtboss")+"::OnMyMobDead");
+	if ('jitBossGID)
+		stopnpctimer;
+	if (!.@mob_num) {
+		'jitRoom = 99;
+		donpcevent instance_npcname("뉴오즈#22s")+"::OnDisable";
+		donpcevent instance_npcname("뉴오즈#22t")+"::OnEnable";
+		donpcevent instance_npcname("페르#22")+"::OnEnable";
+		donpcevent instance_npcname("샬로쉬#22")+"::OnEnable";
+	}
+	end;
+}
+
+1@jtb,320,323,5	script	뉴오즈#22t	625,{
+	if ('jitRoom >= 100 || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",0;
+		mes "[뉴오즈]";
+		mes "...";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	cutin "nines01",0;
+	mes "[뉴오즈]";
+	mes "I like his spirit, though I can see he's getting exhausted.";
+	unittalk getnpcid(0),"뉴오즈 : I like his spirit, though I can see he's getting exhausted.";
+	next;
+	mes "[Ferre]";
+	mes "Ferre...";
+	unittalk getnpcid(0,instance_npcname("페르#22")),"Ferre : Ferre...";
+	cutin "nines01",255;
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "뉴오즈, you're alive! Good, because I'm going to kill...";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : 뉴오즈, you're alive! Good, because I'm going to kill...";
+	emotion ET_FRET,instance_npcname("로테르트#22");
+	donpcevent instance_npcname("겔카#22")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#22")+"::OnEnable";
+	next;
+	cutin "igu05",0;
+	mes "[아이구]";
+	mes "뉴오즈, are you all right?";
+	unittalk getnpcid(0,instance_npcname("아이구#22")),"아이구 : 뉴오즈, are you all right?";
+	donpcevent instance_npcname("아이구#22")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#22")+"::OnEnable";
+	next;
+	cutin "nines01",0;
+	mes "[뉴오즈]";
+	mes "I'm all right. Rot, were you worried about me?";
+	unittalk getnpcid(0),"뉴오즈 : I'm all right. Rot, were you worried about me?";
+	next;
+	mes "[멜로디-잭]";
+	mes "Wow, this place is not going to last long--look how violently the ground is shaking! We really need to get out like yesterday, 뉴오즈.";
+	unittalk getnpcid(0,instance_npcname("멜로디-잭#22")),"멜로디-잭 : Wow, this place is not going to last long--look how violently the ground is shaking! We really need to get out like yesterday, 뉴오즈.";
+	emotion ET_THINK,instance_npcname("멜로디-잭#22");
+	donpcevent instance_npcname("멜로디-잭#22")+"::OnEnable";
+	donpcevent instance_npcname("아랑#22")+"::OnEnable";
+	donpcevent instance_npcname("루나인#22")+"::OnEnable";
+	donpcevent instance_npcname("로엘#22")+"::OnEnable";
+	donpcevent instance_npcname("밍민#22")+"::OnEnable";
+	cutin "nines01",255;
+	next;
+	mes "[Ferre]";
+	mes "Ferre...";
+	unittalk getnpcid(0,instance_npcname("페르#22")),"Ferre : Ferre...";
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "He's not dead. Guys, I understand you're new, but you can't make mistakes like this.";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : He's not dead. Guys, I understand you're new, but you can't make mistakes like this.";
+	next;
+	mes "[멜로디-잭]";
+	mes "Better get rid of him quickly.";
+	unittalk getnpcid(0,instance_npcname("멜로디-잭#22")),"멜로디-잭 : Better get rid of him quickly.";
+	emotion ET_THINK,instance_npcname("멜로디-잭#22");
+	cutin "rote01",255;
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "NO! He's my friend!";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : NO! He's my friend!";
+	next;
+	mes "[Shalosh]";
+	mes "Ferre created this space in the Crack for me. If he loses his mind or perishes, his space will disappear with everything in it.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Ferre created this space in the Crack for me. If he loses his mind or perishes, his space will disappear with everything in it.";
+	next;
+	cutin "min01",2;
+	mes "[밍민]";
+	mes "Except you, you mean.";
+	unittalk getnpcid(0,instance_npcname("밍민#22")),"밍민 : Except you, you mean.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "...";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : ...";
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "I should have plenty of time before that to get rid of you. I'll show you why I'm called the Bad Boy of the Exorcist World.";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : I should have plenty of time before that to get rid of you. I'll show you why I'm called the Bad Boy of the Exorcist World.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "If I take Ferre with me to a different space, then a number of exists will appear in the loosened rift in spacetime.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : If I take Ferre with me to a different space, then a number of exists will appear in the loosened rift in spacetime.";
+	next;
+	mes "[멜로디-잭]";
+	mes "You're smart and capable of teleportation. 로테르트, we can't let her go.";
+	unittalk getnpcid(0,instance_npcname("멜로디-잭#22")),"멜로디-잭 : You're smart and capable of teleportation. 로테르트, we can't let her go.";
+	emotion ET_THINK,instance_npcname("멜로디-잭#22");
+	cutin "shaloshi01",255;
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "I shouldn't have led you here, but I really wanted some friends.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : I shouldn't have led you here, but I really wanted some friends.";
+	next;
+	cutin "nines04",0;
+	mes "[뉴오즈]";
+	mes "And you have them. Us.";
+	unittalk getnpcid(0),"뉴오즈 : And you have them. Us.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "...Thank you.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : ...Thank you.";
+	next;
+	mes "[Shalosh]";
+	mes "Now I should be honest with you. I remember everything now. Let me introduce myself again.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Now I should be honest with you. I remember everything now. Let me introduce myself again.";
+	next;
+	mes "[Shalosh]";
+	mes "I'm Shalosh, a demon mind reader and the third agent of Morroc's.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : I'm Shalosh, a demon mind reader and the third agent of Morroc's.";
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "MORROC?!";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : MORROC?!";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "...I'm free now, but that doesn't change who I am: a demon.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : ...I'm free now, but that doesn't change who I am: a demon.";
+	next;
+	mes "[Shalosh]";
+	mes "I enjoyed your company. If we meet again... Will we be enemies?";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : I enjoyed your company. If we meet again... Will we be enemies?";
+	next;
+	cutin "nines04",0;
+	mes "[뉴오즈]";
+	mes "No, Shalosh. As of today, you're a new member of 뉴오즈's White Wings Guild.";
+	unittalk getnpcid(0),"뉴오즈 : No, Shalosh. As of today, you're a new member of 뉴오즈's White Wings Guild.";
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "Who says you can invite her? I'm not taking in a demon!";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : Who says you can invite her? I'm not taking in a demon!";
+	next;
+	cutin "arang02",2;
+	mes "[아랑]";
+	mes "Guildsmen can bicker with each other, but they're still family.";
+	unittalk getnpcid(0,instance_npcname("아랑#22")),"아랑 : Guildsmen can bicker with each other, but they're still family.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "...Thank you, Adventurer 뉴오즈. If I find some interesting place, can I invite you over?";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : ...Thank you, Adventurer 뉴오즈. If I find some interesting place, can I invite you over?";
+	next;
+	mes "[Shalosh]";
+	mes "I think I have the ability to take people with me, wherever I go. Or you wouldn't have followed me this far.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : I think I have the ability to take people with me, wherever I go. Or you wouldn't have followed me this far.";
+	next;
+	cutin "lunain04",0;
+	mes "[루나인]";
+	mes "Don't you dare take away my 뉴오즈!";
+	unittalk getnpcid(0,instance_npcname("루나인#20")),"루나인 : Don't you dare take away my 뉴오즈!";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "You just thought, 'take me, too!'";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : You just thought, 'take me, too!'";
+	next;
+	cutin "igu03",0;
+	mes "[아이구]";
+	mes "Aww, Runane. You're cute!";
+	unittalk getnpcid(0,instance_npcname("아이구#22")),"아이구 : Aww, Runane. You're cute!";
+	next;
+	cutin "roel04",2;
+	mes "[로엘]";
+	mes "Shalosh, I don't care who you are. You're my friend, and I'm yours.";
+	unittalk getnpcid(0,instance_npcname("로엘#22")),"로엘 : Shalosh, I don't care who you are. You're my friend, and I'm yours.";
+	next;
+	cutin "shaloshi01",2;
+	mes "[Shalosh]";
+	mes "Thank you. If only I knew how to express my feelings...";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Thank you. If only I knew how to express my feelings...";
+	next;
+	cutin "igu05",0;
+	mes "[아이구]";
+	mes "It's easy. Just smile.";
+	unittalk getnpcid(0,instance_npcname("아이구#22")),"아이구 : It's easy. Just smile.";
+	next;
+	cutin "shaloshi04",2;
+	mes "[Shalosh]";
+	mes "Bye, friends. I hope we'll meet again soon.";
+	unittalk getnpcid(0,instance_npcname("샬로쉬#22")),"샬로쉬 : Bye, friends. I hope we'll meet again soon.";
+	next;
+	cutin "nines01",0;
+	mes "[뉴오즈]";
+	mes "Bye.";
+	unittalk getnpcid(0),"뉴오즈 : Bye.";
+	specialeffect EF_PORTAL2,AREA,instance_npcname("샬로쉬#22");
+	specialeffect EF_PORTAL2,AREA,instance_npcname("페르#22");
+	donpcevent instance_npcname("샬로쉬#22")+"::OnDisable";
+	donpcevent instance_npcname("페르#22")+"::OnDisable";
+	next;
+	cutin "rote01",2;
+	mes "[로테르트]";
+	mes "Don't look at me. Is that an exit?";
+	unittalk getnpcid(0,instance_npcname("로테르트#22")),"로테르트 : Don't look at me. Is that an exit?";
+	'jitRoom = 100;
+	donpcevent instance_npcname("겔카#23")+"::OnEnable";
+	donpcevent instance_npcname("로엘#23")+"::OnEnable";
+	donpcevent instance_npcname("아랑#23")+"::OnEnable";
+	donpcevent instance_npcname("멜로디-잭#23")+"::OnEnable";
+	donpcevent instance_npcname("아이구#23")+"::OnEnable";
+	donpcevent instance_npcname("루나인#23")+"::OnEnable";
+	donpcevent instance_npcname("로테르트#23")+"::OnEnable";
+	donpcevent instance_npcname("Ragi#23")+"::OnEnable";
+	donpcevent instance_npcname("밍민#23")+"::OnEnable";
+	donpcevent instance_npcname("뉴오즈#23")+"::OnEnable";
+	close2;
+	cutin "rote01",255;
+	areawarp instance_mapname("1@jtb"),305,339,338,312,instance_mapname("1@jtb"),359,23;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#22t")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#22t");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#22t");
+	end;
+}
+
+// Room 23
+//============================================================
+1@jtb,358,24,5	script	겔카#23	629,{
+	cutin "gelca01",0;
+	mes "[겔카]";
+	mes "I will! I'll practice harder, too!";
+	close2;
+	cutin "gelca01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("겔카#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("겔카#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("겔카#23");
+	end;
+}
+
+1@jtb,381,47,4	script	로엘#23	10040,{
+	cutin "roel03",2;
+	mes "[로엘]";
+	mes "I want to dance as well as 아이구.";
+	close2;
+	cutin "roel03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로엘#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로엘#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로엘#23");
+	end;
+}
+
+1@jtb,378,47,5	script	아랑#23	644,{
+	cutin "arang03",0;
+	mes "[아랑]";
+	mes "Roel and I are friends now. Heh.";
+	close2;
+	cutin "arang03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아랑#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아랑#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아랑#23");
+	end;
+}
+
+1@jtb,363,11,5	script	멜로디-잭#23	844,{
+	mes "[멜로디-잭]";
+	mes "Our deal is done. Let me think about what I want in return...";
+	close;
+
+OnInstanceInit:
+	donpcevent instance_npcname("멜로디-잭#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("멜로디-잭#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("멜로디-잭#23");
+	end;
+}
+
+1@jtb,380,28,4	script	아이구#23	646,{
+	cutin "igu03",2;
+	mes "[아이구]";
+	mes "I'll never again let you go, 뉴오즈!";
+	close2;
+	cutin "igu03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("아이구#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("아이구#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("아이구#23");
+	end;
+}
+
+1@jtb,385,20,5	script	루나인#23	10039,{
+	cutin "lunain03",0;
+	mes "[루나인]";
+	mes "I want to go home. I really want to take a shower and eat some bread.";
+	close2;
+	cutin "lunain03",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("루나인#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("루나인#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("루나인#23");
+	end;
+}
+
+1@jtb,375,31,5	script	로테르트#23	630,{
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "You're a prospect for now. Work hard for the guild, and I might promote you one day.";
+	close2;
+	cutin "rote01",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("로테르트#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("로테르트#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("로테르트#23");
+	end;
+}
+
+1@jtb,359,43,5	script	Ragi#23	647,{
+	cutin "ragi01",0;
+	mes "[Ragi]";
+	mes "I've found so much inspiration through this adventure. I'm hopeful I can write some good songs.";
+	close2;
+	cutin "ragi01",255;
+	end;
+	
+OnInstanceInit:
+	donpcevent instance_npcname("Ragi#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("Ragi#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("Ragi#23");
+	end;
+}
+
+1@jtb,375,28,5	script	밍민#23	643,{
+	disable_items;
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "I've stolen a few strands of hair from Shalosh, thinking it'd come in handy someday. I want to analyze them, though I already know the results.";
+	next;
+	switch (select("Strange Pendant:Jitterbug Tooth:Quit.")) {
+		case 1:
+			mes "[밍민]";
+			mes "Have you seen this pendant?";
+			next;
+			mes "[밍민]";
+			mes "I think I can fit Pendant of Harmony and Pendant of Chaos together.";
+			next;
+			mes "[밍민]";
+			mes "And if I do, the results will be incredible!";
+			next;
+			mes "[밍민]";
+			mes "ATK +6%. MATK +6%. All stats +1. Magic attacks from enemies cast Level 1 Auto Spell Maelstorm. Def: 0 Weight: 10";
+			mes "Requried Level: 130 Slot: 1";
+			next;
+			if (countitem(2990) && countitem(2991)) {
+				switch (select("Quit.:Combine pendants.")) {
+					case 1:
+						mes "[밍민]";
+						mes "This place is still full of things to study.";
+						break;
+					case 2: //Custom text
+						mes "[밍민]";
+						if (MaxWeight - Weight < 1000)
+							mes "You don't have enough space in your inventory to carry your reward.";
+						else {
+							mes "I hope you like it! I can combine more pendants for you if you need.";
+							delitem 2990,1; //Pendant_Of_Harmony
+							delitem 2991,1; //Pendant_Of_Chaos
+							getitem 2992,1; //Pendant_Of_Maelstrom
+						}
+						break;
+				}
+			} else {
+				mes "[밍민]";
+				mes "If my description of the combination results is strangely familiar to you, I wouldn't know. But that's how I picture the results. If you find both the pendants, bring them to me, yeah?";
+				next;
+				mes "[밍민]";
+				mes "This place is still full of things to study.";
+			}
+			break;
+		case 2:
+			mes "[밍민]";
+			mes "Do you have Jitterbug Teeth?";
+			next;
+			mes "[밍민]";
+			mes "I can't tell you just yet, but they're useful to me. Bring them to me, and I'll give you some booty 뉴오즈 has hoarded in return.";
+			next;
+			mes "[밍민]";
+			mes "What exactly am I offering? Gigantic Bow, Storm Bow, and ^ff0000other valuable things found in this space.^000000 If you want them, bring me at least 50 Jitterbug Teeth.";
+			next;
+			mes "[밍민]";
+			mes "I'll exchange 50 Jitterbug Teeth with ^ff0000a random item.^000000";
+			next;
+			if (select("Quit.:Exchange 50.") == 2) {
+				mes "[밍민]";
+				if (countitem(6719) < 50)
+					mes "I won't accept anything less than 50 Jitterbug Teeth.";
+				else { //Custom text
+					//Bow_Of_Storms
+					//Giant_Bow
+					//Pendant_Of_Harmony
+					//Pendant_Of_Chaos
+					//아이구's_Floral_Bracelet
+					//아이구's_Floral_Mic
+					//New_Oz's_Wing_Ring
+					//New_Oz's_Ukulele
+					//Frozen_Breastplate
+					//Hardened_Breastplate
+					//Old_Card_Album
+					.@jitItem = F_Rand(18123,18122,2990,2991,2989,1990,2988,1935,15100,15101,616);
+					if (MaxWeight - Weight < 1000)
+						mes "You don't have enough space in your inventory to carry your reward.";
+					else {
+						mes "I hope you like it! You can bring me more Jitterbug Teeth for other items.";
+						delitem 6719,50; //Jitterbug's_Tooth
+						getitem .@jitItem,1;
+					}
+				}
+			}
+			break;
+	}
+	close2;
+	cutin "min02",255;
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("밍민#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("밍민#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("밍민#23");
+	end;
+}
+
+1@jtb,379,31,4	script	뉴오즈#23	625,{
+	if ('jitRoom >= 101 || getcharid(0) != getpartyleader(getcharid(1),2)) {
+		cutin "nines01",2;
+		mes "[뉴오즈]";
+		mes "It's been a while since I had so much fun.";
+		close2;
+		cutin "nines01",255;
+		end;
+	}
+	cutin "nines02",2;
+	mes "[뉴오즈]";
+	mes "This was my first adventure with my old friends in a long time. I hope we can do this again soon.";
+	unittalk getnpcid(0),"뉴오즈 : This was my first adventure with my old friends in a long time. I hope we can do this again soon.";
+	emotion ET_DELIGHT;
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "뉴오즈. Need I remind you this guild is no longer called 뉴오즈's White Wings?";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : 뉴오즈. Need I remind you this guild is no longer called 뉴오즈's White Wings?";
+	emotion ET_STARE,instance_npcname("로테르트#23");
+	next;
+	cutin "nines04",2;
+	mes "[뉴오즈]";
+	mes "What? Did you change the guild name?";
+	unittalk getnpcid(0),"뉴오즈 : What? Did you change the guild name?";
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "Of course! Now it's called... Um...";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : Of course! Now it's called... Um...";
+	emotion ET_HNG,instance_npcname("로테르트#23");
+	next;
+	cutin "min02",0;
+	mes "[밍민]";
+	mes "Stop thinking and just keep the old name.";
+	unittalk getnpcid(0,instance_npcname("밍민#23")),"밍민 : Stop thinking and just keep the old name.";
+	emotion ET_OHNO,instance_npcname("밍민#23");
+	emotion ET_SCRATCH,instance_npcname("밍민#23");
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "Nope, I'm going to caall it 로테르트's Super Critical Guild!";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : Nope, I'm going to caall it 로테르트's Super Critical Guild!";
+	emotion ET_SPARK,instance_npcname("로테르트#23");
+	emotion ET_SHY,instance_npcname("로테르트#23");
+	next;
+	cutin "igu04",2;
+	mes "[아이구]";
+	mes "...";
+	unittalk getnpcid(0,instance_npcname("아이구#23")),"아이구 : ...";
+	emotion ET_OTL,instance_npcname("아이구#23");
+	next;
+	mes "[아이구]";
+	mes "That sounds lame.";
+	unittalk getnpcid(0,instance_npcname("아이구#23")),"아이구 : That sounds lame.";
+	next;
+	cutin "roel04",2;
+	mes "[로엘]";
+	mes "I'm not a fan of it.";
+	unittalk getnpcid(0,instance_npcname("로엘#23")),"로엘 : I'm not a fan of it.";
+	next;
+	cutin "lunain04",0;
+	mes "[루나인]";
+	mes "Dorky.";
+	unittalk getnpcid(0,instance_npcname("루나인#23")),"루나인 : Dorky.";
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "I'm the guild master! I name it whatever I want!";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : I'm the guild master! I name it whatever I want!";
+	emotion ET_STARE,instance_npcname("로테르트#23");
+	next;
+	cutin "arang01",2;
+	mes "[아랑]";
+	mes "Not cool.";
+	unittalk getnpcid(0,instance_npcname("아랑#23")),"아랑 : Not cool.";
+	next;
+	cutin "min03",0;
+	mes "[밍민]";
+	mes "Keep the name. I'm out.";
+	unittalk getnpcid(0,instance_npcname("밍민#23")),"밍민 : Keep the name. I'm out.";
+	emotion ET_KIK,instance_npcname("밍민#23");
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "You can't do that!";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : You can't do that!";
+	emotion ET_HUK,instance_npcname("로테르트#23");
+	next;
+	mes "[멜로디-잭]";
+	mes "I'm not a member, but if you ask me, that name...";
+	unittalk getnpcid(0,instance_npcname("멜로디-잭#23")),"멜로디-잭 : I'm not a member, but if you ask me, that name...";
+	emotion ET_THINK,instance_npcname("멜로디-잭#23");
+	cutin "rote01",255;
+	next;
+	cutin "ragi03",0;
+	mes "[Ragi]";
+	mes "I'll never be able to speak that name. 아이구, are you sure you want to stick with these guys?";
+	unittalk getnpcid(0,instance_npcname("Ragi#23")),"Ragi : I'll never be able to speak that name. 아이구, are you sure you want to stick with these guys?";
+	next;
+	cutin "igu03",2;
+	mes "[아이구]";
+	mes "I don't care. I'm staying with 뉴오즈.";
+	unittalk getnpcid(0,instance_npcname("아이구#23")),"아이구 : .I don't care. I'm staying with 뉴오즈.";
+	emotion ET_BIGTHROB,instance_npcname("아이구#23");
+	next;
+	cutin "lunain04",0;
+	mes "[루나인]";
+	mes "I just don't like the name.";
+	unittalk getnpcid(0,instance_npcname("루나인#23")),"루나인 : I just don't like the name.";
+	next;
+	cutin "rote01",0;
+	mes "[로테르트]";
+	mes "Shush! We've had enough for a day. You all are dismissed! This concludes the adventure of 로테르트's Super Critical Guild!";
+	unittalk getnpcid(0,instance_npcname("로테르트#23")),"로테르트 : Shush! We've had enough for a day. You all are dismissed! This concludes the adventure of 로테르트's Super Critical Guild!";	
+	if (isbegin_quest(13181) == 1) {
+		completequest 13181;
+		getexp 1500000,500000;
+	}
+	close2;
+	cutin "rote01",255;
+	'jitRoom = 101;
+	donpcevent instance_npcname("#jtwarp23")+"::OnEnable";
+	end;
+
+OnInstanceInit:
+	donpcevent instance_npcname("뉴오즈#23")+"::OnDisable";
+	end;
+OnEnable:
+	hideoffnpc instance_npcname("뉴오즈#23");
+	end;
+OnDisable:
+	hideonnpc instance_npcname("뉴오즈#23");
+	end;
+}
+
+// Warps
+//============================================================
+1@jtb,45,47,0	script	#jtwarp1	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp1")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp1");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp1");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,99,17;
+	end;
+}
+
+1@jtb,135,17,0	script	#jtwarp2	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp2")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp2");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp2");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,184,16;
+	end;
+}
+
+1@jtb,220,23,0	script	#jtwarp3	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp3")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp3");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp3");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,270,16;
+	end;
+}
+
+1@jtb,306,47,0	script	#jtwarp4	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp4")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp4");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp4");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,11,98;
+	end;
+}
+
+1@jtb,39,133,0	script	#jtwarp5	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp5")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp5");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp5");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,95,99;
+	end;
+}
+
+1@jtb,133,106,0	script	#jtwarp6	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp6")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp6");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp6");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,183,129;
+	end;
+}
+
+1@jtb,209,133,0	script	#jtwarp7	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp7")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp7");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp7");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,276,95;
+	end;
+}
+
+1@jtb,307,122,0	script	#jtwarp8	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp8")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp8");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp8");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,359,96;
+	end;
+}
+
+1@jtb,386,133,0	script	#jtwarp9	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp9")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp9");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp9");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,13,215;
+	end;
+}
+
+1@jtb,49,196,0	script	#jtwarp10	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp10")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp10");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp10");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,94,201;
+	end;
+}
+
+1@jtb,133,197,0	script	#jtwarp11	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp11")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp11");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp11");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,181,198;
+	end;
+}
+
+1@jtb,218,203,0	script	#jtwarp12	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp12")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp12");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp12");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,269,207;
+	end;
+}
+
+1@jtb,307,195,0	script	#jtwarp13	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp13")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp13");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp13");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,355,216;
+	end;
+}
+
+1@jtb,388,182,0	script	#jtwarp14	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp14")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp14");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp14");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,13,275;
+	end;
+}
+
+1@jtb,47,303,0	script	#jtwarp15	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp15")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp15");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp15");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,99,299;
+	end;
+}
+
+1@jtb,134,275,0	script	#jtwarp16	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp16")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp16");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp16");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,200,271;
+	end;
+}
+
+1@jtb,199,305,0	script	#jtwarp17	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp17")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp17");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp17");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,13,385;
+	end;
+}
+
+1@jtb,49,365,0	script	#jtwarp18	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp18")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp18");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp18");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,107,389;
+	end;
+}
+
+1@jtb,111,352,0	script	#jtwarp19	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp19")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp19");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp19");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,186,386;
+	end;
+}
+
+1@jtb,220,359,0	script	#jtwarp20	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp20")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp20");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp20");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,287,356;
+	end;
+}
+
+1@jtb,311,358,0	script	#jtwarp21	45,2,2,{
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp21")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp21");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp21");
+	end;
+OnTouch:
+	.@map$ = instance_mapname("1@jtb");
+	warp .@map$,335,320;
+	end;
+}
+
+1@jtb,391,30,0	script	#jtwarp23	45,2,2,{ 
+	end;
+OnInstanceInit:
+	donpcevent instance_npcname("#jtwarp23")+"::OnDisable";
+	end;
+OnDisable:
+	disablenpc instance_npcname("#jtwarp23");
+	end;
+OnEnable:
+	enablenpc instance_npcname("#jtwarp23");
+	end;
+OnTouch: 
+	if (isbegin_quest(13181) == 1) {
+		completequest 13181;
+		getexp 1500000,500000;
+		set #CASHPOINTS, #CASHPOINTS+2000;
+	}
+	warp "moc_para01",28,87;
+	end;
+}

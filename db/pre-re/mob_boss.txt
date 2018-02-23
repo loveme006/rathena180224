@@ -1,0 +1,50 @@
+// Bloody Branch Summonable Monsters Database
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Bloody_Dead_Branch,0,Baphomet,1039
+MOBG_Bloody_Dead_Branch,1038,오시리스,Osiris
+MOBG_Bloody_Dead_Branch,1039,바포메트,Baphomet
+MOBG_Bloody_Dead_Branch,1046,도플갱어,Doppelganger
+MOBG_Bloody_Dead_Branch,1059,미스트레스,Mistress
+MOBG_Bloody_Dead_Branch,1086,황금 도둑벌레,Golden Thief Bug
+MOBG_Bloody_Dead_Branch,1087,오크 히어로,Orc Hero
+MOBG_Bloody_Dead_Branch,1096,엔젤링,Angeling
+MOBG_Bloody_Dead_Branch,1112,드레이크,Drake
+MOBG_Bloody_Dead_Branch,1115,에드가,Eddga
+MOBG_Bloody_Dead_Branch,1120,고스트링,Ghostring
+MOBG_Bloody_Dead_Branch,1147,마야,Maya
+MOBG_Bloody_Dead_Branch,1150,월야화,Moonlight Flower
+MOBG_Bloody_Dead_Branch,1157,파라오,Pharaoh
+MOBG_Bloody_Dead_Branch,1159,프리오니,Phreeoni
+MOBG_Bloody_Dead_Branch,1190,오크로드,Orc Lord
+MOBG_Bloody_Dead_Branch,1251,폭풍의 기사,Stormy Knight
+MOBG_Bloody_Dead_Branch,1252,하티,Hatii
+MOBG_Bloody_Dead_Branch,1272,다크 로드,Dark Lord
+MOBG_Bloody_Dead_Branch,1312,터틀 제네럴,Turtle General
+MOBG_Bloody_Dead_Branch,1373,죽은자의 주인,Lord of the Dead
+MOBG_Bloody_Dead_Branch,1388,아크 엔젤링,Arc Angeling
+MOBG_Bloody_Dead_Branch,1389,드라큘라,Dracula
+MOBG_Bloody_Dead_Branch,1418,흑사왕,Evil Snake Lord
+MOBG_Bloody_Dead_Branch,1492,원령무사,Samurai Specter
+MOBG_Bloody_Dead_Branch,1511,아몬 라,Amon Ra
+MOBG_Bloody_Dead_Branch,1582,데빌링,Deviling
+MOBG_Bloody_Dead_Branch,1583,타오군카,Tao Gunka
+MOBG_Bloody_Dead_Branch,1623,RSX-0806,RSX-0806
+MOBG_Bloody_Dead_Branch,1630,백소진,White Lady
+MOBG_Bloody_Dead_Branch,1658,이그니젬 세니아,Egnigem Cenia
+MOBG_Bloody_Dead_Branch,1685,베스퍼,Vesper
+MOBG_Bloody_Dead_Branch,1688,타니 아가씨,Lady Tanee
+MOBG_Bloody_Dead_Branch,1708,마검사 타나토스의 기억,Thanatos Phantom
+MOBG_Bloody_Dead_Branch,1719,디타르데우르스,Detardeurus
+MOBG_Bloody_Dead_Branch,1734,키엘-D-01,Kiel D-01
+MOBG_Bloody_Dead_Branch,1751,발키리 란드그리스,Valkyrie Randgris
+MOBG_Bloody_Dead_Branch,1768,그룸 언더 나이트,Gloom Under Night
+MOBG_Bloody_Dead_Branch,1779,크툴라낙스,Ktullanux
+MOBG_Bloody_Dead_Branch,1785,아트로스,Atroce
+MOBG_Bloody_Dead_Branch,1832,이프리트,Ifrit
+MOBG_Bloody_Dead_Branch,1871,타락한 대신관 히밤,Falling Bishop
+MOBG_Bloody_Dead_Branch,1873,베르제브브,Beelzebub
+MOBG_Bloody_Dead_Branch,1885,고피니츠,Gopinich
+MOBG_Bloody_Dead_Branch,2022,니드호그의 그림자,Nidhoggur's Shadow

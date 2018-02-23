@@ -1,0 +1,44 @@
+-	script	#bossnoti	-1,{
+ 
+    OnNPCKillEvent:
+ 
+        if (getmonsterinfo(killedrid,22)){       
+            announce ""+strcharinfo(0)+" 님이 " + getmonsterinfo(killedrid,0) + "(을)를 죽이는데 성공했습니다! ",bc_blue|bc_all;
+        }
+
+//아이템 감정	
+//	.@ret = get_disidentif_count();
+//	if(.@ret > 0)
+//		identify_item(0);
+//
+	if(BaseLevel == 100 && NewbieSup != 1) {
+		set NewbieSup,1;
+		getitem 22736,1;
+		getitem 23583,1;
+		getitem 25427,1;
+		getitem 23135,1;
+		getitem 6229,1;
+		getitem 6234,1;
+	}
+	if(JobLevel == 10 && Class == Novice) {
+		mes "[초보존 교관]";
+		mes "전직할 레벨이 되었습니다.";
+		mes "전직을 위해 마을로 가시겠습니까?";
+		next;
+		menu "보내주세요",-,"아니요",No;
+
+		savepoint "prt_gld",160,99;
+		warp "prt_gld",160,99;
+		close;
+
+No:
+	mes "[초보존 교관]";
+	mes "필요할 때 언제든 찾아오세요.";
+	close;
+	}
+	end;
+
+    end;
+ 
+
+}

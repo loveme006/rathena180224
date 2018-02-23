@@ -1,0 +1,221 @@
+// 카프라이동
+prt_gld.gat,172,112,4	script	카프라직원	860,{
+	set @K_Savepoint$,"prt_gld.gat";		// 세이브 될 마을
+	set @k_Savepointx,"160";		// 세이브 될 마을 X 좌표
+	set @k_Savepointy,"99";		// 세이브 될 마을 Y 좌표
+
+
+	mes "[카프라 직원]";
+	mes "^0000ff" +strcharinfo(0) + "^000000님 ^FF0000어서 오십시오.^000000";
+	mes "저희 카프라 서비스는 언제나";
+	mes "여러분의 곁에 있습니다.";
+	next;
+
+	if ((Class == 5) || (Class == 10) || (Class == 18) || (Class == 4006) || (Class == 4011) || (Class == 4019) || (Class == 4028) || (Class == 4033) || (Class == 4041) || (Class == 23) || (Class == 4045) || (Class == 4071) || (Class == 4078)) goto S_Cart; //카트이동
+	
+	if ((Class == 4058) || (Class == 4064)) goto S_Mado; //마도기어 이동
+
+	if ((Class == 7) || (Class == 4008) || (Class == 4030)) goto S_Peco; // 페코 이동
+
+	if ((Class == 14) || (Class == 4015) || (Class == 4037)) goto S_GPeco; //그랜드페코 이동
+	
+	if ((Class == 4054) || (Class == 4060)) goto S_dragon; //드래곤 이동
+
+	if ((Class == 4066) || (Class == 4073)) goto S_gripon; // 그리폰 이동
+
+	if ((Class == 11) || (Class == 4012) || (Class == 4034) || (Class == 4056) || (Class == 4062)) goto S_Falcon; //팔콘이동
+
+S_Menu://일반캐릭
+	menu "^808080엔터방지^000000",M_Enter,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"종료",EXIT;
+S_Cart://상인
+	if(checkcart())	goto S_Menu;
+	menu "^808080엔터방지^000000",S_Cart1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900카트 대여^000000", Cart,"종료",EXIT;
+S_Mado://3차 상인
+	if(checkcart())	goto S_Menu;
+	menu "^808080엔터방지^000000",S_Cart2,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900마도기어 대여^000000", mado,"^C26900카트 대여^000000", Cart,"종료",EXIT;	
+S_Peco://기사
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_Peco1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900페코페코 대여^000000", Peco,"종료",EXIT;
+S_dragon://3차 기사
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_dragon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900드래곤 대여^000000",Dragon,"^C26900페코페코 대여^000000", Peco,"종료",EXIT;	
+S_gripon://3차 팔라
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_gripon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900그리폰 대여^000000", Peco,"종료",EXIT;	
+S_GPeco://크루세이더
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_GPeco1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900그랜드 페코 대여^000000", GPeco,"종료",EXIT;
+S_Falcon://헌터
+	if(checkfalcon()) goto S_Menu;
+	menu "^808080엔터방지^000000",S_Falcon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900팔콘 대여^000000",Falcon,"종료",EXIT;
+//엔터방지
+M_Enter://일반캐릭
+	menu "^808080엔터방지^000000",M_Enter,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"종료",EXIT;
+S_Cart1://상인
+	if(checkcart())	goto S_Menu;
+	menu "^808080엔터방지^000000",S_Cart1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900카트 대여^000000", Cart,"종료",EXIT;
+S_Cart2://3차 상인
+	if(checkcart())	goto S_Menu;
+	menu "^808080엔터방지^000000",S_Cart2,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900마도기어 대여^000000",mado,"^C26900카트 대여^000000",Cart,"종료",EXIT;		
+S_Peco1://기사
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_Peco1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900페코페코 대여^000000", Peco,"종료",EXIT;
+S_dragon1://3차 기사
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_dragon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900드래곤 대여^000000",Dragon,"^C26900페코페코 대여^000000", Peco,"종료",EXIT;	
+S_gripon1://3차 기사
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_gripon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900그리폰 대여^000000",Peco,"종료",EXIT;	
+S_GPeco1://크루세이더
+	if(checkoption(32) == 1) goto S_Menu;
+	menu "^808080엔터방지^000000",S_GPeco1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900그랜드 페코 대여^000000", GPeco,"종료",EXIT;
+S_Falcon1://헌터
+	if(checkfalcon()) goto S_Menu;
+	menu "^808080엔터방지^000000",S_Falcon1,"^777777위치저장 서비스^000000",S_01,"^FF0000은행 서비스^000000", S_03,"^C26900팔콘 대여^000000",Falcon,"종료",EXIT;
+
+
+S_01: //세이브
+	savepoint @K_Savepoint$,@k_Savepointx,@k_Savepointy;
+	mes "[카프라 직원]";
+	mes "^FF0000세이브 했습니다.^000000";
+	mes "이용해주셔서 감사합니다.";
+	goto M_Exit;
+
+S_03: //은행 입니다. [입금시 이자 붙습니다.]
+	mes "[카프라 직원]"; 
+	mes "^FF0000은행 서비스^000000입니다.";
+	mes "1000제니부터 이용 가능합니다."; 
+	mes " ";
+	mes "현재 잔고 : ^ff0000" + #kafrabank + "^000000제니"; 
+	next; 
+	menu "돈을 입금한다", BANK_IN,"돈을 출금한다", BANK_OUT,"그만 둔다", M_Exit; 
+
+EXIT:
+	mes "[카프라 직원]";
+	mes "저희 카프라 서비스는 보다 완벽한";
+	mes "서비스와 관리 업무를 목표로 하여";
+	mes "안심하고 이용 하실 수 있도록";
+	mes "언제나 최선을 다하고 있습니다.";
+	mes "(주)카프라 서비스를 이용해주셔서";
+	mes "감사합니다.";
+	goto M_Exit;
+
+BANK_IN: 
+	mes "[카프라 직원]"; 
+	mes "입금할 금액을 입력해 주세요.";
+	mes " ";
+	mes "현재 잔고 : ^ff0000" + #kafrabank + "^000000제니";
+	next; 
+	input @kafrabank; 
+	if (@kafrabank<1000) goto M_Exit; 
+	set @kafrabank2, @kafrabank*1/100; 
+	if ((@kafrabank + @kafrabank2) > Zeny) goto BANK_F; 
+	set Zeny, Zeny - @kafrabank - @kafrabank2; 
+	set #kafrabank, #kafrabank + @kafrabank; 
+	mes "수수료^135445" + @kafrabank2 + "제니를^000000 받았습니다."; 
+	goto M_Exit;
+
+BANK_OUT: 
+	if (#kafrabank == 0) goto BANK_F2; 
+	mes "[카프라 직원]"; 
+	mes "출금할 금액을 입력해 주세요.";
+	mes " ";
+	mes "현재 잔고 : ^ff0000" + #kafrabank + "^000000제니";
+	next; 
+	input @kafrabank; 
+	if (@kafrabank < 1) goto M_Exit; 
+	if (@kafrabank > #kafrabank) goto BANK_F; 
+	set #kafrabank, #kafrabank - @kafrabank; 
+	set Zeny, Zeny + @kafrabank; 
+	goto M_Exit;
+
+BANK_F: 
+	mes "[카프라 직원]"; 
+	mes "소유금이 부족합니다."; 
+	goto M_Exit;
+
+BANK_F2: 
+	mes "[카프라 직원]"; 
+	mes "손님께서는 1제니도"; 
+	mes "입금하시지 않으셨습니다."; 
+	goto M_Exit;
+
+Cart: //카트
+	set @servName$, "카트";
+	set @earnName$, "푸쉬 카트";
+	set @setPrice, 800;
+	set @setServ, 0;
+	set @checkSkill, 39;
+	goto Check_Option;
+
+Peco: //페코
+	set @servName$, "페코페코";
+	set @earnName$, "라이딩";
+	set @setPrice, 2500;
+	set @setServ, 1;
+	set @checkSkill, 63;
+	goto Check_Option;
+
+GPeco: //그랜드 페코
+	set @servName$, "그랜드 페코";
+	set @earnName$, "라이딩";
+	set @setPrice, 2500;
+	set @setServ, 1;
+	set @checkSkill, 63;
+	goto Check_Option;
+
+Dragon: //드래곤
+	set @servName$, "드래곤";
+	set @earnName$, "드래곤 트레이닝";
+	set @setPrice, 2500;
+	set @setServ, 3;
+	set @checkSkill, 2007;
+	goto Check_Option;
+
+mado: //마도 기어
+	set @servName$, "마도 기어";
+	set @earnName$, "마도 기어 라이센스";
+	set @setPrice, 2500;
+	set @setServ, 4;
+	set @checkSkill, 2255;	
+	goto Check_Option;	
+
+Falcon: //팔콘
+	set @servName$, "팔콘";
+	set @earnName$, "팔콘리 마스터리";
+	set @setPrice, 2500;
+	set @setServ, 2;
+	set @checkSkill, 127;
+
+Check_Option: //체크
+	if (zeny < @setPrice) goto No_Zeny;
+	if (getskilllv(@checkSkill) == 0) goto W_Needskill;
+
+	mes "[카프라 직원]";
+	mes "선택하신 서비스는 ^ff0000" + @servName$ + "^000000 서비스 입니다.";
+	mes "이용해주셔서 감사합니다.";
+	if (@setServ == 0) setcart;
+	if (@setServ == 1) setriding;
+	if (@setServ == 2) setfalcon;
+	if (@setServ == 3) setdragon;
+	if (@setServ == 4) setriding;	
+	emotion 15;
+	set Zeny, Zeny - @setPrice;
+	goto M_Exit;
+
+No_Zeny: //제니 체크
+	mes "[카프라 직원]";
+	mes "죄송합니다. ^FF3300제니^000000가 부족합니다.";
+	emotion 23;
+	goto M_Exit;
+
+W_Needskill: //스킬 체크
+	mes "[카프라 직원]";
+	mes "^FF3300" + @earnName$ + "^000000 스킬을 배우고 오세요.";
+	emotion 23;
+	goto M_Exit;
+
+M_Exit: //종료
+	cutin "kafra_09",255;
+	close;
+}

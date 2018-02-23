@@ -1,0 +1,96 @@
+glast_01,191,273,4	script	기사단장	655,{
+	set .@White_Contaminated,70;
+	set .@White_Coagulated,3000;
+	set .@Kal_Contaminated,100;
+	set .@Kal_Coagulated,5000;
+	set .@npcname$, "[기사단장]";
+
+	mes .@npcname$;
+	mes "히멜메즈에게 복수하기 위해선 ^FF3355응고된 마력^000000과 ^FF3355오염된 마력^000000이 필요합니다.";
+	next;
+	mes "^FF3355응고된 마력^000000 또는";
+	mes "^FF3355오염된 마력^000000을 가져오시면";
+	mes "기사단에서 제작한 카드와 교환해드리겠습니다.";
+	mes "어떻게 하시겠습니까?";
+	next;
+	switch(select("그만둔다.:백색의 기사단 카드 교환:칼리츠버그 기사단 카드 교환")) {
+		case 1:
+			goto Cancel;
+			break;
+		case 2:
+			mes .@npcname$;
+			mes "백색의 기사단 카드는";
+			mes "^FF3355오염된 마력^000000 ^FF8800" + .@White_Contaminated + "^000000 개";
+			mes "또는";
+			mes "^FF3355응고된 마력^000000 ^FF8800" + .@White_Coagulated + "^000000 개";
+			mes "가 필요합니다.";
+			mes "어떤 아이템으로 교환하시겠습니까?";
+			next;
+			switch(select("그만둔다.:오염된 마력:응고된 마력")) {
+				case 1:
+					goto Cancel;
+					break;
+				case 2:
+					if(countitem(6755) < .@White_Contaminated) goto NoRequest;
+					mes .@npcname$;
+					mes "오염된 마력이 충분하시네요.";
+					mes "바꿔드리겠습니다.";
+					next;
+					delitem 6755,.@White_Contaminated;
+					getitem 4608, 1;
+					end;
+				case 3:
+					if(countitem(6755) < .@White_Contaminated) goto NoRequest;
+					mes .@npcname$;
+					mes "응고된 마력이 충분하시네요.";
+					mes "바꿔드리겠습니다.";
+					next;
+					delitem 6608,.@White_Contaminated;
+					getitem 4608, 1;
+					end;
+			}
+			break;
+		case 3:
+			mes .@npcname$;
+			mes "칼리츠버그 기사단 카드는";
+			mes "^FF3355오염된 마력^000000 ^FF8800" + .@Kal_Contaminated + "^000000 개";
+			mes "또는";
+			mes "^FF3355응고된 마력^000000 ^FF8800" + .@Kal_Coagulated + "^000000 개";
+			mes "가 필요합니다.";
+			mes "어떤 아이템으로 교환하시겠습니까?";
+			next;
+			switch(select("그만둔다.:오염된 마력:응고된 마력")) {
+				case 1:
+					goto Cancel;
+					break;
+				case 2:
+					if(countitem(6755) < .@Kal_Contaminated) goto NoRequest;
+					mes .@npcname$;
+					mes "오염된 마력이 충분하시네요.";
+					mes "바꿔드리겠습니다.";
+					next;
+					delitem 6755,.@Kal_Contaminated;
+					getitem 4609, 1;
+					end;
+				case 3:
+					if(countitem(6755) < .@Kal_Contaminated) goto NoRequest;
+					mes .@npcname$;
+					mes "응고된 마력이 충분하시네요.";
+					mes "바꿔드리겠습니다.";
+					next;
+					delitem 6608,.@Kal_Contaminated;
+					getitem 4609, 1;
+					end;
+			}
+			break;
+	}
+Cancel:
+	mes .@npcname$;
+	mes "히멜메즈에게 당한 부하들을 기리기 위해선 힘이 필요합니다.";
+	close;
+NoRequest:
+	mes .@npcname$;
+	mes "아이템이 충분하지 않습니다. 지금은 농담할 때가 아니에요.";
+	close;
+
+}

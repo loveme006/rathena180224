@@ -1,0 +1,104 @@
+/*=====================================================
+//= 버전: 1.0
+//= 제작자: 無名
+//= 기능: 속성 부여
+//==== 패치내역 =====================================
+//= 1.0
+=====================================================*/
+
+prt_gld,175,112,4	script	속성도우미::buff	91,{
+ function Weapon_attribute_grant;
+
+ 
+ .NeedZeny = 200000;  //필요 제니
+
+ mes "[속성 도우미]";
+ mes "^0000ff" + strcharinfo(0) + "^000000님 반갑습니다.";
+ mes "원하시는 서비스를 선택해주세요.";
+ next;
+ cutin "kh_ellisia",2;
+M_Enter:
+ switch(select("^808080엔터방지^000000:속성 부여.:그만둔다."))
+ {
+  case 1: goto M_Enter;
+  case 2: Weapon_attribute_grant();
+  case 3: goto Exit_NpcTalk;
+ }
+
+ end;
+
+Exit_NpcTalk:
+ mes "[속성 도우미]";
+ mes "제 서비스가 필요 없습니까?";
+ mes "그럼 즐거운 시간 되십시오";
+ cutin "",255;
+ close;
+
+Cancel_b:
+ mes "[속성 도우미]";
+ mes "이용해 주셔서 감사합니다.";
+ cutin "",255;
+ close;
+
+NeedZeny:
+ mes "[속성 도우미]";
+ mes "돈이모자르시네요..";
+ cutin "",255;
+ close;
+
+
+function Weapon_attribute_grant
+{
+ mes "[속성 도우미]";
+ mes "지속 시간은 ^3355FF30분^000000 입니다.";
+ mes "어떤 속성을 부여 해드릴까요?";
+ next;
+// if(baselevel > 99)
+// {
+//  if(Zeny < .NeedZeny) goto NeedZeny;
+// }
+W_Enter:
+ //.@SelectMenu = select("^808080엔터방지^000000:- 수속성:- 풍속성:- 지속성:- 화속성:종료");
+ .@SelectMenu = select("^808080엔터방지^000000:- 수속성:- 풍속성:- 지속성:- 화속성:- 성속성:종료");
+ 
+ if(.@SelectMenu>1) mes "[속성 도우미]";
+ 
+ switch(.@SelectMenu)
+ {
+  case 1: goto W_Enter;
+  case 2: mes "무기에 ^ff0000수속성^000000을 부여 합니다"; break;
+  case 3: mes "무기에 ^ff0000풍속성^000000을 부여 합니다"; break;
+  case 4: mes "무기에 ^ff0000지속성^000000을 부여 합니다"; break;
+  case 5: mes "무기에 ^ff0000화속성^000000을 부여 합니다"; break;
+  case 6: mes "무기에 ^ff0000성속성^000000을 부여 합니다"; break;
+  default:goto Exit_NpcTalk;
+ }
+ next;
+ 
+// if(baselevel > 99 && (Zeny >= .NeedZeny)) set Zeny,zeny-.NeedZeny;
+// else if(baselevel > 99 && (Zeny < .NeedZeny)) goto NeedZeny;
+ 
+ emotion 14;
+ switch(.@SelectMenu)
+ {
+  case 2:sc_start SC_WATERWEAPON,1800000,5; break;
+  case 3:sc_start SC_WINDWEAPON,1800000,5; break;
+  case 4:sc_start SC_EARTHWEAPON,1800000,5; break;
+  case 5:sc_start SC_FIREWEAPON,1800000,5; break;
+  case 6:sc_start SC_ASPERSIO,1800000,5; break;
+ }
+ mes "[속성 도우미]";
+ mes "속성 부여가 끝났습니다.";
+ close2;
+ cutin "",255;
+ end;
+}
+
+//OnInit:
+// waitingroom "속성 도우미",0;
+// end;
+}
+
+ 
+
+ 

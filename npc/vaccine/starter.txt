@@ -1,0 +1,144 @@
+-	script	::NvBulletin	-1,1,1,{
+	if(polagona > 0) {
+		mes "[" + strnpcinfo(1) + "]";
+		mes "마을로 이동합니다.";
+		close2;
+		savepoint .warpm$,.warpx,.warpy;
+		warp .warpm$,.warpx,.warpy;
+		end;
+	}
+       
+	mes "[" + strnpcinfo(1) + "]";
+	mes "안녕하세요! ^FF0000 " + .servername$ + " ^000000 방문을 환영합니다.";
+	mes "1차 전직은 Job레벨 10일 때, 2차 전직은 Job레벨 40 이상, 3차 전직은 전승 후 레벨 99 & Job레벨 70일 때 할 수 있습니다.";
+	next;
+	mes "사용 가능한 명령어는 접속시마다 공지해 드리니 참고 바라며 ";
+	mes "간단한 아이템을 지급해 드렸으니 Alt+E를 눌러 아이템창을 확인해 주세요.";
+	rentitem 2534,604800;	 //옷플러
+	rentitem 5323,604800;	 //미스트렌스 왕관
+	rentitem 2127,604800;	 //슬리퍼의사자(방패)
+	rentitem 2370,604800;	 //유성매직코트(옷)
+	rentitem 2431,604800;	 //발위에슈즈(신발)
+	set polagona,1;
+	next;
+
+reload:
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "명령어 ^FF0000@명령어^000000 를 사용하여 사용할 수 있는 명령어를 볼 수 있습니다.";
+//	mes "서버의 수도는 ^FF0000" + .maincity$ + "^000000 이며";
+//	mes "서버의 지향방향은 ^FF0000" + .servertype$ + "^000000 입니다.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "계정(ID)은 ^FF00001인당 " + .maxacc + "개^000000이며,";
+//	mes "계정 제한을 지키지 않았을 경우,";
+//	mes "제재가 가해질 수 있으니 주의하시기 바랍니다.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "최대레벨 - ^FF0000 " + .v_maxlv + " ^000000";
+//	mes "최대공속 - ^FF0000 " + .v_aspd + " ^000000";
+//	mes "최대스텟 - ^FF0000 " + (.renewal == 0 ? getbattleflag("max_parameter") : getbattleflag("max_third_parameter")) + " ^000000";
+//	mes "으로 설정되어있으며,";
+//	mes "변동사항이 있으면 따로 공지하도록 하겠습니다.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "배율은";
+//	mes "베이스렙 - ^FF0000" + .base_rate + "^000000배, 잡렙 - ^FF0000" + .job_rate + "^000000배";
+//	mes "일반아이템 - ^FF0000" + (getbattleflag("item_rate_common") / 100) + "^000000배";
+//	mes "장비아이템 - ^FF0000 10^000000배 (최하 0.7% 드랍)"; 
+//	mes "일반카드 - ^FF0000" + (getbattleflag("item_rate_card") / 100) + "^000000배, 보스카드 - ^FF0000" + (getbattleflag("item_rate_card_boss") / 100) + "^000000배";
+//	mes "입니다.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "운영자에게 알려줄 사항이나, 건의사항이 있으시다면,";
+//	mes "프론테라 중앙 분수대 오른쪽 건의 게시판을 이용해주세요.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "서버 주의사항을 알려드렸습니다. 전부 숙지하셨나요? ^^";
+//	next;
+//	if (select("네, 전부숙지하였습니다.:아뇨, 다시 한번 알려주세요.") == 2) goto reload;
+//
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "바로 그겁니다!!! 버그는 발견하는 ^FF0000운영자^000000에게 신고해주시기 바랍니다.";
+//	next;
+//	mes "[" + strnpcinfo(1) + "]";
+//	mes "지금까지 서버 주의사항을 숙지하시느라 수고하셨습니다.";
+//	mes "초보템을 지급해드렸으니 마을에 가시면";
+//	mes "인벤토리를 확인하시기 바랍니다.";
+	close2;
+	set polagona,polagona+1;
+
+	skill 142, 1, 0;
+	skill 143, 1, 0;
+
+	sc_start SC_INCREASEAGI,3600000,10; // 민첩성 증가
+	skilleffect 29,0;
+	sc_start SC_BLESSING,3600000,10; // 블레싱
+	skilleffect 34,0;
+	//percentheal 0,0;
+	sc_start SC_ANGELUS,1800000,10; // 안젤루스 10 스킬
+	sc_start SC_IMPOSITIO,1800000,5; // 임포시티오 마누스 5 스킬
+	sc_start SC_MAGNIFICAT,1800000,5; // 마니피캇 5 스킬
+	sc_start SC_GLORIA, 1800000,5; // 글로리아 5 스킬
+
+	savepoint .warpm$,.warpx,.warpy;
+	warp .warpm$,.warpx,.warpy;
+	end;
+
+OnInit:
+	set .servername$, "백신서버"; // 서버 이름
+	set .servertype$, "하자"; // 서버 성향
+	set .renewal, 1; // 리뉴얼 서버 (0: 리뉴얼 전, 1: 리뉴얼 후)
+	set .maincity$, "프론테라"; // 수도 이름
+
+	set .maxacc, 3; // 1인당 최대 계정 제한 수
+	
+	set .base_rate, getbattleflag("base_exp_rate") / 100; // 베이스 경험치 배율
+	set .job_rate, getbattleflag("job_exp_rate") / 100; // 잡 경험치 배율
+
+	set .v_maxlv, 99; // 최대 레벨
+	set .v_maxstat, 99; // 최대 스텟
+	set .v_aspd, 190; // 최대공속
+
+	set .warpm$, "pvp_n_2-5"; // 저장 및 워프될 맵 이름
+	set .warpx, 99; // 저장 및 워프될 x 좌표
+	set .warpy, 100; // 저장 및 워프될 y 좌표
+	end;
+}
+pvp_n_2-5.gat,99,90,6	script	초보존 교관	EF_AIMED_STR,{
+
+	mes "[초보존 교관]";
+	mes "원하시면 마을로 보내드리지만, 마을로 가고나면 다시는 못돌아와요.";
+	mes "마을로 돌아갈래요?";
+	next;
+	menu "보내주세요~",-,"아니요",No;
+
+	mes "[초보존 교관]";
+	mes "소정의 아이템을 지급해드리고 마을로 보내드릴게요.";
+	next;
+	getitem 569,100;	// 초보자용 포션
+	getitem 12323,100;	// 초보자용 파리의 날개
+	savepoint "prt_gld",160,99;
+	warp "prt_gld",160,99;
+	close;
+
+No:
+	mes "[초보존 교관]";
+	mes "훈련이 최고죠! 열심히 해봐요~";
+	close;
+}
+
+job3_arch03,29,35,4	duplicate(NvBulletin)	시작 안내#nv1	624,0,5
+//new_2-1,53,114,4	duplicate(NvBulletin)	서버안내#nv2	4_BOARD3,0,5
+//new_3-1,53,114,4	duplicate(NvBulletin)	서버안내#nv3	4_BOARD3,0,5
+//new_4-1,53,114,4	duplicate(NvBulletin)	서버안내#nv4	4_BOARD3,0,5
+//new_5-1,53,114,4	duplicate(NvBulletin)	서버안내#nv5	4_BOARD3,0,5
+
+pvp_n_2-5.gat,0,0,0,0	monster	포링	1002,12,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	촌촌	1011,8,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	루나틱	1063,8,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	파브르	1007,10,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	픽키	1049,8,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	푸파	1008,5,0,0,0,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	드롭프스	1113,12,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	로다프로그	1012,12,0,0,0
+pvp_n_2-5.gat,0,0,0,0	monster	로커	1052,6,0,0,0

@@ -1,0 +1,475 @@
+//===== rAthena Script =======================================
+//= Horror Toy Factory merchants
+//===== Description: =========================================
+//= [Official Conversion]
+//= Horror Toy Factory enchants / exchange in xmas
+//===== Changelogs: ==========================================
+//= 1.0 First version. Uses official script structure and text
+//=     from iRO. [Capuche]
+//============================================================
+
+xmas,240,291,3	script	황금손의 빌리#1	4_F_05,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "가지고 있는게 너무 많아요. 종류를 줄인 후 다시 시도하세요.";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "너무 무거워서 진행할 수 없어요. 무게를 줄인 후 다시 시도하세요.";
+		close;
+	}
+	mes "[황금손의 빌리]";
+	mes "후후, 코인을 좀 가져오셨나요? 코인만 주신다면 영혼 빼고 다 팔게요.";
+	next;
+
+	setarray .@xm_item[0],
+		22534, 100,		// Closedmind_Box
+		18848, 500,		// Lush_Rose
+		19687, 1000,	// C_Lush_Rose
+		19686, 500,		// C_SantaHairband
+		19701, 500,		// C_Red_Bonnet
+		13442, 1000,	// Old_Parasol
+		11563, 7,		// Hot_Tee
+		11564, 5,		// Sweet_Canape
+		523,   1,		// Holy_Water
+		12020, 1;		// Water_Of_Darkness
+
+	.@s = ( select( "취소", "닫힌 마음의 상자 (100 코인)", "싱싱한 장미 (500 코인)", "의상 싱싱한 장미 (1000 코인)", "의상 산타인형 머리띠 (500 코인)", "의상 붉은색의 보닛 (500 코인)", "오래된 양산 (1000 코인)", "따듯한 차 (7 코인)", "달콤한 과자 (5 코인)", "성수 (1 코인)", "암수 (1 코인)" ) -2 ) * 2;
+	if (.@s == -2) {
+		mes "[황금손의 빌리]";
+		mes "흐헤헤, 망설이고 계신가요? 좋아요. 그럼 마음이 바뀌면 언제든지 다시 오세요.";
+		close;
+	}
+	if (countitem(7642) >= .@xm_item[.@s+1]) {
+		mes "[황금손의 빌리]";
+		mes "^0000ff" + getitemname(.@xm_item[.@s]) + "^000000를 사려면 피묻은 코인 ^0000ff" + .@xm_item[.@s+1] + "^000000개가 필요해요. 사실건가요?";
+		next;
+		if (select( "취소", "구매" ) == 1) {
+			mes "[황금손의 빌리]";
+			mes "흐헤헤, 변덕스러우시네요. 정말 사고 싶은 마음이 생기면 다시 오세요..";
+			close;
+		}
+		if (countitem(7642) >= .@xm_item[.@s+1]) {
+			delitem 7642,.@xm_item[.@s+1];// Bloody_Coin
+			getitem .@xm_item[.@s], 1;
+			mes "[황금손의 빌리]";
+			mes "정확히 지불하셨어요. 나중에 또 만나요!";
+			close;
+		}
+	}
+	mes "[황금손의 빌리]";
+	mes "^0000ff" + getitemname(.@xm_item[.@s]) + "^000000를 사려면 피묻은 코인 ^0000ff" + .@xm_item[.@s+1] + "^000000개가 필요해요. 조금 부족하네요.";
+	close;
+}
+
+
+xmas,240,297,3	script	방랑자 케인#1	4_M_06,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "가지고 있는게 너무 많아. 종류를 줄이고 다시 와.";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "너무 무거워서 진행할 수가 없자나. 무게를 줄이고 다시 와.";
+		close;
+	}
+	mes "[방랑자 케인]";
+	mes "엇, 너는 평범한게 싫어서 여기 온게 틀림없어. 말만 해. 적절한 재료와 요금만 준다면 무엇이든 만들어줄게.";
+	next;
+	.@s = select( "아무것도 원하지 않는다.", "셀린느 리본을 원한다.", "노블 크로스를 찾고있다.", "악령의 실 장갑을 사고싶다." );
+	switch(.@s) {
+	case 1:
+		mes "[방랑자 케인]";
+		mes "그래, 그래. 다들 그렇게 말하지. 나중에 보자.";
+		close;
+	case 2:
+		.@string$[0] = "호오~ 유니크한 모자를 찾고 있네, 친구. 안목있는걸?";
+		.@string$[1] = "^0000ff셀린느 리본^000000을 만들려면 ^0000ff1000 ^000000개의 피묻은 코인과 ^0000ff+9 제련 이상의 싱싱한 장미^000000가 필요해. 재료가 충분히 있어?";
+		.@string$[2] = "^0000ff셀린느 리본^000000을 만들려면 ^0000ff1000 ^000000개의 피묻은 코인과 ^0000ff+9 제련 이상의 싱싱한 장미^000000가 필요해. 잊지 말라구!";
+		.@string$[3] = "정말 이대로 거래할거야? ^ff0000제련, 옵션, 카드는 사라지고 복구할 수 없어^000000. 결정했어?";
+		break;
+	case 3:
+		.@string$[0] = "호오~ 귀한 무기를 찾고 있네, 친구. 안목있는걸?";
+		.@string$[1] = "^0000ff노블 크로스^000000를 만들려면 ^0000ff2000 ^000000개의 피묻은 코인과 ^0000ff그랜드 크로스[1] 1개^000000가 필요해. 재료가 충분히 있어?";
+		.@string$[2] = "^0000ff노블 크로스^000000를 만들려면 ^0000ff2000 ^000000개의 피묻은 코인과 ^0000ff그랜드 크로스[1] 1개^000000가 필요해. 잊지 말라구!";
+		.@string$[3] = "정말 이대로 거래할거야? ^ff0000제련, 옵션, 카드는 사라지고 복구할 수 없어^000000. 결정했어?";
+		break;
+	case 4:
+		.@string$[0] = "호오~ 매우 희귀한 악세사리를 찾고 있네, 친구. 안목있는걸?";
+		.@string$[1] = "^0000ff악령의 실 장갑^000000을 만들려면 ^0000ff1000 ^000000개의 피묻은 코인과 ^0000ff상처받은 마음 1개^000000가 필요해. 재료가 충분히 있어?";
+		.@string$[2] = "^0000ff악령의 실 장갑^000000을 만들려면 ^0000ff1000 ^000000개의 피묻은 코인과 ^0000ff상처받은 마음 1개^000000가 필요해. 잊지 말라구!";
+		.@string$[3] = "정말 이대로 거래할거야? ^ff0000제련, 옵션, 카드는 사라지고 복구할 수 없어^000000. 결정했어?";
+		break;
+	}
+	mes "[방랑자 케인]";
+	mes .@string$[0];
+	next;
+	mes "[방랑자 케인]";
+	mes .@string$[1];
+	next;
+	if (select( "지금은 하지 않는다.", "바로 교환한다." ) == 1) {
+		mes "[방랑자 케인]";
+		mes "준비가 되면 돌아와. 재료를 다시 알려줄게.";
+		next;
+		mes "[방랑자 케인]";
+		mes .@string$[2];
+		close;
+	}
+	mes "[방랑자 케인]";
+	mes .@string$[3];
+	next;
+	if (select( "다음에 하도록 한다.", "계속한다." ) == 1) {
+		mes "[방랑자 케인]";
+		mes "그래, 그렇게 정했구나. 다시 볼 수 있기를 바래, 후후.";
+		close;
+	}
+	switch(.@s) {
+	case 2:
+		mes "[방랑자 케인]";
+		if (getequipid(EQI_HEAD_TOP) != 18848)// Lush_Rose
+			mes "너가 쓰고 있는 모자는 싱싱한 장미가 아니야. 말해준 재료를 가져와.";
+		else if (getequiprefinerycnt(EQI_HEAD_TOP) < 9)
+			mes "착용하고 있는 모자가 +9 제련 이상이 아니야. 그걸로는 거래할 수 없어.";
+		else if (countitem(7642) < 1000)
+			mes "글쎄, 피묻은 코인이 부족한데... 1000개 이상 모아야해. 그 아래로는.. 도와줄 수 없어.";
+		else {
+			delitem 7642,1000;// Bloody_Coin
+			delequip EQI_HEAD_TOP;
+			getitem 18849,1;// Celines_Ribbon
+			mes "거래가 끝났어. 한번 구경해봐.";// custom
+		}
+		close;
+	case 3:
+		mes "[방랑자 케인]";
+		if (getequipid(EQI_HAND_R) != 1540)// Grand_Cross_
+			mes "오른손에 있는 것은 그랜드 크로스[1]가 아니야. 말해준 재료를 가져와.";
+		else if (countitem(7642) < 2000)
+			mes "글쎄, 피묻은 코인이 부족한데... 2000개 이상 모아야해. 그 아래로는.. 도와줄 수 없어.";
+		else {
+			delitem 7642,2000;// Bloody_Coin
+			delequip EQI_HAND_R;
+			getitem 16029,1;// Noble_Cross
+			mes "거래가 끝났어. 한번 구경해봐.";// custom
+		}
+		close;
+	case 4:
+		mes "[방랑자 케인]";
+		if (countitem(7642) > 999 && countitem(2977) > 0 && countitem(2978) > 0 && countitem(2976) > 0) {
+			delitem 7642,1000;// Bloody_Coin
+			delitem 2977,1;// Hurt_Mind
+			delitem 2978,1;// KindHeart
+			delitem 2976,1;// Red_Lantern
+			getitem 2980,1;// Evilspirit_Gloves
+			mes "거래가 끝났어. 한번 구경해봐.";// custom
+		}
+		else {
+			mes "재료가 충분하지 않아.";
+			next;
+			mes "[방랑자 케인]";
+			mes "^0000ff악령의 실 장갑^000000을 만들려면 ^0000ff1000 ^000000개의 피묻은 코인과 ^0000ff상처받은 마음 1개^000000가 필요해. ";
+		}
+		close;
+	}
+}
+
+xmas,240,294,3	script	턱수염의 조#pa0829	4_M_05,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "가지고 있는 아이템이 너무 다양하다네. 종류를 줄인 후 다시 오게나.";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "너무 무거워서 더 이상 진행할 수가 없다네. 무게를 줄인 후 다시 오게나.";
+		close;
+	}
+	mes "[턱수염의 조]";
+	mes "허허, 인간의 욕심은 끝이 없지. 내가 무엇을 해줬으면 좋겠나?";
+	next;
+	switch( select( "뭐를 해 줄 수 있나요?", "장난감 공장 악세사리 인챈트", "장난감 공장 무기 인챈트", "장난감 공장 모자 인챈트", "장난감 공장 신발류 인챈트" ) ) {
+	case 1:
+		mes "[턱수염의 조]";
+		mes "뭘 할 수 있냐구? 그건 정말 간단하지. 자네는 그냥 피묻은 코인만 가져오게나. 내가 그걸로 장비를 인챈트 해 줄터니.";
+		next;
+		mes "[턱수염의 조]";
+		mes "매 회 피묻은 코인 15 개가 필요하다네. 15개의 코인당 1개의 슬롯을 인챈트할 수 있지. 최대 3번까지 말이야.";
+		next;
+		mes "[턱수염의 조]";
+		mes "그렇지만 강화 단계가 높아질수록 파괴될 확률도 높아지는 것이 당연하지. 한두번만 하고 멈추는 것을 추천하지.";
+		close;
+	case 2:
+		.@eq_num = EQI_ACC_R;
+		break;
+	case 3:
+		.@eq_num = EQI_HAND_R;
+		break;
+	case 4:
+		.@eq_num = EQI_HEAD_TOP;
+		break;
+	case 5:
+		.@eq_num = EQI_SHOES;
+		break;
+	}
+	.@item_id = getequipid(.@eq_num);
+	.@refine = getequiprefinerycnt(.@eq_num);
+	setarray .@card[0],
+		getequipcardid(.@eq_num,0),
+		getequipcardid(.@eq_num,1),
+		getequipcardid(.@eq_num,2),
+		getequipcardid(.@eq_num,3);
+
+	switch(.@item_id) {
+	case 2976:	// Red_Lantern
+	case 2977:	// Hurt_Mind
+	case 2978:	// KindHeart
+	case 2980:	// Evilspirit_Gloves
+		.@sc_type = 1;// acc
+		break;
+	case 2486:	// Shadow_Walk_
+	case 18848:	// Lush_Rose
+	case 18849:	// Celines_Ribbon
+		.@sc_type = 2;// armor
+		break;
+	case 13442:	// Old_Parasol
+		.@sc_type = 3;// weapon
+		break;
+	case 16029:	// Noble_Cross
+		mes "[턱수염의 조]";// custom
+		mes "오, ^0000ff노블 크로스^000000를 가지고 있구나! 이건 인챈트하려면 다른 사람을 찾아가야해.";
+		next;
+		mes "[턱수염의 조]";
+		mes "나도 여러번 해봤지만, 행운이 따라주지 않았단다.";
+		next;
+		mes "[턱수염의 조]";
+		mes "이 무기를 인챈트하고 싶으면 ^0000ff마요마요^000000라는 분을 찾아가거라! 그 분은 할 수 있다는 소문이 있어.";
+		close;
+	default:
+		break;
+	}
+	switch(.@eq_num) {
+	case EQI_ACC_R:
+		mes "[턱수염의 조]";
+		mes "두 가지 유형 중 하나를 선택할 수 있고, 수수료는 피묻은 코인 15개라네.";
+		next;
+		.@enchant_type = select( "취소", "STR/AGI/DEX 중 랜덤", "INT/VIT/DEX 중 랜덤" ) - 1;// enchant_type [1-2]
+		mes "[턱수염의 조]";
+		if (.@enchant_type == 0) {
+			mes "그래, 결심이 서면 다시 오거라.";
+			close;
+		}
+		if (.@sc_type < 1) {
+			mes "이 장비는 장난감 공장에서 얻은 것이 아니자나. 나는 장난감 공장에서 나온 아이템만 취급할 수 있다네.";
+			close;
+		}
+		if (.@card[3] == 0) {
+			.@slot_num = 3;
+			mes "좋아, 첫 번째 인챈트를 해보자구. 보통 깨지지는 않아. 한 95% 확률로?";
+			.@string$ = "이랬다 저랬다 하는 변덕스러운 친구구먼!";
+		}
+		else if (.@card[2] == 0) {
+			.@slot_num = 2;
+			mes "호오~ 두 번째 인챈트로군. 이번 것은 조금 위험하다네. 성공확률은 70% 정도인데 계속 할건가? 실패하면 아이템이 날아간다네.";// custom
+			.@string$ = "이랬다 저랬다 하는 변덕스러운 친구구먼!";
+		}
+		else if (.@card[1] == 0) {
+			.@slot_num = 1;
+			mes "이번이 마지막 인챈트로군. 계속 할겐가? 이번 성공 확률은 ^ff000050% 이하^000000일게야. 물론 성공하면 좋겠지만... 음... 나는 자네의 결정을 따르겠지만 명심하게나.";// custom
+			.@string$ = "현명하군! 세 번째 인챈트는 욕심인게야.";// custom translation
+		}
+		else {
+			mes "호오~ 이것은 이미 인챈트가 끝났다네. 더 이상 인챈트하는 것이 불가능하니 만족하고 사용하게나.";// custom
+			close;
+		}
+		break;
+	case EQI_HAND_R:
+		mes "[턱수염의 조]";
+		if (.@sc_type < 1) {
+			mes "이 장비는 장난감 공장에서 얻은 것이 아니자나. 나는 장난감 공장에서 나온 아이템만 취급할 수 있다네.";
+			close;
+		}
+		.@enchant_type = 3;
+		.@slot_num = 3;
+		mes "무기에는 한 번의 인챈트만 한다네. 실패는 없으니까 그냥 보너스라고 생각하게나, 티히히.";
+		.@string$ = "이랬다 저랬다 하는 변덕스러운 친구구먼!";
+		break;
+	case EQI_HEAD_TOP:
+	case EQI_SHOES:
+		mes "[턱수염의 조]";
+		if (.@sc_type < 1) {
+			mes "이 장비는 장난감 공장에서 얻은 것이 아니자나. 나는 장난감 공장에서 나온 아이템만 취급할 수 있다네.";
+			close;
+		}
+		if (.@card[3] == 0) {
+			.@slot_num = 3;
+			.@enchant_type = 4;
+			mes "좋아. 첫 번째 인챈트를 시작해볼까. 특별한 능력 하나를 추가해주겠네. 물론 실패가 없으니 걱정말게나 크흐.";
+		}
+		else if (.@card[2] == 0) {
+			.@slot_num = 2;
+			.@enchant_type = 5;
+			mes "두 번째 인챈트로군. 이전 상태에서 상향시켜주겠네. 실패는 없으니 걱정말게나 크흐흐";// custom
+		}
+		else {
+			mes "호오~ 이것은 이미 인챈트가 끝났다네. 더 이상 인챈트하는 것이 불가능하니 만족하고 사용하게나.";// custom
+			close;
+		}
+		.@string$ = "이랬다 저랬다 하는 변덕스러운 친구구먼!";
+		break;
+	default:
+		mes "[턱수염의 조]";
+		mes "이건 인챈트할 수 없다네!";// custom
+		close;
+	}
+	next;
+	if (select( "나중에 다시 할게요.", "해주세요." ) == 1) {
+		mes "[턱수염의 조]";
+		mes .@string$;
+		close;
+	}
+	mes "[턱수염의 조]";
+	if (.@slot_num == 3)
+		setarray .@range[0],550,1050;
+	else if (.@slot_num == 2)
+		setarray .@range[0],450,1125;
+	else if (.@slot_num == 1)
+		setarray .@range[0],1,1161;
+	else {
+		mes "문제가 생겼어. 나중에 다시 오게나!";// custom
+		close;
+	}
+	.@enchant = 9;
+	switch(.@enchant_type) {
+	case 1:
+		.@r = rand(.@range[0],.@range[1]);
+			 if (.@r < 601)  .@enchant = 0;
+		else if (.@r < 701)  .@enchant = 4700;	// Strength1
+		else if (.@r < 801)  .@enchant = 4730;	// Agility1
+		else if (.@r < 901)  .@enchant = 4720;	// Dexterity1
+		else if (.@r < 951)  .@enchant = 4701;	// Strength2
+		else if (.@r < 1001) .@enchant = 4731;	// Agility2
+		else if (.@r < 1051) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1076) .@enchant = 4702;	// Strength3
+		else if (.@r < 1101) .@enchant = 4732;	// Agility3
+		else if (.@r < 1126) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1138) .@enchant = 4703;	// Strength4
+		else if (.@r < 1150) .@enchant = 4733;	// Agility4
+		else if (.@r < 1162) .@enchant = 4723;	// Dexterity4
+		else .@enchant = 9;
+		break;
+	case 2:
+		.@r = rand(.@range[0],.@range[1]);
+			 if (.@r < 601)  .@enchant = 0;
+		else if (.@r < 701)  .@enchant = 4710;	// Inteligence1
+		else if (.@r < 801)  .@enchant = 4740;	// Vitality1
+		else if (.@r < 901)  .@enchant = 4720;	// Dexterity1
+		else if (.@r < 951)  .@enchant = 4711;	// Inteligence2
+		else if (.@r < 1001) .@enchant = 4741;	// Vitality2
+		else if (.@r < 1051) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1076) .@enchant = 4712;	// Inteligence3
+		else if (.@r < 1101) .@enchant = 4742;	// Vitality3
+		else if (.@r < 1126) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1138) .@enchant = 4713;	// Inteligence4
+		else if (.@r < 1150) .@enchant = 4743;	// Vitality4
+		else if (.@r < 1162) .@enchant = 4723;	// Dexterity4
+		else .@enchant = 9;
+		break;
+	case 3:
+		.@r = rand(1,2555);
+			 if (.@r < 301)  .@enchant = 4820;	// Fighting_Spirit5
+		else if (.@r < 501)  .@enchant = 4821;	// Fighting_Spirit6
+		else if (.@r < 601)  .@enchant = 4822;	// Fighting_Spirit7
+		else if (.@r < 651)  .@enchant = 4823;	// Fighting_Spirit8
+		else if (.@r < 676)  .@enchant = 4824;	// Fighting_Spirit9
+		else if (.@r < 686)  .@enchant = 4825;	// Fighting_Spirit10
+		else if (.@r < 986)  .@enchant = 4816;	// Sharp3
+		else if (.@r < 1086) .@enchant = 4843;	// Sharp4
+		else if (.@r < 1096) .@enchant = 4844;	// Sharp5
+		else if (.@r < 1396) .@enchant = 4760;	// Matk1
+		else if (.@r < 1496) .@enchant = 4761;	// Matk2
+		else if (.@r < 1506) .@enchant = 4806;	// Matk3
+		else if (.@r < 1806) .@enchant = 4872;	// Attack_Delay_2
+		else if (.@r < 2006) .@enchant = 4873;	// Attack_Delay_3
+		else if (.@r < 2106) .@enchant = 4881;	// Attack_Delay_4
+		else if (.@r < 2116) .@enchant = 4807;	// Atk_Speed1
+		else if (.@r < 2416) .@enchant = 4827;	// Spell6
+		else if (.@r < 2516) .@enchant = 4828;	// Spell7
+		else if (.@r < 2546) .@enchant = 4829;	// Spell8
+		else if (.@r < 2556) .@enchant = 4830;	// Spell9
+		else .@enchant = 9;
+		break;
+	case 4:
+		.@r = rand(1,1950);
+			 if (.@r < 301)  .@enchant = 4810;	// Fighting_Spirit2
+		else if (.@r < 401)  .@enchant = 4809;	// Fighting_Spirit3
+		else if (.@r < 451)  .@enchant = 4808;	// Fighting_Spirit4
+		else if (.@r < 471)  .@enchant = 4820;	// Fighting_Spirit5
+		else if (.@r < 771)  .@enchant = 4818;	// Sharp1
+		else if (.@r < 871)  .@enchant = 4817;	// Sharp2
+		else if (.@r < 891)  .@enchant = 4816;	// Sharp3
+		else if (.@r < 991)  .@enchant = 4760;	// Matk1
+		else if (.@r < 1011) .@enchant = 4761;	// Matk2
+		else if (.@r < 1311) .@enchant = 4869;	// Attack_Delay_1
+		else if (.@r < 1411) .@enchant = 4872;	// Attack_Delay_2
+		else if (.@r < 1461) .@enchant = 4873;	// Attack_Delay_3
+		else if (.@r < 1481) .@enchant = 4881;	// Attack_Delay_4
+		else if (.@r < 1781) .@enchant = 4813;	// Spell3
+		else if (.@r < 1881) .@enchant = 4812;	// Spell4
+		else if (.@r < 1931) .@enchant = 4826;	// Spell5
+		else if (.@r < 1951) .@enchant = 4827;	// Spell6
+		else .@enchant = 9;
+		break;
+	case 5:
+		.@r = rand(1,1970);
+			 if (.@r < 301)  .@enchant = 4700;	// Strength1
+		else if (.@r < 401)  .@enchant = 4701;	// Strength2
+		else if (.@r < 451)  .@enchant = 4702;	// Strength3
+		else if (.@r < 471)  .@enchant = 4730;	// Agility1
+		else if (.@r < 771)  .@enchant = 4731;	// Agility2
+		else if (.@r < 871)  .@enchant = 4732;	// Agility3
+		else if (.@r < 891)  .@enchant = 4710;	// Inteligence1
+		else if (.@r < 991)  .@enchant = 4711;	// Inteligence2
+		else if (.@r < 1011) .@enchant = 4712;	// Inteligence3
+		else if (.@r < 1311) .@enchant = 4720;	// Dexterity1
+		else if (.@r < 1411) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1461) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1481) .@enchant = 4740;	// Vitality1
+		else if (.@r < 1781) .@enchant = 4741;	// Vitality2
+		else if (.@r < 1881) .@enchant = 4742;	// Vitality3
+		else if (.@r < 1931) .@enchant = 4750;	// Luck1
+		else if (.@r < 1951) .@enchant = 4751;	// Luck2
+		else if (.@r < 1971) .@enchant = 4752;	// Luck3
+		else .@enchant = 9;
+		break;
+	default:
+		break;
+	}
+	if (.@enchant == 9) {
+		mes "문제가 생겼어. 나중에 다시 오게나!";// custom
+		close;
+	}
+	if (.@card[3] == 0 && .@sc_type < 4) 
+		.@card[3] = .@enchant;
+	else if (.@card[2] == 0 && .@sc_type < 3)
+		.@card[2] = .@enchant;
+	else if (.@card[1] == 0 && .@sc_type < 2)
+		.@card[1] = .@enchant;
+	else {
+		mes "이것이 뭔지는 모르겠지만, 내가 할 수 있는 것이 아닌 것 같네.";// custom
+		close;
+	}
+	if (countitem(7642) > 14) {// Bloody_Coin
+		delitem 7642,15;// Bloody_Coin
+		delequip .@eq_num;
+		if (.@enchant == 0) {
+			mes "으오옷! 불행히도, 인챈트에 실패하고 장비가 파괴되었다네, 젠장!";
+			close2;
+			specialeffect2 EF_LORD;
+			end;
+		}
+		getitem2 .@item_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+		mes "흐음.. 성공했네. 살펴보게나.";
+		specialeffect2 EF_REPAIRWEAPON;
+		close;
+	}
+	mes "흐음.. 그런데 자네, 피묻은 동전을 가져와야한다네.";
+	close;
+}

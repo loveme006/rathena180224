@@ -1,0 +1,54 @@
+lhz_dun_n.gat,0,0,0,0	monster	에레메스 가일	3208,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	마가레타 소린	3209,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	카트린느 케이론	3210,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	셰실 디먼	3211,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	하워드 알트아이젠	3212,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	세이렌 윈저	3213,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	랜달 로랜스	3226,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	플라멜 이뮬	3227,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	실리아 알데	3228,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	첸 리우	3229,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	거티 위	3230,7,5000
+lhz_dun_n.gat,0,0,0,0	monster	아르보치오 바실	3231,6,5000
+lhz_dun_n.gat,0,0,0,0	monster	트렌티니	3232,6,5000
+
+lhz_dun_n,0,0,0	script	mvp_lhz_dun_n	-1,{
+OnTimer6000000: // delay1 = 6000000 ms (100 min)
+	stopnpctimer;
+	sleep rand(0,30)*60000; // 0 to 30 minutes
+OnInit:
+	// Select Coordinates to summon a random MVP on
+	switch(rand(1,6)) {
+		case 1:  set .@x,140;  set .@y,232;  break;
+		case 2:  set .@x,75;   set .@y,138;  break;
+		case 3:  set .@x,140;  set .@y,87;   break;
+		case 4:  set .@x,205;  set .@y,140;  break;
+		case 5:  set .@x,123;  set .@y,137;  break;
+		case 6:  set .@x,175;  set .@y,137;  break;
+	}
+	set .@mob,rand(3214,3219);
+	monster "lhz_dun_n",.@x,.@y,strmobinfo(1,.@mob),.@mob,1,strnpcinfo(3)+"::OnMyMVPDead";
+
+	// Select Coordinates to summon a random 99 on
+	switch(rand(1,6)) {
+		case 1:  set .@x2,183;  set .@y2,97;   break;
+		case 2:  set .@x2,97;   set .@y2,96;   break;
+		case 3:  set .@x2,47;   set .@y2,139;  break;
+		case 4:  set .@x2,231;  set .@y2,140;  break;
+		case 5:  set .@x2,139;  set .@y2,211;  break;
+		case 6:  set .@x2,139;  set .@y2,259;  break;
+	}
+	set .@mob2,rand(3233,3239);
+	monster "lhz_dun_n",.@x2,.@y2,strmobinfo(1,.@mob2),.@mob2,1,strnpcinfo(3)+"::OnMyMVPDead";
+	end;
+
+OnMyMVPDead:
+	killmonster "lhz_dun03",strnpcinfo(3)+"::OnMy99Dead";
+	initnpctimer;
+}
+
+
+
+
+
+//pvp_n_2-5.gat,0,0,0,0	monster	로커	1052,6,0,0,0

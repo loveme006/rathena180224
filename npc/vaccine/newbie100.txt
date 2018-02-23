@@ -1,0 +1,52 @@
+function	script	newbie100	{
+	switch(select("직업에 맞는 아이템 선택:다른 직업 아이템 선택:취소")){ 
+		case 3:
+			message ""+strcharinfo(0)+"","취소되었습니다.";
+			end;
+		case 1:
+			if(Class == JOB_RUNE_KNIGHT || Class == JOB_RUNE_KNIGHT_T || Class == JOB_RUNE_KNIGHT2 || Class == JOB_RUNE_KNIGHT_T2) set .@classitem,21037;
+			if(Class == JOB_WARLOCK || Class == JOB_WARLOCK_T) set .@classitem,2046;
+			if(Class == JOB_RANGER || Class == JOB_RANGER_T || Class == JOB_RANGER2 || Class == JOB_RANGER_T2) set .@classitem,18165;
+			if(Class == JOB_ARCH_BISHOP || Class == JOB_ARCH_BISHOP_T) set .@classitem,28616;
+			if(Class == JOB_MECHANIC || Class == JOB_MECHANIC_T || Class == JOB_MECHANIC2 || Class == JOB_MECHANIC_T2) set .@classitem,16075;
+			if(Class == JOB_GUILLOTINE_CROSS || Class == JOB_GUILLOTINE_CROSS_T) set .@classitem,28027;
+			if(Class == JOB_ROYAL_GUARD || Class == JOB_ROYAL_GUARD_T || Class == JOB_ROYAL_GUARD2 || Class == JOB_ROYAL_GUARD_T2) set .@classitem,26015;
+			if(Class == JOB_SORCERER || Class == JOB_SORCERER_T) set .@classitem,26119;
+			if(Class == JOB_MINSTREL || Class == JOB_MINSTREL_T || Class == JOB_WANDERER || Class == JOB_WANDERER_T) set .@classitem,18166;
+			if(Class == JOB_SURA || Class == JOB_SURA_T) set .@classitem,1848;
+			if(Class == JOB_GENETIC || Class == JOB_GENETIC_T) set .@classitem,13483;
+			if(Class == JOB_SHADOW_CHASER || Class == JOB_SHADOW_CHASER_T) set .@classitem,28740;
+			//if(Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER) set .@classitem,28616;
+			if(Class == JOB_KAGEROU || Class == JOB_OBORO) set .@classitem,13341;
+			if(Class == JOB_REBELLION) set .@classitem,13144;
+			if(Class == JOB_SUMMONER) set .@classitem,26120;
+			if(Class == JOB_SUPER_NOVICE || Class == JOB_SUPER_NOVICE_E) set .@classitem,16076;
+			if(.@classitem <= 0) { message ""+strcharinfo(0)+"","현재 이 직업은 알맞는 초심자 무기가 없습니다. 상위직업으로 전직하시거나 아이템 구현을 기다려주세요."; end; }
+			break;
+		case 2:
+			switch(select("룬나이트:워록:레인저:아크비숍:미케닉:길로틴크로스:로얄가드:소서러:민스트럴&원더러:수라:제네릭:쉐도우체이서:카케로우&오보로:리벨리온:소환사:슈퍼노비스:취소")) {
+				case 1: set .@classitem,21037; break;
+				case 2: set .@classitem,2046; break;
+				case 3: set .@classitem,18165; break;
+				case 4: set .@classitem,28616; break;
+				case 5: set .@classitem,16075; break;
+				case 6: set .@classitem,28027; break;
+				case 7: set .@classitem,26015; break;
+				case 8: set .@classitem,26119; break;
+				case 9: set .@classitem,18166; break;
+				case 10: set .@classitem,1848; break;
+				case 11: set .@classitem,13483; break;
+				case 12: set .@classitem,28740; break;
+				case 13: set .@classitem,13341; break;
+				case 14: set .@classitem,13144; break;
+				case 15: set .@classitem,26120; break;
+				case 16: set .@classitem,16076; break;
+				case 17:
+					message ""+strcharinfo(0)+"","취소되었습니다.";
+					end;
+			}
+			break;
+	}
+	getitem .@classitem,1;
+	delitem 25427,1; //장비교환권
+}

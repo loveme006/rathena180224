@@ -1,0 +1,38 @@
+-	shop	rndshop	-1,23170:2,23100:2,23308:2,23545:2,23546:2,23546:2,23547:2.
+
+prt_gld,114,163,4	script	고양이손 판매원 냐롬	10242,{
+	
+	mes "[고양이손 판매원 냐롬]";
+	mes "너 혹시 냥다래열매 2개 있냥?";
+	mes "있으면 나랑 바꾸자~";
+	next;
+	callshop "rndshop",1;
+	npcshopattach "rndshop";
+	close;	
+
+OnBuyItem:
+	for (.@i = 0; .@i < getarraysize(@bought_nameid); .@i++){
+		if (@bought_quantity[.@i] <= 0){
+			mes "omgh4x!";
+			close;
+		if (@bought_nameid[.@i] == 13469) set .@item,23170;
+		if (@bought_nameid[.@i] == 1326) set .@item,23545;
+		} 
+		
+	}
+	if(countitem(6909) < 2) {
+		mes "[고양이손 판매원 냐롬]";
+		mes "--캬아아악!!";
+		mes "냥나래열매가 2개는 필요하다냥!";
+		close;
+	}
+	delitem 6909,2;
+	getitem @bought_nameid[0],1;
+	mes "[고양이손 판매원 냐롬]";
+	mes "고맙다냥냥!";
+	mes "교환하고 싶어지면 또 와라 인간!";
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	close;
+
+}

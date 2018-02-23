@@ -1,0 +1,980 @@
+//===== rAthena Script =======================================
+//= Ghost Palace
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Ghost Palace Instance
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+dali02,43,129,5	script	흙빛의 로얄가드#	4_M_SAKRAYROYAL,{
+	if (BaseLevel < 120) {
+		mes "[흙빛의 로얄가드]";
+		mes "나는 도움이 필요하지만, 너는 나를 도울만큼 강하지 않다. 멍청한놈~!";
+		next;
+		mes "[흙빛의 로얄가드]";
+		mes "더 훈련하고 레벨이 120이 됐을 때 다시 와!";
+		close;
+	}
+	.@party_id = getcharid(1);
+	if (getcharid(0) != getpartyleader(.@party_id,2) || .@party_id < 1) {
+		mes "[흙빛의 로얄가드]";
+		mes "나는 파티장에게만 비밀통로를 열어줄 수 있어. 파티장이 나에게 말하게 해줘.";
+		close;
+	}
+	switch( checkquest(1261,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[흙빛의 로얄가드]";
+		mes "공주는 찾았어? 그녀는 안전해?";
+		close;
+	case 2:
+		mes "[흙빛의 로얄가드]";
+		mes "비밀통로 주변의 괴물이 사라졌어. 이제 공주님을 구하러 갈 수 있어!";
+		erasequest 1261;// Cursed Swordman
+		close;
+	}
+	mes "[흙빛의 로얄가드]";
+	mes "나는 도움이 필요해, 그게 너같은 놈일지라도.";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "내가 전투를 하는 도중 지키고 있던 공주가 사라졌어.";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "너는 나를 따라와. 우리가 그녀를 구해야해.";
+	next;
+	if (select( "도와줄게.", "지금은 좋은 때가 아닌 것 같아." ) == 2) {
+		mes "[흙빛의 로얄가드]";
+		mes "지금도 모든 로얄가드들이 괴물과 싸우다 죽고있어.";
+		next;
+		mes "[흙빛의 로얄가드]";
+		mes "공포가 우리의 마음을 잡더라도, 공주를 구해내야만 해!";
+		close;
+	}
+	instance_create("Ghost Palace");
+	mes "[흙빛의 로얄가드]";
+	mes "고맙다..";
+	mes "^0000ffGhost Palace^000000로 가는 비밀 통로를 열어줄게.";
+	mes "준비해!";
+	close;
+}
+
+dali02,40,134,5	script	다차원 장치#dk	PORTAL,{
+	if (BaseLevel < 120) {
+		mes "[흙빛의 로얄가드]";
+		mes "나는 도움이 필요하지만, 너는 나를 도울만큼 강하지 않다. 멍청한놈~!";
+		next;
+		mes "[흙빛의 로얄가드]";
+		mes "더 훈련하고 레벨이 120이 됐을 때 다시 와!";
+		close;
+	}
+	mes "[흙빛의 로얄가드]";
+	mes "나는 궁전으로 가는 비밀 통로를 알고있어. 공주를 구할 준비가 됐어?!";
+	next;
+	if (select( "들어간다.", "그만둔다." ) == 2) {
+		mes "[흙빛의 로얄가드]";
+		mes "지금도 모든 로얄가드들이 괴물과 싸우다 죽고있어.";
+		next;
+		mes "[흙빛의 로얄가드]";
+		mes "공포가 우리의 마음을 잡더라도, 공주를 구해내야만 해!";
+		close;
+	}
+	switch( checkquest(1261,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[흙빛의 로얄가드]";
+		mes "궁전을 공격했던 괴물들이 비밀 통로를 돌아 다니고 있어. 괴물들이 우리를 발견하면 상황이 안좋아질거야... 기다려.";
+		next;
+		mes "시간 제한이 끝나면 다시 입력해봐.";
+		close;
+	case 2:
+		mes "^0000ff저주받은 검사에 입장하기 위한 시간이 끝났습니다. 흙빛의 로얄가드와 대화해주세요.^000000";
+		erasequest 1261;// Cursed Swordman
+		close;
+	}
+	.@party_id = getcharid(1);
+	if (getcharid(0) != getpartyleader(.@party_id,2) || .@party_id < 1) {
+		mes "[흙빛의 로얄가드]";
+		mes "나는 파티장에게만 비밀통로를 열어줄 수 있어. 파티장이 나에게 말하게 해줘.";
+		close;
+	}
+
+	.@md_name$ = "Ghost Palace";
+	switch( instance_enter(.@md_name$) ) {
+	case IE_OTHER:
+		mes "알 수없는 오류가 발생했습니다.";
+		close;
+	case IE_NOINSTANCE:
+		mes "^ff0000장치 내부에 다크홀이 있습니다. 들어가기를 원한다면 흙빛의 로얄가드와 대화해주세요.^000000";
+		close;
+	case IE_NOMEMBER:
+		mes "등록된 맴버만 " + .@md_name$ + "에 들어갈 수 있습니다.";
+		close;
+	case IE_OK:
+		mapannounce "dali", "" + strcharinfo(0) + " of the party, " + getpartyname(.@party_id) + ", is entering the Ghost Palace.", bc_map, 0x00ff99;
+		// warp "1@spa",42,196;
+		setquest 1261;// Cursed Swordman
+		end;
+	}
+}
+
+// 1st floor
+1@spa,41,204,5	script	왕#dk	4_M_RUSKING,{
+	mes "[왕]";
+	mes "자네는 이로써 티아라 공주의 개인 경호원으로 임명한다. 무엇보다 자네의 충성심을 신뢰하네.";
+	npctalk "왕: 당신은 이로써 티아라 공주에게 개인 경호원으로 임명됩니다. 무엇보다도 당신의 충성심을 신뢰합니다.";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "저는 목숨걸고 공주님을 보호할 것입니다.";
+	npctalk "흙빛의 로얄가드: 저는 목숨걸고 공주님을 보호할 것입니다.", instance_npcname("흙빛의 로얄가드#dk");
+	next;
+	mes "[왕]";
+	mes "혼약 준비는 계획대로 진행하지. 왕자가 공주를 만나러 왔어.";
+	npctalk "왕: 혼약 준비는 계획대로 진행하지. 왕자가 공주를 만나러 왔어.";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "...네, 폐하.";
+	npctalk "흙빛의 로얄가드: ...네, 폐하.", instance_npcname("흙빛의 로얄가드#dk");
+	next;
+	mes "[왕]";
+	mes "세상에, 괴물들이 성으로 들어왔다! 저것들을 제거해!";
+	npctalk "왕: 세상에, 괴물들이 성으로 들어왔다! 저것들을 제거해!";
+	close2;
+	donpcevent instance_npcname("#gp_control_1") + "::OnStart";
+	end;
+
+OnInstanceInit:
+	// 1: enabled potential double spawn (official), 0: disabled
+	'bool_double_spawn = 1;
+
+	'map_spa$ = instance_mapname("1@spa");
+
+	// warps
+	disablenpc instance_npcname("궁전 2층");
+	disablenpc instance_npcname("궁전 3층");
+	disablenpc instance_npcname("궁전 4층");
+	disablenpc instance_npcname("궁전 5층");
+	disablenpc instance_npcname("궁전 외곽");
+
+	// first floor
+	disablenpc instance_npcname("#gp_control_1");
+
+	// second floor
+	disablenpc instance_npcname("흙빛의 로얄가드#dk1");
+	disablenpc instance_npcname("티아라 공주#dk");
+	disablenpc instance_npcname("#gp_control_2");
+
+	// 3rd floor
+	disablenpc instance_npcname("왕#dk1");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk2");
+	disablenpc instance_npcname("수호 대장#dk");
+	disablenpc instance_npcname("병사#dk1");
+	disablenpc instance_npcname("병사#dk2");
+	disablenpc instance_npcname("병사#dk3");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk3");
+	disablenpc instance_npcname("타나토스 마법 추적자#dk1");
+	disablenpc instance_npcname("#gp_control_3");
+
+	// 4th floor
+	disablenpc instance_npcname("#gp_control_4");
+	disablenpc instance_npcname("#gp_control_5");
+	disablenpc instance_npcname("타나토스 마법 추적자#dk2");
+	disablenpc instance_npcname("방문한 왕자#dk");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk4");
+	disablenpc instance_npcname("왕의 시체#dk");
+	disablenpc instance_npcname("대장의 시체#dk");
+	disablenpc instance_npcname("병사의 시체#dk");
+	disablenpc instance_npcname("병사의 시체#dk1");
+	disablenpc instance_npcname("병사의 시체#dk2");
+	disablenpc instance_npcname("병사의 시체#dk3");
+	disablenpc instance_npcname("병사의 시체#dk4");
+
+	// 5th floor
+	disablenpc instance_npcname("#gp_control_6");
+	disablenpc instance_npcname("티아라 공주#dk1");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk5");
+	disablenpc instance_npcname("왕#dk11");
+	disablenpc instance_npcname("사크라이#dk");
+	disablenpc instance_npcname("타나토스 마법 추적자#dk3");
+	disablenpc instance_npcname("#tb");
+	disablenpc instance_npcname("#sv");
+	disablenpc instance_npcname("#tv");
+	end;
+}
+
+1@spa,42,201,1	script	흙빛의 로얄가드#dk	4_M_SAKRAYROYAL,{ end; }
+
+1@spa,1,1,1	script	#gp_control_1	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_1");
+	disablenpc instance_npcname("왕#dk");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk");
+	initnpctimer;
+	end;
+OnTimer2000:
+	.@label$ = instance_npcname("#gp_control_1") + "::OnMyMobDead1";
+	monster 'map_spa$,50,194,"저주받은 병사",2948,1, .@label$;		// CURSED_SOLDIER
+	monster 'map_spa$,34,208,"저주받은 병사",2948,1, .@label$;		// CURSED_SOLDIER
+	monster 'map_spa$,32,194,"저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	monster 'map_spa$,52,209,"저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	stopnpctimer;
+	end;
+OnMyMobDead1:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead1") < (1 + 'bool_double_spawn)) {
+		deltimer instance_npcname("#gp_control_1") + "::OnSpawn1";	// stop double spawn if timer is running
+		addtimer 2000, instance_npcname("#gp_control_1") + "::OnSpawn1";
+	}
+	end;
+OnSpawn1:
+	.@label$ = instance_npcname("#gp_control_1") + "::OnMyMobDead2";
+	monster 'map_spa$,37,182,"저주받은 병사",2948,1, .@label$;		// CURSED_SOLDIER
+	monster 'map_spa$,46,182,"저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	end;
+OnMyMobDead2:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead2") < 1) {
+		deltimer instance_npcname("#gp_control_1") + "::OnSpawn1";	// stop double spawn if timer is running
+		deltimer instance_npcname("#gp_control_1") + "::OnSpawn2";
+		addtimer 2000, instance_npcname("#gp_control_1") + "::OnSpawn2";
+	}
+	end;
+OnSpawn2:
+	.@label$ = instance_npcname("#gp_control_1") + "::OnMyMobDead3";
+	monster 'map_spa$,30,200,"저주받은 병사",2948,1, .@label$;		// CURSED_SOLDIER
+	monster 'map_spa$,51,200,"저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	monster 'map_spa$,53,199,"저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	end;
+OnMyMobDead3:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead3") < 1) {
+		mapannounce 'map_spa$, "유령의 궁전 2층으로 가는 통로가 열렸습니다.", bc_map,0xFFFF00;
+		enablenpc instance_npcname("궁전 2층");
+		enablenpc instance_npcname("흙빛의 로얄가드#dk1");
+		enablenpc instance_npcname("티아라 공주#dk");
+	}
+	end;
+}
+
+// 2nd floor
+1@spa,132,122,7	script	흙빛의 로얄가드#dk1	4_M_SAKRAYROYAL,{
+	.@tiara$ = instance_npcname("티아라 공주#dk");
+	cutin "npc-tiara.bmp",3;
+	mes "[흙빛의 로얄가드]";
+	mes "왕께서, 이웃나라의 왕자를 약혼자로 초대하셨습니다. 그를 만날 준비를 하십시오...";
+	npctalk "흙빛의 로얄가드: 왕께서, 이웃나라의 왕자를 약혼자로 초대하셨습니다. 그를 만날 준비를 하십시오...";
+	next;
+	mes "[티아라 공주]";
+	mes "만약... 만약 결혼 준비가 끝나면 어떻게 되는건가요?";
+	npctalk "티아라 공주: 만약... 만약 결혼 준비가 끝나면 어떻게 되는건가요?", .@tiara$;
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "제가 할 수 있는 것은 오직 물리적인 힘으로부터 당신을 보호하는 것 뿐입니다.";
+	npctalk "흙빛의 로얄가드: 제가 할 수 있는 것은 오직 물리적인 힘으로부터 당신을 보호하는 것 뿐입니다.";
+	next;
+	mes "[티아라 공주]";
+	mes "그럼, 저는 무엇을 할 수 있죠?";
+	npctalk "티아라 공주: 그럼, 저는 무엇을 할 수 있죠?", .@tiara$;
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "그건 스스로 결정하셔야합니다...";
+	npctalk "흙빛의 로얄가드: 그건 스스로 결정하셔야합니다...";
+	next;
+	mes "[티아라 공주]";
+	mes "제가 결혼하여 다른 나라로 가는 것이 당신에게 더 편할까요?";
+	npctalk "티아라 공주: 제가 결혼하여 다른 나라로 가는 것이 당신에게 더 편할까요?", .@tiara$;
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "저는 당신의 곁에서 영원히 보호할 것입니다.";
+	npctalk "흙빛의 로얄가드: 저는 당신의 곁에서 영원히 보호할 것입니다.";
+	cutin "npc-tiara.bmp",255;
+	next;
+	mes "[티아라 공주]";
+	mes "괴물들이 성 안으로 들어왔나요? 어서, 날 지켜주세요!";
+	npctalk "티아라 공주: 괴물들이 성 안으로 들어왔나요? 어서, 날 지켜주세요!", .@tiara$;
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "제 뒤에서 기다려요. 가자!";
+	npctalk "흙빛의 로얄가드: 제 뒤에서 기다려요. 가자!";
+	close2;
+	donpcevent instance_npcname("#gp_control_2") + "::OnStart";
+	end;
+}
+
+1@spa,135,125,3	duplicate(흙빛의 로얄가드#dk)	티아라 공주#dk	4_F_MAYSEL
+
+1@spa,1,1,1	script	#gp_control_2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_2");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk1");
+	disablenpc instance_npcname("티아라 공주#dk");
+	disablenpc instance_npcname("궁전 2층");
+
+	killmonster 'map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead1";
+	killmonster 'map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead2";
+	killmonster 'map_spa$, instance_npcname("#gp_control_1") + "::OnMyMobDead3";
+	disablenpc instance_npcname("#gp_control_1");
+	initnpctimer;
+	end;
+OnTimer2000:
+	.@label$ = instance_npcname("#gp_control_2") + "::OnMyMobDead1";
+	monster 'map_spa$,135,116,"깨진 약속",2950,1, .@label$;	// BROKEN_MIND
+	monster 'map_spa$,110,120,"깨진 약속",2950,1, .@label$;	// BROKEN_MIND
+	monster 'map_spa$,122,112,"떠오르는 슬픔",2951,1, .@label$;	// FLOATING_WORD
+	monster 'map_spa$,121,129,"이루어지지 않는 사랑",2952,1, .@label$;	// LIKE_LOVE
+	stopnpctimer;
+	end;
+OnMyMobDead1:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_2") + "::OnMyMobDead1") < 1) {
+		sleep 2000;
+		.@label$ = instance_npcname("#gp_control_2") + "::OnMyMobDead2";
+		monster 'map_spa$,120,103,"깨진 약속",2950,1, .@label$;	// BROKEN_MIND
+		monster 'map_spa$,115,137,"떠오르는 슬픔",2951,1, .@label$;	// FLOATING_WORD
+		monster 'map_spa$,103,130,"이루어지지 않는 사랑",2952,1, .@label$;	// LIKE_LOVE
+	}
+	end;
+OnMyMobDead2:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_2") + "::OnMyMobDead2") < 1) {
+		sleep 2000;
+		.@label$ = instance_npcname("#gp_control_2") + "::OnMyMobDead3";
+		monster 'map_spa$,98,119,"떠오르는 슬픔",2951,1, .@label$;	// FLOATING_WORD
+		monster 'map_spa$,98,120,"떠오르는 슬픔",2951,1, .@label$;	// FLOATING_WORD
+		monster 'map_spa$,103,109,"이루어지지 않는 사랑",2952,1, .@label$;	// LIKE_LOVE
+	}
+	end;
+OnMyMobDead3:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_2") + "::OnMyMobDead3") < 1) {
+		mapannounce 'map_spa$, "유령의 궁전 3층으로 가는 통로가 열렸습니다.", bc_map,0xFFFF00;
+		enablenpc instance_npcname("궁전 3층");
+		enablenpc instance_npcname("왕#dk1");
+		enablenpc instance_npcname("흙빛의 로얄가드#dk2");
+		enablenpc instance_npcname("수호 대장#dk");
+		enablenpc instance_npcname("병사#dk1");
+		enablenpc instance_npcname("병사#dk2");
+		enablenpc instance_npcname("병사#dk3");
+		disablenpc instance_npcname("#gp_control_2");
+	}
+	end;
+}
+
+// 3rd floor
+1@spa,32,54,1	script	왕#dk1	4_M_RUSKING,{
+	mes "[왕]";
+	mes "여기에 괴물을 끌고온 게 자네였구만! 나를 없애고 공주를 차지할 셈인가?";
+	npctalk "왕: 여기에 괴물을 끌고온 게 자네였구만! 나를 없애고 공주를 차지할 셈인가?";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "이것은 함정입니다, 폐하! 저를 믿어주십시오!";
+	npctalk "흙빛의 로얄가드: 이것은 함정입니다, 폐하! 저를 믿어주십시오!", instance_npcname("흙빛의 로얄가드#dk2");
+	next;
+	mes "[왕]";
+	mes "닥쳐라! 니놈은 나를 배신했다! 너를 믿었는데... 니놈은 대가를 치뤄야해.";
+	npctalk "왕: 닥쳐라! 니놈은 나를 배신했다! 너를 믿었는데... 니놈은 대가를 치뤄야해.";
+	next;
+	mes "[왕]";
+	mes "너는 평생동안 고통을 겪을 것이야.";
+	npctalk "왕: 너는 평생동안 고통을 겪을 것이야.";
+	close2;
+	disablenpc instance_npcname("궁전 3층");
+	disablenpc instance_npcname("왕#dk1");
+	disablenpc instance_npcname("수호 대장#dk");
+	disablenpc instance_npcname("병사#dk1");
+	disablenpc instance_npcname("병사#dk2");
+	disablenpc instance_npcname("병사#dk3");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk2");
+	donpcevent instance_npcname("타나토스 마법 추적자#dk1") + "::OnStart";
+	end;
+}
+
+1@spa,35,56,5	script	타나토스 마법 추적자#dk1	4_TRACE,{
+	end;
+OnStart:
+	enablenpc instance_npcname("타나토스 마법 추적자#dk1");
+	enablenpc instance_npcname("흙빛의 로얄가드#dk3");
+	initnpctimer;
+	end;
+OnTimer5000:
+	npctalk "불길한 목소리: 오, 충실한 로얄가드, 당신은 갇혔습니다..";
+	end;
+OnTimer8000:
+	npctalk "불길한 목소리: 궁전의 음모로 공주님이 중대한 위험에 빠졌습니다...";
+	end;
+OnTimer12000:
+	npctalk "흙빛의 로얄가드: 누구야? 모습을 보여!", instance_npcname("흙빛의 로얄가드#dk3");
+	end;
+OnTimer15000:
+	npctalk "불길한 목소리: 아... 제 목소리가 들리나요?";
+	end;
+OnTimer20000:
+	npctalk "흙빛의 로얄가드: ...?", instance_npcname("흙빛의 로얄가드#dk3");
+	end;
+OnTimer23000:
+	npctalk "불길한 목소리: 저는 당신에게 무한한 힘을 줄 수가 있어요. 저와 계약을 한다면.";
+	end;
+OnTimer28000:
+	npctalk "흙빛의 로얄가드: 나..나는...", instance_npcname("흙빛의 로얄가드#dk3");
+	end;
+OnTimer33000:
+	npctalk "타나토스 마법 추적자: 크크크... 너는 어떤 아이를 원하지?";
+	end;
+OnTimer34000:
+	stopnpctimer;
+	disablenpc instance_npcname("타나토스 마법 추적자#dk1");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk3");
+	donpcevent instance_npcname("#gp_control_3") + "::OnStart";
+	end;
+}
+
+1@spa,28,52,7	duplicate(흙빛의 로얄가드#dk)	수호 대장#dk	4_M_KY_KNT
+1@spa,25,53,7	duplicate(흙빛의 로얄가드#dk)	병사#dk1	4_M_CRU_SOLD
+1@spa,34,53,1	duplicate(흙빛의 로얄가드#dk)	병사#dk2	4_M_CRU_SOLD
+1@spa,30,52,7	duplicate(흙빛의 로얄가드#dk)	병사#dk3	4_M_KY_SOLD
+1@spa,30,58,5	duplicate(흙빛의 로얄가드#dk)	흙빛의 로얄가드#dk2	4_M_SAKRAY_TIED
+1@spa,31,57,5	duplicate(흙빛의 로얄가드#dk)	흙빛의 로얄가드#dk3	4_M_SAKRAY_TIED
+
+1@spa,1,1,1	script	#gp_control_3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_3");
+	initnpctimer;
+	end;
+OnTimer2000:
+	.@label$ = instance_npcname("#gp_control_3") + "::OnMyMobDead1";
+	monster 'map_spa$,31,57, "후회스러운 기억",2953,1, .@label$; 	// CURSED_MEMORY
+	monster 'map_spa$,59,24, "후회스러운 기억",2953,1, .@label$; 	// CURSED_MEMORY
+	monster 'map_spa$,23,40, "낭비된 우정",2955,1, .@label$; 	// OLD_FRIENDSHIP
+	monster 'map_spa$,54,45, "잊혀진 약속",2954,1, .@label$; 	// COLORLESS_VOW
+	monster 'map_spa$,26,20, "잊혀진 약속",2954,1, .@label$; 	// COLORLESS_VOW
+	stopnpctimer;
+	end;
+OnMyMobDead1:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_3") + "::OnMyMobDead1") < 1)
+		addtimer 2000, instance_npcname("#gp_control_3") + "::OnSpawn1";
+	end;
+OnSpawn1:
+	.@label$ = instance_npcname("#gp_control_3") + "::OnMyMobDead2";
+	monster 'map_spa$,30,52, "잊혀진 약속",2954,1, .@label$; 	// COLORLESS_VOW
+	monster 'map_spa$,58,58, "낭비된 우정",2955,1, .@label$; 	// OLD_FRIENDSHIP
+	monster 'map_spa$,54,24, "후회스러운 기억",2953,1, .@label$; 	// CURSED_MEMORY
+	end;
+OnMyMobDead2:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_3") + "::OnMyMobDead2") < (1 + 'bool_double_spawn)) {
+		deltimer instance_npcname("#gp_control_3") + "::OnAnnounce";
+		addtimer 500, instance_npcname("#gp_control_3") + "::OnAnnounce";
+	}
+	end;
+OnAnnounce:
+	mapannounce 'map_spa$, "유령의 궁전 4층으로 가는 통로가 열렸습니다.", bc_map,0xFFFF00;
+	enablenpc instance_npcname("궁전 4층");
+	deltimer instance_npcname("#gp_control_3") + "::OnSpawn2";	// stop double spawn if timer is running
+	addtimer 2000, instance_npcname("#gp_control_3") + "::OnSpawn2";
+	end;
+OnSpawn2:
+	donpcevent instance_npcname("#gp_control_4") + "::OnStart";
+	// 35 mobs
+	.@label$ = instance_npcname("#gp_control_3") + "::OnMyMobDead3";
+	monster 'map_spa$,67,46, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,62,48, "잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,57,46, "낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,51,48, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "충실한 로얄가드...";
+	monster 'map_spa$,56,55, "잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,62,56, "낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,66,58, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 공주님을 중대한 위험에 빠뜨렸습니다...";
+	monster 'map_spa$,66,64, "잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "충실한 로얄가드...";
+	monster 'map_spa$,62,65, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,57,67, "잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,49,66, "낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,44,66, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,45,20, "잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,38,20, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,32,20, "낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,51,22, "낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,26,34,"낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,21,37,"잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "충실한 로얄가드...";
+	monster 'map_spa$,18,39,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,21,45,"낭비된 우정",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,23,49,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,25,54,"잊혀진 약속",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,29,54,"잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "당신은 공주님을 중대한 위험에 빠뜨렸습니다...";
+	monster 'map_spa$,56,39,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,61,36,"잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "충실한 로얄가드...";
+	monster 'map_spa$,66,38,"낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "빨리 도망쳐!";
+	monster 'map_spa$,42,54,"낭비된 우정",2955,1, .@label$;	// OLD_FRIENDSHIP
+	unittalk $@mobid[0], "도망쳐!";
+	monster 'map_spa$,35,54,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,43,60,"잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "충실한 로얄가드...";
+	monster 'map_spa$,30,25,"잊혀진 약속",2954,1, .@label$;		// COLORLESS_VOW
+	unittalk $@mobid[0], "당신은 공주님을 중대한 위험에 빠뜨렸습니다...";
+	monster 'map_spa$,30,31,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	unittalk $@mobid[0], "당신은 갇혔습니다...";
+	monster 'map_spa$,65,64, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	monster 'map_spa$,65,67, "후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	monster 'map_spa$,18,43,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	monster 'map_spa$,21,43,"후회스러운 기억",2953,1, .@label$;	// CURSED_MEMORY
+	end;
+OnMyMobDead3:
+	end;
+}
+
+// 4th floor
+1@spa,1,1,1	script	#gp_control_4	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_4");
+	.@label$ = instance_npcname("#gp_control_4") + "::OnMyMobDead1";
+	monster 'map_spa$,215,194, "달콤한 학살",2956,1, .@label$;		// SWEET_SLAUGHTER
+	monster 'map_spa$,194,178, "달콤한 학살",2956,1, .@label$;		// SWEET_SLAUGHTER
+	monster 'map_spa$,191,211, "달콤한 학살",2956,1, .@label$;		// SWEET_SLAUGHTER
+	monster 'map_spa$,185,203, "저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	monster 'map_spa$,209,218, "저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	end;
+OnMyMobDead1:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_4") + "::OnMyMobDead1") < (1 + 'bool_double_spawn)) {
+		deltimer instance_npcname("#gp_control_4") + "::OnSpawn1";
+		addtimer 2000, instance_npcname("#gp_control_4") + "::OnSpawn1";
+	}
+	end;
+OnSpawn1:
+	.@label$ = instance_npcname("#gp_control_4") + "::OnMyMobDead2";
+	monster 'map_spa$,189,192, "저주받은 문지기",2949,1, .@label$;	// CURSED_SENTINEL
+	monster 'map_spa$,211,209, "달콤한 학살",2956,1, .@label$;		// SWEET_SLAUGHTER
+	end;
+OnMyMobDead2:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_4") + "::OnMyMobDead2") < 1) {
+		enablenpc instance_npcname("타나토스 마법 추적자#dk2");
+		enablenpc instance_npcname("방문한 왕자#dk");
+		enablenpc instance_npcname("흙빛의 로얄가드#dk4");
+		enablenpc instance_npcname("왕의 시체#dk");
+		enablenpc instance_npcname("대장의 시체#dk");
+		enablenpc instance_npcname("병사의 시체#dk");
+		enablenpc instance_npcname("병사의 시체#dk1");
+		enablenpc instance_npcname("병사의 시체#dk2");
+		enablenpc instance_npcname("병사의 시체#dk3");
+		enablenpc instance_npcname("병사의 시체#dk4");
+	}
+	end;
+}
+
+1@spa,199,214,1	script	흙빛의 로얄가드#dk4	4_M_SAKRAYROYAL,{
+	.@prince$ = instance_npcname("방문한 왕자#dk");
+	mes "[흙빛의 로얄가드]";
+	mes "티아라 공주는 어디있지?";
+	npctalk "흙빛의 로얄가드: 티아라 공주는 어디있지?";
+	next;
+	mes "[방문한 왕자]";
+	mes "너무 늦었어요... 하지만 당신이 찾는 걸 제가 가져왔어요. 도와줘서 고맙습니다.";
+	npctalk "방문한 왕자: 너무 늦었어요... 하지만 당신이 찾는 걸 제가 가져왔어요. 도와줘서 고맙습니다.", .@prince$;
+	next;
+	mes "[방문한 왕자]";
+	mes "저주받은 타나토스 마법 추적자! 새로운 주인을 가질 준비가 됐나?";
+	npctalk "방문한 왕자: 저주받은 타나토스 마법 추적자! 새로운 주인을 가질 준비가 됐나?", .@prince$;
+	next;
+	cutin "tartanos.bmp",3;
+	mes "[타나토스 마법 추적자]";
+	mes "어떻게 감히!";
+	npctalk "타나토스 마법 추적자: 어떻게 감히!", instance_npcname("타나토스 마법 추적자#dk2");
+	next;
+	mes "[방문한 왕자]";
+	mes "아, 아 !!!";
+	npctalk "방문한 왕자: 아, 아!!!", .@prince$;
+	donpcevent instance_npcname("#gp_control_5") + "::OnStart";
+	close2;
+	cutin "",255;
+	end;
+}
+1@spa,201,214,1	duplicate(흙빛의 로얄가드#dk)	타나토스 마법 추적자#dk2	CLEAR_NPC
+1@spa,197,218,5	duplicate(흙빛의 로얄가드#dk)	방문한 왕자#dk	4_M_KNIGHT_SILVER
+1@spa,194,214,5	duplicate(흙빛의 로얄가드#dk)	왕의 시체#dk	4_M_TRISTAN
+1@spa,211,194,3	duplicate(흙빛의 로얄가드#dk)	대장의 시체#dk	4_M_LIEMAN
+1@spa,201,198,1	duplicate(흙빛의 로얄가드#dk)	병사의 시체#dk	4_M_DIEMAN
+1@spa,197,190,1	duplicate(흙빛의 로얄가드#dk)	병사의 시체#dk1	4_M_DIEMAN
+1@spa,191,207,7	duplicate(흙빛의 로얄가드#dk)	병사의 시체#dk2	4_M_DIEMAN
+1@spa,206,209,7	duplicate(흙빛의 로얄가드#dk)	병사의 시체#dk3	4_M_DIEMAN
+1@spa,189,195,1	duplicate(흙빛의 로얄가드#dk)	병사의 시체#dk4	4_M_DIEMAN
+
+1@spa,1,1,1	script	#gp_control_5	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_5");
+	disablenpc instance_npcname("타나토스 마법 추적자#dk2");
+	disablenpc instance_npcname("방문한 왕자#dk");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk4");
+	disablenpc instance_npcname("왕의 시체#dk");
+	disablenpc instance_npcname("대장의 시체#dk");
+	disablenpc instance_npcname("병사의 시체#dk");
+	disablenpc instance_npcname("병사의 시체#dk1");
+	disablenpc instance_npcname("병사의 시체#dk2");
+	disablenpc instance_npcname("병사의 시체#dk3");
+	disablenpc instance_npcname("병사의 시체#dk4");
+	sleep 1000;
+	.@label$ = instance_npcname("#gp_control_5") + "::OnMyMobDead";
+	monster 'map_spa$,198,218, "고문당한 사람",2959,1, .@label$;	// TORTUROUS_REDEEMER
+	monster 'map_spa$,198,182, "달콤한 학살",2956,1, .@label$;		// SWEET_SLAUGHTER
+	end;
+OnMyMobDead:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_5") + "::OnMyMobDead") < 1) {
+		deltimer instance_npcname("#gp_control_4") + "::OnSpawn1";	// stop double spawn if timer is running
+		mapannounce 'map_spa$, "유령의 궁전 5층으로 가는 통로가 열렸습니다.", bc_map,0xFFFF00;
+		disablenpc instance_npcname("궁전 4층");
+		enablenpc instance_npcname("궁전 5층");
+		enablenpc instance_npcname("티아라 공주#dk1");
+		enablenpc instance_npcname("흙빛의 로얄가드#dk5");
+
+		killmonster 'map_spa$, instance_npcname("#gp_control_3") + "::OnMyMobDead2";
+		killmonster 'map_spa$, instance_npcname("#gp_control_3") + "::OnMyMobDead3";
+		disablenpc instance_npcname("#gp_control_3");
+	}
+	end;
+}
+
+// 5th floor
+1@spa,216,43,3	script	티아라 공주#dk1	4_F_MAYSEL,{
+	.@guard$ = instance_npcname("흙빛의 로얄가드#dk5");
+	mes "[티아라 공주]";
+	mes "당신은 약속을 지켰어요.";
+	npctalk "티아라 공주: 당신은 약속을 지켰어요.";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "공주님!";
+	npctalk "흙빛의 로얄가드: 공주님!", .@guard$;
+	next;
+	cutin "npc-tiara.bmp",3;
+	mes "[티아라 공주]";
+	mes "고마워요... 이제 쉴 수 있겠어요...";
+	npctalk "티아라 공주: 고마워요... 이제 쉴 수 있겠어요...";
+	next;
+	mes "[흙빛의 로얄가드]";
+	mes "안돼..안돼!!!!!";
+	npctalk "흙빛의 로얄가드: 안돼..안돼!!!!!", .@guard$;
+	next;
+	mes "[티아라 공주의 목소리]";
+	mes "당신이 영원히 평화로웠으면 좋겠어요...영원히...";
+	npctalk "티아라 공주: 당신이 영원히 평화로웠으면 좋겠어요...영원히...";
+	next;
+	cutin "b-tiara.BMP",3;
+	mes "[흙빛의 로얄가드]";
+	mes "안돼.....아 아 아!!!!~!";
+	npctalk "흙빛의 로얄가드: 안돼.....아 아 아!!!!~!", .@guard$;
+	next;
+	mes "[티아라 공주의 목소리]";
+	mes "사랑해요...";
+	npctalk "티아라 공주: 사랑해요...";
+	cutin "",255;
+	close2;
+	donpcevent instance_npcname("#gp_control_6") + "::OnStart";
+	end;
+}
+
+1@spa,213,42,7	duplicate(흙빛의 로얄가드#dk)	흙빛의 로얄가드#dk5	4_M_SAKRAYROYAL
+
+1@spa,1,1,1	script	#gp_control_6	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#gp_control_6");
+	disablenpc instance_npcname("티아라 공주#dk1");
+	disablenpc instance_npcname("흙빛의 로얄가드#dk5");
+
+	killmonster 'map_spa$, instance_npcname("#gp_control_4") + "::OnMyMobDead1";
+	killmonster 'map_spa$, instance_npcname("#gp_control_4") + "::OnMyMobDead2";
+	killmonster 'map_spa$, instance_npcname("#gp_control_5") + "::OnMyMobDead";
+	disablenpc instance_npcname("#gp_control_4");
+	disablenpc instance_npcname("#gp_control_5");
+	disablenpc instance_npcname("궁전 5층");
+	sleep 2000;
+	.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead1";
+	monster 'map_spa$,217,52, "잊혀진 이름" ,2957,1, .@label$;	// FORGOTTEN_NAME
+	unittalk $@mobid[0], "일어나! 우리 좀 봐... 우리가 괴물이야?";
+	monster 'map_spa$,190,21, "잊혀진 약속" ,2954,1, .@label$;	// COLORLESS_VOW
+	unittalk $@mobid[0], "사크라이가 왕을 죽였고 우리도 죽이려고 했어!";
+	monster 'map_spa$,198,49, "잊혀진 약속" ,2954,1, .@label$;	// COLORLESS_VOW
+	unittalk $@mobid[0], "이게 뭐야..??";
+	monster 'map_spa$,212,28, "심각한 날" ,2958,1, .@label$;		// FATAL_DAYS
+	unittalk $@mobid[0], "사크라이가 공주를 죽였어!";
+	end;
+OnMyMobDead1:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead1") < 1) {
+		sleep 2000;
+		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead2";
+		monster 'map_spa$,217,43, "잊혀진 이름" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		unittalk $@mobid[0], "일어나! 우리 좀 봐... 우리가 괴물이야?";
+		monster 'map_spa$,193,24, "잊혀진 이름" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		unittalk $@mobid[0], "사크라이..?? 어째서.....사크라이!";
+		monster 'map_spa$,216,59, "잊혀진 약속" ,2954,1, .@label$;	// COLORLESS_VOW
+		unittalk $@mobid[0], "사크라이가 왕을 죽였고 우리도 죽이려고 했어!";
+		monster 'map_spa$,197,57, "심각한 날" ,2958,1, .@label$;		// FATAL_DAYS
+		unittalk $@mobid[0], "사크라이가 공주를 죽였어!";
+	}
+	end;
+OnMyMobDead2:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead2") < 1) {
+		sleep 2000;
+		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead3";
+		monster 'map_spa$,193,39, "잊혀진 이름" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		unittalk $@mobid[0], "일어나! 우리 좀 봐... 우리가 괴물이야?";
+		monster 'map_spa$,212,34, "잊혀진 이름" ,2957,1, .@label$;	// FORGOTTEN_NAME
+		unittalk $@mobid[0], "사크라이..?? 어째서.....사크라이!";
+		monster 'map_spa$,201,64, "잊혀진 약속" ,2954,1, .@label$;	// COLORLESS_VOW
+		unittalk $@mobid[0], "사크라이가 왕을 죽였고 우리도 죽이려고 했어!";
+		monster 'map_spa$,175,44, "심각한 날" ,2958,1, .@label$;		// FATAL_DAYS
+		unittalk $@mobid[0], "사크라이가 공주를 죽였어!";
+	}
+	end;
+OnMyMobDead3:
+	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead3") < 1) {
+		sleep 2000;
+		monster 'map_spa$,200,45, "고문당한 사람" ,2961,1, instance_npcname("#gp_control_6") + "::OnMyMobDead4";	// E_TORTUROUS_REDEEMER
+		unittalk $@mobid[0], "타나토스 마법 추적자! 너를 가질 수 없다면 내가 부셔버릴거야... 아 안돼! 어떻게 이럴 수 있지?";
+		sleep 5000;
+		killmonster 'map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead4";
+		enablenpc instance_npcname("사크라이#dk");
+		enablenpc instance_npcname("타나토스 마법 추적자#dk3");
+		disablenpc instance_npcname("#gp_control_6");
+	}
+	end;
+OnMyMobDead4:
+	end;
+}
+
+1@spa,196,44,5	script	사크라이#dk	4_M_SAKRAY,{
+	mes "[흙빛의 로얄가드]";
+	mes "넌 만족해..? 타나토스 마법 추적자?";
+	npctalk "흙빛의 로얄가드: 넌 만족해..? 타나토스 마법 추적자?";
+	next;
+	mes "[타나토스 마법 추적자]";
+	mes "더 많은 피가 필요해..사크라이, 그의 피를 줘";
+	npctalk "타나토스 마법 추적자: 더 많은 피가 필요해..사크라이, 그의 피를 줘.", instance_npcname("타나토스 마법 추적자#dk3");
+	next;
+	mes "[사크라이]";
+	mes "그래, 그게 좋겠어. 거기 여행자. 봤어?";
+	npctalk "사크라이: 그래, 그게 좋겠어. 거기 여행자. 봤어?";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "사크라이, 원하는게 뭐야? 아니면 함정인가?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 사크라이, 사크라이, 원하는게 뭐야? 아니면 함정인가?";
+	next;
+	mes "[사크라이]";
+	mes "아냐... 나는 약자를 잡으려고 노력하지 않아도 돼.";
+	npctalk "사크라이: 아냐... 나는 약자를 잡으려고 노력하지 않아도 돼.";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "그렇다면... 왜 그랬어...?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 그렇다면... 왜 그랬어...?";
+	next;
+	cutin "cry-b.bmp",2;
+	mes "[사크라이]";
+	mes "나는 너를 통해 내 안의 인간성을 없애고 싶었어.";
+	npctalk "사크라이: 나는 너를 통해 내 안의 인간성을 없애고 싶었어.";
+	next;
+	mes "[사크라이]";
+	mes "그리고 나는 결과가 상당히 만족스러워.";
+	npctalk "사크라이: 그리고 나는 결과가 상당히 만족스러워.";
+	next;
+	mes "[타나토스 마법 추적자]";
+	mes "사크라이, 당장 피를 내놔!";
+	npctalk "타나토스 마법 추적자: 사크라이, 당장 피를 내놔!", instance_npcname("타나토스 마법 추적자#dk3");
+	next;
+	mes "[사크라이]";
+	mes "너가 나라면, 어쩔거야?";
+	npctalk "사크라이: 너가 나라면, 어쩔거야?";
+	next;
+	mes "[사크라이]";
+	mes "이 저주로부터 자유로울 수 있어?";
+	npctalk "사크라이: 이 저주로부터 자유로울 수 있어?";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "...";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : ...";
+	next;
+	mes "[사크라이]";
+	mes "허 허... 나는 너가 충분히 나이가 들 때까지 지켜볼거야.";
+	npctalk "사크라이: 허 허... 나는 너가 충분히 나이가 들 때까지 지켜볼거야.";
+	next;
+	mes "[사크라이]";
+	mes "타나토스를 위해 너를 사냥하는 날이 올거야.";
+	npctalk "사크라이: 타나토스를 위해 너를 사냥하는 날이 올거야.";
+	cutin "",255;
+	next;
+	mes "[사크라이]";
+	mes "그럼 안녕.";
+	npctalk "사크라이: 그럼 안녕.";
+	close2;
+	donpcevent instance_npcname("#tb") + "::OnStart";
+	end;
+}
+
+1@spa,196,46,1	script	#tb	CLEAR_NPC,{
+	end;
+OnStart:
+	disablenpc instance_npcname("사크라이#dk");
+	disablenpc instance_npcname("타나토스 마법 추적자#dk3");
+	enablenpc instance_npcname("#tb");
+	enablenpc instance_npcname("#sv");
+	enablenpc instance_npcname("#tv");
+	initnpctimer;
+	end;
+OnTimer3000:
+	npctalk "티아라 공주의 목소리 : 내가 당신을 위해 무엇을 할 수 있죠?";
+	end;
+OnTimer8000:
+	npctalk "사크라이의 목소리 : 나는 항상 당신의 곁에 있을겁니다. 부디 곁에 있어주세요.", instance_npcname("#sv");
+	end;
+OnTimer13000:
+	npctalk "타나토스 마법 추적자: 사크라이, 우리가 했던 피의 서약을 잊지 마라.", instance_npcname("#tv");
+	end;
+OnTimer17000:
+	npctalk "타나토스 마법 추적자: 나를 만족시키는 피를 찾을 때까지 너의 영혼은 내 것이지...", instance_npcname("#tv");
+	end;
+OnTimer22000:
+	npctalk "사크라이의 목소리 : 이제 같이 편히 쉬어요.", instance_npcname("#sv");
+	end;
+OnTimer25000:
+	npctalk "사크라이의 목소리 : 영원한 어둠 속에서...", instance_npcname("#sv");
+	end;
+OnTimer28500:
+	disablenpc instance_npcname("#tb");
+	disablenpc instance_npcname("#sv");
+	disablenpc instance_npcname("#tv");
+	mapannounce 'map_spa$, "유령의 궁전을 떠날 때입니다.", bc_map,0xFFFF00;
+	enablenpc instance_npcname("궁전 외곽");
+	enablenpc instance_npcname("왕#dk11");
+	end;
+}
+
+1@spa,195,41,1	duplicate(흙빛의 로얄가드#dk)	타나토스 마법 추적자#dk3	CLEAR_NPC
+1@spa,198,43,1	duplicate(흙빛의 로얄가드#dk)	#sv	CLEAR_NPC
+1@spa,196,41,1	duplicate(흙빛의 로얄가드#dk)	#tv	CLEAR_NPC
+
+1@spa,204,29,1	script	왕#dk11	4_M_RUSKING,{
+	disable_items;
+	mes "[왕]";
+	mes "이봐, 자네 살아있나?";
+	mes "아직 살아있는 사람이 남아있을 줄 몰랐어.";
+	next;
+	mes "[왕]";
+	mes "혹시 ^006400흙빛의 조각^000000를 가지고 있나? 있다면 나한테 줄 수 있나?";
+	mes "충실한 로얄가드의 기억과 그가 사랑하는 모든 이들의 기억이 이 조각 안에 담겨있지.";
+	next;
+	mes "[왕]";
+	mes "^006400흙빛의 조각^000000를 줄 수 있나?";
+	mes "죄책감이 내 영혼을 삼키고 있어.";
+	mes "내 영혼은 유령의 궁전 안에 갇혀있어.";
+	next;
+	mes "[왕]";
+	mes "나는 이 조각으로부터 사크라이의 기억들을 모으고 있지.";
+	next;
+	mes "[왕]";
+	mes "^006400흙빛의 조각^000000을 내게 준다면, 너에게 장비를 만들어주겠네.";
+	next;
+	mes "[왕]";
+	mes "저주받은 기사여...";
+	mes "사크라이의 영혼을 구할 수 있게 도와주게나.";
+	next;
+	setarray .@item_name$[0],
+		"타노스의 검", "타노스의 대검", "타노스의 창", "타노스의 양손창", "타노스의 지팡이",
+		"타노스의 양손지팡이", "타노스의 활", "타노스의 단검", "타노스의 카타르", "타노스의 너클",
+		"타노스의 망치", "타노스의 도끼", "타노스의 바이올린", "타노스의 윕소드",
+		"흙빛의 방패", "흙빛의 갑옷", "흙빛의 로브", "흙빛의 망토", "흙빛의 신발", "흙빛의 투구","흙빛 연마제 (물리)","흙빛 연마제 (마법)","흙빛 연마제 (원거리)";
+	setarray .@items_list[0],13441,21009,1438,1496,1669,2023,18119,13093,28000,1836,16028,28100,1933,1988,2187,15090,15091,20721,22033,18820,23676,23677,23678;
+
+	for ( .@i = 0; .@i < 23; .@i++ )
+		.@menu$ += .@item_name$[.@i] + ":";
+	.@menu$ += "Cancel";
+
+	while(true) {
+		.@s = select(.@menu$) - 1;
+		if (.@s == 23) {
+			mes "[왕]";
+			mes "언젠가, 사크라이는 저주에서 벗어날거야. 나는 흙빛의 조각이 그를 살려줄 유일한 방법이라고 믿네.";
+			close;
+		}
+		.@cost = ( .@s > 13 ? 100 : 200 );
+		.@cost = ( .@s > 19 ? 50 : .@cost );
+		mes "[왕]";
+		mes "^FF0000" + .@item_name$[.@s] + "^000000를 만들려면";
+		mes "" + .@cost + "개의 ^006400흙빛의 조각^000000이 필요하네.";
+		next;
+		if (select( "취소", "흙빛의 조각 " + .@cost + "개를 준다. " ) == 1) {
+			mes "[왕]";
+			mes "언젠가, 사크라이는 저주에서 벗어날거야.";
+			next;
+			continue;
+		}
+		if (countitem(6672) < .@cost) {
+			mes "[왕]";
+			mes "너는 ^006400Gray Shard^000000이 충분하지 않아.";
+			mes "^FF0000" + .@item_name$[.@s] + "^000000를 만들기 위해선.";
+			mes "" + .@cost + "개의 ^006400흙빛의 조각^000000이 필요해.";
+			next;
+			continue;
+		}
+		mes "[왕]";
+		mes "^FF0000" + .@item_name$[.@s] + "^000000를 만들기 위해선.";
+		mes "" + .@cost + "개의 ^006400흙빛의 조각^000000이 필요해.";
+		next;
+		mes "[왕]";
+		mes "좋아, 끝났네.";
+		mes "^FF0000" + .@item_name$[.@s] + "^000000를 받게나.";
+		next;
+		mes "[왕]";
+		mes "힘은 희생을 필요로하지.";
+		mes "조심하게나...";
+		delitem 6672,.@cost;// Gray Shard
+		getitem .@items_list[.@s],1;
+		close;
+	}
+}
+
+1@spa,210,28,0	script	궁전 외곽	WARPNPC,2,2,{
+	end;
+OnTouch_:
+	mes "유령의 궁전을 떠날 때입니다..";
+	mes "모든 것이 완료되었으며, 사라질 것입니다.";
+	close2;
+	if (isbegin_quest(1263) == 2)
+		getitem 6672,1;// Gray Shard
+	else {
+		setquest 1263;// Cursed Swordman
+		completequest 1263;
+		getexp 900000,500000;
+		getitem 6672,2;// Gray Shard
+		set #CASHPOINTS, #CASHPOINTS+2000;
+	}
+	warp "dali02",46,129;
+	end;
+}
+
+1@spa,41,217,0	warp	궁전 2층	2,2,1@spa,114,120
+1@spa,117,137,0	warp	궁전 3층	2,2,1@spa,60,43
+1@spa,54,28,0	warp	궁전 4층	2,2,1@spa,218,186
+1@spa,178,186,0	warp	궁전 5층	2,2,1@spa,186,57

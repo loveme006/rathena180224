@@ -1,0 +1,62 @@
+// Guild Castles Database
+//
+// Structure of Database:
+// CastleID,MapName,CastleName,OnGuildBreakEventName,Flag
+//
+// 01. CastleID                 Unique ID of the castle. Must remain unique across all map-servers.
+// 02. MapName                  Map name to be considered as the castle map.
+// 03. CastleName               Name of the castle (used by scripts and guardian name tags).
+// 04. OnGuildBreakEventName    NPC unique name to invoke ::OnGuildBreak on, when a occupied
+//                              castle is abandoned during guild break.
+
+// WOE FE castle
+0,aldeg_cas01,³ëÀÌ½´¹Ý½ºÅ¸ÀÎ,Agit#aldeg_cas01// kRO : Noisyubantian
+1,aldeg_cas02,È£Çî½´¹Ý°¡¿ì,Agit#aldeg_cas02// kRO : Hohensyubangawoo
+2,aldeg_cas03,´µ·»º£¸£Å©,Agit#aldeg_cas03// kRO : Nyirenverk
+3,aldeg_cas04,ºß¸£Ã÷ºÎ¸£Å©,Agit#aldeg_cas04// kRO : Byirtsburi
+4,aldeg_cas05,·ÎÅÙºÎ¸£Å©,Agit#aldeg_cas05// kRO : Rotenburk
+5,gefg_cas01,·¹ÇÁ¸®¿Â,Agit#gefg_cas01// kRO : Reprion
+6,gefg_cas02,¿çºê¸®°Å,Agit#gefg_cas02// kRO : Yolbriger
+7,gefg_cas03,ÀÌ½º³ÚÇÁ,Agit#gefg_cas03// kRO : Isinlife
+8,gefg_cas04,º£¸£°Ö,Agit#gefg_cas04// kRO : Berigel
+9,gefg_cas05,¸á¼¼½ºµ¥Ã÷,Agit#gefg_cas05// kRO : Melsedetsu
+10,payg_cas01,¸íÁ¤(Ù¥ïÍ),Agit#payg_cas01// kRO : Mingting
+11,payg_cas02,Ãµ´Ü(ô¸Ó¦),Agit#payg_cas02// kRO : Tiantan
+12,payg_cas03,ºÒ¿µ(ÝÖç¯),Agit#payg_cas03// kRO : Fuying
+13,payg_cas04,È«·ç(ûõ×§),Agit#payg_cas04// kRO : Honglou
+14,payg_cas05,Á×¸²Çö(ñÓ×ùúÖ),Agit#payg_cas05// kRO : Zhulinxian
+15,prtg_cas01,Å©¸²ÈúÆ®,Agit#prtg_cas01// kRO : Creamhilt
+16,prtg_cas02,½º¹ÝÈúÆ®,Agit#prtg_cas02// kRO : Sbanhealt
+17,prtg_cas03,¶óÁî¸®±×½º,Agit#prtg_cas03// kRO : Lazrigees
+18,prtg_cas04,½ºÄê±¼,Agit#prtg_cas04// kRO : Squagul
+19,prtg_cas05,±­µé,Agit#prtg_cas05// kRO : Guindull
+
+// WOE NGuild castle
+20,nguild_alde,´µ·»º£¸£Å©,Agit_N01
+21,nguild_gef,ÀÌ½º³ÚÇÁ,Agit_N02
+22,nguild_pay,ºÒ¿µ(ÝÖç¯),Agit_N03
+23,nguild_prt,¶óÁî¸®±×½º,Agit_N04
+
+// WOE SE castle
+24,schg_cas01,È÷¹Î,Manager#schg_cas01// kRO : Himinn
+25,schg_cas02,¾Èµé¶û±×,Manager#schg_cas02// kRO : Andlangr
+26,schg_cas03,ºñµåºí¶óÀÎ,Manager#schg_cas03// kRO : Viblainn
+27,schg_cas04,Èê·áµå,Manager#schg_cas04// kRO : Hljod
+28,schg_cas05,½ºÄ«Æ¼¸£´Ò,Manager#schg_cas05// kRO : Skidbladnir
+29,arug_cas01,¸¶¸£µ¹,Manager#arug_cas01// kRO : Mardol
+30,arug_cas02,½Ã¸£,Manager#arug_cas02// kRO : Cyr
+31,arug_cas03,È£¸¥,Manager#arug_cas03// kRO : Horn
+32,arug_cas04,°ÔÇÂ,Manager#arug_cas04// kRO : Gefn
+33,arug_cas05,¹Ù³ªµð½º,Manager#arug_cas05// kRO : Bandis
+
+// WOE TE castle
+34,te_aldecas1,Kafragarten 1,Manager_TE#Glaris
+35,te_aldecas2,Kafragarten 2,Manager_TE#Defolty
+36,te_aldecas3,Kafragarten 3,Manager_TE#Sorin
+37,te_aldecas4,Kafragarten 4,Manager_TE#Bennit
+38,te_aldecas5,Kafragarten 5,Manager_TE#W
+39,te_prtcas01,Gloria 1,Manager_TE#Gaebolg
+40,te_prtcas02,Gloria 2,Manager_TE#Richard
+41,te_prtcas03,Gloria 3,Manager_TE#Wigner
+42,te_prtcas04,Gloria 4,Manager_TE#Heine
+43,te_prtcas05,Gloria 5,Manager_TE#Nerious

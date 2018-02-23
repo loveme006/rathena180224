@@ -1,0 +1,31 @@
+// Class Change Summonable Monsters Database
+// List of monsters generated through Abracadabra's SA_CLASSCHANGE ability.
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_ClassChange,0,Baphomet,1039
+MOBG_ClassChange,1038,오시리스,Osiris
+MOBG_ClassChange,1039,바포메트,Baphomet
+MOBG_ClassChange,1046,도플갱어,Doppelganger
+MOBG_ClassChange,1059,미스트레스,Mistress
+MOBG_ClassChange,1086,황금 도둑벌레,Golden Thief Bug
+MOBG_ClassChange,1087,오크 히어로,Orc Hero
+MOBG_ClassChange,1112,드레이크,Drake
+MOBG_ClassChange,1115,에드가,Eddga
+MOBG_ClassChange,1147,마야,Maya
+MOBG_ClassChange,1150,월야화,Moonlight Flower
+MOBG_ClassChange,1157,파라오,Pharaoh
+MOBG_ClassChange,1159,프리오니,Phreeoni
+MOBG_ClassChange,1190,오크로드,Orc Lord
+MOBG_ClassChange,1251,폭풍의 기사,Stormy Knight
+MOBG_ClassChange,1252,하티,Garm
+MOBG_ClassChange,1272,다크 로드,Dark Lord
+MOBG_ClassChange,1312,터틀 제네럴,Turtle General
+MOBG_ClassChange,1373,죽은자의 주인,Lord of the Dead
+MOBG_ClassChange,1388,아크 엔젤링,Arc Angeling
+MOBG_ClassChange,1389,드라큘라,Dracula
+MOBG_ClassChange,1418,흑사왕,Evil Snake Lord
+MOBG_ClassChange,1492,원령무사,Samurai Specter
+MOBG_ClassChange,1511,아몬 라,Amon Ra
+MOBG_ClassChange,1583,타오군카,Tao Gunka

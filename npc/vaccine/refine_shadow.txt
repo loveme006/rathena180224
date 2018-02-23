@@ -1,0 +1,95 @@
+ve_in02,61,26,5	script	그림자제련	86,{
+if(getequiprefinerycnt(.@part) > 7)
+	.@per = (getequiprefinerycnt(.@part) - 7) * 5;
+//재련성공율
+.@su = 80 - .@per;
+//재련실패율
+.@do = 15;
+//재련파손율
+.@fa = 5;
+//안전제련
+.@safe = 7;
+//
+.@er = 7619;
+
+disable_items;
+mes "[특수장비 대장장이]";
+mes "특수장비는 제련방법이 특별하지.";
+mes "그러나! 내가 제련한다면...?";
+mes "그 특별함도 무색해지지!";
+mes "어떤가 제련할텐가?";
+next;
+	setarray .@indices[1], EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_R, EQI_SHADOW_ACC_L;
+	.@indlen = getarraysize(.@indices) - 1;
+	for(.@i = 1; .@i <= .@indlen; .@i++)
+		.@menu$ = .@menu$ + (getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[미착용]") +":";
+	.@choice = select(.@menu$);
+	.@part = .@indices[.@choice];
+	
+//setarray .@indices[1], EQI_COSTUME_GARMENT,EQI_SHADOW_WEAPON,EQI_SHADOW_ARMOR,EQI_SHADOW_SHIELD,EQI_SHADOW_SHOES,EQI_SHADOW_ACC_L,EQI_SHADOW_ACC_R;
+//set .@menu$,"";
+//for(set .@i,11; .@i<=21; set .@i,.@i+1) {
+//if(.@i == 15) { .@i++; }
+//if(getequipisequiped(.@i)) {
+//set .@menu$, .@menu$ + "-" + "[" + getequipname(.@i) + "]";
+//set .@equipped,1;
+//}
+//set .@menu$, .@menu$ + ":";
+//}
+//if (.@equipped == 0) {
+//mes "[특수장비 대장장이]";
+//mes "뭐하는 짓이지?";
+//close;
+//}
+//set .@part, select(.@menu$);
+
+mes "[특수장비 대장장이]";
+mes "선택은 "+ getequipname(.@part) +"인건가?";
+mes "제련에는 농축에르늄이 필요하고 7번까지는 성공이 확실하다네.";
+mes "제련하겠는가?";
+next;
+
+switch(select("네:아니오")) {
+case 1:
+if(getequipname(.@part) == "" || countitem(.@er) < 1) {
+mes "[특수장비 대장장이]";
+mes "제련할 아이템을 가져와!!";
+end;
+}
+
+.@rnd = rand(1,100);
+if(getequiprefinerycnt(.@part) <= .@safe) { delitem .@er, 1; Goto Suc; close; }
+if(.@rnd <= .@su) { delitem .@er, 1; Goto Suc; close; }
+if(.@rnd > .@su && .@rnd <= .@su + .@do) { delitem .@er, 1; Goto Dow; close; }
+if(.@rnd > .@su + .@do) { delitem .@er, 1; Goto Fai; close; }
+close;
+case 2:
+mes "[특수장비 대장장이]";
+mes "그런가...?";
+mes "용기가 없는 자는 꿈을 이룰 수 없다네.";
+close;
+}
+
+Suc:
+specialeffect 154;
+successrefitem(.@part);
+mes "[특수장비 대장장이]";
+mes "성공이로군.";
+mes "잘가게.";
+end;
+
+Dow:
+specialeffect 155;
+downrefitem(.@part);
+mes "[특수장비 대장장이]";
+mes "으음.....";
+mes "면목없군...";
+end;
+
+Fai:
+specialeffect 155;
+failedrefitem(.@part);
+mes "[특수장비 대장장이]";
+mes "이럴수가!!!";
+end;
+}

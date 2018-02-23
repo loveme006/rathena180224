@@ -1,0 +1,24 @@
+// Improvise Database
+// Database for skills that can be summoned trough Randomize Spell/Improvised Song (Minstrel/Wanderer Skill).
+//
+// Structure of Database:
+// SkillID,Rate
+//
+// - To remove entry by importing, put 0 on 'Rate'
+
+11,60000	//MG_NAPALMBEAT#네이팜 비트#
+12,40000	//MG_SAFETYWALL#세이프티 월#
+13,60000	//MG_SOULSTRIKE#소울 스트라이크#
+14,60000	//MG_COLDBOLT#콜드볼트#
+15,60000	//MG_FROSTDIVER#프로스트 다이버#
+17,60000	//MG_FIREBALL#화이어 볼#
+18,40000	//MG_FIREWALL#화이어 월#
+19,60000	//MG_FIREBOLT#화이어 볼트#
+20,60000	//MG_LIGHTNINGBOLT#라이트닝 볼트#
+21,40000	//MG_THUNDERSTORM#선더스톰#
+80,40000	//WZ_FIREPILLAR#화이어 필라#
+83,40000	//WZ_METEOR#메테오 스톰#
+84,60000	//WZ_JUPITEL#유피텔 선더#
+85,40000	//WZ_VERMILION#로드 오브 버밀리온#
+86,60000	//WZ_WATERBALL#워터볼#
+89,40000	//WZ_STORMGUST#스톰 가스트#

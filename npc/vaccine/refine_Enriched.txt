@@ -1,0 +1,196 @@
+// ===============================================
+// 농축재료 특수 제련 NPC by 들깨맛불곰
+// 제작일 2011/07/08
+// Ver 0.5
+// ===============================================
+// 1, 2레벨 무기는 제련이 안되게 설정
+// 장비를 고르고 그 다음에 농축/고농축 제련을 고릅니다.
+// 최대제련의 제한 기본값은 농축제련은 10, 고농축제련은 15입니다.
+// ===============================================
+// Ver 0.6
+// 농축/고농축 제련시 일정 확률로 제련도가 -1이 됩니다.
+// ===============================================
+
+// =======================================
+// 농축재료 특수 제련 NPC
+// =======================================
+ve_in02,61,15,4	script	하크러드	891,{
+
+	set .@minus_refine,25; // 역제련 확률(기본값 : 25%)
+	set .@break_refine,25; //깨질확률(기본값 : 25%)
+	
+	mes "[하크러드]";
+	mes "안녕하십니까.";
+	mes "저는 특수한 재료로 장비를";
+	mes "제련해드리는 하크러드라고 합니다.";
+	mes "3, 4레벨의 무기와 방어구만 제련이";
+	mes "가능합니다.";
+	next;
+	mes "[하크러드]";
+	mes "하지만 일정 확률로 제련시 제련률이";
+	mes "깎일 수 있습니다.";
+	next;
+	mes "[하크러드]";
+	mes "그럼 제련할 장비를 선택해주십시오.";
+	next;
+
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR,EQI_HAND_L,EQI_HAND_R,EQI_SHOES;
+	.@indlen = getarraysize(.@indices) - 1;
+	for(.@i = 1; .@i <= .@indlen; .@i++)
+		.@menu$ = .@menu$ + (getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[미착용]") +":";
+	.@choice = select(.@menu$);
+	.@part = .@indices[.@choice];
+
+	if(!getequipisequiped(.@part)) {
+		mes "[하크러드]";
+		mes "장비를 착용해주십시오.";
+		close;
+	}
+	if(!getequipisenableref(.@part)) {
+		mes "[하크러드]";
+		mes "이 장비는 제련이 불가능합니다.";
+		close;
+	}
+	set .@G_Refineitemid,getequipid(.@part); // 아이템ID 저장
+	set .@G_Refinerycnt, getequiprefinerycnt(.@part); // 아이템 제련 저장
+
+	mes "[하크러드]";
+	mes "2가지 제련이 가능합니다.";
+	mes "어느것을 선택하시겠습니까.";
+	next;
+	switch(select("농축제련:고농축제련")){
+
+	case 1:
+		switch(getequipweaponlv(.@part)){
+		case 0: 	// 방어구 제련
+			set .@price,200000;
+			set .@material,7619; // 농축 에르늄
+			set .@G_Safe,10;
+			break;
+		case 1: 	// 1레벨무기 제련
+			goto Not_Refine_01;
+			break;
+		case 2: 	// 2레벨무기 제련
+			goto Not_Refine_02;
+			break;
+		case 3: 	// 3레벨무기 제련
+			set .@price,250000;
+			set .@material,7620; // 농축 오리데오콘
+			set .@G_Safe,10;
+			break;
+		case 4: 	// 4레벨무기 제련
+			set .@price,250000;
+			set .@material,7620; // 농축 오리데오콘
+			set .@G_Safe,10;
+			break;
+		case 5: 	// 기타 제련?
+			set .@price,200000;
+			set .@material,7619; // 농축 에르늄
+			set .@G_Safe,10;
+			break;
+		}
+		break;
+	case 2:
+		switch(getequipweaponlv(.@part)){
+		case 0: 	// 방어구 제련
+			set .@price,2000000;
+			set .@material,6241; // 고농축 에르늄
+			set .@G_Safe,15;
+			break;
+		case 1: 	// 1레벨무기 제련
+			goto Not_Refine_01;
+			break;
+		case 2: 	// 2레벨무기 제련
+			goto Not_Refine_02;
+			break;
+		case 3: 	// 3레벨무기 제련
+			set .@price,250000;
+			set .@material,6240; // 고농축 오리데오콘
+			set .@G_Safe,15;
+			break;
+		case 4: 	// 4레벨무기 제련
+			set .@price,250000;
+			set .@material,6240; // 고농축 오리데오콘
+			set .@G_Safe,15;
+			break;
+		case 5: 	// 기타 제련?
+			set .@price,1000000;
+			set .@material,6241; // 고농축 에르늄
+			set .@G_Safe,15;
+			break;
+		}
+		break;
+	}
+
+	if(getequiprefinerycnt(.@part) >= 20) {
+		mes "[하크러드]";
+		mes "더이상 제련이 불가능합니다.";
+		close;
+	}
+
+	mes "[하크러드]";
+	mes "^ff9999"+getitemname(.@material)+"^000000과 수수료 " + .@price + "제니가 필요합니다.";
+	mes "계속 하시겠습니까.";
+	next;
+
+	if(select("예:아니오") == 2){
+		mes "[하크러드]";
+		mes "안녕히 가십시오.";
+		close;
+	}
+
+	if((countitem(.@material) < 1) || (Zeny < .@price)) goto Not_Material;
+	if(getequiprefinerycnt(.@part) != .@G_Refinerycnt || getequipid(.@part) != .@G_Refineitemid) { // 해킹으로 인한 아이템 변조시
+		mes "[하크러드]";
+		mes "아이템이 바뀌었습니다.";
+		//Emotion e_an;
+		close;
+	}
+	if (getequippercentrefinery(.@part) +.@G_Safe <=rand(100)){
+	if (.@minus_refine <= rand(100)){
+
+		set Zeny,Zeny-.@price;
+		delitem .@material,1;
+		specialeffect 155;
+		downrefitem(.@part);
+		end;
+		mes "[하크러드]";
+		mes "제련이 실패해서 제련도가 깎였습니다.";
+		close; 
+	}
+		failedrefitem .@part;
+		next;
+		mes "[하크러드]";
+		mes "제련이 실패해서 장비가 부숴졌습니다..";
+		close; 
+	} else {
+		delitem .@material, 1;
+		set Zeny,Zeny-.@price;
+		successrefitem .@part;
+		mes "[하크러드]";
+		mes "무사히 제련이 되었습니다.";
+		//emotion 21;
+		close;
+	}
+
+Not_Refine_01:
+	mes "[하크러드]";
+	mes "1레벨의 무기는";
+	mes "제련해드릴 수 없습니다.";
+	close;
+
+Not_Refine_02:
+	mes "[하크러드]";
+	mes "2레벨의 무기는";
+	mes "제련해드릴 수 없습니다.";
+	close;
+
+Not_Material:
+	mes "[하크러드]";
+	mes "제련에 필요한 재료가 부족합니다.";
+	close;
+
+OnInit:
+	waitingroom "농축 제련",0;
+	end;
+}

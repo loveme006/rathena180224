@@ -1,0 +1,25 @@
+// Ore Discovery Obtainable Items Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+
+IG_FindingOre,714,3// 엠펠리움
+IG_FindingOre,756,20// 오리데오콘 원석
+IG_FindingOre,757,20// 에르늄 원석
+IG_FindingOre,969,2// 황금
+IG_FindingOre,984,10// 오리데오콘
+IG_FindingOre,985,10// 에르늄
+IG_FindingOre,990,30// 레드 블러드
+IG_FindingOre,991,30// 크리스탈 블루
+IG_FindingOre,992,30// 윈드 오브 버듀어
+IG_FindingOre,993,30// 그린 라이브
+IG_FindingOre,994,15// 프레임 하트
+IG_FindingOre,995,15// 미스틱 프로즌
+IG_FindingOre,996,15// 러프 윈드
+IG_FindingOre,997,15// 그레이트 네이쳐
+IG_FindingOre,998,80// 철
+IG_FindingOre,999,50// 강철
+IG_FindingOre,1002,100// 철광석
+IG_FindingOre,1003,60// 석탄
+IG_FindingOre,1010,95// 프라콘
+IG_FindingOre,1011,55// 엠베르타콘

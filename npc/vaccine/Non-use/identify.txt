@@ -1,0 +1,23 @@
+prt_gld,149,122,5	script	아이템 감정사	757,{
+    getinventorylist;
+    for(.@i = 0; .@i < @inventorylist_count; .@i++)
+    {
+        if (@inventorylist_identify[.@i]) continue;
+        setarray .@card[0], @inventorylist_card1[.@i], @inventorylist_card2[.@i], @inventorylist_card3[.@i], @inventorylist_card4[.@i];
+        .@refine = @inventorylist_refine[.@i];
+        .@attribute = @inventorylist_attribute[.@i];
+        delitem2 @inventorylist_id[.@i],1,0,.@refine, .@attribute,.@card[0],.@card[1],.@card[2],.@card[3];
+        getitem2 @inventorylist_id[.@i],1,1,.@refine, .@attribute,.@card[0],.@card[1],.@card[2],.@card[3];
+        .@Total++;
+    }
+    if (!.@Total)
+    {
+        dispbottom "감정할 아이템이 없습니다.",0xFF0000;
+    }
+    else
+    {
+        specialeffect2 154;
+        dispbottom "감정이 완료되었습니다.",0x00FFFF;
+    }
+    end;
+}

@@ -1,0 +1,1435 @@
+// ==============================================================================
+// BattleGround System - Common NPCs
+// ==============================================================================
+
+// MapFlags
+// *********************************************************************
+
+bat_room	mapflag	nomemo
+bat_room	mapflag	nowarpto
+bat_room	mapflag	nobranch
+bat_room	mapflag	nopenalty
+bat_room	mapflag	noteleport
+bat_room	mapflag	nosave	SavePoint
+
+// BattleGround Warper - Entrance
+// *********************************************************************
+
+prt_gld,143,139,5	script	마롤 전장 모병관::BatRecruit	728,{
+	mes "[마롤 전장 모병관]";
+	mes "안녕하십니까 모험가시여.";
+	mes "저는 저 멀고 먼 마롤왕국 출신의";
+	mes "기사입니다.";
+	next;
+	mes "[마롤 전장 모병관]";
+	mes "두 명의 왕자가 왕위계승건으로";
+	mes "전투의 장을 벌이게 되어, 당신과 같은";
+	mes "경험 많은 모험가를 상대로 용병을";
+	mes "모집하고 있습니다.";
+	mes "한 번 당신의 그 힘을 우리 마롤에";
+	mes "빌려주시지 않겠습니까?";
+	next;
+	if( select("전장에 참여한다.:참여하지 않는다.") == 2 )
+	{
+		mes "[마롤 전장 모병관]";
+		mes "저는 항상 이 곳에서 대기하고";
+		mes "있으니, 관심이 생긴다면 다시 찾아와";
+		mes "주십시오.";
+		close;
+	}
+	mes "[마롤 전장 모병관]";
+	mes "전투와 용기의 신의 가호가 언제나";
+	mes "당신과 함께하기를.";
+	close2;
+	warp "bat_room",155,150;
+	end;
+
+//OnInit:
+//	waitingroom "전장", 0;
+//	end;
+}
+
+
+// BattleGround Warper - Exit
+// *********************************************************************
+
+bat_room,148,150,4	script	공간이동사#bat	124,{
+	mes "[공간이동사]";
+	mes "이곳을 벗어나고 싶으십니까? 저를";
+	mes "통해 당신이 머물렀던 곳으로 다시";
+	mes "돌아가실 수 있습니다.";
+	next;
+	if( select("마을로 돌아간다.:돌아가지 않는다.") == 2 )
+	{
+		mes "[공간이동사]";
+		mes "필요하실 땐 언제든지 저를";
+		mes "불러주세요.";
+		close;
+	}
+
+	set .@spoint$, getsavepoint(0);
+	set .@x, getsavepoint(1);
+	set .@y, getsavepoint(2);
+	mes "[공간이동사]";
+	mes "당신을 "+getsavepoint(0)+" 로 이동시켜 드리겠습니다.";
+	close2;
+	warp .@spoint$, .@x, .@y;
+	end;
+}
+
+// General Guillaume
+// *********************************************************************
+bat_room,160,159,3	script	장군 기욤 마롤로	420,{
+	cutin "bat_kiyom2",2;
+	mes "[기욤 마롤로]";
+	mes "혈기왕성한 모험가여, 우리들은 그대의";
+	mes "잠재된 능력을 필요로 하고 있다.";
+	next;
+	cutin "bat_kiyom1",2;
+	mes "[기욤 마롤로]";
+	mes "우리들의 고귀하신 폐하, 마르셀";
+	mes "마롤로 7세의 건강이 위독하시다.";
+	mes "폐하는 우리 9명의 왕자들 중 나와";
+	mes "크루아에게 왕위 계승의 뜻을";
+	mes "밝히셨지.";
+	next;
+	mes "[기욤 마롤로]";
+	mes "하지만 두 명의 왕이 있을 수는 없는";
+	mes "법! 폐하께서 지목하신 전장에서";
+	mes "승리를 거둔 자만이 이 나라의";
+	mes "통치권을 쥐게되는 것이다.";
+	next;
+	cutin "bat_kiyom1",2;
+	mes "[기욤 마롤로]";
+	mes "이것은 이미 우리들만의 싸움이";
+	mes "아니야. 이 전투의 결과에 따라 이";
+	mes "나라의 미래가 뒤흔들릴터.";
+	mes "장군의 명예를 걸고 마롤로를 외부의";
+	mes "위협으로부터 안전하게 지켜낼 수 잇는";
+	mes "사람은 나라는 걸 증명해 보이겠어.";
+	next;
+	cutin "bat_kiyom1",2;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+	{
+		mes "[기욤 마롤로]"; 
+		mes "나는 반드시 승리의 깃발을 거머쥘";
+		mes "것이다!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	cutin "bat_kiyom2",2;
+	mes "[기욤 마롤로]";
+	mes "정말 듬직한 사람이로군.";
+	mes "자네의 그 눈빛이 자네가 어떤";
+	mes "사람인지 나에게 이미 알려주었어.";
+	set Bat_Team,1;
+	next;
+	mes "[기욤 마롤로]";
+	mes "진심으로 자네를 환영한다!";
+	mes "이제 계단 위의 내 부하들에게 전투";
+	mes "지원을 하면 그들이 자네를 따듯하게";
+	mes "맞이해 줄게야.";
+	close2;
+	cutin "",255;
+	end;
+}
+
+// General Croix
+// *********************************************************************
+bat_room,160,140,3	script	크루아 마롤로	416,{
+	cutin "bat_crua1",2;
+	mes "[크루아 마롤로]";
+	mes "지혜로운 모험가시여, 우리에게 당신의";
+	mes "그 힘을 빌려주시지 않겠습니까?";
+	next;
+	cutin "bat_crua2",2;
+	mes "[크루아 마롤로]";
+	mes "마롤의 위대한 국왕 마르셀 마롤로";
+	mes "7세의 용태가 매우 좋지 않은";
+	mes "상황입니다.";
+	mes "폐하께선 제 3왕자 기욤 마롤로 장군과";
+	mes "저 중 한명에게 마롤의 미래를";
+	mes "맡기겠다 하셨습니다.";
+	next;
+	cutin "bat_crua2",2;
+	mes "[크루아 마롤로]";
+	mes "제 3왕자 기욤 마롤로는 마롤의";
+	mes "장군입니다.";
+	mes "강력한 군사력을 자랑하는 마롤의";
+	mes "장군이니만큼 그의 전투에 대한";
+	mes "지휘력과 무예 능력은 설명할 필요도";
+	mes "없죠.";
+	next;
+	cutin "bat_crua2",2;
+	mes "[크루아 마롤로]";
+	mes "그러나 마롤의 군사력에 의지하는";
+	mes "자들이 간과하고 있는게 있습니다.";
+	mes "과연 백성들도 그 군사력을";
+	mes "원하는가?";
+	mes "그 동안 마롤의 국민들은 수많은";
+	mes "전쟁에 상처 받아 왔습니다.";
+	mes "강한 칼날은 언젠가 부서지기";
+	mes "마련입니다.";
+	cutin "bat_crua2",2;
+	next;
+	mes "[크루아 마롤로]";
+	mes "저는 피를 흘리는 것이 싫지만 더 이상";
+	mes "많은 피를 흘리지 않기 위해";
+	mes "이번만큼은 절대 지지 않겠습니다.";
+	next;
+	cutin "bat_crua2",2;
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+	{
+		mes "[크루아 마롤로]";
+		mes "마롤을 위하여!";
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "[크루아 마롤로]";
+	mes "정말이지 든든한 분이시군요.";
+	mes "자! 아래로 내려가십시오. 당신과";
+	mes "전우애를 불태울 듬직한 전사들이";
+	mes "당신을 기다리고 있습니다.";
+	set Bat_Team,2;
+	close2;
+	cutin "",255;
+	end;
+}
+
+// Guillaume Knight - Tierra Valley
+// *********************************************************************
+bat_room,159,178,5	script	기욤 진영 기사#1	417,{
+	mes "[기욤 진영 기사]";
+	mes "티에라 협곡은 상하로 길게 늘어진";
+	mes "모습으로써, 각각 11시와 7시에 기욤과";
+	mes "크루아 진영의 식량창고가 자리잡고";
+	mes "있습니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "전투에 참가하는 자들은 각 진영의";
+	mes "배에서 출발하여 상대편 식량 창고로";
+	mes "빠르게 이동하여 파괴하는 것이 이번";
+	mes "전투의 목표입니다.";
+	next;
+	mes "[기욤 진영 기사]";	
+	mes "전장의 치료사는 60초마다 전투 불능에";
+	mes "빠진 자를 회복시켜 다시 전투에";
+	mes "임하게 하며, 중앙의 중립깃발을";
+	mes "점령한 진영은 추가 리젠 포인트를";
+	mes "얻어 상대 진영에 비해 유리한 위치에";
+	mes "서게 될 것입니다.";
+	next;
+	mes "각 진영의 식량창고는 짧고 좁은";
+	mes "협곡으로 서로 이어져 있으나, 상대";
+	mes "진영의 바리케이드로 출구가";
+	mes "봉쇄되어 있습니다.";
+	mes "여러분의 빠른 손놀림은";
+	mes "바리케이드를 무너뜨리는데 ";
+	mes "큰 도움을 줄 것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Tierra Officerer - Guillaume
+// *********************************************************************
+bat_room,156,178,5	script	티에라 협곡 모병관#1	418,{
+	mes "[티에라 협곡 모병관]";
+	if( Bat_Team == 2 )
+	{
+		mes "크루아 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+	
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "크루아 녀석들에게 용맹한 기욤 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[티에라 협곡 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Tierra_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "티에라 협곡 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Tierra_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",85,224;
+	end;
+}
+
+// Croix Knight - Tierra Valley
+// *********************************************************************
+bat_room,159,121,1	script	크루아 진영 기사#1	413,{
+	mes "[크루아 진영 기사]";
+	mes "티에라 협곡은 상하로 길게 늘어진";
+	mes "모습으로써, 각각 11시와 7시에 기욤과";
+	mes "크루아 진영의 식량창고가 자리잡고";
+	mes "있습니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "전투에 참가하는 자들은 각 진영의";
+	mes "배에서 출발하여 상대편 식량 창고로";
+	mes "빠르게 이동하여 파괴하는 것이 이번";
+	mes "전투의 목표입니다.";
+	next;
+	mes "[크루아 진영 기사]";	
+	mes "전장의 치료사는 60초마다 전투 불능에";
+	mes "빠진 자를 회복시켜 다시 전투에";
+	mes "임하게 하며, 중앙의 중립깃발을";
+	mes "점령한 진영은 추가 리젠 포인트를";
+	mes "얻어 상대 진영에 비해 유리한 위치에";
+	mes "서게 될 것입니다.";
+	next;
+	mes "각 진영의 식량창고는 짧고 좁은";
+	mes "협곡으로 서로 이어져 있으나, 상대";
+	mes "진영의 바리케이드로 출구가";
+	mes "봉쇄되어 있습니다.";
+	mes "여러분의 빠른 손놀림은";
+	mes "바리케이드를 무너뜨리는데 ";
+	mes "큰 도움을 줄 것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Tierra Officer - Croix
+// *********************************************************************
+bat_room,156,121,1	script	티에라 협곡 모병관#2	414,{
+	mes "[티에라 협곡 모병관]";
+	if( Bat_Team == 1 )
+	{
+		mes "기욤 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "기욤 녀석들에게 용맹한 크루아 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[티에라 협곡 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Tierra_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "티에라 협곡 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Tierra_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",85,208;
+	end;
+}
+
+// Guillaume Knight - Tierra
+// *********************************************************************
+bat_room,175,178,5	script	기욤 진영 기사#2	417,{
+	mes "[기욤 진영 기사]";
+	mes "티에라 협곡은 상하로 길게 늘어진";
+	mes "모습으로써, 각각 11시와 7시에 기욤과";
+	mes "크루아 진영의 식량창고가 자리잡고";
+	mes "있습니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "전투에 참가하는 자들은 각 진영의";
+	mes "배에서 출발하여 상대편 식량 창고로";
+	mes "빠르게 이동하여 파괴하는 것이 이번";
+	mes "전투의 목표입니다.";
+	next;
+	mes "[기욤 진영 기사]";	
+	mes "전장의 치료사는 60초마다 전투 불능에";
+	mes "빠진 자를 회복시켜 다시 전투에";
+	mes "임하게 하며, 중앙의 중립깃발을";
+	mes "점령한 진영은 추가 리젠 포인트를";
+	mes "얻어 상대 진영에 비해 유리한 위치에";
+	mes "서게 될 것입니다.";
+	next;
+	mes "각 진영의 식량창고는 짧고 좁은";
+	mes "협곡으로 서로 이어져 있으나, 상대";
+	mes "진영의 바리케이드로 출구가";
+	mes "봉쇄되어 있습니다.";
+	mes "여러분의 빠른 손놀림은";
+	mes "바리케이드를 무너뜨리는데 ";
+	mes "큰 도움을 줄 것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Tierra Officer - Guillaume
+// *********************************************************************
+bat_room,172,178,5	script	티에라 협곡 모병관#3	418,{
+	mes "[티에라 협곡 모병관]";
+	if( Bat_Team == 2 )
+	{
+		mes "크루아 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+	
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "크루아 녀석들에게 용맹한 기욤 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[티에라 협곡 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Tierra_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "티에라 협곡 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Tierra_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",85,94;
+	end;
+}
+
+// Croix Knight - Tierra
+// *********************************************************************
+bat_room,175,121,1	script	크루아 진영 기사#2	413,{
+	mes "[크루아 진영 기사]";
+	mes "티에라 협곡은 상하로 길게 늘어진";
+	mes "모습으로써, 각각 11시와 7시에 기욤과";
+	mes "크루아 진영의 식량창고가 자리잡고";
+	mes "있습니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "전투에 참가하는 자들은 각 진영의";
+	mes "배에서 출발하여 상대편 식량 창고로";
+	mes "빠르게 이동하여 파괴하는 것이 이번";
+	mes "전투의 목표입니다.";
+	next;
+	mes "[크루아 진영 기사]";	
+	mes "전장의 치료사는 60초마다 전투 불능에";
+	mes "빠진 자를 회복시켜 다시 전투에";
+	mes "임하게 하며, 중앙의 중립깃발을";
+	mes "점령한 진영은 추가 리젠 포인트를";
+	mes "얻어 상대 진영에 비해 유리한 위치에";
+	mes "서게 될 것입니다.";
+	next;
+	mes "각 진영의 식량창고는 짧고 좁은";
+	mes "협곡으로 서로 이어져 있으나, 상대";
+	mes "진영의 바리케이드로 출구가";
+	mes "봉쇄되어 있습니다.";
+	mes "여러분의 빠른 손놀림은";
+	mes "바리케이드를 무너뜨리는데 ";
+	mes "큰 도움을 줄 것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Tierra Officer - Croix
+// *********************************************************************
+bat_room,172,121,1	script	티에라 협곡 모병관#4	414,{
+	mes "[티에라 협곡 모병관]";
+	if( Bat_Team == 1 )
+	{
+		mes "기욤 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "기욤 녀석들에게 용맹한 크루아 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[티에라 협곡 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Tierra_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "티에라 협곡 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Tierra_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",85,77;
+	end;
+}
+
+// Guillaune Knight - Flavius
+// *********************************************************************
+bat_room,151,178,5	script	기욤 진영 기사#3	417,{
+	mes "[기욤 진영 기사]";
+	mes "플라비우스 전투는 상대편의 크리스탈을 파괴하여 빠르게 2점을 취득하는 자가 승리하는 전투입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "각 크리스탈은 특수한 바리케이드에";
+	mes "둘러싸여 있으며, 바리케이드는";
+	mes "일반 공격으로는 부술 수 없을 것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "눈에 보이지 않는 이 특수한";
+	mes "바리케이드를 제거하기 위해서는 각";
+	mes "진영을 수호하고 있는 가디언을 모두";
+	mes "파괴해야 합니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "크리스탈은 각종 스킬이 통하지 않기";
+	mes "때문에 여러분의 빠른 손놀림이";
+	mes "크리스탈을 파괴하는데 큰 도움을 줄";
+	mes "것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Flavius Officerer - Guillaume
+// *********************************************************************
+bat_room,148,178,5	script	플라비우스 모병관#1	418,{
+	mes "[플라비우스 모병관]";
+	if( Bat_Team == 2 )
+	{
+		mes "크루아 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "크루아 녀석들에게 용맹한 기욤 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[플라비우스 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Flavius_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "플라비우스 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Flavius_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",253,94;
+	end;
+}
+
+// Croix Knight - Flavius
+// *********************************************************************
+bat_room,151,121,1	script	크루아 진영 기사#3	413,{
+	mes "[크루아 진영 기사]";
+	mes "플라비우스 전투는 상대편의 크리스탈을 파괴하여 빠르게 2점을 취득하는 자가 승리하는 전투입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "각 크리스탈은 특수한 바리케이드에";
+	mes "둘러싸여 있으며, 바리케이드는";
+	mes "일반 공격으로는 부술 수 없을 것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "눈에 보이지 않는 이 특수한";
+	mes "바리케이드를 제거하기 위해서는 각";
+	mes "진영을 수호하고 있는 가디언을 모두";
+	mes "파괴해야 합니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "크리스탈은 각종 스킬이 통하지 않기";
+	mes "때문에 여러분의 빠른 손놀림이";
+	mes "크리스탈을 파괴하는데 큰 도움을 줄";
+	mes "것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Flavius Officerer - Croix
+// *********************************************************************
+bat_room,148,121,1	script	플라비우스 모병관#2	414,{
+	mes "[플라비우스 모병관]";
+	if( Bat_Team == 1 )
+	{
+		mes "기욤 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "기욤 녀석들에게 용맹한 크루아 군의";
+	mes "힘을 보여주자!";
+	next;
+	if(select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[플라비우스 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Flavius_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "플라비우스 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Flavius_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",253,77;
+	end;
+}
+
+// Guillaune Knight - Flavius
+// *********************************************************************
+bat_room,167,178,5	script	기욤 진영 기사#4	417,{
+	mes "[기욤 진영 기사]";
+	mes "플라비우스 전투는 상대편의 크리스탈을 파괴하여 빠르게 2점을 취득하는 자가 승리하는 전투입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "각 크리스탈은 특수한 바리케이드에";
+	mes "둘러싸여 있으며, 바리케이드는";
+	mes "일반 공격으로는 부술 수 없을 것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "눈에 보이지 않는 이 특수한";
+	mes "바리케이드를 제거하기 위해서는 각";
+	mes "진영을 수호하고 있는 가디언을 모두";
+	mes "파괴해야 합니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "크리스탈은 각종 스킬이 통하지 않기";
+	mes "때문에 여러분의 빠른 손놀림이";
+	mes "크리스탈을 파괴하는데 큰 도움을 줄";
+	mes "것입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Flavius Officerer - Guillaume
+// *********************************************************************
+bat_room,164,178,5	script	플라비우스 모병관#3	418,{
+	mes "[플라비우스 모병관]";
+	if( Bat_Team == 2 )
+	{
+		mes "크루아 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "크루아 녀석들에게 용맹한 기욤 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[플라비우스 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Flavius_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "플라비우스 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Flavius_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",57,94;
+	end;
+}
+
+// Croix Knight - Flavius
+// *********************************************************************
+bat_room,167,121,1	script	Croix Knight#4	413,{
+	mes "[크루아 진영 기사]";
+	mes "플라비우스 전투는 상대편의 크리스탈을 파괴하여 빠르게 2점을 취득하는 자가 승리하는 전투입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "각 크리스탈은 특수한 바리케이드에";
+	mes "둘러싸여 있으며, 바리케이드는";
+	mes "일반 공격으로는 부술 수 없을 것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "눈에 보이지 않는 이 특수한";
+	mes "바리케이드를 제거하기 위해서는 각";
+	mes "진영을 수호하고 있는 가디언을 모두";
+	mes "파괴해야 합니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "크리스탈은 각종 스킬이 통하지 않기";
+	mes "때문에 여러분의 빠른 손놀림이";
+	mes "크리스탈을 파괴하는데 큰 도움을 줄";
+	mes "것입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// Flavius Officerer - Croix
+// *********************************************************************
+bat_room,164,121,1	script	플라비우스 모병관#4	414,{
+	mes "[플라비우스 모병관]";
+	if( Bat_Team == 1 )
+	{
+		mes "기욤 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "기욤 녀석들에게 용맹한 크루아 군의";
+	mes "힘을 보여주자!";
+	next;
+	if(select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[플라비우스 모병관]";
+	if( BG_Delay_Tick >= gettimetick(2) )
+	{
+		mes "도망자 아닌가!!";
+		mes "전장에서 도망쳤기 때문에, 다시 입장하려면 ^0000FF" + callfunc("Time2Str",BG_Delay_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( Flavius_BG_Tick >= gettimetick(2) )
+	{
+		mes "지금 당장은 전투에 참여하실 수 없습니다.";
+		mes "플라비우스 전투에 다시 참가하시려면 ^0000FF" + callfunc("Time2Str",Flavius_BG_Tick) + "^000000 만큼 기다려야 합니다.";
+		close;
+	}
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "당신 같은 초보자를 전장으로 보낼 수는 없네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",57,77;
+	end;
+}
+
+
+// Guard Dummy
+// *********************************************************************
+
+bat_room,161,141,3	script	부관::bat_aid	415,{ end; }
+bat_room,161,139,3	duplicate(bat_aid)	부관::bat_aid2	415
+bat_room,161,160,3	duplicate(bat_aid)	부관::bat_aid3	419
+bat_room,161,158,3	duplicate(bat_aid)	부관::bat_aid4	419
+
+// Flags
+// *********************************************************************
+
+-	script	기욤 진영#bat	973,{ end; }
+-	script	크루아 진영#bat	974,{ end; }
+
+// Exit from Registration
+// *********************************************************************
+// Flavius bat_b02
+bat_room,57,81,0	warp	bat1	2,2,bat_room,154,149
+bat_room,57,90,0	warp	bat2	2,2,bat_room,154,149
+// Free BG
+bat_room,57,220,0	warp	bat3	2,2,bat_room,154,149
+bat_room,57,211,0	warp	bat4	2,2,bat_room,154,149
+// Tierra Valley bat_a02
+bat_room,85,81,0	warp	bat5	2,2,bat_room,154,149
+bat_room,85,90,0	warp	bat6	2,2,bat_room,154,149
+// Tierra Valley bat_a01
+bat_room,85,220,0	warp	bat7	2,2,bat_room,154,149
+bat_room,85,211,0	warp	bat8	2,2,bat_room,154,149
+// Free BG
+bat_room,113,81,0	warp	bat9	2,2,bat_room,154,149
+bat_room,113,90,0	warp	bat10	2,2,bat_room,154,149
+// Free BG
+bat_room,113,220,0	warp	bat11	2,2,bat_room,154,149
+bat_room,113,211,0	warp	bat12	2,2,bat_room,154,149
+// Free BG
+bat_room,141,81,0	warp	bat13	2,2,bat_room,154,149
+bat_room,141,90,0	warp	bat14	2,2,bat_room,154,149
+// Free BG
+bat_room,141,220,0	warp	bat15	2,2,bat_room,154,149
+bat_room,141,211,0	warp	bat16	2,2,bat_room,154,149
+// Free BG
+bat_room,169,81,0	warp	bat17	2,2,bat_room,154,149
+bat_room,169,90,0	warp	bat18	2,2,bat_room,154,149
+// Free BG
+bat_room,169,220,0	warp	bat19	2,2,bat_room,154,149
+bat_room,169,211,0	warp	bat20	2,2,bat_room,154,149
+// Free BG
+bat_room,197,81,0	warp	bat21	2,2,bat_room,154,149
+bat_room,197,90,0	warp	bat22	2,2,bat_room,154,149
+// KvM bat_c03
+bat_room,197,220,0	warp	bat23	2,2,bat_room,154,149
+bat_room,197,211,0	warp	bat24	2,2,bat_room,154,149
+// Free BG
+bat_room,225,81,0	warp	bat25	2,2,bat_room,154,149
+bat_room,225,90,0	warp	bat26	2,2,bat_room,154,149
+// KvM bat_c02
+bat_room,225,220,0	warp	bat27	2,2,bat_room,154,149
+bat_room,225,211,0	warp	bat28	2,2,bat_room,154,149
+// Flavius bat_b01
+bat_room,253,81,0	warp	bat29	2,2,bat_room,154,149
+bat_room,253,90,0	warp	bat30	2,2,bat_room,154,149
+// KvM bat_c01
+bat_room,253,220,0	warp	bat31	2,2,bat_room,154,149
+bat_room,253,211,0	warp	bat32	2,2,bat_room,154,149
+
+// Badges Exchange
+// *********************************************************************
+
+bat_room,160,151,3	script	에룬데크	109,{
+	mes "[에룬데크]";
+	mes "안녕하십니까, 강인한 전사여.";
+	mes "오늘은 무슨 일로 찾아오셨습니까?";
+	next;
+	switch( select("카탈로그를 본다","용맹 휘장 교환","특공 휘장 교환","전투 휘장 교환","음, 다음에 보죠.") )
+	{
+		case 1:
+			mes "[에룬데크]";
+			mes "많은 아이템이 있으니 둘러보고 신중히 결정하시기 바랍니다.";
+			mes "어떤 가이드를 보시겠습니까?";
+			switch(select("용맹/특공 휘장","전투 휘장"))
+			{
+			case 1:
+				close2;
+				readbook 11010,1;
+				end;
+			case 2:
+				close2;
+				readbook 11017,1;
+				end;
+			}
+		case 5:
+			mes "[에룬데크]";
+			mes "그러십시오.";
+			mes "다음에 만납시다.";
+			close;
+		case 2: // Bravery Badges
+			mes "[에룬데크]";
+			mes "티에라 협곡 전투에서 얻은 ^0000FF용맹 휘장^000000 을 교환하시겠습니까?";
+			mes "어떤 종류의 아이템으로 교환하시겠습니까?";
+			next;
+			deletearray .@Item_DB[0],127;
+			set .@Badge, 7828;
+
+			switch( select("무기:걸칠것:신발:방어구:악세사리") )
+			{
+				case 1: setarray .@Item_DB[0],13036,13411,1425,1632,1634,1543,1924,1978,1574,1824,1183,1380,13305,1279,1739,13108,13172; set .@Value, 100; break;
+				case 2: setarray .@Item_DB[0],2538,2539,2540; set .@Value, 50; break;
+				case 3: setarray .@Item_DB[0],2435,2436,2437; set .@Value, 50; break;
+				case 4: setarray .@Item_DB[0],2376,2377,2378,2379,2380,2381,2382; set .@Value, 80; break;
+				case 5: setarray .@Item_DB[0],2720,2721,2722,2723,2724,2725,2733; set .@Value, 500; break;
+			}
+			
+			break;
+		case 3: // Valor Badges
+			mes "[에룬데크]";
+			mes "플라비우스 전투에서 얻은 ^FF0000특공 휘장^000000 을 교환하시겠습니까?.";
+			mes "어떤 종류의 아이템으로 교환하시겠습니까?";
+			next;
+			deletearray .@Item_DB[0],127;
+			set .@Badge, 7829;
+
+			switch( select("무기:걸칠것:신발:방어구:악세사리") )
+			{
+				case 1: setarray .@Item_DB[0],13037,13410,1633,1635,1542,1923,1977,1575,1823,1184,1482,1379,13306,1280,1738,13171,13173,13174; set .@Value, 100; break;
+				case 2: setarray .@Item_DB[0],2538,2539,2540; set .@Value, 50; break;
+				case 3: setarray .@Item_DB[0],2435,2436,2437; set .@Value, 50; break;
+				case 4: setarray .@Item_DB[0],2376,2377,2378,2379,2380,2381,2382; set .@Value, 80; break;
+				case 5: setarray .@Item_DB[0],2720,2721,2722,2723,2724,2725,2733; set .@Value, 500; break;
+			}
+			
+			break;
+		case 4: // Heroism Badge
+			mes "[에룬데크]";
+			mes "The Battle of Kriger Von Midgard (KvM) 전장에서 얻은 ^FFA500전투 휘장^000000 을 교환하시겠습니까?";
+			mes "어떤 종류의 아이템으로 교환하시겠습니까?";
+			next;
+			deletearray .@Item_DB[0],127;
+			set .@Badge, 7773;
+			
+			switch( select("무기:방어구/악세사리:방어구/악세사리(양산형):방어구/악세사리(보급용)") )
+			{
+				case 1: setarray .@Item_DB[0],1187,1281,1282,1310,1382,1426,1486,1546,1576,1577,1640,1641,1743,1826,1827,1927,1981,2002,13042,13110,13176,13177,13178,13179,13307,13416,13417,13418; set .@Value, 250; break;
+				case 2: setarray .@Item_DB[0],2394,2444,2549,2772; set .@Value, 200; break;
+				case 3: setarray .@Item_DB[0],2395,2445,2773; set .@Value, 150; break;
+				case 4: setarray .@Item_DB[0],2396,2446,2774; set .@Value, 100; break;
+				}
+			
+			break;
+	}
+	
+	mes "[에룬데크]";
+	mes "어떤 아이템으로 교환하시겠습니까??";
+	mes "만약 모르시겠다면, 카탈로그를 보십시오.";
+	next;
+
+	set .@Menu$, "";
+	set .@Count, getarraysize(.@Item_DB);
+	for( set .@i, 0; .@i < .@Count; set .@i, .@i + 1 )
+		set .@Menu$, .@Menu$ + getitemname(.@Item_DB[.@i]) + ":";
+
+	set .@Item_ID, .@Item_DB[select(.@Menu$) - 1];
+
+	mes "[에룬데크]";
+	mes "^FF0000" + .@Value + " 개의 " + getitemname(.@Badge) + "^000000 를 ^0000FF" + getitemname(.@Item_ID) + "^000000로 교환하시겠습니까?";
+	next;
+	mes "전장 아이템은 ^FF0000캐릭터에 귀속됩니다^000000.";
+	mes "그래도 아이템을 교환하시겠습니까??";
+	next;
+	
+	if( select("예:아니오") == 2 )
+	{
+		mes "[에룬데크]";
+		mes "다른 아이템을 살펴볼 시간이 필요하십니까?";
+		close;
+	}
+	
+	if( countitem(.@Badge) < .@Value )
+	{
+		mes "[에룬데크]";
+		mes "죄송합니다. 교환에 필요한 휘장의 갯수가 부족합니다.";
+		close;
+	}
+	
+	delitem .@Badge,.@Value;
+	getitem .@Item_ID,1;
+	mes "[에룬데크]";
+	mes "성공적으로 교환 되었습니다. 감사합니다.";
+	close;
+}
+
+// =======================================
+bat_room,187,148,3	script	전장 인원 세팅#SET_BAT	111,{
+	
+	mes "[인원변경 NPC]";
+	mes "전장 인원수를 세팅 해 드립니다.";
+	mes "원하는 전장을 선택해 주세요.";
+	next;
+	menu "플라비우스 전장",FLA_SET,"티에라 전장",TIE_SET,"KVM 전장",KvM_SET;
+
+FLA_SET:
+	mes "원하는 인원수를 입력해 주세요.";	
+	input @flavius;
+	next;
+	if(@flavius>19 || @flavius<3) goto Noset;
+	set $Flavi, @flavius;	
+	mes "플라비우스 전장의 인원이 ^FF0000"+$Flavi+"^000000명으로 설정되었습니다.";
+	mes "인원변경에는 약간의 시간이 걸립니다.";
+	donpcevent "Fl1R_Guillaume::OnFlaNoin";
+	donpcevent "Fl1R_Croix::OnFlaNoin"; // 입장금지중임을 표시할 것
+	donpcevent "Fl2R_Guillaume::OnFlaNoin";
+	donpcevent "Fl2R_Croix::OnFlaNoin"; // 입장금지중임을 표시할 것
+	mapannounce "bat_room","현재 플라비우스 전장의 입장인원을 조정중이므로 입장이 불가능합니다.",8;
+	goto SETEND;
+	end;
+
+KvM_SET:
+	next;
+	mes "원하는 인원수를 입력해 주세요.";	
+	input .@kvmset;
+	next;
+	if(.@kvmset>19 || .@kvmset<3) goto Noset2;
+	set $KvMP, .@kvmset;
+	mes "KvM 전장의 인원이 ^FF0000"+$KvMP+"^000000명으로 설정되었습니다.";
+	mes "인원변경에는 약간의 시간이 걸립니다.";
+	donpcevent "대기실#KvM01R_Croix::OnKvMNoin";
+	donpcevent "대기실#KvM01R_Guillaume::OnKvMNoin"; // 입장금지중임을 표시할 것
+	mapannounce "bat_room","현재 KvM전장의 입장인원을 조정중이므로 입장이 불가능합니다.",8;
+	goto SETEND;
+	close;
+	end;
+	
+TIE_SET:
+	next;
+	mes "원하는 인원수를 입력해 주세요.";	
+	input @tierraset;
+	next;
+	if(@tierraset>19 || @tierraset<3) goto Noset;
+	set $Tier, @tierraset;	
+	mes "티에라 협곡 전장의 인원이 ^FF0000"+$Tier+"^000000명으로 설정되었습니다.";
+	mes "인원변경에는 약간의 시간이 걸립니다.";
+	donpcevent "TV1R_Guillaume::OnTieNoin";
+	donpcevent "TV1R_Croix::OnTieNoin"; // 입장금지중임을 표시할 것
+	donpcevent "TV2R_Guillaume::OnTieNoin";
+	donpcevent "TV2R_Croix::OnTieNoin"; // 입장금지중임을 표시할 것
+	mapannounce "bat_room","현재 티에라 협곡 전장의 입장인원을 조정중이므로 입장이 불가능합니다.",8;
+	goto SETEND;
+	end;
+
+SETEND:
+	initnpctimer;
+	close;
+	end;
+	OnTimer30000:
+	mapannounce "bat_room","입장인원 변경 작업이 완료되었습니다.",8;
+	donpcevent "대기실#KvM01R_Croix::OnKvMWait";
+	donpcevent "대기실#KvM01R_Guillaume::OnKvMWait";
+	donpcevent "TV1R_Croix::OnTieWait";
+	donpcevent "TV1R_Guillaume::OnTieWait";
+	donpcevent "Fl1R_Guillaume::OnFlaWait";
+	donpcevent "Fl1R_Croix::OnFlaWait";
+	donpcevent "TV2R_Croix::OnTieWait";
+	donpcevent "TV2R_Guillaume::OnTieWait";
+	donpcevent "Fl2R_Guillaume::OnFlaWait";
+	donpcevent "Fl2R_Croix::OnFlaWait";
+	stopnpctimer;
+	set $bg_check, 0;
+	end;
+
+
+
+Noset:
+	mes "3명 이상 19명 이하로 적어주세요.";
+	set $bg_check, 0;
+	close;
+Noset2:
+	mes "3명 이상 19명 이하로 적어주세요.";
+	set $bg_check, 0;
+	close;
+}
+// Guillaume Knight - KvM
+// *********************************************************************
+bat_room,143,178,5	script	기욤 진영 기사#5	417,{
+	mes "[기욤 진영 기사]";
+	mes "KvM은 미드가르드의 용사라는 Kreiger von Midgard의 약자이며, KvM에서의 승리를 위해서는 5분간 싸워서 많은 승리를 취해야 합니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "가장 많은 승리를 취하는 쪽이 우승입니다.";
+	next;
+	mes "[기욤 진영 기사]";
+	mes "한 번 맵에서 나가면 경기가 진행되는 동안에는 다시 입장할 수 없으므로, 주의하셔야 합니다.";
+	next;
+	mes "[기욤 진영 기사]";	
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// KvM Officerer - Guillaume
+// *********************************************************************
+bat_room,140,178,5	script	KVM [80-99] 모병관#1	418,{
+	mes "[KVM 모병관]";
+	if( Bat_Team == 2 )
+	{
+		mes "크루아 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "크루아 녀석들에게 용맹한 기욤 군의";
+	mes "힘을 보여주자!";
+	next;
+	if( select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[KVM 모병관]";
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "이 전장의 레벨 제한은 [80~99] 라네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",253,224;
+	end;
+}
+
+// Croix Knight - KvM
+// *********************************************************************
+bat_room,143,121,1	script	크루아 진영 기사#5	413,{
+	mes "[크루아 진영 기사]";
+	mes "KvM은 미드가르드의 용사라는 Kreiger von Midgard의 약자이며, KvM에서의 승리를 위해서는 5분간 싸워서 많은 승리를 취해야 합니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "가장 많은 승리를 취하는 쪽이 우승입니다.";
+	next;
+	mes "[크루아 진영 기사]";
+	mes "한 번 맵에서 나가면 경기가 진행되는 동안에는 다시 입장할 수 없으므로, 주의하셔야 합니다.";
+	next;
+	mes "[크루아 진영 기사]";	
+	mes "자, 그럼 전투 준비가 끝나셨다면 제";
+	mes "옆의 모병관을 통해 전투를";
+	mes "신청하십시오!";
+	close;
+}
+
+// KvM Officer - Croix
+// *********************************************************************
+bat_room,140,121,1	script	KVM [80-99] 모병관#2	414,{
+	mes "[KVM 모병관]";
+	if( Bat_Team == 1 )
+	{
+		mes "기욤 마롤로 군은 나가 주십시오!";
+		close;
+	}
+
+	if( Bat_Team == 0 )
+	{
+		mes "크루아 마롤로나 기욤 마롤로 군에 등록 신청을 먼저 해 주십시오!";
+		close;
+	}
+
+	mes ""+strcharinfo(0)+", 반갑네!";
+	mes "기욤 녀석들에게 용맹한 크루아 군의";
+	mes "힘을 보여주자!";
+	next;
+	if(select("당신과 함께 싸우겠습니다.:대화를 마친다.") == 2 )
+		close;
+
+	mes "[KVM 모병관]";
+	if( BaseLevel < 80 )
+	{
+		mes "우리 군에 지원해 준 것은 고맙지만";
+		mes "이 전장의 레벨 제한은 [80~99] 라네.";
+		close;
+	}
+
+	mes "무운을 비네!";
+	close2;
+	warp "bat_room",253,208;
+	end;
+}
+
+bat_room,160,148,3	script	루아헨	109,{
+	mes "[루아헨]";
+	mes "안녕하십니까, 강인한 전사여.";
+	mes "오늘은 무슨 일로 찾아오셨습니까?";
+	next;
+	set .@baLevel,BaseLevel;
+	switch( select("용맹 휘장 교환","특공 휘장 교환","전투 휘장 교환","음, 다음에 보죠.") )
+	{
+		case 3:
+			mes "[루아헨]";
+			mes "The Battle of Kriger Von Midgard (KvM) 전장에서 얻은 ^FFA500전투 휘장^000000 을 교환하시겠습니까?";
+			mes "어떤 종류의 휘장으로 교환하시겠습니까?";
+			mes "교환하실 경우 "+ (countitem(7773)/2) +"개 까지 받아가실 수 있습니다.";
+			menu "용맹 휘장으로 교환",YongM,"특공 휘장으로 교환",TekGon;
+			
+		YongM:
+			next;
+			set .@Badge, 7773;
+			mes "[루아헨]";
+			mes "받고 싶은 개수를 입력해 주세요.";
+			input .@BraMake;
+			if(.@BraMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+			if(countitem(.@Badge) < .@BraMake*2){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+			delitem .@Badge,.@BraMake;  //Blvl
+			getitem 7828,.@BraMake;
+			next;
+			mes "[루아헨]";
+			mes "성공적으로 교환 되었습니다. 감사합니다.";
+			close;
+			end;
+
+		TekGon:
+			next;
+			set .@Badge, 7773;
+			mes "[루아헨]";
+			mes "받고 싶은 개수를 입력해 주세요.";
+			input .@ValMake;
+			if(.@ValMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+			if(countitem(.@Badge) < .@ValMake*2){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+			delitem .@Badge,.@ValMake*2;  //Blvl
+			getitem 7829,.@ValMake;
+			next;
+			mes "[루아헨]";
+			mes "성공적으로 교환 되었습니다. 감사합니다.";
+			close;
+			end;
+			
+		case 4:
+			mes "[루아헨]";
+			mes "다음에 만납시다.";
+			close;
+		case 1: // Bravery Badges
+			mes "[루아헨]";
+			mes "티에라 협곡 전투에서 얻은 ^0000FF용맹 휘장^000000 을 교환하시겠습니까?";
+			mes "캐시/경험치로 교환이 가능합니다.";
+			mes "어느 것을 교환하시겠습니까?";
+			next;
+			set .@Badge, 7828;
+
+			switch( select("경험치:캐시:취소") )
+			{
+				case 1: 
+					mes "[루아헨]";
+					mes "^0000FF경험치^000000를 선택하셨습니다.";
+					mes "휘장 1개당 받으실 수 있는 양은";
+					mes "베이스 레벨 * 10000 입니다.";
+					next;
+					mes "[루아헨]";
+					mes "정말로 교환하시겠습니까?";
+					menu "예",-,"아니오",NoSorry;
+					next;
+					mes "[루아헨]";
+					mes "교환하실 개수를 입력해 주세요.";
+					input .@LvlMake;
+					if(.@LvlMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+					if(countitem(.@Badge) < .@LvlMake){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+					delitem .@Badge,.@LvlMake;  //Blvl
+					set BaseExp,BaseExp+.@LvlMake*.@baLevel*10000;
+					next;
+					mes "[루아헨]";
+					mes "성공적으로 교환 되었습니다. 감사합니다.";
+					close;
+					end;
+				case 2:
+					mes "[루아헨]";
+					mes "^0000FF캐시^000000를 선택하셨습니다.";
+					mes "휘장 1개당 받으실 수 있는 양은";
+					mes "50~200캐시입니다.";
+					next;
+					mes "[루아헨]";
+					mes "정말로 교환하시겠습니까?";
+					menu "예",-,"아니오",NoSorry;
+					next;
+					mes "[루아헨]";
+					mes "교환하실 개수를 입력해 주세요.";
+					input .@CASMake;
+					if(.@CASMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+					if(countitem(.@Badge) < .@CASMake){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+					delitem .@Badge,.@CASMake;  //CASH
+					set .@CASHPOINT, rand(50,200);
+					set #CASHPOINTS,#CASHPOINTS+(.@CASHPOINT*.@CASMake);
+					dispbottom ""+.@CASHPOINT*.@CASMake+" 캐쉬를 획득하여 총 "+#CASHPOINTS+"원이 되었습니다.";
+					next;
+					mes "[루아헨]";
+					mes "성공적으로 교환 되었습니다. 감사합니다.";
+					close;
+					end;
+				case 3: goto NoSorry;
+			}
+			
+		case 2: // Valor Badges
+			mes "[루아헨]";
+			mes "티에라 협곡 전투에서 얻은 ^0000FF특공 휘장^000000 을 교환하시겠습니까?";
+			mes "캐시/경험치로 교환이 가능합니다.";
+			mes "어느 것으로 교환하시겠습니까?";
+			next;
+			set .@Badge, 7829;
+
+			switch( select("경험치:캐시:취소") )
+			{
+				case 1: 
+					mes "[루아헨]";
+					mes "^0000FF경험치^000000를 선택하셨습니다.";
+					mes "휘장 1개당 받으실 수 있는 양은";
+					mes "베이스 레벨 * 10000 입니다.";
+					next;
+					mes "[루아헨]";
+					mes "정말로 교환하시겠습니까?";
+					menu "예",-,"아니오",NoSorry;
+					next;
+					mes "[루아헨]";
+					mes "교환하실 개수를 입력해 주세요.";
+					input .@LvlMake;
+					if(.@LvlMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+					if(countitem(.@Badge) < .@LvlMake){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+					delitem .@Badge,.@LvlMake;  //Blvl
+					set BaseExp,BaseExp+.@LvlMake*.@baLevel*10000;
+					next;
+					mes "[루아헨]";
+					mes "성공적으로 교환 되었습니다. 감사합니다.";
+					close;
+					end;
+				case 2:
+					mes "[루아헨]";
+					mes "^0000FF캐시^000000를 선택하셨습니다.";
+					mes "휘장 1개당 받으실 수 있는 양은";
+					mes "50~200캐시입니다.";
+					next;
+					mes "[루아헨]";
+					mes "정말로 교환하시겠습니까?";
+					menu "예",-,"아니오",NoSorry;
+					next;
+					mes "[루아헨]";
+					mes "교환하실 개수를 입력해 주세요.";
+					input .@CASMake;
+					if(.@CASMake == 0){next; mes "1개 이상 입력하세요."; close2; end;}
+					if(countitem(.@Badge) < .@CASMake){next; mes "입력하신 개수만큼의 휘장이 없습니다."; close2; end;}
+					delitem .@Badge,.@CASMake;  //CASH
+					set .@CASHPOINT, rand(50,200);
+					set #CASHPOINTS,#CASHPOINTS+(.@CASHPOINT*.@CASMake);
+					dispbottom ""+.@CASHPOINT*.@CASMake+" 캐쉬를 획득하여 총 "+#CASHPOINTS+"원이 되었습니다.";
+					next;
+					mes "[루아헨]";
+					mes "성공적으로 교환 되었습니다. 감사합니다.";
+					close;
+					end;
+				case 3: goto NoSorry;
+			}
+
+	NoSorry:
+		next;
+		mes "[루아헨]";
+		mes "다음에 만납시다.";
+		close; end;
+	}
+}

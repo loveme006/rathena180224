@@ -1,0 +1,53 @@
+// Bloody Branch Summonable Monsters Database
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Bloody_Dead_Branch,0,Baphomet,1039
+MOBG_Bloody_Dead_Branch,1038,오시리스,Osiris//68
+MOBG_Bloody_Dead_Branch,1039,바포메트,Baphomet//81
+MOBG_Bloody_Dead_Branch,1046,도플갱어,Doppelganger//77
+MOBG_Bloody_Dead_Branch,1059,미스트레스,Mistress//78
+MOBG_Bloody_Dead_Branch,1086,황금 도둑벌레,Golden Thief Bug//65
+MOBG_Bloody_Dead_Branch,1087,오크 히어로,Orc Hero//50
+MOBG_Bloody_Dead_Branch,1096,엔젤링,Angeling
+MOBG_Bloody_Dead_Branch,1112,드레이크,Drake//91
+MOBG_Bloody_Dead_Branch,1115,에드가,Eddga//65
+MOBG_Bloody_Dead_Branch,1120,고스트링,Ghostring
+MOBG_Bloody_Dead_Branch,1147,마야,Maya//55
+MOBG_Bloody_Dead_Branch,1150,월야화,Moonlight Flower//79
+MOBG_Bloody_Dead_Branch,1157,파라오,Pharaoh//85
+MOBG_Bloody_Dead_Branch,1159,프리오니,Phreeoni//71
+MOBG_Bloody_Dead_Branch,1190,오크로드,Orc Lord//55
+MOBG_Bloody_Dead_Branch,1251,폭풍의 기사,Stormy Knight//92
+MOBG_Bloody_Dead_Branch,1252,하티,Hatii//98
+MOBG_Bloody_Dead_Branch,1272,다크 로드,Dark Lord//96
+MOBG_Bloody_Dead_Branch,1312,터틀 제네럴,Turtle General//110
+MOBG_Bloody_Dead_Branch,1373,죽은자의 주인,Lord of the Dead//94
+MOBG_Bloody_Dead_Branch,1388,아크 엔젤링,Arc Angeling
+MOBG_Bloody_Dead_Branch,1389,드라큘라,Dracula//75
+MOBG_Bloody_Dead_Branch,1418,흑사왕,Evil Snake Lord//105
+MOBG_Bloody_Dead_Branch,1492,원령무사,Samurai Specter//100
+MOBG_Bloody_Dead_Branch,1511,아몬 라,Amon Ra//69
+MOBG_Bloody_Dead_Branch,1582,데빌링,Deviling
+MOBG_Bloody_Dead_Branch,1583,타오군카,Tao Gunka//110
+MOBG_Bloody_Dead_Branch,1623,RSX-0806,RSX-0806//100
+MOBG_Bloody_Dead_Branch,1630,백소진,White Lady//97
+MOBG_Bloody_Dead_Branch,1658,이그니젬 세니아,Egnigem Cenia
+MOBG_Bloody_Dead_Branch,1685,베스퍼,Vesper//128
+MOBG_Bloody_Dead_Branch,1688,타니 아가씨,Lady Tanee//80
+MOBG_Bloody_Dead_Branch,1708,마검사 타나토스의 기억,Thanatos Phantom//99
+MOBG_Bloody_Dead_Branch,1719,디타르데우르스,Detardeurus//135
+MOBG_Bloody_Dead_Branch,1734,키엘-D-01,Kiel D-01//125
+MOBG_Bloody_Dead_Branch,1751,발키리 란드그리스,Valkyrie Randgris//141
+MOBG_Bloody_Dead_Branch,1768,그룸 언더 나이트,Gloom Under Night//139
+MOBG_Bloody_Dead_Branch,1779,크툴라낙스,Ktullanux//98
+MOBG_Bloody_Dead_Branch,1785,아트로스,Atroce//113
+MOBG_Bloody_Dead_Branch,1832,이프리트,Ifrit//146
+MOBG_Bloody_Dead_Branch,1871,타락한 대신관 히밤,Falling Bishop//138
+MOBG_Bloody_Dead_Branch,1873,베르제브브,Beelzebub//147
+MOBG_Bloody_Dead_Branch,1885,고피니츠,Gopinich //97
+MOBG_Bloody_Dead_Branch,2022,니드호그의 그림자,Nidhoggur's Shadow
+MOBG_Bloody_Dead_Branch,2068,보이타타,Boitata//93
+MOBG_Bloody_Dead_Branch,2087,여왕 스카라바,Scaraba Queen//140
+MOBG_Bloody_Dead_Branch,2202,크라켄,Scaraba Queen//124

@@ -1,0 +1,29 @@
+function	script	RC_Weapon	{ 
+	if(!getequipisequiped(EQI_HAND_R)) { message ""+strcharinfo(0)+"","오른손에 무기를 착용해야합니다."; end; }
+
+	set .@equip_id, getequipid(EQI_HAND_R);
+	setarray .@equip_card[0], getequipcardid(EQI_HAND_R,0),getequipcardid(EQI_HAND_R,1),getequipcardid(EQI_HAND_R,2),getequipcardid(EQI_HAND_R,3);
+	
+	delequip EQI_HAND_R;
+	specialeffect2 EF_REPAIRWEAPON;	
+	getitem2 .@equip_id,1,1,getarg(0),0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+	delitem getarg(1),1;
+	end;
+}
+
+function	script	RC_Def	{ 
+	setarray .@equip[0],EQI_HEAD_TOP,EQI_ARMOR,EQI_GARMENT,EQI_HAND_L,EQI_SHOES;
+	for(.@i = 0; .@i <= getarraysize(.@equip); .@i++)
+		.@menu$ = .@menu$ + (getequipisequiped(.@equip[.@i]) ? getequipname(.@equip[.@i]) : "") +":";
+	 .@part = .@equip[select(.@menu$)-1];
+	
+	if(getequipname(.@part) == "" || !getequipisenableref(.@part)) { message ""+strcharinfo(0)+"","제련 가능한 아이템을 착용하고 있지 않습니다."; end; }
+	set .@equip_id, getequipid(.@part);
+	setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
+	
+	delequip .@part;
+	specialeffect2 EF_REPAIRWEAPON;	
+	getitem2 .@equip_id,1,1,getarg(0),0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+	delitem getarg(1),1;
+	end;
+}

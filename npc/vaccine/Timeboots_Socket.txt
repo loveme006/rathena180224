@@ -1,0 +1,304 @@
+
+//////////////////////////////////////////////////////////
+//							//
+//                   시간의 부츠 제작                   //
+//							//
+//					by 나비		//
+//////////////////////////////////////////////////////////
+
+
+glast_01,210,271,4	script	시간의부츠제작	4_F_FAIRYKID3,{
+
+set .@Incentzeny,1000000;
+set .@npcname$, "[시간의부츠제작]";
+
+	mes .@npcname$;
+	mes "-시간의 부츠를 제작 하기 위해선 ";
+	mes "^FF3355 시간의 결정 1개^000000.";
+	mes "-위 부츠에 옵션을 부여하기 위해선";
+	mes "^FF3355 시간의 결정 5개^000000.";
+	mes "그리고 모든 제작 과정엔 ^FF3355"+.@Incentzeny+"Zeny^000000가 소모됩니다.";
+	next;
+
+	switch(select("부츠를 제작한다:옵션을 부여한다:취소")) {
+
+	case 1:
+		if(Zeny < .@Incentzeny) goto Misszeny;
+		if(countitem(6607)<1) goto Noitem;
+		specialeffect2 EF_REPAIRWEAPON;
+		getitem 2499,1;
+		delitem 6607,1;
+		set Zeny,Zeny-.@Incentzeny;
+		close;
+
+	case 2:
+		mes .@npcname$;
+		mes "부여할 옵션을 선택해주세요.";
+		next;
+		switch(select("힘:지력:민첩:체력:손재주:행운:취소")) {
+
+
+		case 1:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0) goto NoBoots;
+			specialeffect2 EF_REPAIRWEAPON;	
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22000,1;
+			set Zeny,Zeny-.@Incentzeny;
+			goto Sucitem;
+
+
+		case 2:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0) goto NoBoots;
+			specialeffect2 EF_REPAIRWEAPON;
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22001,1;
+			set Zeny,Zeny-.@Incentzeny;
+			goto Sucitem;
+
+		case 3:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0u) goto NoBoots;
+			specialeffect2 EF_REPAIRWEAPON;
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22002,1;
+			set Zeny,Zeny-.@Incentzeny;
+			goto Sucitem;
+
+		case 4:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0) goto NoBoots;
+			specialeffect2 EF_REPAIRWEAPON;
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22003,1;
+			set Zeny,Zeny-.@Incentzeny;
+			goto Sucitem;
+
+		case 5:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0) goto NoBoots;
+			specialeffect2 EF_REPAIRWEAPON;
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22004,1;
+			set Zeny,Zeny-.@Incentzeny;
+			goto Sucitem;
+
+		case 6:
+			if(Zeny < .@Incentzeny) goto Misszeny;
+			if (countitem(6607) < 5) goto Noitem;
+			if (countitem(2499) == 0) goto NoBoots;
+			delitem 6607,5;
+			delitem 2499,1;
+			getitem 22005,1;
+			set Zeny,Zeny-.@Incentzeny;
+			specialeffect2 EF_REPAIRWEAPON;
+			goto Sucitem;
+
+		case 7:
+			goto Enditem;
+			end;
+
+
+		}
+		
+
+	case 3:
+		goto Enditem;
+		end;
+
+	}
+
+Sucitem:
+	mes .@npcname$;
+	mes "아이템 옵션이 정상적으로 부여되었습니다.";
+	close;
+
+
+Enditem:
+	mes .@npcname$;
+	mes "안녕히 가세요.";
+	close;
+
+
+Noitem:
+	mes .@npcname$;
+	mes "시간의 결정이 있어야 아이템을 제작 할 수 있습니다.";
+	close;
+
+
+NoBoots:
+	mes .@npcname$;
+	mes "시간의 부츠가 있어야 옵션을 부여 할 수 있습니다.";
+	close;
+
+
+Misszeny:
+	mes .@npcname$;
+	mes "제니가 부족합니다.";
+	close;
+
+}
+
+
+
+//////////////////////////////////////////////////////////
+//							//
+//                   시간의 부츠 소켓                   //
+//							//
+//					by 나비		//
+//////////////////////////////////////////////////////////
+
+
+glast_01,209,268,4	script	시간의부츠 소켓	4_F_FAIRYKID4,{
+
+	set .@npcname$, "[시간의부츠소켓]";
+	set .@soltzeny, "1000000";
+	mes "";
+
+
+	mes .@npcname$;
+	mes "시간의 부츠를 ^FF3355확률^000000로 뚫어드립니다.";
+	next;
+		switch(select("힘:지력:민첩:체력:손재주:행운:취소")) {
+
+		case 1:
+			set .@bootcoun,22000;
+			if (Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+		case 2:
+			set .@bootcoun,22001;
+			if(Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+
+		case 3:
+			set .@bootcoun,22002;
+			if(Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0u) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+
+		case 4:
+			set .@bootcoun,22003;
+			if(Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+
+		case 5:
+			set .@bootcoun,22004;
+			if(Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+
+		case 6:
+			set .@bootcoun,22005;
+			if(Zeny < .@soltzeny) goto Misszeny;
+			if (countitem(.@bootcoun) == 0) goto NoBoots;
+			mes .@npcname$;
+			mes "소켓을 뚫게되면";
+			mes "^ff0000제련도^000000와 ^ff0000인챈^000000이 모두 ^ff0000초기화^000000됩니다.";
+			goto Socetitem;
+
+		case 7:
+			goto Enditem;
+			end;
+
+		}
+
+Socetitem:
+		mes "  ";
+		mes "그래도 소켓을 뚫으시겠습니까?";
+		next;
+Renter:
+		switch(select("^BDBDBD엔터방지^000000:뚫는다:그만둔다")) {
+
+	case 1:
+		goto Renter;
+		close;
+	case 2:
+		mes "깡!!  깡!!  ";
+		next;
+		if (rand(100) <= 20) { 
+		if (.@bootcoun == 22000) getitem 22006,1;
+		if (.@bootcoun == 22001) getitem 22009,1;
+		if (.@bootcoun == 22002) getitem 22010,1;
+		if (.@bootcoun == 22003) getitem 22007,1;
+		if (.@bootcoun == 22004) getitem 22008,1;
+		if (.@bootcoun == 22005) getitem 22011,1;
+		delitem .@bootcoun,1;
+		set Zeny,Zeny-.@soltzeny;
+		specialeffect2 EF_REPAIRWEAPON;
+		mes .@npcname$;
+		mes "성공적으로 이루어졌습니다.";
+		close;
+		}
+		if (rand(100) > 30) {
+		delitem .@bootcoun,1;
+		set Zeny,Zeny-.@soltzeny;
+		specialeffect2 EF_REMOVETRAP;
+		mes "  ";
+		mes "이런.. 아쉽게 ^ff0000실패^000000하였네요";
+		close;
+		}
+
+	case 3:
+		mes "안녕히가세요!";
+		close;
+
+	}
+Misszeny:
+	mes .@npcname$;
+	mes "제니가 부족한듯합니다.";
+	close;
+
+
+Enditem:
+	mes .@npcname$;
+	mes "안녕히 가세요.";
+	close;
+
+
+Sucitem:
+	mes .@npcname$;
+	mes "아이템이 정상적으로 뚤렸습니다.";
+	close;
+
+NoBoots:
+	mes .@npcname$;
+	mes "부츠가 없습니다.";
+	close;
+
+}
+
+

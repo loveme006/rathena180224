@@ -1,0 +1,24 @@
+prt_gld.gat,178,112,4	script	버프#1	81,{
+	percentheal 100,0;//<<회복량 입니다^^
+	sc_start SC_INCREASEAGI,3600000,10; // 민첩성 증가
+	skilleffect 29,0;
+	sc_start SC_BLESSING,3600000,10; // 블레싱
+	skilleffect 34,0;
+	//percentheal 0,0;
+	sc_start SC_ANGELUS,3600000,10; // 안젤루스 10 스킬
+	sc_start SC_IMPOSITIO,3600000,5; // 임포시티오 마누스 5 스킬
+	sc_start SC_MAGNIFICAT,3600000,5; // 마니피캇 5 스킬
+	sc_start SC_GLORIA, 3600000,5; // 글로리아 5 스킬
+	end;
+
+//OnTimer20000:
+//	npcspeed rand(150,200);
+//	npcwalkto 113+rand(5),128+rand(5);
+//	setnpctimer 0;
+//	goto OnInit;
+//
+//OnInit:
+//	initnpctimer;
+//	end;
+
+}

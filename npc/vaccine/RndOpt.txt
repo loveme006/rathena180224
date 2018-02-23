@@ -1,0 +1,679 @@
+function	script	RndOpt_pan	{
+	if(getequipid(EQI_ACC_L) != 28439 && getequipid(EQI_ACC_R) != 28439) { dispbottom ""+getitemname(28439)+"를 착용한 상태여야 합니다.",0xFF0000; end; }
+	if(getequipisequiped(EQI_ACC_L)) 
+		if(getequipid(EQI_ACC_L) == 28439) 
+			.@part = EQI_ACC_L;
+	if(getequipisequiped(EQI_ACC_R)) 
+		if(getequipid(EQI_ACC_R) == 28439) 
+			.@part = EQI_ACC_R;
+	//if(getequiprandomoption(.@part,1,ROA_ID) > 0) set .@index, 2;
+	//else if(getequiprandomoption(.@part,0,ROA_ID) > 0) set .@index, 1;
+	//else set .@index, 0;
+	set .@index, 0;
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_USER,RDMOPT_DAMAGE_PROPERTY_WATER_USER,RDMOPT_DAMAGE_PROPERTY_GROUND_USER,RDMOPT_DAMAGE_PROPERTY_WIND_USER,RDMOPT_ATTR_TOLERACE_ALL,RDMOPT_DEC_SP_CONSUMPTION,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATKPERCENT,RDMOPT_VAR_MAGICATKPERCENT;
+		.@rnd = rand(0,14);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_ATTR_TOLERACE_ALL: setarray .@value,rand(1,3); break;
+			case RDMOPT_DEC_SP_CONSUMPTION: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(1,3); break;
+			default :
+				dispbottom ""+getitemname(28439)+"가 "+getitemname(28440)+"로 변했습니다.",0xFF0000;
+				delequip .@part;
+				delitem 23170,1;
+				getitem 28440,1;
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_USER,RDMOPT_DAMAGE_PROPERTY_WATER_USER,RDMOPT_DAMAGE_PROPERTY_GROUND_USER,RDMOPT_DAMAGE_PROPERTY_WIND_USER,RDMOPT_ATTR_TOLERACE_ALL,RDMOPT_DEC_SP_CONSUMPTION,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATKPERCENT,RDMOPT_VAR_MAGICATKPERCENT;
+		.@rnd = rand(0,14);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_ATTR_TOLERACE_ALL: setarray .@value,rand(1,3); break;
+			case RDMOPT_DEC_SP_CONSUMPTION: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(1,3); break;
+			default:
+				dispbottom ""+getitemname(28439)+"가 "+getitemname(28440)+"로 변했습니다.",0xFF0000;
+				delequip .@part;
+				delitem 23170,1;
+				getitem 28440,1;
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	if(.@index == 2) { 
+		dispbottom ""+getitemname(28439)+"는 더 이상 랜덤옵션을 부여할 수 없습니다.",0xFF0000;
+		end;
+	}
+	//setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	delitem 23170,1;
+	end;
+}
+
+function	script	RndOpt_gun	{
+	if(getequipid(EQI_HEAD_TOP) != 19157 ) { dispbottom ""+getitemname(19157)+"를 착용한 상태여야 합니다.",0xFF0000; end; }
+	.@part = EQI_HEAD_TOP;
+	//if(getequiprandomoption(.@part,1,ROA_ID) > 0) set .@index, 2;
+	//else if(getequiprandomoption(.@part,0,ROA_ID) > 0) set .@index, 1;
+	//else set .@index, 0;
+	set .@index, 0;
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_VAR_STRAMOUNT,RDMOPT_VAR_INTAMOUNT,RDMOPT_VAR_DEXAMOUNT,RDMOPT_VAR_VITAMOUNT,RDMOPT_VAR_AGIAMOUNT,RDMOPT_VAR_LUKAMOUNT,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATTPOWER,RDMOPT_VAR_ATTMPOWER,RDMOPT_VAR_HITSUCCESSVALUE,RDMOPT_VAR_CRITICALSUCCESSVALUE,RDMOPT_VAR_ITEMDEFPOWER,RDMOPT_VAR_MDEFPOWER,RDMOPT_VAR_AVOIDSUCCESSVALUE,RDMOPT_VAR_PLUSASPDPERCENT;
+		.@rnd = rand(0,15);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_STRAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_INTAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_DEXAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_VITAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_AGIAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_LUKAMOUNT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,5); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,5); break;
+			case RDMOPT_VAR_ATTPOWER: setarray .@value,rand(5,20); break;
+			case RDMOPT_VAR_ATTMPOWER: setarray .@value,rand(5,20); break;
+			case RDMOPT_VAR_HITSUCCESSVALUE: setarray .@value,rand(5,20); break;
+			case RDMOPT_VAR_CRITICALSUCCESSVALUE: setarray .@value,rand(5,10); break;
+			case RDMOPT_VAR_ITEMDEFPOWER: setarray .@value,rand(30,60); break;
+			case RDMOPT_VAR_MDEFPOWER: setarray .@value,rand(10,20); break;
+			case RDMOPT_VAR_AVOIDSUCCESSVALUE: setarray .@value,rand(5,20); break;
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(5,10); break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1;
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_HEAL_VALUE,RDMOPT_HEAL_MODIFY_PERCENT,RDMOPT_VAR_ATKPERCENT,RDMOPT_VAR_MAGICATKPERCENT,RDMOPT_RANGE_ATTACK_DAMAGE_TARGET,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_VAR_PLUSASPD;
+		.@rnd = rand(0,7);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(5,15); break;
+			case RDMOPT_HEAL_MODIFY_PERCENT: setarray .@value,rand(5,15); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(1,7); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(1,7); break;
+			case RDMOPT_RANGE_ATTACK_DAMAGE_TARGET: setarray .@value,rand(1,7); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,10); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,10); break;
+			case RDMOPT_VAR_PLUSASPD: setarray .@value,1; break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	if(.@index == 2) { 
+		dispbottom ""+getitemname(19157)+"는 더 이상 랜덤옵션을 부여할 수 없습니다.",0xFF0000;
+		end;
+	}
+	delitem 23170,1;
+	end;
+}
+function	script	RndOpt_buster	{
+	.@part = EQI_HEAD_MID;
+	.@item = 19241;
+	if(getequipid(.@part) != .@item ) { dispbottom ""+getitemname(.@item)+"를 착용한 상태여야 합니다.",0xFF0000; end; }
+	//if(getequiprandomoption(.@part,1,ROA_ID) > 0) set .@index, 2;
+	//else if(getequiprandomoption(.@part,0,ROA_ID) > 0) set .@index, 1;
+	//else set .@index, 0;
+	set .@index, 0;
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_VAR_STRAMOUNT,RDMOPT_VAR_INTAMOUNT,RDMOPT_VAR_DEXAMOUNT,RDMOPT_VAR_VITAMOUNT,RDMOPT_VAR_AGIAMOUNT,RDMOPT_VAR_LUKAMOUNT,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATTPOWER,RDMOPT_VAR_ATTMPOWER,RDMOPT_VAR_HITSUCCESSVALUE,RDMOPT_VAR_CRITICALSUCCESSVALUE,RDMOPT_VAR_ITEMDEFPOWER,RDMOPT_VAR_MDEFPOWER,RDMOPT_VAR_AVOIDSUCCESSVALUE,RDMOPT_DEC_SPELL_DELAY_TIME;
+		.@rnd = rand(0,15);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_STRAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_INTAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_DEXAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_VITAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_AGIAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_LUKAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,2); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,2); break;
+			case RDMOPT_VAR_ATTPOWER: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_ATTMPOWER: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_HITSUCCESSVALUE: setarray .@value,rand(5,10); break;
+			case RDMOPT_VAR_CRITICALSUCCESSVALUE: setarray .@value,rand(2,3); break;
+			case RDMOPT_VAR_ITEMDEFPOWER: setarray .@value,rand(10,20); break;
+			case RDMOPT_VAR_MDEFPOWER: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_AVOIDSUCCESSVALUE: setarray .@value,rand(5,20); break;
+			case RDMOPT_DEC_SPELL_DELAY_TIME: setarray .@value,rand(1,2); break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1;
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_VAR_STRAMOUNT,RDMOPT_VAR_INTAMOUNT,RDMOPT_VAR_DEXAMOUNT,RDMOPT_VAR_VITAMOUNT,RDMOPT_VAR_AGIAMOUNT,RDMOPT_VAR_LUKAMOUNT,RDMOPT_VAR_ATTPOWER,RDMOPT_VAR_ATTMPOWER,RDMOPT_HEAL_VALUE,RDMOPT_HEAL_MODIFY_PERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_RANGE_ATTACK_DAMAGE_TARGET,RDMOPT_VAR_PLUSASPD,RDMOPT_DEC_SPELL_DELAY_TIME;
+		.@rnd = rand(0,15);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_STRAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_INTAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_DEXAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_VITAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_AGIAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_LUKAMOUNT: setarray .@value,1; break;
+			case RDMOPT_VAR_ATTPOWER: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_ATTMPOWER: setarray .@value,rand(3,5); break;
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(3,10); break;
+			case RDMOPT_HEAL_MODIFY_PERCENT: setarray .@value,rand(2,7); break;
+			case RDMOPT_RANGE_ATTACK_DAMAGE_TARGET: setarray .@value,rand(1,4); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_PLUSASPD: setarray .@value,1; break;
+			case RDMOPT_DEC_SPELL_DELAY_TIME: setarray .@value,rand(2,3); break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	if(.@index == 2) { 
+		dispbottom ""+getitemname(.@item)+"는 더 이상 랜덤옵션을 부여할 수 없습니다.",0xFF0000;
+		end;
+	}
+	delitem 23308,1;
+	end;
+}
+function	script	RndOpt_cursed_shield	{//은으로 만든 천사상,저주받은 피
+	.@part = EQI_HAND_L;
+	if(getarg(0) == 28942)
+		.@item = 28942;
+	else
+		.@item = 28945;
+	if(getequipid(.@part) != .@item) { dispbottom ""+getitemname(.@item)+"를 착용한 상태여야 합니다.",0xFF0000; end; }
+	//if(getequiprandomoption(.@part,1,ROA_ID) > 0) set .@index, 2;
+	//else if(getequiprandomoption(.@part,0,ROA_ID) > 0) set .@index, 1;
+	//else set .@index, 0;
+	set .@index, 0;
+
+	if(.@index == 0) {
+INDEX0:
+		.@rnd = rand(1,200);
+		if(.@rnd > 193 && getequipid(.@part) == 28942) {
+			if(rand(1,100) > 80) {
+				dispbottom ""+getitemname(28942)+"가 "+getitemname(28946)+"로 변했습니다.",0xFF0000;
+				getitem 28946,1;
+			} 
+			else
+			{
+				dispbottom ""+getitemname(28942)+"가 "+getitemname(28945)+"로 변했습니다.",0xFF0000;
+				getitem 28945,1;
+			}
+			delequip .@part;
+			delitem 23545,1;
+			end;
+		}
+		switch(.@rnd) {
+			case RDMOPT_RACE_TOLERACE_HUMAN: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_ANIMAL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_DEVIL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_UNDEAD: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_NOTHING: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_INSECT: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_ANGEL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_PLANT: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_FISHS: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_DRAGON: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_DAMAGE_HUMAN: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_ANIMAL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_DEVIL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_UNDEAD: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_NOTHING: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_INSECT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_ANGEL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_PLANT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_FISHS: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_DRAGON: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_HUMAN: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_ANIMAL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_DEVIL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_UNDEAD: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_NOTHING: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_INSECT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_ANGEL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_PLANT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_FISHS: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_DRAGON: setarray .@value,rand(1,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(1,5); break;
+			case RDMOPT_VAR_MAXHPAMOUNT: setarray .@value,rand(100,1000); break;
+			case RDMOPT_VAR_MAXSPAMOUNT: setarray .@value,rand(20,200); break;
+			case RDMOPT_VAR_ITEMDEFPOWER: setarray .@value,rand(30,100); break;
+			case RDMOPT_VAR_MDEFPOWER: setarray .@value,rand(3,10); break;
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(5,10); break;
+			default:
+				goto INDEX0;
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rnd,.@value,0);
+		if(.@index == 0) {
+			.@index = 1;
+			goto INDEX0;
+		}
+	}
+	if(.@index == 2) { 
+		dispbottom ""+getitemname(.@item)+"는 더 이상 랜덤옵션을 부여할 수 없습니다.",0xFF0000;
+		end;
+	}
+	delitem (getequipid(.@part)==28942)?23545:23546,1;
+	end;
+}
+function	script	RndOpt_Knight_shield	{//황금으로 만든 천사상
+	.@part = EQI_HAND_L;
+	if(getequipid(.@part) != 28946 ) { dispbottom ""+getitemname(28946)+"를 착용한 상태여야 합니다.",0xFF0000; end; }
+	//if(getequiprandomoption(.@part,2,ROA_ID) > 0) set .@index, 3;
+	//else if(getequiprandomoption(.@part,1,ROA_ID) > 0) set .@index, 2;
+	//else if(getequiprandomoption(.@part,0,ROA_ID) > 0) set .@index, 1;
+	//else set .@index, 0;
+	set .@index, 0;
+
+	if(.@index == 0 || .@index == 1) {
+INDEX0:
+		.@rnd = rand(1,193);
+		switch(.@rnd) {
+			case RDMOPT_RACE_TOLERACE_HUMAN: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_ANIMAL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_DEVIL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_UNDEAD: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_NOTHING: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_INSECT: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_ANGEL: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_PLANT: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_FISHS: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_TOLERACE_DRAGON: setarray .@value,rand(2,7); break;
+			case RDMOPT_RACE_DAMAGE_HUMAN: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_ANIMAL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_DEVIL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_UNDEAD: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_NOTHING: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_INSECT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_ANGEL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_PLANT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_FISHS: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_DAMAGE_DRAGON: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_HUMAN: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_ANIMAL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_DEVIL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_UNDEAD: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_NOTHING: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_INSECT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_ANGEL: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_PLANT: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_FISHS: setarray .@value,rand(1,5); break;
+			case RDMOPT_RACE_MDAMAGE_DRAGON: setarray .@value,rand(1,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(1,5); break;
+			case RDMOPT_VAR_MAXHPAMOUNT: setarray .@value,rand(100,1000); break;
+			case RDMOPT_VAR_MAXSPAMOUNT: setarray .@value,rand(20,200); break;
+			case RDMOPT_VAR_ITEMDEFPOWER: setarray .@value,rand(30,100); break;
+			case RDMOPT_VAR_MDEFPOWER: setarray .@value,rand(3,10); break;
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(5,10); break;
+			default:
+				goto INDEX0;
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rnd,.@value,0);
+		if(.@index == 0) {
+			.@index = 1;
+			goto INDEX0;
+		}
+		.@index = 2;
+	}
+	if(.@index == 2) {
+INDEX2:
+		.@rnd = rand(1,193);
+		switch(.@rnd) {
+			case RDMOPT_RACE_DAMAGE_HUMAN: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_ANIMAL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_DEVIL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_UNDEAD: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_NOTHING: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_INSECT: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_ANGEL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_PLANT: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_FISHS: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_DAMAGE_DRAGON: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_HUMAN: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_ANIMAL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_DEVIL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_UNDEAD: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_NOTHING: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_INSECT: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_ANGEL: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_PLANT: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_FISHS: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_MDAMAGE_DRAGON: setarray .@value,rand(5,10); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_HUMAN: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_ANIMAL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_DEVIL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_UNDEAD: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_NOTHING: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_INSECT: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_ANGEL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_PLANT: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_FISHS: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_DEF_PERCENT_DRAGON: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_HUMAN: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANIMAL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_DEVIL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_UNDEAD: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_NOTHING: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_INSECT: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_ANGEL: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_PLANT: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_FISHS: setarray .@value,rand(30,60); break;
+			case RDMOPT_RACE_IGNORE_MDEF_PERCENT_DRAGON: setarray .@value,rand(30,60); break;
+			case RDMOPT_DEC_SPELL_DELAY_TIME: setarray .@value,rand(1,5); break;
+			case RDMOPT_DAMAGE_SIZE_PERFECT: setarray .@value,1; break;
+			case RDMOPT_CLASS_IGNORE_DEF_PERCENT_BOSS: setarray .@value,rand(30,60); break;
+			case RDMOPT_CLASS_IGNORE_MDEF_PERCENT_BOSS: setarray .@value,rand(30,60); break;
+			case RDMOPT_VAR_PLUSASPD: setarray .@value,1; break;
+			default:
+				goto INDEX2;
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rnd,.@value,0);
+	}
+	if(.@index == 3) { 
+		dispbottom ""+getitemname(28946)+"는 더 이상 랜덤옵션을 부여할 수 없습니다.",0xFF0000;
+		end;
+	}
+	delitem 23547,1;
+	end;
+}
+
+function	script	RndOpt_gefarmor	{ // 게펜 마법 방어구 주문서
+	.@part = EQI_ARMOR;
+	set .@index, 0;
+	if(getequipid(.@part) != 15073 && getequipid(.@part) != 15074) { dispbottom "알맞는 장비를 착용한 상태여야 합니다.",0xFF0000; end; }
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_VAR_STRAMOUNT,RDMOPT_VAR_AGIAMOUNT,RDMOPT_VAR_VITAMOUNT,RDMOPT_VAR_INTAMOUNT,RDMOPT_VAR_DEXAMOUNT,RDMOPT_VAR_LUKAMOUNT,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT;
+		.@rnd = rand(0,7);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_STRAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_AGIAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_VITAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_INTAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_DEXAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_LUKAMOUNT: setarray .@value,rand(1,4); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(3,5); break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_VAR_HPACCELERATION,RDMOPT_VAR_SPACCELERATION,RDMOPT_VAR_HITSUCCESSVALUE,RDMOPT_VAR_AVOIDSUCCESSVALUE,RDMOPT_VAR_ITEMDEFPOWER,RDMOPT_VAR_MDEFPOWER,RDMOPT_HEAL_VALUE,RDMOPT_HEAL_MODIFY_PERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_BODY_INDESTRUCTIBLE,RDMOPT_BODY_ATTR_WATER,RDMOPT_BODY_ATTR_WIND,RDMOPT_BODY_ATTR_DARKNESS,RDMOPT_BODY_ATTR_GROUND,RDMOPT_BODY_ATTR_FIRE;
+		.@rnd = rand(0,14);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_HPACCELERATION: setarray .@value,rand(50,100); break;
+			case RDMOPT_VAR_SPACCELERATION: setarray .@value,rand(50,100); break;
+			case RDMOPT_VAR_HITSUCCESSVALUE: setarray .@value,rand(15,30); break;
+			case RDMOPT_VAR_AVOIDSUCCESSVALUE: setarray .@value,rand(15,30); break;
+			case RDMOPT_VAR_ITEMDEFPOWER: setarray .@value,rand(20,60); break;
+			case RDMOPT_VAR_MDEFPOWER: setarray .@value,rand(5,10); break;
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(5,10); break;
+			case RDMOPT_HEAL_MODIFY_PERCENT: setarray .@value,rand(5,10); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,10); break;
+			case RDMOPT_BODY_INDESTRUCTIBLE: setarray .@value,1; break;
+			case RDMOPT_BODY_ATTR_WATER: setarray .@value,0; break;
+			case RDMOPT_BODY_ATTR_WIND: setarray .@value,0; break;
+			case RDMOPT_BODY_ATTR_DARKNESS: setarray .@value,0; break;
+			case RDMOPT_BODY_ATTR_GROUND: setarray .@value,0; break;
+			case RDMOPT_BODY_ATTR_FIRE: setarray .@value,0; break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	delitem 23675,1;
+	end;
+}
+function	script	RndOpt_gefacc	{
+	if(getequipid(EQI_ACC_R) == 2963 || getequipid(EQI_ACC_R) == 2964) 	.@part = EQI_ACC_R;
+	else if(getequipid(EQI_ACC_L) == 2963 || getequipid(EQI_ACC_L) == 2964) .@part = EQI_ACC_L;
+	else { dispbottom "알맞는 장비를 착용한 상태여야 합니다.",0xFF0000; end; }
+	set .@index, 0;
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_USER,RDMOPT_DAMAGE_PROPERTY_WATER_USER,RDMOPT_DAMAGE_PROPERTY_GROUND_USER,RDMOPT_DAMAGE_PROPERTY_WIND_USER,RDMOPT_ATTR_TOLERACE_ALL,RDMOPT_DEC_SP_CONSUMPTION,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATKPERCENT,RDMOPT_VAR_MAGICATKPERCENT;
+		.@rnd = rand(0,12);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,7); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_ATTR_TOLERACE_ALL: setarray .@value,rand(1,3); break;
+			case RDMOPT_DEC_SP_CONSUMPTION: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(1,3); break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_USER,RDMOPT_DAMAGE_PROPERTY_WATER_USER,RDMOPT_DAMAGE_PROPERTY_GROUND_USER,RDMOPT_DAMAGE_PROPERTY_WIND_USER,RDMOPT_ATTR_TOLERACE_ALL,RDMOPT_DEC_SP_CONSUMPTION,RDMOPT_VAR_MAXHPPERCENT,RDMOPT_VAR_MAXSPPERCENT,RDMOPT_VAR_ATKPERCENT,RDMOPT_VAR_MAGICATKPERCENT;
+		.@rnd = rand(0,12);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,7); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,8); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_USER: setarray .@value,rand(3,5); break;
+			case RDMOPT_ATTR_TOLERACE_ALL: setarray .@value,rand(1,3); break;
+			case RDMOPT_DEC_SP_CONSUMPTION: setarray .@value,rand(3,5); break;
+			case RDMOPT_VAR_MAXHPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAXSPPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(1,3); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(1,3); break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	delitem 23679,1;
+	end;
+}
+function	script	RndOpt_gray_physics	{
+	.@part = EQI_HAND_R;
+	set .@index, 0;
+	if(getequipid(.@part) != 13441 && getequipid(.@part) != 21009 && getequipid(.@part) != 1438 && getequipid(.@part) != 1496 && getequipid(.@part) != 13093 && getequipid(.@part) != 28000 && getequipid(.@part) != 1836 && getequipid(.@part) != 16028 && getequipid(.@part) != 28100 && getequipid(.@part) != 1988 && getequipid(.@part) != 1933 ) { dispbottom "알맞는 장비를 착용한 상태여야 합니다.",0xFF0000; end; }
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET,RDMOPT_DAMAGE_PROPERTY_WATER_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET,RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET,RDMOPT_DAMAGE_PROPERTY_WIND_TARGET,RDMOPT_DAMAGE_PROPERTY_POISON_TARGET,RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET,RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET,RDMOPT_DAMAGE_PROPERTY_TELEKINESIS_TARGET,RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET,RDMOPT_DAMAGE_SIZE_PERFECT,RDMOPT_VAR_PLUSASPD,RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_WEAPON_ATTR_SAINT,RDMOPT_WEAPON_ATTR_DARKNESS,RDMOPT_WEAPON_ATTR_WATER,RDMOPT_WEAPON_ATTR_WIND,RDMOPT_WEAPON_ATTR_FIRE,RDMOPT_WEAPON_ATTR_GROUND;
+		.@rnd = rand(0,18);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_POISON_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_TELEKINESIS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_SIZE_PERFECT: setarray .@value,1; break;
+			case RDMOPT_VAR_PLUSASPD: setarray .@value,1; break;
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(5,10); break;
+			case RDMOPT_WEAPON_ATTR_SAINT: setarray .@value,0; break;
+			case RDMOPT_WEAPON_ATTR_DARKNESS: setarray .@value,0; break;
+			case RDMOPT_WEAPON_ATTR_WATER: setarray .@value,0; break;
+			case RDMOPT_WEAPON_ATTR_WIND: setarray .@value,0; break;
+			case RDMOPT_WEAPON_ATTR_FIRE: setarray .@value,0; break;
+			case RDMOPT_WEAPON_ATTR_GROUND: setarray .@value,0; break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_RACE_DAMAGE_NOTHING,RDMOPT_RACE_DAMAGE_UNDEAD,RDMOPT_RACE_DAMAGE_ANIMAL,RDMOPT_RACE_DAMAGE_PLANT,RDMOPT_RACE_DAMAGE_INSECT,RDMOPT_RACE_DAMAGE_FISHS,RDMOPT_RACE_DAMAGE_DEVIL,RDMOPT_RACE_DAMAGE_HUMAN,RDMOPT_RACE_DAMAGE_ANGEL,RDMOPT_RACE_DAMAGE_DRAGON,RDMOPT_CLASS_DAMAGE_NORMAL_TARGET,RDMOPT_CLASS_DAMAGE_BOSS_TARGETRDMOPT_VAR_ATKPERCENT,RDMOPT_DAMAGE_CRI_TARGET,RDMOPT_WEAPON_INDESTRUCTIBLE;
+		.@rnd = rand(0,14);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_RACE_DAMAGE_NOTHING: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_UNDEAD: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_ANIMAL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_PLANT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_INSECT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_FISHS: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_DEVIL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_HUMAN: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_ANGEL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_DRAGON: setarray .@value,rand(1,20); break;
+			case RDMOPT_CLASS_DAMAGE_NORMAL_TARGET: setarray .@value,rand(1,10); break;
+			case RDMOPT_CLASS_DAMAGE_BOSS_TARGET: setarray .@value,rand(1,10); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,20); break;
+			case RDMOPT_WEAPON_INDESTRUCTIBLE: setarray .@value,1; break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	delitem 23676,1;
+	end;
+}
+function	script	RndOpt_gray_magic	{
+	.@part = EQI_HAND_R;
+	set .@index, 0;
+	if(getequipid(.@part) != 2023 && getequipid(.@part) != 1669 && getequipid(.@part) != 13093 && getequipid(.@part) != 13441 && getequipid(.@part) != 1933 && getequipid(.@part) != 1988) { dispbottom "알맞는 장비를 착용한 상태여야 합니다.",0xFF0000; end; }
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET,RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET,RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET,RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET,RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET,RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET,RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET,RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET,RDMOPT_MDAMAGE_PROPERTY_TELEKINESIS_TARGET,RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET,RDMOPT_DEC_SPELL_CAST_TIME,RDMOPT_HEAL_VALUE,RDMOPT_DEC_SP_CONSUMPTION,RDMOPT_DEC_SPELL_DELAY_TIME;
+		.@rnd = rand(0,13);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_MDAMAGE_PROPERTY_NOTHING_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_WATER_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_FIRE_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_GROUND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_WIND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_POISON_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_SAINT_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_DARKNESS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_TELEKINESIS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_MDAMAGE_PROPERTY_UNDEAD_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,10); break;
+			case RDMOPT_HEAL_VALUE: setarray .@value,rand(5,20); break;
+			case RDMOPT_DEC_SP_CONSUMPTION: setarray .@value,rand(5,10); break;
+			case RDMOPT_DEC_SPELL_DELAY_TIME: setarray .@value,rand(1,5); break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_RACE_MDAMAGE_NOTHING,RDMOPT_RACE_MDAMAGE_UNDEAD,RDMOPT_RACE_MDAMAGE_ANIMAL,RDMOPT_RACE_MDAMAGE_PLANT,RDMOPT_RACE_MDAMAGE_INSECT,RDMOPT_RACE_MDAMAGE_FISHS,RDMOPT_RACE_MDAMAGE_DEVIL,RDMOPT_RACE_MDAMAGE_HUMAN,RDMOPT_RACE_MDAMAGE_ANGEL,RDMOPT_RACE_MDAMAGE_DRAGON,RDMOPT_CLASS_MDAMAGE_NORMAL,RDMOPT_CLASS_MDAMAGE_BOSS,RDMOPT_VAR_MAGICATKPERCENT,RDMOPT_DEC_SPELL_CAST_TIME;
+		.@rnd = rand(0,13);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_RACE_MDAMAGE_NOTHING: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_UNDEAD: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_ANIMAL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_PLANT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_INSECT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_FISHS: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_DEVIL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_HUMAN: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_ANGEL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_MDAMAGE_DRAGON: setarray .@value,rand(1,20); break;
+			case RDMOPT_CLASS_MDAMAGE_NORMAL: setarray .@value,rand(5,10); break;
+			case RDMOPT_CLASS_MDAMAGE_BOSS: setarray .@value,rand(5,10); break;
+			case RDMOPT_VAR_MAGICATKPERCENT: setarray .@value,rand(3,7); break;
+			case RDMOPT_DEC_SPELL_CAST_TIME: setarray .@value,rand(5,10); break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	delitem 23677,1;
+	end;
+}
+function	script	RndOpt_gray_long	{
+	.@part = EQI_HAND_R;
+	set .@index, 0;
+	if(getequipid(.@part) != 13441 && getequipid(.@part) != 1933 && getequipid(.@part) != 1988 && getequipid(.@part) != 21009 && getequipid(.@part) != 1438 && getequipid(.@part) != 1496 && getequipid(.@part) != 28000 && getequipid(.@part) != 1836 && getequipid(.@part) != 16028 && getequipid(.@part) != 28100) { dispbottom "알맞는 장비를 착용한 상태여야 합니다.",0xFF0000; end; }
+
+	if(.@index == 0) {
+		setarray .@rndoptID[0],RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET,RDMOPT_DAMAGE_PROPERTY_WATER_TARGET,RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET,RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET,RDMOPT_DAMAGE_PROPERTY_WIND_TARGET,RDMOPT_DAMAGE_PROPERTY_POISON_TARGET,RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET,RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET,RDMOPT_DAMAGE_PROPERTY_TELEKINESIS_TARGET,RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET,RDMOPT_DAMAGE_SIZE_PERFECT,RDMOPT_VAR_PLUSASPD,RDMOPT_VAR_PLUSASPDPERCENT,RDMOPT_RANGE_ATTACK_DAMAGE_TARGET,RDMOPT_WEAPON_INDESTRUCTIBLE;
+		.@rnd = rand(0,14);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_DAMAGE_PROPERTY_NOTHING_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_WATER_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_FIRE_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_GROUND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_WIND_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_POISON_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_SAINT_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_DARKNESS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_TELEKINESIS_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_PROPERTY_UNDEAD_TARGET: setarray .@value,rand(1,20); break;
+			case RDMOPT_DAMAGE_SIZE_PERFECT: setarray .@value,1; break;
+			case RDMOPT_VAR_PLUSASPD: setarray .@value,1; break;
+			case RDMOPT_VAR_PLUSASPDPERCENT: setarray .@value,rand(5,10); break;
+			case RDMOPT_RANGE_ATTACK_DAMAGE_TARGET: setarray .@value,rand(5,10); break;
+			case RDMOPT_WEAPON_INDESTRUCTIBLE: setarray .@value,1; break;
+			default :
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+		.@index = 1; // 한번에 옵션 2개
+	}
+	if(.@index == 1) {
+		setarray .@rndoptID[0],RDMOPT_RACE_DAMAGE_NOTHING,RDMOPT_RACE_DAMAGE_UNDEAD,RDMOPT_RACE_DAMAGE_ANIMAL,RDMOPT_RACE_DAMAGE_PLANT,RDMOPT_RACE_DAMAGE_INSECT,RDMOPT_RACE_DAMAGE_FISHS,RDMOPT_RACE_DAMAGE_DEVIL,RDMOPT_RACE_DAMAGE_HUMAN,RDMOPT_RACE_DAMAGE_ANGEL,RDMOPT_RACE_DAMAGE_DRAGON,RDMOPT_CLASS_DAMAGE_NORMAL_TARGET,RDMOPT_CLASS_DAMAGE_BOSS_TARGETRDMOPT_VAR_ATKPERCENT,RDMOPT_DAMAGE_CRI_TARGET;
+		.@rnd = rand(0,13);
+		switch(.@rndoptID[.@rnd]) {
+			case RDMOPT_RACE_DAMAGE_NOTHING: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_UNDEAD: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_ANIMAL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_PLANT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_INSECT: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_FISHS: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_DEVIL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_HUMAN: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_ANGEL: setarray .@value,rand(1,20); break;
+			case RDMOPT_RACE_DAMAGE_DRAGON: setarray .@value,rand(1,20); break;
+			case RDMOPT_CLASS_DAMAGE_NORMAL_TARGET: setarray .@value,rand(1,10); break;
+			case RDMOPT_CLASS_DAMAGE_BOSS_TARGET: setarray .@value,rand(1,10); break;
+			case RDMOPT_VAR_ATKPERCENT: setarray .@value,rand(3,5); break;
+			case RDMOPT_DAMAGE_CRI_TARGET: setarray .@value,rand(5,20); break;
+			default:
+				end;
+		}
+		setrandomoption(.@part,.@index,.@rndoptID[.@rnd],.@value,0);
+	}
+	delitem 23678,1;
+	end;
+}

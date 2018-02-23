@@ -1,0 +1,382 @@
+glast_01,199,272,6	script	시간의부츠인첸::timeboots	865,{
+set .@npcname$, "[시간의부츠인첸술사]";
+
+	//장비가 없을 때
+	if (!getequipisequiped(EQI_SHOES)) {
+		mes .@npcname$;
+		mes "아이템을 착용한상태야하네!";
+		end;
+	}
+
+//장비 번호 지정
+set .@equip_id, getequipid(EQI_SHOES);
+
+	if(.@equip_id != 22000 && .@equip_id != 22001 && .@equip_id != 22002 && .@equip_id != 22003 && .@equip_id != 22004 && .@equip_id != 22005 && .@equip_id != 22006 && .@equip_id != 22007 && .@equip_id != 22008 && .@equip_id != 22009 && .@equip_id != 22010 && .@equip_id != 22011) { 
+		mes .@npcname$;
+		mes "해당되는 장비가없다네."; // 장비없을시
+		close;
+	}
+
+//인챈 및 제련도 확인
+setarray .@equip_card[0], getequipcardid(EQI_SHOES,0),getequipcardid(EQI_SHOES,1),getequipcardid(EQI_SHOES,2),getequipcardid(EQI_SHOES,3);
+set .@equip_refine, getequiprefinerycnt(EQI_SHOES);
+	//인챈 횟수 및 금액 확인
+	//for(set @in_num, 3; @in_num == 0; $in_num-1) {
+		//if(.@equip_card[@in_num] == 0)
+	
+
+//비용안내문
+mes .@npcname$;
+mes "시간의 부츠를 인챈트하려면";
+mes "1차 10만, 2차 40만, 3차150만";
+mes "4차 300만 제니가 필요하다네";
+next;
+
+	// 1차 강화
+	if(.@equip_card[3] == 0) {
+		mes .@npcname$;
+		mes "인챈트를 해주지 초기비용은 10만원이네";
+		mes "인첸트 하겠는가?";//9제련 이상
+		next;
+		switch(select("강화:취소")){ 
+			case 1:
+				if(zeny < 100000) { goto Misszeny; }
+					mes .@npcname$;
+					mes "어느계열을 인첸트하겠나?";
+					next;
+					switch(select("투지:명궁:마력:체력:공속:LUk")){ 
+						case 1:
+							set .@equip_card[3],4808; //투지4
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 2:
+							set .@equip_card[3],4832; //명궁 1
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 3:
+							set .@equip_card[3],4814; //마력2
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 4:
+							set .@equip_card[3],4741; // VIT2		
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 5:
+							set .@equip_card[3],4869; //공속1
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+					
+						case 6:
+							set .@equip_card[3],4752; //Luk3
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-100000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+					}
+				case 2:
+					mes .@npcname$;
+					mes "잘가게!"; 
+					close;
+				
+				}
+			} 
+			
+		// 2차강화
+		else if(.@equip_card[2] == 0){	
+			if(.@equip_card[3] == 4808 || .@equip_card[3] == 4832 || .@equip_card[3] == 4814 || .@equip_card[3] == 4741 || .@equip_card[3] == 4869 || .@equip_card[3] == 4752 ){
+			mes .@npcname$;
+			mes	"인챈트를 해주지 비용은 40만원이네";
+			mes "인첸트 하겠는가?";//9제련 이상
+			next;
+			switch(select("강화:취소")){ 
+				case 1:
+					if(zeny < 400000) { goto Misszeny; }
+					mes .@npcname$;
+					mes "어느계열을 인첸트하겠나?";
+					next;
+					switch(select("투지:명궁:마력:체력:공속:LUk")){ 
+					case 1:
+						set .@equip_card[3],4820; //투지5
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+						close;
+					case 2:
+						set .@equip_card[3],4833; //명궁2
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+							close;
+					case 3:
+						set .@equip_card[3],4813; // 마력3
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+						close;
+					case 4:
+						set .@equip_card[3],4742; // VIT3		
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+						close;
+					case 5:
+						set .@equip_card[3],4872; //공속2
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+						close;
+					case 6:
+						set .@equip_card[3],4753; // Luk4
+						delequip EQI_SHOES;
+						specialeffect2 EF_REPAIRWEAPON;			
+						set Zeny,Zeny-400000;
+						getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+						goto suend;
+						close;
+					}
+				case 2:
+				mes .@npcname$;
+				mes "잘가게!"; 
+				close;
+				}
+			}
+
+			// 3차강화
+			else if(.@equip_card[3] == 4813 || .@equip_card[3] == 4742 || .@equip_card[3] == 4872 || .@equip_card[3] == 4753 ){
+				mes .@npcname$;
+				mes	"인챈트를 해주지 비용은 150만원이네";
+				mes "인첸트 하겠는가?";//9제련 이상
+				next;
+				switch(select("강화:취소")){ 
+					case 1:
+						if(zeny < 1500000) { goto Misszeny; }
+						mes .@npcname$;
+						mes "어느계열을 인첸트하겠나?";
+						next;
+						switch(select("투지:명궁:마력:체력:공속:LUk")){ 
+							case 1:
+								set .@equip_card[3],4821; //투지6
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							case 2:
+								set .@equip_card[3],4834; //명궁3
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							case 3:
+							
+								set .@equip_card[3],4812; // 마력4
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							case 4:
+								set .@equip_card[3],4861; // MHP1		
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							case 5:
+								set .@equip_card[3],4873; //공속3
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							
+							case 6:
+								set .@equip_card[3],4754; // Luk5
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1500000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							}
+					case 2:
+					mes .@npcname$;
+					mes "잘가게!"; 
+					close;
+					}
+				}
+
+				// 4차강화
+				else if(.@equip_card[3] == 4821 || .@equip_card[3] == 4834 || .@equip_card[3] == 4812 || .@equip_card[3] == 4861 || .@equip_card[3] == 4873 || .@equip_card[3] == 4754 ){
+				mes .@npcname$;
+				mes	"인챈트를 해주지 비용은 300만원이네";
+				mes "인첸트 하겠는가?";//9제련 이상
+				next;
+				switch(select("강화:취소")){ 
+				case 1:
+						if(zeny < 3000000) { goto Misszeny; }
+						mes .@npcname$;
+						mes "어느계열을 인첸트하겠나?";
+						next;
+						switch(select("투지:명궁:마력:체력:공속:LUk")){ 
+						case 1:
+							set .@equip_card[3],4822; //투지7
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 2:
+							set .@equip_card[3],4835; //명궁4
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+								close;
+						case 3:
+							
+							set .@equip_card[3],4826; // 마력5
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 4:
+							set .@equip_card[3],4862; // MHP2		
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						case 5:
+							set .@equip_card[3],4881; //공속4
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						
+						case 6:
+							set .@equip_card[3],4755; // Luk6
+							delequip EQI_SHOES;
+							specialeffect2 EF_REPAIRWEAPON;			
+							set Zeny,Zeny-3000000;
+							getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+							goto suend;
+							close;
+						}
+					case 2:
+					mes .@npcname$;
+					mes "잘가게!"; 
+					close;
+					}
+				}
+
+				//3번째 슬롯
+
+				else{
+				mes .@npcname$;
+				mes	"인챈트를 해주지 비용은 100만원이네";
+				mes "인첸트 하겠는가?";//9제련 이상
+				mes "이번엔 랜덤하게 속성이 붙는다네";
+				next;
+				// 곰의 힘같은건 Db구현을 못해서 아쉽지만 투지8,명궁5,마력6,mhp3,ASPD+1,럭7로 대체하겟습니다.
+				switch(select("강화:취소")){ 
+					case 1:
+						if(zeny < 1000000) { goto Misszeny; }
+						mes .@npcname$;
+						mes "6가지 계열중 랜덤하게 부여되네";
+						mes "하겠는가?";
+						next;
+						set .@enchan1_rand, rand(1,6); // 랜덤한 효능 6개를 위해서
+						switch(select("강화:취소")){ 
+							case 1:
+								if(.@enchan1_rand == 1) set .@equip_card[2],4875; // 곰의 힘
+								if(.@enchan1_rand == 2) set .@equip_card[2],4878; // 근육 바보
+								if(.@enchan1_rand == 3) set .@equip_card[2],4879; // 매의 눈
+								if(.@enchan1_rand == 4) set .@equip_card[2],4877; // 빛의 속도
+								if(.@enchan1_rand == 5) set .@equip_card[2],4876; // 폭주하는 마력
+								if(.@enchan1_rand == 6) set .@equip_card[2],4880; // 운수좋은 날
+								
+								delequip EQI_SHOES;
+								specialeffect2 EF_REPAIRWEAPON;			
+								set Zeny,Zeny-1000000;
+								getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+								goto suend;
+								close;
+							case 2:
+								mes .@npcname$;
+								mes "잘가게!"; 
+								close;
+							}
+						
+						
+					case 2:
+					mes .@npcname$;
+					mes "잘가게!"; 
+					close;
+					}
+				}
+		}
+		
+		else { goto EnEnd; } //마지막 인첸되어있을시종료
+		   
+	
+suend:
+	mes .@npcname$;
+	mes "성공적으로 끝났구먼!"; // 인첸트 성공 안내문
+	end;
+
+EnEnd:
+	mes .@npcname$;
+	mes "이미 이아이템은 인첸트가 되어있네"; // 최대로 인첸트된 날개를 들고 찾아왔을시 안내문
+	end;
+
+Misszeny:
+	mes .@npcname$;
+	mes "제니가부족하다네"; // 제니 부족 안내문
+	end;
+}

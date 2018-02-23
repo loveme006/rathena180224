@@ -1,0 +1,14 @@
+bat_room,148,147,4	shop	::bg_shop2	-1,598:-1,599:-1,11500:-1,11501:-1,11502:-1,14509:-1,14510:-1
+
+
+-	script	 ::bg_shop	-1,{
+	mes "[" + strnpcinfo(1) + "]";
+	mes "^FF0000※주의: 전장 이외에는 소비만 됨^000000";
+	close2;
+	callshop "bg_shop2",1;
+	end;
+
+}
+
+
+bat_room,148,147,5	duplicate(bg_shop)	자판기#bg	564

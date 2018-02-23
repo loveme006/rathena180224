@@ -1,0 +1,18 @@
+// Poring Box Summonable Monsters Database
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Poring_Box,0,Poring,1002
+MOBG_Poring_Box,1002,포링,Poring
+MOBG_Poring_Box,1031,포포링,Poporing
+MOBG_Poring_Box,1062,산타포링,Santa Poring
+MOBG_Poring_Box,1090,마스터링,Mastering
+MOBG_Poring_Box,1096,엔젤링,Angeling
+MOBG_Poring_Box,1113,드롭프스,Drops
+MOBG_Poring_Box,1120,고스트링,Ghostring
+MOBG_Poring_Box,1242,마린,Marin
+MOBG_Poring_Box,1388,아크 엔젤링,Arc Angeling
+MOBG_Poring_Box,1582,데빌링,Deviling
+MOBG_Poring_Box,1613,메탈링,Metaling
+MOBG_Poring_Box,1784,스태포,Stapo

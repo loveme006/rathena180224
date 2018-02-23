@@ -1,0 +1,864 @@
+//===== rAthena Script ======================================= 
+//= Orc's Memory
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.7
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Relive the memory of an orc.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [L0ne_W0lf]
+//= 1.1 First round of bugfixes. (bugreport:3928) [L0ne_W0lf]
+//=     Fixed some npcs calling wrong events. 
+//=     Fixed Depraved Orc Spirit spawn point
+//=     Fixed an NPC that was never being enabled.
+//= 1.1a Second round from bugreport. (bugreport:3928) [L0ne_W0lf]
+//=     Fixed first warp never enabling, issue not seen
+//=     because of a local source mod.
+//=     Corrected the IDs for the Vengeful Orc Spirit and
+//=     Shaman Cargalache, copy/paste fail.
+//=     Changed spawn point for dungeon according to spawn
+//=     point on iRO.
+//= 1.2 More bugfixes, mostly typos. :O (bugreport:3944) [L0ne_W0lf]
+//=     Fixed some varaibles (types/values) as well.
+//= 1.3 Disabled an exploit related to the orc hero spawn. [L0ne_W0lf]
+//=     Corrected the variable type for party leader name.
+//= 1.4 Fixed donpcevent calling non-existant npc. (bugreport:4039) [L0ne_W0lf]
+//= 1.5 Fixed a checkquest condition never setting quest. [L0ne_W0lf]
+//= 1.6 Added 'instance_check_party' command to the script for proper checking if
+//=     the invoking party meets the requirements to join the Memorial Dungeon.
+//= 1.7 Instance system rewrite. [Euphy]
+//============================================================ 
+
+// Entrance
+//============================================================
+gef_fild10,242,201,0	script	차원의 협곡 조각	406,{
+
+	set .@party_id,getcharid(1);
+	set .@md_name$,"Orc's Memory";
+
+	if (!instance_check_party(.@party_id,1,30,175)) {
+		mes "파티가 없거나";
+		mes "이미 다녀간 상태입니다.";
+		//mes "^ff000030 ~ 80^000000 레벨 사이의 캐릭터만 확인할수있다.";
+		close;
+	}
+
+	set .@orctime,checkquest(12059,PLAYTIME);
+	if (.@orctime == -1) {
+		if (getcharid(0) == getpartyleader(.@party_id,2)) {
+			mes "파티 상태가 확인 되었습니다. "+.@md_name$+" 던전을 담사하시겠습니까?";
+			next;
+			switch(select(""+.@md_name$+" 던전 생성:던전 입장:취소")) {
+			case 1:
+				if (instance_create(.@md_name$) < 0) {
+					mes "파티 이름: "+ getpartyname(.@party_id);
+					mes "파티 리더: "+strcharinfo(0);
+					mes "^0000ff"+.@md_name$+" ^000000 - 생성 실패.";
+					close;
+				}
+				mes "^0000ff"+.@md_name$+"^000000- 던전의 차원이 열렸습니다.";
+				mes "던전 입장을 하실수 있습니다.";
+				close;
+			case 2:
+				callsub L_Enter,0;
+			case 3:
+				close;
+			}
+		}
+		if(select(.@md_name$ + " 던전 입장:취소") == 2)
+			end;
+		callsub L_Enter,1;
+	} else if (.@orctime == 0 || .@orctime == 1) {
+		mes "던전이 열렸다면 입장 할수 있습니다.";
+		next;
+		if(select(""+.@md_name$+" 던전 입장:취소") == 2)
+			close;
+		callsub L_Enter,0;
+	} else if (.@orctime == 2) {
+		mes "^0000ff 이전의 기억을 지웠습니다 다시 생성 하세요..^000000";
+		erasequest 12059;
+		close;
+	}
+	mes "던전을 생성 하려면 파티 리더여야 합니다.";
+	close;
+L_Enter:
+	switch(instance_enter("Orc's Memory")) {
+	case IE_OTHER:
+		mes "알수 없는 에러 발생.";
+		close;
+	case IE_NOINSTANCE:
+		mes "던전이 생성 되지 않았습니다.";
+		close;
+	case IE_NOMEMBER:
+		mes "파티에 속해 있어야만 입장할수 있습니다.";
+		close;
+	case IE_OK:
+		mapannounce "gef_fild10", getpartyname(getcharid(1)) +" 의 파티원 "+strcharinfo(0)+" 님이 오크의 기억에 입장합니다.",bc_map,"0x00ff99";
+		if (checkquest(12059) == -1) setquest 12059;
+		//warp "1@orcs",179,15;
+		if (getarg(0) == 0) close;
+		else end;
+	}
+
+}
+
+// Orc's Memory Floor 1
+//============================================================
+1@orcs,180,30,0	script	#Resurrect Monsters1	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#Resurrect Monsters1");
+	end;
+
+OnDisable:
+	stopnpctimer;
+	killmonster instance_mapname("1@orcs"),instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#Resurrect Monsters1");
+	monster instance_mapname("1@orcs"),0,0,"Orc Warrior",1023,30,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("1@orcs");
+	set .@mob_dead_num, 30 - mobcount(.@map$,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead");
+	if (.@mob_dead_num > 0) {
+		set .@mob_ran,rand(1,30);
+		if (.@mob_ran > 29) {
+			monster .@map$,0,0,"오크 워리어",1023,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+		}
+		else if ((.@mob_ran > 28) && (.@mob_ran < 30)) {
+			monster .@map$,0,0,"하이 오크",1213,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+			if (rand(1,10) == 9) {
+				mapannounce .@map$, "하이 오크: 어서 방어해! 좀더 여기에 모여라!!",bc_map,"0xff4444";
+			}
+		}
+		else if ((.@mob_ran > 26) && (.@mob_ran < 29)) {
+			areamonster .@map$,41,91,51,81,"하이 오크",1213,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+			if (rand(1,10) == 9) {
+				mapannounce .@map$, "하이 오크는 어디 있나!! 적들을 멈춰야해!!!",bc_map,"0xff4444";
+			}
+		}
+		else {
+			areamonster .@map$,17,187,27,177,"하이 오크",1213,.@mob_dead_num,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+			if (rand(1,5) == 3) {
+				mapannounce .@map$, "경고: 4번 구역으로 병력 일부가 집결하기 시작했습니다.",bc_map,"0x77ff77";
+			}
+			if (rand(1,100) == 50) {
+				initnpctimer;
+			}
+		}
+	}
+	end;
+
+OnTimer10:
+	mapannounce instance_mapname("1@orcs"), "오크 수호대장의 외침: 돌격대원들은 어딨나?! 적들을 막아라!!",bc_map,"0xff4444";
+	end;
+
+OnTimer4010:
+	set .@map$, instance_mapname("1@orcs");
+	areamonster .@map$,17,187,27,177,"스터랙틱 고렘",1278,20,instance_npcname("#Resurrect Monsters1")+"::OnMyMobDead";
+	stopnpctimer;
+	end;
+}
+
+1@orcs,180,30,0	script	#Resurrect Monsters2	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#Resurrect Monsters2");
+	end;
+
+OnDisable:
+	killmonster instance_mapname("1@orcs"),instance_npcname("#Resurrect Monsters2")+"::OnMyMobDead";
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#Resurrect Monsters2");
+	monster instance_mapname("1@orcs"),0,0,"훈련된 늑대",1106,15,instance_npcname("#Resurrect Monsters2")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("1@orcs");
+	set .@mob_dead_num, 15 - mobcount(.@map$,instance_npcname("#Resurrect Monsters2")+"::OnMyMobDead");
+	if (rand(1,30) > 15) {
+		if (.@mob_dead_num > 0) {
+			monster .@map$,0,0,"훈련된 늑대",1106,.@mob_dead_num,instance_npcname("#Resurrect Monsters2")+"::OnMyMobDead";
+		}
+	}
+	else {
+		if (.@mob_dead_num > 0) {
+			areamonster .@map$,17,187,27,177,"훈련된 늑대",1106,.@mob_dead_num,instance_npcname("#Resurrect Monsters2")+"::OnMyMobDead";
+		}
+	}
+	end;
+}
+
+1@orcs,180,30,0	script	#Resurrect Monsters3	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#Resurrect Monsters3");
+	end;
+
+OnDisable:
+	killmonster instance_mapname("1@orcs"),instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead";
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#Resurrect Monsters3");
+	monster instance_mapname("1@orcs"),0,0,"오크 아쳐",1189,15,instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("1@orcs");
+	set .@mob_dead_num, 15 - mobcount(.@map$,instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead");
+	set .@mob_ran,rand(1,30);
+	if (.@mob_ran > 29) {
+		if (.@mob_dead_num > 0) {
+			monster .@map$,0,0,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead";
+		}
+	}
+	else if ((.@mob_ran > 26) && (.@mob_ran < 30)) {
+		if (.@mob_dead_num > 0) {
+			areamonster .@map$,43,155,47,159,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead";
+			if (rand(1,3) == 3) {
+				mapannounce .@map$, "하이 오크: 침입자들저지해라!! 방어 선을 구축해!! 모여라!!",bc_map,"0xff4444";
+			}
+		}
+	}
+	else {
+		if (.@mob_dead_num > 0) {
+			areamonster .@map$,17,187,27,177,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#Resurrect Monsters3")+"::OnMyMobDead";
+		}
+	}
+	end;
+}
+
+1@orcs,180,30,0	script	#Resurrect Monsters4	844,{
+	end;
+
+OnInstanceInit:
+	enablenpc instance_npcname("#Resurrect Monsters4");
+	areamonster instance_mapname("1@orcs"),98,35,178,115,"위레스",1627,10,instance_npcname("#Resurrect Monsters4")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("1@orcs");
+	set .@mob_dead_num, 10 - mobcount(.@map$,instance_npcname("#Resurrect Monsters4")+"::OnMyMobDead");
+	if (.@mob_dead_num > 0) {
+		monster .@map$,0,0,"위레스",1627,.@mob_dead_num,instance_npcname("#Resurrect Monsters4")+"::OnMyMobDead";
+	}
+	end;
+
+OnDisable:
+	killmonster instance_mapname("1@orcs"),instance_npcname("#Resurrect Monsters4")+"::OnMyMobDead";
+	end;
+}
+
+1@orcs,180,29,4	script	Kruger#1-1	433,{
+	donpcevent instance_npcname("Kruger#1-2")+"::OnEnable";
+	end;
+}
+
+1@orcs,180,29,4	script	Kruger#1-2	433,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("Kruger#1-2");
+	end;
+
+OnEnable:
+	disablenpc instance_npcname("Kruger#1-1");
+	enablenpc instance_npcname("Kruger#1-2");
+	initnpctimer;
+	end;
+
+OnTimer10:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 제길 이것저것 되는게 하나도 없군.. 왜 이렇게 늦은거요!! 지금은 한시가 급한 상황이란 말이오.",bc_map,"0xffff00";
+	end;
+
+OnTimer5710:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 원래 계획대로라면 우리 동료들이 문을 열어주기로 되어 있었소 하지만 당신네들이 지체하는 그 시간동안에 오크 무녀에게 발각되어 일이 이렇게 되었소이다.",bc_map,"0xffff00";
+	end;
+
+OnTimer14610:
+	mapannounce instance_mapname("1@orcs"), "오크 수호대장의 외침: 어디선가 외부인의 냄새가 나는군, 입구 주변으로 순찰 병력을 보내도록 해라!!",bc_map,"0xff4444";
+	end;
+
+OnTimer20210:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 이런 망할... 놈들이 곧 몰려오겠군. 지금부터 내가 하는 이야기를 잘 들으시오.",bc_map,"0xffff00";
+	end;
+
+OnTimer24910:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 이곳을 장악한 무녀는 1층을 4개의 구역으로 나누어 마법으로 봉인 해 버렸소. 그리고 구역별로 한명의 오크 수호병에게 봉인을 해제할 수 있는 마법을 걸어두었지.",bc_map,"0xffff00";
+	end;
+
+OnTimer34310:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 녀석들을 찾아 처치하시오. 그럼 마법진이 풀리고 다음 구역으로 이동 할 수 있을거외다.",bc_map,"0xffff00";
+	end;
+
+OnTimer39710:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 다만 한가지, 봉인된 녀석들 이외의 오크들은 가급적 건드리지 마시오. 녀석들이 죽을때마다 강력한 돌격대원들이 2층으로 통하는 마지막 구역으로 몰려오게 될 것이오.",bc_map,"0xffff00";
+	end;
+
+OnTimer49210:
+	mapannounce instance_mapname("1@orcs"), "쿠르거: 최악의 경우 2층으로 가기위한 입구가 봉쇄될 지경에 처할수도 있소. 가급적 전면전을 피하고 은밀히 전진해 주기 바라오.",bc_map,"0xffff00";
+	end;
+
+OnTimer56310:
+	mapannounce instance_mapname("1@orcs"), "임무: 은밀하게 접근하여 `마력봉인의 오크`를 처치하십시오. 다른 오크들과의 대규모 전투는 가급적 피하는것이 2층으로 손쉽게 갈 수 있는 전술이 될것입니다.",bc_map,"0x44ffff";
+	donpcevent instance_npcname("#Resurrect Monsters1")+"::OnEnable";
+	donpcevent instance_npcname("#Resurrect Monsters2")+"::OnEnable";
+	donpcevent instance_npcname("#Resurrect Monsters3")+"::OnEnable";
+	disablenpc instance_npcname("Kruger#1-2");
+	end;
+
+OnTimer60000:
+	areamonster instance_mapname("1@orcs"),137,83,143,89,"오크 워리어",1023,1,instance_npcname("B1 Area Mobs")+"::OnMyMobDead";
+	stopnpctimer;
+	end;
+
+}
+
+1@orcs,168,125,0	script	B1 Area 1	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("B1 Area 1");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("B1 Area 1");
+	areamonster instance_mapname("1@orcs"),103,105,109,111,"오크 워리어",1023,1,instance_npcname("B1 Area Mobs")+"::OnMyMobDead1";
+	end;
+
+OnTouch_:
+	warp instance_mapname("1@orcs"),168,130;
+	end;
+
+OnContinue:
+	donpcevent instance_npcname("B1 Area 2")+"::OnEnable";
+	initnpctimer;
+	end;
+
+OnTimer10300:
+	mapannounce instance_mapname("1@orcs"), "쿠르거의 귓속말: 이곳의 오크들은 불과 몇 달 전까지만 해도 나의 동료였소. 무녀들에 의해 정신적인 지배를 받게된 후로 그들은 스스로의 의지를 잃었지.",bc_map,"0xff4499";
+	end;
+
+OnTimer18700:
+	mapannounce instance_mapname("1@orcs"), "쿠르거의 귓속말: 이젠 어쩔 수 없소. 남아있는 부족의 구원을 위해서라도 무녀는 반드시 쓰러뜨려야만 하오.",bc_map,"0xff4499";
+	stopnpctimer;
+	end;
+}
+
+1@orcs,89,94,0	script	B1 Area 2	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("B1 Area 2");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("B1 Area 2");
+	areamonster instance_mapname("1@orcs"),32,40,38,46,"오크 워리어",1023,1,instance_npcname("B1 Area Mobs")+"::OnMyMobDead2";
+	end;
+
+OnTouch_:
+	warp instance_mapname("1@orcs"),85,85;
+	end;
+
+OnContinue:
+	donpcevent instance_npcname("B1 Area 3")+"::OnEnable";
+	initnpctimer;
+	end;
+
+OnTimer30300:
+	mapannounce instance_mapname("1@orcs"), "쿠르거의 귓속말: 오는 길에 우리 부족의 잔해들을 보았소. 그녀는 분명 아무것도 모르는 오크들을 자신의 의식에 사용한 것 같구려.",bc_map,"0xff4499";
+	end;
+
+OnTimer37600:
+	mapannounce instance_mapname("1@orcs"), "쿠르거의 귓속말: ... 이게 다 나 때문이오. 내가 뿌린 악의 씨앗은 내가 거두어야지.",bc_map,"0xff4499";
+	stopnpctimer;
+	end;
+}
+
+1@orcs,38,105,0	script	B1 Area 3	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("B1 Area 3");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("B1 Area 3");
+	areamonster instance_mapname("1@orcs"),19,177,25,183,"오크 워리어",1023,1,instance_npcname("B1 Area Mobs")+"::OnMyMobDead3";
+	end;
+
+OnTouch_:
+	warp instance_mapname("1@orcs"),38,110;
+	end;
+
+OnContinue:
+	donpcevent instance_npcname("B1 Area 4")+"::OnEnable";
+	initnpctimer;
+	end;
+
+OnTimer30300:
+	end;
+
+OnTimer32700:
+	stopnpctimer;
+	end;
+}
+
+1@orcs,21,189,0	script	B1 Area 4	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("B1 Area 4");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("B1 Area 4");
+	donpcevent instance_npcname("#Resurrect Monsters1")+"::OnDisable";
+	donpcevent instance_npcname("#Resurrect Monsters2")+"::OnDisable";
+	donpcevent instance_npcname("#Resurrect Monsters3")+"::OnDisable";
+	donpcevent instance_npcname("#Resurrect Monsters4")+"::OnDisable";
+	end;
+
+OnTouch_:
+	warp instance_mapname("2@orcs"),32,171;
+	end;
+}
+
+1@orcs,1,1,0	script	B1 Area Mobs	-1,{
+	end;
+
+OnMyMobDead:
+	donpcevent instance_npcname("B1 Area 1")+"::OnEnable";
+	end;
+
+OnMyMobDead1:
+	donpcevent instance_npcname("B1 Area 1")+"::OnContinue";
+	end;
+
+OnMyMobDead2:
+	donpcevent instance_npcname("B1 Area 2")+"::OnContinue";
+	end;
+
+OnMyMobDead3:
+	donpcevent instance_npcname("B1 Area 3")+"::OnContinue";
+	end;
+}
+
+// Orc's Memory Floor 2
+//============================================================
+2@orcs,36,171,0	script	#2Resurrect Monsters1	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#2Resurrect Monsters1");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#2Resurrect Monsters1");
+	monster instance_mapname("2@orcs"),0,0,"오크 스켈레톤",1152,30,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+	end;
+
+OnDisable:
+	stopnpctimer;
+	killmonster instance_mapname("2@orcs"),instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("2@orcs");
+	set .@mob_dead_num, 30 - mobcount(.@map$,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead");
+	if (.@mob_dead_num > 0) {
+		set .@mob_ran,rand(1,30);
+		if (.@mob_ran > 29) {
+			monster .@map$,0,0,"오크 스켈레톤",1152,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+		}
+		else if ((.@mob_ran > 28) && (.@mob_ran < 30)) {
+			monster .@map$,0,0,"하이 오크",1213,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+		}
+		else if ((.@mob_ran > 26) && (.@mob_ran < 29)) {
+			areamonster .@map$,157,112,167,122,"하이 오크",1213,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+			if (rand(1,10) == 9) {
+				mapannounce .@map$, "경고: 오크 돌격대원들이 3번 구역으로 집결하기 시작했습니다.",bc_map,"0xff4444";
+			}
+		}
+		else {
+			areamonster .@map$,173,13,183,23,"하이 오크",1213,.@mob_dead_num,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+			if (rand(1,5) == 3) {
+				mapannounce .@map$, "경고: 무녀의 제단으로 다수의 병력이 집결하기 시작했습니다.",bc_map,"0x77ff77";
+			}
+			if (rand(1,70) == 50) {
+				initnpctimer;
+			}
+		}
+	}
+	end;
+
+OnTimer10:
+	end;
+
+OnTimer4010:
+	set .@map$, instance_mapname("2@orcs");
+	mapannounce .@map$, "[ 알수 없는 힘에 의해 레이스가 소환되었습니다. ]",bc_map,"0x77ff77";
+	areamonster .@map$,167,25,177,35,"레이스",1475,30,instance_npcname("#2Resurrect Monsters1")+"::OnMyMobDead";
+	stopnpctimer;
+	end;
+}
+
+2@orcs,36,171,0	script	#2Resurrect Monsters3	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#2Resurrect Monsters3");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#2Resurrect Monsters3");
+	monster instance_mapname("2@orcs"),0,0,"오크 좀비",1153,15,instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("2@orcs");
+	set .@mob_dead_num, 15 - mobcount(.@map$,instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead");
+	set .@mob_ran,rand(1,30);
+	if (.@mob_ran > 29) {
+		if (.@mob_dead_num > 0) {
+			monster .@map$,0,0,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead";
+		}
+	}
+	else if ((.@mob_ran > 6) && (.@mob_ran < 30)) {
+		if (.@mob_dead_num > 0) {
+			areamonster .@map$,168,10,184,26,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead";
+			if (rand(1,15) == 3) {
+				mapannounce .@map$, "경고: 오크 아쳐들이 근처에 모이고 있습니다.",bc_map,"0xff4444";
+			}
+		}
+	}
+	else {
+		if (.@mob_dead_num > 0) {
+			areamonster .@map$,168,21,184,21,"오크 아쳐",1189,.@mob_dead_num,instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead";
+		}
+	}
+	end;
+
+OnDisable:
+	killmonster instance_mapname("2@orcs"),instance_npcname("#2Resurrect Monsters3")+"::OnMyMobDead";
+	end;
+}
+
+2@orcs,180,30,0	script	#2Resurrect Monsters4	844,{
+	end;
+
+OnInstanceInit:
+	enablenpc instance_npcname("#2Resurrect Monsters4");
+	monster instance_mapname("2@orcs"),0,0,"위레스",1627,10,instance_npcname("#2Resurrect Monsters4")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("2@orcs");
+	set .@mob_dead_num, 10 - mobcount(.@map$,instance_npcname("#2Resurrect Monsters4")+"::OnMyMobDead");
+	if (.@mob_dead_num > 0) {
+		monster .@map$,0,0,"위레스",1627,1,instance_npcname("#2Resurrect Monsters4")+"::OnMyMobDead";
+	}
+	end;
+}
+
+2@orcs,35,169,4	script	Kruger#2-1	433,{
+	donpcevent instance_npcname("Kruger#2-2")+"::OnEnable";
+	end;
+}
+
+2@orcs,35,169,4	script	Kruger#2-2	433,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("Kruger#2-2");
+	end;
+
+OnEnable:
+	disablenpc instance_npcname("Kruger#2-1");
+	enablenpc instance_npcname("Kruger#2-2");
+	initnpctimer;
+	end;
+
+OnTimer10:
+	mapannounce instance_mapname("2@orcs"), "쿠르거의 귓속말: 잠시 숨을 돌리는 동안 무녀의 제단으로 가는 방법을 알려드리겠소.",bc_map,"0xffff00";
+	end;
+
+OnTimer3510:
+	mapannounce instance_mapname("2@orcs"), "쿠르거의 귓속말: 무녀가 곳곳에 피워놓은 화로가 보이시오? 이곳의 화로들을 건드려 그 불길을 강하게 피워 올리면 다음 구역으로의 봉인이 풀릴 것이오.",bc_map,"0xffff00";
+	end;
+
+OnTimer10710:
+	mapannounce instance_mapname("2@orcs"), "쿠르거의 귓속말: 물론 화로를 건드리도록 이곳의 몬스터들이 우릴 놔두진 않겠지. 소규모의 불가피한 전투는 어쩔 수 없소.",bc_map,"0xffff00";
+	end;
+
+OnTimer16310:
+	mapannounce instance_mapname("2@orcs"), "쿠르거의 귓속말: 하지만 가급적이면 무녀의 직속 경계병들이 제단을 방어하지 못하도록 은밀히 진행을 하는것이 좋을 것이오.",bc_map,"0xffff00";
+	end;
+
+OnTimer21910:
+	mapannounce instance_mapname("2@orcs"), "쿠르거의 귓속말: 나는 먼저 앞서 가서 무녀를 저지하고 있겠소.",bc_map,"0xffff00";
+	end;
+
+OnTimer23910:
+	mapannounce instance_mapname("2@orcs"), "임무: 최대한 전투를 피하면서 화로에 불을 붙여 봉인을 해제하십시오. 모든 화로에 불이 붙는것은 아니며 일정한 순서에 따라 불을 붙여야 합니다.",bc_map,"0x4444ff";
+	donpcevent instance_npcname("#2Resurrect Monsters1")+"::OnEnable";
+	donpcevent instance_npcname("#2Resurrect Monsters3")+"::OnEnable";
+	donpcevent instance_npcname("Torch#1-1")+"::OnEnable";
+	disablenpc instance_npcname("Kruger#2-2");
+	end;
+}
+
+2@orcs,26,164,0	script	Torch#1-1	844,{
+	if(getpartyleader(getcharid(1),2) != getcharid(0)) end;
+	progressbar "ffff00",5;
+	setarray .@id[0], atoi(charat(strnpcinfo(2),0)), atoi(charat(strnpcinfo(2),2));
+	if (.@id[1] == 4)
+		donpcevent instance_npcname("#Warp2-"+.@id[0])+"::OnEnable";
+	else
+		donpcevent instance_npcname("Torch#"+.@id[0]+"-"+(.@id[1]+1))+"::OnEnable";
+	initnpctimer;
+	disablenpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnInstanceInit:
+	if (strnpcinfo(0) != "Torch#2-1" && strnpcinfo(0) != "Torch#3-1")
+		disablenpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnEnable:
+	enablenpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnTimer100:
+	specialeffect EF_FIREPILLAR;
+	end;
+
+OnTimer2000:
+	specialeffect EF_FIREPILLARBOMB;
+	stopnpctimer;
+	end;
+}
+2@orcs,55,155,0	duplicate(Torch#1-1)	Torch#1-2	844
+2@orcs,108,146,0	duplicate(Torch#1-1)	Torch#1-3	844
+2@orcs,98,171,0	duplicate(Torch#1-1)	Torch#1-4	844
+
+2@orcs,48,100,0	script	#Warp2-1	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("#Warp2-1");
+	end;
+
+OnEnable:
+	set .@map$, instance_mapname("2@orcs");
+	monster .@map$,109,156,"오크 돌격대장",1981,1,instance_npcname("#Mobs Control")+"::OnMyMobDead1";
+	mapannounce .@map$, "오크 수호대장: 쥐새끼들이 들어왔나보군 용기가 있다면 내게 맞서봐라!!.",bc_map,"0xff8888";
+	end;
+
+OnContinue:
+	enablenpc instance_npcname("#Warp2-1");
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	areamonster instance_mapname("2@orcs"),28,158,40,170,"오크 돌격대장",1981,1,instance_npcname("#Mobs Control")+"::OnMyMobDead1";
+	stopnpctimer;
+	end;
+
+OnTouch_:
+	warp instance_mapname("2@orcs"),47,93;
+	end;
+}
+
+2@orcs,35,92,0	duplicate(Torch#1-1)	Torch#2-1	844
+2@orcs,32,70,0	duplicate(Torch#1-1)	Torch#2-2	844
+2@orcs,70,31,0	duplicate(Torch#1-1)	Torch#2-3	844
+2@orcs,84,51,0	duplicate(Torch#1-1)	Torch#2-4	844
+
+2@orcs,101,55,0	script	#Warp2-2	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("#Warp2-2");
+	end;
+
+OnEnable:
+	set .@map$, instance_mapname("2@orcs");
+	monster .@map$,67,64,"오크 스나이퍼",1982,1,instance_npcname("#Mobs Control")+"::OnMyMobDead2";
+	mapannounce .@map$, "오크 스나이퍼: 흥! 용케도 여기까지 왔군 하지만 네놈들의 바보같은 여행도 여기까지다...",bc_map,"0xff8888";
+	end;
+
+OnContinue:
+	enablenpc instance_npcname("#Warp2-2");
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	areamonster instance_mapname("2@orcs"),40,91,52,103,"오크 스나이퍼",1982,1,instance_npcname("#Mobs Control")+"::OnMyMobDead2";
+	stopnpctimer;
+	end;
+
+OnTouch_:
+	warp instance_mapname("2@orcs"),107,55;
+	end;
+}
+
+2@orcs,142,145,0	duplicate(Torch#1-1)	Torch#3-1	844
+2@orcs,162,134,0	duplicate(Torch#1-1)	Torch#3-2	844
+2@orcs,144,117,0	duplicate(Torch#1-1)	Torch#3-3	844
+2@orcs,136,98,0	duplicate(Torch#1-1)	Torch#3-4	844
+
+2@orcs,167,104,0	script	#Warp2-3	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("#Warp2-3");
+	end;
+
+OnEnable:
+	set .@map$, instance_mapname("2@orcs");
+	monster .@map$,152,147,"고대 오크악령",1983,1,instance_npcname("#Mobs Control")+"::OnMyMobDead3";
+	mapannounce .@map$, "타락한 오크원혼: 살냄새가 난다! 나 배고프다! 인간 먹고싶다!!",bc_map,"0xff8888";
+	end;
+
+OnContinue:
+	areamonster instance_mapname("2@orcs"),117,61,129,73,"고대 오크악령",1983,1;
+	donpcevent instance_npcname("#Boss Control")+"::OnEnable";
+	enablenpc instance_npcname("#Warp2-3");
+	initnpctimer;
+	end;
+
+OnTimer10:
+	mapannounce instance_mapname("2@orcs"), "무녀 카르갈라쉬: 하하!! 결국 여기까지 왔나보군. 네놈들이 보낸 암살자는 형편없었다. 그 멍청한 오크는 지금 내 발밑에서 차갑게 식어가고 있으니까.",bc_map,"0xffff00";
+	end;
+
+OnTimer6810:
+	mapannounce instance_mapname("2@orcs"), "무녀 카르갈라쉬: 내 충직한 노예 침입자를 잡아라!",bc_map,"0xffff00";
+	end;
+
+OnTimer10310:
+	mapannounce instance_mapname("2@orcs"), "타락한 오크 히어로: 분부만 내리십시오 나의 주인님.",bc_map,"0xff7777";
+	end;
+
+OnTimer13110:
+	mapannounce instance_mapname("2@orcs"), "경고: 무녀 카르갈라쉬에게 발각되었습니다. 앞서간 쿠르거의 암살시도는 실패한 듯 합니다. 카르갈라쉬를 처치하고 쿠르거의 행방을 찾아야 합니다.",bc_map,"0x8888ff";
+	stopnpctimer;
+	end;
+
+OnTouch_:
+	warp instance_mapname("2@orcs"),167,95;
+	end;
+}
+
+2@orcs,36,171,0	script	#Boss Control	844,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("#Boss Control");
+	end;
+
+OnEnable:
+	set .@map$, instance_mapname("2@orcs");
+	monster .@map$,185,8,"무녀 카르갈라쉬",1984,1,instance_npcname("#Boss Control")+"::OnMyMobDead";
+	monster .@map$,179,15,"오크 수호대장",1087,1;
+	enablenpc instance_npcname("#Boss Control");
+	end;
+
+OnMyMobDead:
+	donpcevent instance_npcname("Kruger#")+"::OnEnable";
+	set .@map$, instance_mapname("2@orcs");
+	set .@mob_ran,rand(1,5);
+	if (.@mob_ran == 1) 
+	{
+		mapannounce .@map$, "무녀 카르갈라쉬: 어떻게 이런일이..!!",bc_map,"0xffff00";
+	}
+	else if (.@mob_ran == 2) {
+		mapannounce .@map$, "무녀 카르갈라쉬: 인간들에게 당하다니....!!",bc_map,"0xffff00";
+	}
+	else if (.@mob_ran == 3) {
+		mapannounce .@map$, "무녀 카르갈라쉬: 아직 끝나지 않았다...",bc_map,"0xffff00";
+	}
+	else if (.@mob_ran == 4) {
+		mapannounce .@map$, "무녀 카르갈라쉬: 난 아직.. 죽을 수 없어!",bc_map,"0xffff00";
+	}
+	else {
+		mapannounce .@map$, "무녀 카르갈라쉬: 이게 어떻게 된 일이지? 이 바보들에게....!",bc_map,"0xffff00";
+	}
+		getmapxy .@map$, .@x, .@y, UNITTYPE_NPC;
+		makeitem 19617,1,'map_name$,rand(182,188),rand(5,11);
+	donpcevent instance_npcname("#2Resurrect Monsters1")+"::OnDisable";
+	donpcevent instance_npcname("#2Resurrect Monsters3")+"::OnDisable";
+	donpcevent instance_npcname("#Warp Outside Orc Dun")+"::OnEnable";
+	end;
+}
+
+2@orcs,182,8,0	script	#Warp Outside Orc Dun	45,3,3,{
+OnInstanceInit:
+	disablenpc instance_npcname("#Warp Outside Orc Dun");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("#Warp Outside Orc Dun");
+	end;
+
+OnTouch_:
+	warp "gef_fild10",240,197;
+	end;
+}
+
+2@orcs,172,13,0	script	Kruger#	434,{
+	if (yong_odun < 2) {
+		mes "[쿠르거]";
+		mes "*쿨럭*";
+		mes ""+strcharinfo(0)+", 당신인가...";
+		next;
+		mes "["+strcharinfo(0)+"] ";
+		mes "움직이지 마세요. 당신은 다쳤습니다.";
+		next;
+		mes "[쿠르거]";
+		mes "그..그래 맞아.. 나는 죽어가고있어..";
+		mes "....";
+		mes "무녀! 무녀는 어떻게 됐지?";
+		next;
+		mes "["+strcharinfo(0)+"] ";
+		mes "무녀는 죽었습니다. 그 무녀는 누구였습니까?";
+		next;
+		mes "쿠르거는 무녀의 죽음을 듣고 안심하는 것 같았지만.. 그의 얼굴은 씁쓸한 표정이었다.";
+		next;
+		mes "[쿠르거]";
+		mes "나.. 나는 내 딸을 죽일 수 없었다.";
+		mes "고맙다. 내 딸은 이제 악몽에서 자유로워 질꺼라고 생각해..";
+		next;
+		mes "크루거는 더 많은 것을 말하려고 했으나 그는 마지막 숨을 들이 마시고있었다.";
+		set yong_odun,2;
+		close;
+	}
+	else {
+		mes "안도한 표정으로 편안하게 쓰러져있는 쿠르거의 모습이 보인다.";
+		close;
+	}
+
+OnInstanceInit:
+	disablenpc instance_npcname("Kruger#");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("Kruger#");
+	end;
+}
+
+2@orcs,36,171,0	script	#Mobs Control	844,{
+	end;
+
+OnMyMobDead1:
+	donpcevent instance_npcname("#Warp2-1")+"::OnContinue";
+	end;
+
+OnMyMobDead2:
+	donpcevent instance_npcname("#Warp2-2")+"::OnContinue";
+	end;
+
+OnMyMobDead3:
+	donpcevent instance_npcname("#Warp2-3")+"::OnContinue";
+	end;
+}

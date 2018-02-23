@@ -1,0 +1,295 @@
+prt_gld,132,145,4	script	명예의 증표 교환#g	966,{ // 55149
+	.@n$ = "[ 룬 미드가르츠 기사 ]";
+	mes .@n$,"룬 미드가르츠 왕국을 위해 고생하신 영웅들께 도움을 드리고 있습니다. ";
+	mes "^3355FF명예의 증표^000000를 가져오시면 왕실의 물건으로 교환해드립니다.";
+	if(6919 < 1)
+		close;
+//	next;
+	goto L_Menu;
+	end;
+
+L_Menu:
+	next;
+	mes .@n$,"목록 중 선택하시면 아이템에 대해 설명을 해드리겠습니다.";
+	switch(select("의상 운명의 검은 손:의상 시간의 장식:아첨의 로브:독설의 로브:의제의 로브:협의의 로브:근위병의 방패:로브 마법 부여:로브 마법 초기화:그만둔다.")){
+		case 1:
+			.@item = 20247; .@cost = 2200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "흘러내리는 시간속에 갇힌 기분이다.";
+			mes "계열 : ^777777의상장비^000000 방어 : ^7777770^000000";
+			mes "위치 : ^777777중단 ^000000무게 : ^7777770^000000";
+			mes "요구 레벨 : ^7777771^000000";
+			mes "장착 : ^777777전 직업^000000";
+			break;
+		case 2:
+			.@item = 20246; .@cost = 2200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "머리가 붙잡혀 운명에 좌지우지 되는 기분이 든다.";
+			mes "계열 : ^777777의상장비^000000 방어 : ^7777770^000000";
+			mes "위치 : ^777777상단 ^000000무게 : ^7777770^000000";
+			mes "요구 레벨 : ^7777771^000000";
+			mes "장착 : ^777777전 직업^000000";
+			break;
+		case 3:
+			.@item = 15146; .@cost = 1200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "목적을 위해 수단을 가리지 않는 사람들의 옷";
+			mes "인듀어 1Lv 사용 가능";
+			mes "MATK + 50";
+			mes "착용자의 레벨이 120 이상인 경우, MATK + 50 추가 증가";
+			mes "착용자의 레벨이 140 이상인 경우, MATK + 50 추가 증가";
+			mes " ";
+			mes "옛 영주의 망토와 같이 착용하면,";
+			mes "MSP + 10%, 갑옷 제련도 1당 MSP + 1%씩 증가.";
+			mes "FLEE + 10, 갑옷 제련도 1당 FLEE + 1씩 증가.";
+			mes "생존의 망토와 같이 착용하면,";
+			mes "MHP + 10%, 갑옷 제련도 1당 MHP + 1%씩 증가.";
+			mes "MATK + 2%, 갑옷 제련도 1당 MATK + 1%씩 증가.";
+			mes "계열 : ^777777갑옷^000000 방어 : ^7777770^000000";
+			mes "무게 : ^77777710^000000";
+			mes "요구 레벨 : ^777777100^000000";
+			mes "장착 : ^777777전 직업^000000";
+			mes "^3355FF[인첸트 가능]^000000";
+			break;
+		case 4:
+			.@item = 15147; .@cost = 1200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "영혼까지 심각한 타격을 입히는 대화가 가능한 사람들의 옷";
+			mes "집중력향상 1레벨 사용 가능";
+			mes "갑옷 1제련 당, 인간형, 악마형, 불사형 적의 물리 방어력이 4%씩 추가 무시.";
+			mes "모리아네의 망토와 함께 장착 시,";
+			mes "인간형, 악마형, 불사형 적의 물리 방어력을 15% 무시한다.";
+			mes "LUK + 3, 갑옷 제련도 1당 LUK + 1씩 증가.";
+			mes "CRI + 10, 갑옷 제련도 1당 CRI + 1씩 증가.";
+			mes "발키리의 망토와 함께 장착 시,";
+			mes "인간형, 악마형, 불사형 적의 물리 방어력을 15% 무시한다.";
+			mes "MHP + 10%, 갑옷 제련도 1당 MHP + 1%씩 증가.";
+			mes "ATK + 2%, 갑옷 제련도 1당 ATK + 1%씩 증가.";
+			mes "계열 : ^777777갑옷^000000 방어 : ^7777770^000000";
+			mes "무게 : ^77777710^000000";
+			mes "요구 레벨 : ^777777100^000000";
+			mes "장착 : ^777777전 직업^000000";
+			mes "^3355FF[인첸트 가능]^000000";
+			break;
+		case 5:
+			.@item = 15163; .@cost = 1200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "품격이 느껴지는 로브";
+			mes "고위층 관료들이 착용할 법 하다.";
+			mes "스펠 브레이커 1레벨 사용 가능. MATK +5%,";
+			mes "착용자의 레벨이 120 이상인 경우, MATK +4% 추가 증가";
+			mes "착용자의 레벨이 140 이상인 경우, MATK +5% 추가 증가";
+			mes "옛 영주의 망토와 함께 착용 시, 제련도가 1 상승 할 때 마다 변동 캐스팅 시간 2% 감소.캐스팅이 끊기지 않는다.";
+			mes "생존의 망토와 함께 착용 시, 마법 공격을 할 경우, 일정확률로 스스로에게 힐 1Lv 사용. 제련도에 따라서 스스로에게 힐을 사용할 확률 증가.";
+			mes "계열 : ^777777갑옷^000000 방어 : ^7777770^000000";
+			mes "무게 : ^77777710^000000";
+			mes "요구 레벨 : ^777777100^000000";
+			mes "장착 : ^777777전 직업^000000";
+			mes "^3355FF[인첸트 가능]^000000";
+			break;
+		case 6:
+			.@item = 15164; .@cost = 1200;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "품격이 느껴지는 로브";
+			mes "고위층 관료들이 착용할 법 하다.";
+			mes "VIT +5, 세크리 파이스 1레벨 사용 가능.";
+			mes "제련도가 1상승 할 때마다 화속성, 암속성 공격에 대한 내성 +3%.";
+			mes "모리아네의 망토와 함께 장착 시, 제련도가 1상승 할 때 마다 FLEE +2, AGI +1씩 증가. 갑옷의 속성을 염속성으로 한다. ";
+			mes "발키리의 망토와 함께 장착 시, VIT +5, 무속성, 화속성, 암속성 공격에 대한 내성 +10%, 제련도가 1상승 할 때 마다 VIT +1, LUK +1씩증가.  10제련 이상 시 무속성 내성 +10%,";
+			mes "발키리의 망토, 데빌링카드와 함께 장착 시 데빌링카드 옵션 무효화.";
+			mes "계열 : ^777777갑옷^000000 방어 : ^7777770^000000";
+			mes "무게 : ^77777710^000000";
+			mes "요구 레벨 : ^777777100^000000";
+			mes "장착 : ^777777전 직업^000000";
+			mes "^3355FF[인첸트 가능]^000000";
+			break;
+		case 7:
+			.@item = 28900; .@cost = 800;
+			mes " ";
+			mes "["+getitemname(.@item)+"] - "+ .@cost +"개";
+			mes " ";
+			mes "왕국 근위 기사의 방패.";
+			mes "'실드 스펠' 1Lv 사용 가능.";
+			mes "근접 물리 피해를 받을 시, 일정 확률로 자신에게 '아숨프티오' 3Lv 발동.";
+			mes "제련도에 따라 '아숨프티오' 3Lv 발동 확률 증가.";
+			mes "1제련 당, DEF +10, MDEF +1.";
+			mes " ";
+			mes " ";
+			mes "계열 : ^777777방패^000000 방어 : ^77777730^000000";
+			mes "무게 : ^777777300^000000";
+			mes "요구 레벨 : ^777777100^000000";
+			mes "장착 : ^777777전 직업^000000";
+			break;
+		case 8:
+			next;
+			goto Enchant;
+			end;
+		case 9:
+			next;
+			goto EnchantInit;
+			close;
+		case 10:
+			mes .@n$;
+			mes "또 찾아주세요.";
+			close;
+	}
+L_Menu2:
+	next;
+	switch(select("교환하지 않는다.:교환한다.")){
+		case 1:
+			mes .@n$,"다른 장비도 살펴보시죠.";
+			next;
+			goto L_Menu;
+			break;
+		case 2:
+			if( countitem(6919) < .@cost ) { 
+				mes .@n$,"^FF0000"+getitemname(.@item)+"^000000로 교환하려면 명예의 증표 "+.@cost+" 개가 필요합니다."; 
+				mes "명예의 증표는 메모리얼 던전 ^FF8800공중요새 침공^000000과 ^FF8800의식의 방^000000에서 획득할 수 있습니다."," ","다른 도움이 필요하십니까?"; 
+				next;
+				goto L_Menu; 
+			}
+			if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+			delitem 6919,.@cost;
+			getitem .@item,1;
+			mes .@n$,"교환해드렸습니다.";
+			end;			
+	}
+
+
+Enchant:
+	mes .@n$,"마법부여는 로브에만 가능하며, 명예의 증표 20개가 필요합니다.";
+	mes "첫 번째 마법부여는 근거리 / 원거리 / 캐스팅 계열을 선택할 수 있고, 두 번째 마법부여는 이미 걸려있는 마법을 따라갑니다.";
+	mes "어떤 로브에 마법을 부여 하시겠습니까?";
+	next;
+	switch(select("아첨의 로브:독설의 로브:의제의 로브:협의의 로브:하지 않는다.")) {
+		case 1:
+			.@item = 15146; .@cost = 20;
+			break;
+		case 2:
+			.@item = 15147; .@cost = 20;
+			break;
+		case 3:
+			.@item = 15163; .@cost = 20;
+			break;
+		case 4:
+			.@item = 15164; .@cost = 20;
+			break;
+		case 5:
+			goto L_Menu;
+			break;
+	}
+	if(.@cost < 20) { mes .@n$,"마법부여 한 칸에 명예의 증표 "+.@cost+"개가 있어야합니다."; }
+	if(getequipid(EQI_ARMOR) != .@item) { mes .@n$,""+ getitemname(.@item) +"를 착용한 상태에서만 마법 부여가 가능합니다."; end; }
+	if(getequipcardid(EQI_ARMOR,2) != 0) { mes .@n$,"이 아이템은 이미 마법 부여가 완료된 상태입니다."; end; }
+	if(getequipcardid(EQI_ARMOR,3) != 0 && getequipcardid(EQI_ARMOR,2) == 0) { 
+		if(getequipcardid(EQI_ARMOR,3) == 4994 || getequipcardid(EQI_ARMOR,3) == 4995 || getequipcardid(EQI_ARMOR,3) == 4996) 
+			setarray .@rune[0],4994,4995,4996; 
+		if(getequipcardid(EQI_ARMOR,3) == 4997 || getequipcardid(EQI_ARMOR,3) == 4998 || getequipcardid(EQI_ARMOR,3) == 4999) 
+			setarray .@rune[0],4997,4998,4999; 
+		if(getequipcardid(EQI_ARMOR,3) == 29000 || getequipcardid(EQI_ARMOR,3) == 29001 || getequipcardid(EQI_ARMOR,3) == 2992) 
+			setarray .@rune[0],29000,29001,29002; 
+		if(getequipcardid(EQI_ARMOR,3) == 29003 || getequipcardid(EQI_ARMOR,3) == 29004 || getequipcardid(EQI_ARMOR,3) == 29005) 
+			setarray .@rune[0],29003,29004,29005; 
+		if(getequipcardid(EQI_ARMOR,3) == 29006 || getequipcardid(EQI_ARMOR,3) == 29007 || getequipcardid(EQI_ARMOR,3) == 29008) 
+			setarray .@rune[0],29006,29007,29008;
+		if(getequipcardid(EQI_ARMOR,3) == 29009 || getequipcardid(EQI_ARMOR,3) == 29010 || getequipcardid(EQI_ARMOR,3) == 29011) 
+			setarray .@rune[0],29009,29010,29011;
+		set .@rnd, rand(1,10);
+		if(.@rnd < 7) set .@rune_,.@rune[0];
+		else if(.@rnd < 10) set .@rune_,.@rune[1];
+		else if(.@rnd == 10) set .@rune_,.@rune[2];
+
+		set .@equip_id, getequipid(EQI_ARMOR);
+		set .@equip_refine, getequiprefinerycnt(EQI_ARMOR);
+		setarray .@equip_card[0], getequipcardid(EQI_ARMOR,0),getequipcardid(EQI_ARMOR,1),getequipcardid(EQI_ARMOR,2),getequipcardid(EQI_ARMOR,3);
+		specialeffect2 EF_REPAIRWEAPON;	
+		delequip EQI_ARMOR;		
+		getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],0,.@rune_,.@equip_card[3];
+		delitem 6919, 20;
+		mes .@n$,"앞서 부여된 마법과 같은 마법을 부여해드렸습니다.";
+		mes "다른 도움이 더 필요하십니까?";
+		goto L_Menu;
+		end;
+	}
+	if(getequipcardid(EQI_ARMOR,3) == 0) {
+		mes .@n$,"어떤 속성의 마법이 들어가기를 원하십니까?";
+		next;
+		switch(select("근거리:원거리:캐스팅")) {
+			case 1:
+				setarray .@rune[0],4994,4995,4996,4997,4998,4999,29009,29010,29011; 
+				break;
+			case 2:
+				setarray .@rune[0],4997,4998,4999,29003,29004,29005,29009,29010,29011; 
+				break;
+			case 3:
+				setarray .@rune[0],29000,29001,29002,29003,29004,29005,29006,29007,29008; 
+				break;
+		}
+		set .@rnd, rand(1,30);
+		if(.@rnd < 7) set .@rune_,.@rune[0];
+		else if(.@rnd < 10) set .@rune_,.@rune[1];
+		else if(.@rnd == 10) set .@rune_,.@rune[2];
+		else if(.@rnd < 17) set .@rune_,.@rune[3];
+		else if(.@rnd < 20) set .@rune_,.@rune[4];
+		else if(.@rnd == 20) set .@rune_,.@rune[5];
+		else if(.@rnd < 27) set .@rune_,.@rune[6];
+		else if(.@rnd < 30) set .@rune_,.@rune[7];
+		else if(.@rnd == 30) set .@rune_,.@rune[8];
+
+		set .@equip_id, getequipid(EQI_ARMOR);
+		set .@equip_refine, getequiprefinerycnt(EQI_ARMOR);
+		setarray .@equip_card[0], getequipcardid(EQI_ARMOR,0),getequipcardid(EQI_ARMOR,1),getequipcardid(EQI_ARMOR,2),getequipcardid(EQI_ARMOR,3);
+		specialeffect2 EF_REPAIRWEAPON;	
+		delequip EQI_ARMOR;		
+		getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],0,0,.@rune_;
+		delitem 6919, 20;
+		mes .@n$,"선택하신 계열의 마법을 부여해드렸습니다.";
+		mes "다른 도움이 더 필요하십니까?";
+		goto L_Menu;
+		end;
+
+	}
+
+EnchantInit:
+	.@cost = 20;
+	set .@equip_id, getequipid(EQI_ARMOR);
+	mes .@n$,"마법부여 초기화는 명예의 증표 "+.@cost+"개가 필요합니다.";
+	if(.@cost < 20) { mes "명예의 증표는 메모리얼 던전 ^FF8800공중요새 침공^000000과 ^FF8800의식의 방^000000에서 획득할 수 있습니다."; end; }
+	if(getequipcardid(EQI_ARMOR,2) == 0) {	mes "마법을 초기화하기 위해선 두 번의 마법 부여가 완료된 상태여야 합니다."; end; }
+	if(!(.@equip_id == 15146 || .@equip_id == 15147 || .@equip_id == 15163 || .@equip_id == 15164)) 
+	{ mes "인첸트된 로브가 착용되어있지 않습니다."; end; }
+	mes "초기화 하시겠습니까?";
+	next;
+	switch(select("하지 않는다.:초기화한다.")) {
+		case 1:
+			mes .@n$;
+			mes "또 찾아주세요.";
+			close;
+		case 2:
+			set .@equip_refine, getequiprefinerycnt(EQI_ARMOR);
+			setarray .@equip_card[0], getequipcardid(EQI_HEAD_TOP,0),getequipcardid(EQI_HEAD_TOP,1),getequipcardid(EQI_HEAD_TOP,2),getequipcardid(EQI_HEAD_TOP,3);
+			specialeffect2 EF_REPAIRWEAPON;	
+			delequip EQI_ARMOR;		
+			getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],0,0,0;
+			delitem 6919, 20;
+			mes .@n$,"로브에 부여된 마법을 초기화해드렸습니다.";
+			mes "다른 도움이 더 필요하십니까?";
+			goto L_Menu;
+			end;
+
+	}
+	
+	
+}

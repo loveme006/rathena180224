@@ -1,0 +1,1698 @@
+//===== rAthena Script =======================================
+//= Horror Toy Factory
+//===== Description: =========================================
+//= [Official Conversion]
+//= Horror Toy Factory Instance
+//===== Changelogs: ==========================================
+//= 1.0 First version. Uses official script structure and text
+//=     from iRO. [Capuche]
+//============================================================
+
+xmas,237,303,3	script	캐서린 제트존슨	4_F_SKULL06GIRL,{
+	if (getstatus(SC_MONSTER_TRANSFORM,1) > 0) {
+		mes "[캐서린 제트존슨]";
+		mes "에.. 저기 가실려구요?";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "들어가기 전에 변신을 푸시는게 좋아요. 위험한 일이 생길지 몰라요.";
+		close;
+	}
+
+	if (BaseLevel < 140) {
+		mes "[캐서린 제트존슨]";
+		mes "잠깐잠깐! 기다려봐요. 여기는 그렇게 좋은 곳이 아니에요!";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "나중에 더 강해지면 그 때 다시 오세요. 으음.. 한.. 레벨 140 정도?";
+		close;
+	}
+
+	mes "^ff0000던전 안에서 몬스터 테이밍 등의 임의의 몬스터 처리를 하실 경우 정상적인 진행으로 간주하지 않습니다. 이 점 유의하시기 바랍니다.^000000";
+	next;
+	mes "[캐서린 제트존슨]";
+	switch( isbegin_quest(12330) ) {
+	case 0:
+		mes "무.. 무서워하지 말아요. 지금은 흉해보여도 예전엔 이러지 않았단 말이에요.";
+		next;
+		mes "^0000ff얼굴이 해골인 소녀가 울먹이는 목소리로 말했다. 눈이 있어야하는 빈 구멍이 나를 향하고 있다.^000000";
+		next;
+		select("얼굴이 어쩌다 그렇게 됐어?");
+		mes "[캐서린 제트존슨]";
+		mes "이야기 하자면 긴데.. 들어주실래요?";
+		next;
+		if (select( "듣지 않는다.", "계속 말해봐." ) == 1) {
+			mes "[캐서린 제트존슨]";
+			mes "그래요, 가던 길 가세요. 그리고 이 근처에 얼씬도 하지 마세요.";
+			close;
+		}
+		mes "[캐서린 제트존슨]";
+		mes "음.. 어디서부터.. 이 이야기를 시작하면 좋을까요?...";
+		next;
+		mes "^0000ff한숨을 내쉬고 소녀는 옛날 얘기를 하는 바드처럼 차분한 목소리로 말하기 시작했다.^000000";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "이 마을에는 장난감 공장이 있었어요. 이 마을 사람들은 모두 거기에서 일했고 저도 거기 직원이였죠.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "처음에는 우리 모두 행복했어요. 다 같이 모여서 일하고나서 케이크와 차를 마시며 수다를 떨고는 했죠.";
+		next;
+		select("지금 모습을 보면 상상이 안 가는데...");
+		mes "[캐서린 제트존슨]";
+		mes "맞아요, 장난감 포장 일만으로는 평생 먹고 살 수 없었으니까요. 마을 주민들이 하나 둘 떠나더니 상황이 어려워졌어요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "저는 인형을 만드는 인형 장인 옆에서 조수로 일했어요.";
+		next;
+		mes "^0000ff소녀의 가느다란 턱뼈가 떨리고 있었기 때문에 그녀의 감정이 미묘하게 변하는 것을 느낄 수 있었다.^000000";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "공장이 폐쇄하기로 결정된 날, 인형 장인은 그가 마지막으로 만든 인형에 옷을 입히고 눈물을 흘리고 있었어요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "아마도 그는 더 이상 인형을 만들지 못할 것이라고 생각했을 거에요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "그는 마지막 인형을 ^0000ff셀린느 키미^000000라 부르고 공장에 있는 모든 라인을 멈췄어요.";
+		next;
+		select("인형에 이름을 지어줬다고?");
+		mes "[캐서린 제트존슨]";
+		mes "인형 장인은 인형을 자식처럼 대하기도 했어요. 키미는 그 중 하나였죠.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "그리고 그의 노력이 키미에게 생명을 불어 넣었다고 생각해요.";
+		next;
+		select("인형이 살아있다는거야?");
+		mes "[캐서린 제트존슨]";
+		mes "네, ^0000ff그녀^000000는 살아있어요. 저도 이유는 모르겠지만, 그녀의 슬픔과 분노가 장난감 공장에 가득 차있죠.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "제가 그녀를 처음 봤을 때 그녀는 죽어있는 인형 장인 옆에 서있었어요. 묘한 표정을 하고서 말이에요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "이게 이 이야기의 끝이에요. 제가 기절한 후 다시 일어났을 때는 밖이였고, 제 얼굴은 이미 이렇게 돼있었어요.";
+		next;
+		select("키미가 그랬다는거야?");
+		mes "[캐서린 제트존슨]";
+		mes "저도 몰라요.. 그녀가 했을 수도 있죠. 저는 이거에 대한 기억이 없어요.";
+		next;
+		select("그녀를 원망하니?");
+		mes "[캐서린 제트존슨]";
+		mes "아뇨. 그렇지 않아요! 저는 단지 그 날 인형 장인에게 무슨 일이 일어난건지 알고 싶어요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "제가 본 장면이 전부는 아닐거라고 생각해요. 그렇지만... 다시 공장에 들어가는 것은.. 거기는...";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "그래요, 저는 무서워서 못 가고있어요. 누군가 저를 도와줬으면..";
+		next;
+		if (select( "나는 별로 도움이 되지 못해", "내가 도와줄 수 있을 것 같아." ) == 1) {
+			mes "[캐서린 제트존슨]";
+			mes "감사합니다... 제 이야기를 들어주셔서... 즐거운 여행 되세요..";
+			close;
+		}
+		mes "[캐서린 제트존슨]";
+		mes "예? 제 부탁을 들어주신다구요?";
+		next;
+		select("나와 함께 공장으로 들어가자.");
+		mes "[캐서린 제트존슨]";
+		mes "그.. 그런데, 저는 길 안내 외에는 전혀 도움이 안돼요. 게다가, 당신이 큰 위험에 처할 수 있어요.";
+		next;
+		select("키미와 다시 만나고 싶지 않아?");
+		mes "[캐서린 제트존슨]";
+		mes "키미, 키미는..";
+		next;
+		mes "^0000ff그녀가 두리번거리며 열심히 생각하고 있다.^000000";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "저.. 결심했어요. 제가 큰 도움이 되지는 않겠지만, 가는 길을 알려드릴 수는 있어요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "잠시 준비 할 동안 기다려주세요. 준비가 되는대로 안내해드릴게요.";
+		setquest 12330;// Skull-faced Girl
+		close;
+	case 1:
+		mes "이제 됐어요. 닫힌 문을 열어볼게요.";
+		completequest 12330;
+		break;
+	case 2:
+		mes "키미의 영혼은 여전히 여기에 머물러 있어요.. 언제쯤 그녀가 평화롭게 쉴 수 있을지...";
+		break;
+	}
+	next;
+	if (getcharid(1) < 1) {
+		mes "^0000ff호러 장난감 공장에 들어가려면 한 명 이상의 맴버가 있는 파티를 조직해야합니다.^000000";
+		close;
+	}
+	switch( checkquest(12331,PLAYTIME) ) {
+	case -1:
+		if (getpartyleader(getcharid(1),2) != getcharid(0)) {
+			mes "[캐서린 제트존슨]";
+			mes "어.. 잠시만 기다려주세요. 파티장과 이야기할게요. 잠시만요.";
+			close;
+		}
+		if (select( "호러 장난감 공장 열기", "취소" ) == 1) {
+			mes "문이... 곧 열릴테니... 잠시만 기다려줄래요?";
+			if (instance_create("Horror Toy Factory") >= 0)
+				'xm_d_map$ = instance_mapname("1@xm_d");
+		}
+		close;
+	case 0:
+	case 1:
+		mes "[캐서린 제트존슨]";
+		mes "약간의 공장 방부제 냄새가 남아있어요. 이런 상태로는 오래 버티지 못해요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "방부제 향이 완전히 사라지기 전까지는 들어갈 수 없어요.";
+		close;
+	case 2:
+		mes "^0000ff방부제 냄새가 완전히 사라졌습니다. 캐서린 제트존슨과 이야기하세요.^000000";
+		erasequest 12331;
+		close;
+	}
+}
+
+xmas,233,305,4	script	공장 차원 이동 장치	PORTAL,{
+	if (getstatus(SC_MONSTER_TRANSFORM,1) > 0) {
+		mes "[공장 차원 이동 장치]";
+		mes "호러 장난감 공장에는 몬스터 노동자들이 일하고 있습니다. 그러니 ^ff0000변신을 하고 있을 때에는 입장이 제한됩니다.^000000";
+		close;
+	}
+	if (BaseLevel < 140) {
+		mes "[공장 차원 이동 장치]";
+		mes "당신은 차원 이동에 적합하지 않습니다. 레벨 140 이상이 되면 오십시오.";
+		close;
+	}
+	if (getcharid(1) < 1) {
+		mes "[공장 차원 이동 장치]";
+		mes "동료가 없나요? 혼자서라도 파티를 구성하고 오십시오.";
+		close;
+	}
+	switch( checkquest(12331,PLAYTIME) ) {
+	case -1:
+		switch( instance_enter("Horror Toy Factory") ) {
+		case 3:
+			mes "알 수 없는 오류 발생.";
+			close;
+		case 2:
+			mes "차원 이동을 위한 게이트웨이가 활성화되지 않았습니다.";
+			close;
+		case 1:// dummy
+			mes "[공장 차원 이동 장치]";
+			mes "동료가 없나요? 혼자서라도 파티를 구성하고 오십시오.";
+			close;
+		case 0:
+			mapannounce "xmas", getpartyname( getcharid(1) ) +" party's party member "+ strcharinfo(0) +" enters Horror Toy Factory.", bc_map, "0x00ff99";
+			setquest 12331;// Trail of Toy Factory
+			end;
+		}
+	case 0:
+	case 1:
+		mes "차원 이동의 흔적이 있습니다. 접근이 거부되었습니다.";
+		close;
+	case 2:
+		mes "^0000ff차원 변화의 흔적이 사라졌습니다.^000000";
+		erasequest 12331;
+		close;
+	}
+}
+
+1@xm_d,112,20,6	script	캐서린 제트존슨#0	4_F_SKULL06GIRL,{
+	if (getstatus(SC_MONSTER_TRANSFORM,1) > 0) {
+		mes "[캐서린 제트존슨]";
+		mes "몬스터로 변장하는게 안되면 더 이상 들어갈 수 없으세요.";
+		next;
+		mes "[캐서린 제트존슨]";
+		mes "변신이 풀릴 때까지 기다려주세요. 그 전에는 다른 곳으로 이동할 수 없습니다.";
+		close;
+	}
+	if (getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes "[캐서린 제트존슨]";
+		mes "어.. 잠깐만요. 그쪽 파티장과 이야기해야하니 기다려주세요.";
+		close;
+	}
+	mes "[캐서린 제트존슨]";
+	mes "다른 몬스터로 변장하고 따라온 동료는 없으시겠죠?";
+	npctalk "캐서린 제트존슨: 다른 몬스터로 변장하고 따라온 동료는 없으시겠죠?";
+	next;
+	switch( select( "이야기를 관둔다.", "이야기를 듣는다.", "사정은 알고있다. 빨리 진행하자!" ) ) {
+	case 1:
+		mes "[캐서린 제트존슨]";
+		mes "이런, 준비가 되면 알려주세요.";
+		close;
+	case 2:
+		donpcevent instance_npcname("캐서린 제트존슨#01") + "::OnStart";
+		close;
+	case 3:
+		donpcevent instance_npcname("캐서린 제트존슨#01") + "::OnStart2";
+		close;
+	}
+}
+
+1@xm_d,112,20,1	script	캐서린 제트존슨#01	4_F_SKULL06GIRL,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#bgm01");
+	enablenpc instance_npcname("캐서린 제트존슨#01");
+	disablenpc instance_npcname("캐서린 제트존슨#0");
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 여기는 아이들에게 선물해주는 장난감과 인형을 포장하는 제1 공장 지역이였어요.";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 아, 아직도 기억나요. 어떤 직원이 유니폼을 안입었다고 경비원이 와서 꾸짖던게요...";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 그건 그렇고...";
+	donpcevent instance_npcname("#fac1ct") + "::OnStart";
+	sleep 3000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 장난감 공장의 가족 여러분~(치직 치직) 모두 일어나세요. 즐거운 노동시간이 돌아왔어요~(치직 치직)", bc_map, "0x00ff44";
+	sleep 6000;
+	npctalk "캐서린 제트존슨: 무... 무슨일이지? 사람 대신 장난감과 인형들이 돌아다니고 있어요. 마치 저들이 직원인 것처럼...";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 제 생각엔 오랫동안 이 텅빈 공장에 있던 영혼들인 것 같아요.";
+	sleep 3000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 공장 내의 쓰레기나 (치직 치직) 기타 유해한 것은 그때 그때 치우고, 언제나처럼 안전작업을 기원합니다..", bc_map, "0x00ff44";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 사람들이 여기서 일하던 때를 흉내내는 것 같아요.";
+	sleep 3000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 오늘도 열심히~ 아이들의 (치직 치직) 꿈과 희망을 위해 선물을 만들어 보도록 해요..", bc_map, "0x00ff44";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 그치만 지금 좋아할 때가 아니겠죠. 일단 마지막 공장지역을 찾아서 모든 생산 라인을 중단시켜야해요.";
+	sleep 1000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 제 1구역 생산라인 가동하세요.(치직 치직) 안전모 착용하는 것 잊지 마시구요! 거기 밥! 당신 얘기에요!", bc_map, "0x00ff44";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 아마 저희가 장난감이나 선물상자를 원래 상태로 돌려놓아야 할 것 같아요.";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 에? 그... 그러니까... 저들을 돌려놓아야 하는 거니까.. 그래... 우리가 싸울 필요가 있나? 확실하진 않지만.";
+	sleep 2000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 모든 직원분들은 유니폼과 신분증을 착용하시기 바랍니다. 가지고 있지 않으신 분은 경비에게 확인하세요.", bc_map, "0x00ff44";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 맙소사, 경비원들은 여전히 인간이에요. 예전에는 여기 근처에 유니폼 상자가 있었는데..";
+	enablenpc instance_npcname("Employees' Uniform Box#1");
+	enablenpc instance_npcname("Employees' Uniform Box#2");
+	enablenpc instance_npcname("Employees' Uniform Box#3");
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 아, 저들은 저기 뒤에 있어요. 당신이 유니폼으로 갈아입는게 좋겠어요. 다행히 제가 직원 카드를 가지고 있네요.";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 제가 여기 주변에서 길을 찾아볼게요. 두 번째 생산 라인 근처에서 만나기로 해요.";
+	sleep 6000;
+	disablenpc instance_npcname("캐서린 제트존슨#01");
+	disablenpc instance_npcname("#bgm01");
+	end;
+
+OnStart2:
+	enablenpc instance_npcname("#bgm01");
+	enablenpc instance_npcname("캐서린 제트존슨#01");
+	disablenpc instance_npcname("캐서린 제트존슨#0");
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 아... 이미 오셨었던가요? 그럼, 예전처럼 그때 그 자리에서 다시 뵙는걸로 해요.";
+	sleep 6000;
+	disablenpc instance_npcname("캐서린 제트존슨#01");
+	enablenpc instance_npcname("Employees' Uniform Box#1");
+	enablenpc instance_npcname("Employees' Uniform Box#2");
+	enablenpc instance_npcname("Employees' Uniform Box#3");
+	mapannounce 'xm_d_map$, "공장 안내방송: 장난감 공장의 가족 여러분~(치직 치직) 모두 일어나세요. 즐거운 노동시간이 돌아왔어요~(치직 치직)", bc_map, "0x00ff44";
+	sleep 6000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 공장 내의 쓰레기나 (치직 치직) 기타 유해한 것은 그때 그때 치우고, 언제나처럼 안전작업을 기원합니다..", bc_map, "0x00ff44";
+	sleep 6000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 오늘도 열심히~ 아이들의 (치직 치직) 꿈과 희망을 위해 선물을 만들어 보도록 해요..", bc_map, "0x00ff44";
+	donpcevent instance_npcname("#fac1ct") + "::OnStart";
+	disablenpc instance_npcname("#bgm01");
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	// disable some warps
+	disablenpc instance_npcname("#fac3wp");
+	disablenpc instance_npcname("#fac3wp2");
+	disablenpc instance_npcname("#fac4wp");
+	disablenpc instance_npcname("#fac4wp2");
+	disablenpc instance_npcname("#fac5wp");
+	disablenpc instance_npcname("#fac6wp");
+	end;
+}
+
+1@xm_d,112,20,0	script	#bgm01	-1,9,9,{
+	end;
+OnTouch:
+	playBGM "99";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,13,105,6	script	직원 유니폼 상자#1	4_NONMYSTCASE,{
+	progressbar "ffff00",1;
+	playBGM "52";
+	.@mob_id_transform = getstatus(SC_MONSTER_TRANSFORM,1);
+	if (.@mob_id_transform == 1246 || .@mob_id_transform < 1) {
+		mes "^0000ff작업복으로 갈아입었습니다. 작업 수행 중 변신이 필요한 경우 언제든 이곳으로 찾아와 다시 변신할 수 있습니다.^000000";
+		transform 1246,180000;// COOKIE_XMAS
+		close;
+	}
+	mes "^ff0000변신 중에는 사용할 수 없습니다.^000000";
+	close;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+1@xm_d,116,16,6	duplicate(직원 유니폼 상자#1)	직원 유니폼 상자#2	4_NONMYSTCASE
+1@xm_d,10,20,6	duplicate(직원 유니폼 상자#1)	직원 유니폼 상자#3	4_NONMYSTCASE
+
+1@xm_d,1,5,3	script	#fac1ct	CLEAR_NPC,{
+	end;
+OnStart:
+	.@event$ = instance_npcname("#fac1ct") + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	areamonster 'xm_d_map$,16,24,114,112, "선물포장 담당자",2989,31, .@event$;	// XM_COOKIE
+	areamonster 'xm_d_map$,16,24,114,112, "포장된 상자",2991,36, .@event$;// XM_MYSTCASE
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'xm_d_map$, instance_npcname("#fac1ct") + "::OnMyMobDead" ) < 30)
+		initnpctimer;
+	end;
+
+OnTimer1000:
+	killmonster 'xm_d_map$, instance_npcname("#fac1ct") + "::OnMyMobDead";
+	enablenpc instance_npcname("#fac1bs");
+	mapannounce 'xm_d_map$, "작업반장 안내방송: 아니? 다들 어디간거야! 작업자들이 라인을 비워두고 놀면 어떻게 해!", bc_map, "0xff8800";
+	for ( .@i = 61; .@i <= 89; .@i++ )
+		disablenpc instance_npcname( "alert#"+ .@i );
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,71,129,3	script	#fac1bs	4_M_COOKIE,{
+	if (getpartyleader(getcharid(1),2) == getcharid(0)) {
+		.@mob_id_transform = getstatus(SC_MONSTER_TRANSFORM,1);
+		mes "[작업반장]";
+		if (.@mob_id_transform == 1246) {
+			mes "작업자들이 아무도 없길래 어딜 갔나 했지. 꾸물 거릴 시간이 없어. 아이들이 선물을 기다리고 있어.";
+			next;
+			mes "[작업반장]";
+			mes "어서어서 ^ff0000저쪽의 선물상자^000000를 들고 레일의 동쪽 끝으로 이동하라구. 부피가 크니까 잘 운반해야 할거야.";
+			enablenpc instance_npcname("#pck1");
+			npctalk "작업반장: 어서어서 저쪽의 선물상자를 들고 레일의 동쪽 끝으로 이동하라구. 부피가 크니까 잘 운반해야 할거야.";
+		}
+		else if (.@mob_id_transform == 1249)
+			mes "여기서 뭘 꾸물거리고 있어! ^ff0000저쪽의 선물상자^000000를 들고 레일의 동쪽 끝으로 이동하라구.";
+		else {
+			mes "뭐야!? 인간이자나!!!";
+			donpcevent instance_npcname("#fac1bs") + "::OnAlert";
+		}
+		close;
+	}
+	end;
+
+OnAlert:
+	.@npc_name$ = instance_npcname("#fac1bs");
+	.@event$ = .@npc_name$ + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	npctalk "작업반장: 경비! 경비 어디갔어! 인간이 침입했자나!!";
+	sleep 3000;
+	disablenpc .@npc_name$;
+	for ( .@i = 0; .@i <= 10; .@i++ ) {
+		areamonster 'xm_d_map$,61,118,71,128, "경비원",2990,1, .@event$;// XM_CRUISER
+		sleep 300;
+	}
+	initnpctimer;
+	end;
+OnMyMobDead:
+	end;
+
+OnTimer60000:
+	.@npc_name$ = instance_npcname("#fac1bs");
+	killmonster 'xm_d_map$, .@npc_name$ + "::OnMyMobDead";
+	enablenpc .@npc_name$;
+	npctalk "작업반장: 요즘 이런 날이 많단 말이지...";
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,65,127,6	script	#pck1	4_NONMYSTCASE,{
+	progressbar "ffff00",1;
+	.@mob_id_transform = getstatus(SC_MONSTER_TRANSFORM,1);
+	if (.@mob_id_transform == 1246) {
+		mes "^0000ff포장된 선물을 들었습니다. 너무 거대해서 몸체가 제대로 보이지도 않는군요.^000000";
+		transform 1249,180000;// MYSTCASE
+	}
+	else if (.@mob_id_transform == 1249)
+		mes "^009900이미 선물을 들고 있습니다. 너무 무거워 더 이상 선물을 들 수 없습니다^000000";
+	else
+		mes "^ff0000유니폼을 착용하지 않았습니다. 작업반장이 가져가게 두지 않을겁니다.^000000";
+	close;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,76,129,0	script	#fac1wp	WARPNPC,2,2,{
+OnTouch:
+	if (getstatus(SC_MONSTER_TRANSFORM,1) == 1249) {
+		warp 'xm_d_map$,88,129;
+		playBGM "54";
+	}
+	end;
+}
+
+1@xm_d,179,129,0	script	#fac2wp	WARPNPC,2,2,{
+OnTouch:
+	if (getstatus(SC_MONSTER_TRANSFORM,1) == 1249) {
+		warp 'xm_d_map$,183,100;
+		playBGM "54";
+	}
+	end;
+}
+
+1@xm_d,1,5,3	script	#alert1	CLEAR_NPC,{
+	end;
+OnStart:
+	.@r = rand(1,10);
+	if (.@r == 1)
+		mapannounce 'xm_d_map$, "공장 안내방송: Outsiders are spotted on the product line. Guard, please move out immediately.",bc_map,"0x00ffff";
+	else if (.@r == 2)
+		mapannounce 'xm_d_map$, "공장 안내방송: Invaders have been identified. Distinction Code AX0829. Type: Human. Chase them away.", bc_map, "0x00ffff";
+	else if (.@r == 3)
+		mapannounce 'xm_d_map$, "Guard's announcement: Please immediately leave here, outsiders.", bc_map, "0xffff00";
+	else if (.@r == 4)
+		mapannounce 'xm_d_map$, "공장 안내방송: Outsiders, hold up your hands and surrender. Otherwise, I will shoot you.", bc_map, "0x00ffff";
+	else if (.@r == 5)
+		mapannounce 'xm_d_map$, "공장 안내방송: Dispatch the guard. Suppress the invaders.", bc_map, "0x00ffff";
+	else if (.@r == 6)
+		mapannounce 'xm_d_map$, "CAUTION: The plant manger is coming to inspect. Wipe out the outsiders.", bc_map, "0xff4444";
+	else if (.@r == 7)
+		mapannounce 'xm_d_map$, "공장 안내방송: Not good news. Outside creatures are detected. Guard, please mobilize.", bc_map, "0x00ff88";
+	else if (.@r == 8)
+		mapannounce 'xm_d_map$, "공장 안내방송: Outsiders or invaders are obstacles to operate the factory. You can kill them if it is necessary.", bc_map, "0xff9999";
+	else if (.@r == 9)
+		mapannounce 'xm_d_map$, "공장 안내방송: Okay that's it, party's over! Get out of my house!", bc_map, "0x00ffff";
+	else
+		mapannounce 'xm_d_map$, "Guard's announcement: Invaders are spotted! They seem human! I will blip them off!", bc_map, "0xffff00";
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,10,24,0	script	alert#61	-1,10,10,{
+OnTouch_:
+	if (getstatus(SC_MONSTER_TRANSFORM,1) != 1246) {
+		switch( atoi(strnpcinfo(2)) ) {
+			case 63: case 66:
+			case 69: case 72:
+			case 79: case 82:
+			case 85: case 88:
+				.@count = 4;
+				break;
+			case 61: case 64:
+			case 67: case 70:
+			case 73: case 75:
+			case 77: case 80:
+			case 83: case 86:
+			case 89:
+				.@count = 6;
+				break;
+			default:
+				.@count = 5;
+				break;
+		}
+		getmapxy .@map$, .@x, .@y, 0;
+		.@npc_name$ = instance_npcname( strnpcinfo(0) );
+		.@event$ = .@npc_name$ + "::OnMyMobDead";
+		playBGM "125";
+		specialeffect EF_VENOMDUST;
+		donpcevent instance_npcname("#alert1") + "::Onstart";
+		disablenpc .@npc_name$;
+		killmonster 'xm_d_map$, .@event$;
+		areamonster 'xm_d_map$,(.@x-10),(.@y-10),(.@x+10),(.@y+10), "Toy Factory Guard",2990,.@count, .@event$;// XM_CRUISER
+		initnpctimer;
+	}
+	end;
+
+OnTimer45000:
+	enablenpc instance_npcname( strnpcinfo(0) );
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) +"::OnMyMobDead";
+	stopnpctimer;
+	end;
+
+OnMyMobDead:
+	end;
+}
+1@xm_d,30,24,0	duplicate(alert#61)	alert#62	-1,10,10
+1@xm_d,50,24,0	duplicate(alert#61)	alert#63	-1,10,10
+1@xm_d,70,24,0	duplicate(alert#61)	alert#64	-1,10,10
+1@xm_d,90,24,0	duplicate(alert#61)	alert#65	-1,10,10
+1@xm_d,10,44,0	duplicate(alert#61)	alert#66	-1,10,10
+1@xm_d,30,44,0	duplicate(alert#61)	alert#67	-1,10,10
+1@xm_d,50,44,0	duplicate(alert#61)	alert#68	-1,10,10
+1@xm_d,70,44,0	duplicate(alert#61)	alert#69	-1,10,10
+1@xm_d,90,44,0	duplicate(alert#61)	alert#70	-1,10,10
+1@xm_d,110,44,0	duplicate(alert#61)	alert#71	-1,10,10
+1@xm_d,10,64,0	duplicate(alert#61)	alert#72	-1,10,10
+1@xm_d,30,64,0	duplicate(alert#61)	alert#73	-1,10,10
+1@xm_d,50,64,0	duplicate(alert#61)	alert#74	-1,10,10
+1@xm_d,70,64,0	duplicate(alert#61)	alert#75	-1,10,10
+1@xm_d,90,64,0	duplicate(alert#61)	alert#76	-1,10,10
+1@xm_d,110,64,0	duplicate(alert#61)	alert#77	-1,10,10
+1@xm_d,10,84,0	duplicate(alert#61)	alert#78	-1,10,10
+1@xm_d,30,84,0	duplicate(alert#61)	alert#79	-1,10,10
+1@xm_d,50,84,0	duplicate(alert#61)	alert#80	-1,10,10
+1@xm_d,70,84,0	duplicate(alert#61)	alert#81	-1,10,10
+1@xm_d,90,84,0	duplicate(alert#61)	alert#82	-1,10,10
+1@xm_d,110,84,0	duplicate(alert#61)	alert#83	-1,10,10
+1@xm_d,10,104,0	duplicate(alert#61)	alert#84	-1,10,10
+1@xm_d,30,104,0	duplicate(alert#61)	alert#85	-1,10,10
+1@xm_d,50,104,0	duplicate(alert#61)	alert#86	-1,10,10
+1@xm_d,70,104,0	duplicate(alert#61)	alert#87	-1,10,10
+1@xm_d,90,104,0	duplicate(alert#61)	alert#88	-1,10,10
+1@xm_d,110,104,0	duplicate(alert#61)	alert#89	-1,10,10
+1@xm_d,155,20,0	duplicate(alert#61)	alert#90	-1,10,10
+1@xm_d,180,50,0	duplicate(alert#61)	alert#91	-1,10,10
+1@xm_d,205,80,0	duplicate(alert#61)	alert#92	-1,10,10
+1@xm_d,230,110,0	duplicate(alert#61)	alert#93	-1,10,10
+1@xm_d,180,20,0	duplicate(alert#61)	alert#94	-1,10,10
+1@xm_d,180,50,0	duplicate(alert#61)	alert#95	-1,10,10
+1@xm_d,180,80,0	duplicate(alert#61)	alert#96	-1,10,10
+1@xm_d,205,20,0	duplicate(alert#61)	alert#97	-1,10,10
+1@xm_d,205,50,0	duplicate(alert#61)	alert#98	-1,10,10
+1@xm_d,205,80,0	duplicate(alert#61)	alert#99	-1,10,10
+1@xm_d,205,110,0	duplicate(alert#61)	alert#100	-1,10,10
+1@xm_d,230,20,0	duplicate(alert#61)	alert#101	-1,10,10
+1@xm_d,230,50,0	duplicate(alert#61)	alert#102	-1,10,10
+1@xm_d,230,80,0	duplicate(alert#61)	alert#103	-1,10,10
+1@xm_d,230,110,0	duplicate(alert#61)	alert#104	-1,10,10
+
+
+1@xm_d,185,100,6	script	캐서린 제트존슨#2	4_F_SKULL06GIRL,{
+	if (getpartyleader(getcharid(1),2) == getcharid(0)) {
+		mes "[캐서린 제트존슨]";
+		mes "다행이에요. 무사히 잘 통과하셨군요. 아... 잠시 생각을 정리해야겠어요.";
+		next;
+		switch( select( "이야기를 관둔다.", "공략 방법을 듣는다.", "할 일은 알고 있다. 빨리 진행하자!" ) ) {
+		case 1:
+			mes "[캐서린 제트존슨]";
+			mes "이런, 준비가 되면 알려주세요.";
+			close;
+		case 2:
+			donpcevent instance_npcname("캐서린 제트존슨#21") + "::OnStart";
+			close;
+		case 3:
+			donpcevent instance_npcname("캐서린 제트존슨#21") + "::OnStart2";
+			close;
+		}
+	}
+	mes "[캐서린 제트존슨]";
+	mes "어.. 잠깐만요. 그쪽 파티장과 이야기해야하니 기다려주세요.";
+	close;
+}
+
+1@xm_d,185,100,6	script	캐서린 제트존슨#21	4_F_SKULL06GIRL,{
+	end;
+OnStart:
+	callsub S_Skip,0;
+OnStart2:
+	callsub S_Skip,1;
+S_Skip:
+	enablenpc instance_npcname("#bgm06");
+	enablenpc instance_npcname("캐서린 제트존슨#21");
+	disablenpc instance_npcname("캐서린 제트존슨#2");
+	sleep 3000;
+	if (getarg(0) == 1)
+		npctalk "캐서린 제트존슨: 모든 단서를 다 찾게된다면 다른 곳도 찾아보세요. 저는 인형 장인과의 마지막 기억이 있는 그곳을 찾아볼 거에요.";
+	else {
+		npctalk "캐서린 제트존슨: 여기는 제 2 공장이에요.";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 예전에는 사람들로 북적거렸어요. 지금은 아니지만...";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 아, 그리고 여기 오는 동안 뭔가 깨달았어요. 어떤...애들이...";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 뭐랄까... 엄청 무서운, 하지만 몹시 슬픈 영혼들을 많이 봤어요.";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 불쌍하지 않나요? 무서워하지는 말아요. 다행히 저희에게 오지는 않을 거에요.";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 혹시 여기서 일하고 있는 장난감을 보면 인형 장인에 대해 물어볼 수 있을까요?";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 그들이 인형 장인을 다시 떠올리면 승천할 수 있을거에요. 지금은 그게 유일한 희망이에요.";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 모든 단서를 찾게되면 다른 곳도 찾아보세요. 저는 인형 장인과의 마지막 기억이 있는 그곳을 찾아볼 거에요.";
+		sleep 5000;
+		npctalk "캐서린 제트존슨: 제가 큰 도움이 되지 못해서 미안해요. 잠시 후에 봐요.";
+	}
+	sleep 6000;
+	disablenpc instance_npcname("캐서린 제트존슨#21");
+	enablenpc instance_npcname("직원 유니폼 상자#4");
+	donpcevent instance_npcname("#fac2ct") + "::OnStart";
+
+	for ( .@i = 1; .@i <= 10; .@i++ )
+		enablenpc instance_npcname( "근로자#"+ .@i );
+	disablenpc instance_npcname("#bgm06");
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,185,100,0	script	#bgm06	-1,9,9,{
+OnTouch:
+	playBGM "99";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,185,94,6	script	직원 유니폼 상자#4	4_NONMYSTCASE,{
+	progressbar "ffff00",1;
+	playBGM "128";
+	.@mob_id_transform = getstatus(SC_MONSTER_TRANSFORM,1);
+	if (.@mob_id_transform == 1246 || .@mob_id_transform == 1249 || .@mob_id_transform < 1) {
+		mes "^0000ff>작업복으로 갈아입었습니다. 작업 수행 중 변신이 필요한 경우 언제든 이곳으로 찾아와 다시 변신할 수 있습니다.^000000";
+		transform 1246,300000;// COOKIE_XMAS
+		close;
+	}
+	mes "^ff0000다른 형태로 변신하고 있습니다.";
+	mes "그 상태에서는 유니폼을 입을 수 없습니다.^000000";
+	close;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#fac2ct	CLEAR_NPC,{
+	end;
+OnEnd:
+	killmonster 'xm_d_map$, instance_npcname("#fac2ct") + "::OnMyMobDead";
+	end;
+
+OnStart:
+	.@event$ = instance_npcname("#fac2ct") + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	areamonster 'xm_d_map$,140,18,240,120, "선물받지 못한 유령",2993,19, .@event$;	// XM_HYLOZOIST
+	areamonster 'xm_d_map$,140,18,240,120, "악령이 깃든 상자",2991,16, .@event$;		// XM_MYSTCASE
+	areamonster 'xm_d_map$,140,18,240,120, "풀려난 곰인형",2995,22, .@event$;	// XM_TEDDY_BEAR
+	areamonster 'xm_d_map$,140,18,240,120, "섬뜩한 악령",2992,16, .@event$;			// XM_LUDE
+	end;
+OnMyMobDead:
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,2,3	script	#fac2wpc	CLEAR_NPC,{
+	end;
+OnStart:
+	.@fac_open = 'worker[1] + 'worker[2] + 'worker[3] + 'worker[4] + 'worker[5] + 'worker[6] + 'worker[7] + 'worker[8] + 'worker[9] + 'worker[10];
+	if (.@fac_open == 10) {
+		enablenpc instance_npcname("#fac3wp");
+		enablenpc instance_npcname("#fac3wp2");
+		donpcevent instance_npcname("#fac2ct") + "::OnEnd";
+		mapannounce 'xm_d_map$, "공장 안내방송: 배송 분류 작업장의 작업자 전원 귀가했습니다. 작업장 전원을 차단하고 직원 휴게실의 문을 열겠습니다.", bc_map, "0x00ff44";
+		for ( .@i = 90; .@i <= 104; .@i++ )
+			disablenpc instance_npcname( "alert#"+ .@i );
+	}
+	else
+		mapannounce 'xm_d_map$, "공장 안내방송: 근무인원 확인 중입니다. 현재 포장 라인에 " + (10 - .@fac_open) + "분 작업 중이시군요. 수고하십시오.", bc_map, "0x00ff44";
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,155,98,3	script	근로자#1	4_M_COOKIE,{
+	if (getstatus(SC_MONSTER_TRANSFORM,1) == 1246) {
+		.@num = atoi(strnpcinfo(2));
+		mes "[Worker]";
+		mes "응? 무슨 일이지?";
+		next;
+		if (select( "아니 별일 아니야.", "혹시 인형 장인에 대해 알아?" ) == 1) {
+			mes "[Worker]";
+			if (.@num == 8)
+				mes "난 지금 일하느라 바쁘다구!";
+			else
+				mes "일하느라 너무 바쁜데, 너는 말 좀 그만하지?";
+			close;
+		}
+		close2;
+		pcblockmove getcharid(3),1;// todo : not able to talk to npc
+		pcblockskill getcharid(3),1;
+		switch(.@num) {
+		case 1:
+			npctalk "근로자: 아! 할아버지? 정말 좋으신 분이야. 매일 우리에게 기름을 바르고 자주 먼지를 닦아줬어.";
+			sleep2 3000;
+			npctalk "근로자: 나는 그분이 가시지 않기를 바랬는데... 아... 아아... 한결 나아졌어.";
+			break;
+		case 2:
+			npctalk "근로자: 장인 할아버지를 키미가 죽였다구? 누가 그래? 그건 잘못 알려진거야. 키미는 할아버지를 구하려 했다구!";
+			sleep2 3000;
+			npctalk "근로자: 아... 그..그런데 내 몸이 왜이러지...";
+			break;
+		case 3:
+			npctalk "근로자: 평소 심장에 지병이 있으셨는데 돌아가시던 날 갑자기 발작이 시작되었나봐. 키미가 발견해서 응급조치를 시도했지만...";
+			sleep2 3000;
+			npctalk "근로자: 아... 그런데 나한테 무슨 짓을 한거야?... 기분이 이상한걸...";
+			break;
+		case 4:
+			npctalk "근로자: 키미는 인형 할아버지가 돌아가신 뒤에 한동안 움직이지도 않고 그냥 인형처럼 앉아 있기만 했어.";
+			sleep2 3000;
+			npctalk "근로자: 영원히 영혼을 놔 버릴 기세였지... 지금 나처럼... 어... 난 왜 이러는거야?";
+			break;
+		case 5:
+			npctalk "근로자: 키미.. 불쌍한 아이. 인형 할아버지가 돌아가신게 자기를 보고 놀라서 그런거라 생각하고 있어.";
+			sleep2 3000;
+			npctalk "근로자: 할아버지는 키미가 움직이는걸 보고 정말 엄청 기뻐하셨던 것 뿐인데..";
+			break;
+		case 6:
+			npctalk "근로자: 잠시 살아있는 인형 장인을 볼 수 있었던게 키미가 생명을 받고 처음 한 일이었지.";
+			sleep2 3000;
+			npctalk "근로자: 그리고 처음으로 본 것이 할아버지의 죽음이었어. 안타까운 일이야.";
+			break;
+		case 7:
+			npctalk "근로자: 인형 할아버지가 만든 키미는 생명을 부여받기 전에도 이미 할아버지의 목소리를 듣고 느끼고 있었다고 해.";
+			sleep2 3000;
+			npctalk "근로자: 아마 할아버지의 애정이 키미를 살아 움직이게 한 것일지 모르지... 아아 그런데 졸립군...";
+			break;
+		case 8:
+			npctalk "근로자: 할아버지 좋은 사람! 키미 불쌍하다! 키미 할아버지 좋아한다! 할아버지 죽었다. 나 슬프다!";
+			sleep2 3000;
+			break;
+		case 9:
+			npctalk "근로자: 눈을 뜬 키미를 보고 너무 기뻐하시다가 그만 심장이... 그렇게 되셨다고 하더군.";
+			sleep2 3000;
+			npctalk "근로자: 그나저나 내 몸은 왜 이러는거야. 갑자기 공중에 떠오를 것만 같잖아... 뭔가 이상해.";
+			break;
+		case 10:
+			npctalk "근로자: 키미가 할아버지 안죽였다! 키미, 할아버지 살리려고 했다! 사람들 키미 무서워한다! 키미 착하다! 키미 좋은 아이다!";
+			sleep2 3000;
+			npctalk "근로자: 할아버지... 보고싶다. 할아버지... 할아버지...";
+			break;
+		}
+		sleep2 3000;
+		disablenpc instance_npcname( strnpcinfo(0) );
+		if ('worker[.@num] == 0) {
+			'worker[.@num] = 1;
+			donpcevent instance_npcname("#fac2wpc") + "::OnStart";
+		}
+		pcblockmove getcharid(3),0;
+		pcblockskill getcharid(3),0;
+		end;
+	}
+	mes "[근로자]";
+	mes "뭐야!? 너는 우리 일원이 아니였자나!!";
+	donpcevent instance_npcname( strnpcinfo(0) ) + "::OnAlert";
+	close;
+
+OnAlert:
+	.@npc_name$ = instance_npcname( strnpcinfo(0) );
+	killmonster 'xm_d_map$, .@npc_name$ + "::OnMyMobDead";
+	.@num = atoi(strnpcinfo(2));
+	if (.@num == 8)
+		npctalk "근로자: 경비원! 경비원!!";
+	else
+		npctalk "근로자: 경비원, 경비원! 어디있어?! 여기 인간이 있다구!!";
+	sleep 3000;
+	switch(.@num) {
+	case 9:
+		setarray .@coord[0],233,27;
+		break;
+	case 10:
+		setarray .@coord[0],209,27;
+		break;
+	default:
+		getmapxy .@map$, .@coord[0], .@coord[1], UNITTYPE_NPC;
+		break;
+	}
+	areamonster 'xm_d_map$,(.@coord[0]-8),(.@coord[1]-8),(.@coord[0]+8),(.@coord[1]+8), "경비원",2990,21, .@npc_name$ + "::OnMyMobDead";
+	disablenpc .@npc_name$;
+	if ('worker[.@num] == 0) {
+		'worker[.@num] = 1;
+		donpcevent instance_npcname("#fac2wpc") + "::OnStart";
+	}
+	initnpctimer;
+	end;
+OnTimer60000:
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	stopnpctimer;
+	end;
+
+OnMyMobDead:
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+1@xm_d,130,72,3	duplicate(근로자#1)	근로자#2	4_M_COOKIE
+1@xm_d,134,34,1	duplicate(근로자#1)	근로자#3	4_M_COOKIE
+1@xm_d,195,28,3	duplicate(근로자#1)	근로자#4	4_M_COOKIE
+1@xm_d,228,30,1	duplicate(근로자#1)	근로자#5	4_M_COOKIE
+1@xm_d,203,55,3	duplicate(근로자#1)	근로자#6	4_M_COOKIE
+1@xm_d,132,52,1	duplicate(근로자#1)	근로자#7	4_M_COOKIE
+1@xm_d,162,52,1	duplicate(근로자#1)	근로자#8	4_M_COOKIE
+1@xm_d,242,17,5	duplicate(근로자#1)	근로자#9	4_M_COOKIE
+1@xm_d,209,15,3	duplicate(근로자#1)	근로자#10	4_M_COOKIE
+
+
+// Note : aegis script have OnClick part
+1@xm_d,131,208,0	script	사로잡힌 산타#2	4_M_SANTA,10,10,{
+	end;
+OnTouch_:
+	disablenpc instance_npcname("사로잡힌 산타#2");
+	enablenpc instance_npcname("사로잡힌 산타#3");
+	donpcevent instance_npcname("안토니오#1") + "::OnStart";
+	enablenpc instance_npcname("#bgm04");
+	end;
+}
+
+1@xm_d,131,208,8	script	사로잡힌 산타#3	4_M_SANTA,{
+	mes "[사로잡힌 산타]";
+	mes "아니. 인간아닌가? 이보게 날 좀 도와주게! 여기 이 줄을 풀어주게!";
+	close;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,131,213,4	script	안토니오#1	4_M_ANTONIO,{
+	mes "[안토니오]";
+	mes "어이, 산타. 이제 그 되도 않는 일 좀 그만하시지, 늙은이. 케케케.";
+	close;
+
+OnStart:
+	.@antonio$ = instance_npcname("안토니오#1");
+	.@santa$ = instance_npcname("사로잡힌 산타#3");
+	sleep 3000;
+	npctalk "안토니오: 내 말 잘 들어, 산타~ 나는 말야, 이 공장이 좋아.", .@antonio$;
+	sleep 3000;
+	npctalk "안토니오: 아무도 가질 수 없고~ 내가 쓸 수 있는게 많단 말야.", .@antonio$;
+	sleep 3000;
+	npctalk "사로잡힌 산타: 멍청한 놈! 이 공장은 모두의 것이야! 너는 그걸 훔친거야!", .@santa$;
+	sleep 4000;
+	npctalk "안토니오: 이봐.. 여기 선물이 남아있으면 이거 큰일 아니야? 나는 그거에 대해 모른다구~", .@antonio$;
+	sleep 4000;
+	npctalk "사로잡힌 산타: 휴... 그래, 하지만 아이들이 어떻게 느낄지에 대해 생각해봐.", .@santa$;
+	sleep 4000;
+	npctalk "사로잡힌 산타: 자네가 주인없이 버려진 선물을 준다는 것을 안다면 어떻게 생각하겠나?", .@santa$;
+	sleep 4000;
+	npctalk "안토니오: 흠...", .@antonio$;
+	sleep 2000;
+	npctalk "안토니오: 아마... 기뻐하겠지?! 어쨋든 선물이라구! 케케케케.", .@antonio$;
+	sleep 5000;
+	npctalk "사로잡힌 산타: 누가 선물 자체가 문제라 말했나! 도둑질은 그만두는게 좋을걸세, 안토니오!", .@santa$;
+	sleep 5000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 제 3 공장에서 발송 준비가 끝났습니다.", bc_map, "0x00ff44";
+	sleep 5000;
+	mapannounce 'xm_d_map$, "공장 안내방송: 배송부 직원분들은 준비해주시기 바랍니다.", bc_map, "0x00ff44";
+	sleep 3000;
+	npctalk "안토니오: 워후후! 선물을 듬뿍 주고와야지. 오늘은 파티라구!", .@antonio$;
+	sleep 4000;
+	npctalk "안토니오: 어이, 인간. 도와주고 싶으면 따라와. 방해하지만 않으면 괜찮다구!", .@antonio$;
+	sleep 4000;
+	disablenpc .@antonio$;
+	sleep 2000;
+	npctalk "사로잡힌 산타: 그.. 그건 안돼!", .@santa$;
+	sleep 4000;
+	npctalk "사로잡힌 산타: 이보시오, 안토니오를 데리고 나갈터인가? 그를 몇 번 공격한다면 도망 갈 수도 있을게야.", .@santa$;
+	sleep 2000;
+
+	disablenpc instance_npcname("#bgm04");
+	enablenpc instance_npcname("#fac4wp");
+	enablenpc instance_npcname("#fac4wp2");
+	donpcevent instance_npcname("#fac3ct") + "::OnStart";
+	donpcevent instance_npcname("#fac3ct2") + "::OnStart";
+	donpcevent instance_npcname("#fac3ct3") + "::OnStart";
+	sleep 3000;
+	enablenpc instance_npcname("#bgm05");
+	end;
+}
+
+1@xm_d,131,208,0	script	#bgm04	-1,9,9,{
+OnTouch:
+	playBGM "54";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,131,208,0	script	#bgm05	-1,9,9,{
+OnTouch:
+	playBGM "105";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#fac3ct	CLEAR_NPC,{
+	end;
+OnEnd:
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	end;
+OnStart:
+	.@event$ = instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	areamonster 'xm_d_map$,13,144,121,248, "춤추는 마리오네트",2994,37, .@event$;	// XM_MARIONETTE
+	areamonster 'xm_d_map$,13,144,121,248, "장식된 악령 나무",2987,31, .@event$;	// XM_TREE
+	areamonster 'xm_d_map$,13,144,121,248, "풀려난 곰인형",2995,43, .@event$;// XM_TEDDY_BEAR
+	areamonster 'xm_d_map$,13,144,121,248, "섬뜩한 악령",2992,31, .@event$;		// XM_LUDE
+	end;
+OnMyMobDead:
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#fac3ct2	CLEAR_NPC,{
+	end;
+OnEnd:
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	end;
+OnStart:
+	.@event$ = instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	areamonster 'xm_d_map$,159,215,241,247, "선물을 못받은 아이",2993,13, .@event$;	// XM_HYLOZOIST
+	areamonster 'xm_d_map$,159,215,241,247, "장식된 악령 나무",2987,11, .@event$;	// XM_TREE
+	areamonster 'xm_d_map$,159,215,241,247, "풀려난 곰인형",2995,15, .@event$;	// XM_TEDDY_BEAR
+	areamonster 'xm_d_map$,159,215,241,247, "섬뜩한 악령",2992,11, .@event$;			// XM_LUDE
+	end;
+OnMyMobDead:
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#fac3ct3	CLEAR_NPC,{
+	end;
+OnStart:
+	if (rand(1,10) > 3)
+		areamonster 'xm_d_map$,13,144,121,248 ,"안토니오",2988,1, instance_npcname("#fac3ct3")+"::OnMyMobDead";// ANTONIO
+	else
+		areamonster 'xm_d_map$,159,215,241,247, "안토니오",2988,1, instance_npcname("#fac3ct3")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'xm_d_map$, instance_npcname("#fac3ct3") + "::OnMyMobDead" ) < 1)
+		initnpctimer;
+	end;
+
+OnTimer1000:
+OnEnd:
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	donpcevent instance_npcname("#fac3ct") + "::OnEnd";
+	donpcevent instance_npcname("#fac3ct2") + "::OnEnd";
+	donpcevent instance_npcname("#finalbs") + "::OnStart";
+	disablenpc instance_npcname("사로잡힌 산타#3");
+	mapannounce 'xm_d_map$, "???: 누군지 몰라도 이곳을 어지럽히지 않고 조용히 사라져준다면 해치진 않겠어요.", bc_map, "0xff8800";
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#finalbs	CLEAR_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("캐서린 제트존슨#5");
+	enablenpc instance_npcname("셀린느 키미#0");
+	enablenpc instance_npcname("#fac5wp");
+	// enablenpc instance_npcname("#fac5wp2");// never enabled
+	enablenpc instance_npcname("#jeton1");
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+/*
+// never enabled
+1@xm_d,160,208,0	script	#fac5wp2	WARPNPC,2,2,{
+OnTouch:
+	warp 'xm_d_map$,145,208;
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+*/
+
+1@xm_d,233,183,3	script	셀린느 키미#0	4_F_KIMI,{
+	mes "[셀린느 키미]";
+	mes "잘도 여기까지 왔네? 왜 인간들은 우리가 만든 것을 파괴하려하는거야?";
+	close;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,222,183,0	script	#jeton1	-1,7,7,{
+OnTouch_:
+	disablenpc instance_npcname("#jeton1");
+	donpcevent instance_npcname("캐서린 제트존슨#5") + "::OnStart";
+	enablenpc instance_npcname("#bgm02");
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,222,183,0	script	#bgm02	-1,9,9,{
+OnTouch:
+	playBGM "101";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,222,183,6	script	캐서린 제트존슨#5	4_F_SKULL06GIRL,{
+	mes "[캐서린 제트존슨]";
+	mes "조... 조심해! 키미의 상태가 정상적이지 않아.";
+	close;
+
+OnStart:
+	.@kimi$ = instance_npcname("셀린느 키미#0");
+	sleep 2000;
+	npctalk "캐서린 제트존슨: 키미! 내 이야기를 들어봐. 난 널 원망하러 이곳에 찾아온게 아니야.";
+	sleep 3000;
+	npctalk "셀린느 키미: 모두 나를 미워해!... 나를... 너도 내가 싫겠지? 이렇게 흉칙한 인형따위...", .@kimi$;
+	sleep 4000;
+	npctalk "캐서린 제트존슨: 키미, 이곳의 인형들에게 이야기를 들었어. 인형 장인께선 널 정말 사랑스러워 하셨다구.";
+	sleep 4000;
+	mapannounce 'xm_d_map$, "환영의 외침: 거짓말!", bc_map, "0xff8800";
+	sleep 1000;
+	npctalk "셀린느 키미: 거짓말이야. 그게 사실이라면 어째서 눈을 떠서 날 바라봐 주지 않은거야?", .@kimi$;
+	sleep 4000;
+	npctalk "셀린느 키미: 왜 내 이름을 불러주지 않은거야? [키미] [키미!] 난 할아버지의 목소리가 듣고 싶었을 뿐이야.", .@kimi$;
+	sleep 4000;
+	mapannounce 'xm_d_map$, "환영의 외침: 그래 키미!~ 아버지는 널 보고 놀라셨어! 널 두려워했지~", bc_map, "0xff8800";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 아니야 저 소리를 듣지마 키미! 할아버진 널 아꼈단다.";
+	sleep 3000;
+	npctalk "셀린느 키미: 할아버지가... 날 아꼈다고?", .@kimi$;
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 그래. 네가 살아 움직이는 그 순간 할아버지는 기쁨에...";
+	sleep 1000;
+	mapannounce 'xm_d_map$, "환영의 외침: 너의 그 모습에 공포를 느끼고 심장이 멎은거야 키미~ 네가 죽인거야!", bc_map, "0xff8800";
+	sleep 3000;
+	npctalk "셀린느 키미: 내...가...할아버지를?...", .@kimi$;
+	sleep 2000;
+	npctalk "캐서린 제트존슨: 아니야 키미! 이제야 난 알았어. 이제껏 널 오해하고 있었어. 할아버진 병이 있었을 뿐이야!";
+	sleep 3000;
+	npctalk "셀린느 키미: 내...내...가...할아버지를... 죽게 했다고?", .@kimi$;
+	sleep 2000;
+	mapannounce 'xm_d_map$, "환영의 외침: 너의 모습을 봐 키미~ 거울을 보라구~ 어때? ", bc_map, "0xff8800";
+	sleep 3000;
+	npctalk "셀린느 키미: 내... 내가...", .@kimi$;
+	sleep 1000;
+	mapannounce 'xm_d_map$, "환영의 외침: 너의 모습이 공포스럽지 않니? 아무도 널 사랑하지 않는단다 키미~", bc_map, "0xff8800";
+	sleep 3000;
+	npctalk "셀린느 키미: 할아버지가 나 때문에...", .@kimi$;
+	specialeffect EF_MAPPILLAR2, AREA, .@kimi$;
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 큰일이에요. 키미의 자아가 분열하고 있어요. 이대로 놔두면 위험합니다!";
+	specialeffect EF_MAPPILLAR2, AREA, .@kimi$;
+	sleep 1000;
+	mapannounce 'xm_d_map$, "환영의 외침: 분노해라~ 슬퍼해라~ 아무도 널 위해 울어주지 않아 키미~", bc_map, "0xff8800";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 이 공장이 이대로 닫히게 둘 순 없어요. 전 탈출할 수 있도록 비상구를 찾아보겠어요. 모험가님도 도망치세요!";
+	sleep 3000;
+	disablenpc instance_npcname("캐서린 제트존슨#5");
+	sleep 2000;
+	disablenpc .@kimi$;
+	donpcevent instance_npcname("#finalbs2") + "::OnStart";
+	disablenpc instance_npcname("#bgm02");
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#finalbs2	CLEAR_NPC,{
+	end;
+OnStart:
+	stopnpctimer;
+	enablenpc instance_npcname("#bgm03");
+	.@event$ = instance_npcname("#finalbs2") + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	monster 'xm_d_map$,231,184, "셀린느 키미",2996,1, .@event$;// XM_CELINE_KIMI
+	'celene_id = $@mobid[0];
+	monster 'xm_d_map$,226,190, "키미의 환영",2997,1, .@event$;// G_XM_CELINE_KIMI
+	'phantom_id = $@mobid[0];
+	setunitdata 'celene_id, UMOB_HP,20000000;
+	setunitdata 'phantom_id,UMOB_HP,20000000;
+
+	unittalk 'celene_id, "버림 받고 싶지 않아. 이 공장에서 버림 받고 싶지 않아.";
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'xm_d_map$, instance_npcname("#finalbs2") + "::OnMyMobDead" ) < 1)
+		donpcevent instance_npcname("#finalbs2") + "::OnEnd";
+	end;
+
+OnEnd:
+	stopnpctimer;
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	disablenpc instance_npcname("#bgm03");
+	donpcevent instance_npcname("#finalbs_e") + "::OnStart";
+	end;
+
+OnTalk:
+	.@chat_r = rand(1,10);
+	if (.@chat_r == 1)
+		unittalk 'celene_id, "지옥의 불길로 너를 태워버리겠어.";
+	else if (.@chat_r == 2)
+		unittalk 'celene_id, "이 불길을 견딜 수 있겠어?!";
+	else if (.@chat_r == 3)
+		unittalk 'celene_id, "이렇게까지 하고싶진 않았는데...";
+	else if (.@chat_r == 4)
+		unittalk 'celene_id, "꽤 뜨거울거야!... 버틸 수 있다면 버텨봐.";
+	else if (.@chat_r == 5)
+		unittalk 'celene_id, "실컷 숨쉬어라. 이제 곧 마지막 숨이 될테니";
+	else if (.@chat_r == 6)
+		unittalk 'celene_id, "난 사실 불을 좋아하지 않아.";
+	else
+		unittalk 'celene_id, "모두가 날 무서워해! 내가 뭘 그렇게 잘못했어?!";
+	end;
+
+OnTimer1000:
+	getunitdata 'celene_id, .@data;
+	if ((.@data[UMOB_X] < 211 || .@data[UMOB_X] > 241 || .@data[UMOB_Y] < 166 || .@data[UMOB_Y] > 201) && (.@data[UMOB_X] > 0 || .@data[UMOB_Y] > 0)) {
+		mapannounce 'xm_d_map$, "셀린느 키미: 아냐! 내가 이 곳을 지키겠어!",bc_map,"0xff6666",FW_NORMAL,15;
+		donpcevent instance_npcname("#finalbs2") + "::Onfail";
+	}
+	end;
+
+Onfail:
+	stopnpctimer;
+	killmonster 'xm_d_map$, instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	enablenpc instance_npcname("셀린느 키미#2");
+	disablenpc instance_npcname("#bgm03");
+	enablenpc instance_npcname("#kimion1");
+	end;
+
+OnTimer5000:
+	donpcevent instance_npcname("#bssk01") + "::OnStart";
+	end;
+
+OnTimer10000:
+	if (mobcount( 'xm_d_map$, instance_npcname("#finalbs2") + "::OnMyMobDead" ) > 1) {
+		.@npc_name$ = instance_npcname("#finalbs2");
+		getunitdata 'celene_id, .@MOB_HP1;
+		getunitdata 'phantom_id, .@MOB_HP2;
+		if (.@MOB_HP1[UMOB_HP] > .@MOB_HP2[UMOB_HP]) {
+			setarray .@mob_hp[0], .@MOB_HP1[UMOB_HP], .@MOB_HP2[UMOB_HP];
+			setarray .@string$[0],
+				"너와 나는 하나야! 내가 너를 치유해 줄거야!",
+				"셀린느 키미가 자신과 그녀의 환영을 치유하여 ";
+			.@talk = 'celene_id;
+		}
+		else if (.@MOB_HP2[UMOB_HP] > .@MOB_HP1[UMOB_HP]) {
+			setarray .@mob_hp[0], .@MOB_HP2[UMOB_HP], .@MOB_HP1[UMOB_HP];
+			setarray .@string$[0],
+				"내가 너를 구할거야!!",
+				"셀린느 키미의 환영이 자신과 그녀의 주인을 치유하여 ";
+			.@talk = 'phantom_id;
+		}
+		.@diff_hp = .@mob_hp[0] - .@mob_hp[1];
+		if (.@diff_hp > 100000) {
+			.@set_bs_hp = (.@diff_hp * 5) / 10;
+			.@MOB_HP3 = .@mob_hp[0] + .@set_bs_hp;
+			if (.@MOB_HP3 > 66666666)
+				.@MOB_HP3 = 66666666;
+			setunitdata 'celene_id, UMOB_HP, .@MOB_HP3;
+			setunitdata 'phantom_id, UMOB_HP, .@MOB_HP3;
+			donpcevent instance_npcname("#eff_f01") + "::OnStart";
+			unittalk .@talk, .@string$[0];
+			sleep 1000;
+			mapannounce 'xm_d_map$,  .@string$[1] + .@set_bs_hp +" 만큼의 체력을 회복하였습니다.", bc_map, "0xff6666";
+			donpcevent instance_npcname("#heal_c") + "::OnStart";
+		}
+		initnpctimer;
+	}
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,216,193,3	script	#eff_f01	CLEAR_NPC,{
+	end;
+OnStart:
+	for ( .@i = 1; .@i < 10; .@i++ )
+		specialeffect EF_HEARTCASTING, AREA, instance_npcname( "#eff_f0"+ .@i );
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,226,193,3	script	#eff_f02	CLEAR_NPC,{
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+1@xm_d,236,193,3	duplicate(#eff_f02)	#eff_f03	CLEAR_NPC
+1@xm_d,216,183,3	duplicate(#eff_f02)	#eff_f04	CLEAR_NPC
+1@xm_d,226,183,3	duplicate(#eff_f02)	#eff_f05	CLEAR_NPC
+1@xm_d,236,183,3	duplicate(#eff_f02)	#eff_f06	CLEAR_NPC
+1@xm_d,216,173,3	duplicate(#eff_f02)	#eff_f07	CLEAR_NPC
+1@xm_d,226,173,3	duplicate(#eff_f02)	#eff_f08	CLEAR_NPC
+1@xm_d,236,173,3	duplicate(#eff_f02)	#eff_f09	CLEAR_NPC
+
+1@xm_d,1,5,3	script	#bssk01	CLEAR_NPC,{
+	end;
+OnStart:
+	.@r = rand(1,3);
+	if (.@r == 1)
+		donpcevent instance_npcname("#bssk02") + "::OnStart";
+	else if (.@r == 2)
+		donpcevent instance_npcname("#bssk03") + "::OnStart";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#bssk02	CLEAR_NPC,{
+	end;
+OnStart:
+	donpcevent instance_npcname("#finalbs2") + "::OnTalk";
+	for ( .@i = 1; .@i < 5; .@i++ )
+		donpcevent instance_npcname( "#crssk"+ .@i ) + "::OnStart";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#bssk03	CLEAR_NPC,{
+	end;
+OnStart:
+	.@event$ = instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	while (1) {
+		getunitdata 'celene_id, .@data;
+		.@x = .@data[UMOB_X] + rand(1,20) - 10;
+		.@y = .@data[UMOB_Y] + rand(1,20) - 10;
+		monster 'xm_d_map$,.@x,.@y, "#f_w_1",3038,1, .@event$;// HIDDEN_MOB7
+		.@mon_num++;
+		if (.@mon_num > 20)
+			break;
+		sleep 200;
+	}
+	sleep 6000;
+	killmonster 'xm_d_map$, .@event$;
+	end;
+
+OnMyMobDead:
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#crssk1	CLEAR_NPC,{
+	end;
+OnStart:
+	.@event$ = instance_npcname( strnpcinfo(0) ) + "::OnMyMobDead";
+	killmonster 'xm_d_map$, .@event$;
+	getunitdata 'celene_id, .@data;
+	setarray .@coord[0], .@data[UMOB_X], .@data[UMOB_Y];
+	.@num = atoi(strnpcinfo(2));
+	.@index = ( .@num > 2 ? 1 : 0 );// x or y
+	.@signe = pow(-1,.@num+1);
+	while(1) {
+		.@coord[.@index] = .@coord[.@index] + (2 * .@signe);
+		.@coord[!.@index] = .@coord[!.@index] + rand(0,2) - 1;
+		monster 'xm_d_map$,.@coord[0], .@coord[1], "#f_w_1",3038,1, .@event$;
+		if (.@coord[0] < 211 || .@coord[0] > 241 || .@coord[1] < 166 || .@coord[1] > 201)
+			break;
+		sleep 200;
+	}
+	sleep 6000;
+	killmonster 'xm_d_map$, .@event$;
+	end;
+OnMyMobDead:
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+1@xm_d,1,5,3	duplicate(#crssk1)	#crssk2	CLEAR_NPC
+1@xm_d,1,5,3	duplicate(#crssk1)	#crssk3	CLEAR_NPC
+1@xm_d,1,5,3	duplicate(#crssk1)	#crssk4	CLEAR_NPC
+
+1@xm_d,233,183,0	script	#kimion1	-1,7,7,{
+OnTouch_:
+	disablenpc instance_npcname("#kimion1");
+	donpcevent instance_npcname("셀린느 키미#2") + "::OnStart";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,233,183,3	script	셀린느 키미#2	4_F_KIMI,{
+	mes "[셀린느 키미]";
+	mes "너도... 날 죽이러 온거야?";
+	close;
+
+OnStart:
+	npctalk "셀린느 키미: 너도... 날 죽이러 온거야?";
+	specialeffect EF_MAPPILLAR2;
+	sleep 5000;
+	disablenpc instance_npcname("셀린느 키미#2");
+	donpcevent instance_npcname("#finalbs2") + "::OnStart";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,228,183,0	script	#bgm03	-1,25,25,{
+OnTouch:
+	playBGM "123";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#heal_c	CLEAR_NPC,{
+	end;
+OnStart:
+	if (rand(1,10) > 4)
+		initnpctimer;
+	end;
+OnTimer3000:
+	//mapannounce 'xm_d_map$, "셀린느 키미 and her phantom are shared their strength. They will be stronger than ever!",bc_map,"0xff6666";
+	mapannounce 'xm_d_map$, "셀린느 키미와 환영의 체력이 크게 차이나게 만들지 마십시오. 본래의 상태보다 점점 강해질 수 있습니다.",bc_map,"0xff6666";
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,1,5,3	script	#finalbs_e	CLEAR_NPC,{
+	end;
+OnStart:
+	mapannounce 'xm_d_map$, "셀린느 키미: 날 쓰러뜨려도 소용없어! 내 몸은 다시 돌아올테니까!",bc_map,"0xff6666",FW_NORMAL,15;
+	enablenpc instance_npcname("#fac6wp");
+	enablenpc instance_npcname("#jeton2");
+	enablenpc instance_npcname("캐서린 제트존슨#6");
+	for ( .@i = 1; .@i <= 10; .@i++ )
+		enablenpc instance_npcname("포장된 선물#"+ .@i);
+	sleep 6000;
+	mapannounce 'xm_d_map$, "캐서린 제트존슨의 외침: 괜찮으신가요? 남족의 비상구로 피하세요!",bc_map,"0xffff00";
+	monster 'xm_d_map$,rand(205,231), rand(136,141), "피아멧트",1930,1, .@event$;//피아멧트
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,218,145,0	script	#jeton2	-1,4,4,{
+OnTouch_:
+	disablenpc instance_npcname("#jeton2");
+	donpcevent instance_npcname("캐서린 제트존슨#6") + "::OnStart";
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,218,145,5	script	캐서린 제트존슨#6	4_F_SKULL06GIRL,{
+	end;
+OnStart:
+	sleep 1000;
+	npctalk "캐서린 제트존슨: 안타깝게도 키미를 설득하는 것은 실패한 것 같아요.";
+	sleep 3000;
+	npctalk "캐서린 제트존슨: 그 환영의 목소리는 대체 정체가 뭘까요? 어째서 키미를 그렇게 괴롭히는건지...";
+	sleep 4000;
+	npctalk "캐서린 제트존슨: 아마도 제 얼굴에 걸린 저주의 원인도 그 정체불명의 목소리가 아닐까 싶어요.";
+	sleep 4000;
+	npctalk "캐서린 제트존슨: 그렇다곤 하지만, 모두를 미워할 것처럼 말하던 키미도 결국 이렇게 이곳의 추억을 잔뜩 모아두고 있었군요.";
+	sleep 6000;
+	npctalk "캐서린 제트존슨: 혹시라도 다시 키미의 영혼이 되돌아와서 실망하지 않도록 이 물건은 잘 놓아두는게 좋겠어요.";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 당신 덕분에 제가 궁금해하던 모든 것이 완전히 해결되었어요.";
+	sleep 5000;
+	npctalk "캐서린 제트존슨: 탈출구가 열리면 먼저 밖으로 나갈테니 저를 따라오세요.";
+	sleep 3000;
+	disablenpc instance_npcname("캐서린 제트존슨#6");
+	enablenpc instance_npcname("#exwp1");
+	end;
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,218,150,5	script	#exwp1	PORTAL,{
+	mes "나가시겠습니까?";
+	next;
+	if (select( "주변을 둘러본다.", "밖으로 나간다." ) == 1) {
+		mes "작동을 중지합니다.";
+		close;
+	}
+	close2;
+	warp "xmas",233,300;
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+
+1@xm_d,210,141,3	script	포장된 선물#1	4_TREASURE_BOX,{
+	specialeffect EF_COIN;
+	disablenpc instance_npcname( strnpcinfo(0) );
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	switch( atoi(strnpcinfo(2)) ) {
+	case 1:
+		getmapxy .@map$, .@x, .@y, UNITTYPE_NPC;
+		makeitem 19617,1,'map_name$,rand(209,217),rand(152,161);
+		makeitem 19617,1,'map_name$,rand(209,217),rand(152,161);
+
+		.@num = rand(4,8);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(208,212), rand(139,143);// Bloody_Coin
+		if (rand(1,1000) > 150)
+			makeitem 644,1, 'xm_d_map$,209,141;// Gift_Box;
+		if (rand(1,1000) > 600)
+			makeitem 617,1, 'xm_d_map$,210,141;// Old_Violet_Box;
+		if (rand(1,1000) > 900)
+			makeitem 22534,1, 'xm_d_map$,211,141;// Closedmind_Box
+		if (rand(1,1000) > 950)
+			makeitem 16029,1, 'xm_d_map$,212,141;// Closedmind_Box
+		break;
+	case 2:
+		.@num = rand(3,7);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(212,216), rand(139,143);// Bloody_Coin
+		if (rand(1,1000) > 400)
+			makeitem 603,1, 'xm_d_map$,213,141;// Old_Blue_Box
+		if (rand(1,1000) > 700)
+			makeitem 616,1, 'xm_d_map$,214,141;// Old_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 13442,1, 'xm_d_map$,215,141;// Old_Parasol
+		break;
+	case 3:
+		.@num = rand(2,6);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(216,220), rand(139,143);// Bloody_Coin
+		if (rand(1,1000) > 850)
+			makeitem 7229,1, 'xm_d_map$,217,141;// Silver_Bullion
+		if (rand(1,1000) > 800)
+			makeitem 12246,1, 'xm_d_map$,218,141;// Magic_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 2486,1, 'xm_d_map$,219,141;// Shadow_Walk_
+		break;
+	case 4:
+		.@num = rand(4,8);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(220,224), rand(139,143);// Bloody_Coin
+		if (rand(1,1000) > 700)
+			makeitem 7228,1, 'xm_d_map$,221,141;// Gold_Bullion
+		if (rand(1,1000) > 600)
+			makeitem 617,1, 'xm_d_map$,222,141;// Old_Violet_Box
+		if (rand(1,1000) > 900)
+			makeitem 22534,1, 'xm_d_map$,223,141;// Closedmind_Box
+		if (rand(1,1000) > 900)
+			makeitem 22534,1, 'xm_d_map$,223,141;// Closedmind_Box
+		if (rand(1,1000) > 900)
+			makeitem 2980,1, 'xm_d_map$,223,141;// Closedmind_Box
+		break;
+	case 5:
+		.@num = rand(3,7);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(224,228), rand(139,143);// Bloody_Coin
+		if (rand(1,1000) > 150)
+			makeitem 644,1, 'xm_d_map$,225,141;// Gift_Box
+		if (rand(1,1000) > 700)
+			makeitem 616,1, 'xm_d_map$,226,141;// Old_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 2976,1, 'xm_d_map$,227,141;// Red_Lantern
+		break;
+	case 6:
+		.@num = rand(2,6);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 2976,1, 'xm_d_map$, rand(208,212), rand(134,138);// Red_Lantern
+		if (rand(1,1000) > 400)
+			makeitem 603,1, 'xm_d_map$,209,136;// Old_Blue_Box
+		if (rand(1,1000) > 800)
+			makeitem 12246,1, 'xm_d_map$,210,136;// Magic_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 2977,1, 'xm_d_map$,211,136;// Hurt_Mind
+		break;
+	case 7:
+		.@num = rand(4,8);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(212,216), rand(134,138);// Bloody_Coin
+		if (rand(1,1000) > 850)
+			makeitem 7229,1, 'xm_d_map$,213,136;// Silver_Bullion
+		if (rand(1,1000) > 600)
+			makeitem 617,1, 'xm_d_map$,214,136;// Old_Violet_Box
+		if (rand(1,1000) > 900)
+			makeitem 22534,1, 'xm_d_map$,215,136;// Closedmind_Box
+		if (rand(1,1000) > 950)
+			makeitem 18849,1, 'xm_d_map$,219,141;// Shadow_Walk_
+		break;
+	case 8:
+		.@num = rand(3,7);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(216,220), rand(134,138);// Bloody_Coin
+		if (rand(1,1000) > 700)
+			makeitem 7228,1, 'xm_d_map$,217,136;// Gold_Bullion
+		if (rand(1,1000) > 700)
+			makeitem 616,1, 'xm_d_map$,218,136;// Old_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 2978,1, 'xm_d_map$,219,136;// KindHeart
+		break;
+	case 9:
+		.@num = rand(2,6);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(220,224), rand(134,138);// Bloody_Coin
+		if (rand(1,1000) > 150)
+			makeitem 644,1, 'xm_d_map$,221,136;// Gift_Box
+		if (rand(1,1000) > 800)
+			makeitem 12246,1, 'xm_d_map$,222,136;// Magic_Card_Album
+		if (rand(1,1000) > 950)
+			makeitem 18848,1, 'xm_d_map$,223,136;// Lush_Rose
+		break;
+	case 10:
+		.@num = rand(4,8);
+		for ( .@i = 0; .@i < .@num; .@i++ )
+			makeitem 7642,1, 'xm_d_map$, rand(224,228), rand(134,138);// Bloody_Coin
+		if (rand(1,1000) > 400)
+			makeitem 603,1, 'xm_d_map$,225,136;// Old_Blue_Box
+		if (rand(1,1000) > 600)
+			makeitem 617,1, 'xm_d_map$,226,136;// Old_Violet_Box
+		if (rand(1,1000) > 900)
+			makeitem 22534,1, 'xm_d_map$,227,136;// Closedmind_Box
+		break;
+	}
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+}
+1@xm_d,214,141,3	duplicate(포장된 선물#1)	포장된 선물#2	4_TREASURE_BOX
+1@xm_d,218,141,3	duplicate(포장된 선물#1)	포장된 선물#3	4_TREASURE_BOX
+1@xm_d,222,141,3	duplicate(포장된 선물#1)	포장된 선물#4	4_TREASURE_BOX
+1@xm_d,226,141,3	duplicate(포장된 선물#1)	포장된 선물#5	4_TREASURE_BOX
+1@xm_d,210,136,3	duplicate(포장된 선물#1)	포장된 선물#6	4_TREASURE_BOX
+1@xm_d,214,136,3	duplicate(포장된 선물#1)	포장된 선물#7	4_TREASURE_BOX
+1@xm_d,218,136,3	duplicate(포장된 선물#1)	포장된 선물#8	4_TREASURE_BOX
+1@xm_d,222,136,3	duplicate(포장된 선물#1)	포장된 선물#9	4_TREASURE_BOX
+1@xm_d,226,136,3	duplicate(포장된 선물#1)	포장된 선물#10	4_TREASURE_BOX
+
+// Warps
+//==========================================
+1@xm_d,79,129,0	warp2	#fac1wp2	2,2,1@xm_d,73,129
+1@xm_d,184,109,0	warp2	#fac2wp2	2,2,1@xm_d,170,129
+1@xm_d,130,178,0	warp2	#fac3wp	2,2,1@xm_d,130,193
+1@xm_d,130,184,0	warp2	#fac3wp2	2,2,1@xm_d,129,173
+1@xm_d,107,208,0	warp2	#fac4wp	2,2,1@xm_d,87,208
+1@xm_d,95,208,0	warp2	#fac4wp2	2,2,1@xm_d,115,208
+1@xm_d,152,208,0	warp2	#fac5wp	2,2,1@xm_d,167,208
+1@xm_d,205,159,0	warp2	#fac6wp	2,2,1@xm_d,205,147
+
+// Instance GM Functions :: mx_xm_ad
+//==========================================
+1@xm_d,1,1,3	script	#adsw	CLEAR_NPC,{
+	if (callfunc("F_GM_NPC",1854,0) == 1) {
+		mes "[Time Manager]";
+		mes "What time would you like to return?";
+		next;
+		switch (select("Cancel:Factory No.1 Complete:Factory No.2 Complete:Factory No.3 Complete:Boss Start:Boss Complete")) {
+		case 1:
+			break;
+		case 2:
+			transform 1246,180000;
+			enablenpc instance_npcname("#fac1bs");
+			mapannounce 'xm_d_map$, "작업반장 안내방송: 아니? 다들 어디간거야! 작업자들이 라인을 비워두고 놀면 어떻게 해!",bc_map,"0xff8800";
+			warp 'xm_d_map$,70,125;
+			break;
+		case 3:
+			for ( .@i = 1; .@i <= 10; ++.@i )
+				disablenpc instance_npcname( "근로자#" + .@i );
+			donpcevent instance_npcname("#fac2wpc") + "::OnStart";
+			warp 'xm_d_map$,131,210;
+			break;
+		case 4:
+			donpcevent instance_npcname("#fac3ct3") + "::OnEnd";
+			warp 'xm_d_map$,131,210;
+			break;
+		case 5:
+			donpcevent instance_npcname("#finalbs2") + "::OnStart";
+			warp 'xm_d_map$,215,182;
+			break;
+		case 6:
+			donpcevent instance_npcname("#finalbs2") + "::OnEnd";
+			warp 'xm_d_map$,215,182;
+			break;
+		}
+	}
+	close;
+}
+
+1@xm_d,3,1,3	script	#adsw2	CLEAR_NPC,{
+	if (callfunc("F_GM_NPC",1854,0) == 1) {
+		getunitdata 'Antonio, .@mob;
+		mapannounce 'xm_d_map$, "공장 안내방송: Exist in " + .@mob[UMOB_X] + " - " + .@mob[UMOB_Y] + ".",bc_map,"0x00ff44";
+	}
+	end;
+}

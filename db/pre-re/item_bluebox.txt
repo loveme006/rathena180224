@@ -1,0 +1,1027 @@
+// Old Blue Box Obtainable Items Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+
+IG_BlueBox,501,12// 빨간포션
+IG_BlueBox,502,12// 주홍포션
+IG_BlueBox,503,12// 노란포션
+IG_BlueBox,504,12// 하얀포션
+IG_BlueBox,505,12// 파란포션
+IG_BlueBox,506,12// 초록포션
+IG_BlueBox,507,12// 빨간허브
+IG_BlueBox,508,12// 노란허브
+IG_BlueBox,509,12// 하얀허브
+IG_BlueBox,510,12// 파란허브
+IG_BlueBox,511,12// 초록허브
+IG_BlueBox,512,12// 사과
+IG_BlueBox,513,12// 바나나
+IG_BlueBox,514,12// 포도
+IG_BlueBox,515,12// 당근
+IG_BlueBox,516,12// 고구마
+IG_BlueBox,517,12// 고기
+IG_BlueBox,518,12// 꿀
+IG_BlueBox,519,12// 우유
+IG_BlueBox,520,12// 히나레의 잎사귀
+IG_BlueBox,521,12// 알로에의 잎사귀
+IG_BlueBox,522,12// 마스테라의 열매
+IG_BlueBox,523,12// 성수
+IG_BlueBox,525,12// 만능약
+IG_BlueBox,526,12// 로얄제리
+IG_BlueBox,528,12// 괴물의 먹이
+IG_BlueBox,529,12// 사탕
+IG_BlueBox,530,12// 막대사탕
+IG_BlueBox,531,12// 사과 쥬스
+IG_BlueBox,532,12// 바나나 쥬스
+IG_BlueBox,533,12// 포도 쥬스
+IG_BlueBox,534,12// 당근 쥬스
+IG_BlueBox,535,12// 호박
+IG_BlueBox,536,12// 아이스 크림
+IG_BlueBox,537,12// 펫 푸드
+IG_BlueBox,538,12// 잘 구운 쿠키
+IG_BlueBox,539,12// 조각 케이크
+IG_BlueBox,544,12// 회
+IG_BlueBox,545,12// 레드 슬림 포션
+IG_BlueBox,546,12// 옐로우 슬림 포션
+IG_BlueBox,547,12// 화이트 슬림 포션
+IG_BlueBox,548,12// 치즈
+IG_BlueBox,549,12// 밤고구마
+IG_BlueBox,550,12// 뻥튀기
+IG_BlueBox,551,12// 초밥
+IG_BlueBox,553,12// 만두
+IG_BlueBox,555,12// 떡
+IG_BlueBox,558,12// 초콜렛
+IG_BlueBox,561,12// 화이트 초콜렛
+IG_BlueBox,601,12// 파리의 날개
+IG_BlueBox,602,12// 나비의 날개
+IG_BlueBox,604,512// 고목나무 가지
+IG_BlueBox,605,12// 안티 페인멘트
+IG_BlueBox,606,12// 알로에베라
+IG_BlueBox,607,12// 이그드라실의 열매
+IG_BlueBox,608,12// 이그드라실의 씨앗
+IG_BlueBox,609,12// 반혼부
+IG_BlueBox,610,12// 이그드라실의 나뭇잎
+IG_BlueBox,611,12// 돋보기
+IG_BlueBox,612,12// 휴대용 용광로
+IG_BlueBox,613,12// 강철의 망치
+IG_BlueBox,614,12// 황금의 망치
+IG_BlueBox,615,12// 오리데오콘 망치
+IG_BlueBox,618,12// 낡은 두루마리
+IG_BlueBox,619,12// 덜익은 사과
+IG_BlueBox,620,12// 오렌지 쥬스
+IG_BlueBox,621,12// 쓰디쓴 풀
+IG_BlueBox,622,12// 무지개색 당근
+IG_BlueBox,623,12// 멋쟁이 청년 지렁이
+IG_BlueBox,624,12// 썩은 생선
+IG_BlueBox,625,12// 녹슬어버린 철
+IG_BlueBox,626,12// 몬스터 쥬스
+IG_BlueBox,627,12// 달콤한 우유
+IG_BlueBox,628,12// 잘 말린 뼈다귀
+IG_BlueBox,629,12// 노래하는 꽃
+IG_BlueBox,630,12// 아침이슬을 머금은 이끼
+IG_BlueBox,631,12// 맹독초
+IG_BlueBox,632,12// 토실토실 살찐 지렁이
+IG_BlueBox,633,12// 구운 고구마
+IG_BlueBox,634,12// 열대의 바나나
+IG_BlueBox,635,12// 조직의 쓴맛
+IG_BlueBox,636,12// 수취인 불명
+IG_BlueBox,637,12// 헌 빗자루
+IG_BlueBox,638,12// 순결의 은장도
+IG_BlueBox,639,12// 복종의 팔찌
+IG_BlueBox,640,12// 반짝이는 돌
+IG_BlueBox,641,12// 어둠의 계약서
+IG_BlueBox,642,12// 악마소환서
+IG_BlueBox,643,12// 휴대용 알 부화기
+IG_BlueBox,644,312// 선물상자
+IG_BlueBox,645,12// 집중의 포션
+IG_BlueBox,656,12// 각성의 포션
+IG_BlueBox,657,12// 버서크 포션
+IG_BlueBox,659,12// 그녀의 마음
+IG_BlueBox,663,12// 송편
+IG_BlueBox,664,12// 선물상자
+IG_BlueBox,665,12// 선물상자
+IG_BlueBox,666,12// 선물상자
+IG_BlueBox,667,12// 선물상자
+IG_BlueBox,668,12// 세뱃돈
+IG_BlueBox,678,12// 독약병
+IG_BlueBox,679,12// 소환단
+IG_BlueBox,701,12// 오라오라
+IG_BlueBox,702,12// 가축의 피
+IG_BlueBox,703,12// 히나레
+IG_BlueBox,704,12// 알로에
+IG_BlueBox,705,12// 클로버
+IG_BlueBox,706,12// 네잎 클로버
+IG_BlueBox,707,12// 노래하는 풀
+IG_BlueBox,708,12// 멘트
+IG_BlueBox,710,12// 환상의 꽃
+IG_BlueBox,711,12// 새싹
+IG_BlueBox,712,12// 꽃
+IG_BlueBox,713,12// 빈병
+IG_BlueBox,715,12// 옐로우 젬스톤
+IG_BlueBox,716,12// 레드 젬스톤
+IG_BlueBox,717,12// 블루 젬스톤
+IG_BlueBox,718,12// 가넷
+IG_BlueBox,719,12// 아메디스트
+IG_BlueBox,720,12// 아쿠아마린
+IG_BlueBox,721,12// 에메랄드
+IG_BlueBox,722,12// 진주
+IG_BlueBox,723,12// 루비
+IG_BlueBox,724,12// 저주받은 루비
+IG_BlueBox,725,12// 사드오닉스
+IG_BlueBox,726,12// 사파이어
+IG_BlueBox,727,12// 오팔
+IG_BlueBox,728,12// 토파즈
+IG_BlueBox,729,12// 질콘
+IG_BlueBox,730,12// 다이아몬드 1캐럿
+IG_BlueBox,731,12// 다이아몬드 2캐럿
+IG_BlueBox,732,12// 다이아몬드 3캐럿
+IG_BlueBox,733,12// 손상된 다이아몬드
+IG_BlueBox,734,12// 붉은색 액자
+IG_BlueBox,735,12// 푸른색 도자기
+IG_BlueBox,736,12// 하얀색 접시
+IG_BlueBox,737,12// 검은색 국자
+IG_BlueBox,738,12// 연필꽂이
+IG_BlueBox,739,12// 화장품
+IG_BlueBox,740,12// 봉제인형
+IG_BlueBox,741,12// 포링인형
+IG_BlueBox,742,12// 촌촌인형
+IG_BlueBox,743,12// 스포아인형
+IG_BlueBox,744,12// 꽃다발
+IG_BlueBox,745,12// 부케
+IG_BlueBox,746,12// 유리구슬
+IG_BlueBox,747,12// 수정으로 만든 거울
+IG_BlueBox,748,12// 시들지 않는 장미
+IG_BlueBox,749,12// 얼음 장미
+IG_BlueBox,750,12// 바포메트인형
+IG_BlueBox,751,12// 오시리스인형
+IG_BlueBox,752,12// 메뚜기인형
+IG_BlueBox,753,12// 원숭이인형
+IG_BlueBox,754,12// 너구리인형
+IG_BlueBox,901,12// 댕기머리
+IG_BlueBox,902,12// 늙은나무의 뿌리
+IG_BlueBox,903,12// 파충류의 혓바닥
+IG_BlueBox,904,12// 전갈의 꼬리
+IG_BlueBox,905,12// 식물의 줄기
+IG_BlueBox,906,12// 비늘로된 줄기
+IG_BlueBox,907,12// 고목나무의 진
+IG_BlueBox,908,12// 개구리의 알
+IG_BlueBox,909,12// 젤로피
+IG_BlueBox,910,12// 가렛
+IG_BlueBox,911,12// 셀
+IG_BlueBox,912,12// 자르곤
+IG_BlueBox,913,12// 박쥐의 이빨
+IG_BlueBox,914,12// 솜털
+IG_BlueBox,915,12// 번데기 껍질
+IG_BlueBox,916,12// 새의 깃털
+IG_BlueBox,917,12// 새의 발톱
+IG_BlueBox,918,12// 끈적이는 물갈퀴
+IG_BlueBox,919,12// 동물의 가죽
+IG_BlueBox,920,12// 늑대의 발톱
+IG_BlueBox,921,12// 버섯 포자
+IG_BlueBox,922,12// 오크의 송곳니
+IG_BlueBox,923,12// 악마의 뿔
+IG_BlueBox,924,12// 나비의 날개가루
+IG_BlueBox,925,12// 새의 부리
+IG_BlueBox,926,12// 뱀의 비늘조각
+IG_BlueBox,928,12// 벌레의 더듬이
+IG_BlueBox,929,12// 멈추지 않는 심장
+IG_BlueBox,930,12// 썩은 붕대
+IG_BlueBox,931,12// 오크전사의 증표
+IG_BlueBox,932,12// 뼈조각
+IG_BlueBox,934,12// 죽은자의 유품
+IG_BlueBox,935,12// 단단한 껍질
+IG_BlueBox,936,12// 비늘로된 피부
+IG_BlueBox,937,12// 독 송곳니
+IG_BlueBox,938,12// 끈적끈적한 액체
+IG_BlueBox,939,12// 벌의 뒷침
+IG_BlueBox,940,12// 메뚜기의 뒷다리
+IG_BlueBox,941,12// 쇠코뚜레
+IG_BlueBox,942,12// 원숭이의 꼬리
+IG_BlueBox,943,12// 매우 단단한 껍질
+IG_BlueBox,944,12// 말발굽
+IG_BlueBox,945,12// 너구리의 나뭇잎
+IG_BlueBox,946,12// 달팽이의 껍질
+IG_BlueBox,947,12// 딱딱한 뿔
+IG_BlueBox,948,12// 곰의 발바닥
+IG_BlueBox,949,12// 부드러운 털
+IG_BlueBox,950,12// 인어의 심장
+IG_BlueBox,951,12// 등 지느러미
+IG_BlueBox,952,12// 선인장의 뾰족한 침
+IG_BlueBox,953,12// 돌심장
+IG_BlueBox,954,12// 빛나는 비늘
+IG_BlueBox,955,12// 벌레의 등껍질
+IG_BlueBox,956,12// 가시달린 아가미
+IG_BlueBox,957,12// 죽은자의 손톱
+IG_BlueBox,958,12// 죽은자의 이빨
+IG_BlueBox,959,12// 썩어버린 비늘
+IG_BlueBox,960,12// 집게발
+IG_BlueBox,961,12// 소라
+IG_BlueBox,962,12// 촉수
+IG_BlueBox,963,12// 날카로운 비늘
+IG_BlueBox,964,12// 게등껍질
+IG_BlueBox,965,12// 조개껍질
+IG_BlueBox,966,12// 조개살
+IG_BlueBox,967,12// 거북이 등껍질
+IG_BlueBox,968,12// 오크용자의 증표
+IG_BlueBox,969,12// 황금
+IG_BlueBox,971,12// 디트리민
+IG_BlueBox,972,12// 카르보딜
+IG_BlueBox,973,12// 중화제
+IG_BlueBox,974,12// 혼합제
+IG_BlueBox,975,12// 빨간색 염료
+IG_BlueBox,976,12// 노란색 염료
+IG_BlueBox,978,12// 파란색 염료
+IG_BlueBox,979,12// 초록색 염료
+IG_BlueBox,980,12// 주홍색 염료
+IG_BlueBox,981,12// 보라색 염료
+IG_BlueBox,982,12// 하얀색 염료
+IG_BlueBox,983,12// 검은색 염료
+IG_BlueBox,986,12// 모루
+IG_BlueBox,987,12// 오리데오콘 모루
+IG_BlueBox,988,12// 황금의 모루
+IG_BlueBox,989,12// 엠펠리움 모루
+IG_BlueBox,990,12// 레드 블러드
+IG_BlueBox,991,12// 크리스탈 블루
+IG_BlueBox,992,12// 윈드 오브 버듀어
+IG_BlueBox,993,12// 그린 라이브
+IG_BlueBox,994,12// 프레임 하트
+IG_BlueBox,995,12// 미스틱 프로즌
+IG_BlueBox,996,12// 러프 윈드
+IG_BlueBox,997,12// 그레이트 네이쳐
+IG_BlueBox,998,12// 철
+IG_BlueBox,999,12// 강철
+IG_BlueBox,1000,12// 별의 조각
+IG_BlueBox,1001,12// 별의 가루
+IG_BlueBox,1002,12// 철광석
+IG_BlueBox,1003,12// 석탄
+IG_BlueBox,1004,12// 충절의 증거
+IG_BlueBox,1005,12// 대장장이의 망치
+IG_BlueBox,1006,12// 오래된 마법서
+IG_BlueBox,1007,12// 혜안
+IG_BlueBox,1008,12// 비정한 마음
+IG_BlueBox,1009,12// 성흔
+IG_BlueBox,1010,12// 프라콘
+IG_BlueBox,1011,12// 엠베르타콘
+IG_BlueBox,1012,12// 도마뱀의 목덜미
+IG_BlueBox,1013,12// 알록달록한 등껍질
+IG_BlueBox,1014,12// 개미의 턱뼈
+IG_BlueBox,1015,12// 길고 가느다란 혀
+IG_BlueBox,1016,12// 쥐의 꼬리
+IG_BlueBox,1017,12// 두더지의 수염
+IG_BlueBox,1018,12// 두더지의 손톱
+IG_BlueBox,1019,12// 나무 조각
+IG_BlueBox,1020,12// 긴 머리카락
+IG_BlueBox,1021,12// 도깨비의 뿔
+IG_BlueBox,1022,12// 여우의 꼬리
+IG_BlueBox,1023,12// 생선의 꼬리
+IG_BlueBox,1024,12// 먹물
+IG_BlueBox,1025,12// 거미줄
+IG_BlueBox,1026,12// 도토리
+IG_BlueBox,1027,12// 고슴도치의 가시
+IG_BlueBox,1028,12// 멧돼지의 갈기털
+IG_BlueBox,1029,12// 호랑이의 가죽
+IG_BlueBox,1031,12// 사마귀의 팔
+IG_BlueBox,1032,12// 식인수의 꽃
+IG_BlueBox,1033,12// 식인수의 뿌리
+IG_BlueBox,1034,12// 코볼트의 털
+IG_BlueBox,1035,12// 드래곤의 이빨
+IG_BlueBox,1036,12// 드래곤의 비늘
+IG_BlueBox,1037,12// 드래곤의 꼬리
+IG_BlueBox,1038,12// 새끼악마의 뿔
+IG_BlueBox,1039,12// 새끼악마의 날개
+IG_BlueBox,1040,12// 늙은요정의 수염
+IG_BlueBox,1041,12// 랜턴
+IG_BlueBox,1042,12// 짧은 다리
+IG_BlueBox,1043,12// 오크의 손톱
+IG_BlueBox,1044,12// 제노크의 이빨
+IG_BlueBox,1045,12// 신관의 가면
+IG_BlueBox,1046,12// 전갈의 집게손
+IG_BlueBox,1047,12// 메두사의 머리
+IG_BlueBox,1048,12// 뱀모양의 머리카락
+IG_BlueBox,1049,12// 처녀의 옷자락
+IG_BlueBox,1050,12// 힘줄
+IG_BlueBox,1051,12// 뇌관
+IG_BlueBox,1052,12// 단세포
+IG_BlueBox,1053,12// 고대어의 이빨
+IG_BlueBox,1054,12// 고대어의 입술
+IG_BlueBox,1055,12// 지렁이의 가죽
+IG_BlueBox,1056,12// 모래 조각
+IG_BlueBox,1057,12// 나방의 날개가루
+IG_BlueBox,1058,12// 나방의 날개
+IG_BlueBox,1059,12// 투명한 천조각
+IG_BlueBox,1060,12// 금빛 머리카락
+IG_BlueBox,1061,12// 마녀의 별모래
+IG_BlueBox,1062,12// 호박 머리
+IG_BlueBox,1063,12// 날카로운 송곳니
+IG_BlueBox,1064,12// 말고삐
+IG_BlueBox,1065,12// 설치용 트랩
+IG_BlueBox,1066,12// 결이 고운 나무 조각
+IG_BlueBox,1067,12// 단단한 나무 조각
+IG_BlueBox,1068,12// 메마른 나무 조각
+IG_BlueBox,1088,12// 모로크 수용액
+IG_BlueBox,1089,12// 페이욘 수용액
+IG_BlueBox,1092,12// 빈시험관
+IG_BlueBox,1093,12// 빈포션병
+IG_BlueBox,1094,12// 짧은 댕기머리
+IG_BlueBox,1095,12// 시계바늘
+IG_BlueBox,1096,12// 둥근 껍질
+IG_BlueBox,1097,12// 낡은 책장
+IG_BlueBox,1098,12// 수갑
+IG_BlueBox,1099,12// 낡은 죄수복
+IG_BlueBox,1101,6// 소드
+IG_BlueBox,1102,6// 소드
+IG_BlueBox,1104,6// 폴쳔
+IG_BlueBox,1105,6// 폴쳔
+IG_BlueBox,1107,6// 블레이드
+IG_BlueBox,1108,6// 블레이드
+IG_BlueBox,1110,6// 레이피어
+IG_BlueBox,1111,6// 레이피어
+IG_BlueBox,1113,6// 시미터
+IG_BlueBox,1114,6// 시미터
+IG_BlueBox,1116,3// 카타나
+IG_BlueBox,1117,3// 카타나
+IG_BlueBox,1119,6// 츠루기
+IG_BlueBox,1120,6// 츠루기
+IG_BlueBox,1122,6// 환두태도
+IG_BlueBox,1123,6// 해동검
+IG_BlueBox,1124,6// 오키쉬 소드
+IG_BlueBox,1125,6// 환두태도
+IG_BlueBox,1126,6// 세이버
+IG_BlueBox,1127,6// 세이버
+IG_BlueBox,1128,6// 해동검
+IG_BlueBox,1129,6// 프람베르그
+IG_BlueBox,1146,1// 타운소드
+IG_BlueBox,1147,1// 타운소드
+IG_BlueBox,1148,1// 스타더스트 블레이드
+IG_BlueBox,1151,3// 슬레이어
+IG_BlueBox,1152,3// 슬레이어
+IG_BlueBox,1154,3// 바스타드소드
+IG_BlueBox,1155,3// 바스타드소드
+IG_BlueBox,1157,3// 투핸드소드
+IG_BlueBox,1158,3// 투핸드소드
+IG_BlueBox,1160,3// 브로드소드
+IG_BlueBox,1162,3// 브로드소드
+IG_BlueBox,1163,3// 크레이모어
+IG_BlueBox,1201,3// 나이프
+IG_BlueBox,1202,3// 나이프
+IG_BlueBox,1204,3// 커터
+IG_BlueBox,1205,3// 커터
+IG_BlueBox,1207,3// 망고슈
+IG_BlueBox,1208,3// 망고슈
+IG_BlueBox,1210,3// 더크
+IG_BlueBox,1211,3// 더크
+IG_BlueBox,1213,3// 대거
+IG_BlueBox,1214,3// 대거
+IG_BlueBox,1216,3// 스틸레토
+IG_BlueBox,1217,3// 스틸레토
+IG_BlueBox,1219,3// 그라디우스
+IG_BlueBox,1220,3// 그라디우스
+IG_BlueBox,1222,3// 다마스커스
+IG_BlueBox,1226,3// 다마스커스
+IG_BlueBox,1243,3// 초보자용 망고슈
+IG_BlueBox,1245,1// 친퀘디아
+IG_BlueBox,1247,1// 불쏘시개의 단검
+IG_BlueBox,1248,1// 흑요석 단검
+IG_BlueBox,1249,1// 어부의 단검
+IG_BlueBox,1250,3// 쥬르
+IG_BlueBox,1251,3// 쥬르
+IG_BlueBox,1252,3// 카타르
+IG_BlueBox,1253,3// 카타르
+IG_BlueBox,1254,3// 자마다르
+IG_BlueBox,1255,3// 자마다르
+IG_BlueBox,1256,3// 시린 고드름의 카타르
+IG_BlueBox,1257,3// 먼지낀 가시 덤불 카타르
+IG_BlueBox,1258,3// 분출하는 불꽃의 카타르
+IG_BlueBox,1259,3// 살을 에는 바람의 카타르
+IG_BlueBox,1262,1// 로키의 손톱
+IG_BlueBox,1263,1// 언홀리터치
+IG_BlueBox,1264,2// 바리어스 쥬르
+IG_BlueBox,1265,1// 블러디로어
+IG_BlueBox,1269,1// 인버스 스케어
+IG_BlueBox,1271,1// 혈루
+IG_BlueBox,1301,3// 액스
+IG_BlueBox,1302,3// 액스
+IG_BlueBox,1304,3// 오키쉬 액스
+IG_BlueBox,1307,1// 윈드호크
+IG_BlueBox,1351,3// 배틀액스
+IG_BlueBox,1352,3// 배틀액스
+IG_BlueBox,1354,3// 해머
+IG_BlueBox,1355,3// 해머
+IG_BlueBox,1357,3// 버스터
+IG_BlueBox,1358,3// 버스터
+IG_BlueBox,1360,3// 투핸드액스
+IG_BlueBox,1361,3// 투핸드액스
+IG_BlueBox,1370,1// 둠 슬레이어
+IG_BlueBox,1376,1// 하트 브레이커
+IG_BlueBox,1377,1// 허리케인 퓨리
+IG_BlueBox,1401,9// 쟈벨린
+IG_BlueBox,1402,9// 쟈벨린
+IG_BlueBox,1404,9// 스피어
+IG_BlueBox,1405,9// 스피어
+IG_BlueBox,1407,9// 파이크
+IG_BlueBox,1408,9// 파이크
+IG_BlueBox,1410,3// 랜스
+IG_BlueBox,1411,3// 랜스
+IG_BlueBox,1451,3// 귀삼
+IG_BlueBox,1452,3// 귀삼
+IG_BlueBox,1454,3// 글레이브
+IG_BlueBox,1455,3// 글레이브
+IG_BlueBox,1457,3// 파티잔
+IG_BlueBox,1458,3// 파티잔
+IG_BlueBox,1460,3// 트라이던트
+IG_BlueBox,1461,3// 트라이던트
+IG_BlueBox,1463,3// 핼버드
+IG_BlueBox,1464,3// 핼버드
+IG_BlueBox,1472,3// 스태프 오브 소울
+IG_BlueBox,1474,1// 가에볼그
+IG_BlueBox,1478,1// 알슈피스
+IG_BlueBox,1501,6// 클럽
+IG_BlueBox,1502,6// 클럽
+IG_BlueBox,1504,6// 메이스
+IG_BlueBox,1505,6// 메이스
+IG_BlueBox,1507,6// 스매셔
+IG_BlueBox,1508,6// 스매셔
+IG_BlueBox,1510,6// 플레일
+IG_BlueBox,1511,6// 플레일
+IG_BlueBox,1513,6// 모닝스타
+IG_BlueBox,1514,6// 모닝스타
+IG_BlueBox,1516,6// 소드 메이스
+IG_BlueBox,1517,6// 소드 메이스
+IG_BlueBox,1519,6// 체인
+IG_BlueBox,1520,6// 체인
+IG_BlueBox,1522,6// 스터너
+IG_BlueBox,1550,3// 북
+IG_BlueBox,1551,3// 바이블
+IG_BlueBox,1552,3// 타블렛
+IG_BlueBox,1553,3// 거친 파도의 서
+IG_BlueBox,1554,3// 갈라진 대지의 서
+IG_BlueBox,1555,3// 타오르는 태양의 서
+IG_BlueBox,1556,3// 메마른 바람의 서
+IG_BlueBox,1558,3// 소녀의 일기장
+IG_BlueBox,1559,1// 드래곤의 유산
+IG_BlueBox,1560,1// 현자의 일기
+IG_BlueBox,1561,1// 양장본
+IG_BlueBox,1601,3// 롯드
+IG_BlueBox,1602,3// 롯드
+IG_BlueBox,1604,3// 완드
+IG_BlueBox,1605,3// 완드
+IG_BlueBox,1607,3// 스태프
+IG_BlueBox,1608,3// 스태프
+IG_BlueBox,1610,3// 아크완드
+IG_BlueBox,1611,3// 아크완드
+IG_BlueBox,1613,3// 마이트스태프
+IG_BlueBox,1614,3// 신관의 지팡이
+IG_BlueBox,1615,3// 해골 지팡이
+IG_BlueBox,1616,1// 스태프 오브 윙
+IG_BlueBox,1617,1// 생존의 지팡이
+IG_BlueBox,1618,1// 생존의 지팡이
+IG_BlueBox,1619,1// 생존의 지팡이
+IG_BlueBox,1620,1// 생존의 지팡이
+IG_BlueBox,1621,1// 최면술사의 지팡이
+IG_BlueBox,1622,1// 최면술사의 지팡이
+IG_BlueBox,1701,3// 보우
+IG_BlueBox,1702,3// 보우
+IG_BlueBox,1704,3// 컴포지트보우
+IG_BlueBox,1705,3// 컴포지트보우
+IG_BlueBox,1707,3// 그레이트보우
+IG_BlueBox,1708,3// 그레이트보우
+IG_BlueBox,1710,3// 크로스보우
+IG_BlueBox,1711,3// 크로스보우
+IG_BlueBox,1713,3// 알바레스트
+IG_BlueBox,1714,3// 각궁
+IG_BlueBox,1715,3// 알바레스트
+IG_BlueBox,1716,3// 각궁
+IG_BlueBox,1718,3// 헌터보우
+IG_BlueBox,1723,1// 루나보우
+IG_BlueBox,1724,1// 드래곤 윙
+IG_BlueBox,1730,1// 불타는 활
+IG_BlueBox,1731,1// 냉각의 활
+IG_BlueBox,1732,1// 대지의 활
+IG_BlueBox,1733,1// 질풍의 활
+IG_BlueBox,1750,12// 화살
+IG_BlueBox,1751,12// 은화살
+IG_BlueBox,1752,12// 불화살
+IG_BlueBox,1753,12// 강철의 화살
+IG_BlueBox,1754,12// 수정 화살
+IG_BlueBox,1755,12// 바람의 화살
+IG_BlueBox,1756,12// 암석 화살
+IG_BlueBox,1757,12// 무형의 화살
+IG_BlueBox,1758,12// 스턴 애로우
+IG_BlueBox,1759,12// 프리징 애로우
+IG_BlueBox,1760,12// 플래쉬 애로우
+IG_BlueBox,1761,12// 커스 애로우
+IG_BlueBox,1762,12// 녹슨 화살
+IG_BlueBox,1763,12// 독화살
+IG_BlueBox,1764,12// 날카로운 화살
+IG_BlueBox,1765,12// 오리데오콘 화살
+IG_BlueBox,1767,12// 그림자의 화살
+IG_BlueBox,1768,12// 슬립 애로우
+IG_BlueBox,1769,12// 사일런스 애로우
+IG_BlueBox,1770,12// 철 화살
+IG_BlueBox,1801,3// 바그낙
+IG_BlueBox,1802,3// 바그낙
+IG_BlueBox,1803,3// 너클더스터
+IG_BlueBox,1804,3// 너클더스터
+IG_BlueBox,1805,3// 호라
+IG_BlueBox,1806,3// 호라
+IG_BlueBox,1807,3// 피스트
+IG_BlueBox,1808,3// 피스트
+IG_BlueBox,1809,3// 크로
+IG_BlueBox,1810,3// 크로
+IG_BlueBox,1811,3// 핑거
+IG_BlueBox,1812,3// 핑거
+IG_BlueBox,1815,1// 가름의 발톱
+IG_BlueBox,1818,1// 마그마 피스트
+IG_BlueBox,1819,1// 아이시클 피스트
+IG_BlueBox,1820,1// 일렉트릭 피스트
+IG_BlueBox,1821,1// 사이즈믹 피스트
+IG_BlueBox,1822,1// 연격의 투갑
+IG_BlueBox,1901,3// 바이올린
+IG_BlueBox,1902,3// 바이올린
+IG_BlueBox,1903,3// 만돌린
+IG_BlueBox,1904,3// 만돌린
+IG_BlueBox,1905,3// 류트
+IG_BlueBox,1906,3// 류트
+IG_BlueBox,1907,3// 기타
+IG_BlueBox,1908,3// 기타
+IG_BlueBox,1909,3// 하프
+IG_BlueBox,1910,3// 하프
+IG_BlueBox,1911,3// 거문고
+IG_BlueBox,1912,3// 거문고
+IG_BlueBox,1914,1// 불타는 정열의 기타
+IG_BlueBox,1915,1// 고독한 솔로의 기타
+IG_BlueBox,1916,1// 광활한 대지의 기타
+IG_BlueBox,1917,1// 산들바람의 기타
+IG_BlueBox,1918,1// 비파
+IG_BlueBox,1919,1// 베이스 기타
+IG_BlueBox,1950,3// 로프
+IG_BlueBox,1951,3// 로프
+IG_BlueBox,1952,3// 라인
+IG_BlueBox,1953,3// 라인
+IG_BlueBox,1954,3// 와이어
+IG_BlueBox,1955,3// 와이어
+IG_BlueBox,1956,3// 란테
+IG_BlueBox,1957,3// 란테
+IG_BlueBox,1958,3// 테일
+IG_BlueBox,1959,3// 테일
+IG_BlueBox,1960,3// 휩
+IG_BlueBox,1961,3// 휩
+IG_BlueBox,1965,1// 홍염의 채찍
+IG_BlueBox,1966,1// 빙검의 채찍
+IG_BlueBox,1967,1// 대지의 채찍
+IG_BlueBox,1968,1// 줄넘기
+IG_BlueBox,1969,1// 블레이드휩
+IG_BlueBox,1970,1// 여왕님의 채찍
+IG_BlueBox,1971,1// 전기줄
+IG_BlueBox,1972,1// 전기 뱀장어
+IG_BlueBox,1973,1// 바다마녀의 발
+IG_BlueBox,1974,1// 당근채찍
+IG_BlueBox,2101,3// 가드
+IG_BlueBox,2102,3// 가드
+IG_BlueBox,2103,3// 버클러
+IG_BlueBox,2104,3// 버클러
+IG_BlueBox,2105,3// 쉴드
+IG_BlueBox,2106,3// 쉴드
+IG_BlueBox,2107,3// 미러 쉴드
+IG_BlueBox,2108,3// 미러 쉴드
+IG_BlueBox,2109,3// 메모라이즈 북
+IG_BlueBox,2112,3// 초보자용 가드
+IG_BlueBox,2113,1// 초보자용 쉴드
+IG_BlueBox,2123,1// 오를레앙의 서버
+IG_BlueBox,2124,1// 가시 방패
+IG_BlueBox,2125,1// 스트롱 쉴드
+IG_BlueBox,2201,3// 선글래스
+IG_BlueBox,2203,3// 글래스
+IG_BlueBox,2205,3// 물안경
+IG_BlueBox,2206,3// 면사포
+IG_BlueBox,2207,3// 장식용 꽃
+IG_BlueBox,2208,3// 리본
+IG_BlueBox,2209,3// 리본
+IG_BlueBox,2210,3// 머리띠
+IG_BlueBox,2211,3// 두건
+IG_BlueBox,2212,3// 안대
+IG_BlueBox,2213,3// 고양이 머리띠
+IG_BlueBox,2214,3// 토끼 머리띠
+IG_BlueBox,2215,3// 꽃 머리띠
+IG_BlueBox,2216,3// 비레타
+IG_BlueBox,2217,3// 비레타
+IG_BlueBox,2218,3// 마스크
+IG_BlueBox,2220,3// 햇
+IG_BlueBox,2221,3// 햇
+IG_BlueBox,2222,3// 둥근 모자
+IG_BlueBox,2223,3// 둥근 모자
+IG_BlueBox,2224,3// 고글
+IG_BlueBox,2225,3// 고글
+IG_BlueBox,2226,3// 캡
+IG_BlueBox,2227,3// 캡
+IG_BlueBox,2228,3// 헬름
+IG_BlueBox,2229,3// 헬름
+IG_BlueBox,2230,3// 쥬얼 헬름
+IG_BlueBox,2231,3// 쥬얼 헬름
+IG_BlueBox,2232,3// 서클릿
+IG_BlueBox,2233,3// 서클릿
+IG_BlueBox,2236,3// 산타 모자
+IG_BlueBox,2239,3// 외눈 안경
+IG_BlueBox,2241,3// 흰수염
+IG_BlueBox,2242,3// 고급 선글래스
+IG_BlueBox,2243,3// 스핀 글래스
+IG_BlueBox,2244,3// 왕 리본
+IG_BlueBox,2245,3// 스위트 젠틀
+IG_BlueBox,2246,3// 골든 헤드기어
+IG_BlueBox,2247,3// 올드스터 로맨스
+IG_BlueBox,2248,3// 웨스턴 그레이스
+IG_BlueBox,2249,1// 코로넷
+IG_BlueBox,2250,3// 머리끈
+IG_BlueBox,2251,3// 성직자의 모자
+IG_BlueBox,2252,3// 위저드햇
+IG_BlueBox,2253,3// 장식용 해바라기
+IG_BlueBox,2254,1// 천사의 머리띠
+IG_BlueBox,2255,1// 악마의 머리띠
+IG_BlueBox,2257,3// 새하얀 뿔
+IG_BlueBox,2258,1// 샤프 헤드기어
+IG_BlueBox,2259,3// 프로펠라
+IG_BlueBox,2260,3// 미니 글래스
+IG_BlueBox,2261,3// 프론테라 군모
+IG_BlueBox,2262,3// 광대코
+IG_BlueBox,2263,3// 의적 안대
+IG_BlueBox,2265,3// 시위용 마스크
+IG_BlueBox,2266,3// 아이언 케인
+IG_BlueBox,2267,3// 담배
+IG_BlueBox,2268,3// 파이프담배
+IG_BlueBox,2269,3// 꽃잎
+IG_BlueBox,2270,3// 풀잎
+IG_BlueBox,2271,3// 머리 안경
+IG_BlueBox,2274,1// 망자의 머리띠
+IG_BlueBox,2275,3// 반다나
+IG_BlueBox,2276,3// 도끼눈
+IG_BlueBox,2277,3// 간호모
+IG_BlueBox,2278,3// 스마일
+IG_BlueBox,2279,3// 심지
+IG_BlueBox,2282,3// 영혼고리
+IG_BlueBox,2285,3// 명사수의 사과
+IG_BlueBox,2287,3// 해적 두건
+IG_BlueBox,2288,3// 스크래치 마스크
+IG_BlueBox,2289,3// 거시기
+IG_BlueBox,2290,3// 장례건
+IG_BlueBox,2291,3// 나비 가면
+IG_BlueBox,2294,3// 스타 더스트
+IG_BlueBox,2295,3// 눈가리개
+IG_BlueBox,2297,3// 고블린족 가면
+IG_BlueBox,2298,3// 초록 더듬이
+IG_BlueBox,2299,3// 오크족 헬름
+IG_BlueBox,2301,3// 코튼셔츠
+IG_BlueBox,2302,3// 코튼셔츠
+IG_BlueBox,2303,3// 가죽재킷
+IG_BlueBox,2304,3// 가죽재킷
+IG_BlueBox,2305,3// 어드밴쳐러 슈츠
+IG_BlueBox,2306,3// 어드밴쳐러 슈츠
+IG_BlueBox,2307,3// 맨틀
+IG_BlueBox,2308,3// 맨틀
+IG_BlueBox,2309,3// 롱 코트
+IG_BlueBox,2310,3// 롱 코트
+IG_BlueBox,2311,3// 밍크 코트
+IG_BlueBox,2312,3// 아머
+IG_BlueBox,2313,3// 아머
+IG_BlueBox,2314,3// 메일
+IG_BlueBox,2315,3// 메일
+IG_BlueBox,2316,3// 플레이트
+IG_BlueBox,2317,3// 플레이트
+IG_BlueBox,2318,3// 로드 클로스
+IG_BlueBox,2320,3// 포멀 드레스
+IG_BlueBox,2321,3// 실크 로브
+IG_BlueBox,2322,3// 실크 로브
+IG_BlueBox,2323,3// 스캐퓰러
+IG_BlueBox,2324,3// 스캐퓰러
+IG_BlueBox,2325,3// 세인트 로브
+IG_BlueBox,2326,3// 세인트 로브
+IG_BlueBox,2328,3// 우든 메일
+IG_BlueBox,2329,3// 우든 메일
+IG_BlueBox,2330,3// 타이즈
+IG_BlueBox,2331,3// 타이즈
+IG_BlueBox,2332,3// 실버 로브
+IG_BlueBox,2333,3// 실버 로브
+IG_BlueBox,2335,3// 씨프 클로스
+IG_BlueBox,2336,3// 씨프 클로스
+IG_BlueBox,2337,3// 닌자 슈츠
+IG_BlueBox,2339,3// 삼각팬티
+IG_BlueBox,2340,3// 초보자용 흉갑
+IG_BlueBox,2341,3// 풀 플레이트 아머
+IG_BlueBox,2352,3// 초보자용 닌자 누더기
+IG_BlueBox,2365,1// 오를레앙의 제복
+IG_BlueBox,2401,3// 샌들
+IG_BlueBox,2402,3// 샌들
+IG_BlueBox,2403,3// 슈즈
+IG_BlueBox,2404,3// 슈즈
+IG_BlueBox,2405,3// 부츠
+IG_BlueBox,2406,3// 부츠
+IG_BlueBox,2407,3// 유리구두
+IG_BlueBox,2408,3// 족쇄
+IG_BlueBox,2409,3// 뾰족구두
+IG_BlueBox,2411,3// 그리브
+IG_BlueBox,2414,3// 초보자용 해변 샌들
+IG_BlueBox,2416,1// 초보자용 슈즈
+IG_BlueBox,2420,1// 천사의 재래
+IG_BlueBox,2501,3// 후드
+IG_BlueBox,2502,3// 후드
+IG_BlueBox,2503,3// 머플러
+IG_BlueBox,2504,3// 머플러
+IG_BlueBox,2505,3// 망토
+IG_BlueBox,2506,3// 망토
+IG_BlueBox,2507,3// 옛영주의 망토
+IG_BlueBox,2508,3// 누더기 망토
+IG_BlueBox,2510,3// 초보자용 음침한 후드
+IG_BlueBox,2512,1// 초보자용 망토
+IG_BlueBox,2513,1// 천상의 날개
+IG_BlueBox,2514,1// 폴드런
+IG_BlueBox,2515,1// 윙 오브 이글
+IG_BlueBox,2601,3// 링
+IG_BlueBox,2602,3// 이어링
+IG_BlueBox,2603,3// 네클리스
+IG_BlueBox,2604,3// 글러브
+IG_BlueBox,2605,3// 브로치
+IG_BlueBox,2607,3// 클립
+IG_BlueBox,2608,3// 로자리
+IG_BlueBox,2609,3// 해골반지
+IG_BlueBox,2610,3// 금반지
+IG_BlueBox,2611,3// 은반지
+IG_BlueBox,2612,3// 꽃반지
+IG_BlueBox,2613,3// 다이아반지
+IG_BlueBox,2617,3// 신관의 장갑
+IG_BlueBox,2618,3// 마타의 목걸이
+IG_BlueBox,2621,1// 링
+IG_BlueBox,2622,1// 이어링
+IG_BlueBox,2623,1// 네클리스
+IG_BlueBox,2624,1// 글러브
+IG_BlueBox,2625,1// 브로치
+IG_BlueBox,2626,1// 로자리
+IG_BlueBox,2627,3// 벨트
+IG_BlueBox,2628,3// 노비스 암릿
+IG_BlueBox,2652,1// 저주받은 행운의 여신 브로치
+IG_BlueBox,2654,1// 시노비의 허리띠
+IG_BlueBox,2656,1// 하이퍼 모드 체인저
+IG_BlueBox,5002,1// 쥬얼 크라운
+IG_BlueBox,5003,3// 광대모자
+IG_BlueBox,5005,3// 가스 마스크
+IG_BlueBox,5006,3// 하트파운데이션
+IG_BlueBox,5009,3// 안전모
+IG_BlueBox,5010,3// 원주민 머리띠
+IG_BlueBox,5011,3// 안테나
+IG_BlueBox,5014,3// 아가미의 헬름
+IG_BlueBox,5015,3// 장식용 알껍질
+IG_BlueBox,5030,3// 팬더곰 모자
+IG_BlueBox,5035,3// 포링 모자
+IG_BlueBox,5037,3// 열매 껍질
+IG_BlueBox,5055,3// 초보자용 가짜 알껍질
+IG_BlueBox,5085,1// 두개의 작은리본
+IG_BlueBox,5088,3// 놀란눈 가면
+IG_BlueBox,5089,3// 귀찮은 가면
+IG_BlueBox,5090,3// 고블린리더의 가면
+IG_BlueBox,5111,1// 갈라파고의 모자
+IG_BlueBox,5112,1// 슈퍼 노비스의 모자
+IG_BlueBox,5113,1// 분노한 입
+IG_BlueBox,5114,1// 벙거지 모자
+IG_BlueBox,5116,1// 바나나 모자
+IG_BlueBox,5118,1// 강아지 머리띠
+IG_BlueBox,5119,1// 슈퍼 노비스의 모자
+IG_BlueBox,5120,1// 벙거지 모자
+IG_BlueBox,5122,1// 메긴 캡
+IG_BlueBox,5175,1// 익명요청
+IG_BlueBox,7001,12// 곰팡이 가루
+IG_BlueBox,7002,12// 오우거의 이빨
+IG_BlueBox,7003,12// 아놀리안의 피부
+IG_BlueBox,7004,12// 진흙 덩어리
+IG_BlueBox,7005,12// 해골 바가지
+IG_BlueBox,7006,12// 붉은 박쥐의 날개
+IG_BlueBox,7007,12// 큰쥐의 발톱
+IG_BlueBox,7008,12// 매우 딱딱한 뿔
+IG_BlueBox,7009,12// 화려한 껍질
+IG_BlueBox,7010,12// 강철같은 전갈의 꼬리
+IG_BlueBox,7011,12// 원숭이의 손톱
+IG_BlueBox,7012,12// 질긴 비늘 줄기
+IG_BlueBox,7013,12// 산호초
+IG_BlueBox,7014,12// 낡은 자화상
+IG_BlueBox,7015,12// 추억의 책갈피
+IG_BlueBox,7016,12// 낡은 숟가락
+IG_BlueBox,7026,12// 시계탑의 열쇠
+IG_BlueBox,7027,12// 시계탑지하의 열쇠
+IG_BlueBox,7030,12// 사막 늑대의 발톱
+IG_BlueBox,7031,12// 헌 후라이펜
+IG_BlueBox,7032,12// 달걀껍질 조각
+IG_BlueBox,7033,12// 독버섯 포자
+IG_BlueBox,7034,12// 구멍난 빨간양말
+IG_BlueBox,7035,12// 성냥
+IG_BlueBox,7036,12// 하티의 이빨
+IG_BlueBox,7038,12// 털실
+IG_BlueBox,7041,12// 고운 모래조각
+IG_BlueBox,7047,12// 엘리스의 앞치마
+IG_BlueBox,7048,12// 그리폰의 발톱
+IG_BlueBox,7049,12// 돌
+IG_BlueBox,7053,12// 사이파
+IG_BlueBox,7054,12// 브리간
+IG_BlueBox,7059,12// 카프라 창고 무료 이용권
+IG_BlueBox,7060,12// 카프라 워프 무료 이용권
+IG_BlueBox,7061,12// 카프라 카트 무료 이용권
+IG_BlueBox,7063,12// 부드러운 깃털
+IG_BlueBox,7064,12// 잠자리의 날개
+IG_BlueBox,7065,12// 해달의 가죽
+IG_BlueBox,7066,12// 얼음조각
+IG_BlueBox,7067,12// 돌조각
+IG_BlueBox,7068,12// 타다만 나무
+IG_BlueBox,7069,12// 깨진 갑옷조각
+IG_BlueBox,7070,12// 깨진 등껍질
+IG_BlueBox,7071,12// 너덜너덜한 옷
+IG_BlueBox,7072,12// 낡은 수리검
+IG_BlueBox,7093,12// 톱니바퀴
+IG_BlueBox,7094,12// 미지의 조각
+IG_BlueBox,7095,12// 깨진 금속 파편
+IG_BlueBox,7096,12// 굳어버린 용암
+IG_BlueBox,7097,12// 불타는 심장
+IG_BlueBox,7098,12// 불씨
+IG_BlueBox,7099,12// 낡은 마법진
+IG_BlueBox,7100,12// 날카로운 잎사귀
+IG_BlueBox,7101,12// 페코 날개 깃털
+IG_BlueBox,7106,12// 산양의 뿔
+IG_BlueBox,7107,12// 산양의 모피
+IG_BlueBox,7108,12// 깨진 방패 조각
+IG_BlueBox,7109,12// 빛나는 창날
+IG_BlueBox,7110,12// 깨진 검
+IG_BlueBox,7111,12// 매끈한 종이
+IG_BlueBox,7112,12// 섬뜩한 종이 칼날
+IG_BlueBox,7113,12// 깨진 파라오 상징
+IG_BlueBox,7114,12// 투탄카멘 마스크
+IG_BlueBox,7115,12// 하피의 깃털
+IG_BlueBox,7116,12// 하피의 발톱
+IG_BlueBox,7117,12// 찢어진 마법서
+IG_BlueBox,7118,12// 찢어진 스크롤
+IG_BlueBox,7119,12// 균사체
+IG_BlueBox,7120,12// 불타는 말발굽
+IG_BlueBox,7121,12// 꿀단지
+IG_BlueBox,7122,12// 뜨거운 털
+IG_BlueBox,7123,12// 드래곤의 껍질
+IG_BlueBox,7124,12// 모래 덩어리
+IG_BlueBox,7125,12// 전갈의 집게발
+IG_BlueBox,7126,12// 라지 젤로피
+IG_BlueBox,7134,12// 약사발
+IG_BlueBox,7135,12// 화염병
+IG_BlueBox,7136,12// 염산병
+IG_BlueBox,7137,12// 식인식물병
+IG_BlueBox,7138,12// 기뢰병
+IG_BlueBox,7139,12// 코팅약
+IG_BlueBox,7149,12// 노란 접시
+IG_BlueBox,7150,12// 대나무 조각
+IG_BlueBox,7151,12// 기름종이
+IG_BlueBox,7152,12// 윤기있는 머리칼
+IG_BlueBox,7153,12// 낡은 기모노
+IG_BlueBox,7154,12// 독가루
+IG_BlueBox,7155,12// 독두꺼비의 껍질
+IG_BlueBox,7156,12// 깨진 슈리켄
+IG_BlueBox,7157,12// 검은 복면
+IG_BlueBox,7158,12// 깨진 술동이
+IG_BlueBox,7159,12// 천구의 코
+IG_BlueBox,7161,12// 검은 곰의 가죽
+IG_BlueBox,7162,12// 구름 조각
+IG_BlueBox,7163,12// 단단한 더듬이
+IG_BlueBox,7164,12// 매우 단단한 복숭아
+IG_BlueBox,7165,12// 투명한 날개옷
+IG_BlueBox,7166,12// 부드러운 비단천
+IG_BlueBox,7167,12// 기묘한 철조각
+IG_BlueBox,7168,12// 커다란 나비의 날개
+IG_BlueBox,7169,12// 태극패
+IG_BlueBox,7171,12// 표범의 가죽
+IG_BlueBox,7172,12// 표범의 발톱
+IG_BlueBox,7174,12// 포장끈
+IG_BlueBox,7175,12// 포장지
+IG_BlueBox,7182,12// 카카오
+IG_BlueBox,7186,12// 가느다란 줄기
+IG_BlueBox,7187,12// 축제 가면
+IG_BlueBox,7188,12// 갈색뿌리
+IG_BlueBox,7189,12// 나무심장
+IG_BlueBox,7190,12// 단단한 등껍질
+IG_BlueBox,7191,12// 등불
+IG_BlueBox,7192,12// 바람개비의 칼날
+IG_BlueBox,7193,12// 발아새싹
+IG_BlueBox,7194,12// 부드러운 풀잎
+IG_BlueBox,7195,12// 새총
+IG_BlueBox,7196,12// 어깨보호대
+IG_BlueBox,7197,12// 질긴 나무덩쿨
+IG_BlueBox,7198,12// 커다란 잎사귀
+IG_BlueBox,7200,12// 탄력있는 줄
+IG_BlueBox,7201,12// 통나무
+IG_BlueBox,7202,12// 투구벌레의 집게
+IG_BlueBox,7203,12// 튼튼한 나뭇가지
+IG_BlueBox,7205,12// 검은 천조각
+IG_BlueBox,7206,12// 검은 고양이 인형
+IG_BlueBox,7207,12// 낡은 망토
+IG_BlueBox,7208,12// 녹슨 식칼
+IG_BlueBox,7209,12// 듀라한의 투구
+IG_BlueBox,7210,12// 듀라한의 갑옷조각
+IG_BlueBox,7211,12// 로제타스톤 조각
+IG_BlueBox,7212,12// 매달린 인형
+IG_BlueBox,7213,12// 바늘쌈지
+IG_BlueBox,7214,12// 박쥐우리
+IG_BlueBox,7215,12// 부러진 바늘
+IG_BlueBox,7216,12// 빨간 머플러
+IG_BlueBox,7217,12// 실패
+IG_BlueBox,7218,12// 썩은 밧줄
+IG_BlueBox,7219,12// 줄무늬 양말
+IG_BlueBox,7220,12// 액토플라즘
+IG_BlueBox,7221,12// 얽힌 사슬
+IG_BlueBox,7222,12// 나무 옹이
+IG_BlueBox,7223,12// 일그러진 자화상
+IG_BlueBox,7225,12// 호박 초롱
+IG_BlueBox,7262,12// 묘괴의 부채
+IG_BlueBox,7263,12// 묘안석
+IG_BlueBox,7264,12// 말라버린 모래
+IG_BlueBox,7265,12// 용의 뿔
+IG_BlueBox,7266,12// 용의 틀니
+IG_BlueBox,7267,12// 호랑이 팬티
+IG_BlueBox,7268,12// 소귀령
+IG_BlueBox,7269,12// 아기의 턱받침
+IG_BlueBox,7270,12// 아기의 우유병
+IG_BlueBox,7315,1// 검은 수정의 조각
+IG_BlueBox,7316,1// 벌레의 긴 다리
+IG_BlueBox,7317,1// 녹슬어버린 나사
+IG_BlueBox,7318,1// 오래된 곡괭이
+IG_BlueBox,7319,1// 낡은 철판
+IG_BlueBox,7320,1// 분진
+IG_BlueBox,7321,1// 수정의 조각
+IG_BlueBox,7322,1// 유독가스
+IG_BlueBox,7323,1// 찌그러진 주전자
+IG_BlueBox,7325,1// 튜브
+IG_BlueBox,7326,1// 형광색의 액체
+IG_BlueBox,7327,1// 회중전등
+IG_BlueBox,7440,1// 붉은 깃털
+IG_BlueBox,7441,1// 푸른 깃털
+IG_BlueBox,7442,1// 저주받은 인
+IG_BlueBox,7443,1// 삼두룡의 목
+IG_BlueBox,7444,1// 보물상자
+IG_BlueBox,7445,1// 녹색의 보주
+IG_BlueBox,7446,1// 청색의 보주
+IG_BlueBox,7447,1// 홍색의 보주
+IG_BlueBox,7448,1// 황색의 보주
+IG_BlueBox,7449,1// 피묻은 책장
+IG_BlueBox,7450,1// 해골갑옷의 조각
+IG_BlueBox,7451,1// 화룡의 비늘조각
+IG_BlueBox,7452,1// 노란 향신료
+IG_BlueBox,7453,1// 단맛 소스
+IG_BlueBox,7454,1// 담백한 소스
+IG_BlueBox,7455,1// 매운맛 소스
+IG_BlueBox,7456,1// 빨간 향신료
+IG_BlueBox,7457,1// 식용유
+IG_BlueBox,7472,1// 1레벨 요리책
+IG_BlueBox,7473,1// 2레벨 요리책
+IG_BlueBox,7474,1// 3레벨 요리책
+IG_BlueBox,7475,1// 4레벨 요리책
+IG_BlueBox,7476,1// 5레벨 요리책
+IG_BlueBox,7482,1// 냄비
+IG_BlueBox,7512,1// 타버린 부품조각
+IG_BlueBox,7513,1// 회중시계
+IG_BlueBox,7561,15// 얼음 심장
+IG_BlueBox,7562,15// 얼음 비늘
+IG_BlueBox,7563,15// 핏빛의 룬
+IG_BlueBox,7564,15// 썩은 고기
+IG_BlueBox,7565,15// 끈적끈적한 독
+IG_BlueBox,7567,1// 수상한 모자
+IG_BlueBox,7568,1// 하얀가면
+IG_BlueBox,7751,34// 낡아빠진 흰 옷
+IG_BlueBox,7752,32// 덜그럭거리는 해골
+IG_BlueBox,7753,34// 부러진 농기구
+IG_BlueBox,10001,3// 동물의 머리뼈 투구
+IG_BlueBox,10002,3// 몬스터 산소 마스크
+IG_BlueBox,10003,3// 투명한 머리 보호대
+IG_BlueBox,10004,3// 꼭지
+IG_BlueBox,10005,3// 패션 가발
+IG_BlueBox,10006,3// 여왕의 머리장식
+IG_BlueBox,10007,3// 실크 리본
+IG_BlueBox,10008,3// 정신봉
+IG_BlueBox,10009,3// 야생화
+IG_BlueBox,10010,3// 찌그러진 냄비
+IG_BlueBox,10011,3// 별모양 머리핀
+IG_BlueBox,10012,3// 작은 알껍질
+IG_BlueBox,10013,3// 책가방
+IG_BlueBox,10014,3// 메뚜기 안경
+IG_BlueBox,10015,3// 초록색 레이스
+IG_BlueBox,10016,3// 금방울
+IG_BlueBox,10017,3// 나무팬츠
+IG_BlueBox,10018,3// 원숭이 머리띠
+IG_BlueBox,10019,3// 붉은색 머플러
+IG_BlueBox,10020,3// 영환도사의 검
+IG_BlueBox,13000,1// 대추나무의 단검
+IG_BlueBox,13001,1// 드래곤킬러
+IG_BlueBox,13002,1// 간눙가가프
+IG_BlueBox,13003,1// 코워드
+IG_BlueBox,13004,1// 코워드
+IG_BlueBox,13163,1// 롱 바렐
+IG_BlueBox,13164,1// 롱 바렐
+IG_BlueBox,13167,1// 게이트 키퍼-DD
+IG_BlueBox,13168,1// THUNDER-P
+IG_BlueBox,13170,2// 레버액션 라이플
+IG_BlueBox,13200,1// 블릿
+IG_BlueBox,13201,1// 구형 실버블릿
+IG_BlueBox,13202,1// 구형 셀 오브 블러드
+IG_BlueBox,13203,1// 구형 플레어 스피어
+IG_BlueBox,13204,1// 구형 라이트닝 스피어
+IG_BlueBox,13205,1// 구형 포이즌 스피어
+IG_BlueBox,13206,1// 구형 블라인드 스피어
+IG_BlueBox,13207,1// 구형 프리징 스피어
+IG_BlueBox,13304,1// 풍마수리검 명정

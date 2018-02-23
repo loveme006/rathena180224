@@ -1,0 +1,2298 @@
+//===== rAthena Script =======================================
+//= Sarah and Fenrir
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Sarah and Fenrir Instance
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+dali02,97,142,3	script	번하드 박사#a1	4_LGTSCIENCE,{
+	if (BaseLevel < 145) {
+		mes "- 레벨 145 이상만 진행할 수 있습니다. -";
+		close;
+	}
+	switch( checkquest(9336,PLAYTIME) ) {
+	case -1:
+		switch( isbegin_quest(9335) ) {
+		case 0:// First time doing instance
+			mes "[번하드 박사]";
+			mes "나로 말할 것 같으면 슈발츠 최고의 무기 연구원 번하드 교수라고 한다네.";
+			next;
+			mes "[번하드 박사]";
+			mes "끝 없는 연구 끝에 다양한 무기를 만들었지만, 뭔가 빠진 것 같아서 고대의 문서를 찾아보았다.";
+			mes "연구하는 동안 차원 장치에 대해 알게되었지.";
+			next;
+			mes "[번하드 박사]";
+			mes "그리고 더 강력하고 우수한 무기를 만드는 데 거룩한 과거의 유물이 필요하다는 것을 깨달았다.";
+			mes "그래서..너가 필요하다..";
+			next;
+			mes "[번하드 박사]";
+			if (getpartyleader(getcharid(1),2) != getcharid(0)) {
+				mes "진정한 교수로서 강력한 무기를 완성시키고 싶다는 갈망!";
+				mes "그것을 이루기 위해서는 과거에 펜릴과 사라의 전투에서 한 번 등장한 기간테스의 파편이 필요하다네.";
+				next;
+				mes "[번하드 박사]";
+				mes "나는 여기서 자리를 뜰 수 없으니.. 내 대신 파편을 가져다 줄 수 있는 전사가 필요하다네..";
+				next;
+				mes "[번하드 박사]";
+				mes "파티의 리더와 계속해서 이야기 해볼 터이니 기다리게.";
+				close;
+			}
+			mes "내 대신 기간테스의 파편을 가져다 줄 수 있는 전사가 필요하다네..";
+			mes "그리고 자네가 할 수 있을 것 같은데.";
+			next;
+			mes "[번하드 박사]";
+			mes "어떻게 생각하나?";
+			mes "과거로 돌아가서 기간테스의 파편을 가져올 수 있겠나?";
+			mes "그래주면 충분히 보상해줄걸세.";
+			next;
+			if (select( "가지 않는다.", "간다." ) == 1) {
+				mes "[번하드 박사]";
+				mes "마음이 바뀌면 다시 오거라.";
+				close;
+			}
+			mes "[번하드 박사]";
+			mes "차원 장치의 설정을 펜릴과 사라가 싸우던 과거의 글레스트 헤임으로 돌려두었네.";
+			mes "작동시간이 그리 길지 않으니 서두르게.";
+			instance_create("Fenrir and Sarah");
+			close;
+		case 1:
+			mes "[번하드 박사]";
+			mes "기간테스의 파편을 가져오는데 성공했나?";
+			mes "많이 위험했을탠데 수고해준데에 감사하지.";
+			next;
+			mes "[번하드 박사]";
+			mes "자네가 목숨걸고 가지러 갔지만, 나는 파편을 받을거라 기대하지 않았네.";
+			if (sarah_fenrir == 0) {
+				mes "이건 예전 연구에서 얻은 유물 중 특별히 귀중한 목걸이인데 자네에게 주겠네.";
+				next;
+				mes "- 사라의 왼쪽 귀걸이 -";
+				mes "힐 1Lv 사용 가능";
+				mes "- 사라의 오른쪽 귀걸이 -";
+				mes "텔레포트 1Lv 사용 가능";
+				next;
+				.@s = select( "사라의 왼쪽 귀걸이", "사라의 오른쪽 귀걸이" ) - 1;
+			}
+			mes "[번하드 박사]";
+			mes "기간테스의 파편을 내 조수에게 건내주면 귀걸이에 마법을 부여시켜주겠네.";
+			next;
+			mes "[번하드 박사]";
+			mes "기간테스의 파편이 많을수록 더 좋지만, 차원 장치를 작동시키는 데 필요한 에너지가 안정적으로 공급되지 않았어.";
+			next;
+			mes "[번하드 박사]";
+			mes "차원 장치의 에너지 공급을 위해 하루가 지난 후에 다시 찾아오게나.";
+			mes "더 많은 기간테스의 파편이 필요하다네.";
+			erasequest 9335;// Search for shards of Gigantes
+			setquest 9336;// Go back to Professor Bernhard
+			if (isbegin_quest(9337) > 0)
+				erasequest 9337;// Wrapping up the Adventure
+			if (sarah_fenrir == 0) {
+				sarah_fenrir = 1;
+				getitem (28310+.@s),1;
+			}
+			close;
+		case 2:
+			end;
+		}
+	case 0:
+	case 1:
+		mes "[번하드 박사]";
+		mes "강력한 무기를 만들기 위한 기간테스의 파편이 부족해.";
+		mes "차원 장치를 작동시키려면 많은 에너지가 필요하니까 에너지가 모이면 다시 돌아오게나.";
+		close;
+	case 2:
+		mes "[번하드 박사]";
+		mes "기다리고 있었네.";
+		mes "어떻게 지냈나?";
+		mes "그동안 차원 에너지를 모으는데 성공했다네.";
+		mes "이제 차원 장치를 다시 작동시킬 수 있어.";
+		next;
+		mes "[번하드 박사]";
+		mes "진정한 교수로서 강력한 무기를 완성시키고 싶다는 갈망!";
+		mes "그것을 이루기 위해서는 과거에 펜릴과 사라의 전투에서 한 번 등장한 기간테스의 파편이 필요하다네.";
+		next;
+		mes "[번하드 박사]";
+		mes "나는 여기서 자리를 뜰 수 없으니.. 다시 한번 기간테스의 파편을 가져다준다면 큰 도움이 될 것 같다네.";
+		next;
+		mes "[번하드 박사]";
+		mes "모든 준비가 끝났네.";
+		mes "과거로 돌아가서 기간테스의 파편을 가져올 수 있겠나?";
+		mes "그래주면 충분히 보상해줄걸세.";
+		if (getpartyleader(getcharid(1),2) == getcharid(0)) {
+			next;
+			if (select( "가지 않는다.", "간다." ) == 1) {
+				mes "[번하드 박사]";
+				mes "차원 장치의 설정을 펜릴과 사라가 싸우던 과거의 글레스트 헤임으로 돌려두었네.";
+				mes "작동시간이 그리 길지 않으니 서두르게.";
+				close;
+			}
+			instance_create("Fenrir and Sarah");
+		}
+		close;
+	}
+}
+
+dali02,99,148,3	script	차원 장치#XX1	PORTAL,{
+	if (BaseLevel < 145) {
+		mes "- 레벨 145 이상만 사용 가능합니다. -";
+		close;
+	}
+	switch( checkquest(9336,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "- 차원 장치가 닫혀있습니다.";
+		mes "입장이 불가능합니다. -";
+		close;
+	case 2:
+		break;
+	}
+	if (isbegin_quest(9335) > 0) {
+		mes "- 차원 장치가 닫혀있습니다.";
+		mes "입장이 불가능합니다. -";
+		close;
+	}
+	if (select( "들어가지 않는다.", "장치로 들어간다." ) == 1) {
+		if (getcharid(1) > 0) {
+			mes "- 차원 장치가 시공간을 뒤흔들고 있습니다. - ";
+			close;
+		}
+		mes "- 습기가 차 축축합니다. -";
+		close;
+	}
+	.@md_name$ = "Fenrir and Sarah";
+	switch( instance_enter(.@md_name$) ) {
+	case IE_OTHER:
+		mes "알 수 없는 오류가 발생했습니다.";
+		close;
+	case IE_NOINSTANCE:
+		mes "메모리얼 던전 " + .@md_name$ + " 가 존재하지 않습니다.";
+		mes "파티장이 메모리얼 던전을 만들지 않았습니다.";
+		close;
+	case IE_NOMEMBER:
+		mes "파티의 맴버만 메모리얼 던전에 입장할 수 있습니다.";
+		close;
+	case IE_OK:
+		mapannounce "dali02", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters Room " + .@md_name$ + "", bc_map,0xFF99,FW_NORMAL,12;
+		setquest 9335;// Search for shards of Gigantes
+		if (isbegin_quest(9336) > 0)
+			erasequest 9336;
+		// warp "1@glast",367,304;
+		end;
+	}
+}
+
+dali02,93,146,6	script	조교#a1	4_M_REPAIR,{
+	if (sarah_fenrir == 0)
+		end;
+	disable_items;
+	mes "[조교]";
+	mes "당신에 대해선 이미 교수님께 들었어요.";
+	mes "기간테스의 파편을 목숨걸고 가져가준 당신께 충분한 보상을 해달라고.";
+	next;
+	switch( select( "귀걸이 마법부여", "귀걸이 구매", "대화 끝내기" ) ) {
+	case 1:
+		mes "[조교]";
+		mes "우리가 발견한 사라의 귀걸이는 분명 큰 잠재력을 가지고 있을 것입니다.";
+		next;
+		switch( select( "사라의 귀걸이 마법부여", "마법부여 초기화", "대화 끝내기" ) ) {
+		case 1:
+			mes "[조교]";
+			mes "한 개의 귀걸이에 2개의 마법 부여가 가능합니다.";
+			mes "어느 귀걸이에 마법 부여를 하시겠습니까?";
+			next;
+			switch( select( "사라의 왼쪽 귀걸이", "사라의 오른쪽 귀걸이", "그만하기" ) ) {
+			case 1:
+				.@sarah_item_id = 28310;
+				.@sarah_earring$ = "왼쪽";
+				break;
+			case 2:
+				.@sarah_item_id = 28311;
+				.@sarah_earring$ = "오른쪽";
+				break;
+			case 3:
+				mes "[조교]";
+				mes "사라의 귀걸이에 마법부여를 하고싶어지면 다시 찾아주세요. ";
+				close;
+			}
+			mes "[조교]";
+			mes "마법부여를 하기 위해선 아이템을 착용해야합니다.";
+			mes "어느쪽에 마법을 부여하시겠습니까?";
+			next;
+			if (select( "왼쪽", "오른쪽" ) == 1) {
+				.@part = EQI_ACC_L;
+				.@column$ = "left";
+				.@bonus_size = 4;		// 4 possibilities
+				.@bonus_chance = 20;	// 20% per possibility
+			}
+			else {
+				.@part = EQI_ACC_R;
+				.@column$ = "right";
+				.@bonus_size = 6;		// 6 possibilities
+				.@bonus_chance = 10;	// 10% per possibility
+			}
+			.@equip_id = getequipid(.@part);
+			if (.@equip_id != .@sarah_item_id) {
+				mes "[조교]";
+				mes "마법부여를 하고싶으시면 사라의 " + .@sarah_earring$ + " 귀걸이를 착용하셔야합니다.";
+				close;
+			}
+			setarray .@card[0], getequipcardid(.@part,3), getequipcardid(.@part,2);
+			if (.@card[1] > 0) {// 2 enchants
+				mes "[조교]";
+				mes "완전히 마법부여된 귀걸이에는 더 이상 마법을 부여할 수 없습니다.";
+				close;
+			}
+			if (.@card[0] < 1) {// none enchant
+				mes "[조교]";
+				mes "사라의 귀걸이에 아직 마법이 걸리지 않았습니다.";
+				.@slot = 0;
+			}
+			else {// 1 enchant
+				mes "[조교]";
+				mes "사라의 귀걸이 4번 슬롯에 마법이 부여된 상태입니다.";
+				.@slot = 1;
+			}
+			next;
+			mes "[조교]";
+			mes "어떤 능력이 " + (4-.@slot) + "번 슬롯에 부여되기를 원하세요?";
+			next;
+			switch( select( "크리티컬", "원거리공격 또는 완전회피", "SP소모량 또는 마법공격력", "후딜레이" ) ) {
+			case 1:
+				setarray .@bonus[0],
+					4863,	// Fatal1
+					4864,	// Fatal2
+					4939,	// Critical2
+					4940,	// Critical3
+					4941,	// Critical4
+					4865;	// Fatal3
+				mes "[조교]";
+				mes "" + (4-.@slot) + "번째 슬롯에 마법을 부여했습니다.";
+				break;
+			case 2:
+				setarray .@bonus[0],
+					4832,	// Expert_Archer1
+					4833,	// Expert_Archer2
+					4942,	// Dodge1
+					4943,	// Dodge2
+					4944,	// Dodge3
+					4834;	// Expert_Archer3
+				mes "[조교]";
+				mes "" + (4-.@slot) + "번째 슬롯에 마법을 부여했습니다.";
+				break;
+			case 3:
+				setarray .@bonus[0],
+					4945,	// Thrift1
+					4946,	// Thrift2
+					4897,	// Matk3p
+					4898,	// Matk4p
+					4947,	// Thrift3
+					4899;	// Matk5p
+				mes "[조교]";
+				mes "" + (4-.@slot) + "번째 슬롯에 마법을 부여했습니다.";
+				break;
+			case 4:
+				setarray .@bonus[0],
+					4869,	// Attack_Delay_1
+					4872,	// Attack_Delay_2
+					4948,	// Skill_Delay1
+					4949,	// Skill_Delay2
+					4950,	// Skill_Delay3
+					4873;	// Attack_Delay_3
+				mes "[조교]";
+				mes "" + (4-.@slot) + "번째 슬롯에 마법을 부여했습니다.";
+				break;
+			}
+			next;
+			mes "[조교]";
+			mes "마법 부여 한번에 기간테스의 파편 4개가 필요합니다.";
+			next;
+			mes "[조교]";
+			mes "마법부여는 위험한 작업이다보니 사라의 귀걸이가 파괴될 수도 있습니다.";
+			mes "계속 하시겠습니까?";
+			next;
+			if (select( "아니요", "네" ) == 1) {
+				mes "[조교]";
+				mes "확신이 생기면 다시 말해주세요!";
+				close;
+			}
+			if (countitem(6803) < 4) {
+				mes "[조교]";
+				mes "기간테스의 파편이 충분하지 않습니다.";
+				mes "마법 부여 한번에 기간테스의 파편 4개가 필요합니다.";
+				close;
+			}
+			mes "[조교]";
+			mes "좋아. 마법부여를 시작할게요!";
+			mes "행운을 빌어요~!";
+			next;
+			mes "[조교]";
+			mes "이야아아압!!";
+			next;
+			progressbar "000000",5;
+			specialeffect2 EF_MAGICALATTHIT;
+			specialeffect2 EF_POTION2;
+			delitem 6803,4;// Shard of Gigantes
+			delequip .@part;
+			.@r = rand(100);
+			for ( .@i = 0; .@i < .@bonus_size && (.@bonus_chance * (.@i+1)) < .@r; .@i++ );
+			if (.@i == .@bonus_size) {
+				specialeffect2 EF_CRASHEARTH;
+				specialeffect2 EF_MAXPOWER;
+				mes "[조교]";
+				mes "어... 그러니까...";
+				mes "부셔젔어요...";
+				mes "아휴.. ";
+				mes "마법부여는 쉬운 작업이 아니에요..";
+				close;
+			}
+			.@card[.@slot] = .@bonus[.@i];
+			specialeffect2 EF_ANGEL2;
+			getitem2 .@sarah_item_id,1,1,0,0,0,0,.@card[1],.@card[0];
+			mes "[조교]";
+			mes "마법 부여 성공!";
+			close;
+		case 2:
+			mes "[조교]";
+			mes "어느 귀걸이를 초기화 하시겠습니까?";
+			next;
+			switch( select( "사라의 왼쪽 귀걸이", "사라의 오른쪽 귀걸이", "그만하기" ) ) {
+			case 1:
+				.@sarah_item_id = 28310;
+				.@sarah_earring$ = "왼쪽";
+				break;
+			case 2:
+				.@sarah_item_id = 28311;
+				.@sarah_earring$ = "오른쪽";
+				break;
+			case 3:
+				mes "[조교]";
+				mes "사라의 귀걸이에 있는 마법을 초기화하려면 다시 저를 찾아주세요.";
+				close;
+			}
+			mes "[조교]";
+			mes "사라의 귀걸이에 부여된 마법을 초기화하려면 기간테스의 파편 1개가 필요합니다.";
+			next;
+			if (countitem(6803) < 1) {
+				mes "[조교]";
+				mes "기간테스의 파편이 충분하지 않습니다.";
+				mes "초기화 작업을 하려면 순서가 필요합니다.";
+				close;
+			}
+			mes "[조교]";
+			mes "아이템을 착용해야 초기화가 가능합니다.";
+			mes "어느쪽 귀걸이를 초기화 하시겠습니까?";
+			next;
+			if (select( "왼쪽", "오른쪽" ) == 1) {
+				.@part = EQI_ACC_L;
+				.@column$ = "왼쪽";
+			}
+			else {
+				.@part = EQI_ACC_R;
+				.@column$ = "오른쪽";
+			}
+			.@equip_id = getequipid(.@part);
+			if (.@equip_id == -1) {
+				mes "[조교]";
+				mes "마법을 초기화하려면 아이템을 착용하고 있어야합니다.";
+				close;
+			}
+			if (.@equip_id != .@sarah_item_id) {
+				mes "[조교]";
+				mes "마법을 초기화하려면 아이템을 착용하고 있어야합니다.";
+				close;
+			}
+			if (getequipcardid(.@part,3) < 1) {
+				mes "[조교]";
+				mes "마법이 걸려있지 않은 사라의 귀걸이는 초기화할 수 없습니다.";
+				close;
+			}
+			mes "[조교]";
+			mes "사라의 " + .@sarah_earring$ + " 귀걸이를 선택하셨습니다.";
+			mes "초기화로 사라진 능력은 복구되지 않습니다.";
+			mes "계속하시겠습니까?";
+			next;
+			if (select( "아니요", "네" ) == 2) {
+				mes "[조교]";
+				mes "알겠습니다. 초기화를 시작할게요.";
+				next;
+				progressbar "000000",5;
+				specialeffect2 EF_MAGICALATTHIT;
+				specialeffect2 EF_POTION2;
+				specialeffect2 EF_ANGEL2;
+				delitem 6803,1;// Shard of Gigantes
+				delequip .@part;
+				getitem .@sarah_item_id,1;
+				mes "[조교]";
+				mes "초기화 성공입니다.";
+				mes "필요할 때 다시 찾아주세요.";
+			}
+			close;
+		case 3:
+			mes "[조교]";
+			mes "사라의 귀걸이에 마법을 부여하고 싶다면 다시 저를 찾아주세요.";
+			close;
+		}
+	case 2:
+		mes "[조교]";
+		mes "교수님을 위해 기간테스의 파편을 가져온 전사이시기 때문에 특별히 1개의 파편으로 교환 해드리겠습니다.";
+		next;
+		mes "[조교]";
+		mes "- 사라의 왼쪽 귀걸이 -";
+		mes "힐 1Lv 사용 가능";
+		mes "- 사라의 오른쪽 귀걸이 -";
+		mes "텔레포트 1Lv 사용 가능";
+		mes "-----------------------";
+		mes "어느쪽을 원하세요?";
+		next;
+		.@s = select( "사라의 왼쪽 귀걸이", "사라의 오른쪽 귀걸이", "대화 끝내기" ) - 1;
+		if (.@s < 2) {
+			if (countitem(6803) < 1) {
+				mes "[조교]";
+				mes "기간테스의 파편이 부족합니다.";
+				close;
+			}
+			delitem 6803,1;// Shard of Gigantes
+			getitem (28310+.@s),1;
+		}
+		mes "[조교]";
+		mes "번하드 교수님은 제가 가장 존경하는 교수입니다.";
+		close;
+	case 3:
+		mes "[조교]";
+		mes "당신에 대해선 이미 교수님께 들었어요.";
+		mes "기간테스의 파편을 목숨걸고 가져가준 당신께 충분한 보상을 해달라고.";
+		close;
+	}
+}
+
+1@glast,360,295,0	script	#glast_event_1	HIDDEN_WARP_NPC,8,8,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_1");
+	 
+	specialeffect2 EF_HIT2;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 어? 누군가 있는데? 안녕하세요~ 여행자인가봐요?";
+	sleep2 3000;
+	cutin "fenrir_a.bmp",2;
+	npctalk "펜리스 펜릴: 느낌이 이상한데.. 글래스트 헤임 성이 이렇게 어두운 기운이 가득했나..", 'fenrir_1$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 인사는 나중에! 조심해! 누군가 강제로 몬스터들을 소환하는 것 같아!", 'fenrir_1$;
+	sleep2 3000;
+	cutin "",255;
+	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
+	.@label$ = instance_npcname("#glast_event_1") + "::OnMobDead";
+	monster 'map_glast$,355,300, "뮤턴트 길리안",3198,1, .@label$;	// MM_M_GALION
+	monster 'map_glast$,358,300, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,361,300, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,355,289, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,358,289, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,364,294, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,364,297, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,364,291, "뮤턴트 길리안",3198,1, .@label$;
+	monster 'map_glast$,353,290, "뮤턴트 길리안",3198,1, .@label$;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : What are these things?";
+	npctalk "펜리스 펜릴: 마법을 캐스팅할 동안 잠시만 시간을 벌어줘! 내가 처리할테니!", 'fenrir_1$;
+	donpcevent instance_npcname("#glast_event_1") + "::OnBar";
+	donpcevent instance_npcname("#glast_event_1") + "::OnEvent";
+	end;
+OnBar:
+	progressbar_npc "000000",10, 'fenrir_1$;
+	end;
+
+OnEvent:
+	// npctalk "펜리스 펜릴: Buy me some time while I cast magic! I will handle this!", 'fenrir_1$;// double on official
+	//sleep 3000;
+	npctalk "펜리스 펜릴: 진정한 하늘의 분노여.", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 지축을 쪼개버릴 듯한 낙뢰여!", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 지금 바로 내 앞으로 떨어져라!!", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 이야!! 썬더 스톰!!!!!", 'fenrir_1$;
+	for ( .@i = 1; .@i < 8; .@i++ )
+		specialeffect EF_THUNDERSTORM, AREA, instance_npcname( "#effect_glast_event01_" + .@i );
+	killmonster 'map_glast$, instance_npcname("#glast_event_1") + "::OnMobDead";
+	sleep 4000;
+	npctalk "펜리스 펜릴: 과거 아스가르드 신들의 성전이었던 글래스트 헤임성..", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 이제는 완전히 몬스터들의 서식지가 되었나..", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 가만.. 그러고보니 이상해..", 'fenrir_1$;
+	sleep 3000;
+	npctalk "펜리스 펜릴: 갈리온들은 이 근방에서 서식하지 않는 몬스터들인데..", 'fenrir_1$;
+	sleep 3000;
+	enablenpc instance_npcname("#glast_event_3");
+	end;
+
+OnMobDead:
+	end;
+}
+
+1@glast,360,295,0	script	#glast_event_3	HIDDEN_WARP_NPC,8,8,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_3");
+	 
+	cutin "fenrir_a.bmp",2;
+	npctalk "펜리스 펜릴: 그나저나 갑작스러울텐데 도와줘서 고마워.", 'fenrir_1$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 그런데 너는 누구지?", 'fenrir_1$;
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 아.. 저는....";
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : .. 세계 이곳 저곳을 돌아다니는 여행자에요!";
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 그런가..? 그렇군.. 뭐 아무래도 상관없겠지.", 'fenrir_1$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 이 곳은 지금 상당히 위험한 것 같아. 지금이라도 늦지 않았으니 돌아가도록 해.", 'fenrir_1$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 난 찾아야할 물건이 있어. 늦기전에 빨리 가야해.", 'fenrir_1$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 혹시라도 날 도와...", 'fenrir_1$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 아니다.. 그럼 고마웠어! 나중에 또 볼 수 있기를!", 'fenrir_1$;
+	sleep2 3000;
+	cutin "",255;
+	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 방금 저 사람... 정말 펜리르가.. 맞는건가..? 아냐.. 아니겠지..";
+
+	disablenpc 'fenrir_1$;
+	for ( .@i = 1; .@i < 8; .@i++ )
+		disablenpc instance_npcname("#effect_glast_event01_" + .@i);
+	enablenpc instance_npcname("#glast_move_01");
+	enablenpc instance_npcname("#glast_event_5");
+	enablenpc 'fenrir_2$;
+	end;
+}
+
+1@glast,359,296,4	script	#effect_glast_event01_1	CLEAR_NPC,{ end; }
+1@glast,353,294,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_2	CLEAR_NPC
+1@glast,360,304,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_3	CLEAR_NPC
+1@glast,366,295,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_4	CLEAR_NPC
+1@glast,352,304,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_5	CLEAR_NPC
+1@glast,356,284,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_6	CLEAR_NPC
+1@glast,345,283,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_7	CLEAR_NPC
+
+1@glast,359,294,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_01	4_F_FENRIR
+
+// Warps
+// From entrance
+1@glast,352,279,0	script	#glast_move_01	WARPNPC,4,4,{
+	end;
+OnTouch:
+	if ('back_to_entrance == 0)
+		warp 'map_glast$,347,265;
+	else {
+		disablenpc instance_npcname("#glast_move_01");
+		initnpctimer;
+	}
+	end;
+
+OnTimer1500:
+	specialeffect EF_FIREPILLARON2, AREA, 'sarah_ego$;
+	end;
+OnTimer2000:
+	hideoffnpc 'sarah_ego$;
+	specialeffect EF_WHITEBODY, AREA, 'sarah_ego$;
+	end;
+OnTimer3000:
+	npctalk "사라 아이린: 제법이구나 펜리스 펜릴, 아주 교묘히 잘도 빠져나갔구나.", 'sarah_ego$;
+	end;
+OnTimer7500:
+	npctalk "사라 아이린: 훗.. 오늘은 여기서 물러나도록 하지.", 'sarah_ego$;
+	end;
+OnTimer8000:
+	npctalk "펜리스 펜릴: 악연은 오늘로 끝냈으면 좋겠어.", 'fenrir_11$;
+	end;
+OnTimer11000:
+	npctalk "사라 아이린: 하지만 이게 끝이라 생각하지 마라", 'sarah_ego$;
+	end;
+OnTimer14000:
+	npctalk "사라 아이린: 반드시 다시 보게 될 것이다!!!", 'sarah_ego$;
+	end;
+OnTimer14500:
+	npctalk "펜리스 펜릴: 훗... 기대하지, 사라 아이린..", 'fenrir_11$;
+	specialeffect EF_FIREPILLARON2, AREA, 'sarah_ego$;
+	end;
+OnTimer15500:
+	stopnpctimer;
+	disablenpc 'sarah_ego$;
+	end;
+}
+
+// Fenrir left side
+// 1@glast,42,350,0	warp2	#glast_event_warp_1	10,10,1@glast,105,369
+// 1@glast,52,346,0	warp2	#glast_event_warp_2	10,10,1@glast,105,369
+// 1@glast,35,364,0	warp2	#glast_event_warp_3	10,10,1@glast,105,369
+// 1@glast,41,364,0	warp2	#glast_event_warp_4	10,10,1@glast,105,369
+// 1@glast,44,371,0	warp2	#glast_event_warp_5	10,10,1@glast,105,369
+// 1@glast,54,362,0	warp2	#glast_event_warp_6	10,10,1@glast,105,369
+// 1@glast,44,358,0	warp2	#glast_event_warp_7	10,10,1@glast,105,369
+
+// To stairs final room
+1@glast,199,237,0	script	#glast_move_03	WARPNPC,2,2,{
+	end;
+OnTouch:
+	if (getcharid(0) == getpartyleader(getcharid(1),2))
+		warpparty 'map_glast$,197,263, getcharid(1), 'map_glast$,1,1;
+	end;
+}
+
+// To final room
+1@glast,199,294,0	script	#glast_move_03a	WARPNPC,3,3,{
+	end;
+OnTouch:
+	if (getcharid(0) == getpartyleader(getcharid(1),2))
+		warpparty 'map_glast$,188,334, getcharid(1), 'map_glast$,1,1;
+	end;
+}
+
+// Exit final room
+//1@glast,189,331,0	warp2	#glast_event_warp_11	10,10,1@glast,197,221
+//1@glast,206,337,0	warp2	#glast_event_warp_12	10,10,1@glast,197,221
+//1@glast,205,330,0	warp2	#glast_event_warp_13	10,10,1@glast,197,221
+//1@glast,193,337,0	warp2	#glast_event_warp_14	10,10,1@glast,197,221
+//1@glast,210,331,0	warp2	#glast_event_warp_15	10,10,1@glast,197,221
+//1@glast,194,330,0	warp2	#glast_event_warp_16	10,10,1@glast,197,221
+
+// Back to entrance
+1@glast,351,269,0	script	#glast_move_04	WARPNPC,3,3,{
+	end;
+OnTouch:
+	if (getcharid(0) == getpartyleader(getcharid(1),2)) {
+		donpcevent instance_npcname("#sarah_wrath") + "::OnStop";
+		warpparty 'map_glast$,349,282, getcharid(1), 'map_glast$,1,1;
+	}
+	end;
+}
+
+// Exit
+1@glast,376,303,0	warp2	#glast_move_05	2,2,dali02,91,140
+
+// Fenrir bottom
+1@glast,216,48,0	script	#glast_event_5	HIDDEN_WARP_NPC,6,6,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_5");
+	 
+	cutin "fenrir_a.bmp",2;
+	npctalk "펜리스 펜릴: 아직 글래스트헤임에 있었네? 여기 위험한데 나가지 않고 뭐해?", 'fenrir_2$;
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 위험한거 알지만 왠지 재미있을 것 같아서 저도 모르게 그만..";
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 흠.. 모험가들이란..", 'fenrir_2$;
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 걱정 안 하셔도 돼요~! 저도 꽤 강합니다!";
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 호오.. 그래? 그럼 나 좀 도와줄 수 있겠어?", 'fenrir_2$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 글래스트 헤임 11시 방향에 위치한 곳에 내가 찾고자 하는 물건이 있어!", 'fenrir_2$;
+	viewpoint 1,47,270,1,0xFF0000;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 하지만 나 말고도 그 물건을 노리는 녀석들이 곧 도착할거야!", 'fenrir_2$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 시간이 없어, 급한일이야. 최대한 빠른 시간 안에 도착해야돼, 늦어도 5분!", 'fenrir_2$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 기다리고 있을게! 늦는다면 어쩔 수 없어. 나 혼자라도 가는 수 밖에!", 'fenrir_2$;
+	sleep2 2000;
+	npctalk "펜리스 펜릴: 그럼 먼저 가볼테니 나에게 도움을 줄지 잘 생각한 후 결정해줘!", 'fenrir_2$;
+	sleep2 3000;
+	cutin "",255;
+	disablenpc 'fenrir_2$;
+	sleep2 1000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 흐음.. 어떻게하지..? 번하드 박사에게 부탁받은 기간테스의 파편이 필요한데..";
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 저 사람을 도와줘야할까.. 아니면 번하드 박사에게 부탁받은 기간테스를 찾아서 파편을 가져가야할까..?";
+	sleep2 2000;
+	donpcevent instance_npcname("#fenrir_left_final_2") + "::OnStart";// timer (5 mins)
+	for ( .@i = 1; .@i < 7; .@i++ )
+		enablenpc instance_npcname("고대의 기간테스#glast_" + .@i);
+	enablenpc 'fenrir_3$;
+	enablenpc instance_npcname("#glast_event_7");
+	disablenpc instance_npcname("#glast_move_01");	// officially player can be stucked in entrance
+	end;
+}
+
+1@glast,216,52,6	script	펜리스 펜릴#glast_02	4_F_FENRIR,{ end; }
+
+// Fenrir left side, entrance
+1@glast,47,270,0	script	#glast_event_7	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnTouch:
+	if (getcharid(0) != getpartyleader(getcharid(1),2))
+		npctalk "펜리스 펜릴: 너희 파티 리더가 와서 나를 도와 주길 바래!", 'fenrir_3$;
+	else {
+		 
+		disablenpc instance_npcname("#glast_event_7");
+		npctalk "펜리스 펜릴: 왔군! 기다리고 있었어!", 'fenrir_3$;
+		sleep2 2000;
+		npctalk "펜리스 펜릴: 시간이 없어! 당장 그걸 찾으러 가야해! 안으로 들어가자!", 'fenrir_3$;
+		sleep2 2000;
+		if ('skip_left_part == 0) {// 5 mins have passed?
+			donpcevent instance_npcname("#fenrir_left_final_2") + "::OnStop";
+			disablenpc 'fenrir_3$;
+			enablenpc 'fenrir_4$;
+			enablenpc instance_npcname("#glast_event_9");
+			warpparty 'map_glast$,41,348, getcharid(1), 'map_glast$,1,1;
+		}
+	}
+	end;
+}
+
+1@glast,47,270,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_03	4_F_FENRIR
+
+// Fenrir left side, inside
+1@glast,44,357,0	script	#glast_event_9	HIDDEN_WARP_NPC,3,3,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_9");
+	 
+	cutin "fenrir_a.bmp",2;
+	npctalk "펜리스 펜릴: 발두르의 검, 센티널 브리즈... 1000년이 지난 후에도..", 'fenrir_4$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 여기에선 몬스터들의 사악함이 느껴져.. 마치 누군가에 의해 통제되는 것처럼..", 'fenrir_4$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 그렇담 여기에 나 말고 누군가 있다는 건가?", 'fenrir_4$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 그럼 이제.. 내가 할 일은 센티널 브리즈를 사용해 발두르의 행방을 찾는 것뿐이야..", 'fenrir_4$;
+	sleep2 3000;
+	enablenpc 'sarah_10$;
+	enablenpc instance_npcname("기간테스#semi1");
+	enablenpc instance_npcname("기간테스#semi2");
+	sleep2 1000;
+	cutin "sarah_hero3.bmp",0;
+	npctalk "사라 아이린: 후훗.. 역시... 내 생각대로야.", 'sarah_10$;
+	sleep2 3000;
+	npctalk "사라 아이린: 그 칼이 단서지?", 'sarah_10$;
+	sleep2 3000;
+	npctalk "사라 아이린: 그러면 펜리스 펜릴, 1000년 된 봉인을 풀 수 있다는거지?", 'sarah_10$;
+	sleep2 3500;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 그가 정말 펜릴이였어?";
+	npctalk "펜리스 펜릴: 이건.. 발키리! 이제 더 이상 재미 없을거야!", 'fenrir_4$;
+	cutin "fenrir_b.bmp",2;
+	sleep2 5000;
+	npctalk "사라 아이린: 인사가 늦었군, 내 이름은 사라 아이린, 발할라의 12 발키리 중 하나지.", 'sarah_10$;
+	cutin "sarah_hero3.bmp",0;
+	sleep2 3000;
+	npctalk "사라 아이린: 어쨌든, 프레이야의 의지를 잇기 위해.. 후훗..", 'sarah_10$;
+	npctalk "펜리스 펜릴: 기간테스 둘! 이 싸움은 쉽지 않겠어. 나를 도와서 기간테스를 물리치자!", 'fenrir_4$;
+	cutin "fenrir_b.bmp",2;
+	sleep2 3000;
+	npctalk "사라 아이린: 가라! 기간테스! 그리고 내 충실한 부하들아!", 'sarah_10$;
+	npctalk "펜리스 펜릴: 사라가 숨어서 계속 몬스터를 소환할거야! 내가 괴물들을 맡겠어, 너가 기간테스를 맡아!", 'fenrir_4$;
+	cutin "fenrir_b.bmp",255;
+	sleep2 2000;
+	disablenpc 'sarah_10$;
+	disablenpc instance_npcname("기간테스#semi1");
+	disablenpc instance_npcname("기간테스#semi2");
+	enablenpc instance_npcname("#fenrir_left_final_1");
+	monster 'map_glast$,49,363, "기간테스#semi1", 3191,1, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";// MM_M_GIGAN1
+	monster 'map_glast$,41,363, "기간테스#semi2", 3192,1, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";// MM_M_GIGAN2
+	donpcevent instance_npcname("#glast_event_9") + "::OnEvent";
+	end;
+OnEvent:
+	sleep 15000;
+	'timer_left_side = 0;
+	donpcevent instance_npcname("#glast_event_9") + "::OnStart";
+	end;
+
+OnStart:
+	initnpctimer;
+	npctalk "펜리스 펜릴: 대기에서 진동하는 전류! 너의 힘을 보여줘라!", 'fenrir_4$;
+	callsub S_Spawn,1,3198;// MM_M_GALION
+
+	progressbar_npc "000000",5, 'fenrir_4$;	// note: display effect after dead of Gigantes
+	npctalk "펜리스 펜릴: 라이트닝 볼트!!!", 'fenrir_4$;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
+	end;
+OnTimer6000:
+	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
+	end;
+OnTimer15000:
+	npctalk "펜리스 펜릴: 이 사악한 존재를 우주의 불덩이로 삼켜라!", 'fenrir_4$;
+	callsub S_Spawn,2,3198;// MM_M_GALION
+	progressbar_npc "000000",5, 'fenrir_4$;
+	npctalk "펜리스 펜릴: 공간마저 집어삼키는 지옥불! 메테오 스톰~!!!!!", 'fenrir_4$;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		specialeffect EF_METEORSTORM, AREA, instance_npcname("#effect_glast_event02_" + .@i);
+	end;
+OnTimer21000:
+	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
+	end;
+OnTimer30000:
+	npctalk "펜리스 펜릴: 대기에서 진동하는 전류! 너의 힘을 보여줘라!", 'fenrir_4$;
+	callsub S_Spawn,1,3199;// MM_M_MUTANT_DRAGON
+	progressbar_npc "000000",5, 'fenrir_4$;
+	npctalk "펜리스 펜릴: 라이트닝 볼트!!!", 'fenrir_4$;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
+	end;
+OnTimer36000:
+	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
+	end;
+OnTimer45000:
+	npctalk "펜리스 펜릴: 서리바람으로 사악한 존재를 얼려버려라!!!", 'fenrir_4$;
+	callsub S_Spawn,2,3199;// MM_M_MUTANT_DRAGON
+	progressbar_npc "000000",5, 'fenrir_4$;
+	npctalk "펜리스 펜릴: 영혼마저 얼리는 폭풍!! 스톰 가스트~!!!!!", 'fenrir_4$;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		specialeffect EF_STORMGUST, AREA, instance_npcname("#effect_glast_event02_" + .@i);
+	end;
+OnTimer51000:
+	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
+	end;
+OnTimer55000:
+	'timer_left_side++;
+	if ('timer_left_side == 5) {
+		stopnpctimer;
+		donpcevent instance_npcname("#fenrir_left_vermilion") + "::OnEvent";
+	}
+	end;
+OnTimer60000:
+	donpcevent instance_npcname("#glast_event_9") + "::OnStart";
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnMobDead:
+	end;
+
+S_Spawn:
+	.@mob_id = getarg(1);
+	.@label$ = instance_npcname("#glast_event_9") + "::OnMobDead";
+	if (getarg(0) == 1) {
+		monster 'map_glast$,43,355, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,39,361, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,48,361, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,43,363, "--ja--", .@mob_id,1, .@label$;
+	}
+	else {
+		monster 'map_glast$,37,360, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,37,362, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,37,364, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,37,366, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,37,368, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,41,371, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,50,360, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,50,362, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,50,364, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,50,366, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,50,368, "--ja--", .@mob_id,1, .@label$;
+		monster 'map_glast$,46,371, "--ja--", .@mob_id,1, .@label$;
+	}
+	return;
+}
+
+1@glast,1,1,0	script	#fenrir_left_vermilion	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("#fenrir_left_vermilion");
+	initnpctimer;
+	npctalk "펜리스 펜릴: 끝이 없군. 나는 절대 끝을 봐야겠어.", 'fenrir_4$;
+	progressbar_npc "000000",10, 'fenrir_4$;
+	end;
+OnTimer2000:
+	npctalk "펜리스 펜릴: 아름다온 진홍의 숨결과 끝없이 닮은 군주여", 'fenrir_4$;
+	end;
+OnTimer4000:
+	npctalk "펜리스 펜릴: 그대가 지나간 곳은 아무것도 남지 않으리.", 'fenrir_4$;
+	end;
+OnTimer7000:
+	npctalk "펜리스 펜릴: 지구의 축을 흔드는 힘! 지금 여기 은혜를 보여라!!!", 'fenrir_4$;
+	end;
+OnTimer10000:
+	stopnpctimer;
+	npctalk "펜리스 펜릴: 로드 오브 버밀리온!!!!", 'fenrir_4$;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		specialeffect EF_LORD, AREA, instance_npcname("#effect_glast_event02_" + .@i);
+	killmonster 'map_glast$, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";
+	donpcevent instance_npcname("#fenrir_left_final_1") + "::OnStart";
+	disablenpc instance_npcname("#fenrir_left_vermilion");
+	end;
+OnStop:
+	stopnpctimer;
+	disablenpc instance_npcname("#fenrir_left_vermilion");
+	end;
+}
+
+1@glast,1,1,0	script	#fenrir_left_final_1	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer2000:
+	npctalk "펜리스 펜릴: 좋아! 준대형 기간테스를 무찔렀다!", 'fenrir_4$;
+	enablenpc 'sarah_10$;
+	end;
+OnTimer4000:
+	npctalk "사라 아이린: 역시 펜리스 펜릴, 생각만큼 쉽게 물러서지 않는군!", 'sarah_10$;
+	end;
+OnTimer7000:
+	npctalk "펜리스 펜릴: 센티넬 브리즈에서 당장 떨어져!", 'fenrir_4$;
+	end;
+OnTimer9000:
+	npctalk "사라 아이린: 후훗.. 그럴 수는 없지!", 'sarah_10$;
+	specialeffect EF_WL_TELEKINESIS_INTENSE, AREA, instance_npcname("#effect_glast_event02_bis");
+	end;
+OnTimer11000:
+	npctalk "사라 아이린: 되찾고 싶다면 글래스트 헤임 성으로 와라! 기다리고 있도록 하지!", 'sarah_10$;
+	end;
+OnTimer13000:
+	specialeffect EF_FIREPILLARON2, AREA, 'sarah_10$;
+	end;
+OnTimer14000:
+	disablenpc 'sarah_10$;
+	end;
+//OnTimer16000:
+//	npctalk "펜리스 펜릴: 나는 발두루의 검을 되찾기 위해 글래스트 헤임 성으로 가야겠어.", 'fenrir_4$;
+//	end;
+//OnTimer19000:
+//	npctalk "펜리스 펜릴: 혼자서는 힘들지도 몰라. 혹시 듣고 있다면 도움을 준다면 감사히 받을게.", 'fenrir_4$;
+//	end;
+OnTimer20000:
+	stopnpctimer;
+	//for ( .@i = 1; .@i < 8; .@i++ )
+	//	enablenpc instance_npcname("#glast_event_warp_" + .@i);	// warp to 105,369
+	areawarp 'map_glast$,26,338,59,375, 'map_glast$,105,369;
+	for ( .@i = 1; .@i < 9; .@i++ )
+		disablenpc instance_npcname("#effect_glast_event02_" + .@i);
+	disablenpc instance_npcname("#effect_glast_event02_bis");
+	disablenpc instance_npcname("#fenrir_left_final_1");
+	disablenpc 'fenrir_4$;
+	enablenpc instance_npcname("#glast_event_13");
+	enablenpc 'fenrir_5$;
+	end;
+
+OnMobDead:
+	if (mobcount( 'map_glast$, instance_npcname("#fenrir_left_final_1") + "::OnMobDead" ) < 1) {
+		donpcevent instance_npcname("#glast_event_9") + "::OnStop";
+		donpcevent instance_npcname("#fenrir_left_vermilion") + "::OnStop";
+		donpcevent instance_npcname("#fenrir_left_final_1") + "::OnStart";
+	}
+	end;
+}
+
+1@glast,44,357,8	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_04	4_F_FENRIR
+1@glast,49,363,4	duplicate(#effect_glast_event01_1)	기간테스#semi1	4_GIGANTES_SMALL
+1@glast,41,363,4	duplicate(#effect_glast_event01_1)	기간테스#semi2	4_GIGANTES_SMALL
+1@glast,46,364,4	duplicate(#effect_glast_event01_1)	사라 아이린#glast_10	4_F_SARAH
+
+1@glast,52,345,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_1	CLEAR_NPC
+1@glast,44,350,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_2	CLEAR_NPC
+1@glast,35,360,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_3	CLEAR_NPC
+1@glast,44,360,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_4	CLEAR_NPC
+1@glast,52,360,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_5	CLEAR_NPC
+1@glast,35,368,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_6	CLEAR_NPC
+1@glast,53,368,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_7	CLEAR_NPC
+1@glast,44,371,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_8	CLEAR_NPC
+1@glast,44,366,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_bis	CLEAR_NPC
+
+// Event top side
+1@glast,133,365,0	script	#glast_event_13	HIDDEN_WARP_NPC,8,8,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_13");
+	//for ( .@i = 1; .@i < 8; .@i++ )
+	//	disablenpc instance_npcname("#glast_event_warp_" + .@i);
+	 
+	cutin "fenrir_a.bmp",2;
+	sleep2 1000;
+	npctalk "펜리스 펜릴: 나는 발두루의 검을 되찾기 위해 글래스트 헤임 성으로 가야겠어.", 'fenrir_5$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 혼자서는 힘들지도 몰라. 혹시 듣고 있다면 도움을 준다면 감사히 받을게.", 'fenrir_5$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 하지막 시간이 촉박한만큼 오래는 기다릴 수 없어.", 'fenrir_5$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 5분 정도만 글래스트헤임 중앙 성 안쪽에서 기다릴게.", 'fenrir_5$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 일이 위험한 만큼 꼭 도와주지 않아도 괜찮아, 부담갖지 마. 나 혼자서라도 어떻게 해볼테니..", 'fenrir_5$;
+	viewpoint 1,199,237,1,0xFF0000;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 그럼 나는 먼저 가있을게! 워프!", 'fenrir_5$;
+	cutin "",255;
+	donpcevent instance_npcname("#glast_event_13") + "::OnBar";
+	end;
+OnBar:
+	progressbar_npc "000000",3, 'fenrir_5$;
+	disablenpc 'fenrir_5$;
+	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStart";// timer (5 mins)
+	enablenpc instance_npcname("#glast_move_03");
+	enablenpc instance_npcname("#glast_event_15");
+	enablenpc 'fenrir_6$;
+	end;
+}
+
+1@glast,133,365,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_05	4_F_FENRIR
+
+// Skipped left side
+1@glast,1,1,0	script	#fenrir_left_final_2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#fenrir_left_final_2");
+	initnpctimer;
+	end;
+OnTimer300000:
+	'skip_left_part = 1;
+	disablenpc instance_npcname("#glast_event_7");
+	disablenpc 'fenrir_3$;
+	mapannounce 'map_glast$, "펜리스 펜릴: 펜리스 펜릴: 좋아! 준대형 기간테스를 무찔렀다!", bc_map,0xEBFF;
+	end;
+OnTimer302000:
+	mapannounce 'map_glast$, "사라 아이린: 역시 펜리스 펜릴, 생각만큼 쉽게 물러서지 않는군!", bc_map,0xEBFF;
+	end;
+OnTimer305000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 센티넬 브리즈에서 당장 떨어져!", bc_map,0xEBFF;
+	end;
+OnTimer307000:
+	mapannounce 'map_glast$, "사라 아이린: 후훗.. 그럴 수는 없지!", bc_map,0xEBFF;
+	end;
+OnTimer309000:
+	mapannounce 'map_glast$, "사라 아이린: 되찾고 싶다면 글래스트 헤임 성으로 와라! 기다리고 있도록 하지!", bc_map,0xEBFF;
+	end;
+OnTimer311000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 나는 발두루의 검을 되찾기 위해 글래스트 헤임 성으로 가야겠어.", bc_map,0xEBFF;
+	end;
+OnTimer313000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 혼자서는 힘들지도 몰라. 혹시 듣고 있다면 도움을 준다면 감사히 받을게.", bc_map,0xEBFF;
+	end;
+OnTimer315000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 하지막 시간이 촉박한만큼 오래는 기다릴 수 없어.", bc_map,0xEBFF;
+	end;
+OnTimer317000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 5분 정도만 글래스트헤임 중앙 성 안쪽에서 기다릴게.", bc_map,0xEBFF;
+	end;
+OnTimer319000:
+	stopnpctimer;
+	mapannounce 'map_glast$, "펜리스 펜릴: 일이 위험한 만큼 꼭 도와주지 않아도 괜찮아, 부담갖지 마. 나 혼자서라도 어떻게 해볼테니..", bc_map,0xEBFF;
+	enablenpc instance_npcname("#glast_move_03");
+	enablenpc 'fenrir_6$;
+	enablenpc instance_npcname("#glast_event_15");
+	disablenpc instance_npcname("#fenrir_left_final_2");
+	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStart";// timer (5 mins)
+	end;
+OnStop:
+	stopnpctimer;
+	disablenpc instance_npcname("#fenrir_left_final_2");
+	end;
+}
+
+// Stairs final room
+1@glast,200,268,0	script	#glast_event_15	HIDDEN_WARP_NPC,7,7,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_move_03");
+	disablenpc instance_npcname("#glast_event_15");
+	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStop";
+	 
+	sleep2 1000;
+	npctalk "펜리스 펜릴: 기다리고 있었어, 늦지 않게 와줘서 고마워.", 'fenrir_6$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 센티넬 브리즈를 되찾으러 성으로 올라가자! 사라가 기다리고 있을테니!", 'fenrir_6$;
+	sleep2 3000;
+	disablenpc 'fenrir_6$;
+	enablenpc instance_npcname("#glast_move_03a");
+	enablenpc instance_npcname("#glast_event_18");
+	enablenpc instance_npcname("사라 아이린#glast_17");
+	enablenpc 'fenrir_7$;
+	end;
+}
+
+1@glast,200,268,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_06	4_F_FENRIR
+
+// Final room
+1@glast,199,336,0	script	#glast_event_18	HIDDEN_WARP_NPC,10,10,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_18");
+	 
+	cutin "sarah_hero3.bmp",0;
+	sleep2 1000;
+	npctalk "사라 아이린: 기다리느라 목 빠지는 줄 알았어요~ 펜리스 펜릴.", 'sarah_17$;
+	sleep2 3000;
+	cutin "fenrir_b.bmp",2;
+	npctalk "펜리스 펜릴: 쓸데 없는 말은 필요없다. 센티넬 브리즈를 당장 내놓아라!", 'fenrir_7$;
+	sleep2 3000;
+	cutin "sarah_hero3.bmp",0;
+	npctalk "사라 아이린: 할 수 있으면 해 보시던가요.", 'sarah_17$;
+	sleep2 3000;
+	cutin "fenrir_b.bmp",2;
+	npctalk "펜리스 펜릴: 너의 힘으로는 사라를 상대하기 힘들거야. 내가 상대해야해!", 'fenrir_7$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 순백의 속박, 영원한 감옥, 지금 나와 계약하라!", 'fenrir_7$;
+	donpcevent instance_npcname("#glast_event_18") + "::OnBar";
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 화이트 임프리즌!!", 'fenrir_7$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	sleep2 3000;
+	npctalk "사라 아이린: 크흑.... 훗..", 'sarah_17$;
+	npctalk "펜리스 펜릴: 내가 사라를 화이트 임프리즌으로 약화시켜서 묶은 채로 상대하고 있을테니", 'fenrir_7$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 주변에 사라가 소환하는 몬스터들을 상대해줘. 부탁할게.", 'fenrir_7$;
+	sleep2 3000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 알겠어. 강한 적은 피를 끓게 하지.";
+	sleep2 6000;
+	npctalk "펜리스 펜릴: 사라가 빈사 상태일 때 한꺼번에 공격해서 마무리하는 전략이다. 명심해둬, 상대는 강해.", 'fenrir_7$;
+	sleep2 3000;
+	cutin "sarah_hero3_2.bmp",0;
+	npctalk "사라 아이린: 결국 한다는 게 이런 꼼수로 나를 묶어둘 작정이냐?", 'sarah_17$;
+	sleep2 3000;
+	npctalk "사라 아이린: 게다가 고작 그 애송이 모험가들의 힘을 빌리는거라니...", 'sarah_17$;
+	sleep2 3000;
+	npctalk "사라 아이린: 낡아빠진 칼과 함께 여기서 사라져 줘야겠어!!", 'sarah_17$;
+	sleep2 3000;
+	cutin "",255;
+	hideonnpc 'sarah_17$;
+	donpcevent instance_npcname("#glast_event_19") + "::OnEvent";
+	monster 'map_glast$,200,336, "사라 아이린#1",3190,1, instance_npcname("#fenrir_boss_final_1") + "::OnBossDead";	// MM_SARAH
+	'boss_id = $@mobid[0];
+	end;
+OnBar:
+	progressbar_npc "000000",3, 'fenrir_7$;
+	end;
+}
+
+1@glast,200,336,4	duplicate(#effect_glast_event01_1)	사라 아이린#glast_17	4_F_SARAH
+
+1@glast,197,330,8	script	펜리스 펜릴#glast_07	4_F_FENRIR,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer1000:
+	specialeffect EF_TETRACASTING;
+	initnpctimer;
+	end;
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+1@glast,212,350,0	script	#glast_event_19	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("#glast_event_19");
+	enablenpc instance_npcname("#fenrir_boss_final_1");
+	initnpctimer;
+	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
+	npctalk "펜리스 펜릴: 치명적인 독, 어두운 구름, 지금 내 앞에 나타나 가장 고통스러운 죽음을 보여줄지니!", 'fenrir_7$;
+	monster 'map_glast$,190,341, "대형 기간테스#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,214,331, "대형 기간테스#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer1000:
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer10000:
+	callsub S_Hit,1;
+	npctalk "펜리스 펜릴: 가라! 클라우드 킬!!!!!", 'fenrir_7$;
+	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_POISONSMOKE, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer10500:
+	unittalk 'boss_id, "사라 아이린: 간지럽군 펜릴, 겨우 이정도 뿐인가?";
+	end;
+OnTimer11000:
+	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_2");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_3");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_4");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_5");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_6");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_7");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
+	end;
+OnTimer13000:
+	npctalk "펜리스 펜릴: 치명적인 독, 어두운 구름, 지금 내 앞에 나타나 가장 고통스러운 죽음을 보여줄지니!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
+	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_2");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_3");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_4");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_5");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_6");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_7");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
+	end;
+OnTimer20000:
+	callsub S_Hit,2;
+	npctalk "펜리스 펜릴: 가라! 클라우드 킬!!!!!", 'fenrir_7$;
+	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_POISONSMOKE, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	progressbar_npc "000000",30, 'fenrir_7$;
+	end;
+OnTimer20500:
+	unittalk 'boss_id, "사라 아이린: 조금 더 나를 즐겁게 해봐 너희들!!";
+	end;
+OnTimer21000:
+	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_2");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_3");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_4");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_5");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_6");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_7");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
+	end;
+OnTimer23000:
+	npctalk "펜리스 펜릴: 불을 관장하는 그대에게 말한다. 나 펜리스, 꺼지지 않는 영원한 불을 원한다고...", 'fenrir_7$;
+	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
+	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_2");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_3");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_4");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_5");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_6");
+	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_7");
+	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
+	end;
+OnTimer36000:
+	npctalk "펜리스 펜릴: 끝없이 타오르는 겁화, 영혼마저 태워버리는 불!! 지금 이 자리에 나타날지니!!", 'fenrir_7$;
+	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer50000:
+	callsub S_Hit,3;
+	npctalk "펜리스 펜릴: 나와라!! 파이어 인시그니아!!!!", 'fenrir_7$;
+	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer50500:
+	unittalk 'boss_id, "사라 아이린: 호오... 제법 하는 걸? 하지만 아직이다!!";
+	end;
+OnTimer51000:
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer53000:
+	npctalk "펜리스 펜릴: 지축을 뒤흔드는 강력한 힘의 근원!! 땅의 힘을 두려워하라!!!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
+	end;
+OnTimer60000:
+	callsub S_Hit,4;
+	npctalk "펜리스 펜릴: 헤븐즈 드라이브!!!", 'fenrir_7$;
+	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
+	monster 'map_glast$,190,341, "대형 기간테스#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,214,331, "대형 기간테스#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer60500:
+	unittalk 'boss_id, "사라 아이린: 장난같은 마법은 그만하지 그래, 펜릴?";
+	end;
+OnTimer63000:
+	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
+	npctalk "펜리스 펜릴: 지축을 뒤흔드는 강력한 힘의 근원!! 땅의 힘을 두려워하라!!!", 'fenrir_7$;
+	end;
+OnTimer70000:
+	callsub S_Hit,5;
+	npctalk "펜리스 펜릴: 헤븐즈 드라이브!!!", 'fenrir_7$;
+	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	progressbar_npc "000000",30, 'fenrir_7$;
+	end;
+OnTimer70500:
+	unittalk 'boss_id, "사라 아이린: 이 정도로 나를 꺾을 수 있다고 생각하나?";
+	end;
+OnTimer73000:
+	npctalk "펜리스 펜릴: 숨결마저 잔혹히도 차가운 북방의 바람이여,", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
+	end;
+OnTimer85000:
+	npctalk "펜리스 펜릴: 새벽의 고요한 안개처럼 다가와 모든걸 얼려버리리라!!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
+	end;
+OnTimer100000:
+	callsub S_Hit,6;
+	npctalk "펜리스 펜릴: 나타나라!!! 프로스트 미스티!!!!!", 'fenrir_7$;
+	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer100500:
+	unittalk 'boss_id, "사라 아이린: 꽤 하지만.. 이 정도로는 어림없지!";
+	end;
+OnTimer103000:
+	npctalk "펜리스 펜릴: 의문의 힘, 하지만 강력한 힘, 정신 속에 아득히 감춰진 비밀의 힘!!!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
+	end;
+OnTimer110000:
+	callsub S_Hit,7;
+	npctalk "펜리스 펜릴: 지금이다!!! 사이킥 웨이브!!!!", 'fenrir_7$;
+	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer110500:
+	unittalk 'boss_id, "사라 아이린: 음... 그래봤자 소용없다 펜릴!";
+	end;
+OnTimer113000:
+	npctalk "펜리스 펜릴: 의문의 힘, 하지만 강력한 힘, 정신 속에 아득히 감춰진 비밀의 힘!!!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
+	end;
+OnTimer120000:
+	callsub S_Hit,8;
+	npctalk "펜리스 펜릴: 지금이다!!! 사이킥 웨이브!!!!", 'fenrir_7$;
+	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
+	monster 'map_glast$,190,341, "대형 기간테스#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,214,331, "대형 기간테스#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	progressbar_npc "000000",30, 'fenrir_7$;
+	end;
+OnTimer120500:
+	unittalk 'boss_id, "사라 아이린: 크윽.. 귀찮은 마법 투성이군!!";
+	end;
+OnTimer123000:
+	npctalk "펜리스 펜릴: 불을 관장하는 그대에게 말한다. 나 펜리스, 꺼지지 않는 영원한 불을 원한다고...", 'fenrir_7$;
+	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
+	end;
+OnTimer135000:
+	npctalk "펜리스 펜릴: 끝없이 타오르는 겁화, 영혼마저 태워버리는 불!! 지금 이 자리에 나타날지니!!", 'fenrir_7$;
+	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer150000:
+	callsub S_Hit,9;
+	npctalk "펜리스 펜릴: 나와라!! 파이어 인시그니아!!!!", 'fenrir_7$;
+	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer150500:
+	unittalk 'boss_id, "사라 아이린: 나는 사라 아이린! 이 정도로 쉽게 무너지지 않는다!!!";
+	end;
+OnTimer153000:
+	npctalk "펜리스 펜릴: 진정한 하늘의 분노여, 지축을 쪼개버릴 듯한 낙뢰여... 지금 내 앞으로 떨어져라!!", 'fenrir_7$;
+	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
+	end;
+OnTimer160000:
+	callsub S_Hit,10;
+	npctalk "펜리스 펜릴: 오라!! 선더 스톰!!!!!", 'fenrir_7$;
+	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
+	unittalk 'boss_id, "사라 아이린: 큭...내.. 예상보다 훨씬 강하군 펜릴...";
+	progressbar_npc "000000",10, 'fenrir_7$;
+	end;
+OnTimer163000:
+	npctalk "펜리스 펜릴: 진정한 하늘의 분노여, 지축을 쪼개버릴 듯한 낙뢰여... 지금 내 앞으로 떨어져라!!", 'fenrir_7$;
+	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
+	end;
+OnTimer170000:
+	callsub S_Hit,11;
+	npctalk "펜리스 펜릴: 오라!! 선더 스톰!!!!!", 'fenrir_7$;
+	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	progressbar_npc "000000",30, 'fenrir_7$;
+	end;
+OnTimer170500:
+	unittalk 'boss_id, "사라 아이린: 크아악!!!!!! 아아악!!!!!";
+	end;
+OnTimer173000:
+	npctalk "펜리스 펜릴: 숨결마저 잔혹히도 차가운 북방의 바람이여,", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
+	end;
+OnTimer180000:
+	monster 'map_glast$,190,341, "대형 기간테스#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,185,331, "대형 기간테스#a2", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,209,341, "대형 기간테스#b1", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	monster 'map_glast$,214,331, "대형 기간테스#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	end;
+OnTimer185000:
+	npctalk "펜리스 펜릴: 새벽의 고요한 안개처럼 다가와 모든걸 얼려버리리라!!", 'fenrir_7$;
+	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer200000:
+	callsub S_Hit,12;
+	npctalk "펜리스 펜릴: 나타나라!!! 프로스트 미스티!!!!!", 'fenrir_7$;
+	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
+	donpcevent 'fenrir_7$ + "::OnStart";
+	progressbar_npc "000000",50, 'fenrir_7$;
+	end;
+OnTimer200500:
+	unittalk 'boss_id, "사라 아이린: 크아악!!! 다 죽여버릴테다!!!!!!";
+	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer203000:
+	npctalk "펜리스 펜릴: 하늘을 찢는 천공의 검이여", 'fenrir_7$;
+	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
+	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
+	end;
+OnTimer216000:
+	npctalk "펜리스 펜릴: 지금 나 그대의 힘을 잠시나마 빌리고자 하니!!", 'fenrir_7$;
+	end;
+OnTimer230000:
+	npctalk "펜리스 펜릴: 진공마저 찢어버리는 극한의 힘을 이 자리에 내리리라!!", 'fenrir_7$;
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer239000:
+	monster 'map_glast$,190,341, "대형 기간테스#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,185,331, "대형 기간테스#a2", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
+	monster 'map_glast$,209,341, "대형 기간테스#b1", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	monster 'map_glast$,214,331, "대형 기간테스#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
+	end;
+OnTimer240000:
+	npctalk "펜리스 펜릴: 생사를 관장하며, 시공간을 관통하는 검!!!", 'fenrir_7$;
+	end;
+OnTimer250000:
+	npctalk "펜리스 펜릴: 나와라 바레티스 스피어!!!!!!", 'fenrir_7$;
+	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	end;
+OnTimer253000:
+	setunitdata 'boss_id, UMOB_HP, 100;
+	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	npctalk "펜리스 펜릴: 지금이야! 사라를 빈사 상태로 만들었어! 이제 마무리 공격을 부탁해! 빨리 공격해야해! 사라는 강해!", 'fenrir_7$;
+	mapannounce 'map_glast$, "펜리스 펜릴: 지금이야! 사라를 빈사 상태로 만들었어! 이제 마무리 공격을 부탁해! 빨리 공격해야해! 사라는 강해!", bc_map,0xEBFF;
+	npctalk "사라 아이린: 크헉...이.. 이럴수는 없다!!! 내가 질 수는 없어!!!!!", 'sarah_17$;
+	end;
+OnTimer263000:
+	npctalk "펜리스 펜릴: 혹시 네가 마무리 하지 못할 수 있으니 마지막 스펠을 준비할게!!", 'fenrir_7$;
+	progressbar_npc "000000",50, 'fenrir_7$;
+	end;
+OnTimer273000:
+	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
+	npctalk "펜리스 펜릴: 하늘을 찢는 천공의 검이여", 'fenrir_7$;
+	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
+	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
+	end;
+OnTimer283000:
+	npctalk "펜리스 펜릴: 지금 나 그대의 힘을 잠시나마 빌리고자 하니!!", 'fenrir_7$;
+	end;
+OnTimer293000:
+	npctalk "펜리스 펜릴: 진공마저 찢어버리는 극한의 힘을 이 자리에 내리리라!!";
+	end;
+OnTimer303000:
+	npctalk "펜리스 펜릴: 생사를 관장하며, 시공간을 관통하는 검!!!";
+	end;
+OnTimer313000:
+	npctalk "펜리스 펜릴: 나와라 바레티스 스피어!!!!!!";
+	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	donpcevent 'fenrir_7$ + "::OnStop";
+	end;
+OnTimer316000:
+	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	killmonster 'map_glast$, instance_npcname("#fenrir_boss_final_1") + "::OnBossDead";
+	donpcevent instance_npcname("#fenrir_boss_final_1") + "::OnBossDead";
+	end;
+
+OnStop:
+	stopnpctimer;
+	disablenpc instance_npcname("#glast_event_19");
+	end;
+
+S_Hit:
+	getunitdata 'boss_id, .@data;
+	.@hp = .@data[UMOB_MAXHP] - ((.@data[UMOB_MAXHP] * getarg(0)) / 13);
+	setunitdata 'boss_id, UMOB_HP, .@hp;
+	return;
+}
+
+1@glast,1,1,0	script	#fenrir_boss_final_1	HIDDEN_WARP_NPC,{
+	end;
+OnBossDead:
+	donpcevent instance_npcname("#glast_event_19") + "::OnStop";
+	initnpctimer;
+	end;
+OnTimer1000:
+	killmonster 'map_glast$, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";
+	end;
+OnTimer6000:
+	disablenpc 'sarah_17$;
+	disablenpc 'fenrir_7$;
+	enablenpc 'fenrir_8$;
+	enablenpc 'sarah_20$;
+	end;
+OnTimer9000:
+	npctalk "펜리스 펜릴: 센티넬 브리즈! 손에 넣었다!", 'fenrir_8$;
+	end;
+OnTimer12000:
+	npctalk "사라 아이린: 크흑....", 'sarah_20$;
+	end;
+OnTimer15000:
+	npctalk "펜리스 펜릴: 이것으로 발두르를 찾을 수 있어!", 'fenrir_8$;
+	end;
+OnTimer18000:
+	npctalk "사라 아이린: 아직이다!!", 'sarah_20$;
+	progressbar_npc "000000",2, 'sarah_20$;
+	end;
+OnTimer21000:
+	specialeffect EF_FIREPILLARON, AREA, 'fenrir_8$;
+	disablenpc 'fenrir_8$;
+	enablenpc 'fenrir_9$;
+	end;
+OnTimer24000:
+	npctalk "사라 아이린: 후후... 생쥐처럼 잘도 피해다니는군.", 'sarah_20$;
+	end;
+OnTimer27000:
+	npctalk "사라 아이린: 그러나, 그걸 갖고 무사히 빠져나가게 둘 수는 없지.", 'sarah_20$;
+	end;
+OnTimer30000:
+	npctalk "사라 아이린: 이 성을 통째로 날려주지! 하압!", 'sarah_20$;
+	progressbar_npc "000000",15, 'sarah_20$;
+	end;
+OnTimer33000:
+	npctalk "펜리스 펜릴: 이 곳을 붕괴시켜버릴 작정이야! 대규모 공간이동을 시전해야겠어!!!", 'fenrir_9$;
+	progressbar_npc "000000",6, 'fenrir_9$;
+	end;
+OnTimer36000:
+	npctalk "펜리스 펜릴: 안녕 발키리씨!! 센티넬 브리즈는 내가 가져 가겠어! 그럼 이만!", 'fenrir_9$;
+	end;
+OnTimer39000:
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		specialeffect EF_LORD, AREA, instance_npcname("#effect_glast_event03_" + .@i);
+	disablenpc 'fenrir_9$;
+	end;
+OnTimer40000:
+	stopnpctimer;
+	enablenpc instance_npcname("#glast_event_24");
+	enablenpc instance_npcname("펜리스 펜릴#glast_10");
+	//for ( .@i = 11; .@i <= 16; .@i++ )
+	//	enablenpc instance_npcname("#glast_event_warp_" + .@i);// warp to 197,221
+	areawarp 'map_glast$,181,326,218,352, 'map_glast$,197,221;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		disablenpc instance_npcname("#effect_glast_event03_" + .@i);
+	disablenpc 'sarah_20$;
+	disablenpc instance_npcname("#fenrir_boss_final_1");
+	end;
+
+OnMobDead:
+	end;
+}
+
+1@glast,199,348,8	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_08	4_F_FENRIR
+1@glast,201,346,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_09	4_F_FENRIR
+1@glast,197,339,8	duplicate(#effect_glast_event01_1)	사라 아이린#glast_20	4_F_SARAH
+
+1@glast,201,336,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_1	CLEAR_NPC
+1@glast,201,337,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_2	CLEAR_NPC
+1@glast,200,337,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_3	CLEAR_NPC
+1@glast,199,337,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_4	CLEAR_NPC
+1@glast,199,336,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_5	CLEAR_NPC
+1@glast,199,335,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_6	CLEAR_NPC
+1@glast,200,335,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_7	CLEAR_NPC
+1@glast,201,335,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_8	CLEAR_NPC
+
+// Outside final room
+1@glast,200,224,0	script	#glast_event_24	HIDDEN_WARP_NPC,7,7,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("#glast_event_24");
+	 
+	sleep2 1500;
+	cutin "fenrir_b.bmp",2;
+	npctalk "펜리스 펜릴: 후후.. 확실히 대단한 실력이긴 하지만 날 너무 얕본 것 같아, 발키리씨.", 'fenrir_10$;
+	sleep2 3000;
+	mapannounce 'map_glast$, "사라 아이린: 꽤 재미있게 해주는데, 펜리스...", bc_map,0xEBFF;
+	sleep2 3000;
+	mapannounce 'map_glast$, "사라 아이린: 이대로 쉽게 도망갈 수 있을거라 생각하나?", bc_map,0xEBFF;
+	sleep2 3000;
+	mapannounce 'map_glast$, "사라 아이린: 글래스트 헤임을 지옥으로 만들어주지!!", bc_map,0xEBFF;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 빨리 도망치지 않으면 사라의 몬스터들과 마법으로 인해 끔찍한 결과가 일어날거야!", 'fenrir_10$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 우리가 처음 만났던 글래스트 헤임 입구에서 보자! 그 정도로 멀리 달아나면 안전할거야!", 'fenrir_10$;
+	sleep2 3000;
+	npctalk "펜리스 펜릴: 시간이 없어! 서둘러!", 'fenrir_10$;
+	sleep2 3000;
+	cutin "",255;
+	disablenpc 'fenrir_10$;
+	donpcevent instance_npcname("#sarah_wrath") + "::OnStart";
+	end;
+}
+
+1@glast,200,224,4	duplicate(#effect_glast_event01_1)	펜리스 펜릴#glast_10	4_F_FENRIR
+
+// Skipped final room
+1@glast,1,1,0	script	#fenrir_boss_final_2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#fenrir_boss_final_2");
+	initnpctimer;
+	end;
+OnTimer300000:
+	disablenpc instance_npcname("#glast_move_03");
+	disablenpc instance_npcname("#glast_event_15");
+	disablenpc 'fenrir_6$;
+	end;
+OnTimer305000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 센티넬 브리즈! 손에 넣었다!", bc_map,0xEBFF;
+	end;
+OnTimer308000:
+	mapannounce 'map_glast$, "사라 아이린: 크흑....", bc_map,0xEBFF;
+	end;
+OnTimer311000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 후후.. 확실히 대단한 실력이긴 하지만 날 너무 얕본 것 같아, 발키리씨.", bc_map,0xEBFF;
+	end;
+OnTimer314000:
+	mapannounce 'map_glast$, "사라 아이린: 꽤 재미있게 해주는데, 펜리스...", bc_map,0xEBFF;
+	end;
+OnTimer317000:
+	mapannounce 'map_glast$, "사라 아이린: 이대로 쉽게 도망갈 수 있을거라 생각하나?", bc_map,0xEBFF;
+	end;
+OnTimer320000:
+	mapannounce 'map_glast$, "사라 아이린: 글래스트 헤임을 지옥으로 만들어주지!!", bc_map,0xEBFF;
+	end;
+OnTimer323000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 빨리 도망치지 않으면 사라의 몬스터들과 마법으로 인해 끔찍한 결과가 일어날거야!", bc_map,0xEBFF;
+	end;
+OnTimer326000:
+	mapannounce 'map_glast$, "펜리스 펜릴: 우리가 처음 만났던 글래스트 헤임 입구에서 보자! 그 정도로 멀리 달아나면 안전할거야!", bc_map,0xEBFF;
+	end;
+OnTimer329000:
+	stopnpctimer;
+	mapannounce 'map_glast$, "펜리스 펜릴: 시간이 없어! 서둘러!", bc_map,0xEBFF;
+	donpcevent instance_npcname("#sarah_wrath") + "::OnStart";
+	end;
+OnStop:
+	stopnpctimer;
+	disablenpc instance_npcname("#fenrir_boss_final_2");
+	end;
+}
+
+// Bombs
+1@glast,1,1,0	script	#sarah_wrath	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#sarah_wrath");
+	enablenpc instance_npcname("#glast_move_04");
+	enablenpc 'fenrir_11$;
+	enablenpc 'sarah_ego$;
+	hideonnpc 'sarah_ego$;
+	'back_to_entrance = 1;
+	enablenpc instance_npcname("#glast_move_01");
+	hideonnpc instance_npcname("#glast_move_01");
+	enablenpc instance_npcname("#glast_move_05");
+	initnpctimer;
+	end;
+OnTimer10000:
+	mapannounce 'map_glast$, "사라 아이린: 가소로웃 것들, 이대로 쉽게 도망칠 수 있을 것 같으냐?", bc_map,0xEBFF;
+	callsub S_Spawn,0;
+	end;
+OnTimer50000:
+	mapannounce 'map_glast$, "사라 아이린: 내 부하들이 반드시 너희를 죽이고 말 것이다!!!", bc_map,0xEBFF;
+	callsub S_Spawn,1;
+	end;
+OnTimer80000:
+	mapannounce 'map_glast$, "사라 아이린: 여기서 도망칠 수 없다!!", bc_map,0xEBFF;
+	callsub S_Spawn,2;
+	end;
+OnTimer110000:
+	mapannounce 'map_glast$, "사라 아이린: 펜리스 펜릴.... 도망친다고 내가 못 쫓아갈거라 생각해?", bc_map,0xEBFF;
+	callsub S_Spawn,3;
+	end;
+OnTimer150000:
+	mapannounce 'map_glast$, "사라 아이린: 가소로웃 것들, 이대로 쉽게 도망칠 수 있을 것 같으냐?", bc_map,0xEBFF;
+	callsub S_Spawn,4;
+	end;
+OnTimer300000:
+	stopnpctimer;
+	mapannounce 'map_glast$, "사라 아이린: 크하하하하!! 글레스트 헤임은 내 분노로 가득 차있다!!", bc_map,0xEBFF;
+	for ( .@i = 1; .@i <= 14; .@i++ )
+		enablenpc instance_npcname("#glast_bomb_" + (.@i < 10 ? ("0"+.@i) : .@i));
+	end;
+OnStop:
+	stopnpctimer;
+	end;
+
+S_Spawn:
+	// inaccurate
+	switch( getarg(0) ) {
+	case 0:
+		monster 'map_glast$,204,52,"대형 기간테스#aa1",3194,1;
+		monster 'map_glast$,201,55,"대형 기간테스#aa1",3194,1;
+		monster 'map_glast$,196,53,"대형 기간테스#aa1",3194,1;
+		monster 'map_glast$,205,80,"대형 기간테스#aa2",3195,1;
+		monster 'map_glast$,210,77,"대형 기간테스#aa2",3195,1;
+		monster 'map_glast$,205,73,"대형 기간테스#aa2",3195,1;
+		monster 'map_glast$,236,96,"대형 기간테스#aa5",3194,1;
+		monster 'map_glast$,234,96,"대형 기간테스#aa5",3194,1;
+		monster 'map_glast$,234,96,"대형 기간테스#aa5",3194,1;
+		monster 'map_glast$,185,79,"대형 기간테스#bb3",3194,1;
+		monster 'map_glast$,189,78,"대형 기간테스#bb3",3194,1;
+		monster 'map_glast$,194,85,"대형 기간테스#bb3",3194,1;
+		monster 'map_glast$,168,113,"대형 기간테스#bb4",3195,1;
+		monster 'map_glast$,174,122,"대형 기간테스#bb4",3195,1;
+		break;
+	case 1:
+		monster 'map_glast$,131,182,"대형 기간테스#bb11",3194,1;
+		monster 'map_glast$,133,174,"대형 기간테스#bb11",3194,1;
+		monster 'map_glast$,134,187,"대형 기간테스#bb11",3194,1;
+		monster 'map_glast$,202,196,"대형 기간테스#aa9",3194,1;
+		monster 'map_glast$,196,194,"대형 기간테스#aa9",3194,1;
+		monster 'map_glast$,199,190,"대형 기간테스#aa9",3194,1;
+		monster 'map_glast$,233,198,"대형 기간테스#bb8",3195,1;
+		monster 'map_glast$,231,193,"대형 기간테스#bb8",3195,1;
+		monster 'map_glast$,232,196,"대형 기간테스#bb8",3195,1;
+		monster 'map_glast$,258,196,"대형 기간테스#bb7",3194,1;
+		monster 'map_glast$,265,187,"대형 기간테스#bb7",3194,1;
+		monster 'map_glast$,263,195,"대형 기간테스#bb7",3194,1;
+		monster 'map_glast$,271,106,"대형 기간테스#aa6",3195,1;
+		monster 'map_glast$,266,107,"대형 기간테스#aa6",3195,1;
+		monster 'map_glast$,272,109,"대형 기간테스#aa6",3195,1;
+		break;
+	case 2:
+		monster 'map_glast$,127,204,"대형 기간테스#bb12",3195,1;
+		monster 'map_glast$,130,205,"대형 기간테스#bb12",3195,1;
+		monster 'map_glast$,130,213,"대형 기간테스#bb12",3195,1;
+		monster 'map_glast$,139,243,"대형 기간테스#bb19",3194,1;
+		monster 'map_glast$,143,241,"대형 기간테스#bb19",3194,1;
+		monster 'map_glast$,146,234,"대형 기간테스#bb19",3194,1;
+		monster 'map_glast$,199,218,"대형 기간테스#aa14",3195,1;
+		monster 'map_glast$,201,219,"대형 기간테스#aa14",3195,1;
+		monster 'map_glast$,193,212,"대형 기간테스#aa14",3195,1;
+		monster 'map_glast$,261,251,"대형 기간테스#aa18",3195,1;
+		monster 'map_glast$,257,254,"대형 기간테스#aa18",3195,1;
+		monster 'map_glast$,257,250,"대형 기간테스#aa18",3195,1;
+		monster 'map_glast$,146,45,"대형 기간테스#bb35",3194,1;
+		monster 'map_glast$,145,49,"대형 기간테스#bb35",3194,1;
+		monster 'map_glast$,144,44,"대형 기간테스#bb35",3194,1;
+		break;
+	case 3:
+		monster 'map_glast$,67,259,"대형 기간테스#aa29",3194,1;
+		monster 'map_glast$,68,261,"대형 기간테스#aa29",3194,1;
+		monster 'map_glast$,61,260,"대형 기간테스#aa29",3194,1;
+		monster 'map_glast$,64,208,"대형 기간테스#aa30",3195,1;
+		monster 'map_glast$,67,210,"대형 기간테스#aa30",3195,1;
+		monster 'map_glast$,63,204,"대형 기간테스#aa30",3195,1;
+		monster 'map_glast$,87,57,"대형 기간테스#aa33",3194,1;
+		monster 'map_glast$,81,64,"대형 기간테스#aa33",3194,1;
+		monster 'map_glast$,83,58,"대형 기간테스#aa33",3194,1;
+		monster 'map_glast$,107,47,"대형 기간테스#aa34",3195,1;
+		monster 'map_glast$,105,45,"대형 기간테스#aa34",3195,1;
+		monster 'map_glast$,102,48,"대형 기간테스#aa34",3195,1;
+		monster 'map_glast$,80,152,"대형 기간테스#bb31",3194,1;
+		monster 'map_glast$,82,149,"대형 기간테스#bb31",3194,1;
+		monster 'map_glast$,75,156,"대형 기간테스#bb31",3194,1;
+		monster 'map_glast$,85,106,"대형 기간테스#bb32",3195,1;
+		monster 'map_glast$,82,111,"대형 기간테스#bb32",3195,1;
+		monster 'map_glast$,78,112,"대형 기간테스#bb32",3195,1;
+		monster 'map_glast$,55,149,"대형 기간테스#bb36",3195,1;
+		monster 'map_glast$,56,143,"대형 기간테스#bb36",3195,1;
+		monster 'map_glast$,49,142,"대형 기간테스#bb36",3195,1;
+		break;
+	case 4:
+		monster 'map_glast$,262,215,"대형 기간테스#aa17",3194,1;
+		monster 'map_glast$,266,212,"대형 기간테스#aa17",3194,1;
+		monster 'map_glast$,260,219,"대형 기간테스#aa17",3194,1;
+		monster 'map_glast$,253,47,"대형 기간테스#aa26",3195,1;
+		monster 'map_glast$,263,42,"대형 기간테스#aa26",3195,1;
+		monster 'map_glast$,255,39,"대형 기간테스#aa26",3195,1;
+		monster 'map_glast$,202,219,"대형 기간테스#bb15",3194,1;
+		monster 'map_glast$,201,222,"대형 기간테스#bb15",3194,1;
+		monster 'map_glast$,201,220,"대형 기간테스#bb15",3194,1;
+		monster 'map_glast$,231,210,"대형 기간테스#bb16",3195,1;
+		monster 'map_glast$,345,117,"대형 기간테스#bb27",3194,1;
+		monster 'map_glast$,341,115,"대형 기간테스#bb27",3194,1;
+		monster 'map_glast$,351,121,"대형 기간테스#bb27",3194,1;
+		monster 'map_glast$,346,252,"대형 기간테스#bb28",3195,1;
+		monster 'map_glast$,351,256,"대형 기간테스#bb28",3195,1;
+		monster 'map_glast$,345,254,"대형 기간테스#bb28",3195,1;
+		break;
+	}
+	end;
+}
+
+1@glast,290,43,0	script	#glast_bomb_01	HIDDEN_WARP_NPC,10,10,{
+	end;
+OnTouch:
+	unitkill 0;
+	mapannounce 'map_glast$, "사라 아이린: 크하하하하!! 글레스트 헤임은 내 분노로 가득 차있다!!", bc_map,0xEBFF;
+	specialeffect2 EF_LORD;
+	sleep2 1000;
+	specialeffect2 EF_LORD;
+	end;
+}
+
+1@glast,234,47,0	duplicate(#glast_bomb_01)	#glast_bomb_02	HIDDEN_WARP_NPC,10,10
+1@glast,265,175,0	duplicate(#glast_bomb_01)	#glast_bomb_03	HIDDEN_WARP_NPC,10,10
+1@glast,135,176,0	duplicate(#glast_bomb_01)	#glast_bomb_04	HIDDEN_WARP_NPC,10,10
+1@glast,146,238,0	duplicate(#glast_bomb_01)	#glast_bomb_05	HIDDEN_WARP_NPC,10,10
+1@glast,165,212,0	duplicate(#glast_bomb_01)	#glast_bomb_06	HIDDEN_WARP_NPC,10,10
+1@glast,232,212,0	duplicate(#glast_bomb_01)	#glast_bomb_07	HIDDEN_WARP_NPC,10,10
+1@glast,253,241,0	duplicate(#glast_bomb_01)	#glast_bomb_08	HIDDEN_WARP_NPC,10,10
+1@glast,268,290,0	duplicate(#glast_bomb_01)	#glast_bomb_09	HIDDEN_WARP_NPC,10,10
+1@glast,132,289,0	duplicate(#glast_bomb_01)	#glast_bomb_10	HIDDEN_WARP_NPC,10,10
+1@glast,199,115,0	duplicate(#glast_bomb_01)	#glast_bomb_11	HIDDEN_WARP_NPC,10,10
+1@glast,139,46,0	duplicate(#glast_bomb_01)	#glast_bomb_12	HIDDEN_WARP_NPC,10,10
+1@glast,82,86,0	duplicate(#glast_bomb_01)	#glast_bomb_13	HIDDEN_WARP_NPC,10,10
+1@glast,68,226,0	duplicate(#glast_bomb_01)	#glast_bomb_14	HIDDEN_WARP_NPC,10,10
+
+// Back to entrance
+// event in #glast_move_01
+1@glast,359,294,4	script	펜리스 펜릴#glast_11	4_F_FENRIR,{
+	if (isbegin_quest(9337) == 0) {
+		cutin "fenrir_a.bmp",2;
+		mes "[펜리스 펜릴]";
+		mes "무사히 도착했구나!";
+		mes "위험한 상황이라";
+		mes "많이 걱정하고 있었어.";
+		mes "충분히 어렵고 힘든 일이었는데";
+		mes "도와줘서 고맙게 생각해.";
+		next;
+		mes "[Fenrir]";
+		mes "왠지 다음에 또 만날 수 있을 것 같은 건 기분탓인가?";
+		mes "훗.. 그랬으면 좋겠군.";
+		next;
+		mes "[Fenrir]";
+		mes "좋은 인연인 것 같은데 다음에 또 만날 수 있기를 바랄게.";
+		setquest 9337;// Wrapping up the Adventure
+		getitem 607,1;// Yggdrasilberry
+		getitem 608,1;// Seed_Of_Yggdrasil
+		set #CASHPOINTS, #CASHPOINTS+2000;
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "[Fenrir]";
+	mes "좋은 인연인 것 같은데 다음에 또 만날 수 있기를 바랄게.";
+	close;
+}
+
+1@glast,353,290,8	duplicate(#effect_glast_event01_1)	사라 아이린's alter ego	4_F_SARAH
+
+// Shards Events
+1@glast,290,147,4	script	고대의 기간테스#glast_1	4_GIGANTES_BIG,6,6,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_1");
+	.@label$ = instance_npcname("고대의 기간테스#glast_1") + "::OnMobDead";
+	monster 'map_glast$,290,147, "고대의 기간테스#X1",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,290,146, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,288,147, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_01");
+	enablenpc instance_npcname("석상 가고일#glast_02");
+	enablenpc instance_npcname("석상 가고일#glast_03");
+	enablenpc instance_npcname("석상 가고일#glast_04");
+	enablenpc instance_npcname("석상 가고일#glast_05");
+	enablenpc instance_npcname("석상 가고일#glast_06");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,300,248,4	script	고대의 기간테스#glast_2	4_GIGANTES_BIG,4,4,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_2");
+	.@label$ = instance_npcname("고대의 기간테스#glast_2") + "::OnMobDead";
+	monster 'map_glast$,300,248, "고대의 기간테스#X2",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,299,250, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,302,246, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_07");
+	enablenpc instance_npcname("석상 가고일#glast_08");
+	enablenpc instance_npcname("석상 가고일#glast_09");
+	enablenpc instance_npcname("석상 가고일#glast_10");
+	enablenpc instance_npcname("석상 가고일#glast_11");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,292,344,4	script	고대의 기간테스#glast_3	4_GIGANTES_BIG,6,6,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_3");
+	.@label$ = instance_npcname("고대의 기간테스#glast_3") + "::OnMobDead";
+	monster 'map_glast$,292,344, "고대의 기간테스#X3",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,290,346, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,291,344, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_12");
+	enablenpc instance_npcname("석상 가고일#glast_13");
+	enablenpc instance_npcname("석상 가고일#glast_14");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,107,147,6	script	고대의 기간테스#glast_4	4_GIGANTES_BIG,6,6,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_4");
+	.@label$ = instance_npcname("고대의 기간테스#glast_4") + "::OnMobDead";
+	monster 'map_glast$,107,147, "고대의 기간테스#X4",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,107,145, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,106,148, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_15");
+	enablenpc instance_npcname("석상 가고일#glast_16");
+	enablenpc instance_npcname("석상 가고일#glast_17");
+	enablenpc instance_npcname("석상 가고일#glast_18");
+	enablenpc instance_npcname("석상 가고일#glast_19");
+	enablenpc instance_npcname("석상 가고일#glast_20");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,98,248,6	script	고대의 기간테스#glast_5	4_GIGANTES_BIG,4,4,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_5");
+	.@label$ = instance_npcname("고대의 기간테스#glast_5") + "::OnMobDead";
+	monster 'map_glast$,98,248, "고대의 기간테스#X5",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,96,250, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,98,247, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_21");
+	enablenpc instance_npcname("석상 가고일#glast_22");
+	enablenpc instance_npcname("석상 가고일#glast_23");
+	enablenpc instance_npcname("석상 가고일#glast_24");
+	enablenpc instance_npcname("석상 가고일#glast_25");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,107,344,6	script	고대의 기간테스#glast_6	4_GIGANTES_BIG,6,6,{
+	end;
+OnTouch:
+	disablenpc instance_npcname("고대의 기간테스#glast_6");
+	.@label$ = instance_npcname("고대의 기간테스#glast_6") + "::OnMobDead";
+	monster 'map_glast$,107,344, "고대의 기간테스#X6",3196,1, .@label$;		// MM_L_GIGAN3
+	monster 'map_glast$,107,344, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	monster 'map_glast$,109,346, "고대의 중형 기간테스",3193,1, .@label$;	// MM_M_GIGAN3
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 번하드 박사가 말했던 고대의 기간테스다!!";
+	enablenpc instance_npcname("석상 가고일#glast_26");
+	enablenpc instance_npcname("석상 가고일#glast_27");
+	enablenpc instance_npcname("석상 가고일#glast_28");
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,277,130,8	script	석상 가고일#glast_01	4_GARGOYLE_STATUE,2,2,{
+	end;
+OnTouch:
+	getmapxy .@map$,.@x,.@y, UNITTYPE_NPC;
+	monster .@map$,.@x,.@y, "뮤턴트 가고일",3197,1, instance_npcname( strnpcinfo(0) ) + "::OnMobDead";	// MM_M_GARGOYLE
+	disablenpc instance_npcname( strnpcinfo(0) );
+	end;
+OnMobDead:
+	end;
+}
+
+1@glast,279,130,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_02	4_GARGOYLE_STATUE,2,2
+1@glast,281,130,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_03	4_GARGOYLE_STATUE,2,2
+1@glast,277,161,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_04	4_GARGOYLE_STATUE,2,2
+1@glast,279,161,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_05	4_GARGOYLE_STATUE,2,2
+1@glast,281,161,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_06	4_GARGOYLE_STATUE,2,2
+1@glast,277,250,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_07	4_GARGOYLE_STATUE,2,2
+1@glast,277,245,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_08	4_GARGOYLE_STATUE,2,2
+1@glast,272,248,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_09	4_GARGOYLE_STATUE,2,2
+1@glast,273,260,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_10	4_GARGOYLE_STATUE,2,2
+1@glast,273,235,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_11	4_GARGOYLE_STATUE,2,2
+1@glast,277,328,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_12	4_GARGOYLE_STATUE,2,2
+1@glast,279,328,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_13	4_GARGOYLE_STATUE,2,2
+1@glast,281,328,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_14	4_GARGOYLE_STATUE,2,2
+1@glast,122,132,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_15	4_GARGOYLE_STATUE,2,2
+1@glast,120,132,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_16	4_GARGOYLE_STATUE,2,2
+1@glast,118,132,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_17	4_GARGOYLE_STATUE,2,2
+1@glast,118,163,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_18	4_GARGOYLE_STATUE,2,2
+1@glast,120,163,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_19	4_GARGOYLE_STATUE,2,2
+1@glast,118,163,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_20	4_GARGOYLE_STATUE,2,2
+1@glast,122,250,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_21	4_GARGOYLE_STATUE,2,2
+1@glast,122,245,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_22	4_GARGOYLE_STATUE,2,2
+1@glast,126,248,4	duplicate(석상 가고일#glast_01)	석상 가고일#glast_23	4_GARGOYLE_STATUE,2,2
+1@glast,126,260,6	duplicate(석상 가고일#glast_01)	석상 가고일#glast_24	4_GARGOYLE_STATUE,2,2
+1@glast,126,235,8	duplicate(석상 가고일#glast_01)	석상 가고일#glast_25	4_GARGOYLE_STATUE,2,2
+1@glast,117,328,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_26	4_GARGOYLE_STATUE,2,2
+1@glast,119,328,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_27	4_GARGOYLE_STATUE,2,2
+1@glast,121,328,2	duplicate(석상 가고일#glast_01)	석상 가고일#glast_28	4_GARGOYLE_STATUE,2,2
+
+
+1@glast,1,1,0	script	#fenrir_spawn_chimera	HIDDEN_WARP_NPC,{
+	end;
+OnSpawn:
+	// Right side
+	monster 'map_glast$,351,259,"사악한 키메라#bb28",3200,1;
+	monster 'map_glast$,353,250,"사악한 키메라#bb28",3200,1;
+	monster 'map_glast$,351,243,"사악한 키메라#bb28",3200,1;
+	monster 'map_glast$,351,246,"사악한 키메라#bb28",3200,1;
+	monster 'map_glast$,355,248,"사악한 키메라#bb28",3200,1;
+	monster 'map_glast$,360,245,"사악한 키메라#bb28",3200,1;
+
+	monster 'map_glast$,298,209,"사악한 키메라#aa14",3200,1;
+	monster 'map_glast$,303,199,"사악한 키메라#aa14",3200,1;
+	monster 'map_glast$,298,198,"사악한 키메라#aa14",3200,1;
+	monster 'map_glast$,295,211,"사악한 키메라#aa14",3200,1;
+
+	monster 'map_glast$,307,163,"사악한 키메라#bb15",3200,1;
+	monster 'map_glast$,315,158,"사악한 키메라#bb15",3200,1;
+	monster 'map_glast$,318,163,"사악한 키메라#bb15",3200,1;
+	monster 'map_glast$,318,169,"사악한 키메라#bb15",3200,1;
+
+	monster 'map_glast$,337,119,"사악한 키메라#bb27",3200,1;
+	monster 'map_glast$,344,115,"사악한 키메라#bb27",3200,1;
+	monster 'map_glast$,353,117,"사악한 키메라#bb27",3200,1;
+	monster 'map_glast$,352,121,"사악한 키메라#bb27",3200,1;
+	monster 'map_glast$,345,114,"사악한 키메라#bb27",3200,1;
+	monster 'map_glast$,346,115,"사악한 키메라#bb27",3200,1;
+
+	monster 'map_glast$,264,36,"사악한 키메라#aa26",3200,1;
+	monster 'map_glast$,257,46,"사악한 키메라#aa26",3200,1;
+	monster 'map_glast$,253,44,"사악한 키메라#aa26",3200,1;
+	monster 'map_glast$,256,39,"사악한 키메라#aa26",3200,1;
+
+	// Bottom, left
+	monster 'map_glast$,207,46,"사악한 키메라#aa1",3200,1;
+	monster 'map_glast$,197,49,"사악한 키메라#aa1",3200,1;
+	monster 'map_glast$,190,52,"사악한 키메라#aa1",3200,1;
+	monster 'map_glast$,200,64,"사악한 키메라#aa1",3200,1;
+	monster 'map_glast$,206,76,"사악한 키메라#aa2",3200,1;
+	monster 'map_glast$,207,83,"사악한 키메라#aa2",3200,1;
+	monster 'map_glast$,186,82,"사악한 키메라#bb3",3200,1;
+	monster 'map_glast$,200,87,"사악한 키메라#aa2",3200,1;
+	monster 'map_glast$,188,86,"사악한 키메라#bb3",3200,1;
+	monster 'map_glast$,215,77,"사악한 키메라#aa2",3200,1;
+	monster 'map_glast$,183,90,"사악한 키메라#bb3",3200,1;
+	monster 'map_glast$,192,85,"사악한 키메라#bb3",3200,1;
+	monster 'map_glast$,154,36,"사악한 키메라#bb35",3200,1;
+	monster 'map_glast$,150,47,"사악한 키메라#bb35",3200,1;
+	monster 'map_glast$,138,52,"사악한 키메라#bb35",3200,1;
+	monster 'map_glast$,152,36,"사악한 키메라#bb35",3200,1;
+	monster 'map_glast$,105,50,"사악한 키메라#aa34",3200,1;
+	monster 'map_glast$,100,48,"사악한 키메라#aa34",3200,1;
+	monster 'map_glast$,106,52,"사악한 키메라#aa34",3200,1;
+	monster 'map_glast$,82,52,"사악한 키메라#aa33",3200,1;
+	monster 'map_glast$,85,51,"사악한 키메라#aa33",3200,1;
+	monster 'map_glast$,80,65,"사악한 키메라#aa33",3200,1;
+	monster 'map_glast$,79,58,"사악한 키메라#aa33",3200,1;
+	monster 'map_glast$,82,69,"사악한 키메라#aa33",3200,1;
+	monster 'map_glast$,97,41,"사악한 키메라#aa34",3200,1;
+	monster 'map_glast$,86,103,"사악한 키메라#bb32",3200,1;
+	monster 'map_glast$,82,102,"사악한 키메라#bb32",3200,1;
+	monster 'map_glast$,78,108,"사악한 키메라#bb32",3200,1;
+	monster 'map_glast$,85,109,"사악한 키메라#bb32",3200,1;
+	monster 'map_glast$,82,111,"사악한 키메라#bb32",3200,1;
+	monster 'map_glast$,80,144,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,72,152,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,88,159,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,73,152,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,83,160,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,77,150,"사악한 키메라#bb31",3200,1;
+	monster 'map_glast$,62,207,"사악한 키메라#aa30",3200,1;
+	monster 'map_glast$,70,215,"사악한 키메라#aa30",3200,1;
+	monster 'map_glast$,58,209,"사악한 키메라#aa30",3200,1;
+	monster 'map_glast$,68,204,"사악한 키메라#aa30",3200,1;
+	monster 'map_glast$,67,214,"사악한 키메라#aa30",3200,1;
+	monster 'map_glast$,58,250,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,64,257,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,70,251,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,65,247,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,65,256,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,60,255,"사악한 키메라#aa29",3200,1;
+	monster 'map_glast$,50,144,"사악한 키메라#bb36",3200,1;
+	monster 'map_glast$,52,143,"사악한 키메라#bb36",3200,1;
+	monster 'map_glast$,54,146,"사악한 키메라#bb36",3200,1;
+	monster 'map_glast$,55,140,"사악한 키메라#bb36",3200,1;
+
+	// Left inside
+	monster 'map_glast$,177,88,"사악한 키메라#bb4",3200,1;
+	monster 'map_glast$,163,108,"사악한 키메라#bb4",3200,1;
+	monster 'map_glast$,147,113,"사악한 키메라#bb4",3200,1;
+	monster 'map_glast$,136,179,"사악한 키메라#bb11",3200,1;
+	monster 'map_glast$,136,181,"사악한 키메라#bb11",3200,1;
+	monster 'map_glast$,125,190,"사악한 키메라#bb11",3200,1;
+	monster 'map_glast$,134,200,"사악한 키메라#bb12",3200,1;
+	monster 'map_glast$,134,190,"사악한 키메라#bb11",3200,1;
+	monster 'map_glast$,127,203,"사악한 키메라#bb12",3200,1;
+	monster 'map_glast$,151,206,"사악한 키메라#aa13",3200,1;
+	monster 'map_glast$,125,209,"사악한 키메라#bb12",3200,1;
+	monster 'map_glast$,134,204,"사악한 키메라#bb12",3200,1;
+	monster 'map_glast$,135,244,"사악한 키메라#bb19",3200,1;
+	monster 'map_glast$,149,250,"사악한 키메라#bb19",3200,1;
+	monster 'map_glast$,138,249,"사악한 키메라#bb19",3200,1;
+	monster 'map_glast$,136,251,"사악한 키메라#bb19",3200,1;
+	monster 'map_glast$,127,291,"사악한 키메라#bb20",3200,1;
+	monster 'map_glast$,126,288,"사악한 키메라#bb20",3200,1;
+	monster 'map_glast$,124,291,"사악한 키메라#bb20",3200,1;
+	monster 'map_glast$,135,309,"사악한 키메라#aa21",3200,1;
+	monster 'map_glast$,138,316,"사악한 키메라#aa21",3200,1;
+	monster 'map_glast$,139,324,"사악한 키메라#aa22",3200,1;
+	monster 'map_glast$,132,331,"사악한 키메라#aa22",3200,1;
+	monster 'map_glast$,129,315,"사악한 키메라#aa21",3200,1;
+	monster 'map_glast$,127,338,"사악한 키메라#aa22",3200,1;
+	monster 'map_glast$,126,327,"사악한 키메라#aa22",3200,1;
+	monster 'map_glast$,132,288,"사악한 키메라#bb20",3200,1;
+	monster 'map_glast$,138,309,"사악한 키메라#aa21",3200,1;
+
+	// Center and right side
+	monster 'map_glast$,158,214,"사악한 키메라#aa13",3200,1;
+	monster 'map_glast$,162,208,"사악한 키메라#aa13",3200,1;
+	monster 'map_glast$,166,215,"사악한 키메라#aa13",3200,1;
+	monster 'map_glast$,168,191,"사악한 키메라#aa10",3200,1;
+	monster 'map_glast$,164,186,"사악한 키메라#aa10",3200,1;
+	monster 'map_glast$,165,191,"사악한 키메라#aa10",3200,1;
+	monster 'map_glast$,177,189,"사악한 키메라#aa10",3200,1;
+	monster 'map_glast$,199,200,"사악한 키메라#aa9",3200,1;
+	monster 'map_glast$,205,195,"사악한 키메라#aa9",3200,1;
+	monster 'map_glast$,191,200,"사악한 키메라#aa9",3200,1;
+	monster 'map_glast$,196,192,"사악한 키메라#aa9",3200,1;
+	monster 'map_glast$,224,196,"사악한 키메라#bb8",3200,1;
+	monster 'map_glast$,233,196,"사악한 키메라#bb8",3200,1;
+	monster 'map_glast$,239,192,"사악한 키메라#bb8",3200,1;
+	monster 'map_glast$,231,193,"사악한 키메라#bb8",3200,1;
+	monster 'map_glast$,239,214,"사악한 키메라#bb16",3200,1;
+	monster 'map_glast$,232,213,"사악한 키메라#bb16",3200,1;
+	monster 'map_glast$,238,209,"사악한 키메라#bb16",3200,1;
+	monster 'map_glast$,244,220,"사악한 키메라#bb16",3200,1;
+	monster 'map_glast$,252,249,"사악한 키메라#aa18",3200,1;
+	monster 'map_glast$,268,221,"사악한 키메라#aa17",3200,1;
+	monster 'map_glast$,261,219,"사악한 키메라#aa17",3200,1;
+	monster 'map_glast$,261,248,"사악한 키메라#aa18",3200,1;
+	monster 'map_glast$,264,211,"사악한 키메라#aa17",3200,1;
+	monster 'map_glast$,267,210,"사악한 키메라#aa17",3200,1;
+	monster 'map_glast$,258,193,"사악한 키메라#bb7",3200,1;
+	monster 'map_glast$,258,192,"사악한 키메라#bb7",3200,1;
+	monster 'map_glast$,258,190,"사악한 키메라#bb7",3200,1;
+	monster 'map_glast$,269,192,"사악한 키메라#bb7",3200,1;
+	monster 'map_glast$,269,110,"사악한 키메라#aa6",3200,1;
+	monster 'map_glast$,266,105,"사악한 키메라#aa6",3200,1;
+	monster 'map_glast$,277,103,"사악한 키메라#aa6",3200,1;
+	monster 'map_glast$,263,107,"사악한 키메라#aa6",3200,1;
+	monster 'map_glast$,249,101,"사악한 키메라#aa5",3200,1;
+	monster 'map_glast$,237,93,"사악한 키메라#aa5",3200,1;
+	monster 'map_glast$,242,107,"사악한 키메라#aa5",3200,1;
+	monster 'map_glast$,237,105,"사악한 키메라#aa5",3200,1;
+	monster 'map_glast$,264,235,"사악한 키메라#aa18",3200,1;
+	monster 'map_glast$,260,255,"사악한 키메라#aa18",3200,1;
+	monster 'map_glast$,261,282,"사악한 키메라#bb23",3200,1;
+	monster 'map_glast$,260,284,"사악한 키메라#bb23",3200,1;
+	monster 'map_glast$,264,289,"사악한 키메라#bb23",3200,1;
+	monster 'map_glast$,268,301,"사악한 키메라#bb24",3200,1;
+	monster 'map_glast$,262,308,"사악한 키메라#bb24",3200,1;
+	monster 'map_glast$,273,306,"사악한 키메라#bb24",3200,1;
+	monster 'map_glast$,259,307,"사악한 키메라#bb24",3200,1;
+	monster 'map_glast$,269,283,"사악한 키메라#bb23",3200,1;
+	monster 'map_glast$,257,350,"사악한 키메라#aa25",3200,1;
+	monster 'map_glast$,268,350,"사악한 키메라#aa25",3200,1;
+	monster 'map_glast$,268,357,"사악한 키메라#aa25",3200,1;
+	monster 'map_glast$,271,358,"사악한 키메라#aa25",3200,1;
+	end;
+
+OnInstanceInit:
+	'skip_left_part = 0;
+	'back_to_entrance = 0;
+	'map_glast$ = instance_mapname("1@glast");
+	'fenrir_1$ = instance_npcname("펜리스 펜릴#glast_01");
+	'fenrir_2$ = instance_npcname("펜리스 펜릴#glast_02");
+	'fenrir_3$ = instance_npcname("펜리스 펜릴#glast_03");
+	'fenrir_4$ = instance_npcname("펜리스 펜릴#glast_04");
+	'fenrir_5$ = instance_npcname("펜리스 펜릴#glast_05");
+	'fenrir_6$ = instance_npcname("펜리스 펜릴#glast_06");
+	'fenrir_7$ = instance_npcname("펜리스 펜릴#glast_07");
+	'fenrir_8$ = instance_npcname("펜리스 펜릴#glast_08");
+	'fenrir_9$ = instance_npcname("펜리스 펜릴#glast_09");
+	'fenrir_10$ = instance_npcname("펜리스 펜릴#glast_10");
+	'fenrir_11$ = instance_npcname("펜리스 펜릴#glast_11");
+	'sarah_10$ = instance_npcname("사라 아이린#glast_10");
+	'sarah_17$ = instance_npcname("사라 아이린#glast_17");
+	'sarah_20$ = instance_npcname("사라 아이린#glast_20");
+	'sarah_ego$ = instance_npcname("사라 아이린's alter ego");
+
+	// Entrance
+	disablenpc instance_npcname("#glast_event_3");
+	for ( .@i = 1; .@i < 8; .@i++ )
+		hideonnpc instance_npcname("#effect_glast_event01_" + .@i);
+	disablenpc instance_npcname("#glast_move_01");
+
+	// Fenrir bottom
+	disablenpc instance_npcname("#glast_event_5");
+	disablenpc 'fenrir_2$;
+
+	// Fenrir left side, entrance
+	disablenpc instance_npcname("#glast_event_7");
+	disablenpc 'fenrir_3$;
+
+	// Fenrir left side, inside
+	disablenpc 'fenrir_4$;
+	disablenpc 'sarah_10$;
+	disablenpc instance_npcname("기간테스#semi1");
+	disablenpc instance_npcname("기간테스#semi2");
+	disablenpc instance_npcname("#glast_event_9");
+	for ( .@i = 1; .@i < 9; .@i++ )
+		hideonnpc instance_npcname("#effect_glast_event02_" + .@i);
+	hideonnpc instance_npcname("#effect_glast_event02_bis");
+	//for ( .@i = 1; .@i < 8; .@i++ )
+	//	disablenpc instance_npcname("#glast_event_warp_" + .@i);
+	disablenpc instance_npcname("#fenrir_left_vermilion");
+	disablenpc instance_npcname("#fenrir_left_final_1");
+
+	// Event top side
+	disablenpc instance_npcname("#glast_event_13");
+	disablenpc 'fenrir_5$;
+
+	// Skipped left side
+	disablenpc instance_npcname("#fenrir_left_final_2");
+
+	// Stairs final room
+	disablenpc instance_npcname("#glast_move_03");
+	disablenpc instance_npcname("#glast_event_15");
+	disablenpc 'fenrir_6$;
+
+	// Final room
+	disablenpc instance_npcname("#glast_move_03a");
+	disablenpc instance_npcname("#glast_event_18");
+	disablenpc instance_npcname("사라 아이린#glast_17");
+	disablenpc 'sarah_20$;
+	disablenpc 'fenrir_7$;
+	disablenpc 'fenrir_8$;
+	disablenpc 'fenrir_9$;
+	//for ( .@i = 11; .@i <= 16; .@i++ )
+	//	disablenpc instance_npcname("#glast_event_warp_" + .@i);
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		hideonnpc instance_npcname("#effect_glast_event03_" + .@i);
+	disablenpc instance_npcname("#glast_event_19");
+	disablenpc instance_npcname("#fenrir_boss_final_1");
+
+	// Outside final room
+	disablenpc instance_npcname("#glast_event_24");
+	disablenpc 'fenrir_10$;
+
+	// Skipped final room
+	disablenpc instance_npcname("#fenrir_boss_final_2");
+
+	// Bombs
+	disablenpc instance_npcname("#sarah_wrath");
+	for ( .@i = 1; .@i <= 14; .@i++ )
+		disablenpc instance_npcname("#glast_bomb_" + (.@i < 10 ? ("0"+.@i) : .@i));
+
+	// Back to entrance
+	disablenpc instance_npcname("사라 아이린's alter ego");
+	disablenpc 'fenrir_11$;
+	disablenpc instance_npcname("#glast_move_04");
+	disablenpc instance_npcname("#glast_move_05");
+
+	// Shards
+	for ( .@i = 1; .@i < 7; .@i++ )
+		disablenpc instance_npcname("고대의 기간테스#glast_" + .@i);
+	for ( .@i = 1; .@i < 29; .@i++ )
+		disablenpc instance_npcname( "석상 가고일#glast_" + (.@i < 10 ? ("0"+.@i) : .@i) );
+
+	// Spawn chimera
+	donpcevent instance_npcname("#fenrir_spawn_chimera") + "::OnSpawn";
+	end;
+}

@@ -1,0 +1,19 @@
+pvp_n_1-3.gat,0,0,0,0	monster	탐루안	1584,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	코볼트	1133,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	데저트 울프	1106,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	미믹	1191,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	하이 오크	1213,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	엘더	1377,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	듀라한	1504,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	아크라우스	1194,7,0,0,0
+pvp_n_1-3.gat,0,0,0,0	monster	딜리터	1384,7,0,0,0
+
+pvp_n_2-2.gat,0,0,0,0	monster	아놀디	2151,12,0,0,0
+pvp_n_2-2.gat,0,0,0,0	monster	거대 위스퍼	1186,12,0,0,0 
+pvp_n_2-2.gat,0,0,0,0	monster	베릿트	1032,15,0,0,0
+pvp_n_2-2.gat,0,0,0,0	monster	포이즌 스포아	1077,12,0,0,0
+
+pvp_n_2-3.gat,0,0,0,0	monster	사이드 와인더	1037,7,0,0,0
+pvp_n_2-3.gat,0,0,0,0	monster	무카	1055,7,0,0,0 
+pvp_n_2-3.gat,0,0,0,0	monster	호넷	1004,7,0,0,0
+pvp_n_2-3.gat,0,0,0,0	monster	포이즌 스포아	1077,7,0,0,0

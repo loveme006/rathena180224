@@ -1,0 +1,51 @@
+prt_gld,141,112,5	script	초기화	124,{
+
+    set .@ResetStat,5000;    // Zeny for stat reset
+    set .@ResetSkill,5000;    // Zeny for skill reset
+    set .@ResetBoth,9000;    // Zeny for resetting both together
+
+    mes "[초기화]";
+    mes "스킬과 스탯을 초기화합니다.";
+    mes "스킬: "+ .@ResetSkill +"z";
+    mes "스탯: "+ .@ResetStat +"z";
+    mes "스킬&스탯: "+ .@ResetBoth +"z";
+    mes "어떤 서비스를 원하십니까?";
+    next;
+    switch(select("^FF3355스킬 초기화:스탯 초기화:스킬&스탯 초기화^000000:취소")) {
+    case 1:
+        mes "[초기화]";
+        if (Zeny < .@ResetSkill) {
+            mes "제니가 부족합니다.";
+            close;
+        }
+        set Zeny, Zeny-.@ResetSkill;
+        sc_end SC_ALL;
+        ResetSkill;
+        mes "스킬이 초기화되었습니다.";
+        close;
+    case 2:
+        mes "[초기화]";
+        if (Zeny < .@ResetStat) {
+            mes "제니가 부족합니다.";
+            close;
+        }
+        set Zeny, Zeny-.@ResetStat;
+        ResetStatus;
+        mes "스탯이 초기화되었습니다.";
+        close;
+    case 3:
+        mes "[초기화]";
+        if (Zeny < .@ResetBoth) {
+            mes "제니가 부족합니다.";
+            close;
+        }
+        set Zeny, Zeny-.@ResetBoth;
+        sc_end SC_ALL;
+        ResetSkill;
+        ResetStatus;
+        mes "스킬과 스탯이 초기화되었습니다.";
+        close;
+    case 4:
+        close;
+    }
+}

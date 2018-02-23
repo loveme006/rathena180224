@@ -1,0 +1,29 @@
+//===== rAthena Script =======================================
+//= Guild Dungeons Monster Spawn Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Additional Comments: =================================
+//= 1.0 First version
+//= 1.1 Updated spawns to official. [L0ne_W0lf]
+//============================================================
+
+//==================================================
+// arug_dun01 - Arunafeltz Guild Dungeon
+//==================================================
+arug_dun01,0,0	monster	밴시 마스터	1974,22
+arug_dun01,0,0	monster	네크로맨서	1870,18
+arug_dun01,0,0	monster	비홀더 마스터	1975,17
+arug_dun01,0,0	monster	파나트	1797,17
+arug_dun01,0,0	monster	아우노에	1796,17
+
+//==================================================
+// schg_dun01 - Schwartzvald Guild Dungeon
+//==================================================
+schg_dun01,0,0	monster	헬 아포칼립스	1978,20
+schg_dun01,0,0	monster	주크담	1979,20
+schg_dun01,0,0	monster	헤비 메탈링	1977,15
+schg_dun01,0,0	monster	코발트 미네랄	1976,15

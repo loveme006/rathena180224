@@ -1,0 +1,4888 @@
+//===== rAthena Script ======================================= 
+//= Geffen Magic Tournament Memorial Dungeon
+//===== By: ================================================== 
+//= Nova with the help of Tokei, Diablo and others.
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Custom implementation of official script]
+//= Participate in the Geffen Magic Tournament and gain coins to trade for rewards.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. Converted to rAthena compliant standard.
+//=		Thanks to Nova, Tokei, Diablo and others for creating the script. [MasterOfMuppets]
+//============================================================ 
+
+//MAIN QUEST
+1@gef,0,0,0	script	#gmt_dummy	-1,{ end; }
+
+1@gef,119,208,0	script	#GefMagicStart	567,5,5,{
+	end;
+OnTouch:
+	if ('GMT == 0) {
+		'GMT = 1;
+		setquest 9292;
+		mapannounce instance_mapname("1@gef"),"게펜 방송: 드디어~ 기다리고 기다리던 게펜 마법대회가 곧~! 시작됩니다!!",bc_blue;
+		sleep2 3000;
+		mapannounce instance_mapname("1@gef"),"게펜 방송: 게펜 시민 여러분들과 모험가 여러분들의 많은 참여 부탁드립니다~!.",bc_blue;
+		sleep2 5000;
+		mapannounce instance_mapname("1@gef"),"게펜 방송: 게펜 마법대회 참가 신청을 원하는 모험가 여러분들은 모두 게펜 6시 분수대 앞으로 모여주세요~!.",bc_blue;
+		'charname$ = strcharinfo(0);
+		'sex = Sex;
+		'gmt_account_id = getcharid(3);
+	}
+
+	end;
+OnInit:
+	hideonnpc strnpcinfo(0);
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,120,78,0	script	#GefMagicGuess0	567,4,1,{
+	end;
+OnTouch_:
+	if ('GMT == 1) {
+		'GMT = 2;
+		showscript strcharinfo(0)+" : 여기가 토너먼트에 등록하는 곳인가...";
+		end;
+	}
+	
+	end;
+OnInit:
+	hideonnpc strnpcinfo(0);
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,142,53,0	duplicate(#GefMagicGuess0)	#GefMagicGuess1	567,1,15
+1@gef,99,53,0	duplicate(#GefMagicGuess0)	#GefMagicGuess2	567,1,20
+
+//Movie
+
+1@gef,71,86,4	duplicate(#gmt_dummy)	젊은 여인#gef1	4_F_BRZ_WOMAN
+1@gef,75,82,4	duplicate(#gmt_dummy)	젊은 여인#gef3	4_F_03
+1@gef,68,79,6	duplicate(#gmt_dummy)	잘생긴 여행자#gef	4_M_CRU
+1@gef,70,77,2	duplicate(#gmt_dummy)	남자 여행자#gef	4_M_LGTMAN
+1@gef,73,84,4	duplicate(#gmt_dummy)	젊은 여인#gef2	4_F_CAPEGIRL
+
+1@gef,73,84,0	script	MOVIECONTROL#gef	-1,13,13,{
+	end;
+OnTouch_:
+	if ('MOVIE == 1) end;
+	'MOVIE = 1;
+	'm1_timer = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'm1_timer++;
+	
+	switch('m1_timer) {
+		case   1: npctalk "I am lonely... Should I be alone during the festival?", instance_npcname("젊은 여인#gef1"); break;
+		case   4: npctalk "Oh my god ~! Why do you say that~?", instance_npcname("젊은 여인#gef2"); break;
+		case   8: npctalk "How about hitting on the 잘생긴 여행자s coming to Geffen?", instance_npcname("젊은 여인#gef3"); break;
+		case  12: npctalk "Handsome? Where are there handsome men?", instance_npcname("젊은 여인#gef1"); break;
+		case  17: npctalk "I only see guys who look so old and fat!", instance_npcname("젊은 여인#gef1"); break;
+		case  21: npctalk "Agh... I can not just sit around during this festival alone...", instance_npcname("젊은 여인#gef2"); break;
+		case  26: npctalk "No! There has to be some handsome guys around here! Don't give up!", instance_npcname("젊은 여인#gef3"); break;
+		case  30:
+			npctalk "Um... okay...", instance_npcname("젊은 여인#gef1");
+			npctalk "Um... okay...", instance_npcname("젊은 여인#gef2");
+			break;
+		case  34: npctalk "See! Look over there! A handsome guy!", instance_npcname("젊은 여인#gef3"); break;
+		case  38:
+			npctalk "Oh god! Where?!", instance_npcname("젊은 여인#gef1");
+			npctalk "Oh my god! Where? Where?", instance_npcname("젊은 여인#gef2");
+			break;
+		case  42:
+			hideoffnpc instance_npcname("잘생긴 여행자#gef");
+			npctalk "Over there~!", instance_npcname("젊은 여인#gef3");
+			break;
+		case  46: npctalk "There are many beautiful ladies at this year's Magic Tournament.", instance_npcname("잘생긴 여행자#gef"); break;
+		case  50:
+			npctalk "Yikes~~~!!", instance_npcname("젊은 여인#gef1");
+			npctalk "Yikes~~~! Is he talking about me?", instance_npcname("젊은 여인#gef2");
+			npctalk "Yikes~~! Nice!!", instance_npcname("젊은 여인#gef3");
+			break;
+		case  54: npctalk "What should I do? Should I talk to him?", instance_npcname("젊은 여인#gef3"); break;
+		case  58: npctalk "Come on~! You're good at this! Hurry up and hook up with him!", instance_npcname("젊은 여인#gef2"); break;
+		case  62: npctalk "Hurry up~!", instance_npcname("젊은 여인#gef1"); break;
+		case  66: npctalk "It's almost time for the event to begin...", instance_npcname("잘생긴 여행자#gef"); break;
+		case  70: npctalk "Maybe he's waiting for someone!", instance_npcname("젊은 여인#gef3"); break;
+		case  74: npctalk "A girlfriend?! It can't be!", instance_npcname("젊은 여인#gef2"); break;
+		case  78:
+			hideoffnpc instance_npcname("남자 여행자#gef");
+			npctalk "No... it can't be~!", instance_npcname("젊은 여인#gef1");
+			break;
+		case  79: npctalk "Have I kept you waiting for a long time?", instance_npcname("남자 여행자#gef"); break;
+		case  83: npctalk "Lucky! It's a man!!!", instance_npcname("젊은 여인#gef3"); break;
+		case  86:
+			npctalk "Looks like it's just a friend~!!", instance_npcname("젊은 여인#gef2");
+			break;
+		case  88: npctalk "Hook up with both of them? Ho ho ho~!", instance_npcname("젊은 여인#gef1"); break;
+		case  91:
+			npctalk "Yes! You have finally arrived, my love!", instance_npcname("잘생긴 여행자#gef");
+			emotion ET_HUK, getnpcid(0, instance_npcname("젊은 여인#gef1"));
+			emotion ET_HUK, getnpcid(0, instance_npcname("젊은 여인#gef2"));
+			emotion ET_HUK, getnpcid(0, instance_npcname("젊은 여인#gef3"));
+			break;
+		case  95:
+			npctalk "My love...", instance_npcname("남자 여행자#gef");
+			emotion ET_THROB, getnpcid(0, instance_npcname("남자 여행자#gef"));
+			emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef"));
+			emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef"));
+			break;
+		case  99:
+			npctalk "Maybe... There are no good guys left for us...", instance_npcname("젊은 여인#gef3");
+			emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef"));
+			break;
+		case 103:
+			npctalk "Ahem... Maybe... Just the three of us... will be together forever...", instance_npcname("젊은 여인#gef2");
+			emotion ET_THROB, getnpcid(0, instance_npcname("남자 여행자#gef"));
+			break;
+		case 106:
+			npctalk "Our friendship is forever~!!!", instance_npcname("젊은 여인#gef3");
+			emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef"));
+			sleep2 500;
+			npctalk "Our friendship is forever~!!!", instance_npcname("젊은 여인#gef1");
+			sleep2 500;
+			npctalk "Our friendship is forever~!!!", instance_npcname("젊은 여인#gef2");
+			'm1_timer++;
+			break;
+		case 109:
+			emotion ET_THROB, getnpcid(0, instance_npcname("남자 여행자#gef"));
+			emotion ET_CRY, getnpcid(0, instance_npcname("젊은 여인#gef1"));
+			emotion ET_CRY, getnpcid(0, instance_npcname("젊은 여인#gef2"));
+			emotion ET_CRY, getnpcid(0, instance_npcname("젊은 여인#gef3"));
+			break;
+		case 111: emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef")); break;
+		case 113: emotion ET_THROB, getnpcid(0, instance_npcname("남자 여행자#gef")); break;
+		case 115: emotion ET_THROB, getnpcid(0, instance_npcname("잘생긴 여행자#gef")); break;
+		case 118:
+			hideonnpc instance_npcname("남자 여행자#gef");
+			hideonnpc instance_npcname("잘생긴 여행자#gef");
+			'MOVIE = 0;
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+}
+
+//Fireworks
+
+1@gef,90,197,0	script	#Firecrackers0	649,{
+	end;
+OnTimer2500:
+	.@r = rand(0,1);
+	if (.@r != 0 ) { stopnpctimer; initnpctimer; end; }
+	stopnpctimer;
+	specialeffect .effects[rand(getarraysize(.effects))],AREA,instance_npcname(strnpcinfo(0));
+	initnpctimer;
+	end;
+
+OnInit:
+	setarray .effects[0],EF_FIREPILLARBOMB,EF_FLAMELAUNCHER,EF_FROSTDIVER2,EF_FROSTWEAPON,EF_LIGHTBOLT,EF_LIGHTNINGLOADER,EF_MAGICROD,EF_METEORSTORM,EF_NAPALMBEAT;
+	setarray .effects[9],EF_PETRIFYATTACK,EF_SEISMICWEAPON,EF_SIGHT,EF_SIGHTRASHER,EF_SPELLBREAKER,EF_STORMGUST,EF_THUNDERSTORM,EF_VOLCANO,EF_WATERBALL,EF_YUFITELHIT;
+	hideonnpc strnpcinfo(0);
+	end;
+	
+OnInstanceInit:
+	initnpctimer;
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,106,145,0	duplicate(#Firecrackers0)	#Firecrackers1	649
+1@gef,112,49,0	duplicate(#Firecrackers0)	#Firecrackers2	649
+1@gef,134,145,0	duplicate(#Firecrackers0)	#Firecrackers3	649
+1@gef,132,111,0	duplicate(#Firecrackers0)	#Firecrackers4	649
+1@gef,141,56,0	duplicate(#Firecrackers0)	#Firecrackers5	649
+1@gef,146,175,0	duplicate(#Firecrackers0)	#Firecrackers6	649
+1@gef,182,163,0	duplicate(#Firecrackers0)	#Firecrackers7	649
+1@gef,183,126,0	duplicate(#Firecrackers0)	#Firecrackers8	649
+1@gef,194,89,0	duplicate(#Firecrackers0)	#Firecrackers9	649
+1@gef,59,125,0	duplicate(#Firecrackers0)	#Firecrackers10	649
+1@gef,62,147,0	duplicate(#Firecrackers0)	#Firecrackers11	649
+1@gef,62,91,0	duplicate(#Firecrackers0)	#Firecrackers12	649
+1@gef,71,181,0	duplicate(#Firecrackers0)	#Firecrackers13	649
+1@gef,112,196,0	duplicate(#Firecrackers0)	#Firecrackers14	649
+1@gef,98,58,0	duplicate(#Firecrackers0)	#Firecrackers15	649
+1@gef,98,126,0	duplicate(#Firecrackers0)	#Firecrackers16	649
+1@gef,127,196,0	duplicate(#Firecrackers0)	#Firecrackers17	649
+1@gef,40,125,0	duplicate(#Firecrackers0)	#Firecrackers18	649
+1@gef,116,75,0	duplicate(#Firecrackers0)	#Firecrackers19	649
+1@gef,58,112,0	duplicate(#Firecrackers0)	#Firecrackers20	649
+1@gef,40,112,0	duplicate(#Firecrackers0)	#Firecrackers21	649
+1@gef,107,111,0	duplicate(#Firecrackers0)	#Firecrackers22	649
+1@gef,127,49,0	duplicate(#Firecrackers0)	#Firecrackers23	649
+1@gef,123,75,0	duplicate(#Firecrackers0)	#Firecrackers24	649
+1@gef,199,126,0	duplicate(#Firecrackers0)	#Firecrackers25	649
+1@gef,183,113,0	duplicate(#Firecrackers0)	#Firecrackers26	649
+1@gef,199,114,0	duplicate(#Firecrackers0)	#Firecrackers27	649
+1@gef,140,126,0	duplicate(#Firecrackers0)	#Firecrackers28	649
+
+//SHOPS
+
+1@gef_in,77,167,0	shop	Tool Dealer#gefa_0et	1_F_03,1750:-1,611:-1,501:-1,502:-1,503:-1,504:-1,645:-1,656:-1,713:-1,601:-1,602:-1,2241:-1
+1@gef_in,77,173,0	shop	Trader#gef_0et	1_M_WIZARD,717:-1,1601:-1,1604:-1,1607:-1,1610:-1,2232:-1,2321:-1,2332:-1
+1@gef_in,74,144,0	shop	Trader#gef_0et1	1_F_01,911:-1,910:-1,912:-1
+1@gef_in,65,144,4	shop	Tool Dealer#gefb_0et1	1_M_WIZARD,1092:-1,1093:-1,713:-1
+
+1@gef_in,22,171,7	shop	무기 상인#GMT	84,1146:-1,1245:-1
+1@gef_in,26,178,4	shop	방어구 상인#GMT	66,2628:-1,2101:-1,2107:-1,2401:-1,2501:-1,2230:-1,2301:-1,2303:-1,2305:-1,2321:-1,2332:-1
+1@gef_in,30,178,4	shop	무기 상인#GMT2	47,1750:-1,1751:-1,1101:-1,1701:-1,1201:-1,1204:-1,1207:-1,1210:-1,1213:-1,1216:-1,1601:-1,1604:-1,1607:-1,1610:-1
+
+1@gef,193,152,4	shop	펫 조련사#GMT	124,537:-1,643:-1,10013:-1,10014:-1,6113:-1,6114:-1,6115:-1,6110:-1,6100:-1,6098:-1,6112:-1,6104:-1,6108:-1,6111:-1,7824:1000,6097:1000,6107:1000
+1@gef,196,111,3	shop	요리#gef_0et	85,7482:-1
+1@gef,131,58,4	script	게펜 코인 교환원#g	4_F_ZONDAGIRL,{ // 55149
+	.@n$ = "[ 게펜 코인 교환원 ]";
+	mes .@n$,"장비용 마법 토너먼트 코인을 교환해드립니다."; next;
+	goto L_Menu;
+	end;
+
+L_Menu:
+	switch(select("방패:반지:갑옷:마법서:옵션 부여:대화를 끝낸다.")){
+		case 1:
+			mes .@n$,"방패는 두 가지 유형으로 교환할 수 있습니다.";
+			next;
+L_Shield:
+			switch(select("매직 리플렉터 ^3355FF<900 코인>^000000:대백과사전 개정판 ^3355FF<900 코인>^000000:이전 메뉴로 돌아간다.")){
+				case 1: .@item = 2185; .@cost = 900; break;
+				case 2: .@item = 2186; .@cost = 900; break;
+				case 3: goto L_Menu; break;
+			}
+			mes .@n$;
+			mes "<ITEM>"+getitemname(.@item)+"<INFO>"+.@item+"</INFO></ITEM>";
+			mes "가격은 "+.@cost+" 코인입니다.";
+			mes "코인으로 교환하시겠습니까?";
+			next;
+				switch(select("교환하지 않는다.:교환한다.")){
+					case 1:
+						mes .@n$,"다른 장비도 살펴보세요.";
+						next;
+						goto L_Shield;
+						break;
+					case 2:
+						if( countitem(6671) < .@cost ) { 
+							mes .@n$,"게펜 마법 토너먼트 코인"+.@cost+" 개가 필요합니다."; 
+							next;
+							mes .@n$,"코인을 모으려면 토너먼트에 참가하세요."," ","다른 도움이 필요하세요?"; 
+							goto L_Shield; 
+						}
+						if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+						delitem 6671,.@cost;
+						getitem .@item,1;
+						mes .@n$,"감사합니다.";
+						end;			
+				}
+
+		case 2:
+			mes .@n$;
+			mes "반지는 두 가지 유형으로 교환이 가능합니다.";
+			next;
+L_Ring:
+				switch(select("신체 강화 반지 ^3355FF<1350 코인>^000000:마법 증폭 반지 ^3355FF<1350 코인>^000000:이전 메뉴로 돌아간다.")){
+					case 1:
+						.@item = 2963;
+						.@cost = 1350;
+						break;
+					case 2:
+						.@item = 2964;
+						.@cost = 1350;
+						break;
+					case 3:
+						goto L_Menu;
+						break;
+				}
+			mes .@n$;
+			mes "<ITEM>"+getitemname(.@item)+"<INFO>"+.@item+"</INFO></ITEM>";
+			mes "가격은 "+.@cost+" 코인입니다.";
+			mes "코인으로 교환하시겠습니까?";
+			next;
+				switch(select("교환하지 않는다.:교환한다.")){
+					case 1:
+						mes .@n$,"다른 장비도 살펴보세요.";
+						next;
+						goto L_Ring;
+						break;
+					case 2:
+						if( countitem(6671) < .@cost ) { 
+							mes .@n$,"게펜 마법 토너먼트 코인"+.@cost+" 개가 필요합니다."; 
+							next;
+							mes .@n$,"코인을 모으려면 토너먼트에 참가하세요."," ","다른 도움이 필요하세요?"; 
+							goto L_Ring; 
+						}
+						if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+						delitem 6671,.@cost;
+						getitem .@item,1;
+						mes .@n$,"감사합니다.";
+						end;						
+				}
+		case 3:
+			mes .@n$;
+			mes "갑옷은 두 가지 유형으로 교환이 가능합니다.";
+			next;
+L_Armor:
+				switch(select("안티 매직 슈츠 ^3355FF<1800 코인>^000000:게펜 매직 슈츠 ^3355FF<1800 코인>^000000:이전 메뉴로 돌아간다.")){
+					case 1:
+						.@item = 15073;
+						.@cost = 1800;
+						break;
+					case 2:
+						.@item = 15074;
+						.@cost = 1800;
+						break;
+					case 3:
+						goto L_Menu;
+						break;
+				}
+			mes .@n$;
+			mes "<ITEM>"+getitemname(.@item)+"<INFO>"+.@item+"</INFO></ITEM>";
+			mes "가격은 "+.@cost+" 코인입니다.";
+			mes "코인으로 교환하시겠습니까?";
+			next;
+				switch(select("교환하지 않는다.:교환한다.")){
+					case 1:
+						mes .@n$,"다른 장비도 살펴보세요.";
+						next;
+						goto L_Armor;
+						break;
+					case 2:
+						if( countitem(6671) < .@cost ) { 
+							mes .@n$,"게펜 마법 토너먼트 코인"+.@cost+" 개가 필요합니다."; 
+							next;
+							mes .@n$,"코인을 모으려면 토너먼트에 참가하세요."," ","다른 도움이 필요하세요?"; 
+							goto L_Armor; 
+						}
+						if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+						delitem 6671,.@cost;
+						getitem .@item,1;
+						mes .@n$,"감사합니다.";
+						end;
+				}
+		case 4:
+			mes .@n$;
+			mes "교환 가능한 마법서는 4종입니다.";
+			next;
+L_Book:
+				switch(select("마법서(어스 스트레인) ^3355FF<1200 코인>^000000:마법서(체인 라이트닝) ^3355FF<1200 코인>^000000:마법서(크림즌 록) ^3355FF<1200 코인>^000000:마법서(드레인 라이프) ^3355FF<900 코인>^000000:이전 메뉴로 돌아간다.")){
+					case 1:
+						.@item = 6202;
+						.@cost = 1200;
+						break;
+					case 2:
+						.@item = 6203;
+						.@cost = 1200;
+						break;
+					case 3:
+						.@item = 6204;
+						.@cost = 1200;
+						break;
+					case 4:
+						.@item = 6205;
+						.@cost = 900;
+						break;
+					case 5:
+						goto L_Menu;
+						break;
+				}
+			mes .@n$;
+			mes "<ITEM>"+getitemname(.@item)+"<INFO>"+.@item+"</INFO></ITEM>";
+			mes "가격은 "+.@cost+" 코인입니다.";
+			mes "코인으로 교환하시겠습니까?";
+			next;
+			switch(select("교환하지 않는다.:교환한다.")){
+				case 1:
+					mes .@n$,"다른 장비도 살펴보세요.";
+					next;
+					goto L_Book;
+					break;
+				case 2:
+					if( countitem(6671) < .@cost ) { 
+						mes .@n$,"게펜 마법 토너먼트 코인"+.@cost+" 개가 필요합니다."; 
+						next;
+						mes .@n$,"코인을 모으려면 토너먼트에 참가하세요."," ","다른 도움이 필요하세요?"; 
+						goto L_Armor; 
+					}
+					if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+					delitem 6671,.@cost;
+					getitem .@item,1;
+					mes .@n$,"감사합니다.";
+					end;
+			}
+		case 5:
+			mes .@n$;
+			mes "교환 가능한 주문서는 2종입니다.";
+			next;
+L_RandOpt:
+				switch(select("게펜 마법 방어구 주문서 ^3355FF<100 코인>^000000:게펜 마법 액세서리 주문서 ^3355FF<100 코인>^000000:이전 메뉴로 돌아간다.")){
+					case 1:
+						.@item = 23675;
+						.@cost = 100;
+						break;
+					case 2:
+						.@item = 23679;
+						.@cost = 100;
+						break;
+					case 3:
+						goto L_Menu;
+						break;
+				}
+			mes .@n$;
+			mes "<ITEM>"+getitemname(.@item)+"<INFO>"+.@item+"</INFO></ITEM>";
+			mes "가격은 "+.@cost+" 코인입니다.";
+			mes "코인으로 교환하시겠습니까?";
+			next;
+			switch(select("교환하지 않는다.:교환한다.")){
+				case 1:
+					mes .@n$,"다른 장비도 살펴보세요.";
+					next;
+					goto L_RandOpt;
+					break;
+				case 2:
+					if( countitem(6671) < .@cost ) { 
+						mes .@n$,"게펜 마법 토너먼트 코인"+.@cost+" 개가 필요합니다."; 
+						next;
+						mes .@n$,"코인을 모으려면 토너먼트에 참가하세요."," ","다른 도움이 필요하세요?"; 
+						goto L_Armor; 
+					}
+					if(!checkweight(.@item,1)) { mes .@n$; mes "^FF0000"+getitemname(.@item)+"^000000를 들기엔 너무 무겁습니다."; end; }
+					delitem 6671,.@cost;
+					getitem .@item,1;
+					mes .@n$,"감사합니다.";
+					end;
+			}
+		case 6:
+			mes .@n$;
+			mes "다음에 또 봐요~!";
+			close;
+
+	}
+	end;
+}
+
+//On Touch NPCs
+
+1@gef,0,0,0	script	#gmt_quotes	-1,{
+	end;
+OnTouch_:
+	if (strnpcinfo(0) == "Old Bachelor#z1_0et") setarray .@quotes$, "늙은 총각 : 이건 좋은 축제야, 그리고 나는 혼자...","늙은 총각: 그 여자애를 때려줘야 할 것 같은데...","늙은 총각: 매직 토너먼트를 하는 동안 여기는 너무 붐벼";
+	if (strnpcinfo(0) == "Little Geffen Boy#a2_0e") setarray .@quotes$, "Little Geffen Boy: Ugh ha ha~ Look~! That guy passing by there is so ugly~!!","Little Geffen Boy: I am bored! Is there anything fun to do around here?","Little Geffen Boy: I should ask my father for some pocket change.";
+	if (strnpcinfo(0) == "디오 아네모스#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "디오 아네모스 : Any time I face a woman, I really have no choice but to go easy on her...";
+		else setarray .@quotes$, "디오 아네모스: I want to eat some cookies before the Magic Tournament starts.","디오 아네모스: I'm hungry... Can i have some food?","디오 아네모스: Geffen is so lively whenever I visit.";
+	}
+	if (strnpcinfo(0) == "오르도르#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "오르도르 : Even powerful people like me can lose...";
+		else setarray .@quotes$, "오르도르: I've been waiting for this air and mood for a long time.","오르도르: Show us what you have trained for.","오르도르: Let's go register for the competition.";
+	}
+	if (strnpcinfo(0) == "쥬#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "Ju : ... You really defeat me...";
+		else setarray .@quotes$, "Ju: I will make sure to register for the Magic Tournament quickly.","Ju: I only see novices around here.","Ju: I will surprise them with my excellent battle skills!";
+	}
+	if (strnpcinfo(0) == "블루트 하세#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "블루트 하세 : How can somebody be so powerful...";
+		else setarray .@quotes$, "블루트 하세: Where do I go to register for the Magic Tournament?","블루트 하세: My clothes will be stained with the blood of my enemies.";
+	}
+	if (strnpcinfo(0) == "쿠로 아쿠마#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "쿠로 아쿠마 : Maybe just being evil isn't enough to win the tournament...";
+		else setarray .@quotes$, "쿠로 아쿠마: It's like a calm before a storm~!","쿠로 아쿠마: So peaceful~! I love it!","쿠로 아쿠마: There quite a few innocent lambs joining the Magic Tournament~!";
+	}
+	if (strnpcinfo(0) == "오도리코#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "오도리코 : This is what youth looks like, sister... I'm truly jealous...";
+		else setarray .@quotes$, "오도리코: I can't find my type of competitors at all!","오도리코: It is so crowded during the Tournament~!","오도리코: It should be fun dancing in the festival~!";
+	}
+	if (strnpcinfo(0) == "페이 카나비언#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "페이 카나비언 : I actually lost... How is this possible?";
+		else setarray .@quotes$, "페이 카나비언: It is time to show off my Philosopher's Stone at the Tournament~!","페이 카나비언: No one can stop me. Ha ha ha ha ha ha~!","페이 카나비언: Have you seen my Homonculus Alphonse?";
+	}
+	if (strnpcinfo(0) == "레체니예#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "Lecheniyes : Most people won't even remember the outcome of the tournament, so there's no real sense of failure...";
+		else setarray .@quotes$, "Licheni: Happy Geffen Magic Tournament~!","Licheni: It will be a very fun Magic Tournament this year.","Licheni: Yahoo~ Let's go join the Magic Tournament~";
+	}
+	if (strnpcinfo(0) == "이포더스#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "이포더스 : Losing to a woman... Now that's a terrifying thought.";
+		else setarray .@quotes$, "이포더스: I will show who I am at the Magic Tournament!","이포더스: Strong attack and solid defense! Sigh, I wish I had a girlfriend...","이포더스: Is there any beautiful ladies around to show my chivalry?";
+	}
+	if (strnpcinfo(0) == "페몽#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "페몽 : No time to chat, I need to go comfort the other girls who failed.";
+		else setarray .@quotes$, "페몽: I heard a new hat was released in Geffen.","페몽: There are no other decent competitors in the Tournament?","페몽: I've never met anyone who has a better fashion sense than me.";
+	}
+	if (strnpcinfo(0) == "아르히#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "아르히: The tournament is finally over! It was really a great year... Way too intense!";
+		else setarray .@quotes$, "아르히: I'm thinking of joining the Magic Tournament!","아르히: This should be a pretty good experience.","아르히: Are there any competitors that look weak?";
+	}
+	if (strnpcinfo(0) == "드위그#z1_0et") {
+		if ('GMT_1QUE > 1) setarray .@quotes$, "드위그 : Needless to say, it was a pretty decisive battle!";
+		else setarray .@quotes$, "드위그: I want this Magic Tournament to become my turning point.","드위그: I am quite depressed these days...","드위그: I will show my great skills to all of my students.";
+	}
+	
+	showscript .@quotes$[rand(getarraysize(.@quotes$))], getnpcid(0);
+	end;
+}
+
+1@gef,124,173,4	duplicate(#gmt_quotes)	Old Bachelor#z1_0et	1_M_03,4,4
+1@gef,91,117,6	duplicate(#gmt_quotes)	디오 아네모스#z1_0et	4_GEFFEN_01,4,4
+1@gef,85,68,6	duplicate(#gmt_quotes)	오르도르#z1_0et	4_GEFFEN_05,4,4
+1@gef,178,91,6	duplicate(#gmt_quotes)	쥬#z1_0et	4_GEFFEN_11,4,4
+1@gef,194,91,4	duplicate(#gmt_quotes)	Little Geffen Boy#a2_0e	4_KID01,4,4
+1@gef,111,62,6	duplicate(#gmt_quotes)	블루트 하세#z1_0et	4_GEFFEN_06,4,4
+1@gef,104,42,6	duplicate(#gmt_quotes)	쿠로 아쿠마#z1_0et	4_GEFFEN_07,4,4
+1@gef,158,63,4	duplicate(#gmt_quotes)	오도리코#z1_0et	4_GEFFEN_10,4,4
+1@gef,117,72,6	duplicate(#gmt_quotes)	페이 카나비언#z1_0et	4_F_GEFFEN_FAY,4,4
+1@gef,137,53,4	duplicate(#gmt_quotes)	레체니예#z1_0et	4_GEFFEN_09,4,4
+1@gef,115,66,6	duplicate(#gmt_quotes)	이포더스#z1_0et	4_GEFFEN_08,4,4
+1@gef,53,90,6	duplicate(#gmt_quotes)	페몽#z1_0et	4_GEFFEN_04,4,4
+1@gef,145,125,4	duplicate(#gmt_quotes)	아르히#z1_0et	4_GEFFEN_02,4,4
+1@gef,120,98,4	duplicate(#gmt_quotes)	드위그#z1_0et	4_GEFFEN_12,4,4
+
+//WARPS
+1@gef_in,70,132,0	warp2	#gef_a4_0et	2,2,1@gef,46,88
+1@gef_in,106,181,0	warp2	#gef_a3_0et	2,2,1@gef,178,63
+1@gef,182,59,0	warp2	#gef_a1_0et	2,2,1@gef_in,106,177
+1@gef_in,70,158,0	warp2	#gef_a5_0et	2,2,1@gef_in,70,146
+1@gef_in,70,149,0	warp2	#gef_a6_0et	2,2,1@gef_in,70,161
+1@gef,43,85,0	warp2	#gef_a2_0et	2,2,1@gef_in,70,138
+1@gef,98,141,0	warp2	#gef_a8_0et	2,2,1@gef_in,28,160
+1@gef_in,28,156,0	warp2	#gef_a7_0et	2,2,1@gef,101,138
+
+//SPECTATORS
+
+-	script	#d_c	4_M_DST_TOUGH,{ end; }
+
+1@gef,175,74,4	duplicate(#d_c)	마법대회 관중#c0	4_M_DST_TOUGH
+1@gef,130,196,6	duplicate(#d_c)	마법대회 관중#c1	1_ETC_01
+1@gef,137,190,6	duplicate(#d_c)	마법대회 관중#c2	1_F_02
+1@gef,149,196,6	duplicate(#d_c)	마법대회 관중#c3	1_M_01
+1@gef,136,188,6	duplicate(#d_c)	마법대회 관중#c4	4_F_TWGRANDMOM
+1@gef,110,195,4	duplicate(#d_c)	마법대회 관중#c5	1_M_03
+1@gef,134,63,4	duplicate(#d_c)	마법대회 관중#c6	1_M_MERCHANT
+1@gef,145,47,4	duplicate(#d_c)	마법대회 관중#c7	1_M_MOC_LORD
+1@gef,154,55,4	duplicate(#d_c)	마법대회 관중#c8	1_M_ORIENT01
+1@gef,147,65,4	duplicate(#d_c)	마법대회 관중#c9	1_M_PASTOR
+1@gef,163,76,4	duplicate(#d_c)	마법대회 관중#c10	1_F_PRIEST
+1@gef,180,84,4	duplicate(#d_c)	마법대회 관중#c11	1_M_INNKEEPER
+1@gef,189,97,4	duplicate(#d_c)	마법대회 관중#c12	1_M_SIZ
+1@gef,194,110,4	duplicate(#d_c)	마법대회 관중#c13	1_M_PAY_ELDER
+1@gef,185,107,6	duplicate(#d_c)	마법대회 관중#c14	1_M_PRON_KING
+1@gef,189,120,4	duplicate(#d_c)	마법대회 관중#c15	4_F_01
+1@gef,44,95,6	duplicate(#d_c)	마법대회 관중#c17	1_M_JOBTESTER
+1@gef,52,83,6	duplicate(#d_c)	마법대회 관중#c18	1_M_KNIGHTMASTER
+1@gef,130,196,6	duplicate(#d_c)	마법대회 관중#c19	1_ETC_01
+1@gef,104,189,4	duplicate(#d_c)	마법대회 관중#c20	1_F_01
+1@gef,94,194,4	duplicate(#d_c)	마법대회 관중#c21	1_F_03
+1@gef,52,155,6	duplicate(#d_c)	마법대회 관중#c22	1_F_04
+1@gef,55,142,4	duplicate(#d_c)	마법대회 관중#c23	1_F_GYPSY
+1@gef,58,146,4	duplicate(#d_c)	마법대회 관중#c24	1_M_BARD
+1@gef,45,149,6	duplicate(#d_c)	마법대회 관중#c25	1_F_LIBRARYGIRL
+1@gef,44,133,6	duplicate(#d_c)	마법대회 관중#c26	1_M_HOF
+1@gef,45,126,6	duplicate(#d_c)	마법대회 관중#c27	1_M_02
+1@gef,44,118,6	duplicate(#d_c)	마법대회 관중#c28	1_F_MERCHANT_01
+1@gef,55,113,4	duplicate(#d_c)	마법대회 관중#c29	1_F_MERCHANT_02
+1@gef,50,107,6	duplicate(#d_c)	마법대회 관중#c30	1_M_JOBGUIDER
+1@gef,72,65,6	duplicate(#d_c)	마법대회 관중#c31	1_M_LIBRARYMASTER
+1@gef,83,60,6	duplicate(#d_c)	마법대회 관중#c32	1_F_ORIENT_01
+1@gef,94,68,6	duplicate(#d_c)	마법대회 관중#c33	1_F_ORIENT_02
+1@gef,97,66,4	duplicate(#d_c)	마법대회 관중#c34	1_F_ORIENT_03
+1@gef,167,120,4	duplicate(#d_c)	마법대회 관중#c36	1_M_SIGN1
+1@gef,152,120,4	duplicate(#d_c)	마법대회 관중#c37	2_F_MAGICMASTER
+1@gef,138,110,4	duplicate(#d_c)	마법대회 관중#c38	4_F_01
+1@gef,128,99,4	duplicate(#d_c)	마법대회 관중#c39	4_F_02
+1@gef,105,109,6	duplicate(#d_c)	마법대회 관중#c40	4_F_03
+1@gef,96,122,6	duplicate(#d_c)	마법대회 관중#c41	4_F_04
+1@gef,132,137,6	duplicate(#d_c)	마법대회 관중#c42	4_F_TRAINEE
+1@gef,141,132,4	duplicate(#d_c)	마법대회 관중#c43	1_M_SIGNART
+1@gef,124,72,4	duplicate(#d_c)	마법대회 관중#c44	1_M_SIGNMCNT
+1@gef,130,49,6	duplicate(#d_c)	마법대회 관중#c45	1_M_SIGNMONK2
+
+
+//Dialogue NPC
+
+1@gef_in,110,172,0	script	Christopher#1_0et	1_M_SMITH,{
+	mes "[ Christopher ]";
+	mes "Welcome to Christopher's Workshop.";
+	mes "Ye can get all yer stuff for";
+	mes "forging here. What business";
+	mes "brings ye to me?";
+	next;
+	mes "[ Christopher ]";
+	mes "We are taking a break from our forges in honor of the festival.";
+	mes "Please come back again after the festival is done.";
+	close;
+}
+
+1@gef,129,65,4	script	Point Merchant#gef_m	8_F_GIRL,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you lose some weight. -";
+		close;
+	}
+	mes "[ Point Merchant ]";
+	mes "Hello. I'm selling a catalyst called ^FF0000Points^000000 for Sorcerers. What would you like?";
+	next;
+	.@i = select("Scarlet Points - 200z:Lime Green Points - 200z:Indigo Points - 200z:Yellow Wish Points - 200z:Cancel")-1;
+	mes "[ Point Merchant ]";
+	if (.@i == 4) {
+		mes "You can't find the stuff you need?";
+		close;
+	}
+	setarray .@itemid[0],6360,6363,6361,6362;
+	setarray .@color$[0],"Scarlet","Lime Green","Indigo","Yellow Wish";
+	mes "You have chosen "+.@color$[.@i]+" Points.";
+	mes "How many do you want?";
+	mes "If you want to cancel, enter 0.";
+	next;
+	input .@amount;
+	mes "[ Point Merchant ]";
+	if (.@amount == 0) {
+		mes "You've cancelled the trade.";
+		close;
+	}
+	if (Zeny < .@amount*200) {
+		mes "You don't seem to have enough money.";
+		close;
+	}
+	if (!checkweight(.@itemid[.@i],.@amount)) {
+		mes "You don't have enough space in your inventory to buy this amount.";
+		close;
+	}
+	Zeny = Zeny-(.@amount*200);
+	getitem .@itemid[.@i],.@amount;
+	mes "Thank you very much. See you~!";
+	close;
+}
+
+1@gef,127,65,3	script	Universal Rental NPC#gf	8W_SOLDIER,{
+	if (ismounting()) {
+		message strcharinfo(0),"You must first remove your mount.";
+		end;
+	} else if ((eaclass()&EAJ_THIRDMASK==EAJ_RANGER) && !countitem(6124)) {
+		if (!checkfalcon() && getskilllv("HT_FALCON") && !checkwug()) {
+			if(select(" ~ Falcon: ~ Warg")==1) setfalcon;
+			else getitem 6124,1; //Wolf's_Flute
+		} else getitem 6124,1; //Wolf's_Flute
+	} else if ((eaclass()&EAJ_THIRDMASK==EAJ_MECHANIC) && !checkcart() && getskilllv("MC_PUSHCART")) {
+		if (!checkmadogear() && getskilllv("NC_MADOLICENCE")) {
+			if(select(" ~ Cart: ~ Mado")==1) setcart;
+			else setmadogear;
+		} else setcart;
+	} else if (!checkcart() && getskilllv("MC_PUSHCART")) setcart;
+	else if (!checkfalcon() && getskilllv("HT_FALCON") && !checkwug()) setfalcon;
+	else if (!checkriding() && !checkdragon() && getskilllv("KN_RIDING")) {
+		if (eaclass()&EAJ_THIRDMASK==EAJ_RUNE_KNIGHT) setdragon;
+		else setriding;
+	} else if (!checkmadogear() && getskilllv("NC_MADOLICENCE")) setmadogear;
+	else {
+		message strcharinfo(0),"You do not meet requirements to rent.";
+		end;
+	}
+	specialeffect2 EF_TEIHIT3;
+	end;
+}
+
+1@gef,124,65,4	script	Kafra Employee#gef_t	4_F_KAFRA4,{
+	cutin "kafra_04",2;
+	mes "[Kafra Employee]";
+	mes "Welcome~!";
+	mes "The Kafra Services.";
+	mes "are always on your side.";
+	mes "So how can I help you?";
+	callfunc "F_Kafra",5,5,1,50,0;
+}
+
+
+dali,100,147,3	script	차원 장치#gefma	PORTAL,{
+	.@n$ = "[ 차원 장치 ]";
+			
+		.@ins_geffen_time = checkquest(9316,PLAYTIME);
+		
+		if ( GeffenTournament < gettimetick(2)) {
+
+			.@party_id = getcharid(1);
+			.@p_name$ = getpartyname(.@party_id);
+			.@md_name$ = "Geffen Magic Tournament";
+			
+			getpartymember(getcharid(1),0);
+			set .@GPPartySize,$@partymembercount;
+			
+			if( !getcharid(1) || getcharid(3) != getpartyleader( getcharid(1),1 ) || .@GPPartySize > 1) {
+				mes .@n$;
+				mes "여기는 솔로 인스턴스입니다. 솔로 파티를 구성하십시오.";
+				end;
+			}
+			
+			if (!.@party_id) {
+				mes .@n$;
+				mes "여기는 솔로 인스턴스입니다. 솔로 파티를 구성하십시오.";
+				end;
+			}
+				
+			switch(select("그냥 놔둔다.:^3355FF장치를 사용한다.^000000")){
+			
+				case 1:
+					mes .@n$;
+					mes "장치에 의해 시간이 왜곡되는 것을 느낄 수 있습니다.";
+					end;
+					
+				case 2:
+					if (BaseLevel < 90) {
+						mes .@n$; 
+						mes "계속하려면 레벨이 90 이상이여야 합니다.";
+						end;
+					}
+						switch(instance_enter(.@md_name$)) {
+							case 3:
+								mes "알 수없는 오류가 발생했습니다.";
+								end;
+							case 2:
+								mes "게펜 마법 토너먼트 인스턴스가 생성되지 않았습니다. Emmitt White와 먼저 대화하십시오.";
+								end;
+							case 1:
+								mes "등록된 참가자만 "+.@md_name$+" 에 입장할 수 있습니다.";
+								end;
+							case 0:
+								mapannounce "dali02",strcharinfo(0)+" of the party, "+.@p_name$+" is entering the "+.@md_name$+".",bc_map,"0x00ff99";
+								GeffenTournament = gettimetick(2) + 82800;
+								if(.@ins_geffen_time != -1) erasequest 9316;
+								setquest 9316;
+								end;
+						}
+					end;
+			}
+		} else if ( GeffenTournament > gettimetick(2) ) {
+			mes .@n$;
+			mes "균열의 문이 열려있지 않은 것 같습니다.";
+			end;
+		}
+		end;
+
+}
+
+
+
+dali,98,141,3	script	Emmitt White	4_M_KHKYEL,{
+	.@n$ = "[ 시간 여행 연구원 ]";
+	
+		if (BaseLevel < 90) {
+			mes .@n$; 
+			mes "계속하려면 레벨이 90 이상이여야 합니다.";
+			end;
+		}
+	
+	if (checkquest(9309) != -1) {
+		mes .@n$,
+		"토너먼트에서 돌아오셨군요.",
+		"재미있는걸 찾았나요?";
+		next;
+		mes .@n$,
+		"저는 아직 더 할거에요~!",
+		"내일 다시 올 수 있어요?",
+		"기다리고 있을게요.";
+		next;
+
+				for (.@i = 9284; .@i <= 9314; .@i++) {
+					if (checkquest(.@i) != -1) {
+						erasequest .@i;
+					}
+				}
+				
+			changequest 9315,9316;
+	}
+	
+	if (checkquest(9308) != -1) {
+		mes .@n$,
+		"대회에서 우승했다니 믿을 수 없어!";
+		next;
+		mes .@n$,
+		"저는 아직 더 할거에요~!",
+		"내일 다시 올 수 있어요?",
+		"기다리고 있을게요.";
+		next;
+
+				for (.@i = 9284; .@i <= 9314; .@i++) {
+					if (checkquest(.@i) != -1) {
+						erasequest .@i;
+					}
+				}
+				
+			changequest 9315,9316;
+	}
+	
+		getpartymember(getcharid(1),0);
+		set .@GPPartySize,$@partymembercount;
+		
+		if( !getcharid(1) || getcharid(3) != getpartyleader( getcharid(1),1 ) || .@GPPartySize > 1) {
+			mes .@n$;
+			mes "여기는 솔로 인스턴스입니다. 솔로 파티를 구성하세요.";
+			end;
+		}
+		
+	
+	// 23 Hour Cooldown
+
+	if ( GeffenTournament < gettimetick(2) ) {
+		.@party_id = getcharid(1);
+		.@p_name$ = getpartyname(.@party_id);
+		.@md_name$ = "Geffen Magic Tournament";
+
+			if (!.@party_id) {
+				mes .@n$;
+				mes "계속하려면 파티의 리더여야 합니다.";
+				end;
+			}
+			
+		if (getcharid(0) == getpartyleader(.@party_id,2)){
+			mes .@n$; 
+			mes "아시나요? 옛날에 게펜에는 마법 토너먼트가 있었어요.";
+			next;
+			mes .@n$; 
+			mes "저는 토너먼트에 대해 많은 연구를 해왔지만 연구만으로는 많은 정보를 얻지 못했어요.";
+			next;
+			mes .@n$; 
+			mes "이 시간 차가 제 연구에 도움이 될 수 있다는 것을 알았을 때, 연구를 계속하는 것을 저항하지 못했어요.";
+			next;
+			mes .@n$; 
+			mes "그리고 이제는 토너먼트가 개최되던 시간으로 돌아갈 수 있는 모험가를 만나게 되었습니다.";
+			next;
+			mes .@n$; 
+			mes "차원 장치를 사용하고 저의 마법 토너먼트에 참가해주세요.";
+			next;
+			mes .@n$; 
+			mes "다녀와서 대회의 내용을 알려줄래요?";
+			next;
+			mes .@n$; 
+			mes "포탈이 불안정해 혼자 가야해요.";
+			mes "들어갈 준비 되셨나요?";
+			next;
+				switch(select("아니요:네")){
+					case 1:
+						mes .@n$;
+						mes "마음이 바뀌면 다시 오세요~!";
+						end;
+					case 2:
+						for (.@i = 9284; .@i <= 9314; .@i++) {
+							if (checkquest(.@i) != -1) {
+								erasequest .@i;
+							}
+						}
+						
+						if (instance_create(.@md_name$) < 0) {
+							mes "파티 이름: "+.@p_name$;
+							mes "파티장: "+strcharinfo(0);
+							mes "^0000ff"+.@md_name$+" ^000000- 예약 실패!";
+							end;
+						}
+						mes .@n$; 
+						mes "차원 장치가 활성화되었습니다.";
+						end;
+					}
+			end;
+		} else {
+			mes .@n$;
+			mes "계속하려면 파티장이여야 합니다.";
+			end;
+		}
+
+	} else {
+		mes .@n$;
+		mes "잠시만요.";
+		mes "돌아가기 전에 타이머가 끝날 때까지 기다려야합니다.";
+		mes " ";
+		
+		.@time = (GeffenTournament - gettimetick(2));
+		.@sec = .@time % 60;
+		.@min = (.@time / 60) % 60;
+		.@hrs = (.@time / 3600) % 24;
+
+		mes "쿨다운: ^3355FF"+(.@hrs < 10 ? "0" : "")+.@hrs+":"+(.@min < 10 ? "0" : "")+.@min+":"+(.@sec < 10 ? "0" : "")+.@sec+"^000000";
+		end;
+		
+
+			
+	}
+}
+
+1@gef,120,34,4	script	#gefmagic_warp01	45,2,2,{
+	callfunc("InventoryCheck");
+	end;
+
+OnTouch:
+	movenpc instance_npcname("Old Bachelor#z1_0et"),1,1;
+	movenpc instance_npcname("디오 아네모스#z1_0et"),1,1;
+	movenpc instance_npcname("쥬#z1_0et"),1,1;
+	movenpc instance_npcname("오르도르#z1_0et"),1,1;
+	movenpc instance_npcname("블루트 하세#z1_0et"),1,1;
+	movenpc instance_npcname("쿠로 아쿠마#z1_0et"),1,1;
+	movenpc instance_npcname("오도리코#z1_0et"),1,1;
+	movenpc instance_npcname("페이 카나비언#z1_0et"),1,1;
+	movenpc instance_npcname("레체니예#z1_0et"),1,1;
+	movenpc instance_npcname("이포더스#z1_0et"),1,1;
+	movenpc instance_npcname("페몽#z1_0et"),1,1;
+	movenpc instance_npcname("아르히#z1_0et"),1,1;
+	movenpc instance_npcname("드위그#z1_0et"),1,1;	
+	
+	warp instance_mapname("1@ge_st"),104,50;
+	donpcevent instance_npcname(strnpcinfo(0))+"::OnDisable";
+	end;
+
+OnInstanceInit:
+OnDisable:
+	disablenpc instance_npcname(strnpcinfo(0));
+	end;
+OnEnable:
+	enablenpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,1,1,4	script	#gefmagic_warp02	45,2,2,{
+	end;
+	
+OnTouch_:
+	instance_warpall "dali",92,142;
+	end;
+
+OnInstanceInit:
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+
+1@gef,1,1,4	script	#invisGMTquests	567,2,2,{
+	end;
+	
+OnTouch_:
+	if ('GMTHeroes < 1 ) {
+		'GMTHeroes = 1;
+		for (.@i = 9309; .@i < 9315; .@i++){
+			setquest .@i;
+		}
+	}
+	end;
+
+OnInit:
+	hideonnpc strnpcinfo(0);
+	end;
+	
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+}
+
+
+1@gef,123,203,4	script	마법대회 진행요원#gfmg	705,{
+	cutin "gef_soldier.bmp",2;
+	.@n$ = "[ 마법대회 진행요원 ]";
+	mes .@n$,"^8B4513게펜^000000 마법 도시에 오신 것을 환영합니다..";
+	next;
+	mes .@n$,"^55CC55마법 토너먼트^000000를 보고 싶다면 게펜 남쪽 분수대로 가십시오.";
+	next;
+	mes .@n$,"불꽃 놀이는 게펜 마법 토너먼트 축제를 축하하기 위한 곳입니다.";
+	next;
+	mes .@n$,"축제를 즐기시고 게펜에 머무시는 동안 즐거운 시간 되시기 바랍니다~!";
+	close2;
+	cutin "",255;
+	end;
+
+OnInstanceInit:
+OnEnable:
+	enablenpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,203,116,4	duplicate(마법대회 진행요원#gfmg)	마법대회 진행요원#gf2	705
+1@gef,36,123,6	duplicate(마법대회 진행요원#gfmg)	마법대회 진행요원#gf3	705
+
+1@gef,122,58,4	script	마법대회 접수원#1_0et	4_M_ARUNA_NFM1,{
+
+	.@n$ = "[ 마법대회 접수원 ]";
+
+	if ( checkquest(9309) != -1 ) {
+		mes .@n$;
+		mes "펜릴이 올해의 마법 토너먼트에서 우승했습니다.";
+		next;
+		mes .@n$;
+		mes "저는 그녀의 펜이에요.";
+		end;
+	}
+	
+	if ( checkquest(9308) != -1 ) {
+		mes .@n$;
+		mes "올해의 마법 토너먼트 수상자가 되신 것을 축하드립니다!";
+		end;
+	}
+		
+	if ( 'passtest == 2 ) {
+		mes .@n$;
+		mes "다시 시도 하시겠습니까?";
+		mes "60초 내에 사막 늑대를 죽일 수 있다면 시험 통과입니다.";
+		next;
+		mes .@n$;
+		mes "실패하면 목록에서 자동으로 제거됩니다. 원하는 만큼 여러 번 시도할 수 있습니다.";
+		mes "다시 시도 하시겠습니까?";
+		next;
+		switch(select("아니요:네")){
+			case 1:
+				mes .@n$;
+				mes "마음이 바뀌면 다시 오세요.";
+				close;
+			case 2:
+				mes .@n$;
+				mes "입장료는 없습니다.";
+				mes "유일한 요구 사항은 간단한 테스트를 통과하는 것입니다.";
+				next;
+				mes .@n$;
+				mes "테스트는 매우 간단합니다. 60초 이내에 사막 늑대를 물리치십시오.";
+				next;
+				mes .@n$;
+				mes "실패하면 목록에서 자동으로 제거됩니다. 원하는 만큼 여러 번 시도할 수 있습니다.";
+				mes "준비 되셨습니까?";
+				next;
+				switch(select("아니요:네")){
+					case 1:
+						mes .@n$;
+						mes "마음이 바뀌면 다시 오세요.";
+						close;
+					case 2:
+						mes .@n$;
+						mes "테스트에 합격한 후 마법 토너먼트에 참가할 수 있습니다.";
+						mes "그럼, 시작합니다!";
+						npctalk "제한 시간은 60초입니다! 준비! 시작!";
+						erasequest 9292;
+						setquest 9293;
+						addtimer 60000,instance_npcname("Receptionist#1_0et")+"::OnFail";
+						monster instance_mapname("1@gef"),120,62,"--ja--",1106,1,instance_npcname("Receptionist#1_0et")+"::OnTest";
+						hideonnpc instance_npcname("Receptionist#1_0et");	
+						break;
+				}
+				end;
+		}
+		end;
+	}
+	
+	if ( 'passtest == 1 ) {
+	
+		if ('GMT >= 5){
+			mes .@n$;
+			mes "마법대회는 잠시 후 시작됩니다.";
+			mes "6시 방향에 있는 포탈로 들어가시면 대회에 참가하실 수 있습니다.";
+			next;
+			mes .@n$;
+			mes "그럼 행운을 빌게요~!";
+			end;
+		}
+		
+		mes .@n$;
+		mes "시험에 통과하셨군요! 이제 대회 참가 등록을 마무리해 볼까요?";
+		next;
+		mes .@n$;
+		mes "자 그럼 이제 이름을 알려주세요.";
+		mes "이름을 적어주시면 자동으로 마법대회 출전 선수로 등록됩니다.";
+		next;
+		input .@char$;
+		if(.@char$ == "") { end; }
+		mes .@n$;
+		mes strcharinfo(0)+"?";
+		mes "재미있는 이름이네요.";
+		mes "어쨌든, 등록이 완료되었습니다!";
+		'GMT = 5;
+		erasequest 9293;
+		if (checkquest(9294) > -1)
+			erasequest 9294;
+		setquest 9294;
+		donpcevent instance_npcname("#gefmagic_warp01")+"::OnEnable";
+		next;
+		mes .@n$;
+		mes "대전 상대는 등록한 분들 중에서 무작위로 정해지고 토너먼트 형식으로 마지막까지 살아남는 분이 우승입니다.";
+		next;
+		mes .@n$;
+		mes "마법대회는 잠시 후 시작됩니다.";
+		mes "6시 방향에 있는 포탈로 들어가시면 대회에 참가하실 수 있습니다.";
+		next;
+		mes .@n$;
+		mes "그럼 행운을 빌게요~!";
+		end;
+	
+	}
+	
+	if ( checkquest(9293) == -1 ) {
+		
+		mes .@n$;
+		mes "안녕하세요. 게펜 마법대회를 찾아주셔서 감사합니다.";
+		mes "무엇을 도와드릴까요?";
+		next;
+	L_Menu:
+		switch(select("게펜 마법대회에 대하여:게펜 마법대회 참가 등록:대화 끝내기")){
+			case 1:
+				mes .@n$;
+				mes "게펜 마법 토너먼트는 3년마다 개최됩니다.";
+				next;
+				mes .@n$;
+				mes "이 축제는 마법에 대해 논의하는 아주 오래된 행사였습니다.";
+				mes "지금은 재밌는 파티가 되었지요.";
+				next;
+				mes .@n$;
+				mes "이제는 거의 독보적인 싸움 대회가 되었습니다.";
+				mes "전 세계에서 가장 유명한 마법사가 토너먼트에 참가합니다.";
+				next;
+				mes .@n$;
+				mes "다른 질문 있나요?";
+				next;
+				goto L_Menu;
+			case 2:
+				mes .@n$;
+				mes "마법대회에 선수로 등록하기 위해서는 별도의 참가비는 필요하지 않지만 대회의 품위와 수준을 위해서 간단한 시험을 통과해야 합니다.";
+				next;
+				mes .@n$;
+				mes "테스트는 매우 간단합니다. 60초 이내에 사막 늑대를 제압하면 됩니다.";
+				next;
+				mes .@n$;
+				mes "만약 실패할 경우 자동으로 시험 탈락이 되며 언제든지 재도전 가능합니다.";
+				mes "시험 받기를 원하십니까?";
+				next;
+				switch(select("아니요:예")){
+					case 1:
+						mes .@n$;
+						mes "마음이 바뀌면 다시 오세요.";
+						close;
+					case 2:
+						mes .@n$;
+						mes "테스트에 합격하면 마법 토너먼트에 참가할 수 있습니다.";
+						mes "그럼, 시작합니다!";
+						erasequest 9292;
+						setquest 9293;
+						'GMT = 3;
+						npctalk "Time limit is 60 seconds ! Ready! Set! Go!";
+						addtimer 60000,instance_npcname("Receptionist#1_0et")+"::OnFail";
+						monster instance_mapname("1@gef"),120,62,"데저트 울프",1106,1,instance_npcname("Receptionist#1_0et")+"::OnTest";
+						hideonnpc instance_npcname("Receptionist#1_0et");	
+						break;
+				}
+				end;
+			case 3:
+				mes .@n$;
+				mes "게펜 마법 토너먼트를 즐겨주세요.";
+				close;
+		}
+		end;
+	}
+	
+	end;
+	
+OnTest:
+	deltimer instance_npcname("Receptionist#1_0et")+"::OnFail";
+	'passtest = 1;
+	hideoffnpc instance_npcname("Receptionist#1_0et");
+	npctalk "시험에 통과하셨군요! 이제 대회 참가 등록을 마무리해 볼까요?", instance_npcname("Receptionist#1_0et");
+	end;
+	
+OnFail:
+	hideoffnpc instance_npcname("Receptionist#1_0et");
+	'passtest = 2;
+	killmonster instance_mapname("1@gef"),instance_npcname("Receptionist#1_0et")+"::OnTest";
+	npctalk "시험에 실패했습니다. 다시 도전하려면 저에게 말을 거세요.", instance_npcname("Receptionist#1_0et");
+	end;
+
+}
+
+1@ge_st,95,62,6	duplicate(#d_c)	마법대회 관중#70	4_M_LGTPOOR
+1@ge_st,113,62,4	duplicate(#d_c)	마법대회 관중#71	4_M_LGTGUARD
+1@ge_st,99,62,6	duplicate(#d_c)	마법대회 관중#72	4_F_JOB_HUNTER
+1@ge_st,93,62,6	duplicate(#d_c)	마법대회 관중#73	1_ETC_01
+1@ge_st,94,62,6	duplicate(#d_c)	마법대회 관중#74	1_F_02
+1@ge_st,96,62,6	duplicate(#d_c)	마법대회 관중#75	1_M_01
+1@ge_st,98,62,6	duplicate(#d_c)	마법대회 관중#76	1_M_02
+1@ge_st,100,62,6	duplicate(#d_c)	마법대회 관중#77	1_M_03
+1@ge_st,102,62,6	duplicate(#d_c)	마법대회 관중#78	1_F_01
+1@ge_st,104,62,6	duplicate(#d_c)	마법대회 관중#79	1_F_03
+1@ge_st,116,62,4	duplicate(#d_c)	마법대회 관중#80	1_F_04
+1@ge_st,118,62,4	duplicate(#d_c)	마법대회 관중#81	1_F_GYPSY
+1@ge_st,92,64,6	duplicate(#d_c)	마법대회 관중#82	4_F_TWGRANDMOM
+1@ge_st,93,64,6	duplicate(#d_c)	마법대회 관중#83	1_F_MERCHANT_01
+1@ge_st,94,64,6	duplicate(#d_c)	마법대회 관중#84	1_F_MERCHANT_02
+1@ge_st,95,64,6	duplicate(#d_c)	마법대회 관중#85	1_M_JOBGUIDER
+1@ge_st,96,64,6	duplicate(#d_c)	마법대회 관중#86	1_M_JOBTESTER
+1@ge_st,97,64,6	duplicate(#d_c)	마법대회 관중#87	1_M_KNIGHTMASTER
+1@ge_st,98,64,6	duplicate(#d_c)	마법대회 관중#88	1_M_LIBRARYMASTER
+1@ge_st,99,64,6	duplicate(#d_c)	마법대회 관중#89	1_F_ORIENT_01
+1@ge_st,100,64,6	duplicate(#d_c)	마법대회 관중#90	1_F_ORIENT_02
+1@ge_st,101,64,6	duplicate(#d_c)	마법대회 관중#91	1_F_ORIENT_03
+1@ge_st,102,64,6	duplicate(#d_c)	마법대회 관중#92	1_F_ORIENT_04
+1@ge_st,103,64,6	duplicate(#d_c)	마법대회 관중#93	1_M_MERCHANT
+1@ge_st,104,64,6	duplicate(#d_c)	마법대회 관중#94	1_M_MOC_LORD
+1@ge_st,105,64,6	duplicate(#d_c)	마법대회 관중#95	1_M_ORIENT01
+1@ge_st,106,64,6	duplicate(#d_c)	마법대회 관중#96	1_M_PASTOR
+1@ge_st,107,64,6	duplicate(#d_c)	마법대회 관중#97	1_F_PRIEST
+1@ge_st,108,64,6	duplicate(#d_c)	마법대회 관중#98	1_F_PUBGIRL
+1@ge_st,109,64,4	duplicate(#d_c)	마법대회 관중#99	4_M_DST_TOUGH
+1@ge_st,110,64,4	duplicate(#d_c)	마법대회 관중#100	1_M_INNKEEPER
+1@ge_st,111,64,4	duplicate(#d_c)	마법대회 관중#101	1_M_SIZ
+1@ge_st,112,64,4	duplicate(#d_c)	마법대회 관중#102	1_M_PAY_ELDER
+1@ge_st,113,64,4	duplicate(#d_c)	마법대회 관중#103	1_M_PRON_KING
+1@ge_st,114,64,4	duplicate(#d_c)	마법대회 관중#104	1_M_PUBMASTER
+1@ge_st,115,64,4	duplicate(#d_c)	마법대회 관중#105	1_M_SIGN1
+1@ge_st,116,64,4	duplicate(#d_c)	마법대회 관중#106	2_F_MAGICMASTER
+1@ge_st,117,64,4	duplicate(#d_c)	마법대회 관중#107	4_F_01
+1@ge_st,118,64,4	duplicate(#d_c)	마법대회 관중#108	4_F_02
+1@ge_st,90,63,6	duplicate(#d_c)	마법대회 관중#109	4_F_TELEPORTER
+1@ge_st,91,63,6	duplicate(#d_c)	마법대회 관중#110	4_F_THAIAYO
+1@ge_st,89,38,8	duplicate(#d_c)	마법대회 관중#111	4_M_ALCHE_E
+1@ge_st,89,39,8	duplicate(#d_c)	마법대회 관중#112	4_M_ARUNA_NFM1
+1@ge_st,89,40,8	duplicate(#d_c)	마법대회 관중#113	4_F_JPN2
+1@ge_st,89,41,8	duplicate(#d_c)	마법대회 관중#114	4_F_JPN
+1@ge_st,89,42,8	duplicate(#d_c)	마법대회 관중#115	4_F_JPNCHIBI
+1@ge_st,89,43,8	duplicate(#d_c)	마법대회 관중#116	4_F_HUGRANMA
+1@ge_st,89,44,8	duplicate(#d_c)	마법대회 관중#117	4_F_JPNOBA2
+1@ge_st,89,45,8	duplicate(#d_c)	마법대회 관중#118	4_F_JPNOBA
+1@ge_st,89,51,6	duplicate(#d_c)	마법대회 관중#119	4_F_SCIENCE
+1@ge_st,89,52,6	duplicate(#d_c)	마법대회 관중#120	4_F_SHABBY
+1@ge_st,89,53,6	duplicate(#d_c)	마법대회 관중#121	4_M_CRU_SOLD
+1@ge_st,89,54,6	duplicate(#d_c)	마법대회 관중#122	4_M_DESERT
+1@ge_st,89,55,6	duplicate(#d_c)	마법대회 관중#123	4_M_DEWBOY
+1@ge_st,89,56,6	duplicate(#d_c)	마법대회 관중#124	4_M_DEWMAN
+1@ge_st,89,57,6	duplicate(#d_c)	마법대회 관중#125	4_F_SHADOWCHASER
+1@ge_st,89,58,6	duplicate(#d_c)	마법대회 관중#126	4_F_SISTER
+1@ge_st,89,59,6	duplicate(#d_c)	마법대회 관중#127	4_F_SOCCER
+1@ge_st,89,62,6	duplicate(#d_c)	마법대회 관중#128	4_M_DOCTOR
+1@ge_st,88,61,6	duplicate(#d_c)	마법대회 관중#129	4_M_DEWZATICHIEF
+1@ge_st,87,37,8	duplicate(#d_c)	마법대회 관중#130	4_M_ALCHE_D
+1@ge_st,87,59,6	duplicate(#d_c)	마법대회 관중#131	4_F_SURA
+1@ge_st,87,60,6	duplicate(#d_c)	마법대회 관중#132	4_M_DEWOLDMAN
+1@ge_st,119,62,4	duplicate(#d_c)	마법대회 관중#133	4_F_JOB_KNIGHT
+1@ge_st,119,64,4	duplicate(#d_c)	마법대회 관중#134	4_F_03
+1@ge_st,120,62,4	duplicate(#d_c)	마법대회 관중#135	1_M_BARD
+1@ge_st,120,64,4	duplicate(#d_c)	마법대회 관중#136	4_F_04
+1@ge_st,121,64,4	duplicate(#d_c)	마법대회 관중#137	4_F_TRAINEE
+1@ge_st,122,64,4	duplicate(#d_c)	마법대회 관중#138	1_M_SIGNART
+1@ge_st,123,64,4	duplicate(#d_c)	마법대회 관중#139	1_M_SIGNMCNT
+1@ge_st,124,62,4	duplicate(#d_c)	마법대회 관중#140	1_F_LIBRARYGIRL
+1@ge_st,124,64,4	duplicate(#d_c)	마법대회 관중#141	1_M_SIGNMONK2
+1@ge_st,125,62,4	duplicate(#d_c)	마법대회 관중#142	1_M_HOF
+1@ge_st,125,64,4	duplicate(#d_c)	마법대회 관중#143	4_F_05
+1@ge_st,126,64,4	duplicate(#d_c)	마법대회 관중#144	4_F_06
+1@ge_st,127,63,4	duplicate(#d_c)	마법대회 관중#145	4_F_07
+1@ge_st,128,63,4	duplicate(#d_c)	마법대회 관중#146	4_F_ACROSS
+1@ge_st,128,60,4	duplicate(#d_c)	마법대회 관중#147	4_F_ALCHE
+1@ge_st,128,59,4	duplicate(#d_c)	마법대회 관중#148	4_M_EDEN_GUARDER
+1@ge_st,128,58,4	duplicate(#d_c)	마법대회 관중#149	4_F_ANNIVERSARY
+1@ge_st,128,57,4	duplicate(#d_c)	마법대회 관중#150	4_F_BRZ_INDIAN
+1@ge_st,128,56,4	duplicate(#d_c)	마법대회 관중#151	1_M_WIZARD
+1@ge_st,128,55,4	duplicate(#d_c)	마법대회 관중#152	1_M_YOUNGKNIGHT
+1@ge_st,128,54,4	duplicate(#d_c)	마법대회 관중#153	2_M_ALCHE
+1@ge_st,128,53,4	duplicate(#d_c)	마법대회 관중#154	4_F_BRZ_INDIAN
+1@ge_st,128,52,4	duplicate(#d_c)	마법대회 관중#155	4_F_BRZ_INDOLD
+1@ge_st,128,51,4	duplicate(#d_c)	마법대회 관중#156	4_F_BRZ_WOMAN
+1@ge_st,128,45,2	duplicate(#d_c)	마법대회 관중#157	2_M_BARD_ORIENT
+1@ge_st,128,44,2	duplicate(#d_c)	마법대회 관중#158	2_M_DYEINGER
+1@ge_st,129,62,4	duplicate(#d_c)	마법대회 관중#159	1_M_SIGNMONK
+1@ge_st,128,43,2	duplicate(#d_c)	마법대회 관중#160	2_M_MOLGENSTEIN
+1@ge_st,129,43,2	duplicate(#d_c)	마법대회 관중#161	4_M_CRU_OLD
+1@ge_st,129,44,2	duplicate(#d_c)	마법대회 관중#162	4_F_RUSWOMAN2
+1@ge_st,129,45,2	duplicate(#d_c)	마법대회 관중#163	4_F_RUSWOMAN3
+1@ge_st,130,61,4	duplicate(#d_c)	마법대회 관중#164	1_M_SIGNROGUE
+1@ge_st,130,60,4	duplicate(#d_c)	마법대회 관중#165	1_M_SMITH
+1@ge_st,128,42,2	duplicate(#d_c)	마법대회 관중#166	4_F_CAPEGIRL
+1@ge_st,129,42,2	duplicate(#d_c)	마법대회 관중#167	4_M_CRU_KNT
+1@ge_st,128,41,2	duplicate(#d_c)	마법대회 관중#168	4_F_CAVE1
+1@ge_st,129,41,2	duplicate(#d_c)	마법대회 관중#169	4_M_CRU_HEAD
+1@ge_st,128,40,2	duplicate(#d_c)	마법대회 관중#170	4_F_CHILD
+1@ge_st,129,40,2	duplicate(#d_c)	마법대회 관중#171	4_M_CRU_CRUA
+1@ge_st,128,39,2	duplicate(#d_c)	마법대회 관중#172	2_M_OLDBLSMITH
+1@ge_st,129,39,2	duplicate(#d_c)	마법대회 관중#173	4_F_RUSWOMAN1
+1@ge_st,128,38,2	duplicate(#d_c)	마법대회 관중#174	2_M_PHARMACIST
+1@ge_st,129,38,2	duplicate(#d_c)	마법대회 관중#175	4_F_RUSCHILD
+1@ge_st,128,37,2	duplicate(#d_c)	마법대회 관중#176	2_M_SAGE_B
+1@ge_st,130,37,2	duplicate(#d_c)	마법대회 관중#177	4_F_CHNDOCTOR
+1@ge_st,130,36,2	duplicate(#d_c)	마법대회 관중#178	4_F_CHNDRESS1
+1@ge_st,130,35,2	duplicate(#d_c)	마법대회 관중#179	2_M_SAGE_OLD
+1@ge_st,108,34,8	duplicate(#d_c)	마법대회 관중#180	4_F_KID3
+1@ge_st,109,34,2	duplicate(#d_c)	마법대회 관중#181	4_F_LGTGIRL
+1@ge_st,110,34,2	duplicate(#d_c)	마법대회 관중#182	4_F_LGTGRAND
+1@ge_st,111,34,2	duplicate(#d_c)	마법대회 관중#183	4_F_MADAME
+1@ge_st,112,34,2	duplicate(#d_c)	마법대회 관중#184	4_M_CHN8GUEK
+1@ge_st,113,34,2	duplicate(#d_c)	마법대회 관중#185	4_M_CHNCOOK
+1@ge_st,114,34,2	duplicate(#d_c)	마법대회 관중#186	4_M_CHNGENERL
+1@ge_st,115,34,2	duplicate(#d_c)	마법대회 관중#187	4_M_CHNMAN
+1@ge_st,116,34,2	duplicate(#d_c)	마법대회 관중#188	4_F_MASK
+1@ge_st,117,34,2	duplicate(#d_c)	마법대회 관중#189	4_F_MONK
+1@ge_st,118,34,2	duplicate(#d_c)	마법대회 관중#190	4_F_NFLOSTGIRL
+1@ge_st,119,34,2	duplicate(#d_c)	마법대회 관중#191	4_F_NOVICE
+1@ge_st,129,34,2	duplicate(#d_c)	마법대회 관중#192	2_M_SWORDMASTER
+1@ge_st,120,34,2	duplicate(#d_c)	마법대회 관중#193	4_M_CHNMONK
+1@ge_st,121,34,2	duplicate(#d_c)	마법대회 관중#194	4_M_CHNOLD
+1@ge_st,122,34,2	duplicate(#d_c)	마법대회 관중#195	4_M_CHNSOLDIER
+1@ge_st,123,34,2	duplicate(#d_c)	마법대회 관중#196	4_M_CRU
+1@ge_st,124,34,2	duplicate(#d_c)	마법대회 관중#197	4_F_RACHOLD
+1@ge_st,125,34,2	duplicate(#d_c)	마법대회 관중#198	4_F_ROGUE
+1@ge_st,128,33,2	duplicate(#d_c)	마법대회 관중#199	4_F_CHNDRESS2
+1@ge_st,127,33,2	duplicate(#d_c)	마법대회 관중#200	4_F_CHNDRESS3
+1@ge_st,119,32,2	duplicate(#d_c)	마법대회 관중#201	4_F_DST_CHILD
+1@ge_st,118,32,2	duplicate(#d_c)	마법대회 관중#202	4_LGTSCIENCE
+1@ge_st,117,32,2	duplicate(#d_c)	마법대회 관중#203	4_M_01
+1@ge_st,116,32,2	duplicate(#d_c)	마법대회 관중#204	4_F_DST_GRAND
+1@ge_st,115,32,2	duplicate(#d_c)	마법대회 관중#205	4_F_EDEN_MASTER
+1@ge_st,114,32,2	duplicate(#d_c)	마법대회 관중#206	4_F_EDEN_OFFICER
+1@ge_st,113,32,2	duplicate(#d_c)	마법대회 관중#207	4_M_1STPRIN1
+1@ge_st,112,32,2	duplicate(#d_c)	마법대회 관중#208	4_M_DST_CHILD
+1@ge_st,111,32,2	duplicate(#d_c)	마법대회 관중#209	4_F_EINOLD
+1@ge_st,110,32,2	duplicate(#d_c)	마법대회 관중#210	4_F_YUNYANG
+1@ge_st,109,32,2	duplicate(#d_c)	마법대회 관중#211	4_M_2NDPRIN1
+1@ge_st,108,32,8	duplicate(#d_c)	마법대회 관중#212	4_M_03
+1@ge_st,126,32,2	duplicate(#d_c)	마법대회 관중#213	2_M_THIEFMASTER
+1@ge_st,125,32,2	duplicate(#d_c)	마법대회 관중#214	4_COOK
+1@ge_st,124,32,2	duplicate(#d_c)	마법대회 관중#215	4_F_CHNWOMAN
+1@ge_st,123,32,2	duplicate(#d_c)	마법대회 관중#216	4_F_CRU
+1@ge_st,122,32,2	duplicate(#d_c)	마법대회 관중#217	4_DST_SOLDIER
+1@ge_st,121,32,2	duplicate(#d_c)	마법대회 관중#218	4_KID01
+1@ge_st,120,32,2	duplicate(#d_c)	마법대회 관중#219	4_F_DESERT
+1@ge_st,107,32,8	duplicate(#d_c)	마법대회 관중#220	4_F_GODEMOM
+1@ge_st,107,34,8	duplicate(#d_c)	마법대회 관중#221	4_F_KID2
+1@ge_st,106,32,8	duplicate(#d_c)	마법대회 관중#222	4_F_GON
+1@ge_st,106,34,8	duplicate(#d_c)	마법대회 관중#223	4_F_THAIGIRL
+1@ge_st,105,32,8	duplicate(#d_c)	마법대회 관중#224	4_M_3RDPRIN1
+1@ge_st,105,34,8	duplicate(#d_c)	마법대회 관중#225	4_M_CAVE1
+1@ge_st,104,32,8	duplicate(#d_c)	마법대회 관중#226	4_M_DST_MASTER
+1@ge_st,104,34,8	duplicate(#d_c)	마법대회 관중#227	4_M_CASMAN1
+1@ge_st,103,32,8	duplicate(#d_c)	마법대회 관중#228	4_M_4THPRIN1
+1@ge_st,103,34,8	duplicate(#d_c)	마법대회 관중#229	4_M_BUDDHIST
+1@ge_st,102,32,8	duplicate(#d_c)	마법대회 관중#230	4_M_DSTMAN
+1@ge_st,102,34,8	duplicate(#d_c)	마법대회 관중#231	4_M_BRZ_MAN1
+1@ge_st,101,32,8	duplicate(#d_c)	마법대회 관중#232	4_F_GUILLOTINE
+1@ge_st,101,34,8	duplicate(#d_c)	마법대회 관중#233	4_F_TWMASKGIRL
+1@ge_st,100,32,8	duplicate(#d_c)	마법대회 관중#234	4_F_HUGIRL
+1@ge_st,100,34,8	duplicate(#d_c)	마법대회 관중#235	4_F_KHGIRL
+1@ge_st,99,32,8	duplicate(#d_c)	마법대회 관중#236	4_F_HUGRANMA
+1@ge_st,99,34,8	duplicate(#d_c)	마법대회 관중#237	4_F_KHELLY
+1@ge_st,98,32,8	duplicate(#d_c)	마법대회 관중#238	4_F_HUWOMAN
+1@ge_st,98,34,8	duplicate(#d_c)	마법대회 관중#239	4_F_KHELLISIA
+1@ge_st,97,32,8	duplicate(#d_c)	마법대회 관중#240	4_M_5THPRIN1
+1@ge_st,97,34,8	duplicate(#d_c)	마법대회 관중#241	4_M_BRZ_JACI
+1@ge_st,96,32,8	duplicate(#d_c)	마법대회 관중#242	4_M_06
+1@ge_st,96,34,8	duplicate(#d_c)	마법대회 관중#243	4_M_BIBI
+1@ge_st,95,32,8	duplicate(#d_c)	마법대회 관중#244	4_M_6THPRIN1
+1@ge_st,95,34,8	duplicate(#d_c)	마법대회 관중#245	4_M_BARD
+1@ge_st,94,32,8	duplicate(#d_c)	마법대회 관중#246	4_M_ACROSS
+1@ge_st,94,34,8	duplicate(#d_c)	마법대회 관중#247	4_M_BARBER
+1@ge_st,93,32,8	duplicate(#d_c)	마법대회 관중#248	4_M_ALCHE_A
+1@ge_st,93,34,8	duplicate(#d_c)	마법대회 관중#249	4_M_ATEIL
+1@ge_st,92,32,8	duplicate(#d_c)	마법대회 관중#250	4_F_JOB_ASSASSIN
+1@ge_st,91,33,8	duplicate(#d_c)	마법대회 관중#251	4_F_JOB_BLACKSMITH
+1@ge_st,90,33,8	duplicate(#d_c)	마법대회 관중#252	4_M_JP_RUN
+1@ge_st,89,34,8	duplicate(#d_c)	마법대회 관중#253	4_M_EINMAN
+1@ge_st,88,35,8	duplicate(#d_c)	마법대회 관중#254	4_M_ALCHE_B
+1@ge_st,88,36,8	duplicate(#d_c)	마법대회 관중#255	4_M_ALCHE_C
+1@gef,124,72,4	duplicate(#d_c)	마법대회 관중#256	1_M_SIGNMCNT
+1@gef,106,56,6	duplicate(#d_c)	마법대회 관중#257	1_F_ORIENT_04
+1@ge_st,107,62,6	duplicate(#d_c)	Veins Spectator#a1	4_F_ALCHE_A
+1@ge_st,110,62,4	duplicate(#d_c)	Comodo Spectator#a1	4_F_EINWOMAN
+1@ge_st,115,62,4	duplicate(#d_c)	Prontera Spectator#a1	4_M_DST_GRAND
+1@ge_st,117,62,4	duplicate(#d_c)	Payon Spectator#a1	1_F_SIGNZISK
+1@ge_st,121,62,4	duplicate(#d_c)	Alberta Spectator#a1	4_M_05
+1@ge_st,97,62,6	duplicate(#d_c)	Prontera Spectator#a2	4_M_2NDPRIN1
+1@ge_st,101,62,6	duplicate(#d_c)	Payon Spectator#a2	4_M_ROGUE
+1@ge_st,105,62,6	duplicate(#d_c)	Alberta Spectator#a2	4_M_ORIENT02
+1@ge_st,103,62,6	duplicate(#d_c)	마법 아카데미 학생#1	4_M_02
+1@ge_st,109,62,4	duplicate(#d_c)	마법 아카데미 학생#2	4_M_CHILD1
+1@ge_st,114,62,4	duplicate(#d_c)	마법 아카데미 학생#3	4_M_04
+1@ge_st,122,62,4	duplicate(#d_c)	마법 아카데미 학생#4	1_F_MARIA
+1@ge_st,123,62,4	duplicate(#d_c)	마법 아카데미 학생#5	1_M_SIGNALCHE
+1@gef,128,93,4	duplicate(#d_c)	Geffen Villager#c1	4_F_CAVE1
+1@gef,103,100,6	duplicate(#d_c)	Geffen Villager#c2	1_M_JOBGUIDER
+
+// ===================================================================================
+// Tournament Start - CHINESE TOURNAMENT ARENA START
+// ===================================================================================
+1@ge_st,102,49,4	script	게펜 아카데미 마스터#S	567,3,3,{
+end;
+
+OnTouch_:
+	ignoretimeout 1;
+	.@n$ = "[ 게펜 아카데미 마스터 ]";
+	if ('GMT_1QUE < 11) {
+		cutin "acamaster_a.bmp",2;
+		mes .@n$,
+		"신사 숙녀 여러분!",
+		"게펜 마법 토너먼트에 오신 것을 환영합니다!";
+		next;
+		mes .@n$,
+		"오늘은 챔피언이 탄생하는 날입니다.";
+		next;
+		mes .@n$,
+		"마법대회는 A조와 B조로 나뉘어서 예선전이 진행되며",
+		"각 그룹의 우승자는 챔피언쉽 경기에서 만날 것입니다.";
+		next;
+		mes .@n$,
+		"저는 A그룹의 MC를 맡은",
+		"게펜 아카데미의 마스터~!",
+		"아크메이지 잔지바르 헬모드 입니다.";
+		next;
+		mes .@n$,
+		"이런 영광스러운 자리에 사회를 맡게 해 주신 것에 대해 감사드리며~!.",
+		"자... 드디어 시간이 되었군요.";
+		next;
+		mes .@n$,
+		"흠...으흠..";
+		close2;
+		cutin "acamaster_a.bmp", 255;
+		hideonnpc "게펜 아카데미 마스터";
+		'GMT_1QUE = 11;
+		changequest 9294,9295;
+		donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnStart";
+		'charname$ = strcharinfo(0);
+		'sex = Sex;
+		end;
+	}
+	end;
+
+OnInit:
+	hideonnpc strnpcinfo(0);
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+}
+
+1@ge_st,107,57,4	script	마법대회 진행요원#gefMT	4_M_HUMAN_02,{
+	.@n$ = "[ 마법대회 진행요원 ]";
+	ignoretimeout 1;
+	if (checkquest(9308) != -1) {
+		switch(select("투기장에서 나가 보상을 받는다.:대화 끝내기")) {
+			case 1:
+				mes .@n$;
+				mes "당신은 경쟁에서 이겼습니다!","축하합니다!";
+				next;
+				mes .@n$;
+				mes "그건 그렇고, 아카데미 마스터는","당신에게 할 말이 있습니다.";
+				next;
+				cutin "acamaster_a.bmp",2;
+				.@n2$ = "[ 게펜 아카데미 마스터 ]";
+				mes .@n2$,
+				"축하합니다!",
+				"이 대회의 역사상 최고의 경기였습니다.";
+				next;
+				mes .@n2$,
+				"획득하신 ^55CC55게펜 마법 코인^000000을 드리겠습니다.",
+				next;
+				mes .@n2$,
+				"^55CC55게펜 코인 교환원^000000에게 가면",
+				"특별한 장비로 교환해드립니다.";
+				next;
+				mes .@n2$,
+				"당신의 이름은 게펜의 역사서에",
+				"기록될 것입니다.";
+				next;
+				mes .@n2$,
+				"다시 한번 축하드립니다.",
+				"나머지 게펜 축제를",
+				"즐기시기 바랍니다.";
+				close2;
+				cutin "",255;
+				getitem 6671,20;
+				set #CASHPOINTS, #CASHPOINTS+2000;
+				warp instance_mapname("1@gef"), 120,35;
+				end;
+			case 2:
+				end;
+		}
+	}
+	mes .@n$;
+	if ('GMT_1QUE <22) {
+		mes ""+callfunc("F_GetNumSuffix",('GMT_1QUE-10))+" 경기를 통과하셨군요! 축하드립니다~!";
+		.@menu$ = callfunc("F_GetNumSuffix",('GMT_1QUE-9))+" 경기를 시작한다.";
+	}
+	else {
+	mes "축하합니다! 그룹 A의 모든 상대를 격파했습니다! 결승전 힘내세요!";
+	.@menu$ = "결승전을 시작한다.";
+	}
+	next;
+	
+			switch(select(.@menu$,"대화 끝내기")) {
+			case 1:
+					mes .@n$;
+					mes "매 경기에서 승리한 선수에게는 ^55CC55게펜 마법대회 주화^000000를 드리고 있습니다.";
+					next;
+					mes .@n$;
+					mes "^55CC55게펜 마법대회 주화^000000는 게펜 마을에 있는 ^55CC55게펜 코인 교환원^000000에게서 특별한 장비와 교환할 수 있으니 참고하시길 바랍니다.";
+					next;
+					mes .@n$;
+					mes "A조 "+callfunc("F_GetNumSuffix",('GMT_1QUE-9))+" 경기가 곧 시작됩니다!";
+					close2;
+					getitem 6671, 'reward['GMT_1QUE-11];
+					hideonnpc instance_npcname("마법대회 간호사#1");
+					
+					switch ('GMT_1QUE) {
+						  case 11:
+							enablenpc instance_npcname("디오 아네모스#1");
+							break;
+						  case 12:
+							if ('GMTQuest == 1)
+								enablenpc instance_npcname("게펜 깡패#n1");
+							else if ('GMTQuest == 2)
+								enablenpc instance_npcname("게펜 불량배#n1");
+							else
+								enablenpc instance_npcname("게펜 좀도둑#n1");
+								break;
+						  case 13:
+							enablenpc instance_npcname("페몽#1");
+							break;
+						  case 14:
+							enablenpc instance_npcname("오르도르#1");
+							break;
+						  case 15:
+							enablenpc instance_npcname("블루트 하세#1");
+							break;
+						  case 16:
+							enablenpc instance_npcname("쿠로 아쿠마#1");
+							break;
+						  case 17:
+							enablenpc instance_npcname("이포더스#1");
+							break;
+						  case 18:
+							enablenpc instance_npcname("레체니예#1");
+							break;
+						  case 19:
+							enablenpc instance_npcname("오도리코#1");
+							break;
+						  case 20:
+							enablenpc instance_npcname("쥬#1");
+							break;
+						  case 21:
+					'half = rand(0,1);
+					if ('half) {
+					enablenpc instance_npcname("드위그#1");
+					} else {
+					enablenpc instance_npcname("페이 카나비언#1");
+									}
+									break;
+								  case 22:
+									enablenpc instance_npcname("펜릴#f");
+									break;
+					}
+					warp instance_mapname("1@ge_st"), 104,50;
+					'GMT_1QUE++;
+					donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnStart";
+					hideoffnpc instance_npcname("게펜 아카데미 마스터");
+					hideonnpc instance_npcname("마법대회 진행요원#gefMT");
+					end;
+			case 2:
+				mes .@n$; // KURAMA END CONVERSATION TEXT
+				mes "준비가 끝나면 저와 이야기하세요.";
+				close;
+		}
+
+OnInstanceInit:
+	setarray 'reward,1,2,3,4,5,6,7,8,9,10,15,20,20;
+	end;
+}
+
+1@ge_st,109,57,4	script	게펜 아카데미 마스터	10006,{
+end;
+OnStart:
+	if ( 'GMT_1QUE != 11 ){
+		attachrid('gmt_account_id);
+		changequest 9283 + 'GMT_1QUE, 9284 +'GMT_1QUE;
+		detachrid;
+	}
+
+	switch ('GMT_1QUE) {
+		case 11:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			npctalk "신사 숙녀 여러분!";
+			sleep 3000;
+			npctalk "그럼 게펜 마법대회를 시자아아아악!";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			enablenpc instance_npcname("아르히#1");
+			sleep 3000;
+			npctalk "하게쓰으으읍니다아아아!!! 소리질러!!!";
+			sleep 1000;
+			.@spec = rand(70,257);
+			showscript "토너먼트 관중: 와아~!!! 재밌겠다~~!! 야호~!",getnpcid(0,instance_npcname("마법대회 관중#"+.@spec));
+			sleep 1000;
+			.@spec = rand(70,257);
+			showscript "토너먼트 관중: 이거 뭔가 흥미진진한데~!",getnpcid(0,instance_npcname("마법대회 관중#"+.@spec));
+			sleep 1000;
+			.@spec = rand(70,257);
+			showscript "토너먼트 관중: 경기 시작 안하나~!",getnpcid(0,instance_npcname("마법대회 관중#"+.@spec));
+			sleep 500;
+			donpcevent instance_npcname("아르히#1")+"::OnActivate";
+			sleep 500;
+			npctalk "자 그럼, A조 첫 번째 경기!! 를 시작하도록 하겠습니다.";
+			sleep 2000;
+			npctalk "1차전에서 탈락할 것만 같은 허약한 체격의 소유자!";
+			sleep 3000;
+			npctalk "이름조차 알려지지 않은 무명의 나그네! "+'charname$+"~!";
+			end;
+		case 12:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "자 그럼, A조 두 번째 경기!!를 시작하도록 하겠습니다!";
+			sleep 3000;
+			sleep 3000;
+			npctalk "용케 1경기에서 안떨어지고 올라온 비실비실해 보이는 외관의 소유자, "+'charname$+"!";
+			sleep 3000;
+			npctalk "언제 떨어질지 모르는 낙엽같은! "+'charname$+"!";
+			sleep 3000;
+			donpcevent instance_npcname("디오 아네모스#1")+"::OnActivate";
+			sleep 500;
+			npctalk "그리고 그에 맞서는 상대는~!!!";
+			sleep 3000;
+			npctalk "마법 아카데미 수업도 빼먹고 왔다는!";
+			sleep 3000;
+			npctalk "마음만은 대마법사! 디오 아네모스!";
+			end;
+		case 13:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "A조의 3번째 경기가 막 시작됩니다!";
+			sleep 2000;
+			npctalk "어디선가 원한을 많이 사고 돌아다녔을 것 같은 인상의 소유자!";
+			sleep 2000;
+			npctalk "인상 하나만큼은 나도 우승자!! "+'charname$+"!";
+			sleep 3000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는...";
+			sleep 2000;
+			if ('GMTQuest == 1) {
+				donpcevent instance_npcname("게펜 깡패#n1")+"::OnActivate";
+				sleep 500;
+				npctalk "딱 봐도 도둑놈처럼 생긴, 생긴대로 논다의 전수!!";
+				sleep 3000;
+				npctalk "니 제니도 내꺼 내 제니도 내꺼 길드의 마스터~!! 게펜 깡패!";
+			} else if ('GMTQuest == 2) {
+				donpcevent instance_npcname("게펜 불량배#n1")+"::OnActivate";
+				sleep 500;
+				npctalk "어머니만이 사랑할 수 있는!";
+				sleep 3000;
+				npctalk "무자비한 게펜 불량배!";
+			} else {
+				donpcevent instance_npcname("게펜 좀도둑#n1")+"::OnActivate";
+				sleep 500;
+				npctalk "딱 봐도 도둑년처럼 생긴, 생긴대로 논다의 전수!!";
+				sleep 3000;
+				npctalk "니 제니도 내꺼 내 제니도 내꺼 길드의 마스터~!! 게펜 좀도둑!";
+			}
+			end;
+		case 14:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "연승행진을 통해 인기몰이를 하고 있는~!";
+			sleep 3000;
+			npctalk "미완의 용사! "+'charname$+"!";
+			sleep 3000;
+			donpcevent instance_npcname("페몽#1")+"::OnActivate";
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 3000;
+			npctalk "세상물정 모르고 귀하게 자랐을 것 같은 외모의 소유자!";
+			sleep 3000;
+			npctalk "프론테라 스타일, 페몽!";
+			npctalk "오~ 프론테라 출신!", instance_npcname("Prontera Spectator#a1");
+			sleep 2000;
+			npctalk "프론테라에 오명을 주지 마라!!", instance_npcname("Prontera Spectator#a2");
+			end;
+		case 15:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "이제는 더 이상 나를 무명이라 부르지 말라!";
+			sleep 3000;
+			npctalk "주목되는 신인! "+'charname$+"!";
+			sleep 3000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 500;
+			donpcevent instance_npcname("오르도르#1")+"::OnActivate";
+			sleep 3000;
+			npctalk "바른 생활 사나이! 정석의 힘을 보여주마!";
+			sleep 3000;
+			npctalk "정통파 전투 마스터, 오르도르!";
+			end;
+		case 16:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "이미 눈빛부터 상대를 제압하는 수준급의 파워!!";
+			sleep 3000;
+			npctalk "마법대회 슈퍼 루키~! "+'charname$+"!";
+			sleep 3000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 500;
+			donpcevent instance_npcname("블루트 하세#1")+"::OnActivate";
+			sleep 3000;
+			npctalk "귀여운 외모를 가지고 있지만, 잔인하게 상대를 제압하는!";
+			sleep 3000;
+			npctalk "피의 토끼귀~!! 블루트 하제!";
+			end;
+		case 17:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "파죽지세의 승리 행진~!! 아무도 날 막을 수 없다!!";
+			sleep 3000;
+			npctalk "무한 폭풍질주!! "+'charname$+"!";
+			sleep 3000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 2000;
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			npctalk "악마를 본 적이 있나? 없다면 오늘 보게 될거야..";
+			sleep 500;
+			donpcevent instance_npcname("쿠로 아쿠마#1")+"::OnActivate";
+			sleep 3000;
+			npctalk "지독한 악마의 이빨!!, 쿠로 아쿠마!";
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			end;
+		case 18:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "A조의 8라운드 경기가 시작되었습니다!";
+			sleep 3000;
+			npctalk "명실공히 마법대회 이슈메이커! 이슈만큼이나 실력도 뛰어난!";
+			sleep 3000;
+			npctalk "룬-미드가르츠의 새로운 실력자!!, "+'charname$+"!";
+			sleep 2000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 2000;
+			npctalk "내 생전 이렇게 기대되긴 처음이다~!", instance_npcname("Payon Spectator#a1");
+			sleep 250;
+			donpcevent instance_npcname("이포더스#1")+"::OnActivate";
+			sleep 250;
+			npctalk "우와! 강해보이자나!", instance_npcname("Veins Spectator#a1");
+			sleep 1000;
+			npctalk "거북이처럼 두꺼운 갑옷을 입고 번개처럼 빠른 스피드로 상대를 제압하는!";
+			sleep 3000;
+			npctalk "룬 미드가르츠의 미치광이! 이포더스!";
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			end;
+		case 19:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "대회가 9 라운드에 들어섰습니다!";
+			sleep 3000;
+			npctalk "누가 이 용사를 막을 수 있을 것인가!";
+			sleep 3000;
+			npctalk ""+('sex ? "그의" : "그녀의")+" 힘을 관중들도 알아챘습니다! "+'charname$;
+			sleep 2000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 500;
+			donpcevent instance_npcname("레체니예#1")+"::OnActivate";
+			sleep 500;
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			sleep 1000;
+			npctalk "요조숙녀처럼 살며시 곁으로 다가와 독사처럼 적을 물어 뜯는!!";
+			sleep 3000;
+			npctalk "죽음의 여인! 리체니예!";
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			end;
+		case 20:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "A조의 10번째 라운드를 시작합시다!";
+			sleep 3000;
+			npctalk "마법대회에 참가한 실력자들을 하나하나 사냥하며 올라온!";
+			sleep 3000;
+			npctalk "사냥꾼~!! "+'charname$+"!";
+			sleep 1000;
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			sleep 1000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 1000;
+			npctalk "상대를 매혹하는 몸짓과, 유혹하는 발짓과...";
+			sleep 500;
+			donpcevent instance_npcname("오도리코#1")+"::OnActivate";
+			sleep 3000;
+			npctalk "그리고 죽음에 이르는 손짓의!! 오도리코!";
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			end;
+		case 21:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "승리에 목마르다!! 아직 배고프다!! 피에 굶주려있다!!!";
+			sleep 3000;
+			npctalk "그 누구도 날 막을 수 없다!! "+'charname$+"!";
+			sleep 2000;
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			sleep 1000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			sleep 500;
+			donpcevent instance_npcname("쥬#1")+"::OnActivate";
+			sleep 250;
+			npctalk "피냄새가 느껴지는데...?",instance_npcname("로키#a2");
+			sleep 1000;
+			npctalk "오... 비등한 상대지?",instance_npcname("아이리스#a2");
+			sleep 500;
+			npctalk "복면에 가려진 얼굴을 본 자는 전부 살아남지 못했다는!!";
+			sleep 3000;
+			npctalk "실전 전투의 지존!! 힘, 속도 모두가 압도적인!! 쥬!";
+			donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+			end;
+		case 22:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "자 그럼 A조 열두 번째 경기!! 시작하겠습니다!!";
+			sleep 3000;
+			npctalk "모든 경기에서 승리한 A조의 다크 호스, "+'charname$+"!";
+			sleep 3000;
+			npctalk "그리고 "+('sex ? "그" : "그녀")+"에 맞서는 상대는~!!!";
+			if ('half) {
+				sleep 500;
+				donpcevent instance_npcname("드위그#1")+"::OnActivate";
+				sleep 1500;
+				npctalk "많은 제자들에게 사랑받는 마법 아카데미의 수석 교수!";
+				sleep 1000;
+				donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+				sleep 2000;
+				npctalk "전투와 지혜의 지휘관! 드위!";
+			}	else {
+				sleep 2000;
+				npctalk "과학 도시 알데바란의 연금술사!";
+				sleep 500;
+				donpcevent instance_npcname("페이 카나비언#1")+"::OnActivate";
+				sleep 500;
+				donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+				sleep 2000;
+				npctalk "페이 카나비언와 그녀의 호문클루스, 알폰스!";
+				}
+			end;
+		case 23:
+			donpcevent instance_npcname("#Talkcontrol")+"::OnStart";
+			donpcevent instance_npcname("#FireworksControl")+"::OnStart";
+			npctalk "무명으로 나타났음에도 불구하고";
+			sleep 3000;
+			npctalk "A조에서 타의 추종을 불허하는!";
+			sleep 2000;
+			npctalk "올해 대회에서 가장 많은 이야기가 나온!";
+			sleep 3000;
+			npctalk "비교 불가의 "+'charname$+"!";
+			sleep 3000;
+			npctalk "와! 이 경기 재미있을 것 같아!",instance_npcname("로키#a2");
+			sleep 3000;
+			npctalk "그리고 B조의 챔피언~!!!";
+			sleep 1500;
+			donpcevent instance_npcname("펜릴#f")+"::OnActivate";
+			sleep 1500;
+			npctalk "믿기지 않는 힘을 가진 마법사!";
+			sleep 3000;
+			npctalk "B조를 허리케인처럼 휩쓴 참가자!";
+			sleep 3000;
+			npctalk "룬 미드가르드에서 더 강한 마법사가 있을까요?";
+			sleep 3000;
+			npctalk "파란 마법사! 펜리스 펜릴~!!";
+			end;
+	}
+
+OnTalk1:
+	showscript "게펜 아카데미 마스터 : 시작하도록 하지!",getnpcid(0,instance_npcname(strnpcinfo(0)));
+	end;
+	
+OnTalk2:
+	if ('GMT_1QUE == 22) {
+		npctalk "A조의 최종 경기가 끝났습니다~! 축하합니다 "+'charname$+"!"; 
+	}
+	else {
+		npctalk "A조의 "+callfunc("F_GetNumSuffix",('GMT_1QUE-10))+" 경기가 끝났습니다~! 축하합니다, "+'charname$+"!"; 
+		sleep 6000;
+		npctalk "상처를 치유하는 데 시간이 좀 걸릴 수 있습니다.";
+		sleep 6000;
+		npctalk "다음 라운드가 준비되면 토너먼트 가이드와 상의하세요.";
+		sleep 3000;
+	}
+	switch ('GMT_1QUE) {
+	case 11:
+	case 12:
+	case 14:
+	case 15:
+	case 17:
+	case 18:
+	case 20:
+	case 21:
+		break;
+	case 13:
+		npctalk "펜리스 펜릴이 B조에서 3연승을 달리고 있습니다.";
+		sleep 3000;
+		break;
+	case 16:
+		npctalk "네~! B조의 소식이 있습니다!";
+		sleep 3000;
+		npctalk "다른 경쟁자들이 최선을 다하는 동안,";
+		sleep 3000;
+		npctalk "펜릴은 대회에 폭풍을 몰아치고, 5경기를 승리하였습니다!";
+		sleep 1000;
+		break;
+	case 19:
+		npctalk "이거 흥미진진합니다! B조의 다음 뉴스!";
+		sleep 3000;
+		npctalk "펜리스 펜릴이 계속 경기를 지배하고 있습니다~! A조 참가자들은 조심하시기 바랍니다!";
+		sleep 2000;
+		break;
+	case 22:
+		npctalk "B조도 12번째 경기를 마치고~!";
+		sleep 3000;
+		npctalk "테트라 볼텍스에 대해 들어보셨습니까? 이 신비한 마법을 사용하는 참가자가 있습니다!";
+		sleep 3000;
+		npctalk "그녀의 이름은 펜리스 펜릴!";
+		sleep 3000;
+		npctalk "이번 토너먼트의 결승전은 쉽지 않을 것입니다!";
+		sleep 1000;
+		break;
+	}
+	hideoffnpc instance_npcname("마법대회 진행요원#gefMT");
+	hideoffnpc instance_npcname("게펜 아카데미 마스터");
+	hideoffnpc instance_npcname("마법대회 간호사#1");
+	end;
+
+OnTalk3:
+	npctalk "결승전이 시작되었습니다!";
+	end;
+OnTalk4:
+	npctalk "올해의 게펜 마법 토너먼트 결승전이 끝났습니다~!";
+	sleep 3000;
+	npctalk "모두! 게펜 마법 토너먼트를 응원해주셔서 감사합니다~!!";
+	sleep 3000;
+	npctalk "올해의 게펜 마법 토너먼트의 우승자는 "+'charname$+"~!!";
+	donpcevent instance_npcname("#FireworksControl")+"::OnWin";
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname("마법대회 진행요원#gefMT");
+	disablenpc instance_npcname("아르히#1");
+	disablenpc instance_npcname("디오 아네모스#1");
+	disablenpc instance_npcname("게펜 깡패#n1");
+	disablenpc instance_npcname("게펜 불량배#n1");
+	disablenpc instance_npcname("게펜 좀도둑#n1");
+	disablenpc instance_npcname("페몽#1");
+	disablenpc instance_npcname("오르도르#1");
+	disablenpc instance_npcname("블루트 하세#1");
+	disablenpc instance_npcname("쿠로 아쿠마#1");
+	disablenpc instance_npcname("이포더스#1");
+	disablenpc instance_npcname("레체니예#1");
+	disablenpc instance_npcname("오도리코#1");
+	disablenpc instance_npcname("쥬#1");
+	disablenpc instance_npcname("드위그#1");
+	disablenpc instance_npcname("페이 카나비언#1");
+	disablenpc instance_npcname("펜릴#f");
+	end;
+	
+OnMobDead:
+	end;
+	
+}
+
+1@ge_st,1,1,1	script	#GMTcontroller	-1,{
+	end;
+OnStart:
+	.@map$ = instance_mapname("1@ge_st");
+	.@label$ = instance_npcname("#GMTcontroller")+"::OnMobDead";
+	'timeout = 180;
+	if ('GMT_1QUE == 23) 'timeout = 300;
+	mapannounce .@map$, "<마법 토너먼트 방송>: 시간 제한은 " + ('timeout / 60) + " 분입니다.",bc_blue; sleep 2000;
+	mapannounce .@map$, "<마법 토너먼트 방송>: 준비하시고...",bc_blue; sleep 2000;
+	mapannounce .@map$, "<마법 토너먼트 방송>: 시작하세요!",bc_blue;
+	
+	donpcevent instance_npcname("#FireworksControl")+"::OnTurn";
+	initnpctimer;
+	
+	switch ('GMT_1QUE) {
+		case 11:
+			hideonnpc instance_npcname("아르히#1");
+			'BossID = monster(.@map$,114,50,"아르히",2549,1,.@label$);
+			break;
+		case 12:
+			hideonnpc instance_npcname("디오 아네모스#1");
+			'BossID = monster(.@map$,114,50,"디오 아네모스",2550,1,.@label$);
+			break;
+		case 13:
+			if ('GMTQuest == 1) {
+				hideonnpc instance_npcname("게펜 깡패#n1");
+				'BossID = monster(.@map$,114,50,"게펜 깡패",2553,1,.@label$);
+			} else if ('GMTQuest == 2) {
+				hideonnpc instance_npcname("게펜 불량배#n1");
+				'BossID = monster(.@map$,114,50,"--ja--",2552,1,.@label$);
+			} else {
+				hideonnpc instance_npcname("게펜 좀도둑#n1");
+				'BossID = monster(.@map$,114,50,"게펜 좀도둑",2551,1,.@label$);
+			}
+			break;
+		case 14:
+			hideonnpc instance_npcname("페몽#1");
+			'BossID = monster(.@map$,114,50,"페몽",2554,1,.@label$);
+			break;
+		case 15:
+			hideonnpc instance_npcname("오르도르#1");
+			'BossID = monster(.@map$,114,50,"오르도르",2555,1,.@label$);
+			break;
+		case 16:
+			hideonnpc instance_npcname("블루트 하세#1");
+			'BossID = monster(.@map$,114,50,"블루트 하세",2556,1,.@label$);
+			break;
+		case 17:
+			hideonnpc instance_npcname("쿠로 아쿠마#1");
+			'BossID = monster(.@map$,114,50,"쿠로 아쿠마",2557,1,.@label$);
+			break;
+		case 18:
+			hideonnpc instance_npcname("이포더스#1");
+			'BossID = monster(.@map$,114,50,"이포더스",2558,1,.@label$);
+			break;
+		case 19:
+			hideonnpc instance_npcname("레체니예#1");
+			'BossID = monster(.@map$,114,50,"레체니예",2559,1,.@label$);
+			break;
+		case 20:
+			hideonnpc instance_npcname("오도리코#1");
+			'BossID = monster(.@map$,114,50,"오도리코",2560,1,.@label$);
+			break;
+		case 21:
+			hideonnpc instance_npcname("쥬#1");
+			'BossID = monster(.@map$,114,50,"쥬",2561,1,.@label$);
+			break;
+		case 22:
+			if ('half) {
+				hideonnpc instance_npcname("드위그#1");
+				'BossID = monster(.@map$,114,50,"드위그",2562,1,.@label$);
+			}
+			else {
+				hideonnpc instance_npcname("페이 카나비언#1");
+				'BossID = monster(.@map$,114,50,"페이 카나비언",2563,1,.@label$);
+				donpcevent instance_npcname("#GMTHomun")+"::OnSummon";
+			}
+			
+			break;
+		case 23:
+			hideonnpc instance_npcname("펜릴#f");
+			'BossID = monster(.@map$,114,50,"펜릴",2564,1,.@label$);
+			donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnTalk3";
+			end;
+	}
+		
+	donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnTalk1";
+	end;
+OnTimeout:
+	end;
+OnMobDead:
+	'timeout_exit = 1;
+	
+	switch ('GMT_1QUE) {
+		case 11: donpcevent instance_npcname("아르히#1")+"::OnDefeat"; break;
+		case 12: donpcevent instance_npcname("디오 아네모스#1")+"::OnDefeat"; break;
+		case 13:
+			if ('GMTQuest == 1) { donpcevent instance_npcname("게펜 깡패#n1")+"::OnDefeat"; }
+			else if ('GMTQuest == 2) { donpcevent instance_npcname("게펜 불량배#n1")+"::OnDefeat"; }
+			else { donpcevent instance_npcname("게펜 좀도둑#n1")+"::OnDefeat"; }
+			break;
+		case 14: donpcevent instance_npcname("페몽#1")+"::OnDefeat"; break;
+		case 15: donpcevent instance_npcname("오르도르#1")+"::OnDefeat"; break;
+		case 16: donpcevent instance_npcname("블루트 하세#1")+"::OnDefeat"; break;
+		case 17: donpcevent instance_npcname("쿠로 아쿠마#1")+"::OnDefeat"; break;
+		case 18: donpcevent instance_npcname("이포더스#1")+"::OnDefeat"; break;
+		case 19: donpcevent instance_npcname("레체니예#1")+"::OnDefeat"; break;
+		case 20: donpcevent instance_npcname("오도리코#1")+"::OnDefeat"; break;
+		case 21: donpcevent instance_npcname("쥬#1")+"::OnDefeat"; break;
+		case 22:
+			if ('half) {
+				donpcevent instance_npcname("드위그#1")+"::OnDefeat";
+			}
+			else {
+				donpcevent instance_npcname("페이 카나비언#1")+"::OnDefeat";
+				donpcevent instance_npcname("#GMTHomun")+"::OnEnd";
+			}
+			
+			break;
+		case 23:
+			donpcevent instance_npcname("펜릴#f")+"::OnDefeat";
+			donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnTalk4";
+			end;
+	}
+	
+	mapannounce instance_mapname("1@ge_st"), "<게펜 마법 토너먼트>: "+'charname$+" 가 경기에서 이겼습니다!",bc_blue;
+	donpcevent instance_npcname("게펜 아카데미 마스터")+"::OnTalk2";
+	end;
+OnTimer1000:
+	'timeout--;
+	
+	if ('timeout_exit) {
+		'timeout_exit = 0;
+		stopnpctimer;
+		end;
+	}
+	
+	switch('timeout) {
+		case 240: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 경기가 뜨거워지고 있습니다! 남은 시간은 4분!",bc_blue; break;
+		case 180: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 경기가 상당히 뜨거워졌습니다! 남은 시간은 3분!",bc_blue; break;
+		case 120: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 결국 마지막까지 달리고 있습니다! 남은 시간은 2분!",bc_blue; break;
+		case  60: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 남은 시간은 1분! 경기가 끝나고 있습니다!",bc_blue; break;
+		case  30: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 30초 남았습니다!",bc_blue; break;
+		case  10: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 10초 남았습니다!",bc_blue; break;
+		case   5: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 5!",bc_blue; break;
+		case   4: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 4!",bc_blue; break;
+		case   3: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 3!",bc_blue; break;
+		case   2: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 2!",bc_blue; break;
+		case   1: mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 1!",bc_blue; break;
+		case   0:
+			stopnpctimer;
+			donpcevent instance_npcname("#GMTcontroller") + "::OnTimeout2";
+			end;
+	}
+	
+	initnpctimer;
+	end;
+OnTimeout2:
+	mapannounce instance_mapname("1@ge_st"), "<마법 토너먼트 방송>: 시간 종료! 심판이 경기의 승자를 결정합니다!",bc_blue;	
+	
+	setcell instance_mapname("1@ge_st"), 50, 50, 50, 50, cell_walkable, 1;
+	unitwarp 'BossID, instance_mapname("1@ge_st"), 50, 50;
+	killmonster instance_mapname("1@ge_st"), instance_npcname("#GMTcontroller")+"::OnTimeout";
+	'BossID = 0;
+	
+	if ('HomID) {
+		killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR";
+		killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomDead";
+		'HomID = 0;
+	}
+	
+	sleep 3000;
+	hideoffnpc instance_npcname("게펜 아카데미 마스터");
+//	npctalk "The votes are in... And the winner is...",instance_npcname("게펜 아카데미 마스터");
+//	sleep 1500;
+	npctalk "1st judge's score! "+rand(100)+" - "+rand(100)+"", "게펜 아카데미 마스터";
+	sleep 1500;
+	npctalk "2nd judge's score! "+rand(100)+" - "+rand(100)+"", "게펜 아카데미 마스터";
+	sleep 1500;
+	npctalk "3rd judge's score! "+rand(100)+" - "+rand(100)+"", "게펜 아카데미 마스터";
+	sleep 1500;
+	
+	switch ('GMT_1QUE) {
+		case 11:
+			enablenpc instance_npcname("아르히#1");
+			donpcevent instance_npcname("아르히#1")+"::OnVictory";
+			.@defeat$ = "노비스, 아르히!";
+			break;
+		case 12:
+			enablenpc instance_npcname("디오 아네모스#1");
+			donpcevent instance_npcname("디오 아네모스#1")+"::OnVictory";
+			.@defeat$ = "마법 견습생, 디오 아네모스!";
+			break;
+		case 13:
+			if ('GMTQuest == 1) {
+				enablenpc instance_npcname("게펜 깡패#n1");
+				donpcevent instance_npcname("게펜 깡패#n1")+"::OnVictory";
+				.@defeat$ = "게펜 깡패!";
+			} else if ('GMTQuest == 2) {
+				enablenpc instance_npcname("게펜 불량배#n1");
+				donpcevent instance_npcname("게펜 불량배#n1")+"::OnVictory";
+				.@defeat$ = "Gefen Bully!";
+				break;
+			} else {
+				enablenpc instance_npcname("게펜 좀도둑#n1");
+				donpcevent instance_npcname("게펜 좀도둑#n1")+"::OnVictory";
+				.@defeat$ = "게펜 좀도둑!";
+				break;
+			}
+			break;
+		case 14:
+			enablenpc instance_npcname("페몽#1");
+			donpcevent instance_npcname("페몽#1")+"::OnVictory";
+			.@defeat$ = "Prontera's pride and style, Feymont!";
+			break;
+		case 15:
+			enablenpc instance_npcname("오르도르#1");
+			donpcevent instance_npcname("오르도르#1")+"::OnVictory";
+			.@defeat$ = "자칭 배틀마스터, 오르도르!";
+			break;
+		case 16:
+			enablenpc instance_npcname("블루트 하세#1");
+			donpcevent instance_npcname("블루트 하세#1")+"::OnVictory";
+			.@defeat$ = "피의 토끼귀~!! 블루트 하세!";
+			break;
+		case 17:
+			enablenpc instance_npcname("쿠로 아쿠마#1");
+			donpcevent instance_npcname("쿠로 아쿠마#1")+"::OnVictory";
+			.@defeat$ = "악마의 이빨! 쿠로 아쿠마!";
+			break;
+		case 18:
+			enablenpc instance_npcname("이포더스#1");
+			donpcevent instance_npcname("이포더스#1")+"::OnVictory";
+			.@defeat$ = "룬 미드가르드의 미치광이! 이포더스!";
+			break;
+		case 19:
+			enablenpc instance_npcname("레체니예#1");
+			donpcevent instance_npcname("레체니예#1")+"::OnVictory";
+			.@defeat$ = "죽음의 여인! 레체니예!";
+			break;
+		case 20:
+			enablenpc instance_npcname("오도리코#1");
+			donpcevent instance_npcname("오도리코#1")+"::OnVictory";
+			.@defeat$ = "죽음의 가수! 오도리코!";
+			break;
+		case 21:
+			enablenpc instance_npcname("쥬#1");
+			donpcevent instance_npcname("쥬#1")+"::OnVictory";
+			.@defeat$ = "힘과 속도의 달인! 쥬!";
+			break;
+		case 22:
+			if ('half) {
+				enablenpc instance_npcname("드위그#1");
+				donpcevent instance_npcname("드위그#1")+"::OnVictory";
+				.@defeat$ = "전투와 지혜의 지휘관! 드위그!";
+				break;
+			} else {
+				enablenpc instance_npcname("페이 카나비언#1");
+				donpcevent instance_npcname("페이 카나비언#1")+"::OnVictory";
+				.@defeat$ = "페이 카나비언과 그녀의 호문클루스 Alphonse!";
+				
+				if ('HomID) {
+					killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR";
+					killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomDead";
+					'HomID = 0;
+				}
+				break;
+			}
+			break;
+		case 23:
+			enablenpc instance_npcname("펜릴#f");
+			donpcevent instance_npcname("펜릴#f")+"::OnVictory";
+			.@defeat$ = "파란 마법사! 펜리스 펜릴~!!";
+			break;
+	}
+	
+	npctalk "심판이 결정한 "+callfunc("F_GetNumSuffix",('GMT_1QUE-10))+" 경기의 승자는...! "+.@defeat$, "게펜 아카데미 마스터";
+	sleep 1500;
+	//donpcevent instance_npcname("#DEATHGMT")+"::OnLoseRound";
+	npctalk "패배한 참가자에게 따듯한 박수를 보냅니다.", "게펜 아카데미 마스터";
+	sleep 1500;
+	npctalk "패배한 참가자는 경기장을 따나주십시오!", "게펜 아카데미 마스터";
+	sleep 3000;
+	movenpc instance_npcname("#gefmagic_warp02"),120,213;
+	movenpc instance_npcname("#invisGMTquests"),120,61;
+	
+	donpcevent instance_npcname("펜릴#e1")+"::OnEnable";
+	donpcevent instance_npcname("케이아스#e1")+"::OnEnable";
+	donpcevent instance_npcname("아이리스#e1")+"::OnEnable";
+	donpcevent instance_npcname("리디아#e1")+"::OnEnable";
+	donpcevent instance_npcname("로키#e1")+"::OnEnable";
+	end;
+	
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+1@ge_st,1,1,1	script	#GMTHomun	HIDDEN_NPC,{
+end;
+
+OnSummon:
+	initnpctimer;
+	'HomID = monster (instance_mapname("1@ge_st"), 114,50,"--ja--",2565,1, instance_npcname("#GMTHomun")+"::OnHomDead");
+	end;
+
+OnTimer10000:
+	if (!'BossID) {
+		stopnpctimer;
+		disablenpc instance_npcname("#GMTHomun");
+		end;
+	}
+	
+	initnpctimer;
+	
+	if ('HomID != 0) {
+		getunitdata 'BossID,.@bossdata;
+		getunitdata 'HomID,.@homdata;
+			if (distance(.@bossdata[6],.@bossdata[7],.@homdata[6],.@homdata[7]) > 10) {
+				unittalk 'BossID,"나와, Alphonse!";
+				sleep 500;
+				unitwarp 'HomID, instance_mapname("1@ge_st"),.@bossdata[6],.@bossdata[7];
+			}
+	}
+	else {
+		if (mobcount(instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR")) { end; }
+		getunitdata 'BossID,.@bossdata;
+		unittalk 'BossID, "살아나! Alphons!";
+		areamonster instance_mapname("1@ge_st"),.@bossdata[6]-2,.@bossdata[7]-2,.@bossdata[6]+2,.@bossdata[7]+2,"--ja--",2566,3,instance_npcname("#GMTHomun")+"::OnHomJR";
+	}
+	end;
+
+OnHomDead:
+	initnpctimer;
+	'HomID = 0;
+	end;
+
+OnHomJR:
+	end;
+
+OnEnd:
+	stopnpctimer;
+	if ('HomID) { 
+		killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR";
+		killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomDead";
+	}
+	disablenpc instance_npcname("#GMTHomun");
+	end;
+}
+
+
+1@ge_st,111,57,4	script	마법대회 간호사#1	569,{ //83649 (hide) 
+	mes "[ 마법대회 간호사 ]";
+	mes "The previous round's winner can receive a heal from me.";
+	next;
+		if (select ("회복한다.", "취소") == 2) {
+			mes "[ 마법대회 간호사 ]";
+			mes "당신은 치유할 필요가 없는 것 같아요.";
+			close;
+		}
+	mes "[ 마법대회 간호사 ]";
+	mes "좋아요.";
+	mes "다음 경기도 힘내세요!";
+	percentheal 100,100;
+	specialeffect2 EF_HEAL;
+	close2;
+	hideonnpc instance_npcname("마법대회 간호사#1"); // 83649
+	end;
+OnInstanceInit:
+	hideonnpc instance_npcname("마법대회 간호사#1");
+	end;
+}
+
+1@ge_st,1,1,1	script	#FireworksControl	-1,{
+end;
+OnStart:
+	initnpctimer;
+		for ( .@i = 11; .@i <= 20; .@i++ ) {
+			specialeffect .effect[rand(getarraysize(.effect))], AREA, instance_npcname("#fireworks_" +.@i);
+		}
+	end;
+OnTimer6000:
+	initnpctimer;
+		for ( .@i = 0; .@i < 5; .@i++) {
+			specialeffect .effect[rand(getarraysize(.effect))], AREA, instance_npcname("#fireworks_" + rand(11,20));
+		}
+	end;
+
+OnTurn:
+	stopnpctimer;
+	end;
+
+OnWin:
+	for ( .@i = 1; .@i <= 5; .@i++ ) {
+		specialeffect EF_LORD, AREA, instance_npcname("#fireworks_f" + .@i);
+	}
+	sleep 3000;
+	for ( .@i = 1; .@i <= 5; .@i++ ) {
+		specialeffect EF_SIGHTRASHER, AREA, instance_npcname("#fireworks_f" + .@i);
+	}
+	sleep 500;
+	for ( .@i = 1; .@i <= 5; .@i++ ){
+		specialeffect EF_STORMGUST, AREA, instance_npcname("#fireworks_f" + .@i);
+	}
+	sleep 3000;
+	for ( .@i = 1; .@i <= 5; .@i++ ) {
+		specialeffect EF_VIOLENTGALE, AREA, instance_npcname("#fireworks_f" + .@i);
+	}
+	end;
+OnInstanceInit:
+	setarray .effect, EF_THUNDERSTORM, EF_STORMGUST, EF_METEORSTORM;
+	end;
+}
+
+1@ge_st,102,42,0	script	#fireworks_11	139,{ end; }
+1@ge_st,100,60,0	duplicate(#fireworks_11)	#fireworks_12	139
+1@ge_st,109,60,0	duplicate(#fireworks_11)	#fireworks_13	139
+1@ge_st,118,60,0	duplicate(#fireworks_11)	#fireworks_14	139
+1@ge_st,126,59,0	duplicate(#fireworks_11)	#fireworks_15	139
+1@ge_st,126,37,0	duplicate(#fireworks_11)	#fireworks_16	139
+1@ge_st,118,36,0	duplicate(#fireworks_11)	#fireworks_17	139
+1@ge_st,109,36,0	duplicate(#fireworks_11)	#fireworks_18	139
+1@ge_st,100,36,0	duplicate(#fireworks_11)	#fireworks_19	139
+1@ge_st,92,37,0	duplicate(#fireworks_11)	#fireworks_20	139
+1@ge_st,112,52,0	duplicate(#fireworks_11)	#fireworks_f1	139
+1@ge_st,112,42,0	duplicate(#fireworks_11)	#fireworks_f2	139
+1@ge_st,102,52,0	duplicate(#fireworks_11)	#fireworks_f3	139
+1@ge_st,102,52,0	duplicate(#fireworks_11)	#fireworks_f4	139
+1@ge_st,102,42,0	duplicate(#fireworks_11)	#fireworks_f5	139
+
+1@ge_st,1,1,1	script	#Talkcontrol	-1,{
+end;
+
+OnStart:
+	'Talkcounter = 0;
+	initnpctimer;
+	end;
+
+OnTimer5000:
+	'Talkcounter++;
+	if ('Talkcounter <4)
+	initnpctimer;
+OnRndtalk:
+	.@iter = rand(1,3);
+	for (.@i = 0; .@i <.@iter ;.@i++) {
+	.@group = rand(30);
+	if (.@group <18) {
+		showscript 'audience$[rand(getarraysize('audience$))],getnpcid(0,instance_npcname("마법대회 관중#"+rand(70,257)));
+		showscript 'audience$[rand(getarraysize('audience$))],getnpcid(0,instance_npcname("마법대회 관중#"+rand(70,257)));
+	} else if (.@group <23) {
+		showscript 'student$[rand(getarraysize('student$))],getnpcid(0,instance_npcname("마법 아카데미 학생#" + rand(1,5)));
+	} else {
+		.@id = rand(getarraysize('tourist$));
+		showscript 'touristname2$[.@id]+'tourist$[.@id],getnpcid(0,instance_npcname('touristname$[.@id]));
+	}
+	sleep rand(2,5) * 100;
+	}
+	end;
+
+OnTimer13000:
+	stopnpctimer;
+	.@iter = rand(1,3);
+		for ( .@i = 0; .@i <.@iter; .@i++ ) {
+			.@group = rand(30);
+			
+				if ( .@group <18) {
+					showscript 'audience$[rand(getarraysize('audience$))],getnpcid(0,instance_npcname("마법대회 관중#"+rand(70,257)));
+					showscript 'audience$[rand(getarraysize('audience$))],getnpcid(0,instance_npcname("마법대회 관중#"+rand(70,257)));
+				} else if (.group <23) {
+					showscript 'student$[rand(getarraysize('student$))],getnpcid(0,instance_npcname("마법 아카데미 학생#" + rand(1,5)));
+				} else {
+					.@id = rand(getarraysize('tourist$));
+					showscript 'touristname2$[.@id]+'tourist$[.@id],getnpcid(0,instance_npcname('touristname$[.@id]));
+				}
+					
+	
+			sleep rand(2,5)*100;
+		}
+	end;
+
+OnInstanceInit:
+	setarray 'audience$,
+		"마법대회 관중 : I've been watiing for this round!",
+		"마법대회 관중 : Hope this round's an interesting match up!",
+		"마법대회 관중 : Oh! Ah! Oh! Ah!",
+		"마법대회 관중 : Oooh, finally started!",
+		"마법대회 관중 : Start already! Fight! Come on, start!",
+		"마법대회 관중 : Is this that guy's first time? I feel he's very powerful, ah!",
+		"마법대회 관중 : Who do you think will win?",
+		"마법대회 관중 : Come on, start!",
+		"마법대회 관중 : Get it on already!",
+		"마법대회 관중 : I feel like I'm in danger...",
+		"마법대회 관중 : I'm counting on that "+('sex ? "guy" : "girl")+" to lose!",
+		"마법대회 관중 : Gotta feel sorry for that guy! Come on!",
+		"마법대회 관중 : He's terrific! You've got this! Come on!",
+		"마법대회 관중 : I'm having such a great time here!",
+		"마법대회 관중 : Come on!~~",
+		"마법대회 관중 : Let's see what you've got "+'charname$+"!",
+		"마법대회 관중 : He's probably going to lose this round.",
+		"마법대회 관중 : This contest has a lot of good participants.",
+		"마법대회 관중 : Do not be afraid, come on!",
+		"마법대회 관중 : Almost to start huh?",
+		"마법대회 관중 : Even just watching this is fun!",
+		"마법대회 관중 : My hands are sweating...",
+		"마법대회 관중 : Come on let's go!";
+
+	setarray 'student$,
+		"마법 아카데미 학생: Ya~ Hoo~",
+		"마법 아카데미 학생: Wow, I'm so nervous!",
+		"마법 아카데미 학생: Both of you please! Come on!";
+
+	setarray 'tourist$,
+		" : Oh, the atmosphere's starting to heat up...",
+		" : This is so energizing!",
+		" : There's no Payon contestants are there?",
+		" : The atmosphere here is great!",
+		" : Oooh! Come on!",
+		" : These participants are so energetic!",
+		" : Good thing too...",
+		" : Don't lose too quickly! Oh!~";
+
+	setarray 'touristname$,
+		"Prontera Spectator#a1",
+		"Prontera Spectator#a2",
+		"Payon Spectator#a1",
+		"Payon Spectator#a2",
+		"Alberta Spectator#a1",
+		"Alberta Spectator#a2",
+		"Veins Spectator#a1",
+		"Comodo Spectator#a1";
+		
+	setarray 'touristname2$,
+		"Prontera Spectator",
+		"Prontera Spectator",
+		"Payon Spectator",
+		"Payon Spectator",
+		"Alberta Spectator",
+		"Alberta Spectator",
+		"Veins Spectator",
+		"Comodo Spectator";
+		end;
+
+}
+
+1@ge_st,106,62,6	script	로키#a2	512,{}
+1@ge_st,108,62,6	script	케이아스#a2	683,{}
+1@ge_st,111,62,4	script	아이리스#a2	666,{}
+1@ge_st,112,62,4	script	리디아#a2	10010,{}
+
+// ================================================================
+// Rivals
+// ================================================================
+1@ge_st,114,50,4	script	아르히#1	670,{
+end;
+
+OnActivate:
+	enablenpc instance_npcname("아르히#1");
+	npctalk "첫 경기니까 긴장되네...";
+	sleep 2000;
+	npctalk "내가 이길 수 있을까???";
+	sleep 3000;
+	npctalk "상대방도 약해보이니까 괜찮을거야!";
+	sleep 3000;
+	npctalk "룰루랄라~ 긴장 풀자~!";
+	sleep 3000;
+	npctalk "아.. 드디어 곧 시작하네...";
+	sleep 3000;
+	npctalk "긴장 긴장 풀자~!";
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("아르히#1");
+	sleep 1000;
+	npctalk "아.. 첫 경기부터 지다니...";
+	sleep 3000;
+	npctalk "집에다가는 어떻게 말하지...";
+	sleep 3000;
+	npctalk "부끄럽다...";
+	sleep 3000;
+	npctalk "아... 친구들이 비웃을탠데...";
+	sleep 3000;
+	npctalk "흐윽...";
+	sleep 1000;	
+	hideonnpc instance_npcname("아르히#1");
+	sleep 1000;
+	movenpc instance_npcname("아르히#z1_0et"),145,125;
+	hideoffnpc instance_npcname("마법대회 진행요원#gefMT");
+	disablenpc instance_npcname("아르히#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("아르히#1");
+	sleep 1000;
+	npctalk "내가 이길 줄 알았어!";
+	sleep 3000;
+	npctalk "그래서 안심했어!";
+	sleep 3000;
+	npctalk "나는 약한 참가자는 이길 수 있어!";
+	sleep 3000;
+	npctalk "야호!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	디오 아네모스#1	669,{
+end;
+
+OnActivate:
+	npctalk "두 번째 경기, 허...";
+	sleep 2000;
+	npctalk "그래도 만만해 보이는 놈을 만나서 다행이야.";
+	sleep 3000;
+	npctalk "아 경기 빨리 시작했으면 좋겠다.";
+	sleep 3000;
+	npctalk "빨리 끝내버리고 과자나 사먹어야지.";
+	sleep 3000;
+	npctalk "자 그럼 시작해볼까나.";
+	sleep 2000;
+	npctalk "Boring...",instance_npcname("로키#a2");
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("디오 아네모스#1");
+	sleep 1000;
+	npctalk "세상에....";
+	sleep 2000;
+	npctalk "내가... 지다니...";
+	sleep 2000;
+	npctalk "아아... 이런 듣도보도 못한 녀석한테...";
+	sleep 3000;
+	npctalk "내 실력이 많이 녹슬었나...";
+	sleep 3000;
+	npctalk "아아... 슬프다...";
+	sleep 2000;
+	npctalk "으아아아아~!!";
+	sleep 1000;
+	hideonnpc instance_npcname("디오 아네모스#1");
+	sleep 1000;
+	movenpc instance_npcname("디오 아네모스#z1_0et"),91,117;
+	disablenpc instance_npcname("디오 아네모스#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("디오 아네모스#1");
+	sleep 1000;
+	npctalk "휴... 너무 쉬웠어.";
+	sleep 3000;
+	npctalk "집에 가서 엄마한테 물어보라구!";
+	sleep 3000;
+	npctalk "하 하 하 하~!!!!";
+	sleep 3000;
+	npctalk "다음 경기를 준비하러 가야지.";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	게펜 깡패#n1	682,{
+end;
+
+OnActivate:
+	npctalk "음, 너는 저번에 그 꼬마구나...";
+	sleep 3000;
+	npctalk "너에게 가르쳐주고 싶은게 있다...";
+	sleep 3000;
+	npctalk "그건 내가 이길 것이라는거다!";
+	sleep 3000;
+	npctalk "먼저 너랑 놀아줄게. 그 다음 카프라에게 돌아갈거야.";
+	sleep 3000;
+	npctalk "뭐가 우습지?!";
+	sleep 3000;
+	npctalk "죽음을 각오해라!";
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("게펜 깡패#n1");
+	sleep 1000;
+	npctalk "내가 지다니! 이건 말도 안돼!";
+	sleep 2000;
+	npctalk "너에게 졌다니 믿을 수 없어!";
+	sleep 3000;
+	npctalk "다리가 아름다운 카프라 앞에서 지다니, 당황스러워...!";
+	sleep 3000;
+	npctalk "흐으.. 이런 일은 있을 수 없어!";
+	sleep 2000;
+	npctalk "이 우울함을 혼자 견딜 수 없어!";
+	sleep 2000;
+	npctalk "카프라를 보러 프론테라로 가야겠어...후후후...";
+	sleep 1000;
+	hideonnpc instance_npcname("게펜 깡패#n1");
+	sleep 1000;
+	disablenpc instance_npcname("게펜 깡패#n1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("게펜 깡패#n1");
+	sleep 1000;
+	npctalk "이게 진짜 내 능력이다!";
+	sleep 3000;
+	npctalk "후후... 저건... 카프라...!";
+	sleep 3000;
+	npctalk "다시 카프라에게로 가야겠어~!!";
+	sleep 3000;
+	npctalk "후 후 후 후 후...";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+}
+
+1@ge_st,114,50,4	script	게펜 불량배#n1	681,{
+end;
+
+OnActivate:
+	npctalk "Just you wait, you'll be immediately disabled!";
+	sleep 3000;
+	npctalk "I will beat you down today!";
+	sleep 3000;
+	npctalk "Give me your zeny!";
+	sleep 3000;
+	npctalk "I'll send you crying home!";
+	sleep 3000;
+	npctalk "I will make you experience my 20 years of bullying.";
+	sleep 3000;
+	npctalk "You're dead!";
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("게펜 불량배#n1");
+	sleep 1000;
+	npctalk "I can't believe you beat me...";
+	sleep 3000;
+	npctalk "It can't be!";
+	sleep 3000;
+	npctalk "This can't be! I only wanted to get more zeny!";
+	sleep 3000;
+	npctalk "Now I'll be the laughing stock of all of Geffen!";
+	sleep 3000;
+	npctalk "Ah! Ahhh!! It can't be!!!";
+	sleep 1000;
+	hideonnpc instance_npcname("게펜 불량배#n1");
+	sleep 1000;
+	disablenpc instance_npcname("게펜 불량배#n1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("게펜 불량배#n1");
+	sleep 1000;
+	npctalk "You! Hou much zeny do you have left?";
+	sleep 3000;
+	npctalk "You messed with me once before!";
+	sleep 3000;
+	npctalk "And now I've left you speechless!";
+	sleep 3000;
+	npctalk "Never show your face in Geffen again!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	게펜 좀도둑#n1	671,{
+end;
+
+OnActivate:
+	npctalk "여기는 사람이 많이 모여있어서...";
+	sleep 3000;
+	npctalk "훔칠게 좀 있는 줄 알았는데...";
+	sleep 3000;
+	npctalk "오히려 이목이 집중되서 훔칠 수가 없잖아..?";
+	sleep 3000;
+	npctalk "이건 좋지 않은데?";
+	sleep 2000;
+	npctalk "에이~! 일단 이기고 봐야겠다!";
+	sleep 2000;
+	npctalk "마법대회에 참가한 의미가 없잖아.";
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("게펜 좀도둑#n1");
+	sleep 1000;
+	npctalk "이럴수가... 내가 지다니...";
+	sleep 2000;
+	npctalk "너무 도둑질만 하고 다녔더니...";
+	sleep 2000;
+	npctalk "전투력이 많이 떨어졌나..";
+	sleep 3000;
+	npctalk "아.. 이럴 수는 없어...";
+	sleep 2000;
+	npctalk "도둑질을 계속 하기 위해서는 수련을 좀 해야겠어...";
+	sleep 3000;
+	npctalk "음... 일단 여기서 도망가자!";
+	sleep 1000;
+	hideonnpc instance_npcname("게펜 좀도둑#n1");
+	sleep 1000;
+	disablenpc instance_npcname("게펜 좀도둑#n1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("게펜 좀도둑#n1");
+	sleep 1000;
+	npctalk "역시 난 짱이야!";
+	sleep 3000;
+	npctalk "그래! 이길 줄 알았어~!!";
+	sleep 3000;
+	npctalk "보상을 많이 챙길 수 있겠어~!";
+	sleep 3000;
+	npctalk "넌 집에 가야겠구나~ 안녕~!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+}
+
+1@ge_st,114,50,4	script	페몽#1	672,{
+end;
+
+OnActivate:
+	enablenpc instance_npcname("페몽#1");
+	npctalk "이번 상대는 딱 봐도...";
+	sleep 2000;
+	npctalk "운 좋게 올라온 녀석이네?";
+	sleep 3000;
+	npctalk "이 몸의 손까지 더럽히긴 싫은데...";
+	sleep 3000;
+	npctalk "아... 고급스럽게 처리해야겠다...";
+	sleep 3000;
+	npctalk "음... 이제 곧 시작하겠네...";
+	sleep 3000;
+	npctalk "빨리 끝내고 신상 투구나 사러 가야지.";
+	npctalk "빨리 시작해!", instance_npcname("Prontera Spectator#a1");
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("페몽#1");
+	sleep 1000;
+	npctalk "이럴수가... 내가 질 줄이야...";
+	sleep 2000;
+	npctalk "저런 기품도 없는 녀석한테...";
+	sleep 2000;
+	npctalk "이건 정말 굴욕이다...";
+	sleep 2000;
+	npctalk "수 많은 나의 소녀팬들이... 실망할텐데...";
+	sleep 3000;
+	npctalk "아아... 이대로 어떻게 밖으로 나가지...";
+	sleep 3000;
+	npctalk "당분간 밖에 돌아다니지 말아야겠다.";
+	sleep 1000;
+	hideonnpc instance_npcname("페몽#1");
+	sleep 1000;
+	movenpc instance_npcname("페몽#z1_0et"),53,90;
+	disablenpc instance_npcname("페몽#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("페몽#1");
+	sleep 1000;
+	npctalk "너와 나의 차이를 알겠어? 귀함과 천박함이야.";
+	sleep 3000;
+	npctalk "이 마법대회는 무의미해.";
+	sleep 3000;
+	npctalk "다음 번에도 이런 천박한 녀석들과 싸워야하는거야?";
+	sleep 3000;
+	npctalk "가뿐하군, 다음 경기를 준비하러 가야겠어.";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+}
+
+1@ge_st,114,50,4	script	오르도르#1	673,{
+end;
+
+OnActivate:
+	enablenpc instance_npcname("오르도르#1");
+	npctalk "하나! 둘! 하나! 둘!";
+	sleep 2000;
+	npctalk "천천히 한 계단씩 올라가자!";
+	sleep 2000;
+	npctalk "내가 지금까지 힘들게 쌓아온 노력들!";
+	sleep 3000;
+	npctalk "쉽게 무너질리가 없어!";
+	sleep 3000;
+	npctalk "자~! 앞에 있는 상대에게도 최선을!";
+	sleep 3000;
+	npctalk "그럼 시작해 볼까!";
+	npctalk "이게 진짜 대회 수준인가?",instance_npcname("케이아스#a2");
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("오르도르#1");
+	sleep 1000;
+	npctalk "졌다...";
+	sleep 2000;
+	npctalk "아직 수련이 많이 부족하군...";
+	sleep 2000;
+	npctalk "더 열심히 해야겠어.";
+	sleep 3000;
+	npctalk "오늘부터 평소에 하던 훈련량보다... 2배 더 많이...";
+	sleep 3000;
+	npctalk "후우... 다시 시작하는거야!";
+	sleep 2000;
+	npctalk "가자! 화이팅!!";
+	sleep 1000;
+	hideonnpc instance_npcname("오르도르#1");
+	sleep 1000;
+	movenpc instance_npcname("오르도르#z1_0et"),85,68;
+	disablenpc instance_npcname("오르도르#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("오르도르#1");
+	sleep 1000;
+	npctalk "내가 이겼다!";
+	sleep 3000;
+	npctalk "너도 오랜 시간을 노력해야... 원하는걸 얻을 수 있어!";
+	sleep 3000;
+	npctalk "나는 다음 경기를 준비하러 가야겠어!!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+}
+
+
+1@ge_st,114,50,4	script	블루트 하세#1	674,{
+end;
+
+OnActivate:
+	npctalk "여기까지 올라올 정도면...";
+	sleep 2000;
+	npctalk "아마 상대도 어느정도 하는 녀석이겠지?";
+	sleep 3000;
+	npctalk "하지만 내 명성이 그냥 쌓였겠어?";
+	sleep 3000;
+	npctalk "피의 토끼귀라는 이름은 말이야...";
+	sleep 3000;
+	npctalk "그냥 얻어지는게 아니라고!";
+	sleep 1000;
+	donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+	sleep 2000;
+	npctalk "너도 오늘 나의 제물이 되어라!!";
+	sleep 1000;
+	donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+	sleep 1000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("블루트 하세#1");
+	sleep 1000;
+	npctalk "내가 질 수는 없는데!!";
+	sleep 1000;
+	npctalk "내 명성이... 내 인지도가...";
+	sleep 3000;
+	npctalk "으... 바닥을 치겠구나...";
+	sleep 3000;
+	npctalk "이 결과... 쉽게 승복할 수 없다!";
+	sleep 3000;
+	npctalk "내 명성을 다시 되찾고야 말겠어!";
+	sleep 2000;
+	npctalk "다음 대회에서 보자!!";
+	sleep 1000;
+	hideonnpc instance_npcname("블루트 하세#1");
+	sleep 1000;
+	movenpc instance_npcname("블루트 하세#z1_0et"),111,62;
+	disablenpc instance_npcname("블루트 하세#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("블루트 하세#1");
+	sleep 1000;
+	npctalk "명성으로 보나 인기로 보나";
+	sleep 3000;
+	npctalk "내가 진다는건 있을 수 없지!";
+	sleep 3000;
+	npctalk "이제 나는 피의 토끼 귀 대신 울트라 토끼피로 기억될거야!";
+	sleep 3000;
+	npctalk "야하하하~!!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+}
+
+1@ge_st,114,50,4	script	쿠로 아쿠마#1	675,{
+end;
+OnActivate:
+	npctalk "드디어 7 경기가 시작했구나아~!";
+	sleep 2000;
+	npctalk "악마를 본 적이 있나아..?";
+	sleep 3000;
+	npctalk "없다면 다행이구나아~!";
+	sleep 3000;
+	npctalk "오늘 좋은 경험하게 되는거야아~!";
+	sleep 3000;
+	npctalk "내 앞에서 살아남은 사람은 아무도 없지이~!";
+	sleep 3000;
+	npctalk "지옥을 보여주마아~!";
+	sleep 1000;
+	donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+	sleep 1000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("쿠로 아쿠마#1");
+	sleep 1000;
+	npctalk "이럴수가아..";
+	sleep 3000;
+	npctalk "내가... 이 악마의 이빨이...";
+	sleep 2000;
+	npctalk "진다는 건 말도 안되는 일이야아...";
+	sleep 3000;
+	npctalk "으아아아아아 크아아아아아!!";
+	sleep 3000;
+	npctalk "언젠가 다시 만나면 그 때 복수하고 말리라아!!";
+	sleep 2000;
+	hideonnpc instance_npcname("쿠로 아쿠마#1");
+	sleep 1000;
+	movenpc instance_npcname("쿠로 아쿠마#z1_0et"),104,42;
+	disablenpc instance_npcname("쿠로 아쿠마#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("쿠로 아쿠마#1");
+	sleep 1000;
+	npctalk "어떠냐아~! 나의 실력이~!";
+	sleep 3000;
+	npctalk "불쌍하니 목숨만은 살려줄게에~!";
+	sleep 3000;
+	npctalk "고마운줄 알아라아~!";
+	sleep 3000;
+	npctalk "자, 다음 경기를 준비해 볼까아~!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	이포더스#1	676,{
+end;
+OnActivate:
+	npctalk "드디어 8경기 시작인가...";
+	sleep 3000;
+	npctalk "내겐 어떤 공격도 통하지 않는다!";
+	sleep 3000;
+	npctalk "나는 어떤 누구라도 죽일 수 있지!";
+	sleep 2000;
+	npctalk "그러므로 웃는 것도 지금까지다!";
+	sleep 2000;
+	npctalk "이제 경기가 시작되면 울음으로 바뀌게 해주지!";
+	sleep 2000;
+	npctalk "자 시작해볼까?";
+	sleep 1000;
+	donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+	sleep 1000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("이포더스#1");
+	sleep 1000;
+	npctalk "내가 지는 일은 있을 수 없다!!";
+	sleep 3000;
+	npctalk "이런 말도 안되는 일이...";
+	sleep 2000;
+	npctalk "어떻게 이런 일이 생기지?!";
+	sleep 3000;
+	npctalk "이해할 수가 없다!";
+	sleep 3000;
+	npctalk "저런 별 것도 아닌 녀석한테...";
+	sleep 2000;
+	hideonnpc instance_npcname("이포더스#1");
+	sleep 1000;
+	movenpc instance_npcname("이포더스#z1_0et"),115,66;
+	disablenpc instance_npcname("이포더스#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("이포더스#1");
+	sleep 1000;
+	npctalk "너따위는 내 방어를 뚫을 수 없다!";
+	sleep 3000;
+	npctalk "내 강력한 공격을 방어할 수도 없고!";
+	sleep 3000;
+	npctalk "와하하하~!!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	레체니예#1	677,{
+end;
+OnActivate:
+	npctalk "호호호~!!";
+	sleep 3000;
+	npctalk "9 경기 상대는 아주~ 무서워 보이는 군요~!";
+	sleep 3000;
+	npctalk "너무 무섭게 하지 말아요~!";
+	sleep 2000;
+	npctalk "저는 숙녀랍니다~!";
+	sleep 2000;
+	npctalk "하지만 경기가 시작되면~~!";
+	sleep 2000;
+	npctalk "킬킬킬.. 물어뜯어주겠어!!!!";
+	sleep 1000;
+	npctalk "쟤 좀 무서워 ...", instance_npcname("Payon Spectator#a1");
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("레체니예#1");
+	sleep 1000;
+	npctalk "어머... 어떻게 이럴 수 있는거죠?";
+	sleep 3000;
+	npctalk "저같은 요조숙녀를 잔인하게 때리시다니...";
+	sleep 2000;
+	npctalk "소녀 너무 슬픕니다...흑흑흑...";
+	sleep 3000;
+	npctalk "하지만... 다음 번에 만날 때는~!";
+	sleep 3000;
+	npctalk "사지를 찢어주마 킬킬킬!!!!";
+	sleep 1000;
+	hideonnpc instance_npcname("레체니예#1");
+	sleep 1000;
+	movenpc instance_npcname("레체니예#z1_0et"),137,53;
+	disablenpc instance_npcname("레체니예#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("레체니예#1");
+	sleep 1000;
+	npctalk "오호호호~~! 제가 이길줄 알았어요~!";
+	sleep 3000;
+	npctalk "어머나!어머나! 미안해요~!";
+	sleep 3000;
+	npctalk "어, 음~ 저는 다음 경기 준비하러 이만~!";
+	sleep 8000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	오도리코#1	678,{
+end;
+OnActivate:
+	npctalk "룰루 유후~ 즐거운 마법대회~!";
+	sleep 3000;
+	npctalk "댄스 댄스~ 상대를 유혹하는~";
+	sleep 3000;
+	npctalk "내 춤과 마법을 본 사람들은 모두 나에게 무릎을 꿇었지~!";
+	sleep 3000;
+	npctalk "너도 마찬가지 일거야~! 마음의 준비 하고 있기를~!";
+	sleep 2000;
+	npctalk "이제 곧 시작하는구나~ 나의 춤과 마법의 향연이~!";
+	sleep 2000;
+	npctalk "랄라라라~~~!";
+	sleep 1000;
+	npctalk "예쁘다!", instance_npcname("Veins Spectator#a1");
+	sleep 1000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("오도리코#1");
+	sleep 1000;
+	npctalk "으흐흐흑...";
+	sleep 3000;
+	npctalk "졌다... 최선을 다했지만...";
+	sleep 2000;
+	npctalk "졌어... 나의 매혹스러운 몸짓도...";
+	sleep 3000;
+	npctalk "통하지 않았어... 으흐흑...";
+	sleep 3000;
+	npctalk "여기까지 와서 떨어지다니...";
+	sleep 2000;
+	npctalk "남자들이나 꼬시러 가야겠어~!";
+	sleep 1000;
+	hideonnpc instance_npcname("오도리코#1");
+	sleep 1000;
+	movenpc instance_npcname("오도리코#z1_0et"),158,63;
+	disablenpc instance_npcname("오도리코#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("오도리코#1");
+	sleep 1000;
+	npctalk "너도... 내 매혹적인 춤 앞에선...";
+	sleep 3000;
+	npctalk "특별할게 없구나~!!";
+	sleep 3000;
+	npctalk "너는 지금까지 잘해줬어~!!";
+	sleep 3000;
+	npctalk "그럼 안녕~";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	쥬#1	679,{
+end;
+OnActivate:
+	npctalk "또 시작되었군 마법대회 경기...";
+	sleep 4000;
+	npctalk "전투는 실전이다.";
+	sleep 4000;
+	npctalk "마.법.전.투!";
+	sleep 4000;
+	npctalk "수련장에서 곱게 수련만 해 온 녀석들이";
+	sleep 3000;
+	npctalk "실전을 알 턱이 없지.";
+	sleep 3000;
+	npctalk "확실하고 빠르게 처리해주마.";
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("쥬#1");
+	sleep 1000;
+	npctalk "크흑.. 졌다..";
+	sleep 3000;
+	npctalk "생각보다 강한 녀석이었군...";
+	sleep 3000;
+	npctalk "분명히 실전도 많이 겪어본 녀석일거야.";
+	sleep 3000;
+	npctalk "크흐... 우승이 목표였는데...";
+	sleep 3000;
+	npctalk "이렇게 된 이상 나를 이기고 올라갔으니";
+	sleep 3000;
+	npctalk "꼭 우승하길 바란다.";
+	sleep 2000;
+	hideonnpc instance_npcname("쥬#1");
+	sleep 1000;
+	movenpc	instance_npcname("쥬#z1_0et"),178,91;
+	disablenpc instance_npcname("쥬#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("쥬#1");
+	sleep 1000;
+	npctalk "이건 게임이 아냐.";
+	sleep 3000;
+	npctalk "이건 실전이다!";
+	sleep 3000;
+	npctalk "예압 !!";
+	sleep 3000;
+	npctalk "진짜 게임은 바로 전투야!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	드위그#1	680,{
+end;
+OnActivate:
+	npctalk "준결승전...허어...";
+	sleep 2000;
+	npctalk "이제 끝이 보인다...";
+	sleep 3000;
+	npctalk "당신은 열심히 싸워줘야 해요..";
+	sleep 3000;
+	npctalk "제 학생들이 여기 와있거든요.";
+	sleep 3000;
+	npctalk "그들이 이 싸움을 보는 것이 무엇보다 중요합니다!";
+	sleep 3000;
+	npctalk "와, 선생님!",instance_npcname("마법 아카데미 학생#22");
+	npctalk "선생님, 이겨야해요!",instance_npcname("마법 아카데미 학생#3");
+	npctalk "선생님 대단하다!",instance_npcname("마법 아카데미 학생#4");
+	sleep 2000;
+	npctalk "선생님이 지는건 상상이 안돼~!",instance_npcname("마법 아카데미 학생#1");
+	npctalk "우리 모두 선생님을 응원하고 있어요!",instance_npcname("마법 아카데미 학생#5");
+	sleep 2000;
+	npctalk "내 학생들 앞에선 질 수 없어요!";
+	sleep 2000;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	sleep 1000;
+	npctalk "와!~ 힘내요 선생님~!!",instance_npcname("마법 아카데미 학생#5");
+	sleep 1000;
+	npctalk "선생님! 최고에요~!!",instance_npcname("마법 아카데미 학생#3");
+	npctalk "선생님이 못하는건~!!",instance_npcname("마법 아카데미 학생#4");
+	npctalk "아무것도 없어요~!!",instance_npcname("마법 아카데미 학생#1");
+	npctalk "선생님~!!",instance_npcname("마법 아카데미 학생#5");
+	end;
+
+OnDefeat:
+	hideoffnpc instance_npcname("드위그#1");
+	sleep 1000;
+	npctalk "한 번만 더 이겼으면 결승전인데...";
+	sleep 3000;
+	npctalk "학생들 앞에서 지다니... 너무 부끄러워요...";
+	sleep 3000;
+	npctalk "하지만 상대가 너무 강했어요.";
+	sleep 3000;
+	npctalk "제 패배를 인정합니다.";
+	sleep 3000;
+	npctalk "제 학생들 말에 의하면 펜릴은 저보다 강력할 거에요. 행운을 빌어요.";
+	sleep 2000;
+	hideonnpc instance_npcname("드위그#1");
+	sleep 1000;
+	movenpc instance_npcname("드위그#z1_0et"),120,98;
+	disablenpc instance_npcname("드위그#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("드위그#1");
+	sleep 1000;
+	npctalk "휴... 힘든 경기이였어요.";
+	sleep 3000;
+	npctalk "하지만 이기다니, 감격스러워요!";
+	sleep 3000;
+	npctalk "제 학생들을 위해 최선을 다할 거에요.";
+	sleep 3000;
+	npctalk "한 경기만 더 이기면 된다!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,114,50,4	script	페이 카나비언#1	665,{
+end;
+OnActivate:
+	enablenpc instance_npcname("#paycanatalk");
+	end;
+OnDefeat:
+	hideoffnpc instance_npcname("페이 카나비언#1");
+	killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR";
+	killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomDead";
+	enablenpc instance_npcname("#paycanatalk2");
+	end;
+
+OnTalk1:
+    cutin "paycana_a", 2;
+    npctalk "너~ 처음 보는 얼굴인데?";
+    sleep2 4000;
+    npctalk "모든 관중들이 나를 응원하고 있지!";
+    sleep2 4000;
+    npctalk "너는 살고 싶으면 지금 당장 돌아가야해~!";
+    sleep2 4000;
+    npctalk "내 걸작인 알폰스의 힘을 느끼고 싶지 않다면!";
+    sleep2 4000;
+    npctalk "알폰스 보이지?";
+    sleep2 4000;
+    donpcevent instance_npcname("#Talkcontrol")+"::OnRndtalk";
+    sleep2 1000;
+    npctalk "경기가 시작하면, 이 애의 풀파워를 볼 수 있을거야!";
+    sleep2 2000;
+    cutin "", 255;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnTalk2:
+    cutin "paycana_b ", 2;
+    npctalk "내가 진짜 지다니...";
+    sleep2 3000;
+    npctalk "Alphonse... 너에게 내 심장과 영혼을 줬어 ...";
+    sleep2 3000;
+    npctalk "내가 결승에 진출하기로 되어있었는데...";
+    sleep2 3000;
+    npctalk "그리고 펜리스 펜릴을...";
+    sleep2 3000;
+    npctalk "그녀와 싸우고 싶었는데!";
+    sleep2 2000;
+    cutin "", 255;
+	hideonnpc instance_npcname("페이 카나비언#1");
+	sleep 1000;
+	movenpc instance_npcname("페이 카나비언#z1_0et"),117,72;
+	disablenpc instance_npcname("페이 카나비언#1");
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("페이 카나비언#1");
+	sleep 1000;
+	npctalk "내 능력은 엄청나지~!";
+	sleep 3000;
+	npctalk "이 토너먼트는 나에게 게임일 뿐, 전혀 중요하지 않아.";
+	sleep 3000;
+	npctalk "하지만 펜릴이 매 경기마다 승리해 결승해 진줄했어...";
+	sleep 3000;
+	npctalk "나는 그녀를 물리치고 이 토너먼트에서 우승하겠어!";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,108,50,4	script	#paycanatalk	139,25,25,{
+end;
+
+OnTouch:
+    doevent instance_npcname("페이 카나비언#1")+"::OnTalk1";
+    disablenpc instance_npcname("#paycanatalk");
+    end;
+
+OnInstanceInit:
+    disablenpc instance_npcname("#paycanatalk");
+    end;
+
+}
+
+1@ge_st,108,50,4	script	#paycanatalk2	139,25,25,{
+end;
+
+OnTouch_:
+    doevent instance_npcname("페이 카나비언#1")+"::OnTalk2";
+    disablenpc instance_npcname("#paycanatalk2");
+    end;
+
+OnInstanceInit:
+    disablenpc instance_npcname("#paycanatalk2");
+    end;
+
+}
+
+1@ge_st,114,50,4	script	펜릴#f	664,{
+    end;
+OnActivate:
+    enablenpc instance_npcname("#fenrirtalk");
+    end;
+OnDefeat:
+    hideoffnpc instance_npcname("펜릴#f");
+    enablenpc instance_npcname("#fenrirtalk2");
+    end;
+
+OnTalk1:
+    cutin "fenrir_b", 1;
+    npctalk "결승전...";
+    sleep2 1000;
+    npctalk "펜릴이 의심의 여지없이 승리할 것입니다~!", instance_npcname("Payon Spectator#a1");
+    sleep2 1000;
+    npctalk "나는 펜리스 펜릴.";
+    sleep2 1000;
+    npctalk "이봐, 최선을 다해!",instance_npcname("아이리스#a2");
+    sleep2 2000;
+    npctalk "너는...";
+    sleep2 2000;
+    npctalk "나는 이 경기에서 최선을 다해 싸울거야.";
+    sleep2 1000;
+    npctalk "펜릴! 제발 사인해줘!", instance_npcname("Prontera Spectator#a2");
+    sleep2 2000;
+    npctalk "공정하게 싸워보자.";
+	sleep2 2000;
+    npctalk "그럼, 마지막 경기를 시작해볼까?";
+    cutin "", 255;
+	donpcevent instance_npcname("#GMTcontroller")+"::OnStart";
+	end;
+
+OnTalk2:
+    cutin "fenrir_a", 1;
+    npctalk "어... 내가 졌구나.";
+    sleep2 2000;
+    npctalk "어떻게 그렇게 강할 수 있지?";
+    sleep2 3000;
+    npctalk "나의 완벽한 패배야...";
+    sleep2 3000;
+    npctalk "이 세계는 놀라움으로 가득차있군...";
+    sleep2 3000;
+    npctalk "축하해, "+'charname$+". 너의 승리야.";
+    sleep2 2000;
+    npctalk "하지만, 다음에는, 지지 않을거야!";
+    sleep2 2000;
+    cutin "", 255;
+    changequest 9307,9308;
+    warp instance_mapname("1@ge_st"), 109,50;
+	donpcevent instance_npcname("#win")+"::OnEnable";
+	movenpc instance_npcname("#gefmagic_warp02"),120,213;
+	end;
+	
+OnVictory:
+	hideoffnpc instance_npcname("펜릴#f");
+	sleep 1000;
+	npctalk "고마워~ 좋은 경기였어.";
+	sleep 3000;
+	npctalk "승자가 된다는 것은 기분 좋은 일이구나.";
+	sleep 3000;
+	npctalk "다음에 또 보자.";
+	sleep 3000;
+	npctalk "나는 가야 해...친구들이 기다리고 있어.";
+	sleep 5000;
+	instance_warpall instance_mapname("1@gef"),120,61;
+	end;
+	
+}
+
+1@ge_st,108,50,4	script	#fenrirtalk	139,25,25,{
+end;
+
+OnTouch:
+    doevent instance_npcname("펜릴#f")+"::OnTalk1";
+    disablenpc instance_npcname("#fenrirtalk");
+    end;
+
+OnInstanceInit:
+    disablenpc instance_npcname("#fenrirtalk");
+    end;
+
+}
+
+1@ge_st,108,50,4	script	#fenrirtalk2	139,25,25,{
+end;
+
+OnTouch_:
+    doevent instance_npcname("펜릴#f")+"::OnTalk2";
+    disablenpc instance_npcname("#fenrirtalk2");
+    end;
+
+OnInstanceInit:
+    disablenpc instance_npcname("#fenrirtalk2");
+    end;
+
+}
+
+1@ge_st,1,1,1	script	#win	CLEAR_NPC,{
+end;
+
+OnEnable:
+	disablenpc instance_npcname("펜릴#f");
+	movenpc instance_npcname("페몽#q1"), 104, 53;
+	movenpc instance_npcname("디오 아네모스#q1"), 100, 49;
+	movenpc instance_npcname("페몽#q1"), 102, 46;
+	movenpc instance_npcname("오르도르#q1"), 104, 44;
+	movenpc instance_npcname("블루트 하세#q1"), 112, 45;
+	movenpc instance_npcname("쿠로 아쿠마#q1"), 116, 46;
+	movenpc instance_npcname("이포더스#q1"), 115, 53;
+	movenpc instance_npcname("레체니예#q1"), 116, 49;
+	movenpc instance_npcname("오도리코#q1"), 112, 53;
+	movenpc instance_npcname("쥬#q1"), 109, 54;
+	movenpc instance_npcname("드위그#q1"), 106, 50;
+	movenpc instance_npcname("페이 카나비언#q1"), 107, 48;
+	movenpc instance_npcname("펜릴#q1"), 112, 50;
+	hideoffnpc instance_npcname("마법대회 진행요원#gefMT");
+	hideoffnpc instance_npcname("게펜 아카데미 마스터");
+	sleep 1000;
+	npctalk "다른 참가자들이 당신의 우승을 축하하고 싶어합니다!",instance_npcname("펜릴#q1");
+	end;
+
+OnInstanceInit:
+end;
+}
+
+1@ge_st,1,1,6	script	아르히#q1	670,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "아르히 : 나는 더 강해져서 돌아올거야!",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "아르히 : 축하해~!",getnpcid(0);//DONE
+			break;
+	}
+	end;
+}
+1@ge_st,1,1,6	script	디오 아네모스#q1	669,{
+	
+		switch(rand(1,2)){
+		case 1:
+			showscript "디오 아네모스 : 갑자기 배고파지네...",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "디오 아네모스 : 축하해~!",getnpcid(0);//DONE
+			break;
+	}
+	end;
+}
+1@ge_st,1,1,0	script	페몽#q1	672,{
+	showscript "페몽 : 대단한 싸움 실력이야!",getnpcid(0);//DONE
+	end;
+}
+1@ge_st,1,1,0	script	오르도르#q1	673,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "오르도르 : 조금 놀랍네!",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "오르도르 : 이렇게 강해지려면 얼마나 훈련해야되는거야?",getnpcid(0);//DONE
+			break;
+	}	
+	end;
+}
+1@ge_st,1,1,2	script	블루트 하세#q1	674,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "블루트 하세 : 너는 유명해질거야.",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "블루트 하세 : 뭐... 어쨌든 축하해...",getnpcid(0);//DONE
+			break;
+	}	
+	end;
+}
+1@ge_st,1,1,2	script	쿠로 아쿠마#q1	675,{
+	showscript "쿠로 아쿠마 : 그냥... 아주 강해...",getnpcid(0);//DONE
+	end;
+}
+1@ge_st,1,1,4	script	이포더스#q1	676,{
+	switch(rand(1,2)){
+		case 1:
+			//showscript "이포더스 : Your talents suit your chivalry.",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "이포더스 : 너는 좋은 상대였어. 축하해!",getnpcid(0);//DONE
+			break;
+	}	
+	end;
+}
+1@ge_st,1,1,4	script	레체니예#q1	677,{
+	showscript "레체니예 : 굉장한 승리야~!",getnpcid(0);//DONE
+	end;
+}
+1@ge_st,1,1,4	script	오도리코#q1	678,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "오도리코 : 살짝 놀랐어.",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "오도리코 : 우승 축하해~!",getnpcid(0);//DONE
+			break;
+	}	
+	end;
+}
+1@ge_st,1,1,4	script	쥬#q1	679,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "쥬 : 너... 는... 강하다... 나는... 너를... 잊지... 않겠다...",getnpcid(0);//DONE	
+			break;
+		case 2:
+			//showscript "쥬 : I've never lost before. But you are a worthy foe.",getnpcid(0);//DONE
+			break;
+	}
+	end;
+}
+1@ge_st,1,1,6	script	드위그#q1	680,{
+	showscript "드위그 : 정말 좋은 싸움이였어요. 당신은 뛰어난 힘을 가지고 있어요!",getnpcid(0);
+	end;
+}
+1@ge_st,1,1,0	script	페이 카나비언#q1	665,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "페이 카나비언 : 나는 펜릴이 질 것이라고 생각하지 않았어...",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "페이 카나비언 : 다음에는, 알폰스는 더 강해질 거야!",getnpcid(0);//DONE
+			break;
+	}
+	end;
+}
+1@ge_st,1,1,4	script	펜릴#q1	664,{
+	switch(rand(1,2)){
+		case 1:
+			showscript "펜릴 : 제 동료 모두가 당신의 승리에 흥분하고 있습니다. 그들이 당신을 만나고 싶어합니다.",getnpcid(0);//DONE
+			break;
+		case 2:
+			showscript "펜릴 : 공정한 싸움이였어요. 굉장히 강하시네요.",getnpcid(0);//DONE
+			break;
+	}	
+	end;
+}
+
+-	script	#EVT_GMT	-1,{
+OnPCDieEvent:
+	if (strcharinfo(3) == "1@ge_st" || strcharinfo(3) == instance_mapname("1@ge_st") ) {
+		dispbottom "탈락했습니다! 10초 뒤에 일어나거나 경기에서 나가집니다!";
+		sleep2 10000;
+		if (Hp >= 1) {
+			end; 
+		}
+		if (Hp == 0) {
+			instance_warpall instance_mapname("1@ge_st"),104,50;
+			donpcevent instance_npcname("#DEATHGMT")+"::OnLoseRound";
+			donpcevent instance_npcname("#GMTcontroller")+"::OnStop";
+			end;
+		}
+	}
+	
+	end;
+}
+
+1@ge_st,1,1,1	script	#DEATHGMT	-1,{
+	end;
+OnInstanceInit:
+	enablenpc instance_npcname("#DEATHGMT");
+	end;
+	
+OnLoseRound:
+	killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTcontroller")+"::OnMobDead";
+	movenpc instance_npcname("#gefmagic_warp02"),120,213;
+	movenpc instance_npcname("#invisGMTquests"),120,61;
+	
+	donpcevent instance_npcname("펜릴#e1")+"::OnEnable";
+	donpcevent instance_npcname("케이아스#e1")+"::OnEnable";
+	donpcevent instance_npcname("아이리스#e1")+"::OnEnable";
+	donpcevent instance_npcname("리디아#e1")+"::OnEnable";
+	donpcevent instance_npcname("로키#e1")+"::OnEnable";
+	
+		
+	switch ('GMT_1QUE) {
+		case 11:
+			.@defeat$ = "아르히";
+			break;
+		case 12:
+			.@defeat$ = "디오 아네모스";
+			break;
+		case 13:
+			if ('GMTQuest == 1) {
+				.@defeat$ = "게펜 깡패";
+			}
+			else if ('GMTQuest == 2) {
+				.@defeat$ = "Gefen Bully";
+			}
+			else {
+				.@defeat$ = "게펜 좀도둑";
+			}
+			break;
+		case 14:
+			.@defeat$ = "페몽";
+			break;
+		case 15:
+			.@defeat$ = "오르도르";
+			break;
+		case 16:
+			.@defeat$ = "블루트 하세";
+			break;
+		case 17:
+			.@defeat$ = "쿠로 아쿠마";
+			break;
+		case 18:
+			.@defeat$ = "이포더스";
+			break;
+		case 19:
+			.@defeat$ = "레체니예";
+			break;
+		case 20:
+			.@defeat$ = "오도리코";
+			break;
+		case 21:
+			.@defeat$ = "쥬";
+			break;
+		case 22:
+			if ('half) {
+				.@defeat$ = "드위그";
+			} else {
+				.@defeat$ = "페이 카나비언";
+			}
+			break;
+		case 23:
+			.@defeat$ = "펜릴";
+			break;
+		default:
+			break;
+	}
+	
+	npctalk "A조 "+callfunc("F_GetNumSuffix",('GMT_1QUE-10))+" 경기에서"+.@defeat$+"가 이겼습니다.",instance_npcname("게펜 아카데미 마스터");
+	
+		switch ('GMT_1QUE) {
+			case 11:
+				enablenpc instance_npcname("아르히#1");
+				donpcevent instance_npcname("아르히#1")+"::OnVictory";
+				break;
+			case 12:
+				enablenpc instance_npcname("디오 아네모스#1");
+				donpcevent instance_npcname("디오 아네모스#1")+"::OnVictory";
+				break;
+			case 13:
+				if ('GMTQuest == 1) {
+					enablenpc instance_npcname("게펜 깡패#n1");
+					donpcevent instance_npcname("게펜 깡패#n1")+"::OnVictory";
+					break;
+				} else if ('GMTQuest == 2) {
+					enablenpc instance_npcname("게펜 불량배#n1");
+					donpcevent instance_npcname("게펜 불량배#n1")+"::OnVictory";
+					break;
+				} else {
+					enablenpc instance_npcname("게펜 좀도둑#n1");
+					donpcevent instance_npcname("게펜 좀도둑#n1")+"::OnVictory";
+					break;
+				}
+				break;
+			case 14:
+				enablenpc instance_npcname("페몽#1");
+				donpcevent instance_npcname("페몽#1")+"::OnVictory";
+				break;
+			case 15:
+				enablenpc instance_npcname("오르도르#1");
+				donpcevent instance_npcname("오르도르#1")+"::OnVictory";
+				break;
+			case 16:
+				enablenpc instance_npcname("블루트 하세#1");
+				donpcevent instance_npcname("블루트 하세#1")+"::OnVictory";
+				break;
+			case 17:
+				enablenpc instance_npcname("쿠로 아쿠마#1");
+				donpcevent instance_npcname("쿠로 아쿠마#1")+"::OnVictory";
+				break;
+			case 18:
+				enablenpc instance_npcname("이포더스#1");
+				donpcevent instance_npcname("이포더스#1")+"::OnVictory";
+				break;
+			case 19:
+				enablenpc instance_npcname("레체니예#1");
+				donpcevent instance_npcname("레체니예#1")+"::OnVictory";
+				break;
+			case 20:
+				enablenpc instance_npcname("오도리코#1");
+				donpcevent instance_npcname("오도리코#1")+"::OnVictory";
+				break;
+			case 21:
+				enablenpc instance_npcname("쥬#1");
+				donpcevent instance_npcname("쥬#1")+"::OnVictory";
+				break;
+			case 22:
+				if ('half) {
+					enablenpc instance_npcname("드위그#1");
+					donpcevent instance_npcname("드위그#1")+"::OnVictory";
+					break;
+				} else {
+					enablenpc instance_npcname("페이 카나비언#1");
+					donpcevent instance_npcname("페이 카나비언#1")+"::OnVictory";
+					
+						if ('HomID) {
+							killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomJR";
+							killmonster instance_mapname("1@ge_st"),instance_npcname("#GMTHomun")+"::OnHomDead";
+							'HomID = 0;
+						}
+						
+					break;
+				}
+				break;
+			case 23:
+				enablenpc instance_npcname("펜릴#f");
+				donpcevent instance_npcname("펜릴#f")+"::OnVictory";
+				break;
+		}
+	
+	end;
+	
+}
+
+1@gef,115,105,6	script	로키#e1	4_M_ROKI2,{
+	.@n$ = "[ 로키 ]";
+		
+	if(checkquest(9314) != -1) {
+		cutin "ep14_roki01.bmp", 2;
+		mes .@n$;
+		mes "꽤 좋은 점수네요.";
+		next;
+		mes .@n$;
+		mes "이 선물을 가져가세요.";
+		setarray .items,501,502,503,504,505,506,608,607;
+		getitem .items[rand(0,7)],1;
+		erasequest 9314;
+		cutin "", 255;
+		end;
+	}
+	
+	cutin "ep14_roki01", 2;
+	mes .@n$;
+	mes "Let's take a rain check on our match.";
+	mes "We'll fight next time we meet...";
+	close2;
+	cutin "", 255;
+	end;
+
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+}
+
+1@gef,117,108,6	script	리디아#e1	4_F_LYDIA,{
+
+	.@n$ = "[ 리디아 ]";
+		
+	if(checkquest(9312) != -1) {
+		cutin "lydia_a.bmp",2;
+		mes .@n$;
+		mes "좋은 경기였어요~!";
+		next;
+		mes .@n$;
+		mes "졌지만 당신에게도 보상을 주고 싶습니다~!";
+		setarray .items,501,502,503,504,505,506,608,607;
+		getitem .items[rand(0,7)],1;
+		erasequest 9312;
+		cutin "", 255;
+		end;
+	}
+	cutin "lydia_a.bmp",2;
+	mes .@n$;
+	mes "다음에 또 봐요~";
+	close2;
+	cutin "", 255;
+	end;
+	
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,125,105,4	script	아이리스#e1	4_F_IRIS,{
+
+	.@n$ = "[ 아이리스 ]";
+		
+	if(checkquest(9310) != -1) {
+		cutin "hero_iris_01.bmp",2;
+		mes .@n$;
+		mes "너의 경기를 보면서 즐거웠어~";
+		mes "올해는 운이 없었지?~";
+		mes "내년에 행운을 빌어.";
+		next;
+		mes .@n$;
+		mes "이거 받고 힘내";
+		setarray .items,501,502,503,504,505,506,608,607;
+		getitem .items[rand(0,7)],1;
+		erasequest 9310;
+		cutin "", 255;
+		end;
+	}
+	
+	cutin "hero_iris_01.bmp",2;
+	mes .@n$;
+	mes "다시 만날 수 있는거지?";
+	close2;
+	cutin "", 255;
+	end;
+	
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,123,108,4	script	케이아스#e1	4_M_CHAOS,{
+
+	.@n$ = "[ 케이아스 ]";
+	
+		if(checkquest(9311) != -1) {
+			cutin "hero_chaos_01.bmp",2;
+			mes .@n$;
+			mes "좋은 경기였어~!";
+			mes "나쁘지않아~!";
+			next;
+			mes .@n$;
+			mes "오늘 정말 인상적이였어.";
+			mes "너에게 선물을 주고싶어~!";
+			setarray .items,501,502,503,504,505,506,608,607;
+			getitem .items[rand(0,7)],1;
+			erasequest 9311;
+			cutin "", 255;
+			end;
+		}
+	cutin "hero_chaos_01.bmp",2;
+	mes .@n$;
+	mes "다음에 또 볼 수 있으면 좋겠어~!";
+	close2;
+	cutin "", 255;
+	end;
+	
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+1@gef,120,108,4	script	펜릴#e1	4_F_FENRIR,{
+
+	.@n$ = "[ 펜릴 ]";
+	
+	if(checkquest(9313) != -1) {
+		cutin "fenrir_a.bmp",2;
+		mes .@n$;
+		mes "좋은 경기였어.";
+		mes "다음엔 이길 수 있을거야.";
+		next;
+		mes .@n$;
+		mes "이건 선물이야.";
+		mes "계속 열심히 노력해~!";
+		setarray .items,501,502,503,504,505,506,608,607;
+		getitem .items[rand(0,7)],1;
+		erasequest 9313;
+		cutin "", 255;
+		end;
+	}
+	cutin "fenrir_a.bmp",2;
+	mes .@n$;
+	mes "다시 만나기를 바래!";
+	close2;
+	cutin "", 255;
+	end;
+	
+OnInstanceInit:
+	hideonnpc instance_npcname(strnpcinfo(0));
+	end;
+	
+OnEnable:
+	hideoffnpc instance_npcname(strnpcinfo(0));
+	end;
+}
+
+// Cutscenes
+
+
+//?????????
+//   Event 1
+//__________________
+1@gef,159,172,6	duplicate(#gmt_dummy)	게펜 깡패#1	682
+1@gef,160,176,6	duplicate(#gmt_dummy)	게펜 깡패#3	682
+1@gef,164,175,6	duplicate(#gmt_dummy)	게펜 깡패#2	682
+1@gef,168,170,6	duplicate(#gmt_dummy)	게펜 깡패#11	682
+1@gef,167,169,6	duplicate(#gmt_dummy)	게펜 깡패#22	682
+1@gef,166,168,6	duplicate(#gmt_dummy)	게펜 깡패#33	682
+1@gef,170,168,4	duplicate(#gmt_dummy)	아이리스#Gef1	666
+1@gef,169,167,2	duplicate(#gmt_dummy)	Kafra Employee#1	114
+1@gef,173,167,4	duplicate(#gmt_dummy)	케이아스#Gef1	683
+1@gef,168,168,4	duplicate(#gmt_dummy)	케이아스#Gef2	683
+1@gef,162,174,4	duplicate(#gmt_dummy)	케이아스#3	683
+
+1@gef,166,168,0	script	#Event 1 start	139,7,7,{
+	end;
+OnTouch:
+	if ('gmt_event != 0) end;
+	if('OnTouchOnce1) end;
+	set 'OnTouchOnce1,1;
+	hideonnpc instance_npcname("#Event 1 start");
+	disablenpc instance_npcname("#Event 1 start");
+	hideoffnpc instance_npcname("게펜 깡패#1");
+	hideoffnpc instance_npcname("게펜 깡패#2");
+	hideoffnpc instance_npcname("게펜 깡패#3");
+	hideoffnpc instance_npcname("Kafra Employee#1");
+	'gmt_char_name$ = strcharinfo(0);
+	'GMTQuest = 1;
+
+	//if (checkquest(9284) > -1)
+	//	erasequest 9284;
+	//setquest 9284;
+	'gmt_timer_evt1 = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt1++;
+	
+	switch('gmt_timer_evt1) {
+		case 1: npctalk "게펜 깡패 : Hey girl~", instance_npcname("게펜 깡패#1"); break;
+		case 3: npctalk "게펜 깡패 : Whoo~ You have beautiful legs~!", instance_npcname("게펜 깡패#2"); break;
+		case 5: npctalk "Kafra Employee : What are you doing?", instance_npcname("Kafra Employee#1"); break;
+		case 10: npctalk "게펜 깡패 : What do you think I'm doing~?", instance_npcname("게펜 깡패#3"); break;
+		case 13: npctalk "Kafra Employee : You creep! Get away~!", instance_npcname("Kafra Employee#1"); break;
+		case 15: npctalk "게펜 깡패 : How dare you!", instance_npcname("게펜 깡패#1");	break;
+		case 16:
+			hideonnpc instance_npcname("게펜 깡패#1");
+			hideonnpc instance_npcname("게펜 깡패#2");
+			hideonnpc instance_npcname("게펜 깡패#3");
+			hideoffnpc instance_npcname("게펜 깡패#11");
+			hideoffnpc instance_npcname("게펜 깡패#22");
+			hideoffnpc instance_npcname("게펜 깡패#33");
+			break;
+		case 19: npctalk "게펜 깡패 : Wanna have some fun?", instance_npcname("게펜 깡패#11"); break;
+		case 20: npctalk "게펜 깡패 : We won't bite!", instance_npcname("게펜 깡패#22"); break;
+		case 21: npctalk "게펜 깡패 : Unless...", instance_npcname("게펜 깡패#33"); break;
+		case 23: npctalk "Kafra Employee : Help me~!!!", instance_npcname("Kafra Employee#1"); break;
+		case 25: unittalk 'gmt_account_id, "What can I do? I have to help."; break;
+		case 27:
+			enablenpc instance_npcname("#Event 1 start 2");
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+}
+
+1@gef,166,169,0	script	#Event 1 start 2	139,5,5,{
+	end;
+OnTouch:
+	if('OnTouchOnce2) end;
+	set 'OnTouchOnce2,1;
+	if ('gmt_event != 0) end;
+	'gmt_event = 2;
+	hideonnpc instance_npcname("#Event 1 start 2");
+	'gmt_timer_evt1 = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt1++;
+	
+	switch('gmt_timer_evt1) {
+		case 1: unittalk 'gmt_account_id, "You bastards! Leave her alone!"; break;
+		case 3: npctalk "게펜 깡패 : What's with your attitude?", instance_npcname("게펜 깡패#11"); break;
+		case 4: npctalk "게펜 깡패 : You're such an idiot!", instance_npcname("게펜 깡패#22"); break;
+		case 5: npctalk "게펜 깡패 : Who're you calling bastards!?", instance_npcname("게펜 깡패#33"); break;
+		case 8: npctalk "Kafra Employee : Please help me~!", instance_npcname("Kafra Employee#1"); break;
+		case 9:
+			unittalk 'gmt_account_id, "Time to teach them a lesson~!";
+			hideonnpc instance_npcname("게펜 깡패#11");
+			hideonnpc instance_npcname("게펜 깡패#22");
+			hideonnpc instance_npcname("게펜 깡패#33");
+			
+			monster instance_mapname("1@gef"), 168, 170, "게펜 깡패", 2568, 1, instance_npcname("#Event 1 start 2") + "::OnMobKilled";
+			monster instance_mapname("1@gef"), 167, 169, "게펜 깡패", 2568, 1, instance_npcname("#Event 1 start 2") + "::OnMobKilled";
+			monster instance_mapname("1@gef"), 166, 168, "게펜 깡패", 2568, 1, instance_npcname("#Event 1 start 2") + "::OnMobKilled";
+			
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+OnMobKilled:
+	if (mobcount(instance_mapname("1@gef"), instance_npcname("#Event 1 start 2") + "::OnMobKilled") <= 0) {
+		hideoffnpc instance_npcname("게펜 깡패#1");
+		hideoffnpc instance_npcname("게펜 깡패#2");
+		hideoffnpc instance_npcname("게펜 깡패#3");
+		//completequest 9284;
+		//setquest 9284;
+		//completequest 9284;
+		//setquest 9285;
+		donpcevent instance_npcname("#GefGangsterEvent1")+"::OnStart";
+	}
+	
+	end;
+}
+
+1@gef,166,167,0	script	#GefGangsterEvent1	-1,{
+	end;
+OnStart:
+	'gmt_timer_evt1 = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt1++;
+	
+	switch('gmt_timer_evt1) {
+		case 1:
+			specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 깡패#1");
+			specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 깡패#2");
+			specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 깡패#3");
+			npctalk "게펜 깡패 : You're pretty good...!", instance_npcname("게펜 깡패#1");
+			npctalk "게펜 깡패 : We should stop playing around...", instance_npcname("게펜 깡패#2");
+			npctalk "게펜 깡패 : You're gonna pay the price!", instance_npcname("게펜 깡패#3");
+			break;
+		case 4: npctalk "Kafra Employee : No... I'm scared...!", instance_npcname("Kafra Employee#1"); break;
+		case 5:
+			hideoffnpc instance_npcname("아이리스#Gef1");
+			npctalk "아이리스 : Hey, you stop right there~!!", instance_npcname("아이리스#Gef1");
+			break;
+		case 8: npctalk "아이리스 : That's enough.", instance_npcname("아이리스#Gef1"); break;
+		case 11: npctalk "아이리스 : I won't forgive you~!", instance_npcname("아이리스#Gef1"); break;
+		case 13: specialeffect EF_POTION1, AREA, instance_npcname("아이리스#Gef1"); break;
+		case 14:
+			npctalk "게펜 깡패 : Why hello there, are you scared?", instance_npcname("게펜 깡패#1");
+			npctalk "게펜 깡패 : You're pretty cute. Do you want to play with us too?", instance_npcname("게펜 깡패#2");
+			npctalk "게펜 깡패 : Aren't I your type babe?~", instance_npcname("게펜 깡패#3");
+			break;
+		case 18:
+			hideonnpc instance_npcname("게펜 깡패#1");
+			hideonnpc instance_npcname("게펜 깡패#2");
+			hideonnpc instance_npcname("게펜 깡패#3");
+			hideoffnpc instance_npcname("게펜 깡패#11");
+			hideoffnpc instance_npcname("게펜 깡패#22");
+			hideoffnpc instance_npcname("게펜 깡패#33");
+			break;
+		case 22: mapannounce instance_mapname("1@gef"), "Stop right there! Jerks!", 0x00ebff; break;
+		case 23: hideoffnpc instance_npcname("케이아스#Gef1"); break;
+		case 25: specialeffect EF_POTION_CON, AREA, instance_npcname("케이아스#Gef1"); break;
+		case 26: npctalk "케이아스 : Are you clowns harassing Iris?", instance_npcname("케이아스#Gef1"); break;
+		case 30: npctalk "케이아스 : I think I need to teach someone a lesson!", instance_npcname("케이아스#Gef1"); break;
+		case 31:
+			specialeffect EF_LOCKON, AREA, instance_npcname("게펜 깡패#11");
+			specialeffect EF_LOCKON, AREA, instance_npcname("게펜 깡패#22");
+			specialeffect EF_LOCKON, AREA, instance_npcname("게펜 깡패#33");
+			npctalk "케이아스 : Come and fight me!", instance_npcname("케이아스#Gef2");
+			hideonnpc instance_npcname("케이아스#Gef1");
+			hideoffnpc instance_npcname("케이아스#Gef2");
+			break;
+		case 34:
+			npctalk "케이아스 : Bash~!!!", instance_npcname("케이아스#Gef2");
+			specialeffect EF_HIT2, AREA, instance_npcname("케이아스#Gef2");
+			specialeffect EF_BASH, AREA, instance_npcname("게펜 깡패#11");
+			specialeffect EF_BASH, AREA, instance_npcname("게펜 깡패#22");
+			specialeffect EF_BASH, AREA, instance_npcname("게펜 깡패#33");
+			hideonnpc instance_npcname("게펜 깡패#11");
+			hideonnpc instance_npcname("게펜 깡패#22");
+			hideonnpc instance_npcname("게펜 깡패#33");
+			break;
+		case 35:
+			hideoffnpc instance_npcname("게펜 깡패#1");
+			hideoffnpc instance_npcname("게펜 깡패#2");
+			hideoffnpc instance_npcname("게펜 깡패#3");
+			break;
+		case 36:
+			npctalk "게펜 깡패 : Ugh...", instance_npcname("게펜 깡패#1");
+			npctalk "게펜 깡패 : Strong...", instance_npcname("게펜 깡패#2");
+			npctalk "게펜 깡패 : Too strong...", instance_npcname("게펜 깡패#3");
+			break;
+		case 39:
+			hideonnpc instance_npcname("케이아스#Gef2");
+			hideoffnpc instance_npcname("케이아스#3");
+			break;
+		case 42:
+			npctalk "케이아스 : I'm not done yet!! Magnum Break~!", instance_npcname("케이아스#3");
+			specialeffect EF_MAGNUMBREAK, AREA, instance_npcname("게펜 깡패#1");
+			specialeffect EF_MAGNUMBREAK, AREA, instance_npcname("게펜 깡패#2");
+			specialeffect EF_MAGNUMBREAK, AREA, instance_npcname("게펜 깡패#3");
+			break;
+		case 43:
+			specialeffect EF_SUI_EXPLOSION, AREA, instance_npcname("게펜 깡패#1");
+			specialeffect EF_SUI_EXPLOSION, AREA, instance_npcname("게펜 깡패#2");
+			specialeffect EF_SUI_EXPLOSION, AREA, instance_npcname("게펜 깡패#3");
+			hideonnpc instance_npcname("게펜 깡패#1");
+			hideonnpc instance_npcname("게펜 깡패#2");
+			hideonnpc instance_npcname("게펜 깡패#3");
+			break;
+		case 45: hideonnpc instance_npcname("케이아스#3"); break;
+		case 46:
+			hideoffnpc instance_npcname("케이아스#Gef1");
+			stopnpctimer;
+			
+			if (attachrid('gmt_account_id)) {
+				cutin "hero_iris_01.bmp", 2;
+				mes "[아이리스]", "Are you okay?", "There have been so many jerks everywhere we go..."; next;
+				cutin "", 255;
+				mes "[Kafra]", "Thanks for helping me out.", "Who are you?"; next;
+				cutin "hero_iris_01.bmp", 2;
+				mes "[아이리스]", "I am Iris~", "I am travelling with my good friend Chaos~!"; next;
+				mes "[아이리스]", "I am not the one you should thank.", "Thank that adventurer, " + strcharinfo(0) + ".", "It could have been much worse."; next;
+				cutin "", 255;
+				mes "[Kafra]", "Thank you " + strcharinfo(0) + ".", "You saved me."; next;
+				cutin "hero_iris_01.bmp", 2;
+				mes "[아이리스]", "It's pretty rare to meet someone as righteous as " + strcharinfo(0) + "."; next;
+				mes "[아이리스]", "I'm on my way to see the Geffen Magic Tournament with Chaos.", "Are you on your way there too, " + strcharinfo(0) + "?"; next;
+				cutin "hero_chaos_01.bmp", 2;
+				mes "[케이아스]", "Yes, you seem strong enough to be in the Tournament."; next;
+				mes "[케이아스]", "Just know that Fenrir plans on joining as well, so it won't be that easy."; next;
+				mes "[케이아스]", "This is my favorite magic buff scroll, so take it as a token of our appreciation.";
+				sc_start4 SC_GEFFEN_MAGIC3, 3600000, 5, 0, 0, 0, 10000, 1;
+				atcommand "@effect 220";
+				next;
+				mes "[케이아스]", "It will be useful in the Magic Tournament.", "Let's go Iris~!", "It's going to start soon~!"; next;
+				cutin "hero_iris_01.bmp", 2;
+				mes "[아이리스]", "Yes~! Go " + strcharinfo(0) + "~", "Kafra, wish us luck~!", "Do your best " + strcharinfo(0) + ".";
+				close2;
+				cutin "", 255;
+				hideonnpc instance_npcname("아이리스#Gef1");
+                hideonnpc instance_npcname("케이아스#Gef1");
+                hideonnpc instance_npcname("Kafra Employee#1");
+				sleep2 2000;
+				unittalk 'gmt_account_id, "They sure are brave...";
+				sleep2 2000;
+				unittalk 'gmt_account_id, "Should we apply for the Magic Tournament now?";
+				end;
+			}
+			
+			end;
+	}
+	
+	initnpctimer;
+	end;
+}
+
+//?????????
+//   Event 2
+//__________________
+1@gef,75,172,4	duplicate(#gmt_dummy)	게펜 불량배#1	681
+1@gef,76,170,4	duplicate(#gmt_dummy)	게펜 불량배#2	681
+1@gef,73,173,4	duplicate(#gmt_dummy)	게펜 불량배#3	681
+1@gef,68,171,4	duplicate(#gmt_dummy)	게펜 불량배#11	681
+1@gef,70,171,4	duplicate(#gmt_dummy)	게펜 불량배#22	681
+1@gef,70,169,4	duplicate(#gmt_dummy)	게펜 불량배#33	681
+1@gef,70,167,8	duplicate(#gmt_dummy)	마법 아카데미 학생#11	123
+1@gef,73,170,8	duplicate(#gmt_dummy)	마법 아카데미 학생#22	123
+1@gef,69,168,8	duplicate(#gmt_dummy)	로키#1	512
+1@gef,69,170,8	duplicate(#gmt_dummy)	로키#2	512
+1@gef,67,170,8	duplicate(#gmt_dummy)	로키#3	512
+1@gef,68,169,8	duplicate(#gmt_dummy)	펜릴#1	664
+
+1@gef,72,169,0	script	#Event 2 start	139,7,7,{
+	end;
+OnTouch:
+	if ('gmt_event != 0) end;
+	if('OnTouchOnce3) end;
+	set 'OnTouchOnce3,1;
+	hideoffnpc instance_npcname("게펜 불량배#1");
+	hideoffnpc instance_npcname("게펜 불량배#2");
+	hideoffnpc instance_npcname("게펜 불량배#3");
+	hideoffnpc instance_npcname("마법 아카데미 학생#11");
+	hideonnpc instance_npcname("#Event 2 start");
+	disablenpc instance_npcname("#Event 2 start");
+	//setquest 9286;
+	'gmt_timer_evt2 = 2;
+	'gmt_char_name$ = strcharinfo(0);
+	'GMTQuest = 2;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt2++;
+	
+	switch('gmt_timer_evt2) {
+		case 5: npctalk "게펜 불량배 : Hey you! Yeah you~", instance_npcname("게펜 불량배#1"); break;
+		case 7: npctalk "마법 아카데미 학생 : Yea... yeah? Me...? Do you mean me?", instance_npcname("마법 아카데미 학생#11"); break;
+		case 8: npctalk "게펜 불량배 : Yes, you! Come over here!", instance_npcname("게펜 불량배#2"); break;
+		case 9: npctalk "게펜 불량배 : Hurry! You have 3 seconds!", instance_npcname("게펜 불량배#3"); break;
+		case 11: npctalk "게펜 불량배 : 3...", instance_npcname("게펜 불량배#3"); break;
+		case 12: npctalk "게펜 불량배 : 2...", instance_npcname("게펜 불량배#3"); break;
+		case 13: npctalk "게펜 불량배 : 1...", instance_npcname("게펜 불량배#3"); break;
+		case 14:
+			hideonnpc instance_npcname("마법 아카데미 학생#11");
+			hideoffnpc instance_npcname("마법 아카데미 학생#22");
+			break;
+		case 17: npctalk "게펜 불량배 : You! How much zeny do you have?", instance_npcname("게펜 불량배#1"); break;
+		case 20: npctalk "마법 아카데미 학생 : What... huh?", instance_npcname("마법 아카데미 학생#22"); break;
+		case 23: npctalk "게펜 불량배 : Did I stutter? I said, how much zeny do you have! You idiot!", instance_npcname("게펜 불량배#2"); break;
+		case 27: npctalk "마법 아카데미 학생 : I don't have any zeny... I'm but a student...", instance_npcname("마법 아카데미 학생#22"); break;
+		case 30: npctalk "게펜 불량배 : Do I have to beat the zeny out of you?!", instance_npcname("게펜 불량배#3"); break;
+		case 33: npctalk "마법 아카데미 학생 : Ugh... I told you, I don't have any zeny!", instance_npcname("마법 아카데미 학생#22"); break;
+		case 36:
+			unittalk 'gmt_account_id, "What should I do? I have to help!";
+			enablenpc instance_npcname("#Event 2 start 2");
+			hideoffnpc instance_npcname("#Event 2 start 2");
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+}
+
+1@gef,72,170,0	script	#Event 2 start 2	139,3,3,{
+	end;
+OnTouch:
+	if ('gmt_event != 0) end;
+	if('OnTouchOnce4) end;
+	set 'OnTouchOnce4,1;
+	hideonnpc instance_npcname("#Event 2 start 2");
+	'gmt_timer_evt2 = 0;
+	'gmt_event = 2;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt2++;
+	
+	switch('gmt_timer_evt2) {
+		case 2: unittalk 'gmt_account_id, "You! Bullies! Stop!"; break;
+		case 3: npctalk "게펜 불량배 : You ready for a beating?", instance_npcname("게펜 불량배#1"); break;
+		case 4: npctalk "게펜 불량배 : I've been waiting to have some fun...", instance_npcname("게펜 불량배#2"); break;
+		case 5: npctalk "게펜 불량배 : Say hello to my little friends!", instance_npcname("게펜 불량배#3"); break;
+		case 7: npctalk "마법 아카데미 학생 : Please help me~", instance_npcname("마법 아카데미 학생#22"); break;
+		case 9:
+			unittalk 'gmt_account_id, "I have to help!";
+			attachrid 'gmt_account_id;
+			specialeffect2 EF_LOCKON;
+			detachrid;
+			monster instance_mapname("1@gef"), 75, 172, "게펜 불량배", 2567, 1, instance_npcname("#Event 2 start 2") + "::OnMobKilled";
+			monster instance_mapname("1@gef"), 76, 170, "게펜 불량배", 2567, 1, instance_npcname("#Event 2 start 2") + "::OnMobKilled";
+			monster instance_mapname("1@gef"), 73, 173, "게펜 불량배", 2567, 1, instance_npcname("#Event 2 start 2") + "::OnMobKilled";
+			hideonnpc instance_npcname("게펜 불량배#1");
+			hideonnpc instance_npcname("게펜 불량배#2");
+			hideonnpc instance_npcname("게펜 불량배#3");
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+OnMobKilled:
+	if (mobcount(instance_mapname("1@gef"), instance_npcname("#Event 2 start 2") + "::OnMobKilled") <= 0) {
+		hideoffnpc instance_npcname("게펜 불량배#1");
+		hideoffnpc instance_npcname("게펜 불량배#2");
+		hideoffnpc instance_npcname("게펜 불량배#3");
+		//completequest 9286;
+		//setquest 9286;
+		//completequest 9286;
+		//setquest 9287;
+		sleep2 500;
+		specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 불량배#1");
+		specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 불량배#2");
+		specialeffect EF_POTION_BERSERK, AREA, instance_npcname("게펜 불량배#3");
+		
+		$gmt_timer_evt2 = -1;
+		
+		while($gmt_timer_evt2 < 50) {
+			$gmt_timer_evt2++;
+			
+			switch($gmt_timer_evt2) {
+				case 0:
+					npctalk "게펜 불량배 : He has surprisingly good skills.", instance_npcname("게펜 불량배#1");
+					npctalk "게펜 불량배 : This isn't good...", instance_npcname("게펜 불량배#2");
+					npctalk "게펜 불량배 : 1 slap for 10 wins. No... You get 10 slaps for 1 win.", instance_npcname("게펜 불량배#3");
+					break;
+				case 3:
+					hideonnpc instance_npcname("마법 아카데미 학생#22");
+					hideoffnpc instance_npcname("마법 아카데미 학생#11");
+					sleep2 500;
+					npctalk "마법 아카데미 학생 : I'm scared~! Help me...", instance_npcname("마법 아카데미 학생#11");
+					break;
+				case 6: hideoffnpc instance_npcname("펜릴#1"); break;
+				case 7: npctalk "펜릴 : Hello. Are you going to stop now?", instance_npcname("펜릴#1"); break;
+				case 10: npctalk "펜릴 : This is really uncomfortable. I can't just sit back and watch.", instance_npcname("펜릴#1"); break;
+				case 13:
+					npctalk "펜릴 : Stop harassing her. I won't forgive you.", instance_npcname("펜릴#1");
+					specialeffect EF_POTION1, AREA, instance_npcname("펜릴#1");
+					break;
+				case 15: npctalk "게펜 불량배 : Hey~ You look rich, you must have a lot of zeny right?", instance_npcname("게펜 불량배#1"); break;
+				case 17: npctalk "게펜 불량배 : What's a rich girl like you doing around here?~", instance_npcname("게펜 불량배#2"); break;
+				case 19: npctalk "게펜 불량배 : Hey! Rich girl~! How much zeny do you got?", instance_npcname("게펜 불량배#3"); break;
+				case 22:
+					hideonnpc instance_npcname("게펜 불량배#1");
+					hideonnpc instance_npcname("게펜 불량배#2");
+					hideonnpc instance_npcname("게펜 불량배#3");
+					hideoffnpc instance_npcname("게펜 불량배#11");
+					hideoffnpc instance_npcname("게펜 불량배#22");
+					hideoffnpc instance_npcname("게펜 불량배#33");
+					break;
+				case 23:
+					emotion ET_SURPRISE, getnpcid(0, instance_npcname("펜릴#1"));
+					mapannounce instance_mapname("1@gef"), "Take your dirty hands off of me.", 0x00ebff;
+					break;
+				case 25:
+					hideoffnpc instance_npcname("로키#1");
+					sleep2 500;
+					specialeffect EF_POISONREACT, AREA, instance_npcname("로키#1");
+					sleep2 1500;
+					specialeffect EF_SONICBLOW, AREA, instance_npcname("로키#1");
+					npctalk "로키 : Hmph!", instance_npcname("로키#1");
+					sleep2 500;
+					specialeffect EF_VENOMDUST, AREA, instance_npcname("로키#1");
+					specialeffect EF_SONICBLOWHIT, AREA, instance_npcname("게펜 불량배#33");
+					specialeffect EF_SONICBLOW2, AREA, instance_npcname("게펜 불량배#33");
+					sleep2 330;
+					specialeffect EF_NAPALMBEAT, AREA, instance_npcname("게펜 불량배#33");
+					hideonnpc instance_npcname("게펜 불량배#33");
+					hideoffnpc instance_npcname("게펜 불량배#3");
+					break;
+				case 26: npctalk "게펜 불량배 : Yikes!", instance_npcname("게펜 불량배#3"); break;
+				case 27:
+					hideonnpc instance_npcname("로키#1");
+					hideoffnpc instance_npcname("로키#2");
+					sleep2 750;
+					npctalk "로키 : Take this.", instance_npcname("로키#2");
+					sleep2 500;
+					specialeffect EF_STRIPARMOR, AREA, instance_npcname("게펜 불량배#22");
+					specialeffect EF_SONICBLOWHIT, AREA, instance_npcname("게펜 불량배#22");
+					specialeffect EF_SONICBLOW2, AREA, instance_npcname("게펜 불량배#22");
+					sleep2 330;
+					specialeffect EF_NAPALMBEAT, AREA, instance_npcname("게펜 불량배#22");
+					hideonnpc instance_npcname("게펜 불량배#22");
+					hideoffnpc instance_npcname("게펜 불량배#2");
+					break;
+				case 28:
+					npctalk "게펜 불량배 : Ugh, uuurgh! What the?!", instance_npcname("게펜 불량배#2");
+					hideonnpc instance_npcname("로키#2");
+					hideoffnpc instance_npcname("로키#3");
+					sleep2 750;
+					npctalk "로키 : Change your mind yet?", instance_npcname("로키#3");
+					sleep2 500;
+					specialeffect EF_STRIPSHIELD, AREA, instance_npcname("게펜 불량배#11");
+					specialeffect EF_SONICBLOWHIT, AREA, instance_npcname("게펜 불량배#11");
+					specialeffect EF_SONICBLOW2, AREA, instance_npcname("게펜 불량배#11");
+					sleep2 330;
+					specialeffect EF_NAPALMBEAT, AREA, instance_npcname("게펜 불량배#11");
+					hideonnpc instance_npcname("게펜 불량배#11");
+					hideoffnpc instance_npcname("게펜 불량배#1");
+					break;
+				case 29: npctalk "게펜 불량배 : Ugh, urgh, urgh! GAAAAAAH!!", instance_npcname("게펜 불량배#1"); break;
+				case 31: npctalk "로키 : If you don't want to taste my Katar, leave now.", instance_npcname("로키#3"); break;
+				case 34: npctalk "로키 : Get out of my sight.", instance_npcname("로키#3"); break;
+				case 36: npctalk "게펜 불량배 : Oh, oh! Time to go!", instance_npcname("게펜 불량배#1"); break;
+				case 38: npctalk "게펜 불량배 : Please... spare my life...", instance_npcname("게펜 불량배#2"); break;
+				case 40: npctalk "게펜 불량배 : Let's get away!~!!!!!", instance_npcname("게펜 불량배#3"); break;
+				case 41:
+					npctalk "로키 : You have 10 seconds.", instance_npcname("로키#3");
+					specialeffect EF_SONICBLOW, AREA, instance_npcname("로키#3");
+					break;
+				case 43:
+					specialeffect EF_SLOWPOISON, AREA, instance_npcname("로키#3");
+					npctalk "로키 : 10... 9...", instance_npcname("로키#3");
+					sleep2 500;
+					specialeffect EF_STRIPWEAPON, AREA, instance_npcname("로키#3");
+					specialeffect EF_POISONREACT, AREA, instance_npcname("로키#3");
+					specialeffect EF_POISONREACT2, AREA, instance_npcname("로키#3");
+					break;
+				case 45:
+					specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("로키#3");
+					sleep2 500;
+					emotion ET_KIK, getnpcid(0, instance_npcname("로키#3"));
+					npctalk "로키 : 3... 2...", instance_npcname("로키#3");
+					sleep2 500;
+					npctalk "게펜 불량배 : What?! You went from from 9 to 3 seconds!!", instance_npcname("게펜 불량배#1");
+					npctalk "게펜 불량배 : Screw this, let's run~!!!!!!!!!", instance_npcname("게펜 불량배#2");
+					npctalk "게펜 불량배 : I will have my revenge~!!", instance_npcname("게펜 불량배#3");
+					break;
+				case 46:
+					specialeffect EF_SOULBREAKER, AREA, instance_npcname("로키#3");
+					specialeffect EF_VENOMDUST, AREA, instance_npcname("로키#3");
+					npctalk "로키 : 1...", instance_npcname("로키#3");
+					sleep2 330;
+					hideonnpc instance_npcname("게펜 불량배#1");
+					hideonnpc instance_npcname("게펜 불량배#2");
+					hideonnpc instance_npcname("게펜 불량배#3");
+					break;
+				case 48:
+					hideonnpc instance_npcname("로키#3");
+					hideoffnpc instance_npcname("로키#1");
+					break;
+				case 49:
+					attachrid('gmt_account_id);
+					cutin "fenrir_a.bmp", 2;
+					mes "[펜릴]", "Are you okay?", "Where are all these punks coming from anyways?"; next;
+					cutin "", 255;
+					mes "[마법 아카데미 학생]", "Thanks for helping me.", "Who are you?"; next;
+					cutin "fenrir_a.bmp", 2;
+					mes "[펜릴]", "I am Fenris Fenrir."; next;
+					mes "[펜릴]", "Thank " + strcharinfo(0) + ".", "It would have been much worse if "+('sex?"he":"she")+" hadn't shown up."; next;
+					cutin "", 255;
+					mes "[마법 아카데미 학생]", "Thank you so much " + strcharinfo(0) + ".", "You saved me."; next;
+					cutin "fenrir_a.bmp", 2;
+					mes "[펜릴]", "You don't meet many people like " + strcharinfo(0) + " these days.", "You're a good person."; next;
+					mes "[펜릴]", "I was on the way to register for the Geffen Magic Tournament with Loki."; next;
+					mes "[펜릴]", "I have a feeling that you will register too " + strcharinfo(0) + ".", "I hope to meet you in the finals of the Tournament."; next;
+					cutin "ep14_roki01.bmp", 2;
+					mes "[로키]", "Oh yeah?", "" + strcharinfo(0) + " is going to register?", "That's interesting."; next;
+					mes "[로키]", "I have a spare magic buff scroll.", "I will give it to you as a present.";
+					sc_start4 SC_GEFFEN_MAGIC2, 3600000, 5, 0, 0, 0, 10000, 1;
+					atcommand "@effect 220";
+					next;
+					mes "[로키]", "I doubt that you can beat Fenrir at the Tournament.", "Her fighting prowess is unmatched."; next;
+					mes "[로키]", "Fenrir, it's time to register.", "Let's hurry."; next;
+					cutin "fenrir_a.bmp", 2;
+					mes "[펜릴]", "Yes~! I almost forgot.", "It was nice meeting you " + strcharinfo(0) + "~!"; next;
+					mes "[펜릴]", "I hope to meet you in combat soon.";
+					close2;
+					cutin "", 255;
+					hideonnpc instance_npcname("펜릴#1");
+					hideonnpc instance_npcname("로키#1");
+					sleep2 1000;
+					hideonnpc instance_npcname("마법 아카데미 학생#11");
+					sleep2 3000;
+					unittalk $gmt_account_id, "It was fun meeting Fenrir.";
+					sleep2 2000;
+					unittalk $gmt_account_id, "I should register for the Magic Tournament.";
+					end;
+			}
+			
+			sleep2 1000;
+		}
+	}
+	
+	end;
+}
+
+//?????????
+//   Event 3
+//__________________
+1@gef,111,146,4	duplicate(#gmt_dummy)	Geffen Resident#1	67
+1@gef,106,141,4	duplicate(#gmt_dummy)	Geffen Resident#2	67
+1@gef,104,141,6	duplicate(#gmt_dummy)	아이리스#1	10010
+
+1@gef,108,139,6	script	게펜 좀도둑#1	671,4,4,{
+OnTouch:
+	if ('gmt_chase != 1) end;
+	if ('gmt_event != 0) end;
+	'gmt_event = 3;
+	unittalk 'gmt_account_id, "Thief! Give that zeny back!! Don't move!!";
+	sleep2 3000;
+	npctalk "게펜 좀도둑 : Threatening me?~!! Yeah, boo hoo! You really scare me~!!", instance_npcname("게펜 좀도둑#1");
+	sleep2 2000;
+	npctalk "게펜 좀도둑 : Catch me if you can~!!", instance_npcname("게펜 좀도둑#1");
+	sleep2 2000;
+	npctalk "Geffen Resident : Please find my paycheck...", instance_npcname("Geffen Resident#1");
+	sleep2 3000;
+	unittalk 'gmt_account_id, "I have you now!";
+	hideonnpc instance_npcname("게펜 좀도둑#1");
+	hideoffnpc instance_npcname("게펜 좀도둑#2");
+	'gmt_chase = 2;
+	'GMTQuest = 3;
+	end;
+}
+
+1@gef,107,126,4	script	게펜 좀도둑#2	671,4,4,{
+	end;
+OnTouch:
+	if ('gmt_chase != 2) end;
+	if('OnTouchOnce5) end;
+	set 'OnTouchOnce5,1;
+	if (Zeny > 2000) Zeny -= 2000;
+	npctalk "게펜 좀도둑 : Are you following me? Thanks for the 2,000 zeny~!", instance_npcname("게펜 좀도둑#2");
+	atcommand "@effect 18";
+	sleep2 3000;
+	unittalk 'gmt_account_id, "Hey~ Stop right there! Thief!";
+	sleep2 3000;
+	hideonnpc instance_npcname("게펜 좀도둑#2");
+	hideoffnpc instance_npcname("게펜 좀도둑#3");
+	'gmt_chase = 3;
+	end;
+}
+
+1@gef,111,118,4	script	게펜 좀도둑#3	671,4,4,{
+	end;
+OnTouch:
+	if ('gmt_chase != 3) end;
+	if('OnTouchOnce6) end;
+	set 'OnTouchOnce6,1;
+	if (Zeny > 2000) Zeny -= 2000;
+	npctalk "게펜 좀도둑 : Woohoo~ Catch me if you can~! 4,000 large! Easy~!", instance_npcname("게펜 좀도둑#3");
+	atcommand "@effect 18";
+	sleep2 3000;
+	unittalk 'gmt_account_id, "I will beat you down once I catch you!";
+	sleep2 3000;
+	hideonnpc instance_npcname("게펜 좀도둑#3");
+	hideoffnpc instance_npcname("게펜 좀도둑#11");
+	'gmt_chase = 11;
+	end;
+}
+
+1@gef,123,111,4	script	게펜 좀도둑#11	671,4,4,{
+	end;
+OnTouch:
+	if ('gmt_chase != 11) end;
+	if('OnTouchOnce7) end;
+	set 'OnTouchOnce7,1;
+	if (Zeny > 2000) Zeny -= 2000;
+	npctalk "게펜 좀도둑 : You're annoying me~! I like it! 6,000 zeny~!", instance_npcname("게펜 좀도둑#11");
+	atcommand "@effect 18";
+	sleep2 3000;
+	unittalk 'gmt_account_id, "Stop right there you filthy thief!";
+	sleep2 3000;
+	hideonnpc instance_npcname("게펜 좀도둑#11");
+	hideoffnpc instance_npcname("게펜 좀도둑#22");
+	'gmt_chase = 22;
+	end;
+}
+
+1@gef,129,121,4	script	게펜 좀도둑#22	671,4,4,{
+	end;
+OnTouch:
+	if ('gmt_chase != 22) end;
+	if('OnTouchOnce8) end;
+	set 'OnTouchOnce8,1;
+	if (Zeny > 2000) Zeny -= 2000;
+	npctalk "게펜 좀도둑 : Calling me a rat? Yoink~ 8,000 zeny~!", instance_npcname("게펜 좀도둑#22");
+	atcommand "@effect 18";
+	sleep2 3000;
+	unittalk 'gmt_account_id, "Would you stop?!";
+	sleep2 3000;
+	hideonnpc instance_npcname("게펜 좀도둑#22");
+	hideoffnpc instance_npcname("게펜 좀도둑#33");
+	'gmt_chase = 33;
+	end;
+}
+
+1@gef,114,137,4	script	게펜 좀도둑#33	671,4,4,{
+	end;
+OnTouch:
+	if ('gmt_chase != 33) end;
+	if('OnTouchOnce9) end;
+	set 'OnTouchOnce9,1;
+	if (Zeny > 2000) Zeny -= 2000;
+	npctalk "게펜 좀도둑 : Stop following me. It's driving me crazy! 10,000 zeny~!", instance_npcname("게펜 좀도둑#33");
+	atcommand "@effect 18";
+	sleep2 3000;
+	unittalk 'gmt_account_id, "You can't run away anymore. I've got you now!";
+	sleep2 3000;
+	npctalk "게펜 좀도둑 : You really piss me off! I'm gonna have to beat you down!", instance_npcname("게펜 좀도둑#33");
+	sleep2 3000;
+	hideonnpc instance_npcname("게펜 좀도둑#33");
+	monster instance_mapname("1@gef"), 114, 137, "게펜 좀도둑", 2914, 1, instance_npcname("게펜 좀도둑#33") + "::OnMobKilled";
+	end;
+OnMobKilled:
+	hideoffnpc instance_npcname("게펜 좀도둑#1");
+	//completequest 9288;
+	//setquest 9288; // State = 1, Time = 0
+	//completequest 9288;
+	//setquest 9289; // State = 1, Time = 0
+	'gmt_timer_evt3 = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt3++;
+	
+	switch('gmt_timer_evt3) {
+		case 1: specialeffect EF_PATTACK, AREA, instance_npcname("게펜 좀도둑#1"); break;
+		case 4: npctalk "게펜 좀도둑 : Ugh, I shouldn't fight toe to toe with anyone...", instance_npcname("게펜 좀도둑#1"); break;
+		case 7: unittalk 'gmt_account_id, "Don't want to be in a fair fight, huh thief?"; break;
+		case 10: npctalk "게펜 좀도둑 : Umm... stealing zeny is my job~ I did nothing wrong~!", instance_npcname("게펜 좀도둑#1"); break;
+		case 13: unittalk 'gmt_account_id, "What? You're stealing from needy people."; break;
+		case 16: npctalk "게펜 좀도둑 : Well, it has been fun~! I'm outta here~", instance_npcname("게펜 좀도둑#1"); break;
+		case 17: unittalk 'gmt_account_id, "Hey! Give back what you stole thief!"; break;
+		case 20: npctalk "게펜 좀도둑 : Hahaha~! You'll get nothing~!", instance_npcname("게펜 좀도둑#1"); break;
+		case 22: hideonnpc instance_npcname("게펜 좀도둑#1"); break;
+		case 24:
+			if (attachrid('gmt_account_id)) {
+				mes "[Geffen Resident]", "My monthly salary...", "What am I gonna do?", "I have to eat..."; next;
+				mes "[Geffen Resident]", "You're not a thief are you?", "I don't know what to do about my zeny being stolen."; next;
+				mes "[리디아]", "Woo, yeah, what a day~", "It seems like all these thieves in Geffen are rich.", "They may be good at stealing but they're easy to steal from too.";
+				cutin "lydia_a.bmp", 0;
+				next;
+				hideoffnpc instance_npcname("리디아#1");
+				mes "[리디아]", "Hey, why are you crying?", "What happened?"; next;
+				mes "You tell Lydia about the shoplifters.";
+				cutin "", 255;
+				next;
+				mes "[Geffen Resident]", "What am I going to do?", "*sobbing*"; next;
+				mes "[리디아]", "(I stole this envelope from one of those thug-looking guys)", "....", "How much zeny was stolen from you?";
+				cutin "lydia_a.bmp", 0;
+				next;
+				mes "[Geffen Resident]", "1,000,000 zeny!", "It's everything that I had.";
+				cutin "", 255;
+				next;
+				mes "[리디아]", "Whoa! That's the same amount as what's in this envelope that I stole from that shoplifter.";
+				cutin "lydia_a.bmp", 0;
+				next;
+				mes "[리디아]", "Maybe this is what you are looking for?", "Check it out!"; next;
+				mes "[Geffen Resident]", "Let me see...", "Wait, this has to be my zeny!", "Thank you very much for finding it!";
+				cutin "", 255;
+				next;
+				hideonnpc instance_npcname("Geffen Resident#1");
+				hideoffnpc instance_npcname("Geffen Resident#2");
+				mes "[리디아]", "Well... Um, that is...", "I didn't say I was gonna give it back to you...";
+				cutin "lydia_a.bmp", 0;
+				next;
+				mes "[Geffen Resident]", "Thank you very much!!", "I will never forget your kindness~!", "I'm putting it in the bank right now!", "Have a good day~!!! Zap~!!";
+				cutin "", 255;
+				next;
+				hideonnpc instance_npcname("Geffen Resident#2");
+				mes "[리디아]", "......", "I guess... I did a good thing...?";
+				cutin "lydia_a.bmp", 0;
+				next;
+				mes "You tell Lydia about your stolen zeny.";
+				cutin "", 255;
+				next;
+				mes "[리디아]";
+				mes "So, are you asking me for more zeny?";
+				mes "Zeny doesn't grow on trees you know!";
+				cutin "lydia_a.bmp", 0;
+				next;
+				mes "[리디아]";
+				mes "I mean it is hers so...";
+				mes "I'll just consider it a donation to the Geffen Magic Tournament.";
+				next;
+				mes "[리디아]";
+				mes "Well, I can't give away any Tournament participants any zeny...";
+				next;
+				mes "[리디아]";
+				mes "I stole this magic scroll from another thief, so don't worry about taking it.";
+				sc_start4 SC_GEFFEN_MAGIC1, 3600000, 5, 0, 0, 0, 10000, 1; // flag = 1
+				atcommand "@effect 220";
+				next;
+				mes "[리디아]";
+				mes "I need to get to the Geffen Magic Tournament.";
+				mes "Gotta go!";
+				close2;
+				cutin "", 255;
+				hideonnpc instance_npcname("리디아#1");
+				sleep2 2000;
+				unittalk 'gmt_account_id, "She disappeared before I could thank her...";
+				sleep2 3000;
+				unittalk 'gmt_account_id, "She seems like a good person...";
+				sleep2 3000;
+				unittalk 'gmt_account_id, "Well, time to register for the Magic Tournament.";
+				stopnpctimer;
+				end;
+			}
+		
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+	
+}
+
+1@gef,114,143,0	script	#Event 3 start	139,5,5,{
+	end;
+OnTouch:
+	if ('gmt_event != 0) end;
+	if('OnTouchOnce10) end;
+	set 'OnTouchOnce10,1;
+	'gmt_char_name$ = strcharinfo(0);
+	hideonnpc instance_npcname("#Event 3 start");
+	disablenpc instance_npcname("#Event 3 start");
+	hideoffnpc instance_npcname("Geffen Resident#1");
+	//setquest 9288;
+	'gmt_timer_evt3 = 0;
+	initnpctimer;
+	end;
+OnTimer1000:
+	'gmt_timer_evt3++;
+	
+	switch('gmt_timer_evt3) {
+		case 1: npctalk "Geffen Resident : A thief...! A thief~!!", instance_npcname("Geffen Resident#1"); break;
+		case 3: npctalk "Geffen Resident : Help me~!! Someone stole my paycheck!", instance_npcname("Geffen Resident#1"); break;
+		case 6: 
+			hideoffnpc instance_npcname("게펜 좀도둑#1");
+			'gmt_chase = 1;
+			break;
+		case 8: npctalk "게펜 좀도둑 : Damn... Someone saw me...", instance_npcname("게펜 좀도둑#1"); break;
+		case 11:
+			unittalk 'gmt_account_id, "What can I do? I gotta help.";
+			stopnpctimer;
+			end;
+	}
+	
+	initnpctimer;
+	end;
+}
+
+1@gef,0,0,0	script	#gmt_main	-1,{
+	end;
+OnInstanceInit:
+	// Event 1
+	hideonnpc instance_npcname("게펜 깡패#1");
+	hideonnpc instance_npcname("게펜 깡패#2");
+	hideonnpc instance_npcname("게펜 깡패#3");
+	hideonnpc instance_npcname("Kafra Employee#1");
+	hideonnpc instance_npcname("게펜 깡패#11");
+	hideonnpc instance_npcname("게펜 깡패#22");
+	hideonnpc instance_npcname("게펜 깡패#33");
+	disablenpc instance_npcname("#Event 1 start 2");
+	hideonnpc instance_npcname("케이아스#Gef1");
+	hideonnpc instance_npcname("케이아스#Gef2");
+	hideonnpc instance_npcname("케이아스#3");
+	hideonnpc instance_npcname("아이리스#Gef1");
+	
+	// Event 2
+	hideonnpc instance_npcname("게펜 불량배#1");
+	hideonnpc instance_npcname("게펜 불량배#2");
+	hideonnpc instance_npcname("게펜 불량배#3");
+	hideonnpc instance_npcname("게펜 불량배#11");
+	hideonnpc instance_npcname("게펜 불량배#22");
+	hideonnpc instance_npcname("게펜 불량배#33");
+	hideonnpc instance_npcname("마법 아카데미 학생#11");
+	hideonnpc instance_npcname("마법 아카데미 학생#22");
+	hideonnpc instance_npcname("로키#1");
+	hideonnpc instance_npcname("로키#2");
+	hideonnpc instance_npcname("로키#3");
+	hideonnpc instance_npcname("펜릴#1");
+	disablenpc instance_npcname("#Event 2 start 2");
+	
+	// Event 3
+	hideonnpc instance_npcname("Geffen Resident#1");
+	hideonnpc instance_npcname("Geffen Resident#2");
+	hideonnpc instance_npcname("게펜 좀도둑#1");
+	hideonnpc instance_npcname("게펜 좀도둑#2");
+	hideonnpc instance_npcname("게펜 좀도둑#3");
+	hideonnpc instance_npcname("게펜 좀도둑#11");
+	hideonnpc instance_npcname("게펜 좀도둑#22");
+	hideonnpc instance_npcname("게펜 좀도둑#33");
+	hideonnpc instance_npcname("게펜 좀도둑#33");
+	hideonnpc instance_npcname("리디아#1");
+	
+	hideonnpc instance_npcname("남자 여행자#gef");
+	hideonnpc instance_npcname("잘생긴 여행자#gef");
+	end;
+}
+
+//1@gef	mapflag	nowarp
+1@gef	mapflag	nomemo
+1@gef	mapflag	noteleport
+1@gef	mapflag	monster_noteleport
+1@gef	mapflag	nosave
+1@gef	mapflag	nobranch
+//1@gef	mapflag	nowarpto
+1@gef	mapflag	noicewall
+1@gef	mapflag	restricted	9
+
+1@ge_st	mapflag	nowarp
+1@ge_st	mapflag	nomemo
+1@ge_st	mapflag	noteleport
+1@ge_st	mapflag	monster_noteleport
+1@ge_st	mapflag	nosave
+1@ge_st	mapflag	nobranch
+1@ge_st	mapflag	nowarpto
+1@ge_st	mapflag	noicewall
+1@ge_st	mapflag	restricted	9
+
+1@gef_in	mapflag	nowarp
+1@gef_in	mapflag	nomemo
+1@gef_in	mapflag	noteleport
+1@gef_in	mapflag	monster_noteleport
+1@gef_in	mapflag	nosave
+1@gef_in	mapflag	nobranch
+1@gef_in	mapflag	nowarpto
+1@gef_in	mapflag	noicewall
+1@gef_in	mapflag	restricted	9
+
+
+prt_gld,132,150,4	duplicate(게펜 코인 교환원#g)	게펜 코인 교환원	4_F_ZONDAGIRL

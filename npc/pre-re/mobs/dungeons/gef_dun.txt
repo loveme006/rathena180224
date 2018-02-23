@@ -1,0 +1,98 @@
+//===== rAthena Script =======================================
+//= Geffen Dungeon Monster Spawn Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Additional Comments: =================================
+//= 1.2 Official kRO 10.1 spawns [Playtester]
+//= 1.3 More accurate spawns [Playtester]
+//= 1.4 Corrected MVP spawn variance. [L0ne_W0lf]
+//============================================================
+
+//==================================================
+// gef_dun00 - Geffen Dungeon F1
+//==================================================
+gef_dun00,0,0	monster	헌터플라이	1035,30,60000,30000
+gef_dun00,0,0	monster	포포링	1031,15
+gef_dun00,0,0	monster	포이즌 스포아	1077,25
+gef_dun00,91,106	monster	빨간 풀	1078,1,300000,150000
+gef_dun00,92,108	monster	노란 풀	1081,1,300000,150000
+gef_dun00,114,106	monster	초록 풀	1080,1,300000,150000
+gef_dun00,0,0	monster	빨간 풀	1078,1,300000,150000
+gef_dun00,0,0	monster	빛나는 풀	1083,1,3000000,1500000
+gef_dun00,0,0	monster	빨간 풀	1078,10,180000,90000
+gef_dun00,89,111,3,3	monster	검은 버섯	1084,3,180000,90000
+gef_dun00,121,109,3,3	monster	검은 버섯	1084,3,180000,90000
+
+//==================================================
+// gef_dun01 - Geffen Dungeon F2
+//==================================================
+gef_dun01,0,0	monster	드레인리어	1111,20
+gef_dun01,0,0	monster	나이트메어	1061,30
+gef_dun01,0,0	monster	오우거투스	1204,1,1800000,1200000
+gef_dun01,0,0	monster	좀비	1015,25
+gef_dun01,0,0	monster	구울	1036,40
+gef_dun01,0,0	monster	잭	1130,40,300000,100000
+gef_dun01,234,121	monster	파란 풀	1079,1,300000,100000
+gef_dun01,0,0,0,0	boss_monster	드라큘라	1389,1,3600000,600000,1
+gef_dun01,0,0	monster	검은 버섯	1084,5,180000,90000
+gef_dun01,188,104,10,10	monster	하얀 풀	1082,3,180000,90000
+gef_dun01,263,115,10,10	monster	하얀 풀	1082,3,180000,90000
+gef_dun01,48,67,10,10	monster	하얀 풀	1082,2,180000,90000
+gef_dun01,150,237,10,10	monster	하얀 풀	1082,2,180000,90000
+
+//==================================================
+// gef_dun02 - Geffenia
+//==================================================
+gef_dun02,0,0	monster	구울	1036,10
+gef_dun02,0,0	monster	위스퍼	1179,20
+gef_dun02,0,0	monster	헌터플라이	1035,10
+gef_dun02,0,0	monster	마리오네트	1143,20
+gef_dun02,0,0	monster	데비루치	1109,35
+gef_dun02,0,0	monster	나이트메어	1061,40,60000
+gef_dun02,0,0,0,0	boss_monster	도플갱어	1046,1,7200000,600000,1
+gef_dun02,214,212,10,10	monster	하얀 풀	1082,3,180000,90000
+gef_dun02,215,67,10,10	monster	하얀 풀	1082,3,180000,90000
+gef_dun02,72,210,20,20	monster	하얀 풀	1082,3,180000,90000
+gef_dun02,106,151,20,7	monster	하얀 풀	1082,3,180000,90000
+gef_dun02,58,167,10,10	monster	빛나는 풀	1083,1,1800000,900000
+gef_dun02,185,83,3,3	monster	빛나는 풀	1083,1,1800000,900000
+
+//==================================================
+// gef_dun03 - Geffenia (Event Map)
+//==================================================
+gef_dun03,0,0	monster	헬리온 레버넌트	1626,1,600000,300000
+gef_dun03,0,0	monster	레이쓰	1192,8,60000,30000
+gef_dun03,0,0	monster	레이스 데드	1291,2,60000,30000
+gef_dun03,0,0	monster	윈드고스트	1263,3,60000,30000
+gef_dun03,0,0	monster	빛나는 풀	1083,3,1800000,900000
+gef_dun03,0,0	monster	하얀 풀	1082,10,180000,90000
+
+//==================================================
+// Old Event Spawn in case you want to use them
+//==================================================
+//gef_dun03,0,0	monster	Baphomet	1039,1,7200000,7200000
+//gef_dun03,0,0	monster	Doppelganger	1046,1,7200000,7200000
+//gef_dun03,0,0	monster	Deviruchi	1109,8
+//gef_dun03,0,0	monster	Joker	1131,5,300000,100000
+//gef_dun03,0,0	monster	Khalitzburg	1132,2
+//gef_dun03,0,0	monster	Knight of Abyss	1219,2,300000
+//gef_dun03,0,0	monster	Gryphon	1259,1,7200000,3600000
+//gef_dun03,0,0	monster	Blood Knight	1268,2,300000
+//gef_dun03,0,0	monster	Dark Lord	1272,1,7200000,7200000
+//gef_dun03,0,0	monster	Alice	1275,3
+//gef_dun03,0,0	monster	Chimera	1283,1,7200000,7200000
+//gef_dun03,0,0	monster	Mini Demon	1292,2,300000
+//gef_dun03,0,0	monster	Dark Illusion	1302,2,300000
+//gef_dun03,0,0	monster	Apocalypse	1365,2,300000
+//gef_dun03,0,0	monster	Succubus	1370,10
+//gef_dun03,0,0	monster	Fake Angel	1371,8
+//gef_dun03,0,0	monster	Lord of Death	1373,1,7200000,7200000
+//gef_dun03,0,0	monster	Incubus	1374,10
+//gef_dun03,0,0	monster	Nightmare Terror	1379,3
+//gef_dun03,0,0	monster	Violy	1390,10
+//gef_dun03,0,0	monster	Shining Plant	1083,3,1800000,900000
+//gef_dun03,0,0	monster	White Plant	1082,10,180000,90000

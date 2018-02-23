@@ -1,0 +1,24 @@
+function	script	SoulPierce	{ 
+	setarray .@itemset[0],5592,5325,5389,2296,2295,5086,5043,2278,2243,5006,5421,5283,5374,19135,2291,5864,19031,19177,5503,5490,18813;
+	setarray .@itemsocket[0],19085,19086,19087,19088,19089,19090,19091,19094,19093,19092,19128,19129,18724,19136,19132,19126,19176,19178,19179,19180,19181;
+
+	set .@j, 0;
+	for(.@i = 0; .@i < getarraysize(.@itemset); .@i++) {
+		if(countitem(.@itemset[.@i]) > 0) {
+			.@menu$ = .@menu$ + getitemname(.@itemset[.@i]) + ":";
+			.@getmenu[.@j++] = .@i;
+		}
+	}
+	if(.@menu$ == "") { dispbottom "사용 가능한 아이템이 없습니다.",0xFF0000; end; }
+	.@choice = .@getmenu[select(.@menu$) - 1];
+	delitem 25041,1;
+	delitem .@itemset[.@choice],1;
+	if(rand(1,100) < 25) {
+		specialeffect2 EF_REPAIRWEAPON;			
+		getitem .@itemsocket[.@choice],1;
+	} else {
+		dispbottom "" + getitemname(.@itemset[.@choice]) + " 1 개 삭제",0xFF0000;
+		specialeffect2 EF_REFINEFAIL;
+	}
+	end;
+}

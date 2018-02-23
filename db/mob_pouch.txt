@@ -1,0 +1,336 @@
+// Red Pouch of Surprise Summonable Monsters Database
+//
+// Structure of Database:
+// MobRandomGroupID,MobID,DummyName,Rate
+
+MOBG_Red_Pouch_Of_Surprise,0,Poring,1002
+MOBG_Red_Pouch_Of_Surprise,1001,스콜피온,Scorpion
+MOBG_Red_Pouch_Of_Surprise,1002,포링,Poring
+MOBG_Red_Pouch_Of_Surprise,1004,호넷,Hornet
+MOBG_Red_Pouch_Of_Surprise,1005,퍼밀리어,Familiar
+MOBG_Red_Pouch_Of_Surprise,1007,파브르,Fabre
+MOBG_Red_Pouch_Of_Surprise,1008,푸파,Pupa
+MOBG_Red_Pouch_Of_Surprise,1009,콘도르,Condor
+MOBG_Red_Pouch_Of_Surprise,1010,윌로우,Willow
+MOBG_Red_Pouch_Of_Surprise,1011,촌촌,Chonchon
+MOBG_Red_Pouch_Of_Surprise,1012,로다프로그,Roda Frog
+MOBG_Red_Pouch_Of_Surprise,1013,울프,Wolf
+MOBG_Red_Pouch_Of_Surprise,1014,스포아,Spore
+MOBG_Red_Pouch_Of_Surprise,1015,좀비,Zombie
+MOBG_Red_Pouch_Of_Surprise,1016,아쳐 스켈레톤,Archer Skeleton
+MOBG_Red_Pouch_Of_Surprise,1018,크리미,Creamy
+MOBG_Red_Pouch_Of_Surprise,1019,페코페코,Peco Peco
+MOBG_Red_Pouch_Of_Surprise,1020,만드라고라,Mandragora
+MOBG_Red_Pouch_Of_Surprise,1023,오크 워리어,Orc Warrior
+MOBG_Red_Pouch_Of_Surprise,1024,웜테일,Wormtail
+MOBG_Red_Pouch_Of_Surprise,1025,보아,Boa
+MOBG_Red_Pouch_Of_Surprise,1026,무낙,Munak
+MOBG_Red_Pouch_Of_Surprise,1028,솔져 스켈레톤,Soldier Skeleton
+MOBG_Red_Pouch_Of_Surprise,1029,이시스,Isis
+MOBG_Red_Pouch_Of_Surprise,1030,아나콘다크,Anacondaq
+MOBG_Red_Pouch_Of_Surprise,1031,포포링,Poporing
+MOBG_Red_Pouch_Of_Surprise,1032,베릿트,Verit
+MOBG_Red_Pouch_Of_Surprise,1033,엘더 윌로우,Elder Willow
+MOBG_Red_Pouch_Of_Surprise,1034,타라프로그,Thara Frog
+MOBG_Red_Pouch_Of_Surprise,1035,헌터플라이,Hunter Fly
+MOBG_Red_Pouch_Of_Surprise,1036,구울,Ghoul
+MOBG_Red_Pouch_Of_Surprise,1037,사이드 와인더,Side Winder
+MOBG_Red_Pouch_Of_Surprise,1040,고렘,Golem
+MOBG_Red_Pouch_Of_Surprise,1041,미이라,Mummy
+MOBG_Red_Pouch_Of_Surprise,1042,스틸 촌촌,Steel Chonchon
+MOBG_Red_Pouch_Of_Surprise,1044,오본느,Obeaune
+MOBG_Red_Pouch_Of_Surprise,1045,마르크,Marc
+MOBG_Red_Pouch_Of_Surprise,1047,페코페코 알,Peco Peco Egg
+MOBG_Red_Pouch_Of_Surprise,1048,도둑벌레 알,Thief Bug Egg
+MOBG_Red_Pouch_Of_Surprise,1049,픽키,Picky
+MOBG_Red_Pouch_Of_Surprise,1050,픽키,Picky
+MOBG_Red_Pouch_Of_Surprise,1051,도둑벌레,Thief Bug
+MOBG_Red_Pouch_Of_Surprise,1052,로커,Rocker
+MOBG_Red_Pouch_Of_Surprise,1053,도둑벌레,Thief Bug Female
+MOBG_Red_Pouch_Of_Surprise,1054,도둑벌레,Thief Bug Male
+MOBG_Red_Pouch_Of_Surprise,1055,무카,Muka
+MOBG_Red_Pouch_Of_Surprise,1056,스모키,Smokie
+MOBG_Red_Pouch_Of_Surprise,1057,요요,Yoyo
+MOBG_Red_Pouch_Of_Surprise,1058,메틀러,Metaller
+MOBG_Red_Pouch_Of_Surprise,1060,빅풋,Bigfoot
+MOBG_Red_Pouch_Of_Surprise,1061,나이트메어,Nightmare
+MOBG_Red_Pouch_Of_Surprise,1062,산타포링,Santa Poring
+MOBG_Red_Pouch_Of_Surprise,1063,루나틱,Lunatic
+MOBG_Red_Pouch_Of_Surprise,1064,메갈로돈,Megalodon
+MOBG_Red_Pouch_Of_Surprise,1065,스트라우프,Strouf
+MOBG_Red_Pouch_Of_Surprise,1066,바돈,Vadon
+MOBG_Red_Pouch_Of_Surprise,1067,커너투스,Cornutus
+MOBG_Red_Pouch_Of_Surprise,1068,히드라,Hydra
+MOBG_Red_Pouch_Of_Surprise,1069,소드피쉬,Swordfish
+MOBG_Red_Pouch_Of_Surprise,1070,쿠크레,Kukre
+MOBG_Red_Pouch_Of_Surprise,1071,파이어럿 스켈,Pirate Skeleton
+MOBG_Red_Pouch_Of_Surprise,1072,카호,Kaho
+MOBG_Red_Pouch_Of_Surprise,1073,게,Crab
+MOBG_Red_Pouch_Of_Surprise,1074,조개,Shellfish
+MOBG_Red_Pouch_Of_Surprise,1076,스켈레톤,Skeleton
+MOBG_Red_Pouch_Of_Surprise,1077,포이즌 스포아,Poison Spore
+MOBG_Red_Pouch_Of_Surprise,1078,빨간 풀,Red Plant
+MOBG_Red_Pouch_Of_Surprise,1079,파란 풀,Blue Plant
+MOBG_Red_Pouch_Of_Surprise,1080,초록 풀,Green Plant
+MOBG_Red_Pouch_Of_Surprise,1081,노란 풀,Yellow Plant
+MOBG_Red_Pouch_Of_Surprise,1082,하얀 풀,White Plant
+MOBG_Red_Pouch_Of_Surprise,1083,빛나는 풀,Shining Plant
+MOBG_Red_Pouch_Of_Surprise,1084,검은 버섯,Black Mushroom
+MOBG_Red_Pouch_Of_Surprise,1085,붉은 버섯,Red Mushroom
+MOBG_Red_Pouch_Of_Surprise,1088,보컬,Vocal
+MOBG_Red_Pouch_Of_Surprise,1089,토드,Toad
+MOBG_Red_Pouch_Of_Surprise,1090,마스터링,Mastering
+MOBG_Red_Pouch_Of_Surprise,1091,드래곤 플라이,Dragon Fly
+MOBG_Red_Pouch_Of_Surprise,1092,떠돌이 늑대,Vagabond Wolf
+MOBG_Red_Pouch_Of_Surprise,1093,이클립스,Eclipse
+MOBG_Red_Pouch_Of_Surprise,1094,앰버나이트,Ambernite
+MOBG_Red_Pouch_Of_Surprise,1095,앙드레,Andre
+MOBG_Red_Pouch_Of_Surprise,1096,엔젤링,Angeling
+MOBG_Red_Pouch_Of_Surprise,1097,개미 알,Ant Egg
+MOBG_Red_Pouch_Of_Surprise,1099,아르지오프,Argiope
+MOBG_Red_Pouch_Of_Surprise,1100,아르고스,Argos
+MOBG_Red_Pouch_Of_Surprise,1101,바포메트 주니어,Baphomet Jr.
+MOBG_Red_Pouch_Of_Surprise,1102,바소리,Bathory
+MOBG_Red_Pouch_Of_Surprise,1103,카라멜,Caramel
+MOBG_Red_Pouch_Of_Surprise,1104,코코,Coco
+MOBG_Red_Pouch_Of_Surprise,1105,데니로,Deniro
+MOBG_Red_Pouch_Of_Surprise,1106,데저트 울프,Desert Wolf
+MOBG_Red_Pouch_Of_Surprise,1107,데저트 울프,Baby Desert Wolf
+MOBG_Red_Pouch_Of_Surprise,1108,데비어스,Deviace
+MOBG_Red_Pouch_Of_Surprise,1109,데비루치,Deviruchi
+MOBG_Red_Pouch_Of_Surprise,1110,도깨비,Dokebi
+MOBG_Red_Pouch_Of_Surprise,1111,드레인리어,Drainliar
+MOBG_Red_Pouch_Of_Surprise,1113,드롭프스,Drops
+MOBG_Red_Pouch_Of_Surprise,1114,더스티네스,Dustiness
+MOBG_Red_Pouch_Of_Surprise,1116,에기라,Eggyra
+MOBG_Red_Pouch_Of_Surprise,1117,이블 드루이드,Evil Druid
+MOBG_Red_Pouch_Of_Surprise,1118,플로라,Flora
+MOBG_Red_Pouch_Of_Surprise,1119,프릴도라,Frilldora
+MOBG_Red_Pouch_Of_Surprise,1120,고스트링,Ghostring
+MOBG_Red_Pouch_Of_Surprise,1121,가이아스,Giearth
+MOBG_Red_Pouch_Of_Surprise,1122,고블린,Goblin
+MOBG_Red_Pouch_Of_Surprise,1123,고블린,Goblin
+MOBG_Red_Pouch_Of_Surprise,1124,고블린,Goblin
+MOBG_Red_Pouch_Of_Surprise,1125,고블린,Goblin
+MOBG_Red_Pouch_Of_Surprise,1126,고블린,Goblin
+MOBG_Red_Pouch_Of_Surprise,1127,호드,Hode
+MOBG_Red_Pouch_Of_Surprise,1128,호른,Horn
+MOBG_Red_Pouch_Of_Surprise,1129,호롱,Horong
+MOBG_Red_Pouch_Of_Surprise,1130,잭,Jakk
+MOBG_Red_Pouch_Of_Surprise,1131,조커,Joker
+MOBG_Red_Pouch_Of_Surprise,1132,칼리츠버그,Khalitzburg
+MOBG_Red_Pouch_Of_Surprise,1133,코볼트,Kobold
+MOBG_Red_Pouch_Of_Surprise,1134,코볼트,Kobold
+MOBG_Red_Pouch_Of_Surprise,1135,코볼트,Kobold
+MOBG_Red_Pouch_Of_Surprise,1138,백련옥,Magnolia
+MOBG_Red_Pouch_Of_Surprise,1139,맨티스,Mantis
+MOBG_Red_Pouch_Of_Surprise,1140,마르두크,Marduk
+MOBG_Red_Pouch_Of_Surprise,1141,마리나,Marina
+MOBG_Red_Pouch_Of_Surprise,1142,마린 스피어,Marine Sphere
+MOBG_Red_Pouch_Of_Surprise,1143,마리오네트,Marionette
+MOBG_Red_Pouch_Of_Surprise,1144,마르스,Marse
+MOBG_Red_Pouch_Of_Surprise,1145,마르틴,Martin
+MOBG_Red_Pouch_Of_Surprise,1146,마타,Matyr
+MOBG_Red_Pouch_Of_Surprise,1148,메두사,Medusa
+MOBG_Red_Pouch_Of_Surprise,1149,마이너우로스,Minorous
+MOBG_Red_Pouch_Of_Surprise,1151,미스트,Myst
+MOBG_Red_Pouch_Of_Surprise,1152,오크 스켈레톤,Orc Skeleton
+MOBG_Red_Pouch_Of_Surprise,1153,오크 좀비,Orc Zombie
+MOBG_Red_Pouch_Of_Surprise,1154,파사나,Pasana
+MOBG_Red_Pouch_Of_Surprise,1155,쁘띠,Petite
+MOBG_Red_Pouch_Of_Surprise,1156,쁘띠,Petite
+MOBG_Red_Pouch_Of_Surprise,1158,휀,Phen
+MOBG_Red_Pouch_Of_Surprise,1160,피에르,Piere
+MOBG_Red_Pouch_Of_Surprise,1161,플랑크톤,Plankton
+MOBG_Red_Pouch_Of_Surprise,1163,레이드릭,Raydric
+MOBG_Red_Pouch_Of_Surprise,1164,레퀴엠,Requiem
+MOBG_Red_Pouch_Of_Surprise,1165,샌드맨,Sandman
+MOBG_Red_Pouch_Of_Surprise,1166,세비지,Savage
+MOBG_Red_Pouch_Of_Surprise,1167,세비지베베,Savage Babe
+MOBG_Red_Pouch_Of_Surprise,1169,스켈워커,Skeleton Worker
+MOBG_Red_Pouch_Of_Surprise,1170,소희,Sohee
+MOBG_Red_Pouch_Of_Surprise,1174,스타이너,Stainer
+MOBG_Red_Pouch_Of_Surprise,1175,타로우,Tarou
+MOBG_Red_Pouch_Of_Surprise,1176,비타타,Vitata
+MOBG_Red_Pouch_Of_Surprise,1177,제노크,Zenorc
+MOBG_Red_Pouch_Of_Surprise,1178,제롬,Zerom
+MOBG_Red_Pouch_Of_Surprise,1179,위스퍼,Whisper
+MOBG_Red_Pouch_Of_Surprise,1180,구미호,Nine Tail
+MOBG_Red_Pouch_Of_Surprise,1182,버섯,Thief Mushroom
+MOBG_Red_Pouch_Of_Surprise,1185,위스퍼,Whisper
+MOBG_Red_Pouch_Of_Surprise,1186,거대 위스퍼,Giant Whisper
+MOBG_Red_Pouch_Of_Surprise,1188,본건,Bongun
+MOBG_Red_Pouch_Of_Surprise,1189,오크 아쳐,Orc Archer
+MOBG_Red_Pouch_Of_Surprise,1191,미믹,Mimic
+MOBG_Red_Pouch_Of_Surprise,1192,레이쓰,Wraith
+MOBG_Red_Pouch_Of_Surprise,1193,알람,Alarm
+MOBG_Red_Pouch_Of_Surprise,1194,아크라우스,Arclouze
+MOBG_Red_Pouch_Of_Surprise,1195,라이드워드,Rideword
+MOBG_Red_Pouch_Of_Surprise,1196,스켈 프리즈너,Skeleton Prisoner
+MOBG_Red_Pouch_Of_Surprise,1197,좀비 프리즈너,Zombie Prisoner
+MOBG_Red_Pouch_Of_Surprise,1199,펑크,Punk
+MOBG_Red_Pouch_Of_Surprise,1200,지르타스,Zealotus
+MOBG_Red_Pouch_Of_Surprise,1201,리비오,Rybio
+MOBG_Red_Pouch_Of_Surprise,1202,펜다르크,Phendark
+MOBG_Red_Pouch_Of_Surprise,1203,미스틸테인,Mysteltainn
+MOBG_Red_Pouch_Of_Surprise,1204,오우거투스,Ogretooth
+MOBG_Red_Pouch_Of_Surprise,1205,엑서큐서너,Executioner
+MOBG_Red_Pouch_Of_Surprise,1206,아놀리안,Anolian
+MOBG_Red_Pouch_Of_Surprise,1207,스팅,Sting
+MOBG_Red_Pouch_Of_Surprise,1208,배회하는 자,Wanderer
+MOBG_Red_Pouch_Of_Surprise,1209,크램프,Cramp
+MOBG_Red_Pouch_Of_Surprise,1211,브릴라이트,Brilight
+MOBG_Red_Pouch_Of_Surprise,1212,아이언 피스트,Iron Fist
+MOBG_Red_Pouch_Of_Surprise,1213,하이 오크,High Orc
+MOBG_Red_Pouch_Of_Surprise,1214,초코,Choco
+MOBG_Red_Pouch_Of_Surprise,1215,스템웜,Stem Worm
+MOBG_Red_Pouch_Of_Surprise,1216,페노메나,Penomena
+MOBG_Red_Pouch_Of_Surprise,1219,심연의 기사,Abysmal Knight
+MOBG_Red_Pouch_Of_Surprise,1242,마린,Marin
+MOBG_Red_Pouch_Of_Surprise,1243,사스콰치,Sasquatch
+MOBG_Red_Pouch_Of_Surprise,1245,고블린,Christmas Goblin
+MOBG_Red_Pouch_Of_Surprise,1246,쿠키,Christmas Cookie
+MOBG_Red_Pouch_Of_Surprise,1248,크루이저,Cruiser
+MOBG_Red_Pouch_Of_Surprise,1249,미스트 케이스,Myst Case
+MOBG_Red_Pouch_Of_Surprise,1250,체펫트,Chepet
+MOBG_Red_Pouch_Of_Surprise,1253,가고일,Gargoyle
+MOBG_Red_Pouch_Of_Surprise,1254,레글러,Raggler
+MOBG_Red_Pouch_Of_Surprise,1255,네레이드,Nereid
+MOBG_Red_Pouch_Of_Surprise,1256,페스트,Pest
+MOBG_Red_Pouch_Of_Surprise,1257,인저스티스,Injustice
+MOBG_Red_Pouch_Of_Surprise,1258,고블린 아쳐,Goblin Archer
+MOBG_Red_Pouch_Of_Surprise,1259,그리폰,Gryphon
+MOBG_Red_Pouch_Of_Surprise,1260,다크 프레임,Dark Frame
+MOBG_Red_Pouch_Of_Surprise,1261,와일드로즈,Wild Rose
+MOBG_Red_Pouch_Of_Surprise,1262,뮤턴트 드래고노이드,Mutant Dragonoid
+MOBG_Red_Pouch_Of_Surprise,1263,윈드고스트,Wind Ghost
+MOBG_Red_Pouch_Of_Surprise,1264,머맨,Merman
+MOBG_Red_Pouch_Of_Surprise,1265,쿠키,Cookie
+MOBG_Red_Pouch_Of_Surprise,1266,에스터,Aster
+MOBG_Red_Pouch_Of_Surprise,1267,캐럿,Carat
+MOBG_Red_Pouch_Of_Surprise,1268,피빛의 기사,Bloody Knight
+MOBG_Red_Pouch_Of_Surprise,1269,클락,Clock
+MOBG_Red_Pouch_Of_Surprise,1270,시계탑 관리자,Clock Tower Manager
+MOBG_Red_Pouch_Of_Surprise,1271,엘리게이터,Alligator
+MOBG_Red_Pouch_Of_Surprise,1273,오크 레이디,Orc Lady
+MOBG_Red_Pouch_Of_Surprise,1274,메갈리스,Megalith
+MOBG_Red_Pouch_Of_Surprise,1275,엘리스,Alice
+MOBG_Red_Pouch_Of_Surprise,1276,레이드릭 아쳐,Raydric Archer
+MOBG_Red_Pouch_Of_Surprise,1277,천하대장군,Greatest General
+MOBG_Red_Pouch_Of_Surprise,1278,스터랙틱 골렘,Stalactic Golem
+MOBG_Red_Pouch_Of_Surprise,1279,트라이조인트,Tri Joint
+MOBG_Red_Pouch_Of_Surprise,1280,고블린 스팀라이더,Goblin Steamrider
+MOBG_Red_Pouch_Of_Surprise,1281,세이지 웜,Sage Worm
+MOBG_Red_Pouch_Of_Surprise,1282,코볼트 아쳐,Kobold Archer
+MOBG_Red_Pouch_Of_Surprise,1283,키메라,Chimera
+MOBG_Red_Pouch_Of_Surprise,1289,마야 퍼플,Maya Purple
+MOBG_Red_Pouch_Of_Surprise,1290,스켈레톤 제네럴,Skeleton General
+MOBG_Red_Pouch_Of_Surprise,1291,레이스 데드,Wraith Dead
+MOBG_Red_Pouch_Of_Surprise,1292,미니 데몬,Mini Demon
+MOBG_Red_Pouch_Of_Surprise,1293,크리미 피어,Creamy Fear
+MOBG_Red_Pouch_Of_Surprise,1294,킬러 맨티스,Killer Mantis
+MOBG_Red_Pouch_Of_Surprise,1295,아울 바론,Owl Baron
+MOBG_Red_Pouch_Of_Surprise,1296,코볼트 리더,Kobold Leader
+MOBG_Red_Pouch_Of_Surprise,1297,에인션트 미이라,Ancient Mummy
+MOBG_Red_Pouch_Of_Surprise,1298,좀비 마스터,Zombie Master
+MOBG_Red_Pouch_Of_Surprise,1299,고블린 리더,Goblin Leader
+MOBG_Red_Pouch_Of_Surprise,1300,캐터필러,Caterpillar
+MOBG_Red_Pouch_Of_Surprise,1301,암 무트,Am Mut
+MOBG_Red_Pouch_Of_Surprise,1302,다크 일루젼,Dark Illusion
+MOBG_Red_Pouch_Of_Surprise,1303,자이언트 호넷,Giant Hornet
+MOBG_Red_Pouch_Of_Surprise,1304,자이언트 스파이더,Giant Spider
+MOBG_Red_Pouch_Of_Surprise,1305,에인션트 웜,Ancient Worm
+MOBG_Red_Pouch_Of_Surprise,1306,레이브 올마이,Leib Olmai
+MOBG_Red_Pouch_Of_Surprise,1307,캣 오 나인 테일,Cat o' Nine Tails
+MOBG_Red_Pouch_Of_Surprise,1308,팬저 고블린,Panzer Goblin
+MOBG_Red_Pouch_Of_Surprise,1309,가조마르트,Gajomart
+MOBG_Red_Pouch_Of_Surprise,1310,메이저우로스,Majoruros
+MOBG_Red_Pouch_Of_Surprise,1311,글린 부르스티,Gullinbursti
+MOBG_Red_Pouch_Of_Surprise,1313,폭력배,Mobster
+MOBG_Red_Pouch_Of_Surprise,1314,퍼머터,Permeter
+MOBG_Red_Pouch_Of_Surprise,1315,어절터,Assaulter
+MOBG_Red_Pouch_Of_Surprise,1316,솔리더,Solider
+MOBG_Red_Pouch_Of_Surprise,1317,퍼씰,Seal
+MOBG_Red_Pouch_Of_Surprise,1318,힛터,Heater
+MOBG_Red_Pouch_Of_Surprise,1319,프리저,Freezer
+MOBG_Red_Pouch_Of_Surprise,1320,아울 듀크,Owl Duke
+MOBG_Red_Pouch_Of_Surprise,1321,드래곤 테일,Dragon Tail
+MOBG_Red_Pouch_Of_Surprise,1322,스프링래빗,Spring Rabbit
+MOBG_Red_Pouch_Of_Surprise,1323,해달,Sea Otter
+MOBG_Red_Pouch_Of_Surprise,1365,아포칼립스,Apocalypse
+MOBG_Red_Pouch_Of_Surprise,1366,라바 골렘,Lava Golem
+MOBG_Red_Pouch_Of_Surprise,1367,블레이저,Blazer
+MOBG_Red_Pouch_Of_Surprise,1368,지오그래퍼,Geographer
+MOBG_Red_Pouch_Of_Surprise,1369,그랜드 페코,Grand Peco
+MOBG_Red_Pouch_Of_Surprise,1370,서큐버스,Succubus
+MOBG_Red_Pouch_Of_Surprise,1371,페이크 엔젤,False Angel
+MOBG_Red_Pouch_Of_Surprise,1372,고우트,Goat
+MOBG_Red_Pouch_Of_Surprise,1374,인큐버스,Incubus
+MOBG_Red_Pouch_Of_Surprise,1375,더 페이퍼,The Paper
+MOBG_Red_Pouch_Of_Surprise,1376,하피,Harpy
+MOBG_Red_Pouch_Of_Surprise,1377,엘더,Elder
+MOBG_Red_Pouch_Of_Surprise,1378,데몬 펑거스,Demon Pungus
+MOBG_Red_Pouch_Of_Surprise,1379,나이트메어 테러,Nightmare Terror
+MOBG_Red_Pouch_Of_Surprise,1380,드릴러,Driller
+MOBG_Red_Pouch_Of_Surprise,1381,그리즐리,Grizzly
+MOBG_Red_Pouch_Of_Surprise,1382,디아볼릭,Diabolic
+MOBG_Red_Pouch_Of_Surprise,1383,익스플로젼,Explosion
+MOBG_Red_Pouch_Of_Surprise,1384,딜리터,Deleter
+MOBG_Red_Pouch_Of_Surprise,1385,딜리터,Deleter
+MOBG_Red_Pouch_Of_Surprise,1386,슬리퍼,Sleeper
+MOBG_Red_Pouch_Of_Surprise,1387,기그,Gig
+MOBG_Red_Pouch_Of_Surprise,1390,바이올리,Violy
+MOBG_Red_Pouch_Of_Surprise,1391,갈라파고,Galapago
+MOBG_Red_Pouch_Of_Surprise,1392,로터자이로,Rotar Zairo
+MOBG_Red_Pouch_Of_Surprise,1400,카라카사,Karakasa
+MOBG_Red_Pouch_Of_Surprise,1401,시노비,Shinobi
+MOBG_Red_Pouch_Of_Surprise,1402,독두꺼비,Poison Toad
+MOBG_Red_Pouch_Of_Surprise,1403,구식 조총병,Firelock Soldier
+MOBG_Red_Pouch_Of_Surprise,1404,미야비인형,Miyabi Doll
+MOBG_Red_Pouch_Of_Surprise,1405,천구,Tengu
+MOBG_Red_Pouch_Of_Surprise,1406,캇파,Kapha
+MOBG_Red_Pouch_Of_Surprise,1408,혈호접,Bloody Butterfly
+MOBG_Red_Pouch_Of_Surprise,1409,경단동자,Dumpling Child
+MOBG_Red_Pouch_Of_Surprise,1410,생도목,Enchanted Peach Tree
+MOBG_Red_Pouch_Of_Surprise,1412,운악선,Taoist Hermit
+MOBG_Red_Pouch_Of_Surprise,1413,신선초,Hermit Plant
+MOBG_Red_Pouch_Of_Surprise,1415,아기표범,Baby Leopard
+MOBG_Red_Pouch_Of_Surprise,1416,요선녀,Evil Nymph
+MOBG_Red_Pouch_Of_Surprise,1417,지퍼베어,Zipper Bear
+MOBG_Red_Pouch_Of_Surprise,1493,드라이어드,Dryad
+MOBG_Red_Pouch_Of_Surprise,1494,투구벌레,Beetle King
+MOBG_Red_Pouch_Of_Surprise,1495,스톤슈터,Stone Shooter
+MOBG_Red_Pouch_Of_Surprise,1497,우든골렘,Wooden Golem
+MOBG_Red_Pouch_Of_Surprise,1498,우탄슈터,Wootan Shooter
+MOBG_Red_Pouch_Of_Surprise,1499,우탄파이터,Wootan Fighter
+MOBG_Red_Pouch_Of_Surprise,1500,패러사이트,Parasite
+MOBG_Red_Pouch_Of_Surprise,1503,지벳트,Gibbet
+MOBG_Red_Pouch_Of_Surprise,1504,듀라한,Dullahan
+MOBG_Red_Pouch_Of_Surprise,1505,로리루리,Loli Ruri
+MOBG_Red_Pouch_Of_Surprise,1506,디스가이즈,Disguise
+MOBG_Red_Pouch_Of_Surprise,1507,블러디 머더러,Bloody Murderer
+MOBG_Red_Pouch_Of_Surprise,1508,큐브,Quve
+MOBG_Red_Pouch_Of_Surprise,1509,루드,Lude
+MOBG_Red_Pouch_Of_Surprise,1510,하이로 조이스트,Heirozoist
+MOBG_Red_Pouch_Of_Surprise,1512,혜군,Yao Jun
+MOBG_Red_Pouch_Of_Surprise,1513,묘괴,Mao Guai
+MOBG_Red_Pouch_Of_Surprise,1514,저파룡,Zhu Po Long
+MOBG_Red_Pouch_Of_Surprise,1515,하티베베,Baby Hatii
+MOBG_Red_Pouch_Of_Surprise,1516,식양,Mi Gao
+MOBG_Red_Pouch_Of_Surprise,1517,이매망량,Jing Guai
+MOBG_Red_Pouch_Of_Surprise,1519,청이,Green Maiden
+MOBG_Red_Pouch_Of_Surprise,1520,주먹밥,Boiled Rice
+MOBG_Red_Pouch_Of_Surprise,1582,데빌링,Deviling
+MOBG_Red_Pouch_Of_Surprise,1584,탐루안,Tamruan
+MOBG_Red_Pouch_Of_Surprise,1586,리프캣,Leaf Cat
+MOBG_Red_Pouch_Of_Surprise,1587,크라벤,Kraben
+MOBG_Red_Pouch_Of_Surprise,1613,메탈링,Metaling
+MOBG_Red_Pouch_Of_Surprise,1614,미네랄,Mineral
+MOBG_Red_Pouch_Of_Surprise,1615,옵시디언,Obsidian
+MOBG_Red_Pouch_Of_Surprise,1616,핏맨,Pitman
+MOBG_Red_Pouch_Of_Surprise,1617,고철난로,Old Stove
+MOBG_Red_Pouch_Of_Surprise,1618,운골리안트,Ungoliant
+MOBG_Red_Pouch_Of_Surprise,1619,폴셀리오,Porcellio
+MOBG_Red_Pouch_Of_Surprise,1620,녹시어스,Noxious
+MOBG_Red_Pouch_Of_Surprise,1621,베노머스,Venomous
+MOBG_Red_Pouch_Of_Surprise,1622,곰인형,Teddy Bear

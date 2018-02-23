@@ -1,0 +1,167 @@
+prt_gld,120,159,5	script	대천사의 날개	811,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "너무 많은물건을 들고있구나 인벤을비우고오거랏!!";
+		close;
+	}
+	if (MaxWeight - Weight < 10000) {
+		mes "너무 많은물건을 들고있구나 인벤을비우고오거랏!!";
+		close;
+	}
+	if (getequipid(EQI_GARMENT) == 2573) {
+		if (Zeny >= 1000000)
+			set .@menu$, "마법 부여 대천사의 날개";
+		else
+			set .@menu$, "^999999너는 zeny가 충분하지 않다!^000000";
+	} else
+		set .@menu$, "^999999 대천사 날개를 장착하지 않았습니다!^000000";
+	mes "[천사]";
+	mes "너는 가난한 사람 같아!";
+	next;
+	mes "[타락한 천사]";
+	mes "쓸모없는 4 번째 슬롯에 내 능력을 부여 할 것입니다. 그렇게 해주시겠습니까?";
+	next;
+	switch(select("그게 뭐야?:"+.@menu$+":인챈트 초기화")) {
+	case 1:
+		switch(select("그만하기 :당신은 무엇을 할 것입니까?")) {
+		case 1:
+			mes "[천사]";
+			mes "뭐라고??";
+			close;
+		case 2:
+			mes "[천사]";
+			mes "100만제니가 필요.";
+			next;
+			mes "[천사]";
+			mes "마법은 위험하기 때문에 ^ff0000날개가 손상 될 수있다.^000000!그럼에도 불구하고, 나의 좋은 축복은^0000ff카드 및 세분화 수준^0000ff!";
+			close;
+		}
+	case 2:
+		if (Zeny < 1000000) {
+			mes "[천사]";
+			mes "제니가 없다~";
+			close;
+		}
+		mes "[천사]";
+		mes "2 가지 중요 사항이 있습니다. 첫째, 마법은^0000ff1,000,000 zeny^000000.";
+		next;
+		mes "[천사]";
+		mes "둘째, ^ff0000대천사 날개가 손상 될 수 있습니다.^000000!";
+ 		mes "조건을 받아 들인다면, 나는 당신을 위해 날개를 매혹시킬 것입니다.";
+		next;
+		if(select("내가 고려하자 ... :마법부여 GO GO!") == 1) {
+			mes "[천사]";
+			mes "승인! 고려할 시간을 가져라!";
+			close;
+		}
+		specialeffect2 EF_REPAIRWEAPON;
+		progressbar "ffff00",2;
+		if (getequipisequiped(EQI_GARMENT) == 0) {
+			mes "[천사]";
+			mes "대천사의 날개가 제거되었습니다!";
+			close;
+		}
+		if (getequipid(EQI_GARMENT) != 2573) {
+			mes "[천사]";
+			mes "항목을 벗지 마!";
+			close;
+		}
+		if (getequipcardid(EQI_GARMENT,3)) {
+			mes "[천사]";
+			mes "이 대천사의 날개는 마법에 걸렸습니다! 초기화하거나 다른 대천사 날개를 가져 오십시오!";
+			close;
+		}
+		set .@equip_refine, getequiprefinerycnt(EQI_GARMENT);
+		setarray .@equip_card[0], getequipcardid(EQI_GARMENT,0),getequipcardid(EQI_GARMENT,1),getequipcardid(EQI_GARMENT,2);
+
+		set .@i, rand(1,900);
+		     if (.@i < 2)   set .@enchant,4848; //Immuned1
+		else if (.@i < 3)   set .@enchant,4849; //Cranial1
+		else if (.@i < 4)   set .@enchant,4852; //Heal_Amount5
+		else if (.@i < 9)   set .@enchant,4853; //S_Str
+		else if (.@i < 14)  set .@enchant,4854; //S_Agi
+		else if (.@i < 19)  set .@enchant,4855; //S_Vital
+		else if (.@i < 24)  set .@enchant,4856; //S_Int
+		else if (.@i < 29)  set .@enchant,4857; //S_Dex
+		else if (.@i < 34)  set .@enchant,4858; //S_Luck
+		else if (.@i < 39)  set .@enchant,4851; //Heal_Amount4
+		else if (.@i < 49)  set .@enchant,4850; //Heal_Amount3
+		else if (.@i < 74)  set .@enchant,4760; //Matk1
+		else if (.@i < 84)  set .@enchant,4761; //Matk2
+		else if (.@i < 109) set .@enchant,4817; //Sharp2
+		else if (.@i < 119) set .@enchant,4816; //Sharp3
+		else if (.@i < 144) set .@enchant,4814; //Spell2
+		else if (.@i < 154) set .@enchant,4813; //Spell3
+		else if (.@i < 179) set .@enchant,4833; //Expert_Archer2
+		else if (.@i < 189) set .@enchant,4834; //Expert_Archer3
+		else if (.@i < 214) set .@enchant,4810; //Fighting_Spirit2
+		else if (.@i < 224) set .@enchant,4809; //Fighting_Spirit3
+		else if (.@i < 259) set .@enchant,4701; //Strength2
+		else if (.@i < 294) set .@enchant,4731; //Agility2
+		else if (.@i < 329) set .@enchant,4721; //Dexterity2
+		else if (.@i < 364) set .@enchant,4741; //Vitality2
+		else if (.@i < 399) set .@enchant,4751; //Luck2
+		else if (.@i < 434) set .@enchant,4711; //Inteligence2
+		else if (.@i < 504) set .@enchant,4700; //Strength1
+		else if (.@i < 574) set .@enchant,4730; //Agility1
+		else if (.@i < 644) set .@enchant,4720; //Dexterity1
+		else if (.@i < 714) set .@enchant,4740; //Vitality1
+		else if (.@i < 784) set .@enchant,4750; //Luck1
+		else if (.@i < 854) set .@enchant,4710; //Inteligence1
+		else set .@enchant,0;
+
+		set Zeny, Zeny - 1000000;
+		delequip EQI_GARMENT;
+		if (.@enchant == 0) {
+			mes "[천사]";
+			mes "대천사 날개가 손상되었습니다!";
+			close;
+		}
+		getitem2 2573,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@enchant; //Archangel_Wing
+		if (.@i < 4)
+			announce strcharinfo(0)+"놀라운 능력으로 대천사 날개에 매료되었습니다!",bc_all,0xFF0000,FW_NORMAL,10;
+		mes "[천사]";
+		mes "가져!";
+		mes "나는 당신이 새로운 세상의 지배자가 될 것이라고 믿습니다!";
+		close;
+	case 3:
+		mes "[천사]";
+		mes "초기화 필요 ^0000ff개다래 열매3 개^000000. 마법 부여 능력을 제외한 날개는 손상되지 않습니다.";
+		next;
+		if(select("잠시 생각좀...:Ok,초기화하고 싶다.") == 1) {
+			mes "[천사]";
+			mes "승인! 고려할 시간을 가져라!";
+			close;
+		}
+		specialeffect2 EF_REPAIRWEAPON;
+		progressbar "ffff00",2;
+		if (getequipisequiped(EQI_GARMENT) == 0) {
+			mes "[천사]";
+			mes "대천사의 날개가 제거되었습니다!";
+			close;
+		}
+		if (getequipid(EQI_GARMENT) != 2573) {
+			mes "[천사]";
+			mes "오 ... 대천사 날개를 풀었습니다!";
+			close;
+		}
+		if (countitem(6417) < 3) {
+			mes "[천사]";
+			mes "개다래 열매 3개가 없구나~!!";
+			close;
+		}
+		if (getequipcardid(EQI_GARMENT,3) < 4700) { // Armor Enchant System
+			mes "[천사]";
+			mes "이 장비는 마법에 걸리지 않았습니다. 다시 확인하십시오!";
+			close;
+		}
+		set .@equip_refine, getequiprefinerycnt(EQI_GARMENT);
+		setarray .@equip_card[0], getequipcardid(EQI_GARMENT,0),getequipcardid(EQI_GARMENT,1),getequipcardid(EQI_GARMENT,2);
+		delitem 6417,3; //Silvervine
+		delequip EQI_GARMENT;
+		getitem2 2573,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],0; //Archangel_Wing
+		mes "[천사]";
+		mes "가지렴!!!";
+		close;
+	}
+}

@@ -1,0 +1,217 @@
+-	shop	ILL_EQI	-1,13469:-1,1326:-1,32005:-1,13338:-1,16065:-1,19247:-1,28922:-1,20847:-1,13337:-1,1846:-1,19223:-1,28022:-1,28023:-1,2039:-1,18149:-1,28612:-1,20840:-1,28508:-1,28509:-1,26109:-1,16063:-1,28725:-1,26007:-1,19209:-1,20840:-1,20838:-1,22133:-1,15195:-1.
+
+prt_gld,163,136,4	script	일루전 장비	10238,{
+	set .@npcname$,"[일루전 장비]";
+
+	callshop "ILL_EQI",1;
+	npcshopattach "ILL_EQI";
+	end;
+
+OnBuyItem:
+	for (.@i = 0; .@i < getarraysize(@bought_nameid); .@i++){
+		if (@bought_quantity[.@i] <= 0){
+			mes "omgh4x!";
+			close;
+		//구양궁
+		} else if (@bought_nameid[.@i] == 13469){
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25314,50;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1141;
+			set .@targetitem,13469;
+		} else if (@bought_nameid[.@i] == 1326) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25311,200;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1306;
+			set .@targetitem,1326;
+		} else if (@bought_nameid[.@i] == 32005) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25311,200;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1417;
+			set .@targetitem,32005;
+		} else if (@bought_nameid[.@i] == 13338) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25313,200;
+			set .@part,EQI_HAND_R;
+			set .@needequip,13300;
+			set .@targetitem,13338;
+		} else if (@bought_nameid[.@i] == 16065) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25313,200;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1529;
+			set .@targetitem,16065;
+		} else if (@bought_nameid[.@i] == 19247) {
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25312,50;
+			set .@part,EQI_HEAD_TOP;
+			set .@needequip,2207;
+			set .@targetitem,19247;
+		//프로즌
+		} else if (@bought_nameid[.@i] == 28922){
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25298,300;
+			set .@part,EQI_HAND_R;
+			set .@needequip,2128;
+			set .@targetitem,28922;
+		} else if (@bought_nameid[.@i] == 20847) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25297,200;
+			set .@part,EQI_HAND_R;
+			set .@needequip,2509;
+			set .@targetitem,20847;
+		} else if (@bought_nameid[.@i] == 13337) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25300,20;
+			set .@part,EQI_HAND_R;
+			set .@needequip,13314;
+			set .@targetitem,13337;
+		} else if (@bought_nameid[.@i] == 1846) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25299,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1822;
+			set .@targetitem,1846;
+		} else if (@bought_nameid[.@i] == 19223) {
+			setarray .@needitem1[0],25271,100;
+			setarray .@needitem2[0],25297,200;
+			set .@part,EQI_HEAD_TOP;
+			set .@needequip,2227;
+			set .@targetitem,19223;
+		//뱀파이어
+		} else if (@bought_nameid[.@i] == 28022){
+			setarray .@needitem1[0],25271,80;
+			setarray .@needitem2[0],25261,20;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1266;
+			set .@targetitem,28022;
+		} else if (@bought_nameid[.@i] == 28023){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25264,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1260;
+			set .@targetitem,28023;
+		} else if (@bought_nameid[.@i] == 2039){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25267,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1473;
+			set .@targetitem,2039;
+		} else if (@bought_nameid[.@i] == 18149){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25265,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1727;
+			set .@targetitem,18149;
+		} else if (@bought_nameid[.@i] == 28612){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25262,20;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1557;
+			set .@targetitem,28612;
+		} else if (@bought_nameid[.@i] == 20840){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25263,200;
+			set .@part,EQI_GARMENT;
+			set .@needequip,2525;
+			set .@targetitem,20840;
+		} else if (@bought_nameid[.@i] == 28508){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25266,400;
+			set .@part,EQI_ACC_R;
+			set .@needequip,2715;
+			set .@targetitem,28508;
+		} else if (@bought_nameid[.@i] == 28509){
+			setarray .@needitem1[0],25271,50;
+			setarray .@needitem2[0],25267,400;
+			set .@part,EQI_ACC_R;
+			set .@needequip,2621;
+			set .@targetitem,28509;
+		//문라이트
+		} else if (@bought_nameid[.@i] == 26109){
+			setarray .@needitem1[0],25271,60;
+			setarray .@needitem2[0],25256,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1648;
+			set .@targetitem,26109;
+		} else if (@bought_nameid[.@i] == 16063){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],25256,20;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1525;
+			set .@targetitem,16063;
+		} else if (@bought_nameid[.@i] == 28725){
+			setarray .@needitem1[0],25271,60;
+			setarray .@needitem2[0],25256,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1234;
+			set .@targetitem,28725;
+		} else if (@bought_nameid[.@i] == 26007){
+			setarray .@needitem1[0],25271,40;
+			setarray .@needitem2[0],25256,100;
+			set .@part,EQI_HAND_R;
+			set .@needequip,1477;
+			set .@targetitem,26007;
+		} else if (@bought_nameid[.@i] == 19209){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],25257,100;
+			set .@part,EQI_HEAD_TOP;
+			set .@needequip,2277;
+			set .@targetitem,19209;
+		} else if (@bought_nameid[.@i] == 20840){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],25258,100;
+			set .@part,EQI_HEAD_TOP;
+			set .@needequip,2525;
+			set .@targetitem,20840;
+		} else if (@bought_nameid[.@i] == 20838){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],23228,100;
+			set .@part,EQI_GARMENT;
+			set .@needequip,2504;
+			set .@targetitem,20838;
+		} else if (@bought_nameid[.@i] == 22133){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],23228,100;
+			set .@part,EQI_SHOES;
+			set .@needequip,2404;
+			set .@targetitem,22133;
+		} else if (@bought_nameid[.@i] == 15195){
+			setarray .@needitem1[0],25271,20;
+			setarray .@needitem2[0],25256,100;
+			set .@part,EQI_ARMOR;
+			set .@needequip,15012;
+			set .@targetitem,15195;
+		}
+		
+	}
+	mes .@npcname$;
+	mes "^008844- 필요 아이템 -^000000 ";
+	mes "^229966"+getitemname(.@needitem1[0]) + " " + .@needitem1[1] + "개";
+	mes getitemname(.@needitem2[0]) + " " + .@needitem2[1] + "개^000000";
+	mes "^008844- 필요 착용 아이템 -^000000";
+	if(.@part == EQI_ACC_R)
+		mes "^229966" + getitemname(.@needequip) + (getitemslots(.@needequip)==0?"":"["+getitemslots(.@needequip)+"]") +"^000000";
+	else
+		mes "^229966+9 " + getitemname(.@needequip) + (getitemslots(.@needequip)==0?"":"["+getitemslots(.@needequip)+"]") +"^000000";
+	next;
+	if(select("취소:교환")== 1)	end;
+	if(.@part == EQI_ACC_R)
+		if(getequipid(EQI_ACC_R) != .@needequip && getequipid(EQI_ACC_L) == .@needequip) .@part = EQI_ACC_L;
+	if(countitem(.@needitem1[0]) < .@needitem1[1] || countitem(.@needitem2[0]) < .@needitem2[1] || getequipid(.@part) != .@needequip || getequiprefinerycnt(.@part) < 9 ) { mes "재료가 부족합니다."; end; }
+	delitem .@needitem1[0],.@needitem1[1];
+	delitem .@needitem2[0],.@needitem2[1];
+	delequip .@part;
+	getitem .@targetitem,1;
+	deletearray @bought_quantity, getarraysize(@bought_quantity);
+	deletearray @bought_nameid, getarraysize(@bought_nameid);
+	end;
+
+//OnInit:
+//	npcshopitem "ILL_EQI", 501,40,502,200;
+//	$@rpotsleft = 10;
+//	$@opotsleft = 10;
+//	end;
+}

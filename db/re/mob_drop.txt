@@ -1,0 +1,205 @@
+// Monster Drop Database
+// Add drop item to monster
+//
+// Structure:
+// <mobid>,<itemid>,<rate>{,<randopt_groupid>,<flag>}
+//
+// <mobid>  : Monster ID. See db/[pre-]re/mob_db.txt
+// <itemid> : Item ID.
+// <rate>   : 1 = 0.01%
+//            100 = 1%
+//            10000 = 100%
+//            Just like rate in mob_db.txt, adjusted by battle_config.
+//            To remove original drop from monster, use 0 as rate.
+// Optional:
+// <flag>            : 1 - The item is protected from steal.
+//                     2 - As MVP Reward
+// <randopt_groupid> : If set, the dropped item will be modified by Random Option Group based on db/[pre-]re/item_randomopt_group.txt
+1063,1102,100,1,RDMOPTG_None // LUNATIC
+2770,1102,500,1,RDMOPTG_None // C2_LUNATIC
+2771,1102,500,1,RDMOPTG_None // C3_LUNATIC
+
+3484,21018,20,1,RDMOPTG_None // ¸°µðÇÕ
+3484,28010,20,1,RDMOPTG_None // ·¹ÀÌÃ¿
+3484,2027,20,1,RDMOPTG_None // ÇØ¹Ù¶ó±â¼Ò³â
+
+3254,5864,35,1,RDMOPTG_None // T_W_O ½¦µµ¿ìºÎ½ºÅÍ
+3254,19241,35,1,RDMOPTG_None // T_W_O ¸ÅÁöÄÃºÎ½ºÅÍ
+
+2203,20819,5,1,RDMOPTG_None // µµÇÁ·¹Ç×¾Æ¸® - »ê¼ÒÅë
+2204,5397,5,1,RDMOPTG_None // ¼¼µµ¶ó - ½ºÄí¹ö¸¶½ºÅ©
+1096,23073,5,1,RDMOPTG_None // ¿£Á©¸µ - Ãµ»çÆ÷¸µ ºÎÃ÷
+1388,23073,5,1,RDMOPTG_None // ¾ÆÅ©¿£Á©¸µ - Ãµ»çÆ÷¸µ ºÎÃ÷
+3384,19117,5,1,RDMOPTG_None // ¹«ÇÑÀÇ Æ÷¸µ - Æ÷¸µ ¼±±Û¶ó½º
+3391,19118,5,1,RDMOPTG_None // ¹«ÇÑÀÇ Æ÷Æ÷¸µ - Æ÷¸µ ¼±±Û¶ó½º+
+2251,18813,5,1,RDMOPTG_None // Áö¿ÀÀÌ¾Æ - ´º¿þÀÌºê ¼±±Û¶ó½º
+
+1991,19300,25,1,RDMOPTG_None // ÅÙµå¸±¸®¿Â - ¸Û¸ÛÀå±³
+2542,19263,50,1,RDMOPTG_None // ¾ÆÀÌ¸°´ëÀå·Î - Àå±ºÀÇ Åõ±¸
+2564,19249,50,1,RDMOPTG_None // Ææ¸± - ½ºÆç ¼­Å¶
+2564,6195,100,1,RDMOPTG_None // Ææ¸± - ¸¶¹ý¼­(Ä¿¹ÌÆ®)
+2564,6196,100,1,RDMOPTG_None // Ææ¸± - ¸¶¹ý¼­(Å×Æ®¶ó º¼ÅØ½º)
+//3450,1847,50,1,RDMOPTG_None // ºñÁê - ¾ÆÀÌ¾ð ³×ÀÏ
+//3450,26118,50,1,RDMOPTG_None // ºñÁê - ½¦µµ¿ì ½ºÅ×ÇÁ
+3450,19308,50,1,RDMOPTG_None // ºñÁê - ¾Æ¹Ì½ºÆ®¸£ º£·¹¸ð
+2249,19157,20,1,RDMOPTG_None // Ç»¸®¿¤ - ´Ã¾îÁø °Ç½½¸µ
+3148,28942,5,1,RDMOPTG_None // ÆÄ¸êÀÇ ±â»ç´ÜÀå1 - ÀúÁÖ¹ÞÀº ±â»ç ¹æÆÐ
+3149,28942,5,1,RDMOPTG_None // ÆÄ¸êÀÇ ±â»ç´ÜÀå2 - ÀúÁÖ¹ÞÀº ±â»ç ¹æÆÐ
+1751,19085,20,1,RDMOPTG_None // ¹ßÅ°¸®¶õµå±×¸®½º - »çÀÌ±×·é
+
+
+3124,15128,100,1,RDMOPTG_None // Âû½ºÅÏ - ¿¢¼¿¸®¿Â ½´Ã÷
+3124,20773,100,1,RDMOPTG_None // Âû½ºÅÏ - ¿¢¼¿¸®¿Â À®
+3124,6965,20,1,RDMOPTG_None // Âû½ºÅÏ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3124,6966,20,1,RDMOPTG_None // Âû½ºÅÏ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3124,6967,20,1,RDMOPTG_None // Âû½ºÅÏ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3124,6968,20,1,RDMOPTG_None // Âû½ºÅÏ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3125,6969,5,1,RDMOPTG_None // ½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3125,6970,5,1,RDMOPTG_None // ½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3125,6971,5,1,RDMOPTG_None // ½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3125,6972,5,1,RDMOPTG_None // ½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3126,6973,5,1,RDMOPTG_None // ¶ô½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3126,6974,5,1,RDMOPTG_None // ¶ô½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3126,6975,5,1,RDMOPTG_None // ¶ô½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3126,6976,5,1,RDMOPTG_None // ¶ô½ºÅÜ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6977,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6978,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6979,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6980,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6981,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3127,6982,10,1,RDMOPTG_None // NÅ¸ÀÔ - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3128,6983,10,1,RDMOPTG_None // Å±¾ØÅ± - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3128,6984,10,1,RDMOPTG_None // Å±¾ØÅ± - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3128,6985,10,1,RDMOPTG_None // Å±¾ØÅ± - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+3128,6986,10,1,RDMOPTG_None // Å±¾ØÅ± - ¸®¾×Åä(¿¢¼¿ ÀÎÃ¾)
+
+1930,28901,30,1,RDMOPTG_None // ÇÇ¾Æ¸äÆ® - ÀúÁÖ¹ÞÀº ¸Åµå¹Ù´Ï
+1930,28902,30,1,RDMOPTG_None // ÇÇ¾Æ¸äÆ® - ¸Åµå¹Ù´Ï
+2335,2910,20,1,RDMOPTG_None // ¹öÄÚ³Ê¿ö - ¹öÄÚ³Ê¿ö ºÎÀû Å¸Åõ
+2319,2907,500,1,RDMOPTG_None // ºÎ¿ö¿© - ºÎ¿ö¿© ºÎÀû Å¸Åõ
+2327,2911,50,1,RDMOPTG_None // º¡¿õ°÷ - º¡¿õ°÷ ºÎÀû Å¸Åõ
+
+1323,28439,4,1,RDMOPTG_None // ÇØ´Þ - ¼±Ç³±â
+3413,28439,4,1,RDMOPTG_None // ¹«ÇÑÇØ´Þ - ¼±Ç³±â
+
+2072,1839,1,1,RDMOPTG_Crimson_Weapon // JAGUAR
+1584,21015,1,1,RDMOPTG_Crimson_Weapon // TAMRUAN
+2639,21015,5,1,RDMOPTG_Crimson_Weapon // C4_TAMRUAN
+1154,13454,1,1,RDMOPTG_Crimson_Weapon // PASANA
+1154,28705,1,1,RDMOPTG_Crimson_Weapon // PASANA
+2719,13454,5,1,RDMOPTG_Crimson_Weapon // C1_PASANA
+2719,28705,5,1,RDMOPTG_Crimson_Weapon // C1_PASANA
+1117,28604,1,1,RDMOPTG_Crimson_Weapon // EVIL_DRUID
+1517,16040,1,1,RDMOPTG_Crimson_Weapon // LI_ME_MANG_RYANG
+2071,28007,1,1,RDMOPTG_Crimson_Weapon // HEADLESS_MULE
+2778,16040,5,1,RDMOPTG_Crimson_Weapon // C5_LI_ME_MANG_RYANG
+2838,28604,1,1,RDMOPTG_Crimson_Weapon // C5_EVIL_DRUID
+1613,13127,1,1,RDMOPTG_None // METALING
+1386,28705,1,1,RDMOPTG_Crimson_Weapon // SLEEPER
+2655,28705,5,1,RDMOPTG_Crimson_Weapon // C5_SLEEPER
+2656,28705,5,1,RDMOPTG_Crimson_Weapon // C1_SLEEPER
+2755,13127,5,1,RDMOPTG_None // C2_METALING
+2756,13127,5,1,RDMOPTG_None // C3_METALING
+1631,1839,1,1,RDMOPTG_Crimson_Weapon // CHUNG_E_
+1215,1443,1,1,RDMOPTG_Crimson_Weapon // STEM_WORM
+2641,1443,5,1,RDMOPTG_Crimson_Weapon // C1_STEM_WORM
+1404,1939,1,1,RDMOPTG_Crimson_Weapon // MIYABI_NINGYO
+1628,13127,1,1,RDMOPTG_None // MOLE
+1619,28705,1,1,RDMOPTG_Crimson_Weapon // PORCELLIO
+2700,28705,5,1,RDMOPTG_Crimson_Weapon // C2_PORCELLIO
+2745,13127,5,1,RDMOPTG_None // C2_MOLE
+2746,1939,1,1,RDMOPTG_Crimson_Weapon // C3_MIYABI_NINGYO
+1102,1680,1,1,RDMOPTG_None // BATHORY
+1155,16040,1,1,RDMOPTG_Crimson_Weapon // PETIT
+2714,16040,5,1,RDMOPTG_Crimson_Weapon // C1_PETIT
+2715,16040,5,1,RDMOPTG_Crimson_Weapon // C2_PETIT
+2885,1680,5,1,RDMOPTG_None // C4_BATHORY
+2199,28705,1,1,RDMOPTG_Crimson_Weapon // SIORAVA
+1143,16040,1,1,RDMOPTG_Crimson_Weapon // MARIONETTE
+1413,1995,1,1,RDMOPTG_Crimson_Weapon // WILD_GINSENG
+2761,16040,5,1,RDMOPTG_Crimson_Weapon // C3_MARIONETTE
+1320,1498,1,1,RDMOPTG_Crimson_Weapon // OWL_DUKE
+1320,2025,1,1,RDMOPTG_None // OWL_DUKE
+1316,16040,1,1,RDMOPTG_Crimson_Weapon // SOLIDER
+2647,16040,5,1,RDMOPTG_Crimson_Weapon // C2_SOLIDER
+2721,1498,5,1,RDMOPTG_Crimson_Weapon // C3_OWL_DUKE
+2721,2025,5,1,RDMOPTG_None // C3_OWL_DUKE
+1408,1839,1,1,RDMOPTG_Crimson_Weapon // BLOOD_BUTTERFLY
+2883,1839,5,1,RDMOPTG_Crimson_Weapon // C1_BLOOD_BUTTERFLY
+1257,28007,1,1,RDMOPTG_Crimson_Weapon // INJUSTICE
+2792,28007,5,1,RDMOPTG_Crimson_Weapon // C4_INJUSTICE
+1302,21015,1,1,RDMOPTG_Crimson_Weapon // DARK_ILLUSION
+1416,1939,1,1,RDMOPTG_Crimson_Weapon // WICKED_NYMPH
+1416,1995,1,1,RDMOPTG_Crimson_Weapon // WICKED_NYMPH
+2617,1939,5,1,RDMOPTG_Crimson_Weapon // C5_WICKED_NYMPH
+2617,1995,5,1,RDMOPTG_Crimson_Weapon // C5_WICKED_NYMPH
+1405,13327,1,1,RDMOPTG_Crimson_Weapon // TENGU
+1030,1498,1,1,RDMOPTG_Crimson_Weapon // ANACONDAQ
+2904,1498,5,1,RDMOPTG_Crimson_Weapon // C4_ANACONDAQ
+1205,13454,1,1,RDMOPTG_Crimson_Weapon // EXECUTIONER
+1135,28106,1,1,RDMOPTG_Crimson_Weapon // KOBOLD_3
+1106,28705,1,1,RDMOPTG_Crimson_Weapon // DESERT_WOLF
+1259,1498,5,1,RDMOPTG_Crimson_Weapon // GRYPHON
+1310,28106,1,1,RDMOPTG_Crimson_Weapon // MAJORUROS
+2767,28106,5,1,RDMOPTG_Crimson_Weapon // C4_MAJORUROS
+1736,1839,1,1,RDMOPTG_Crimson_Weapon // ALIOT
+1296,16040,1,1,RDMOPTG_Crimson_Weapon // KOBOLD_LEADER
+1204,28705,1,1,RDMOPTG_Crimson_Weapon // TIRFING
+1204,13454,1,1,RDMOPTG_Crimson_Weapon // TIRFING
+1993,1443,1,1,RDMOPTG_Crimson_Weapon // NAGA
+1390,1939,1,1,RDMOPTG_Crimson_Weapon // VIOLY
+2621,1939,5,1,RDMOPTG_Crimson_Weapon // C5_VIOLY
+2622,1939,5,1,RDMOPTG_Crimson_Weapon // C1_VIOLY
+2623,1939,5,1,RDMOPTG_Crimson_Weapon // C2_VIOLY
+1295,18130,1,1,RDMOPTG_None // OWL_BARON
+1303,2025,1,1,RDMOPTG_None // GIANT_HONET
+2821,2025,5,1,RDMOPTG_None // C3_GIANT_HONET
+1702,21015,1,1,RDMOPTG_Crimson_Weapon // RETRIBUTION
+2353,28106,1,1,RDMOPTG_Crimson_Weapon // N_MINOROUS
+2684,21015,5,1,RDMOPTG_Crimson_Weapon // C4_RETRIBUTION
+2685,21015,5,1,RDMOPTG_Crimson_Weapon // C5_RETRIBUTION
+2686,21015,5,1,RDMOPTG_Crimson_Weapon // C1_RETRIBUTION
+1219,21015,1,1,RDMOPTG_Crimson_Weapon // KNIGHT_OF_ABYSS
+1703,1939,1,1,RDMOPTG_Crimson_Weapon // SOLACE
+2650,1939,5,1,RDMOPTG_Crimson_Weapon // C5_SOLACE
+2041,28705,1,1,RDMOPTG_Crimson_Weapon // MYSTELTAINN
+2041,13454,1,1,RDMOPTG_Crimson_Weapon // MYSTELTAINN
+2041,21015,1,1,RDMOPTG_Crimson_Weapon // MYSTELTAINN
+1830,18130,1,1,RDMOPTG_None // BOW_GUARDIAN
+1653,28705,1,1,RDMOPTG_Crimson_Weapon // WHIKEBAIN
+1655,1839,1,1,RDMOPTG_Crimson_Weapon // EREND
+1655,16040,1,1,RDMOPTG_Crimson_Weapon // EREND
+1657,1680,1,1,RDMOPTG_None // RAWREL
+1829,21015,1,1,RDMOPTG_Crimson_Weapon // SWORD_GUARDIAN
+2692,1680,5,1,RDMOPTG_None // C3_RAWREL
+1654,13454,1,1,RDMOPTG_Crimson_Weapon // ARMAIA
+1654,28106,1,1,RDMOPTG_Crimson_Weapon // ARMAIA
+1656,1939,1,1,RDMOPTG_Crimson_Weapon // KAVAC
+1656,18130,1,1,RDMOPTG_None // KAVAC
+1652,13454,1,1,RDMOPTG_Crimson_Weapon // YGNIZEM
+1652,21015,1,1,RDMOPTG_Crimson_Weapon // YGNIZEM
+1290,28705,1,1,RDMOPTG_Crimson_Weapon // SKELETON_GENERAL
+2658,28705,5,1,RDMOPTG_Crimson_Weapon // C3_SKELETON_GENERAL
+2659,28705,5,1,RDMOPTG_Crimson_Weapon // C4_SKELETON_GENERAL
+1658,21015,10,1,RDMOPTG_Crimson_Weapon // B_YGNIZEM
+1301,16040,1,1,RDMOPTG_Crimson_Weapon // AM_MUT
+2362,28604,1,1,RDMOPTG_Crimson_Weapon // N_AMON_RA
+
+3483,1400,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3481,1450,10,1RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3483,1600,10,1,RDMOPTG_Vicious_Mind_Matk1,RDMOPTG_Vicious_Mind_Matk2,RDMOPTG_Vicious_Mind_Matk3
+3479,1800,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3482,1900,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3482,1996,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3479,2026,10,1,RDMOPTG_Vicious_Mind_Matk1,RDMOPTG_Vicious_Mind_Matk2,RDMOPTG_Vicious_Mind_Matk3
+3480,13128,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3478,13328,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3483,13455,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3482,16041,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3483,16041,10,1,RDMOPTG_Vicious_Mind_Matk1,RDMOPTG_Vicious_Mind_Matk2,RDMOPTG_Vicious_Mind_Matk3
+3480,18121,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3480,21016,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3477,28008,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3481,28107,10,1,RDMOPTG_Vicious_Mind_Atk1,RDMOPTG_Vicious_Mind_Atk2,RDMOPTG_Vicious_Mind_Atk3
+3478,28605,10,1,RDMOPTG_Vicious_Mind_Matk1,RDMOPTG_Vicious_Mind_Matk2,RDMOPTG_Vicious_Mind_Matk3
+3477,28706,10,1,RDMOPTG_Vicious_Mind_Matk1,RDMOPTG_Vicious_Mind_Matk2,RDMOPTG_Vicious_Mind_Matk3

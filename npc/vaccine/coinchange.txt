@@ -1,0 +1,63 @@
+prt_gld,147,125,6	script	동전교환기	564,{
+
+//callfunc "lib.fReName", Strnpcinfo(0) , "BETA","교환기";
+
+	setarray .@Catch,6422,6421,6420,6419,6418;
+	setarray .@Catch_point,20,50,100,150,200;
+	.len = getarraysize(.@Catch);
+
+ratesetting:
+	//callfunc "lib.fName";
+	mes "[동전교환기]";
+	mes "안녕하세요. "+strcharinfo(0)+"";
+	mes "동전을 캐시포인트(C)로 바꿔드리고 있습니다.";
+	mes "현재 포인트: " + #CASHPOINTS /*callfunc("Cm",#CASHPOINTS,"C")*/;
+	mes "[ ↓↓ 목록 ↓↓ ]";
+	for( .@a = 0; .@a < .len; .@a++ ) {
+		if (countitem(.@Catch[.@a])) {
+			set .@fishi_point[.@a], countitem(.@Catch[.@a])*.@Catch_point[.@a];
+			mes "> "+getitemname(.@Catch[.@a])+" : "+ .@fishi_point[.@a]/*callfunc("Cm",.@fishi_point[.@a],"C")*/;
+			set .@sub, .@sub+.@fishi_point[.@a];
+		}
+	}
+	next;
+
+reset:
+	switch(select("~ 모두 교환한다 [ "+.@sub/*callfunc("Cm",.@sub,"C")*/+" ]:~ 취소:~ 캐시포인트(C)란?")) {
+	case 1:
+	for( .@a = 0; .@a < .len; .@a++ ) {
+		if (countitem(.@Catch[.@a])) {
+			delitem .@Catch[.@a], countitem(.@Catch[.@a]);
+		}
+	}
+	set #CASHPOINTS, #CASHPOINTS+.@sub;
+	//callfunc "lib.fName";
+	mes "[동전교환기]";
+	mes "이용해주셔서 감사합니다.";
+	mes "총 포인트: "+#CASHPOINTS/*callfunc("Cm",#CASHPOINTS,"C")*/;
+	end;
+
+	case 2: end;
+	case 3:
+		//callfunc "lib.fName";
+		mes "[동전교환기]";
+		mes "라그나로크의 제니와 같이 또다른 화패의 종류입니다.";
+		mes "캐시포인트는 오른쪽상단의 'Cash Shop'에서 이용할수 있습니다.";
+		next;
+		goto reset;
+	}
+
+OnInit:
+	//waitingroom "동전교환기", 0;
+	//setarray .Messages$[0],
+	//	"드르륵..드르륵..",
+	//	"끼리릭 .. 철컹!!";
+
+	//while (1) {
+	//	npctalk "[N]"+.Messages$[rand(getarraysize(.Messages$))];
+	//	sleep rand(1,10)*60*1000;
+	//}
+	end;
+}
+
+
